@@ -23,6 +23,10 @@ class MyDocument extends Document {
             type="font/woff2"
             crossOrigin="anonymous"
           />
+          <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css?family=Montserrat&display=optional"
+          />
         </Head>
         <body>
           <Main />
