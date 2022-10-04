@@ -8,15 +8,28 @@ module.exports = {
     extend: {
       fontFamily: {
         primary: ['Montserrat', ...fontFamily.sans],
+        poppins: 'Poppins',
+        montserrat: 'Montserrat',
       },
       colors: {
         primary: '#10122A',
         dark: '#222222',
         purple: {
+          300: '#FBF5FF',
           650: '#8A15D5',
         },
         fuchsia: {
           450: '#FB3FFF',
+        },
+        gray: {
+          400: '#F6F6F6',
+        },
+        stone: { 600: '#61617A' },
+        'dark-blue': {
+          400: '#131531',
+        },
+        green: {
+          400: '#27D325',
         },
       },
       keyframes: {

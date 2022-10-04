@@ -10,8 +10,8 @@ export default function Title() {
     <div className="relative">
       <div className="blur-purple -top-[250px] -right-[250px]" />
       <NextImage
-        className="absolute top-0 right-0 -translate-y-2/3 rotate-[180deg]"
-        width={480}
+        className="absolute top-0 right-0 -translate-y-1/3 rotate-[180deg]"
+        width={400}
         height={529}
         src={hives}
         alt="top-right-hives"

@@ -3,6 +3,8 @@ import { ImSpinner2 } from 'react-icons/im';
 
 import clsxm from '@/lib/clsxm';
 
+import { ArrowIcon } from '@/components/Svg';
+
 enum ButtonVariant {
   'primary',
   'outline',
@@ -48,13 +50,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
               'bg-gradient-to-r from-purple-650 to-fuchsia-450 text-white',
               'disabled:bg-primary-400 disabled:hover:bg-primary-400',
             ],
-            variant === 'outline' && [
-              'text-primary-500',
-              'border-primary-500 border',
-              'hover:bg-primary-50 active:bg-primary-100 disabled:bg-primary-100',
-              isDarkBg &&
-                'hover:bg-gray-900 active:bg-gray-800 disabled:bg-gray-800',
-            ],
+            variant === 'outline' && ['border-gradient2 border'],
             variant === 'ghost' && [
               'text-primary-500',
               'shadow-none',
@@ -96,7 +92,16 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             <ImSpinner2 className="animate-spin" />
           </div>
         )}
-        {children}
+        {variant === 'outline' ? (
+          <>
+            <span className="border-gradient2 w-full border-r pr-4">
+              {children}
+            </span>
+            <ArrowIcon className="ml-4" />
+          </>
+        ) : (
+          children
+        )}
       </button>
     );
   },

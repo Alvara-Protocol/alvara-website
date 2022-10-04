@@ -1,0 +1,32 @@
+.border-gradient {
+    border-image: linear-gradient(
+            178.65deg,
+            rgba(138, 21, 213, 0.22) 1.15%,
+            #8a15d5 59.75%,
+            rgba(138, 21, 213, 0) 110.7%
+        )
+        1;
+}
+
+.border-gradient2 {
+    border-image: linear-gradient(90deg, #8a15d5 0%, #fb3fff 99.48%) 1;
+}
+
+.border-gradient3 {
+    border-image: linear-gradient(
+            90deg,
+            rgba(16, 18, 42, 0) 0%,
+            #8a15d5 51.55%,
+            rgba(16, 18, 42, 0) 99.97%
+        )
+        1;
+}
+
+.border-gradient--rounded {
+    border: double 4px transparent;
+    border-radius: 999px;
+    background-image: linear-gradient(white, white),
+        radial-gradient(circle at top left, #8a15d5, #fb3fff);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+}

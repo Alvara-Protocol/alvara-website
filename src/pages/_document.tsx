@@ -27,6 +27,10 @@ class MyDocument extends Document {
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Montserrat&display=optional"
           />
+          <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css?family=Poppins&display=optional"
+          />
         </Head>
         <body>
           <Main />
