@@ -9,7 +9,7 @@ export default function Description() {
         so sweet?
       </h2>
       <div className="h-[4px] w-1/2 bg-gradient-to-r from-purple-650 to-transparent"></div>
-      <ul className="grid grid-cols-2 gap-x-[10rem] gap-y-12">
+      <ul className="intro grid grid-cols-2 gap-x-[10rem] gap-y-12">
         <li>
           I&apos;m a paragraph. Click here to add your own text and edit me.
           I&apos;m a great place for you to tell a story and let your users know

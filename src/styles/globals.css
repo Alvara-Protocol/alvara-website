@@ -50,17 +50,6 @@
         @apply mx-auto w-11/12;
     }
 
-    ul li::before {
-        content: '';
-        background: linear-gradient(90deg, #8a15d5 0%, #fb3fff 99.48%);
-        border-radius: 999px;
-        display: inline-block;
-        width: 0.7em;
-        height: 0.7em;
-        margin-left: -1em;
-        margin-right: 0.2em;
-    }
-
     .bg-dark a.custom-link {
         @apply border-gray-200 hover:border-gray-200/0;
     }
