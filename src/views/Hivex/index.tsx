@@ -1,8 +1,6 @@
 import React from 'react';
 
-import { Hives } from '@/components';
-
-import Info from './Info';
+import { Hives, Info } from '@/components';
 
 export default function Hivex() {
   return (
