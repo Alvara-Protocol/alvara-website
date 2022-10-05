@@ -9,7 +9,7 @@ import Title from './Title';
 
 export default function Home() {
   return (
-    <main className="container  flex min-h-[calc(100vh)] flex-col gap-20 text-black">
+    <main className="flex min-h-[calc(100vh)] flex-col gap-20 text-black">
       <Title />
       <Intro />
       <Hivex />

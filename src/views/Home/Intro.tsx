@@ -6,7 +6,7 @@ import logo from '~/images/logo.png';
 
 export default function Intro() {
   return (
-    <div className="mb-28 flex flex-row items-end">
+    <div className="container mx-auto mb-28 flex flex-row items-end">
       <section className="flex w-1/2 flex-col gap-[60px] py-[72px] pl-[72px]">
         <span className="bg-gradient-to-r from-purple-650 to-fuchsia-450 bg-clip-text text-transparent">
           ALVARA PROTOCOL
