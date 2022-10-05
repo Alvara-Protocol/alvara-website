@@ -6,7 +6,7 @@ import hives from '~/images/hives-3.png';
 
 export default function Intro2() {
   return (
-    <div className="flex flex-row items-end">
+    <div className="container mx-auto flex flex-row items-end">
       <section className="flex w-1/2 flex-col gap-[48px] py-[72px] pl-[72px]">
         <span className="bg-gradient-to-r from-purple-650 to-fuchsia-450 bg-clip-text text-transparent">
           ALVARA PROTOCOL

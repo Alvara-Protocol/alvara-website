@@ -8,7 +8,7 @@ import hives from '~/images/hives-2.png';
 
 export default function Hivex() {
   return (
-    <section className="relative flex flex-row items-center bg-gray-400 py-[90px]">
+    <section className="relative mx-auto flex flex-row items-center bg-gray-400 py-[90px]">
       <Currencies className="absolute top-3 left-1/2 -translate-x-1/2 -translate-y-full " />
       <div className="w-1/2">
         <NextImage

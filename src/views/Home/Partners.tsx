@@ -6,7 +6,7 @@ import logo from '~/images/logo.png';
 
 export default function Partners() {
   return (
-    <section className="mb-24 flex flex-col items-center justify-center gap-10">
+    <section className="container mx-auto mb-24 flex flex-col items-center justify-center gap-10">
       <h2 className="border-gradient3 border-b-[3px] pb-5 text-center font-montserrat font-medium uppercase tracking-widest">
         partners
       </h2>
