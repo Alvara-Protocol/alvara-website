@@ -17,6 +17,7 @@ module.exports = {
         purple: {
           300: '#FBF5FF',
           650: '#8A15D5',
+          700: '#971ADA',
         },
         fuchsia: {
           450: '#FB3FFF',
