@@ -1,9 +1,9 @@
-import { Menu, Transition } from '@headlessui/react';
+import { Dialog, Menu, Transition } from '@headlessui/react';
 import * as React from 'react';
 
+import { NextImage } from '@/components';
 import UnstyledLink from '@/components/links/UnstyledLink';
-import NextImage from '@/components/NextImage';
-import { ChevronDownIcon } from '@/components/Svg';
+import { ChevronDownIcon, HamburgerIcon } from '@/components/Svg';
 
 const techLinks = [
   { href: '/hivex', label: 'HiveX' },
@@ -17,21 +17,189 @@ const aboutAlvaraLinks = [
 ];
 
 export default function Header() {
+  const [isOpen, setIsOpen] = React.useState(false);
+  const [isShowingTech, setIsShowingTech] = React.useState(false);
+  const [isShowingAbout, setIsShowingAbout] = React.useState(false);
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
   return (
-    <header className="sticky top-0 z-50 bg-black">
+    <header className="sticky top-0 z-50 bg-black py-[18px]">
       <div className="layout flex h-14 items-center justify-between">
-        <UnstyledLink href="/" className="font-bold hover:text-gray-600">
+        <UnstyledLink href="/">
           <NextImage
             useSkeleton
             className="w-32 md:w-48"
-            src="/images/nav-logo.svg"
+            src="/svg/nav-logo.svg"
             width="230"
             height="45"
             alt="Icon"
           />
         </UnstyledLink>
         <nav>
-          <ul className="flex items-center justify-between space-x-3">
+          <button onClick={openModal} className="block lg:hidden">
+            <HamburgerIcon />
+          </button>
+          <Transition appear show={isOpen} as={React.Fragment}>
+            <Dialog
+              as="div"
+              className="fixed inset-0 z-50 overflow-hidden lg:hidden"
+              onClose={closeModal}
+            >
+              <Transition.Child
+                as={React.Fragment}
+                enter="ease-out duration-300"
+                enterFrom="opacity-0"
+                enterTo="opacity-100"
+                leave="ease-in duration-200"
+                leaveFrom="opacity-100"
+                leaveTo="opacity-0"
+              >
+                <div className="absolute inset-0 bg-slate-900/25 opacity-100 backdrop-blur-sm transition-opacity" />
+              </Transition.Child>
+
+              <div className="fixed inset-0 flex translate-x-0 items-start justify-end overflow-y-auto">
+                <div className="min-h-full w-[min(18rem,calc(100vw-theme(spacing.10)))] bg-white shadow-2xl ring-1 ring-black/10 transition">
+                  <Transition.Child
+                    as={React.Fragment}
+                    enter="ease-out duration-300"
+                    enterFrom="opacity-0 scale-95"
+                    enterTo="opacity-100 scale-100"
+                    leave="ease-in duration-200"
+                    leaveFrom="opacity-100 scale-100"
+                    leaveTo="opacity-0 scale-95"
+                  >
+                    <Dialog.Panel className="w-full max-w-md transform divide-y divide-slate-900/10 overflow-hidden bg-white text-left align-middle transition-all">
+                      <Dialog.Title as="h3" className="sr-only">
+                        Navigation
+                      </Dialog.Title>
+                      <div className="flex items-center justify-between py-4 px-8">
+                        <UnstyledLink href="/">
+                          <NextImage
+                            useSkeleton
+                            className=""
+                            src="/svg/logo.svg"
+                            width="35"
+                            height="35"
+                            alt="Icon"
+                          />
+                        </UnstyledLink>
+                        <button
+                          type="button"
+                          className="flex h-8 w-8 items-center justify-center"
+                          onClick={closeModal}
+                        >
+                          <span className="sr-only">Close navigation</span>
+                          <svg
+                            className="h-3.5 w-3.5 overflow-visible stroke-slate-900"
+                            fill="none"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path d="M0 0L14 14M14 0L0 14"></path>
+                          </svg>
+                        </button>
+                      </div>
+
+                      <nav className="divide-y divide-slate-900/10 text-base leading-7 text-slate-900">
+                        <div className="py-6 px-8">
+                          <div className="items-start space-y-2">
+                            <div>
+                              <button
+                                onClick={() =>
+                                  setIsShowingTech(
+                                    (isShowingTech) => !isShowingTech,
+                                  )
+                                }
+                              >
+                                Technology
+                              </button>
+                              <Transition
+                                show={isShowingTech}
+                                enter="transition-opacity duration-50"
+                                enterFrom="opacity-0"
+                                enterTo="opacity-100"
+                                leave="transition-opacity duration-50"
+                                leaveFrom="opacity-100"
+                                leaveTo="opacity-0"
+                              >
+                                <ul className="ml-3">
+                                  {techLinks.map((link) => (
+                                    <li key={link.href}>
+                                      <UnstyledLink
+                                        className="block p-1"
+                                        href={link.href}
+                                      >
+                                        {link.label}
+                                      </UnstyledLink>
+                                    </li>
+                                  ))}
+                                </ul>
+                              </Transition>
+                            </div>
+                            <div>
+                              <button
+                                onClick={() =>
+                                  setIsShowingAbout(
+                                    (isShowingAbout) => !isShowingAbout,
+                                  )
+                                }
+                              >
+                                About Alvara
+                              </button>
+                              <Transition
+                                show={isShowingAbout}
+                                enter="transition-opacity duration-50"
+                                enterFrom="opacity-0"
+                                enterTo="opacity-100"
+                                leave="transition-opacity duration-50"
+                                leaveFrom="opacity-100"
+                                leaveTo="opacity-0"
+                              >
+                                <ul className="ml-3">
+                                  {aboutAlvaraLinks.map((link) => (
+                                    <li key={link.href}>
+                                      <UnstyledLink
+                                        className="block p-1"
+                                        href={link.href}
+                                      >
+                                        {link.label}
+                                      </UnstyledLink>
+                                    </li>
+                                  ))}
+                                </ul>
+                              </Transition>
+                            </div>
+                            <div>
+                              <UnstyledLink href="/the-buzz" className="">
+                                The Buzz
+                              </UnstyledLink>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="py-6 px-8">
+                          <UnstyledLink
+                            href="/the-buzz"
+                            className="focus-visible:ring-primary-500 disabled:bg-primary-400 disabled:hover:bg-primary-400 inline-block bg-gradient-to-r from-purple-650 to-fuchsia-450 py-1 px-10 font-medium text-white shadow-sm transition-colors duration-75 focus:outline-none focus-visible:ring disabled:cursor-not-allowed"
+                          >
+                            ALVA
+                          </UnstyledLink>
+                        </div>
+                      </nav>
+                    </Dialog.Panel>
+                  </Transition.Child>
+                </div>
+              </div>
+            </Dialog>
+          </Transition>
+          <ul className="hidden items-center justify-between space-x-3 lg:flex">
             <li>
               <Menu as="div" className="relative inline-block text-left">
                 <Menu.Button className="inline-flex w-full items-center justify-center px-4 py-2 text-sm font-medium text-white hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
@@ -122,10 +290,10 @@ export default function Header() {
                 The Buzz
               </UnstyledLink>
             </li>
-            <li>
+            <li className="">
               <UnstyledLink
                 href="/the-buzz"
-                className="text-sm font-medium text-white hover:text-opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
+                className="focus-visible:ring-primary-500 disabled:bg-primary-400 disabled:hover:bg-primary-400 ml-20 items-center bg-gradient-to-r from-purple-650 to-fuchsia-450 py-2 px-10 font-medium text-white shadow-sm transition-colors duration-75 focus:outline-none focus-visible:ring disabled:cursor-not-allowed"
               >
                 ALVA
               </UnstyledLink>
