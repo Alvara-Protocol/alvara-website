@@ -43,8 +43,8 @@ export default function Header() {
           />
         </UnstyledLink>
         <nav>
-          <button onClick={openModal} className="block lg:hidden">
-            <HamburgerIcon />
+          <button onClick={openModal} className="block p-2 lg:hidden">
+            <HamburgerIcon stroke="#ffffff" />
           </button>
           <Transition appear show={isOpen} as={React.Fragment}>
             <Dialog
@@ -65,7 +65,7 @@ export default function Header() {
               </Transition.Child>
 
               <div className="fixed inset-0 flex translate-x-0 items-start justify-end overflow-y-auto">
-                <div className="min-h-full w-[min(18rem,calc(100vw-theme(spacing.10)))] bg-white shadow-2xl ring-1 ring-black/10 transition">
+                <div className="min-h-full w-[min(19rem,calc(100vw-theme(spacing.10)))] bg-white shadow-2xl ring-1 ring-black/10 transition">
                   <Transition.Child
                     as={React.Fragment}
                     enter="ease-out duration-300"
@@ -79,14 +79,14 @@ export default function Header() {
                       <Dialog.Title as="h3" className="sr-only">
                         Navigation
                       </Dialog.Title>
-                      <div className="flex items-center justify-between py-4 px-8">
+                      <div className="flex items-center justify-between py-6 px-8">
                         <UnstyledLink href="/">
                           <NextImage
                             useSkeleton
-                            className=""
-                            src="/svg/logo.svg"
-                            width="35"
-                            height="35"
+                            className="mt-1.5 w-36"
+                            src="/svg/nav-logo-black.svg"
+                            width="230"
+                            height="45"
                             alt="Icon"
                           />
                         </UnstyledLink>
@@ -118,6 +118,7 @@ export default function Header() {
                                     (isShowingTech) => !isShowingTech,
                                   )
                                 }
+                                className="font-semibold"
                               >
                                 Technology
                               </button>
@@ -151,6 +152,7 @@ export default function Header() {
                                     (isShowingAbout) => !isShowingAbout,
                                   )
                                 }
+                                className="font-semibold"
                               >
                                 About Alvara
                               </button>
@@ -178,7 +180,10 @@ export default function Header() {
                               </Transition>
                             </div>
                             <div>
-                              <UnstyledLink href="/the-buzz" className="">
+                              <UnstyledLink
+                                href="/the-buzz"
+                                className="font-semibold"
+                              >
                                 The Buzz
                               </UnstyledLink>
                             </div>
