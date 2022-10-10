@@ -1,6 +1,8 @@
 import React from 'react';
 
-import { Hives, Info } from '@/components';
+import { Hives } from '@/components';
+
+import Links from '@/views/News/Links';
 
 export default function News() {
   return (
@@ -14,31 +16,7 @@ export default function News() {
           <p>Press release, medium articles and links to Alvara socials</p>
         </div>
       </Hives>
-      <section className="container mx-auto grid grid-cols-7 items-center justify-center gap-x-28 gap-y-20 p-20">
-        <Info
-          image="/images/social/telegram.png"
-          title="Telegram"
-          description="t.me/alvara"
-        />
-        <div className="bg-gradient h-[230px] w-[1px]" />
-        <Info
-          image="/images/social/twitter.png"
-          title="Twitter"
-          description="t.me/alvara"
-        />
-        <div className="bg-gradient h-[230px] w-[1px]" />
-        <Info
-          image="/images/social/email.png"
-          title="Email"
-          description="t.me/alvara"
-        />
-        <div className="bg-gradient h-[230px] w-[1px]" />
-        <Info
-          image="/images/social/medium.png"
-          title="Medium"
-          description="t.me/alvara"
-        />
-      </section>
+      <Links />
     </main>
   );
 }

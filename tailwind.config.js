@@ -60,5 +60,22 @@ module.exports = {
       },
     },
   },
-  plugins: [require('@tailwindcss/forms')],
+  plugins: [require('daisyui')],
+  daisyui: {
+    themes: [
+      {
+        mytheme: {
+          primary: '#FB3FFF',
+          secondary: 'transparent',
+          accent: '#1FB2A6',
+          neutral: '#191D24',
+          'base-100': '#fff',
+          info: '#3ABFF8',
+          success: '#36D399',
+          warning: '#FBBD23',
+          error: '#F87272',
+        },
+      },
+    ],
+  },
 };
