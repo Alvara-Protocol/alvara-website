@@ -1,15 +1,3 @@
-import * as React from 'react';
-
-import Layout from '@/components/layout/Layout';
-import Seo from '@/components/Seo';
-
 import Home from '@/views/Home';
 
-export default function HomePage() {
-  return (
-    <Layout>
-      <Seo />
-      <Home />
-    </Layout>
-  );
-}
+export default Home;
