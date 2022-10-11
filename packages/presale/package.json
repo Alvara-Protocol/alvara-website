@@ -7,7 +7,8 @@
     "mocha": "^10.0.0"
   },
   "scripts": {
-    "build": "hardhat compile"
+    "build": "hardhat compile",
+    "test": "hardhat test"
   },
   "devDependencies": {
     "@nomicfoundation/hardhat-chai-matchers": "^1.0.3",
