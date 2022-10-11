@@ -1,13 +1,7 @@
 import React, { useCallback, useEffect } from 'react';
 import { SubmitHandler, useForm, useWatch } from 'react-hook-form';
 import { toast } from 'react-toastify';
-import {
-  chain,
-  useAccount,
-  useConnect,
-  useNetwork,
-  useSwitchNetwork,
-} from 'wagmi';
+import { useAccount, useConnect, useNetwork, useSwitchNetwork } from 'wagmi';
 
 import logger from '@/lib/logger';
 import { metaMaskConnector } from '@/lib/web3/wagmi';
@@ -20,6 +14,7 @@ import {
   Select,
 } from '@/components';
 
+import { CHAIN_ID } from '@/config';
 import Links from '@/views/News/Links';
 
 interface FormProps {
@@ -69,9 +64,9 @@ export default function Presale() {
   useEffect(() => {
     if (!isConnected || !activeChain || !switchNetworkAsync) return;
 
-    if (activeChain.id !== chain.mainnet.id) {
+    if (activeChain.id !== CHAIN_ID) {
       logger('switchNetworkAsync', 'index.tsx line 80');
-      switchNetworkAsync(chain.mainnet.id).catch((error) => {
+      switchNetworkAsync(CHAIN_ID).catch((error) => {
         if (error.code === 4001) {
           toast.error('Please change network to make transaction.');
         }
