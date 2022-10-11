@@ -14,14 +14,51 @@ export default function Footer() {
             src="/svg/nav-logo-black.svg"
             width="230"
             height="45"
-            alt="Icon"
+            alt="Alvara"
           />
           <UnstyledLink href="/hivex">HiveX</UnstyledLink>
           <UnstyledLink href="/about">About</UnstyledLink>
           <UnstyledLink href="/careers">Careers</UnstyledLink>
         </div>
         <p className="mt-10 mb-8">Email: contact@alvaraprotocol.io</p>
-        <div className="flex"></div>
+        <div className="my-6 flex flex-row items-center gap-4">
+          <UnstyledLink openNewTab href="https://t.me/alvara">
+            <NextImage
+              useSkeleton
+              src="/images/social/telegram.png"
+              width="36"
+              height="36"
+              alt="Alvara"
+            />
+          </UnstyledLink>
+          <UnstyledLink openNewTab href="https://t.me/alvara">
+            <NextImage
+              useSkeleton
+              src="/images/social/twitter.png"
+              width="36"
+              height="36"
+              alt="Alvara"
+            />
+          </UnstyledLink>
+          <UnstyledLink openNewTab href="https://t.me/alvara">
+            <NextImage
+              useSkeleton
+              src="/images/social/email.png"
+              width="36"
+              height="36"
+              alt="Alvara"
+            />
+          </UnstyledLink>
+          <UnstyledLink openNewTab href="https://t.me/alvara">
+            <NextImage
+              useSkeleton
+              src="/images/social/medium.png"
+              width="36"
+              height="36"
+              alt="Alvara"
+            />
+          </UnstyledLink>
+        </div>
         <p>©2023 by Alvara</p>
       </div>
       <div className="col-span-4">
