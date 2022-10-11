@@ -1,7 +1,16 @@
-import React from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { SubmitHandler, useForm, useWatch } from 'react-hook-form';
+import { toast } from 'react-toastify';
+import {
+  chain,
+  useAccount,
+  useConnect,
+  useNetwork,
+  useSwitchNetwork,
+} from 'wagmi';
 
 import logger from '@/lib/logger';
+import { metaMaskConnector } from '@/lib/web3/wagmi';
 
 import {
   Button,
@@ -26,6 +35,12 @@ interface FormProps {
 }
 
 export default function Presale() {
+  const { isConnected } = useAccount();
+  const { connectAsync } = useConnect();
+  const { chain: activeChain } = useNetwork();
+  const { isLoading: isSwitchingNetwork, switchNetworkAsync } =
+    useSwitchNetwork();
+
   const { register, handleSubmit, control } = useForm<FormProps>({
     defaultValues: {
       poundsActivated: true,
@@ -39,6 +54,34 @@ export default function Presale() {
   const onSubmit: SubmitHandler<FormProps> = (data) => {
     logger(data, 'index.tsx line 15');
   };
+
+  const handleConnectWallet = useCallback(async () => {
+    connectAsync({ connector: metaMaskConnector }).catch((error: any) => {
+      if (error.code === -32002) {
+        toast.info('Wallect connect request is pennding...');
+      }
+      if (error.name === 'ConnectorNotFoundError') {
+        toast.info('Metamask not found');
+      }
+    });
+  }, [connectAsync]);
+
+  useEffect(() => {
+    if (!isConnected || !activeChain || !switchNetworkAsync) return;
+
+    if (activeChain.id !== chain.mainnet.id) {
+      logger('switchNetworkAsync', 'index.tsx line 80');
+      switchNetworkAsync(chain.mainnet.id).catch((error) => {
+        if (error.code === 4001) {
+          toast.error('Please change network to make transaction.');
+        }
+      });
+    }
+  }, [isConnected, activeChain, switchNetworkAsync]);
+
+  useEffect(() => {
+    if (isSwitchingNetwork) toast.info('Please switch network.');
+  }, [isSwitchingNetwork]);
 
   return (
     <main>
@@ -161,8 +204,11 @@ export default function Presale() {
               4234 ETH
             </div>
           </div>
-          <Button type="button" onClick={() => handleSubmit(onSubmit)}>
-            Connect Wallet
+          <Button
+            type={isConnected ? 'submit' : 'button'}
+            onClick={isConnected ? handleSubmit(onSubmit) : handleConnectWallet}
+          >
+            {isConnected ? 'Join' : 'Connect Wallet'}
           </Button>
         </form>
       </section>

@@ -16,7 +16,7 @@ export default function Footer() {
             src="/svg/nav-logo-black.svg"
             width="230"
             height="45"
-            alt="Icon"
+            alt="Alvara"
           />
           <UnstyledLink href="/hivex">HiveX</UnstyledLink>
           <UnstyledLink href="/about">About</UnstyledLink>
