@@ -77,6 +77,14 @@ module.exports = {
     ],
     //#endregion  //*======== Import Sort ===========
   },
+  overrides: [
+    {
+      files: ['packages/**/*.ts'], // Or *.test.js
+      rules: {
+        'no-console': 'off',
+      },
+    },
+  ],
   globals: {
     React: true,
     JSX: true,

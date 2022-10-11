@@ -2,9 +2,15 @@
   "name": "alvara",
   "version": "0.1.0",
   "private": true,
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:contract": "yarn workspace @alvara/presale build",
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "eslint src --fix && yarn format",
@@ -15,9 +21,10 @@
     "format": "prettier -w .",
     "format:check": "prettier -c .",
     "postbuild": "next-sitemap --config next-sitemap.config.js",
-    "prepare": "husky install"
+    "prepare": "husky install && yarn build:contract"
   },
   "dependencies": {
+    "@alvara/presale": "*",
     "@headlessui/react": "^1.7.3",
     "chance": "^1.1.8",
     "clsx": "^1.2.1",
