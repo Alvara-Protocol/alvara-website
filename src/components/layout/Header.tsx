@@ -30,7 +30,7 @@ export default function Header() {
   }
 
   return (
-    <header className="sticky top-0 z-50  py-[18px]">
+    <header className="sticky top-0 z-50 py-[18px]">
       <div className="layout flex h-14 items-center justify-between">
         <UnstyledLink href="/">
           <NextImage
@@ -297,7 +297,7 @@ export default function Header() {
             </li>
             <li className="">
               <UnstyledLink
-                href="/the-buzz"
+                href="/presale"
                 className="focus-visible:ring-primary-500 disabled:bg-primary-400 disabled:hover:bg-primary-400 ml-20 items-center bg-gradient-to-r from-purple-650 to-fuchsia-450 py-2 px-10 font-medium text-white shadow-sm transition-colors duration-75 focus:outline-none focus-visible:ring disabled:cursor-not-allowed"
               >
                 ALVA

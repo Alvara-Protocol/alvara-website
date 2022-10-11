@@ -22,6 +22,17 @@
         1;
 }
 
+.border-gradient4 {
+    border-image: linear-gradient(
+            180deg,
+            rgba(16, 18, 42, 0) 0%,
+            #8a15d5 13.02%,
+            #fb3fff 77.08%,
+            rgba(16, 18, 42, 0) 100%
+        )
+        1;
+}
+
 .border-gradient--rounded {
     border: double 4px transparent;
     border-radius: 999px;

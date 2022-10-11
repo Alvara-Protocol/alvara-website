@@ -3,9 +3,11 @@ import * as React from 'react';
 import { Button, NextImage } from '@/components';
 import UnstyledLink from '@/components/links/UnstyledLink';
 
+import Links from '@/views/News/Links';
+
 export default function Footer() {
   return (
-    <footer className="border-gradient3 mx-8 grid border-t py-6 lg:grid-cols-10">
+    <footer className="border-gradient3 mx-8 grid border-t py-16 lg:grid-cols-10">
       <div className="col-span-6">
         <div className="flex items-center gap-8">
           <NextImage
@@ -20,9 +22,11 @@ export default function Footer() {
           <UnstyledLink href="/about">About</UnstyledLink>
           <UnstyledLink href="/careers">Careers</UnstyledLink>
         </div>
-        <p className="mt-10 mb-8">Email: contact@alvaraprotocol.io</p>
-        <div className="flex"></div>
-        <p>©2023 by Alvara</p>
+        <p className="mt-16 mb-10">Email: contact@alvaraprotocol.io</p>
+        <div className="flex gap-6">
+          <Links visible={false} />
+        </div>
+        <p className="mt-12">©2023 by Alvara</p>
       </div>
       <div className="col-span-4">
         <p className="pt-3">SUBSCRIBE</p>

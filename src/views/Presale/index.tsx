@@ -167,7 +167,9 @@ export default function Presale() {
         </form>
       </section>
 
-      <Links />
+      <div className="container mx-auto grid grid-cols-4 items-center justify-center p-20">
+        <Links visible={true} />
+      </div>
     </main>
   );
 }

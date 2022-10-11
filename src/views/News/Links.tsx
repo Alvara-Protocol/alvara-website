@@ -2,32 +2,47 @@ import React from 'react';
 
 import { Info } from '@/components';
 
-export default function Links() {
+const linkInfos = [
+  {
+    image: '/images/social/telegram.png',
+    link: 'https://t.me/alvara1',
+    title: 'Telegram',
+    description: 't.me/alvara',
+  },
+  {
+    image: '/images/social/twitter.png',
+    link: 'https://t.me/alvara2',
+    title: 'Twitter',
+    description: 't.me/alvara',
+  },
+  {
+    image: '/images/social/email.png',
+    link: 'https://t.me/alvara3',
+    title: 'Email',
+    description: 't.me/alvara',
+  },
+  {
+    image: '/images/social/medium.png',
+    link: 'https://t.me/alvara4',
+    title: 'Medium',
+    description: 't.me/alvara',
+  },
+];
+
+export default function Links({ visible }: { visible: boolean }) {
   return (
-    <section className="container mx-auto grid grid-cols-7 items-center justify-center gap-x-28 gap-y-20 p-20">
-      <Info
-        image="/images/social/telegram.png"
-        title="Telegram"
-        description="t.me/alvara"
-      />
-      <div className="bg-gradient h-[230px] w-[1px]" />
-      <Info
-        image="/images/social/twitter.png"
-        title="Twitter"
-        description="t.me/alvara"
-      />
-      <div className="bg-gradient h-[230px] w-[1px]" />
-      <Info
-        image="/images/social/email.png"
-        title="Email"
-        description="t.me/alvara"
-      />
-      <div className="bg-gradient h-[230px] w-[1px]" />
-      <Info
-        image="/images/social/medium.png"
-        title="Medium"
-        description="t.me/alvara"
-      />
-    </section>
+    <>
+      {linkInfos.map((info) => (
+        <Info
+          key={info.title}
+          image={info.image}
+          title={info.title}
+          description={info.description}
+          link={info.link}
+          detail={visible}
+          size={visible ? 141 : 45}
+        />
+      ))}
+    </>
   );
 }
