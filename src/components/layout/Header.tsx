@@ -30,7 +30,7 @@ export default function Header() {
   }
 
   return (
-    <header className="sticky top-0 z-50 bg-black py-[18px]">
+    <header className="sticky top-0 z-50  py-[18px]">
       <div className="layout flex h-14 items-center justify-between">
         <UnstyledLink href="/">
           <NextImage
