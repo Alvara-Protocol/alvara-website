@@ -191,7 +191,7 @@ export default function Header() {
                         </div>
                         <div className="py-6 px-8">
                           <UnstyledLink
-                            href="/the-buzz"
+                            href="/presale"
                             className="focus-visible:ring-primary-500 disabled:bg-primary-400 disabled:hover:bg-primary-400 inline-block bg-gradient-to-r from-purple-650 to-fuchsia-450 py-1 px-10 font-medium text-white shadow-sm transition-colors duration-75 focus:outline-none focus-visible:ring disabled:cursor-not-allowed"
                           >
                             ALVA
