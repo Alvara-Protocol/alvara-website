@@ -4,7 +4,8 @@ import clsxm from '@/lib/clsxm';
 
 import NextImage from '../NextImage';
 
-import hives from '~/images/hives.png';
+import hives2 from '~/images/hives.png';
+import hives1 from '~/images/hives-1.png';
 
 export interface HivesProps extends React.PropsWithChildren {
   className?: string;
@@ -14,17 +15,17 @@ export default function Hives({ children, className }: HivesProps) {
   return (
     <section className={clsxm('relative', className)}>
       <NextImage
-        className="absolute top-0 right-0 -translate-y-1/3 rotate-[180deg]"
-        width={380}
-        height={529}
-        src={hives}
+        className="absolute top-0 right-0 w-[420px]"
+        width={634}
+        height={920}
+        src={hives1}
         alt="top-right-hives"
       />
       <NextImage
-        className="absolute left-0 bottom-0 translate-y-full"
-        width={480}
-        height={529}
-        src={hives}
+        className="absolute -left-28 -top-4 w-[420px]"
+        width={699}
+        height={1483}
+        src={hives2}
         alt="left-hives"
       />
       {children}

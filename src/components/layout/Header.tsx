@@ -44,8 +44,10 @@ export default function Header() {
   return (
     <header
       className={clsx(
-        'sticky top-0 z-50 py-[18px] font-montserrat',
-        scroll ? 'bg-white shadow' : 'bg-transparent shadow-none',
+        'fixed top-0 z-50 w-full py-[18px] font-montserrat',
+        scroll
+          ? 'bg-white bg-opacity-80 shadow backdrop-blur-sm'
+          : 'bg-transparent shadow-none',
       )}
     >
       <div className="layout flex h-14 items-center justify-between">
@@ -224,10 +226,10 @@ export default function Header() {
           <ul className="hidden items-center justify-between space-x-3 lg:flex">
             <li>
               <Menu as="div" className="relative inline-block text-left">
-                <Menu.Button className="inline-flex w-full items-center justify-center px-4 py-2 text-sm text-[18px] font-medium hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
+                <Menu.Button className="inline-flex w-full items-center justify-center px-4 py-2 text-sm text-[18px] font-medium text-dark-blue-400 hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
                   Technology
                   <ChevronDownIcon
-                    className="ml-1.5 mt-0.5 h-4 w-4 text-violet-200 hover:text-violet-100"
+                    className="ml-1.5 mt-0.5 h-4 w-4 text-dark-blue-400"
                     aria-hidden="true"
                   />
                 </Menu.Button>
@@ -265,10 +267,10 @@ export default function Header() {
             </li>
             <li>
               <Menu as="div" className="relative inline-block text-left">
-                <Menu.Button className="inline-flex w-full items-center justify-center px-4 py-2 text-sm text-[18px] font-medium hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
+                <Menu.Button className="inline-flex w-full items-center justify-center px-4 py-2 text-sm text-[18px] font-medium text-dark-blue-400 hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
                   About Alvara
                   <ChevronDownIcon
-                    className="ml-1.5 mt-0.5 h-4 w-4 text-violet-200 hover:text-violet-100"
+                    className="ml-1.5 mt-0.5 h-4 w-4 text-dark-blue-400"
                     aria-hidden="true"
                   />
                 </Menu.Button>
