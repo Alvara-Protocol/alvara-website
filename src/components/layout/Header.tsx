@@ -1,4 +1,5 @@
 import { Dialog, Menu, Transition } from '@headlessui/react';
+import clsx from 'clsx';
 import * as React from 'react';
 
 import { NextImage } from '@/components';
@@ -20,6 +21,7 @@ export default function Header() {
   const [isOpen, setIsOpen] = React.useState(false);
   const [isShowingTech, setIsShowingTech] = React.useState(false);
   const [isShowingAbout, setIsShowingAbout] = React.useState(false);
+  const [scroll, setScroll] = React.useState(false);
 
   function closeModal() {
     setIsOpen(false);
@@ -29,14 +31,29 @@ export default function Header() {
     setIsOpen(true);
   }
 
+  React.useEffect(() => {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        setScroll(true);
+      } else {
+        setScroll(false);
+      }
+    });
+  }, []);
+
   return (
-    <header className="sticky top-0 z-50 py-[18px]">
+    <header
+      className={clsx(
+        'sticky top-0 z-50 py-[18px] font-montserrat',
+        scroll ? 'bg-white shadow' : 'bg-transparent shadow-none',
+      )}
+    >
       <div className="layout flex h-14 items-center justify-between">
         <UnstyledLink href="/">
           <NextImage
             useSkeleton
             className="w-32 md:w-48"
-            src="/svg/nav-logo.svg"
+            src="/svg/nav-logo-black.svg"
             width="230"
             height="45"
             alt="Icon"
@@ -44,7 +61,7 @@ export default function Header() {
         </UnstyledLink>
         <nav>
           <button onClick={openModal} className="block p-2 lg:hidden">
-            <HamburgerIcon stroke="#ffffff" />
+            <HamburgerIcon stroke="#131531" />
           </button>
           <Transition appear show={isOpen} as={React.Fragment}>
             <Dialog
@@ -192,7 +209,7 @@ export default function Header() {
                         <div className="py-6 px-8">
                           <UnstyledLink
                             href="/presale"
-                            className="focus-visible:ring-primary-500 disabled:bg-primary-400 disabled:hover:bg-primary-400 inline-block bg-gradient-to-r from-purple-650 to-fuchsia-450 py-1 px-10 font-medium text-white shadow-sm transition-colors duration-75 focus:outline-none focus-visible:ring disabled:cursor-not-allowed"
+                            className="focus-visible:ring-primary-500 disabled:bg-primary-400 disabled:hover:bg-primary-400 inline-block bg-gradient-to-r from-purple-650 to-fuchsia-450 py-1 px-10 text-[16px] font-medium text-white shadow-sm transition-colors duration-75 focus:outline-none focus-visible:ring disabled:cursor-not-allowed"
                           >
                             ALVA
                           </UnstyledLink>
@@ -207,7 +224,7 @@ export default function Header() {
           <ul className="hidden items-center justify-between space-x-3 lg:flex">
             <li>
               <Menu as="div" className="relative inline-block text-left">
-                <Menu.Button className="inline-flex w-full items-center justify-center px-4 py-2 text-sm font-medium text-white hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
+                <Menu.Button className="inline-flex w-full items-center justify-center px-4 py-2 text-sm text-[18px] font-medium hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
                   Technology
                   <ChevronDownIcon
                     className="ml-1.5 mt-0.5 h-4 w-4 text-violet-200 hover:text-violet-100"
@@ -223,7 +240,7 @@ export default function Header() {
                   leaveFrom="transform opacity-100 scale-100"
                   leaveTo="transform opacity-0 scale-95"
                 >
-                  <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                  <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white text-dark-blue-400 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                     <div className="px-3 py-2">
                       {techLinks.map((link) => (
                         <Menu.Item key={link.href} as={React.Fragment}>
@@ -248,7 +265,7 @@ export default function Header() {
             </li>
             <li>
               <Menu as="div" className="relative inline-block text-left">
-                <Menu.Button className="inline-flex w-full items-center justify-center px-4 py-2 text-sm font-medium text-white hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
+                <Menu.Button className="inline-flex w-full items-center justify-center px-4 py-2 text-sm text-[18px] font-medium hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
                   About Alvara
                   <ChevronDownIcon
                     className="ml-1.5 mt-0.5 h-4 w-4 text-violet-200 hover:text-violet-100"
@@ -290,7 +307,7 @@ export default function Header() {
             <li>
               <UnstyledLink
                 href="/the-buzz"
-                className="text-sm font-medium text-white hover:text-opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
+                className="text-sm text-[18px] font-medium hover:text-opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
               >
                 The Buzz
               </UnstyledLink>
