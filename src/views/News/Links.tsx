@@ -39,7 +39,7 @@ export default function Links({ visible }: { visible: boolean }) {
           title={info.title}
           description={info.description}
           link={info.link}
-          detail={visible}
+          type={visible ? 2 : 3}
           size={visible ? 141 : 45}
         />
       ))}

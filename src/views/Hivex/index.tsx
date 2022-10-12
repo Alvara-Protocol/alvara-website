@@ -25,31 +25,37 @@ export default function Hivex() {
           image="/images/hivex/trade-c-etfs.png"
           title="Trade C-ETFs"
           description="Describe the item and include any relevant details. Click to edit the text"
+          type={1}
         />
         <Info
           image="/images/hivex/build-a-fund.png"
           title="Build a Fund"
           description="Describe the item and include any relevant details. Click to edit the text"
+          type={1}
         />
         <Info
           image="/images/hivex/create-redeem.png"
           title="Create & Redeem ETF Shares"
           description="Describe the item and include any relevant details. Click to edit the text"
+          type={1}
         />
         <Info
           image="/images/hivex/transfer.png"
           title="Transfer of Ownership"
           description="Describe the item and include any relevant details. Click to edit the text"
+          type={1}
         />
         <Info
           image="/images/hivex/fiat.png"
           title="Fiat Gateway"
           description="Describe the item and include any relevant details. Click to edit the text"
+          type={1}
         />
         <Info
           image="/images/hivex/item.png"
           title="Item title"
           description="Describe the item and include any relevant details. Click to edit the text"
+          type={1}
         />
       </div>
     </main>

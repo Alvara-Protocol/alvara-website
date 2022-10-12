@@ -27,24 +27,28 @@ export default function Intro() {
           title="Build your Own"
           description="Describe the item and include any relevant details. Click to edit the text"
           size={114}
+          type={1}
         />
         <Info
           image="/images/smart-funds/proof.png"
           title="Proof of Ownership"
           description="Describe the item and include any relevant details. Click to edit the text"
           size={114}
+          type={1}
         />
         <Info
           image="/images/smart-funds/leaderboard.png"
           title="Advanced leaderboard"
           description="Describe the item and include any relevant details. Click to edit the text"
           size={114}
+          type={1}
         />
         <Info
           image="/images/smart-funds/join.png"
           title="Join the Hive"
           description="Describe the item and include any relevant details. Click to edit the text"
           size={114}
+          type={1}
         />
       </div>
     </section>
