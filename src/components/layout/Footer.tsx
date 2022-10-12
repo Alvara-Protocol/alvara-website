@@ -7,9 +7,9 @@ import Links from '@/views/News/Links';
 
 export default function Footer() {
   return (
-    <footer className="border-gradient3 mx-8 grid border-t py-16 lg:grid-cols-10">
-      <div className="col-span-6">
-        <div className="flex items-center gap-8">
+    <footer className="border-gradient3 mx-8 grid grid-cols-10 justify-center border-t pt-14 pb-4 font-montserrat lg:justify-start lg:py-16">
+      <div className="col-span-10 lg:col-span-6">
+        <div className="hidden items-center gap-8 lg:flex">
           <NextImage
             useSkeleton
             className="mt-1.5 mr-12 w-48"
@@ -22,17 +22,41 @@ export default function Footer() {
           <UnstyledLink href="/about">About</UnstyledLink>
           <UnstyledLink href="/careers">Careers</UnstyledLink>
         </div>
-        <p className="mt-16 mb-10">Email: contact@alvaraprotocol.io</p>
-        <div className="flex gap-6">
+        <p className="mt-16 mb-10 text-center text-[18px] text-dark-blue-400 lg:text-left">
+          Email: contact@alvaraprotocol.io
+        </p>
+        <div className="flex justify-center gap-6 lg:justify-start">
           <Links visible={false} />
         </div>
-        <p className="mt-12">©2023 by Alvara</p>
+        <p className="mt-12 text-center text-[18px] text-dark-blue-400 lg:text-left">
+          ©2023 by Alvara
+        </p>
       </div>
-      <div className="col-span-4">
-        <p className="pt-3">SUBSCRIBE</p>
-        <p className="mt-6 mb-5">Sign up to receive Alvara news and updates</p>
-        <form action="/api/form" method="post" className="flex">
-          <input type="email" name="email" placeholder="Email" required />
+      <div className="order-first col-span-10 flex flex-col items-center  lg:order-last lg:col-span-4">
+        <NextImage
+          useSkeleton
+          className="mb-14 w-48 lg:hidden"
+          src="/svg/nav-logo-black.svg"
+          width="230"
+          height="45"
+          alt="Alvara"
+        />
+        <p className="text-[27px] text-dark-blue-400 lg:pt-3">SUBSCRIBE</p>
+        <p className="my-7 text-stone-600 lg:mt-6 lg:mb-5">
+          Sign up to receive Alvara news and updates
+        </p>
+        <form
+          action="/api/form"
+          method="post"
+          className="flex flex-col items-center gap-4 lg:flex-row lg:items-stretch lg:gap-0"
+        >
+          <input
+            type="email"
+            className="min-h-[58px] min-w-[364px] border border-dark-blue-400 p-3 text-stone-600 placeholder-stone-600 lg:min-w-fit"
+            name="email"
+            placeholder="Email"
+            required
+          />
           <Button variant="outline" className="max-w-max py-4 uppercase">
             Subscribe
           </Button>
