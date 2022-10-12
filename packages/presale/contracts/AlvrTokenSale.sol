@@ -4,6 +4,7 @@ pragma solidity ^0.8.9;
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/security/Pausable.sol";
+import "hardhat/console.sol";
 
 contract AlvrTokenSale is Ownable, Pausable {
     address public alvara;
@@ -168,15 +169,17 @@ contract AlvrTokenSale is Ownable, Pausable {
         uint8 v_,
         bytes32 r_,
         bytes32 s_
-    ) internal view returns (bool) {
-        return ecrecover(hashedMessage_, v_, r_, s_) == txSigner;
+    ) internal view  {
+        address signer = ecrecover(hashedMessage_,v_, r_, s_);
+
+        require(signer == txSigner);        
     }
 
     function _getHashedMessage(address investor_, uint256 amount_)
         internal
         returns (bytes32 hashedMessage)
     {
-        bytes memory prefix = "\x19Ethereum Signed Message:\n32";
+        bytes memory prefix = "\x19Ethereum Signed Message:\n84";
         hashedMessage = keccak256(
             abi.encodePacked(prefix, investor_, amount_, _useNonce(investor_))
         );
