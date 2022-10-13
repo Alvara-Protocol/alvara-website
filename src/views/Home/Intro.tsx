@@ -12,7 +12,7 @@ export default function Intro() {
           ALVARA PROTOCOL
         </span>
         <div>
-          <h2 className="font-medium uppercase tracking-wider">
+          <h2 className="font-[50px] uppercase tracking-wider">
             We&apos;re Changing the Way the World Invests.
           </h2>
           <div className="h-[4px] w-full bg-gradient-to-r from-purple-650 to-transparent"></div>
@@ -27,9 +27,9 @@ export default function Intro() {
           story and let your users know a little more about you.
         </p>
       </section>
-      <div className="w-1/2">
+      <div className="mx-auto max-w-[550px]">
         <NextImage
-          className="m-auto"
+          className=" "
           width={380}
           height={380}
           src={logo}

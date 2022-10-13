@@ -25,7 +25,7 @@ export default function Info({
     <div
       className={clsx(
         'flex flex-col',
-        type === 2 ? 'border-gradient4 border-r' : '',
+        type === 2 ? 'border-gradient4 border-b md:border-r' : '',
       )}
     >
       {type === 1 && (
@@ -52,8 +52,12 @@ export default function Info({
 
       {type !== 3 && (
         <>
-          <h4 className="mt-6 mb-8 text-center">{title}</h4>
-          <p className="text-center">{description}</p>
+          <h4 className="mt-6 mb-8 text-center font-poppins text-[20px] text-black">
+            {title}
+          </h4>
+          <p className="text-center font-poppins text-[13px] text-dark-blue-400">
+            {description}
+          </p>
         </>
       )}
     </div>

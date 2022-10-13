@@ -1,5 +1,6 @@
 import { Dialog, Menu, Transition } from '@headlessui/react';
 import clsx from 'clsx';
+import { useRouter } from 'next/router';
 import * as React from 'react';
 
 import { NextImage } from '@/components';
@@ -22,6 +23,8 @@ export default function Header() {
   const [isShowingTech, setIsShowingTech] = React.useState(false);
   const [isShowingAbout, setIsShowingAbout] = React.useState(false);
   const [scroll, setScroll] = React.useState(false);
+  const [isPresale, setIsPresale] = React.useState(false);
+  const router = useRouter();
 
   function closeModal() {
     setIsOpen(false);
@@ -39,7 +42,9 @@ export default function Header() {
         setScroll(false);
       }
     });
-  }, []);
+
+    setIsPresale(router.pathname === '/presale');
+  }, [router.pathname]);
 
   return (
     <header
@@ -55,7 +60,11 @@ export default function Header() {
           <NextImage
             useSkeleton
             className="w-32 md:w-48"
-            src="/svg/nav-logo-black.svg"
+            src={
+              isPresale && !scroll
+                ? '/svg/nav-logo.svg'
+                : '/svg/nav-logo-black.svg'
+            }
             width="230"
             height="45"
             alt="Icon"
@@ -226,10 +235,20 @@ export default function Header() {
           <ul className="hidden items-center justify-between space-x-3 lg:flex">
             <li>
               <Menu as="div" className="relative inline-block text-left">
-                <Menu.Button className="inline-flex w-full items-center justify-center px-4 py-2 text-sm text-[18px] font-medium text-dark-blue-400 hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
+                <Menu.Button
+                  className={clsx(
+                    'inline-flex w-full items-center justify-center px-4 py-2 text-[18px] font-medium hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75',
+                    isPresale && !scroll ? 'text-white' : 'text-dark-blue-400',
+                  )}
+                >
                   Technology
                   <ChevronDownIcon
-                    className="ml-1.5 mt-0.5 h-4 w-4 text-dark-blue-400"
+                    className={clsx(
+                      'ml-1.5 mt-0.5 h-4 w-4',
+                      isPresale && !scroll
+                        ? 'text-white'
+                        : 'text-dark-blue-400',
+                    )}
                     aria-hidden="true"
                   />
                 </Menu.Button>
@@ -243,14 +262,14 @@ export default function Header() {
                   leaveTo="transform opacity-0 scale-95"
                 >
                   <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white text-dark-blue-400 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                    <div className="px-3 py-2">
+                    <div className="p-2">
                       {techLinks.map((link) => (
                         <Menu.Item key={link.href} as={React.Fragment}>
                           {({ active }) => (
                             <UnstyledLink
                               className={`block p-1 ${
                                 active
-                                  ? 'bg-blue-500 text-white'
+                                  ? 'bg-primary text-white'
                                   : 'bg-white text-black'
                               }`}
                               href={link.href}
@@ -267,10 +286,20 @@ export default function Header() {
             </li>
             <li>
               <Menu as="div" className="relative inline-block text-left">
-                <Menu.Button className="inline-flex w-full items-center justify-center px-4 py-2 text-sm text-[18px] font-medium text-dark-blue-400 hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
+                <Menu.Button
+                  className={clsx(
+                    'inline-flex w-full items-center justify-center px-4 py-2 text-[18px] font-medium hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75',
+                    isPresale && !scroll ? 'text-white' : 'text-dark-blue-400',
+                  )}
+                >
                   About Alvara
                   <ChevronDownIcon
-                    className="ml-1.5 mt-0.5 h-4 w-4 text-dark-blue-400"
+                    className={clsx(
+                      'ml-1.5 mt-0.5 h-4 w-4',
+                      isPresale && !scroll
+                        ? 'text-white'
+                        : 'text-dark-blue-400',
+                    )}
                     aria-hidden="true"
                   />
                 </Menu.Button>
@@ -291,7 +320,7 @@ export default function Header() {
                             <UnstyledLink
                               className={`block p-1 ${
                                 active
-                                  ? 'bg-blue-500 text-white'
+                                  ? 'bg-primary text-white'
                                   : 'bg-white text-black'
                               }`}
                               href={link.href}
@@ -309,7 +338,10 @@ export default function Header() {
             <li>
               <UnstyledLink
                 href="/the-buzz"
-                className="text-sm text-[18px] font-medium hover:text-opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
+                className={clsx(
+                  'text-[18px] font-medium hover:text-opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75',
+                  isPresale && !scroll ? 'text-white' : 'text-dark-blue-400',
+                )}
               >
                 The Buzz
               </UnstyledLink>
