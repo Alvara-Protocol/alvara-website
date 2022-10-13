@@ -2,6 +2,7 @@ import { HardhatUserConfig } from 'hardhat/types';
 import '@nomicfoundation/hardhat-toolbox';
 import '@nomiclabs/hardhat-etherscan';
 import '@nomiclabs/hardhat-waffle';
+import '@nomiclabs/hardhat-solhint';
 import '@typechain/hardhat';
 import 'hardhat-gas-reporter';
 

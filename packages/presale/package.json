@@ -4,6 +4,7 @@
   "license": "MIT",
   "main": "index.ts",
   "dependencies": {
+    "@nomiclabs/hardhat-solhint": "^2.0.1",
     "mocha": "^10.0.0"
   },
   "scripts": {
