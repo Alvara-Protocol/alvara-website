@@ -1,12 +1,14 @@
+import { HardhatUserConfig } from 'hardhat/types';
 import '@nomicfoundation/hardhat-toolbox';
 import '@nomiclabs/hardhat-etherscan';
 import '@nomiclabs/hardhat-waffle';
+import '@nomiclabs/hardhat-solhint';
 import '@typechain/hardhat';
 import 'hardhat-gas-reporter';
 
 import { BSCSCAN_API_KEY, ChainId, NetworkConfig } from './network.config';
 
-const config = {
+const config: HardhatUserConfig = {
   solidity: {
     version: '0.8.9',
     settings: {
@@ -17,16 +19,16 @@ const config = {
     },
   },
   networks: {
-    bsctest: {
-      url: NetworkConfig[ChainId.BSC_TEST].url,
-      chainId: ChainId.BSC_TEST,
-      accounts: [NetworkConfig[ChainId.BSC_TEST].privateKey],
+    ethereum: {
+      url: NetworkConfig[ChainId.MAINNET].url,
+      chainId: ChainId.MAINNET,
+      accounts: [NetworkConfig[ChainId.MAINNET].privateKey],
       timeout: 100000,
     },
-    bscmain: {
-      url: NetworkConfig[ChainId.BSC_MAIN].url,
-      chainId: ChainId.BSC_MAIN,
-      accounts: [NetworkConfig[ChainId.BSC_MAIN].privateKey],
+    goerli: {
+      url: NetworkConfig[ChainId.GOERLI].url,
+      chainId: ChainId.GOERLI,
+      accounts: [NetworkConfig[ChainId.GOERLI].privateKey],
       timeout: 100000,
     },
   },

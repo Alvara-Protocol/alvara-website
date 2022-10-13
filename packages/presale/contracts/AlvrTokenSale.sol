@@ -9,15 +9,19 @@ import "hardhat/console.sol";
 contract AlvrTokenSale is Ownable, Pausable {
     address public alvara;
     uint256 public optionCnt;
+
     mapping(uint256 => uint256) public minimumTokens;
     mapping(uint256 => uint256) public maximumTokens;
-
     mapping(address => mapping(uint256 => uint256)) public vests;
     mapping(address => mapping(uint256 => uint256)) public tokens;
     mapping(address => mapping(uint256 => uint256)) public claimed;
     mapping(address => uint256) public nonce;
     mapping(uint256 => address) public investors;
     mapping(address => bool) public isInvestor;
+
+    // option => index => Schedule
+    mapping(uint256 => mapping(uint256 => Schedule)) public schedules;
+
     uint256 public investorCnt;
     uint256 public totalVested;
     address public treasuryWallet;
@@ -28,9 +32,23 @@ contract AlvrTokenSale is Ownable, Pausable {
         uint256 timestamp;
         uint256 release;
     }
+    struct Investments {
+        address investor;
+        uint256[] amounts;
+        uint256[] tokens;
+    }
 
-    mapping(uint256 => mapping(uint256 => Schedule)) public schedules;
     bool public claimable;
+
+    modifier whenNotClaimable() {
+        require(!claimable, "Claimable");
+        _;
+    }
+
+    modifier whenClaimable() {
+        require(claimable, "Not Claimable");
+        _;
+    }
 
     constructor(
         address alvara_,
@@ -42,7 +60,23 @@ contract AlvrTokenSale is Ownable, Pausable {
         treasuryWallet = treasuryWallet_;
         txSigner = txSigner_;
 
-        // Declare schedules
+        // TODO Update
+        schedules[0][0] = Schedule(1665671980245, 3000);
+        schedules[0][1] = Schedule(1665672980245, 7000);
+
+        schedules[1][0] = Schedule(1665671980245, 2000);
+        schedules[1][1] = Schedule(1665672980245, 8000);
+
+        schedules[2][0] = Schedule(1665671980245, 4000);
+        schedules[2][1] = Schedule(1665672980245, 6000);
+
+        minimumTokens[0] = 100;
+        minimumTokens[1] = 100;
+        minimumTokens[2] = 100;
+
+        maximumTokens[0] = 5000;
+        maximumTokens[1] = 5000;
+        maximumTokens[2] = 5000;
     }
 
     function setTxSigner(address txSigner_) external onlyOwner {
@@ -57,14 +91,36 @@ contract AlvrTokenSale is Ownable, Pausable {
         claimable = false;
     }
 
-    modifier whenNotClaimable() {
-        require(!claimable);
-        _;
+    function pauseSale() external onlyOwner {
+        _pause();
     }
 
-    modifier whenClaimable() {
-        require(claimable);
-        _;
+    function unPauseSale() external onlyOwner {
+        _unpause();
+    }
+
+    function setSchedule(
+        uint256 option,
+        uint256 index,
+        Schedule memory schedule
+    ) external onlyOwner {
+        require(option < optionCnt, "Invalid option");
+
+        schedules[option][index] = schedule;
+    }
+
+    function setOptionMinAmount(uint256 option, uint256 amount)
+        external
+        onlyOwner
+    {
+        minimumTokens[option] = amount;
+    }
+
+    function setOptionMaxAmount(uint256 option, uint256 amount)
+        external
+        onlyOwner
+    {
+        maximumTokens[option] = amount;
     }
 
     function _claimed(address investor_, uint256 option_)
@@ -123,14 +179,6 @@ contract AlvrTokenSale is Ownable, Pausable {
         maximumTokens[option_] = maximum_;
     }
 
-    function pauseSale() external onlyOwner {
-        _pause();
-    }
-
-    function unPauseSale() external onlyOwner {
-        _unpause();
-    }
-
     function _vested(address investor_, uint256 option_)
         internal
         view
@@ -144,8 +192,14 @@ contract AlvrTokenSale is Ownable, Pausable {
         uint256 option_,
         uint256 tokens_
     ) internal returns (uint256) {
-        require(_minimum(option_) <= _tokens(investor_, option_) + tokens_);
-        require(_maximum(option_) >= _tokens(investor_, option_) + tokens_);
+        require(
+            _minimum(option_) <= _tokens(investor_, option_) + tokens_,
+            "Vest more than minimum vest amount"
+        );
+        require(
+            _maximum(option_) >= _tokens(investor_, option_) + tokens_,
+            "Exceeds maximum vest amount"
+        );
 
         tokens[investor_][option_] += tokens_;
 
@@ -169,31 +223,51 @@ contract AlvrTokenSale is Ownable, Pausable {
         uint8 v_,
         bytes32 r_,
         bytes32 s_
-    ) internal view  {
-        address signer = ecrecover(hashedMessage_,v_, r_, s_);
+    ) internal view {
+        address signer = ecrecover(hashedMessage_, v_, r_, s_);
 
-        require(signer == txSigner);        
+        require(signer == txSigner, "Invalid signature");
     }
 
-    function _getHashedMessage(address investor_, uint256 amount_)
-        internal
-        returns (bytes32 hashedMessage)
-    {
-        bytes memory prefix = "\x19Ethereum Signed Message:\n84";
-        hashedMessage = keccak256(
-            abi.encodePacked(prefix, investor_, amount_, _useNonce(investor_))
+    function _getHashedMessage(
+        address investor_,
+        uint256 amount_,
+        uint256[] memory amounts_,
+        uint256[] memory tokens_
+    ) internal returns (bytes32 hashedMessage) {
+        bytes memory prefix = "\x19Ethereum Signed Message:\n32";
+
+        bytes32 hashedContent = keccak256(
+            abi.encodePacked(
+                investor_,
+                amount_,
+                amounts_,
+                tokens_,
+                _useNonce(investor_)
+            )
         );
+
+        hashedMessage = keccak256(abi.encodePacked(prefix, hashedContent));
     }
 
+    /**
+     * @dev Add vest by deposit ETH
+     * @param amounts_ Option amount
+     */
     function addVest(
         uint256[] memory amounts_,
         uint256[] memory tokens_,
         uint8 v_,
         bytes32 r_,
         bytes32 s_
-    ) external payable whenNotPaused {
+    ) external payable whenNotPaused whenNotClaimable {
         _addInvestorChecked(msg.sender);
-        _verifySignature(_getHashedMessage(msg.sender, msg.value), v_, r_, s_);
+        _verifySignature(
+            _getHashedMessage(msg.sender, msg.value, amounts_, tokens_),
+            v_,
+            r_,
+            s_
+        );
 
         uint256 vestAmount_ = 0;
         for (uint256 option_ = 0; option_ < optionCnt; option_++) {
@@ -207,14 +281,8 @@ contract AlvrTokenSale is Ownable, Pausable {
 
         totalVested += vestAmount_;
 
-        require(vestAmount_ == msg.value);
+        require(vestAmount_ == msg.value, "Invalid Amounts");
         payable(treasuryWallet).transfer(msg.value); // to be confirmed
-    }
-
-    struct Investments {
-        address investor;
-        uint256[] amounts;
-        uint256[] tokens;
     }
 
     function getAllInvestors() external view returns (Investments[] memory) {
@@ -253,6 +321,9 @@ contract AlvrTokenSale is Ownable, Pausable {
         return i;
     }
 
+    /**
+     * @dev Calculate option release amount by given timestamp
+     */
     function _calcOptionRelease(
         address investor_,
         uint256 option_,
@@ -260,12 +331,13 @@ contract AlvrTokenSale is Ownable, Pausable {
     ) internal view returns (uint256) {
         uint256 i = 0;
         uint256 release_;
+
         while (
             schedules[option_][i].release > 0 &&
             schedules[option_][i].timestamp <= timestamp_
         ) {
-            i++;
             release_ = schedules[option_][i].release;
+            i++;
         }
 
         return (_tokens(investor_, option_) * release_) / fullPercent;
@@ -308,6 +380,7 @@ contract AlvrTokenSale is Ownable, Pausable {
         uint256 option_,
         uint256 timestamp_
     ) internal {
+        /// Available claim amount for given option
         uint256 claim_ = _calcOptionRelease(investor_, option_, timestamp_) -
             _claimed(investor_, option_);
 
@@ -316,7 +389,7 @@ contract AlvrTokenSale is Ownable, Pausable {
     }
 
     function _claim(address investor_, uint256 timestamp_) internal {
-        for (uint256 option_ = 0; option_ < optionCnt; option_) {
+        for (uint256 option_ = 0; option_ < optionCnt; option_++) {
             _claimOption(investor_, option_, timestamp_);
         }
     }

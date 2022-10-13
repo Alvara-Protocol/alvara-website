@@ -1,18 +1,24 @@
+import { config } from 'dotenv';
+
+config();
+
 export const ChainId = {
-  BSC_TEST: 97,
-  BSC_MAIN: 56,
+  MAINNET: 1,
+  GOERLI: 5,
 };
 
 export const NetworkConfig = {
-  [ChainId.BSC_TEST]: {
-    url: 'https://data-seed-prebsc-1-s1.binance.org:8545',
+  [ChainId.MAINNET]: {
+    url: 'https://mainnet.infura.io/v3/',
     privateKey:
-      '4bed6d19a130e83f753b6303afa6c2fdfe3cdd16031563b5a5cdac548b7e870a',
+      process.env.PRIVATE_KEY ||
+      '0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80',
   },
-  [ChainId.BSC_MAIN]: {
-    url: 'https://bsc-dataseed2.binance.org/',
+  [ChainId.GOERLI]: {
+    url: 'https://goerli.infura.io/v3/',
     privateKey:
-      '4bed6d19a130e83f753b6303afa6c2fdfe3cdd16031563b5a5cdac548b7e870a',
+      process.env.PRIVATE_KEY ||
+      '0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80',
   },
 };
 
