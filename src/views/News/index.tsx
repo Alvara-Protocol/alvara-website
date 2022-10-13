@@ -16,7 +16,7 @@ export default function News() {
           <p>Press release, medium articles and links to Alvara socials</p>
         </div>
       </Hives>
-      <div className="container mx-auto grid grid-cols-4 items-center justify-center p-20">
+      <div className="container mx-auto grid items-center justify-center md:grid-cols-4 lg:p-20">
         <Links visible={true} />
       </div>
     </main>

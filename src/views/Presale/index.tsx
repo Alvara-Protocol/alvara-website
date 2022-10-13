@@ -208,7 +208,7 @@ export default function Presale() {
         </form>
       </section>
 
-      <div className="container mx-auto grid grid-cols-4 items-center justify-center p-20">
+      <div className="container mx-auto grid grid-cols-1 items-center justify-center py-14 md:grid-cols-4 lg:p-20">
         <Links visible={true} />
       </div>
     </main>

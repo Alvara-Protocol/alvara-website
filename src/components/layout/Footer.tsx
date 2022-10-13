@@ -8,7 +8,7 @@ import Links from '@/views/News/Links';
 export default function Footer() {
   return (
     <footer className="border-gradient3 mx-8 grid grid-cols-10 justify-center border-t pt-14 pb-4 font-montserrat lg:justify-start lg:py-16">
-      <div className="col-span-10 lg:col-span-6">
+      <div className="order-last col-span-10 lg:col-span-6">
         <div className="hidden items-center gap-8 lg:flex">
           <NextImage
             useSkeleton
@@ -32,7 +32,7 @@ export default function Footer() {
           ©2023 by Alvara
         </p>
       </div>
-      <div className="order-first col-span-10 flex flex-col items-center  lg:order-last lg:col-span-4">
+      <div className="col-span-10 flex flex-col items-center lg:order-last lg:col-span-4 lg:items-start">
         <NextImage
           useSkeleton
           className="mb-14 w-48 lg:hidden"
