@@ -18,6 +18,8 @@ contract AlvrTokenSale is Ownable, Pausable {
     mapping(address => uint256) public nonce;
     mapping(uint256 => address) public investors;
     mapping(address => bool) public isInvestor;
+
+    // option => index => Schedule
     mapping(uint256 => mapping(uint256 => Schedule)) public schedules;
 
     uint256 public investorCnt;
@@ -39,12 +41,12 @@ contract AlvrTokenSale is Ownable, Pausable {
     bool public claimable;
 
     modifier whenNotClaimable() {
-        require(!claimable);
+        require(!claimable, "Claimable");
         _;
     }
 
     modifier whenClaimable() {
-        require(claimable);
+        require(claimable, "Not Claimable");
         _;
     }
 
@@ -58,7 +60,23 @@ contract AlvrTokenSale is Ownable, Pausable {
         treasuryWallet = treasuryWallet_;
         txSigner = txSigner_;
 
-        // Declare schedules
+        // TODO Update
+        schedules[0][0] = Schedule(1665671980245, 3000);
+        schedules[0][1] = Schedule(1665672980245, 7000);
+
+        schedules[1][0] = Schedule(1665671980245, 2000);
+        schedules[1][1] = Schedule(1665672980245, 8000);
+
+        schedules[2][0] = Schedule(1665671980245, 4000);
+        schedules[2][1] = Schedule(1665672980245, 6000);
+
+        minimumTokens[0] = 100;
+        minimumTokens[1] = 100;
+        minimumTokens[2] = 100;
+
+        maximumTokens[0] = 5000;
+        maximumTokens[1] = 5000;
+        maximumTokens[2] = 5000;
     }
 
     function setTxSigner(address txSigner_) external onlyOwner {
@@ -71,6 +89,38 @@ contract AlvrTokenSale is Ownable, Pausable {
 
     function setUnclaimable() external onlyOwner {
         claimable = false;
+    }
+
+    function pauseSale() external onlyOwner {
+        _pause();
+    }
+
+    function unPauseSale() external onlyOwner {
+        _unpause();
+    }
+
+    function setSchedule(
+        uint256 option,
+        uint256 index,
+        Schedule memory schedule
+    ) external onlyOwner {
+        require(option < optionCnt, "Invalid option");
+
+        schedules[option][index] = schedule;
+    }
+
+    function setOptionMinAmount(uint256 option, uint256 amount)
+        external
+        onlyOwner
+    {
+        minimumTokens[option] = amount;
+    }
+
+    function setOptionMaxAmount(uint256 option, uint256 amount)
+        external
+        onlyOwner
+    {
+        maximumTokens[option] = amount;
     }
 
     function _claimed(address investor_, uint256 option_)
@@ -129,14 +179,6 @@ contract AlvrTokenSale is Ownable, Pausable {
         maximumTokens[option_] = maximum_;
     }
 
-    function pauseSale() external onlyOwner {
-        _pause();
-    }
-
-    function unPauseSale() external onlyOwner {
-        _unpause();
-    }
-
     function _vested(address investor_, uint256 option_)
         internal
         view
@@ -152,7 +194,7 @@ contract AlvrTokenSale is Ownable, Pausable {
     ) internal returns (uint256) {
         require(
             _minimum(option_) <= _tokens(investor_, option_) + tokens_,
-            "Require vest more that minimum vest amount"
+            "Vest more than minimum vest amount"
         );
         require(
             _maximum(option_) >= _tokens(investor_, option_) + tokens_,
@@ -190,12 +232,19 @@ contract AlvrTokenSale is Ownable, Pausable {
     function _getHashedMessage(
         address investor_,
         uint256 amount_,
+        uint256[] memory amounts_,
         uint256[] memory tokens_
     ) internal returns (bytes32 hashedMessage) {
         bytes memory prefix = "\x19Ethereum Signed Message:\n32";
 
         bytes32 hashedContent = keccak256(
-            abi.encodePacked(investor_, amount_, tokens_, _useNonce(investor_))
+            abi.encodePacked(
+                investor_,
+                amount_,
+                amounts_,
+                tokens_,
+                _useNonce(investor_)
+            )
         );
 
         hashedMessage = keccak256(abi.encodePacked(prefix, hashedContent));
@@ -214,7 +263,7 @@ contract AlvrTokenSale is Ownable, Pausable {
     ) external payable whenNotPaused whenNotClaimable {
         _addInvestorChecked(msg.sender);
         _verifySignature(
-            _getHashedMessage(msg.sender, msg.value, tokens_),
+            _getHashedMessage(msg.sender, msg.value, amounts_, tokens_),
             v_,
             r_,
             s_
@@ -282,12 +331,13 @@ contract AlvrTokenSale is Ownable, Pausable {
     ) internal view returns (uint256) {
         uint256 i = 0;
         uint256 release_;
+
         while (
             schedules[option_][i].release > 0 &&
             schedules[option_][i].timestamp <= timestamp_
         ) {
-            i++;
             release_ = schedules[option_][i].release;
+            i++;
         }
 
         return (_tokens(investor_, option_) * release_) / fullPercent;

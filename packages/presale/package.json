@@ -11,8 +11,8 @@
   "scripts": {
     "build": "hardhat compile",
     "test": "hardhat test",
-    "prettier": "prettier --write \"contracts/**/*.sol\"",
-    "lint": "prettier --list-different \"contracts/**/*.sol\""
+    "prettier": "prettier -w .",
+    "lint": "prettier --list-different ."
   },
   "devDependencies": {
     "@nomicfoundation/hardhat-chai-matchers": "^1.0.3",
