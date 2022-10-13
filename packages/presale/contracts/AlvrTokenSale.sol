@@ -18,6 +18,7 @@ contract AlvrTokenSale is Ownable, Pausable {
     mapping(address => uint256) public nonce;
     mapping(uint256 => address) public investors;
     mapping(address => bool) public isInvestor;
+    mapping(address => bool) public isBlocked;
 
     // option => index => Schedule
     mapping(uint256 => mapping(uint256 => Schedule)) public schedules;
@@ -95,7 +96,7 @@ contract AlvrTokenSale is Ownable, Pausable {
         _pause();
     }
 
-    function unPauseSale() external onlyOwner {
+    function unpauseSale() external onlyOwner {
         _unpause();
     }
 
@@ -248,6 +249,86 @@ contract AlvrTokenSale is Ownable, Pausable {
         );
 
         hashedMessage = keccak256(abi.encodePacked(prefix, hashedContent));
+    }
+
+    function _blockUser(address user_) internal {
+        isBlocked[user_] = true;
+    }
+
+    function _blockUserChecked(address user_) internal {
+        require(!isBlocked[user_]);
+
+        _blockUser(user_);
+    }
+
+    function _unblockUser(address user_) internal {
+        isBlocked[user_] = false;
+    }
+
+    function _unblockUserChecked(user_) internal {
+        require(isBlocked[user_]);
+
+        _unblockUser(user_);
+    }
+
+    function blockUsers(address[] memory users_, uint256 length_)
+        external
+        onlyOwner
+    {
+        require(length_ > 0);
+
+        for (uint256 i = 0; i < length_; i++) {
+            _blockUserChecked(users_[i]);
+        }
+    }
+
+    function unblockUsers(address[] memory users_, uint256 length_)
+        external
+        onlyOwnwer
+    {
+        require(length_ > 0);
+
+        for (uint256 i = 0; i < length_; i++) {
+            _unblockUserChecked(users_[i]);
+        }
+    }
+
+    function _replaceUser(address oldUser_, address newUser_) internal {
+        _blockUser(oldUser_);
+        _addInvestorChecked(newUser_);
+
+        for (uint256 option_ = 0; option_ < optionCnt; option_++) {
+            uint256 temp = vests[oldUser_][option_];
+            vests[oldUser_][option_] = 0;
+            vests[newUser_][option_] = temp;
+
+            temp = tokens[oldUser_][option_];
+            tokens[oldUser_][option_] = 0;
+            tokens[newUser_][option_] = temp;
+
+            temp = claimed[oldUser_][option_];
+            claimed[oldUser_][option_] = 0;
+            claimed[newUser_][option_] = temp;
+        }
+    }
+
+    function _replaceUserChecked(address oldUser_, address newUser_) internal {
+        require(isInvestor[oldUser_] && !isBlocked[oldUser]);
+        require(!isInvestor[newUser_] && !isBlocked[newUser_]);
+
+        _replaceUser(oldUser_, newUser_);
+    }
+
+    function replaceUsers(
+        address[] memory oldUsers_,
+        address[] memory newUsers_,
+        uint256 length_
+    ) external onlyOwner {
+        require(length_ > 0);
+
+        for (uint256 i = 0; i < length_; i++) {
+            _replaceUserChecked(oldUsers_[i], newUsers_[i]);
+        }
     }
 
     /**
