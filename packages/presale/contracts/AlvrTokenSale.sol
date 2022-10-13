@@ -9,15 +9,17 @@ import "hardhat/console.sol";
 contract AlvrTokenSale is Ownable, Pausable {
     address public alvara;
     uint256 public optionCnt;
+
     mapping(uint256 => uint256) public minimumTokens;
     mapping(uint256 => uint256) public maximumTokens;
-
     mapping(address => mapping(uint256 => uint256)) public vests;
     mapping(address => mapping(uint256 => uint256)) public tokens;
     mapping(address => mapping(uint256 => uint256)) public claimed;
     mapping(address => uint256) public nonce;
     mapping(uint256 => address) public investors;
     mapping(address => bool) public isInvestor;
+    mapping(uint256 => mapping(uint256 => Schedule)) public schedules;
+
     uint256 public investorCnt;
     uint256 public totalVested;
     address public treasuryWallet;
@@ -28,9 +30,23 @@ contract AlvrTokenSale is Ownable, Pausable {
         uint256 timestamp;
         uint256 release;
     }
+    struct Investments {
+        address investor;
+        uint256[] amounts;
+        uint256[] tokens;
+    }
 
-    mapping(uint256 => mapping(uint256 => Schedule)) public schedules;
     bool public claimable;
+
+    modifier whenNotClaimable() {
+        require(!claimable);
+        _;
+    }
+
+    modifier whenClaimable() {
+        require(claimable);
+        _;
+    }
 
     constructor(
         address alvara_,
@@ -55,16 +71,6 @@ contract AlvrTokenSale is Ownable, Pausable {
 
     function setUnclaimable() external onlyOwner {
         claimable = false;
-    }
-
-    modifier whenNotClaimable() {
-        require(!claimable);
-        _;
-    }
-
-    modifier whenClaimable() {
-        require(claimable);
-        _;
     }
 
     function _claimed(address investor_, uint256 option_)
@@ -144,8 +150,14 @@ contract AlvrTokenSale is Ownable, Pausable {
         uint256 option_,
         uint256 tokens_
     ) internal returns (uint256) {
-        require(_minimum(option_) <= _tokens(investor_, option_) + tokens_);
-        require(_maximum(option_) >= _tokens(investor_, option_) + tokens_);
+        require(
+            _minimum(option_) <= _tokens(investor_, option_) + tokens_,
+            "Require vest more that minimum vest amount"
+        );
+        require(
+            _maximum(option_) >= _tokens(investor_, option_) + tokens_,
+            "Exceeds maximum vest amount"
+        );
 
         tokens[investor_][option_] += tokens_;
 
@@ -169,31 +181,44 @@ contract AlvrTokenSale is Ownable, Pausable {
         uint8 v_,
         bytes32 r_,
         bytes32 s_
-    ) internal view  {
-        address signer = ecrecover(hashedMessage_,v_, r_, s_);
+    ) internal view {
+        address signer = ecrecover(hashedMessage_, v_, r_, s_);
 
-        require(signer == txSigner);        
+        require(signer == txSigner, "Invalid signature");
     }
 
-    function _getHashedMessage(address investor_, uint256 amount_)
-        internal
-        returns (bytes32 hashedMessage)
-    {
-        bytes memory prefix = "\x19Ethereum Signed Message:\n84";
-        hashedMessage = keccak256(
-            abi.encodePacked(prefix, investor_, amount_, _useNonce(investor_))
+    function _getHashedMessage(
+        address investor_,
+        uint256 amount_,
+        uint256[] memory tokens_
+    ) internal returns (bytes32 hashedMessage) {
+        bytes memory prefix = "\x19Ethereum Signed Message:\n32";
+
+        bytes32 hashedContent = keccak256(
+            abi.encodePacked(investor_, amount_, tokens_, _useNonce(investor_))
         );
+
+        hashedMessage = keccak256(abi.encodePacked(prefix, hashedContent));
     }
 
+    /**
+     * @dev Add vest by deposit ETH
+     * @param amounts_ Option amount
+     */
     function addVest(
         uint256[] memory amounts_,
         uint256[] memory tokens_,
         uint8 v_,
         bytes32 r_,
         bytes32 s_
-    ) external payable whenNotPaused {
+    ) external payable whenNotPaused whenNotClaimable {
         _addInvestorChecked(msg.sender);
-        _verifySignature(_getHashedMessage(msg.sender, msg.value), v_, r_, s_);
+        _verifySignature(
+            _getHashedMessage(msg.sender, msg.value, tokens_),
+            v_,
+            r_,
+            s_
+        );
 
         uint256 vestAmount_ = 0;
         for (uint256 option_ = 0; option_ < optionCnt; option_++) {
@@ -207,14 +232,8 @@ contract AlvrTokenSale is Ownable, Pausable {
 
         totalVested += vestAmount_;
 
-        require(vestAmount_ == msg.value);
+        require(vestAmount_ == msg.value, "Invalid Amounts");
         payable(treasuryWallet).transfer(msg.value); // to be confirmed
-    }
-
-    struct Investments {
-        address investor;
-        uint256[] amounts;
-        uint256[] tokens;
     }
 
     function getAllInvestors() external view returns (Investments[] memory) {
@@ -253,6 +272,9 @@ contract AlvrTokenSale is Ownable, Pausable {
         return i;
     }
 
+    /**
+     * @dev Calculate option release amount by given timestamp
+     */
     function _calcOptionRelease(
         address investor_,
         uint256 option_,
@@ -308,6 +330,7 @@ contract AlvrTokenSale is Ownable, Pausable {
         uint256 option_,
         uint256 timestamp_
     ) internal {
+        /// Available claim amount for given option
         uint256 claim_ = _calcOptionRelease(investor_, option_, timestamp_) -
             _claimed(investor_, option_);
 
@@ -316,7 +339,7 @@ contract AlvrTokenSale is Ownable, Pausable {
     }
 
     function _claim(address investor_, uint256 timestamp_) internal {
-        for (uint256 option_ = 0; option_ < optionCnt; option_) {
+        for (uint256 option_ = 0; option_ < optionCnt; option_++) {
             _claimOption(investor_, option_, timestamp_);
         }
     }

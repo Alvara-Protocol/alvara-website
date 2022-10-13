@@ -1,57 +1,142 @@
-import { SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers';
-import { utils } from 'ethers';
-import { ethers } from 'hardhat';
+import { loadFixture, time } from "@nomicfoundation/hardhat-network-helpers";
+import { expect } from "chai";
+import { utils } from "ethers";
+import { ethers } from "hardhat";
 
-import { Alvara, AlvrTokenSale } from '../typechain-types';
-import { splitSignature } from '../utils/sign';
+import { splitSignature } from "../utils/sign";
 
-describe('Alvara Token contract', function () {
-  let master: SignerWithAddress,
-    treasury: SignerWithAddress,
-    alice: SignerWithAddress;
-  let preSaleContract: AlvrTokenSale;
-  let alvaraToken: Alvara;
+describe("Alvara Token contract", function () {
+  async function deployContractFixture() {
+    const [master, treasury, alice] = await ethers.getSigners();
 
-  before(async function () {
-    [master, treasury, alice] = await ethers.getSigners();
+    const Alvara = await ethers.getContractFactory("Alvara");
 
-    const _alvaraToken = await ethers.getContractFactory('Alvara');
+    const alvara = await Alvara.deploy();
 
-    alvaraToken = await _alvaraToken.deploy();
+    const AlvrTokenSale = await ethers.getContractFactory("AlvrTokenSale");
 
-    const _preSaleContract = await ethers.getContractFactory('AlvrTokenSale');
-
-    preSaleContract = await _preSaleContract.deploy(
-      alvaraToken.address,
+    const alvrTokenSale = await AlvrTokenSale.deploy(
+      alvara.address,
       treasury.address,
-      master.address,
+      master.address
     );
 
-    await preSaleContract.connect(master).setOptionRange(0, 50, 500);
-  });
+    await alvrTokenSale.connect(master).setOptionRange(0, 50, 500);
 
-  it('Should addVest', async function () {
+    return { alvara, alvrTokenSale, master, treasury, alice };
+  }
+
+  it("Should addVest", async function () {
+    const { alvrTokenSale, alice, master } = await loadFixture(
+      deployContractFixture
+    );
     const vestAmount = 500;
 
-    const nonce = await preSaleContract.nonce(alice.address);
+    const nonce = await alvrTokenSale.nonce(alice.address);
 
-    const message = utils.solidityPack(
-      ['address', 'uint256', 'uint256'],
-      [alice.address, vestAmount, nonce],
+    const amounts = ["500", "0", "0"];
+
+    const message = utils.solidityKeccak256(
+      ["address", "uint256", "uint256[]", "uint256"],
+      [alice.address, vestAmount, amounts, nonce]
     );
 
     const signature = await master.signMessage(utils.arrayify(message));
 
     const { v, r, s } = splitSignature(signature);
 
-    const _ = await preSaleContract
+    const _ = await alvrTokenSale
       .connect(alice)
-      .addVest(['500', '0', '0'], ['500', '0', '0'], v, r, s, {
+      .addVest(amounts, amounts, v, r, s, {
         value: vestAmount,
       });
   });
 
-  it('should Claim', async function () {
-    // TODO
+  it("should revert addVest with invalid amounts", async function () {
+    const { alvrTokenSale, alice, master } = await loadFixture(
+      deployContractFixture
+    );
+
+    const vestAmount = 5000;
+
+    const nonce = await alvrTokenSale.nonce(alice.address);
+
+    const amounts = ["500", "0", "0"];
+
+    const message = utils.solidityKeccak256(
+      ["address", "uint256", "uint256[]", "uint256"],
+      [alice.address, vestAmount, amounts, nonce]
+    );
+
+    const signature = await master.signMessage(utils.arrayify(message));
+
+    const { v, r, s } = splitSignature(signature);
+
+    const result = alvrTokenSale
+      .connect(alice)
+      .addVest(amounts, amounts, v, r, s, {
+        value: vestAmount,
+      });
+
+    await expect(result).to.be.revertedWith("Invalid Amounts");
+  });
+
+  it("should revert addVest with modified amounts", async function () {
+    const { alvrTokenSale, alice, master } = await loadFixture(
+      deployContractFixture
+    );
+
+    const vestAmount = 5000;
+
+    const nonce = await alvrTokenSale.nonce(alice.address);
+
+    const amounts = ["500", "0", "0"];
+
+    const message = utils.solidityKeccak256(
+      ["address", "uint256", "uint256[]", "uint256"],
+      [alice.address, vestAmount, amounts, nonce]
+    );
+
+    const signature = await master.signMessage(utils.arrayify(message));
+
+    const { v, r, s } = splitSignature(signature);
+
+    const modifiedAmounts = ["0", "200", "300"];
+
+    const result = alvrTokenSale
+      .connect(alice)
+      .addVest(amounts, modifiedAmounts, v, r, s, {
+        value: vestAmount,
+      });
+
+    await expect(result).to.be.revertedWith("Invalid signature");
+  });
+
+  it("Should claim amounts", async function () {
+    const { alvrTokenSale, alice, master } = await loadFixture(
+      deployContractFixture
+    );
+    const vestAmount = 500;
+
+    const nonce = await alvrTokenSale.nonce(alice.address);
+
+    const amounts = ["500", "0", "0"];
+
+    const message = utils.solidityKeccak256(
+      ["address", "uint256", "uint256[]", "uint256"],
+      [alice.address, vestAmount, amounts, nonce]
+    );
+
+    const signature = await master.signMessage(utils.arrayify(message));
+
+    const { v, r, s } = splitSignature(signature);
+
+    const _ = await alvrTokenSale
+      .connect(alice)
+      .addVest(amounts, amounts, v, r, s, {
+        value: vestAmount,
+      });
+
+    await time.increaseTo(Date.now());
   });
 });
