@@ -1,3 +1,4 @@
+import { HardhatUserConfig } from 'hardhat/types';
 import '@nomicfoundation/hardhat-toolbox';
 import '@nomiclabs/hardhat-etherscan';
 import '@nomiclabs/hardhat-waffle';
@@ -6,7 +7,7 @@ import 'hardhat-gas-reporter';
 
 import { BSCSCAN_API_KEY, ChainId, NetworkConfig } from './network.config';
 
-const config = {
+const config: HardhatUserConfig = {
   solidity: {
     version: '0.8.9',
     settings: {

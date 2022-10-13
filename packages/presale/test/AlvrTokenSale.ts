@@ -50,4 +50,8 @@ describe('Alvara Token contract', function () {
         value: vestAmount,
       });
   });
+
+  it('should Claim', async function () {
+    // TODO
+  });
 });
