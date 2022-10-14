@@ -13,7 +13,7 @@ export default function News() {
             News.
           </h2>
           <div className="h-[2px] w-3/5 bg-gradient-to-r from-purple-650 to-transparent"></div>
-          <p>Press release, medium articles and links to Alvara socials</p>
+          <p>Stay up to date with everything Alvara.</p>
         </div>
       </Hives>
       <div className="container mx-auto grid items-center justify-center md:grid-cols-4 lg:p-20">

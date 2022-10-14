@@ -92,8 +92,7 @@ export default function Roadmap() {
           <h2>Whitepaper</h2>
           <div className="h-[4px] w-4/5 bg-gradient-to-r from-purple-650 to-transparent"></div>
           <p className="max-w-[350px] text-center font-poppins text-[20px] font-light tracking-widest">
-            Welcome visitors to your site with a short, engaging introduction.
-            Double click to edit and add your own text. honeycomb
+            Thorough description of the Alvara Protocol
           </p>
 
           <Button variant="outline" className="max-w-max uppercase">
@@ -101,11 +100,10 @@ export default function Roadmap() {
           </Button>
         </div>
         <div className="border-gradient2 flex w-1/2 flex-col items-center gap-8 border-2 bg-gray-400 px-8 py-28">
-          <h2>Whitepaper</h2>
+          <h2>Deck.</h2>
           <div className="h-[4px] w-4/5 bg-gradient-to-r from-purple-650 to-transparent"></div>
           <p className="max-w-[350px] text-center font-poppins text-[20px] font-light tracking-widest">
-            Welcome visitors to your site with a short, engaging introduction.
-            Double click to edit and add your own text. honeycomb
+            A quick glance at what makes Alvara so sweet
           </p>
 
           <Button variant="outline" className="max-w-max uppercase">
