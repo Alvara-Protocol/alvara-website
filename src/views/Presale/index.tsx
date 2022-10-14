@@ -1,10 +1,21 @@
-import React, { useCallback, useEffect } from 'react';
+import { joiResolver } from '@hookform/resolvers/joi';
+import axios from 'axios';
+import { getMessageFromCode, serializeError } from 'eth-rpc-errors';
+import { BigNumberish } from 'ethers';
+import Joi from 'joi';
+import React, { useCallback, useEffect, useMemo } from 'react';
 import { SubmitHandler, useForm, useWatch } from 'react-hook-form';
 import { toast } from 'react-toastify';
-import { useAccount, useConnect, useNetwork, useSwitchNetwork } from 'wagmi';
+import {
+  useAccount,
+  useConnect,
+  useNetwork,
+  useQuery,
+  useSwitchNetwork,
+} from 'wagmi';
 
-import logger from '@/lib/logger';
 import { metaMaskConnector } from '@/lib/web3/wagmi';
+import { usePresaleContract } from '@/hooks';
 
 import {
   Button,
@@ -14,40 +25,137 @@ import {
   Select,
 } from '@/components';
 
-import { CHAIN_ID } from '@/config';
+import { CHAIN_ID, tokenPricesInUsd } from '@/config';
+import { fetchETHPrice } from '@/service';
 import Links from '@/views/News/Links';
 
-interface FormProps {
+// TODO: Update FormProps support Option array
+export interface Option {
+  name: string;
+  tokenPrice: number;
+  minVestAmountInUsd: number;
+  maxVestAmountInUsd: number;
+}
+export interface FormProps {
   firstName: string;
   lastName: string;
   email: string;
-  poundsActivated: boolean;
-  pounds: number;
-  dollarsActivated: boolean;
-  dollars: number;
-  eurosActivated: boolean;
-  euros: number;
+  optionAActivated: boolean;
+  optionA: number;
+  optionBActivated: boolean;
+  optionB: number;
+  optionCActivated: boolean;
+  optionC: number;
+}
+
+export const joiSchema = Joi.object<FormProps>({
+  firstName: Joi.string().required(),
+  lastName: Joi.string().required(),
+  email: Joi.string()
+    .email({ tlds: { allow: false } })
+    .messages({
+      'string.email': 'Invalid Email address',
+      'string.empty': 'Required',
+    }),
+  optionAActivated: Joi.boolean().required(),
+  optionA: Joi.number(),
+  optionBActivated: Joi.boolean().required(),
+  optionB: Joi.number(),
+  optionCActivated: Joi.boolean().required(),
+  optionC: Joi.number(),
+});
+
+export interface SignatureResponse {
+  signature: string;
+  r: string;
+  s: string;
+  v: number;
+  ethAmounts: BigNumberish[];
+  tokenAmounts: BigNumberish[];
+  vestAmount: BigNumberish;
 }
 
 export default function Presale() {
-  const { isConnected } = useAccount();
+  const { isConnected, address } = useAccount();
   const { connectAsync } = useConnect();
   const { chain: activeChain } = useNetwork();
   const { isLoading: isSwitchingNetwork, switchNetworkAsync } =
     useSwitchNetwork();
 
-  const { register, handleSubmit, control } = useForm<FormProps>({
+  const { addVest } = usePresaleContract();
+
+  const { register, handleSubmit, control, formState } = useForm<FormProps>({
     defaultValues: {
-      poundsActivated: true,
-      dollarsActivated: false,
+      optionAActivated: true,
+      optionBActivated: false,
+      optionCActivated: false,
+      optionA: 500,
+      optionB: 1000,
+      optionC: 10000,
     },
+    mode: 'onTouched',
+    resolver: joiResolver(joiSchema),
   });
-  const { poundsActivated, dollarsActivated, eurosActivated } = useWatch({
+  const {
+    optionAActivated,
+    optionBActivated,
+    optionCActivated,
+    optionA,
+    optionB,
+    optionC,
+  } = useWatch({
     control,
   });
 
-  const onSubmit: SubmitHandler<FormProps> = (data) => {
-    logger(data, 'index.tsx line 15');
+  const { data: _ethPrice1, isError } = useQuery(['ethPrice'], fetchETHPrice, {
+    refetchInterval: 2000,
+  });
+  const ethPrice = 1328.1;
+
+  const totalETH = useMemo(() => {
+    let total = 0;
+    if (optionAActivated && optionA) total += optionA / ethPrice;
+    if (optionBActivated && optionB) total += optionB / ethPrice;
+    if (optionCActivated && optionC) total += optionC / ethPrice;
+    return total;
+  }, [
+    optionA,
+    optionAActivated,
+    optionB,
+    optionBActivated,
+    optionC,
+    optionCActivated,
+  ]);
+
+  const onSubmit: SubmitHandler<FormProps> = async (data) => {
+    try {
+      if (!address || !ethPrice) return;
+      const {
+        data: { ethAmounts, tokenAmounts, v, r, s, vestAmount },
+      } = await axios.post<SignatureResponse>(`/api/signature/${address}`, {
+        optionA: data.optionA / ethPrice,
+        optionB: data.optionB / ethPrice,
+        optionC: data.optionC / ethPrice,
+      });
+
+      // const transaction = await setUnclaimable();
+      const transaction = await addVest(ethAmounts, tokenAmounts, v, r, s, {
+        value: vestAmount,
+      });
+
+      toast.info(`Transaction Created : ${transaction.hash}`);
+
+      await transaction.wait();
+
+      toast.success(`Transaction Confirmed : ${transaction.hash}`);
+    } catch (error: any) {
+      if (axios.isAxiosError(error)) {
+        return toast.error(error.response?.data.error);
+      }
+      const serializedError = serializeError(error);
+      // TODO: Update detailed error message
+      toast.error(getMessageFromCode(serializedError.code));
+    }
   };
 
   const handleConnectWallet = useCallback(async () => {
@@ -65,7 +173,6 @@ export default function Presale() {
     if (!isConnected || !activeChain || !switchNetworkAsync) return;
 
     if (activeChain.id !== CHAIN_ID) {
-      logger('switchNetworkAsync', 'index.tsx line 80');
       switchNetworkAsync(CHAIN_ID).catch((error) => {
         if (error.code === 4001) {
           toast.error('Please change network to make transaction.');
@@ -136,58 +243,62 @@ export default function Presale() {
               label="Email Address"
               required
               {...register('email')}
+              error={formState.errors.email?.message}
             />
           </div>
           <div className="border-gradient3 flex w-full flex-col items-center gap-4 border-y py-10 ">
             <div className="w-full">
               <Select
                 containerClassName="items-start"
-                label="Pounds"
-                {...register('poundsActivated')}
+                label="Option1"
+                {...register('optionAActivated')}
               />
               <RangeWithEthereum
-                min={0}
+                min={500}
                 max={10000}
-                rate={500}
-                disabled={!poundsActivated}
-                {...register('pounds', { min: 0, max: 400000 })}
+                rate={ethPrice}
+                tokenPriceInUsd={tokenPricesInUsd[0]}
+                disabled={!optionAActivated}
+                {...register('optionA', { min: 0, max: 400000 })}
               />
             </div>
 
             <div className="w-full">
               <Select
                 containerClassName="items-start"
-                label="Dollars"
-                {...register('dollarsActivated')}
+                label="Option2"
+                {...register('optionBActivated')}
               />
               <RangeWithEthereum
-                min={0}
-                max={10000}
-                rate={500}
-                disabled={!dollarsActivated}
-                {...register('dollars', { min: 0, max: 400000 })}
+                min={1000}
+                max={50000}
+                rate={ethPrice}
+                tokenPriceInUsd={tokenPricesInUsd[1]}
+                disabled={!optionBActivated}
+                {...register('optionB', { min: 0, max: 400000 })}
               />
             </div>
 
             <div className="w-full">
               <Select
                 containerClassName="items-start"
-                label="Euros"
-                {...register('eurosActivated')}
+                label="Option3"
+                {...register('optionCActivated')}
               />
               <RangeWithEthereum
-                min={0}
-                max={10000}
-                rate={500}
-                disabled={!eurosActivated}
-                {...register('euros', { min: 0, max: 400000 })}
+                min={10000}
+                max={100000}
+                rate={ethPrice}
+                tokenPriceInUsd={tokenPricesInUsd[2]}
+                disabled={!optionCActivated}
+                {...register('optionC', { min: 0, max: 400000 })}
               />
             </div>
           </div>
           <div className="w-full">
             <h4 className="text-center text-2xl font-medium">Total ETH</h4>
             <div className="border-gradient w-full border p-3 text-center">
-              4234 ETH
+              {`${totalETH.toFixed(2)} ETH`}
             </div>
           </div>
           <Button
@@ -199,6 +310,7 @@ export default function Presale() {
         </form>
       </section>
 
+      <div>{isError ? 'Unable to fetch' : `${ethPrice} USD`}</div>
       <div className="container mx-auto grid grid-cols-1 items-center justify-center py-14 md:grid-cols-4 lg:p-20">
         <Links visible={true} />
       </div>

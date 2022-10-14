@@ -1,37 +1,95 @@
 import { AlvrTokenSale__factory } from '@alvara/presale';
 import { Wallet } from '@ethersproject/wallet';
+import { BigNumber, utils } from 'ethers';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { chain } from 'wagmi';
 import { publicProvider } from 'wagmi/providers/public';
 
-import { signMessage } from '@/lib/web3/sign';
+import { splitSignature } from '@/lib/web3/sign';
+
+import { contractAddress, tokenPricesInUsd } from '@/config';
+import { fetchETHPrice } from '@/service';
+import { joiSchema } from '@/views/Presale';
 
 export default async function hello(req: NextApiRequest, res: NextApiResponse) {
-  const provider = publicProvider()(chain.goerli)?.provider();
+  try {
+    const chainId = parseInt(
+      process.env.NEXT_PUBLIC_CHAIN_ID || chain.goerli.id.toString(),
+    );
 
-  const masterWalletPrivateKey = process.env.MASTER_WALLET_PRIVATE_KEY;
-  if (!masterWalletPrivateKey) {
-    return;
+    const provider = publicProvider()(
+      chainId === chain.goerli.id ? chain.goerli : chain.mainnet,
+    )?.provider();
+
+    if (!provider) {
+      return;
+    }
+
+    const masterWalletPrivateKey = process.env.MASTER_WALLET_PRIVATE_KEY;
+    if (!masterWalletPrivateKey) {
+      return;
+    }
+
+    const wallet = new Wallet(masterWalletPrivateKey);
+    wallet.connect(provider);
+
+    const alvrTokenSale = AlvrTokenSale__factory.connect(
+      contractAddress[chainId],
+      provider,
+    );
+
+    const { address } = req.query;
+    const { error, value } = joiSchema.validate(req.body);
+
+    if (error && !value) {
+      return res.status(400).json({ error });
+    }
+
+    if (typeof address !== 'string') {
+      return;
+    }
+
+    if (!utils.isAddress(address)) {
+      return res.status(400).json({ error: 'Invalid address' });
+    }
+
+    const nonce = await alvrTokenSale.nonce(address);
+
+    const ethAmounts = [
+      value.optionA.toFixed(2),
+      value.optionB.toFixed(2),
+      value.optionC.toFixed(2),
+    ].map(utils.parseEther);
+
+    const ethPrice = await fetchETHPrice();
+
+    const tokenAmounts = ethAmounts.map((a, i) =>
+      a
+        .mul(utils.parseUnits(ethPrice.toFixed(2), 2))
+        .div(10 ** 2)
+        .div(tokenPricesInUsd[i] * 10 ** 3) // tokenPrices decimal is 3
+        .mul(10 ** 3),
+    );
+
+    const vestAmount = ethAmounts.reduce(
+      (prev, amount) => BigNumber.from(prev).add(BigNumber.from(amount)),
+      BigNumber.from(0),
+    );
+
+    const message = utils.solidityKeccak256(
+      ['address', 'uint256', 'uint256[]', 'uint256[]', 'uint256'],
+      [address, vestAmount, ethAmounts, tokenAmounts, nonce],
+    );
+
+    const signature = await wallet.signMessage(utils.arrayify(message));
+
+    const { v, r, s } = splitSignature(signature);
+
+    res
+      .status(200)
+      .json({ signature, v, r, s, ethAmounts, tokenAmounts, vestAmount });
+  } catch (error: any) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
   }
-
-  const wallet = new Wallet(masterWalletPrivateKey);
-
-  if (!provider) {
-    return;
-  }
-  wallet.connect(provider);
-  const presaleContract = AlvrTokenSale__factory.connect('0x00', wallet);
-
-  const { address, ethAmount } = req.query;
-
-  if (typeof address !== 'string') {
-    return;
-  }
-
-  const nonce = await presaleContract.nonce(address);
-  const message = `${address} ${ethAmount} ${nonce.toString()}`;
-
-  const signature = await signMessage(message, masterWalletPrivateKey);
-
-  res.status(200).json({ signature });
 }

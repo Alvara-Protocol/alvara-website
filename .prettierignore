@@ -38,6 +38,4 @@ yarn-error.log*
 CHANGELOG.md
 
 # presale contract
-/packages/presale/artifacts
-/packages/presale/cache
-/packages/presale/typechain-types
+/packages/presale
