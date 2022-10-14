@@ -67,7 +67,7 @@ export default function Header() {
             }
             width="230"
             height="45"
-            alt="Icon"
+            alt="Logo"
           />
         </UnstyledLink>
         <nav>

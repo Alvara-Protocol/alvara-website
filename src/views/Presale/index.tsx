@@ -80,44 +80,35 @@ export default function Presale() {
 
   return (
     <main>
-      <section className="grid grid-cols-12 bg-primary px-4 py-6 text-white">
-        <div className="col-start-1 col-end-5 flex flex-col justify-center gap-4">
-          <h1 className="mb-4">ALVA Presale</h1>
-          <p>
-            ALVA is powering the World&apos;s Premier Digital Asset ETF
-            Protocol.
-          </p>
-          <div className="h-[2px] w-3/5 bg-gradient-to-r from-purple-650 to-transparent"></div>
-          <span>Tokenomics</span>
-          <div className="h-[2px] w-3/5 bg-gradient-to-r from-purple-650 to-transparent"></div>
-          <span>Token Utility</span>
-          <div className="h-[2px] w-3/5 bg-gradient-to-r from-purple-650 to-transparent"></div>
-        </div>
-        <div className="col-start-6 col-end-13 flex flex-wrap gap-4">
-          <NextImage
-            src="/images/presale/tokenomics.png"
-            alt="Tokenomics"
-            width={300}
-            height={300}
-          />
-          <NextImage
-            src="/images/presale/tokenomics.png"
-            alt="Tokenomics"
-            width={300}
-            height={300}
-          />
-          <NextImage
-            src="/images/presale/tokenomics.png"
-            alt="Tokenomics"
-            width={300}
-            height={300}
-          />
-          <NextImage
-            src="/images/presale/tokenomics.png"
-            alt="Tokenomics"
-            width={300}
-            height={300}
-          />
+      <section className="bg-primary px-4 py-6 pt-[130px] text-white">
+        <NextImage
+          className="absolute top-0 left-56"
+          alt="Nest"
+          src="/images/presale/top-back.png"
+          width="730"
+          height="287"
+        />
+        <div className="grid grid-cols-12">
+          <div className="col-start-1 col-end-5 ">
+            <h1 className="mb-4">ALVA Presale</h1>
+            <p>
+              ALVA is powering the World&apos;s Premier Digital Asset ETF
+              Protocol.
+            </p>
+            <div className="h-[2px] w-3/5 bg-gradient-to-r from-purple-650 to-transparent"></div>
+            <span>Tokenomics</span>
+            <div className="h-[2px] w-3/5 bg-gradient-to-r from-purple-650 to-transparent"></div>
+            <span>Token Utility</span>
+            <div className="h-[2px] w-3/5 bg-gradient-to-r from-purple-650 to-transparent"></div>
+          </div>
+          <div className="col-start-6 col-end-13 flex flex-wrap gap-4">
+            <NextImage
+              src="/images/presale/tokenomics.png"
+              alt="Tokenomics"
+              width={300}
+              height={300}
+            />
+          </div>
         </div>
       </section>
 
