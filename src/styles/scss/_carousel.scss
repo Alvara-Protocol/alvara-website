@@ -1,100 +1,33 @@
-.slick-slider {
-    .slick-arrow:after {
-        width: 18px;
-        height: 18px;
-        display: block;
-        content: '';
-        background: transparent;
-        opacity: 0.2;
-        position: absolute;
-        top: 0;
-        filter: blur(18px);
-    }
-
-    .slick-arrow {
-        z-index: 10;
-
-        :before {
-            background: #96a8c2;
-            height: 44px;
-            position: absolute;
-            top: -11px;
-            left: 32px;
-            pointer-events: none;
-            width: 2px;
-        }
-
-        :hover:before {
-            background: #4fff8b;
-        }
-
-        :hover:after {
-            background: #4fff8b;
-        }
-
-        :hover svg path {
-            stroke: #4fff8b;
-        }
-    }
-
-    svg {
-        width: 18px;
-        height: 18px;
-    }
-
-    .slick-prev {
-        left: 13px;
-        transform: rotate(180deg);
-    }
-
-    .slick-next {
-        right: 13px;
-    }
-
-    .slick-prev:before,
-    .slick-next:before {
-        content: '';
-    }
-
+.carousel {
+    overflow: initial;
     .slick-dots {
-        bottom: -50px;
-    }
+        bottom: -60px !important;
 
-    .slick-dot-box {
-        svg {
-            position: absolute;
-            width: 145px;
-            height: 26px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        ul {
-            display: flex;
-            justify-content: space-between;
-            padding: 0px 30px;
-            margin: 0;
+        li.slick-active {
+            width: 19px;
+            height: 19px;
+            button {
+                background: transparent;
+                width: 19px;
+                height: 19px;
+                border-radius: 30px;
+                border: 1px solid #8a15d5;
+            }
         }
         li {
-            display: flex;
-            align-items: center;
-            width: auto !important;
-        }
-        li button {
-            background: #121c26;
-            width: 11px;
-            height: 4px;
-            padding: 0;
-            border-radius: 20.8609px;
-        }
+            width: 8px;
+            height: 8px;
+            button {
+                background: #d6d9dc;
+                width: 8px;
+                height: 8px;
+                padding: 0;
+                border-radius: 30px;
 
-        li button:before {
-            display: none;
-        }
-
-        .slick-active button {
-            background: #4fff8b;
-            width: 30px !important;
+                &::before {
+                    display: none;
+                }
+            }
         }
     }
 }
