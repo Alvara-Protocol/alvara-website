@@ -6,8 +6,8 @@ import hives from '~/images/hives-3.png';
 
 export default function Intro2() {
   return (
-    <div className="container mx-auto flex flex-row items-end">
-      <section className="flex w-1/2 flex-col gap-[48px] py-[72px] pl-[72px]">
+    <div className="container mx-auto flex flex-col items-end p-5 md:flex-row md:p-20">
+      <section className="flex flex-col gap-[48px] md:w-1/2 ">
         <span className="bg-gradient-to-r from-purple-650 to-fuchsia-450 bg-clip-text text-transparent">
           ALVARA PROTOCOL
         </span>
@@ -24,11 +24,11 @@ export default function Intro2() {
           learn more
         </Button>
       </section>
-      <div className="w-1/2">
+      <div className="md:w-1/2">
         <NextImage
           className="m-auto"
-          width={430}
-          height={480}
+          width={370}
+          height={430}
           src={hives}
           alt="top-right-hives"
         />

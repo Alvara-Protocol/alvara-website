@@ -8,7 +8,7 @@ export default function AlvaStatus() {
       <h2 className="border-gradient3 border-b-[3px] pb-5 text-center font-montserrat font-medium uppercase tracking-widest">
         ALVA in Numbers
       </h2>
-      <div className="grid w-2/3 grid-cols-2 gap-8">
+      <div className="grid w-2/3 grid-cols-1 gap-8 md:grid-cols-2">
         <AlvaStatusItem price="200M" percent={0.2} description="alva" />
         <AlvaStatusItem
           price="10M"
