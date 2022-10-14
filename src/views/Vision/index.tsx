@@ -9,7 +9,10 @@ import { Hives, NextImage } from '@/components';
 function Arrow(props: any) {
   const { className, onClick } = props;
   return (
-    <div className={className} onClick={onClick}>
+    <div
+      className={className + ' !h-[53px] !w-[22px] before:hidden'}
+      onClick={onClick}
+    >
       <NextImage
         className="rotate-180"
         src="/images/vision/prev.png"
@@ -24,17 +27,15 @@ function Arrow(props: any) {
 export default function Vision() {
   const settings: Settings = {
     dots: true,
+    arrows: true,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    appendDots: (dots) => (
-      <div>
-        <ul style={{ margin: '0px' }}> {dots} </ul>
-      </div>
-    ),
+
     nextArrow: <Arrow />,
     prevArrow: <Arrow />,
+    className: 'carousel',
   };
   return (
     <main className="relative bg-gray-400 pt-[92px]">
@@ -46,7 +47,7 @@ export default function Vision() {
                 <h2 className="border-gradient w-1/2 border-b-[3px] pb-5 text-center font-montserrat font-medium uppercase tracking-widest">
                   Purpose.
                 </h2>
-                <p>
+                <p className="text-center">
                   To provide a fully regulated and secure exchange platform for
                   users to trade, create and manage a wide range of Crypto ETFs.
                 </p>
@@ -57,7 +58,9 @@ export default function Vision() {
                 <h2 className="border-gradient w-2/3 border-b-[3px] pb-5 text-center font-montserrat font-medium uppercase tracking-widest">
                   Callum mitchell-clark, ceo
                 </h2>
-                <q>We are building the Binance of Crypto ETFs</q>
+                <p className="text-center">
+                  We are building the Binance of Crypto ETFs
+                </p>
               </div>
             </div>
             <div>
@@ -65,7 +68,7 @@ export default function Vision() {
                 <h2 className="border-gradient w-1/2 border-b-[3px] pb-5 text-center font-montserrat font-medium uppercase tracking-widest">
                   VISION
                 </h2>
-                <p>
+                <p className="text-center">
                   To accelerate the decentralization of the global economy;
                   delivering the world&apos;s most popular financial product to
                   cryptocurrency.
