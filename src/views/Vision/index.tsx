@@ -37,9 +37,9 @@ export default function Vision() {
     prevArrow: <Arrow />,
   };
   return (
-    <main className="bg-gray-400 py-5">
+    <main className="relative bg-gray-400 pt-[92px]">
       <Hives className="px-20">
-        <div className="my-32">
+        <div className="py-32">
           <Slider className="" {...settings}>
             <div>
               <div className="mx-auto flex max-w-[560px] flex-col items-center gap-12">
