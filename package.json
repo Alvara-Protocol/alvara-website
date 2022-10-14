@@ -27,11 +27,15 @@
   "dependencies": {
     "@alvara/presale": "*",
     "@headlessui/react": "^1.7.3",
+    "@hookform/resolvers": "^2.9.8",
+    "axios": "^1.1.2",
     "chance": "^1.1.8",
     "clsx": "^1.2.1",
     "daisyui": "^2.31.0",
+    "eth-rpc-errors": "^4.0.3",
     "ethers": "^5.7.1",
     "human-format": "^1.0.0",
+    "joi": "^17.6.3",
     "jotai": "^1.8.5",
     "next": "^12.3.1",
     "react": "^18.2.0",
@@ -42,7 +46,8 @@
     "react-toastify": "^9.0.8",
     "slick-carousel": "^1.8.1",
     "tailwind-merge": "^1.6.1",
-    "wagmi": "^0.6.8"
+    "wagmi": "^0.6.8",
+    "xstate": "^4.33.6"
   },
   "devDependencies": {
     "@commitlint/cli": "^16.3.0",

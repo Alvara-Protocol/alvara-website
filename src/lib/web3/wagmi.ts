@@ -4,11 +4,15 @@ import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { MetaMaskConnector } from 'wagmi/connectors/metaMask';
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
+import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
 
-const CHAINS = [chain.mainnet, chain.ropsten];
+const CHAINS = [chain.mainnet, chain.goerli];
 
-export const { provider, chains } = configureChains(CHAINS, [publicProvider()]);
+export const { provider, chains } = configureChains(CHAINS, [
+  alchemyProvider({ apiKey: 'EQU8Kd5pGMabnvdjKw_8wePBJJTJkGB9' }),
+  publicProvider(),
+]);
 
 export const injectedConnector = new InjectedConnector({
   chains,

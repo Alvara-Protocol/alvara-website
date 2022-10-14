@@ -4,10 +4,11 @@ import clsxm from '@/lib/clsxm';
 export interface InputGroupProps extends React.ComponentPropsWithRef<'input'> {
   containerClassName?: string;
   label?: string;
+  error?: string;
 }
 
 const InputGroup = React.forwardRef<HTMLInputElement, InputGroupProps>(
-  ({ containerClassName, label, ...props }, ref) => {
+  ({ containerClassName, label, error, ...props }, ref) => {
     return (
       <div className={containerClassName}>
         {label && (
@@ -24,6 +25,7 @@ const InputGroup = React.forwardRef<HTMLInputElement, InputGroupProps>(
             'border-gradient block w-full border px-4 py-2 outline-none',
           )}
         />
+        {error && <label>{error}</label>}
       </div>
     );
   },
