@@ -11,50 +11,60 @@ export default function Hivex() {
             Hivex
           </h2>
           <p>
-            Why is the exchange so good? looks nice, easy to use, web3 - link
-            metamask, secure, ability to trade ETFs, ability to build (only
-            place to build), facilitate onboarding with HiveMind trading. Add a
-            general description of the items listed below. You can introduce the
-            list and include any relevant information you want to share. Double
-            click to edit the text.
+            The exclusive home of Alvara&apos;s SmartFunds, our HiveX is a
+            hybridized exchange (HEX), utilizing both blockchain and off-chain
+            technology to deliver a blazingly fast and secure trading
+            experience. Powered by Finex&apos;s Go matching engine, HiveX can
+            process over 500,000 transactions per second.
+            <br />
+            <br />
+            <br />
+            Trade, build, create and redeem SmartFund shares directly on the
+            HiveX. Our fiat gateway provides the ability to purchase
+            cryptocurrency seamlessly within the platform.
+            <br />
+            <br />
+            <br />
+            HiveX is a licensed hybrid exchange, fully AML, CFT and KYC
+            compliant.
           </p>
         </div>
       </Hives>
       <div className="container mx-auto grid grid-cols-1 gap-7 px-8 md:grid-cols-3 md:px-32">
         <Info
           image="/images/hivex/trade-c-etfs.png"
-          title="Trade C-ETFs"
-          description="Describe the item and include any relevant details. Click to edit the text"
+          title="Trade"
+          description="Trade SmartFund shares on Alvara's order book exchange, powered by a Finex Go matching engine."
           type={1}
         />
         <Info
           image="/images/hivex/build-a-fund.png"
-          title="Build a Fund"
-          description="Describe the item and include any relevant details. Click to edit the text"
+          title="Build"
+          description="Access Alvara's creation portal to design your own fund. Join the next generation of digital asset fund managers."
           type={1}
         />
         <Info
           image="/images/hivex/create-redeem.png"
-          title="Create & Redeem ETF Shares"
-          description="Describe the item and include any relevant details. Click to edit the text"
+          title="Create & Redeem"
+          description="Create and redeem your SF shares for their net asset value, taking advantage of arbitrage opportunities."
           type={1}
         />
         <Info
           image="/images/hivex/transfer.png"
-          title="Transfer of Ownership"
-          description="Describe the item and include any relevant details. Click to edit the text"
+          title="Transfer"
+          description="Time to retire? Sell your fund's NFT on Alvara's NFT marketplace to the highest bidder."
           type={1}
         />
         <Info
           image="/images/hivex/fiat.png"
           title="Fiat Gateway"
-          description="Describe the item and include any relevant details. Click to edit the text"
+          description="Seamlessly bridging fiat and crypto without leaving the platform."
           type={1}
         />
         <Info
           image="/images/hivex/item.png"
-          title="Item title"
-          description="Describe the item and include any relevant details. Click to edit the text"
+          title="Compilance"
+          description="Taking a pragmatic position on decentralization - the Alvara protocol is fully AML, CFT & KYC compliant."
           type={1}
         />
       </div>
