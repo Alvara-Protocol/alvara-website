@@ -43,45 +43,31 @@ export default function Vision() {
           <div>
             <div className="mx-auto flex max-w-[560px] flex-col items-center gap-12">
               <h2 className="border-gradient w-1/2 border-b-[3px] pb-5 text-center font-montserrat font-medium uppercase tracking-widest">
-                Hivex
+                Purpose.
               </h2>
               <p>
-                Why is the exchange so good? looks nice, easy to use, web3 -
-                link metamask, secure, ability to trade ETFs, ability to build
-                (only place to build), facilitate onboarding with HiveMind
-                trading. Add a general description of the items listed below.
-                You can introduce the list and include any relevant information
-                you want to share. Double click to edit the text.
+                To provide a fully regulated and secure exchange platform for
+                users to trade, create and manage a wide range of Crypto ETFs.
               </p>
             </div>
           </div>
           <div>
             <div className="mx-auto flex max-w-[560px] flex-col items-center gap-12">
-              <h2 className="border-gradient w-1/2 border-b-[3px] pb-5 text-center font-montserrat font-medium uppercase tracking-widest">
-                Hivex2
+              <h2 className="border-gradient w-2/3 border-b-[3px] pb-5 text-center font-montserrat font-medium uppercase tracking-widest">
+                Callum mitchell-clark, ceo
               </h2>
-              <p>
-                Why is the exchange so good? looks nice, easy to use, web3 -
-                link metamask, secure, ability to trade ETFs, ability to build
-                (only place to build), facilitate onboarding with HiveMind
-                trading. Add a general description of the items listed below.
-                You can introduce the list and include any relevant information
-                you want to share. Double click to edit the text.
-              </p>
+              <q>We are building the Binance of Crypto ETFs</q>
             </div>
           </div>
           <div>
             <div className="mx-auto flex max-w-[560px] flex-col items-center gap-12">
               <h2 className="border-gradient w-1/2 border-b-[3px] pb-5 text-center font-montserrat font-medium uppercase tracking-widest">
-                Hivex3
+                VISION
               </h2>
               <p>
-                Why is the exchange so good? looks nice, easy to use, web3 -
-                link metamask, secure, ability to trade ETFs, ability to build
-                (only place to build), facilitate onboarding with HiveMind
-                trading. Add a general description of the items listed below.
-                You can introduce the list and include any relevant information
-                you want to share. Double click to edit the text.
+                To accelerate the decentralization of the global economy;
+                delivering the world&apos;s most popular financial product to
+                cryptocurrency.
               </p>
             </div>
           </div>
