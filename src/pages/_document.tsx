@@ -18,18 +18,10 @@ class MyDocument extends Document {
         <Head>
           <link
             rel="preload"
-            href="/fonts/inter-var-latin.woff2"
+            href="/fonts/Montserrat/Montserrat-Medium.ttf"
             as="font"
-            type="font/woff2"
+            type="font/ttf"
             crossOrigin="anonymous"
-          />
-          <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css?family=Montserrat&display=optional"
-          />
-          <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css?family=Poppins&display=optional"
           />
         </Head>
         <body>
