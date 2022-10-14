@@ -11,6 +11,7 @@
   "scripts": {
     "build": "hardhat compile",
     "test": "hardhat test",
+    "deploy:testnet": "hardhat run \"scripts/deployAlvrSale-test.ts\" --network goerli",
     "prettier": "prettier -w .",
     "lint": "prettier --list-different ."
   },

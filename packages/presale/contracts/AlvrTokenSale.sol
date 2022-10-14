@@ -71,13 +71,13 @@ contract AlvrTokenSale is Ownable, Pausable {
         schedules[2][0] = Schedule(1665671980245, 4000);
         schedules[2][1] = Schedule(1665672980245, 6000);
 
-        minimumTokens[0] = 100;
-        minimumTokens[1] = 100;
-        minimumTokens[2] = 100;
+        minimumTokens[0] = 5000 * 10**18;
+        minimumTokens[1] = 13333 * 10**18;
+        minimumTokens[2] = 200000 * 10**18;
 
-        maximumTokens[0] = 5000;
-        maximumTokens[1] = 5000;
-        maximumTokens[2] = 5000;
+        maximumTokens[0] = 100000 * 10**18;
+        maximumTokens[1] = 666666 * 10**18;
+        maximumTokens[2] = 52000000000 * 10**18;
     }
 
     function setTxSigner(address txSigner_) external onlyOwner {
@@ -213,6 +213,8 @@ contract AlvrTokenSale is Ownable, Pausable {
         uint256 amount_,
         uint256 tokens_
     ) internal returns (uint256) {
+        if (amount_ == 0 && tokens_ == 0) return amount_;
+
         _addTokens(investor_, option_, tokens_);
         vests[msg.sender][option_] += amount_;
 
@@ -265,7 +267,7 @@ contract AlvrTokenSale is Ownable, Pausable {
         isBlocked[user_] = false;
     }
 
-    function _unblockUserChecked(user_) internal {
+    function _unblockUserChecked(address user_) internal {
         require(isBlocked[user_]);
 
         _unblockUser(user_);
@@ -284,7 +286,7 @@ contract AlvrTokenSale is Ownable, Pausable {
 
     function unblockUsers(address[] memory users_, uint256 length_)
         external
-        onlyOwnwer
+        onlyOwner
     {
         require(length_ > 0);
 
@@ -313,7 +315,7 @@ contract AlvrTokenSale is Ownable, Pausable {
     }
 
     function _replaceUserChecked(address oldUser_, address newUser_) internal {
-        require(isInvestor[oldUser_] && !isBlocked[oldUser]);
+        require(isInvestor[oldUser_] && !isBlocked[oldUser_]);
         require(!isInvestor[newUser_] && !isBlocked[newUser_]);
 
         _replaceUser(oldUser_, newUser_);
