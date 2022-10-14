@@ -8,9 +8,9 @@ import hives from '~/images/hives-2.png';
 
 export default function Hivex() {
   return (
-    <section className="relative mx-auto flex flex-row items-center bg-gray-400 py-[90px]">
+    <section className="relative mx-auto flex flex-col-reverse items-center gap-4 bg-gray-400 py-[90px] md:flex-row">
       <Currencies className="absolute top-3 left-1/2 -translate-x-1/2 -translate-y-full " />
-      <div className="w-1/2">
+      <div className="md:w-1/2">
         <NextImage
           className="m-auto"
           width={335}
@@ -19,7 +19,7 @@ export default function Hivex() {
           alt="top-right-hives"
         />
       </div>
-      <div className="flex w-1/2 flex-col gap-8 px-10">
+      <div className="flex flex-col gap-8 px-10 md:w-1/2">
         <h2>HiveX</h2>
         <div className="h-[4px] w-1/2 bg-gradient-to-r from-purple-650 to-transparent"></div>
         <p>

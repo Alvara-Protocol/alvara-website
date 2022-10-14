@@ -33,7 +33,7 @@ export default function CurrencyStatus({
         </div>
         <div>{`${currency1}/${currency2}`}</div>
       </div>
-      <div className="font-poppins text-[36px] font-normal leading-5 text-dark-blue-400">
+      <div className="font-poppins text-2xl font-normal leading-5 text-dark-blue-400 md:text-[36px]">
         {price.toLocaleString()}
       </div>
     </div>
