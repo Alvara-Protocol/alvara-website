@@ -16,7 +16,7 @@
 
     h1,
     .h1 {
-        @apply font-montserrat text-2xl font-medium uppercase tracking-widest md:text-4xl;
+        @apply font-montserrat text-2xl font-medium tracking-widest md:text-4xl;
     }
 
     h2,

@@ -18,13 +18,19 @@ export default function Intro() {
           <div className="h-[4px] w-full bg-gradient-to-r from-purple-650 to-transparent"></div>
         </div>
         <p>
-          General overview of the alvara protocol. hive stuff etc here and link
-          out to ETF article (mentioning the hive analogy)
-          <br /> I&apos;m a paragraph. Click here to add your own text and edit
-          me. It&apos;s easy. <br />
-          Just click “Edit Text” or double click me to add your own content and
-          make changes to the font. I&apos;m a great place for you to tell a
-          story and let your users know a little more about you.
+          Delivering the world’s most popular financial product - Exchange
+          Traded Funds - to crypto, the Alvara Protocol is the first of its kind
+          - a one-stop crypto ETF exchange with built-in fund creation and
+          management portal. Buzz into the portal and build your own SmartFund,
+          testing your strategy on the HiveX leaderboard.
+          <br />
+          <br />
+          <br /> A cutting-edge trading platform empowering the next generation
+          of fund managers.
+          <br />
+          <br />
+          <br />
+          Welcome to the Hive!
         </p>
       </section>
       <div className="mx-auto max-w-[550px]">

@@ -23,13 +23,10 @@ export default function Hivex() {
         <h2>HiveX</h2>
         <div className="h-[4px] w-1/2 bg-gradient-to-r from-purple-650 to-transparent"></div>
         <p>
-          General overview of the alvara protocol. hive stuff etc here and link
-          out to ETF article (mentioning the hive analogy)
-          <br /> I&apos;m a paragraph. Click here to add your own text and edit
-          me. It&apos;s easy. <br />
-          Just click “Edit Text” or double click me to add your own content and
-          make changes to the font. I&apos;m a great place for you to tell a
-          story and let your users know a little more about you.
+          Alvara&apos;s HiveX is a hybrid exchange (HEX), utilizing both
+          blockchain and off-chain technology to deliver a blazingly fast and
+          secure trading experience. Powered by Finex&apos;s Go matching engine,
+          HiveX can process over 500,000 transactions per second.
         </p>
         <Button variant="outline" className="max-w-max py-4 uppercase">
           join the hive

@@ -14,13 +14,11 @@ export default function Intro2() {
         <h2 className="font-medium uppercase tracking-wider">smart funds</h2>
         <div className="h-[4px] w-full bg-gradient-to-r from-purple-650 to-transparent"></div>
         <p>
-          General overview of the alvara protocol. hive stuff etc here and link
-          out to ETF article (mentioning the hive analogy)
-          <br /> I&apos;m a paragraph. Click here to add your own text and edit
-          me. It&apos;s easy. <br />
-          Just click “Edit Text” or double click me to add your own content and
-          make changes to the font. I&apos;m a great place for you to tell a
-          story and let your users know a little more about you.
+          Alvara SmartFunds. That&apos;s our name for Crypto ETFs - baskets of
+          assets, owned by investors, with shares tradable on the HiveX. Each
+          SmartFund has its own NFT counterpart. Held by the manager, the NFT is
+          the key to the SmartFund - giving the holder the exclusive rights to
+          fund management and rewards.
         </p>
         <Button variant="outline" className="max-w-max py-4 uppercase">
           learn more

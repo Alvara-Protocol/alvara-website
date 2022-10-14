@@ -15,12 +15,13 @@ export default function Title() {
         alt="bee"
       />
       <h1 className="text-center text-[64px] font-normal leading-[70px]">
-        ALVARA PROTOCOL
+        ETFs for a DeFi Future
       </h1>
       <p className="mt-4 text-center">
-        Delivering the world&apos;s most popular financial product to crypto.
+        A cutting-edge trading platform empowering the next generation of fund
+        managers. Build. Manage. Earn.
       </p>
-      <Button className="mx-auto mt-[46px] px-8">ALVA</Button>
+      <Button className="mx-auto mt-[46px] px-8">Join The Hive</Button>
     </Hives>
   );
 }

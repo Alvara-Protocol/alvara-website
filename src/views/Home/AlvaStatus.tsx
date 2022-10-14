@@ -15,13 +15,9 @@ export default function AlvaStatus() {
           percent={0.2}
           description="Circulating Supply at Launch"
         />
+        <AlvaStatusItem price="30M" percent={0.2} description="FDV AT LAUNCH" />
         <AlvaStatusItem
-          price="2.3B"
-          percent={0.2}
-          description="FDV AT LAUNCH"
-        />
-        <AlvaStatusItem
-          price="0.10"
+          price="0.15"
           percent={0.2}
           description="Listing Price"
         />
