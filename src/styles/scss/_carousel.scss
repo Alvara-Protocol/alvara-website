@@ -1,5 +1,42 @@
 .carousel {
     overflow: initial;
+
+    .slick-prev,
+    .slick-next {
+        z-index: 5;
+        width: 12px !important;
+        height: 28px !important;
+
+        &::before {
+            display: none;
+        }
+
+        @media (min-width: 768px) {
+            .md\:\!h-\[53px\] {
+                width: 22px !important;
+                height: 53px !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            top: auto !important;
+            bottom: -80px;
+        }
+    }
+
+    .slick-prev {
+        @media (max-width: 768px) {
+            left: 20px;
+        }
+    }
+    .slick-next {
+        @media (max-width: 768px) {
+            right: 20px;
+        }
+        img {
+            transform: rotate(180deg);
+        }
+    }
     .slick-dots {
         bottom: -60px !important;
 

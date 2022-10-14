@@ -9,15 +9,13 @@ import { Hives, NextImage } from '@/components';
 function Arrow(props: any) {
   const { className, onClick } = props;
   return (
-    <div
-      className={className + ' !h-[53px] !w-[22px] before:hidden'}
-      onClick={onClick}
-    >
+    <div className={className} onClick={onClick}>
       <NextImage
-        className="rotate-180"
+        className="!w-[12px] md:!w-[22px]"
         src="/images/vision/prev.png"
         width={22}
         height={53}
+        layout="responsive"
         alt="prev"
       />
     </div>
