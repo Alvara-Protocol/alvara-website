@@ -37,9 +37,9 @@ export default function Vision() {
     prevArrow: <Arrow />,
   };
   return (
-    <main className="min-h-[calc(100vh)] bg-gray-400">
+    <main className=" bg-gray-400">
       <Hives className="px-20">
-        <Slider className="translate-y-full" {...settings}>
+        <Slider className="" {...settings}>
           <div>
             <div className="mx-auto flex max-w-[560px] flex-col items-center gap-12">
               <h2 className="border-gradient w-1/2 border-b-[3px] pb-5 text-center font-montserrat font-medium uppercase tracking-widest">

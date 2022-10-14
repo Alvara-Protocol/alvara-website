@@ -49,7 +49,7 @@ export default function Header() {
   return (
     <header
       className={clsx(
-        'fixed top-0 z-50 w-full py-[18px] font-montserrat',
+        'sticky top-0 z-50 w-full py-[18px] font-montserrat',
         scroll
           ? 'bg-white bg-opacity-80 shadow backdrop-blur-sm'
           : 'bg-transparent shadow-none',
