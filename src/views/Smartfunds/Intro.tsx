@@ -5,13 +5,13 @@ import { Button, Hives, Info } from '@/components';
 export default function Intro() {
   return (
     <section className="flex flex-col gap-28 bg-gray-400 pb-20">
-      <Hives className="flex flex-row items-center justify-around px-11 pt-[250px]">
-        <h1 className="text-center text-[60px] uppercase leading-normal">
+      <Hives className="flex flex-col items-center justify-around gap-10 px-4 pt-[150px] md:flex-row md:px-11 md:pt-[250px]">
+        <h1 className="w-full text-left text-3xl uppercase leading-normal md:w-1/2 md:text-center md:text-[60px]">
           Smart <br />
           funds.
         </h1>
-        <div className="flex w-1/2 max-w-[600px] flex-col gap-10">
-          <p className="font-poppins text-[20px] font-light tracking-widest">
+        <div className="flex max-w-[600px] flex-col gap-10 md:w-1/2">
+          <p className="font-poppins text-base font-light tracking-widest md:text-[20px]">
             Alvara SmartFunds are the name for our crypto ETFs. Offering
             investors the world&apos;s most popular investment vehicle, but on
             the blockchain. ETFs are number one for a reason - they provide a
@@ -24,7 +24,7 @@ export default function Intro() {
           </Button>
         </div>
       </Hives>
-      <div className="container mx-auto grid grid-cols-4 px-20">
+      <div className="container mx-auto grid grid-cols-1 gap-8 px-8 md:grid-cols-4 md:px-20">
         <Info
           image="/images/smart-funds/build.png"
           title="Low Risk"

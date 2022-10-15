@@ -6,8 +6,8 @@ import logo from '~/images/logo.png';
 
 export default function Intro() {
   return (
-    <div className="container mx-auto mb-28 flex flex-row items-end">
-      <section className="flex w-1/2 flex-col gap-[60px] py-[72px] pl-[72px]">
+    <div className="container mx-auto mb-20 flex w-full flex-col  items-center justify-around gap-8 p-5 md:flex-row md:p-20">
+      <section className="flex flex-col gap-[60px] md:w-1/2 ">
         <span className="bg-gradient-to-r from-purple-650 to-fuchsia-450 bg-clip-text text-transparent">
           ALVARA PROTOCOL
         </span>
@@ -33,15 +33,13 @@ export default function Intro() {
           Welcome to the Hive!
         </p>
       </section>
-      <div className="mx-auto max-w-[550px]">
-        <NextImage
-          className=" "
-          width={380}
-          height={380}
-          src={logo}
-          alt="top-right-hives"
-        />
-      </div>
+      <NextImage
+        className="h-64 w-64 md:h-80 md:w-80 "
+        width={380}
+        height={380}
+        src={logo}
+        alt="top-right-hives"
+      />
     </div>
   );
 }

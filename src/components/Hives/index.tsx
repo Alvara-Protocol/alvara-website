@@ -1,7 +1,5 @@
 import React from 'react';
 
-import clsxm from '@/lib/clsxm';
-
 import NextImage from '../NextImage';
 
 import hives2 from '~/images/hives.png';
@@ -13,7 +11,7 @@ export interface HivesProps extends React.PropsWithChildren {
 
 export default function Hives({ children, className }: HivesProps) {
   return (
-    <section className={clsxm('relative', className)}>
+    <section className={className}>
       <NextImage
         className="absolute top-0 right-0 w-[420px]"
         width={634}

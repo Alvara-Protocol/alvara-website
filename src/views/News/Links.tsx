@@ -5,27 +5,27 @@ import { Info } from '@/components';
 const linkInfos = [
   {
     image: '/images/social/telegram.png',
-    link: 'https://t.me/alvara1',
+    link: 'https://t.me/alvaraannouncements',
     title: 'Telegram',
-    description: 't.me/alvara',
+    description: 'https://t.me/alvara',
   },
   {
     image: '/images/social/twitter.png',
-    link: 'https://t.me/alvara2',
+    link: 'https://twitter.com/alvaraprotocol',
     title: 'Twitter',
-    description: 't.me/alvara',
+    description: 'https://twitter.com/alvaraprotocol',
   },
   {
     image: '/images/social/email.png',
-    link: 'https://t.me/alvara3',
+    link: 'mailto:contact@alvaraprotocol.io',
     title: 'Email',
-    description: 't.me/alvara',
+    description: 'contact@alvaraprotocol.io',
   },
   {
     image: '/images/social/medium.png',
-    link: 'https://t.me/alvara4',
+    link: 'https://alvaraprotocol.medium.com',
     title: 'Medium',
-    description: 't.me/alvara',
+    description: 'https://alvaraprotocol.medium.com',
   },
 ];
 

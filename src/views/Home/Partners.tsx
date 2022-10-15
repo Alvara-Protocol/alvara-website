@@ -10,7 +10,7 @@ export default function Partners() {
       <h2 className="border-gradient3 border-b-[3px] pb-5 text-center font-montserrat font-medium uppercase tracking-widest">
         partners
       </h2>
-      <div className="flex flex-row gap-8">
+      <div className="flex flex-row flex-wrap items-center justify-center gap-8">
         <Partner image={logo} name="Hello" />
         <Partner image={logo} name="Hello" />
         <Partner image={logo} name="Hello" />
