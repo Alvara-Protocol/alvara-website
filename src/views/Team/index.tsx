@@ -70,10 +70,11 @@ export default function Team() {
         linkedin: 'https://linkedin.com',
       },
       achievments: [
-        '8 years experience in creative digital content',
-        'Project manager for a variety of content marketing campaigns',
-        'Spanned the roles from writer to editor to manager',
-        'Self-taught Web Development and SEO',
+        '10+ years business owner and management experience',
+        'Project Management, Marketing, Consumer Psychology and Legal experience',
+        'Served on management teams for several crypto startups',
+        'Crypto + DeFi Enthusiast and Investor',
+        'Blockchain infrastructure support experience',
       ],
     },
     {
@@ -84,10 +85,10 @@ export default function Team() {
         linkedin: 'https://linkedin.com',
       },
       achievments: [
-        '8 years experience in creative digital content',
-        'Project manager for a variety of content marketing campaigns',
-        'Spanned the roles from writer to editor to manager',
-        'Self-taught Web Development and SEO',
+        '10 years of graphic design experience including working for Fortune 500 companies',
+        'Extensive experience in creating advanced research based UI/UX',
+        'Top Rated Plus status on Upwork (top 3%)',
+        'Strong background in marketing and digital advertising',
       ],
     },
     {
@@ -98,10 +99,10 @@ export default function Team() {
         linkedin: 'https://linkedin.com',
       },
       achievments: [
-        '8 years experience in creative digital content',
-        'Project manager for a variety of content marketing campaigns',
-        'Spanned the roles from writer to editor to manager',
-        'Self-taught Web Development and SEO',
+        '6+ years of Graphic Design experience',
+        'Responsible for product strategy as well as designing user interfaces and user experience.',
+        'Extensive knowledge in HTML /CSS',
+        'Experienced Webflow Developer',
       ],
     },
     {
@@ -130,10 +131,9 @@ export default function Team() {
         linkedin: 'https://linkedin.com',
       },
       achievments: [
-        '8 years experience in creative digital content',
-        'Project manager for a variety of content marketing campaigns',
-        'Spanned the roles from writer to editor to manager',
-        'Self-taught Web Development and SEO',
+        '20+ years senior executive experience in sales oriented, B2B, financial services, distribution and logistics organisations',
+        '15 years professional experience with Arthur Andersen and Coopers and Lybrand in England, The Netherlands, Australia and Asia',
+        'M&A, Capital and debt raising, IPO’s, Business Transformation and Strategy Formulation',
       ],
     },
     {
@@ -144,10 +144,10 @@ export default function Team() {
         linkedin: 'https://linkedin.com',
       },
       achievments: [
-        '8 years experience in creative digital content',
-        'Project manager for a variety of content marketing campaigns',
-        'Spanned the roles from writer to editor to manager',
-        'Self-taught Web Development and SEO',
+        '20+ years experience in advising on traditional and alternative asset classes to institutional clients',
+        'Extensive derivative trading and structuring experience including the creation of a range of ETFs',
+        'Helping people make informed investment decisions using mathematical models and technology',
+        'Incorporating climate aware scenario analysis into strategic asset allocation decisions',
       ],
     },
     {
@@ -158,10 +158,10 @@ export default function Team() {
         linkedin: 'https://linkedin.com',
       },
       achievments: [
-        '8 years experience in creative digital content',
-        'Project manager for a variety of content marketing campaigns',
-        'Spanned the roles from writer to editor to manager',
-        'Self-taught Web Development and SEO',
+        '30+ years’ working in Australia’s commercial, industrial and retail property markets specialising in the area of Funds Management',
+        'Co-founded Austgrowth Property Syndicates Limited',
+        'Board Member of a number of Funds Management businesses',
+        'Extensive experience in funds management, financial modelling, finance and asset management across all property sectors',
       ],
     },
     {
@@ -172,10 +172,10 @@ export default function Team() {
         linkedin: 'https://linkedin.com',
       },
       achievments: [
-        '8 years experience in creative digital content',
-        'Project manager for a variety of content marketing campaigns',
-        'Spanned the roles from writer to editor to manager',
-        'Self-taught Web Development and SEO',
+        'Founder and CEO of vEmpire Digital',
+        "Experienced Senior Derivatives Trader and Head of Desk; partner at FTSE100 London-based wealth management firm - St James' Place",
+        'Anarchist at heart and strong advocate for decentralization',
+        'One of the largest Metaverse real estate managers',
       ],
     },
   ];
