@@ -187,34 +187,48 @@ export default function Presale() {
 
   return (
     <main>
-      <section className="bg-primary px-4 py-6 pt-[130px] text-white">
+      <section className="bg-primary px-[50px] pt-[120px] pb-[50px] text-white">
         <NextImage
           className="absolute top-0 left-56"
           alt="Nest"
           src="/images/presale/top-back.png"
-          width="730"
-          height="287"
+          width="550"
+          height="215"
         />
-        <div className="grid grid-cols-12">
-          <div className="col-start-1 col-end-5 ">
-            <h1 className="mb-4">ALVA Presale</h1>
-            <p>
-              ALVA is powering the World&apos;s Premier Digital Asset ETF
-              Protocol.
+        <div className="grid grid-cols-10 gap-6">
+          <div className="col-span-4">
+            <p className="mb-8 text-[38px] font-medium uppercase leading-[40px] tracking-widest">
+              ALVA Presale
             </p>
-            <div className="h-[2px] w-3/5 bg-gradient-to-r from-purple-650 to-transparent"></div>
-            <span>Tokenomics</span>
-            <div className="h-[2px] w-3/5 bg-gradient-to-r from-purple-650 to-transparent"></div>
-            <span>Token Utility</span>
-            <div className="h-[2px] w-3/5 bg-gradient-to-r from-purple-650 to-transparent"></div>
+            <p className="text-[14px] font-medium uppercase leading-[20px]">
+              ALVA is the utility token that powers the Alvara Protocol. From
+              fee reductions to inclusion in every ETF,{' '}
+              <span className="text-fuchsia-450">
+                ALVA is the Honey OF the Hive.
+              </span>
+            </p>
+
+            <p className="mt-10 text-[20px] font-medium tracking-widest text-fuchsia-450">
+              LISTING PRICE $0.15
+            </p>
+            <ul className="mt-16 ml-8 list-disc text-[20px] font-medium uppercase">
+              <li className="mb-6 underline">Tokenomics</li>
+              <li className="underline">Token Utility</li>
+            </ul>
           </div>
-          <div className="col-start-6 col-end-13 flex flex-wrap gap-4">
-            <NextImage
-              src="/images/presale/tokenomics.png"
-              alt="Tokenomics"
-              width={300}
-              height={300}
-            />
+          <div className="col-span-6 flex flex-wrap">
+            <div className="relative h-fit w-[200px] cursor-pointer">
+              <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-poppins font-medium text-white">
+                Option 1
+              </span>
+              <NextImage
+                src="/images/presale/option.png"
+                alt="Tokenomics"
+                width={323}
+                height={280}
+                className="w-full"
+              />
+            </div>
           </div>
         </div>
       </section>
