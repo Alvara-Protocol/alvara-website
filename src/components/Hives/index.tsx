@@ -13,14 +13,14 @@ export default function Hives({ children, className }: HivesProps) {
   return (
     <section className={className}>
       <NextImage
-        className="absolute top-0 right-0 w-[420px]"
+        className="absolute top-0 right-0 -z-[1] w-[420px]"
         width={634}
         height={920}
         src={hives1}
         alt="top-right-hives"
       />
       <NextImage
-        className="absolute -left-28 -top-4 w-[420px]"
+        className="absolute -left-28 -top-4 -z-[1]  w-[420px]"
         width={699}
         height={1483}
         src={hives2}

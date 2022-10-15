@@ -189,25 +189,20 @@ export default function Team() {
             Alvara teams
           </h2>
           <div className="mx-auto mt-5 h-[2px] w-3/5 bg-gradient-to-r from-purple-650 to-transparent"></div>
-
-          <p className="mt-10 max-w-xl">
-            Why is the exchange so good? looks nice, easy to use, web3 - link
-            metamask, secure, ability to trade ETFs, ability to build (only
-            place to build), facilitate onboarding with HiveMind trading.
-          </p>
         </div>
       </Hives>
-      <section className="container mx-auto mt-32 mb-32 grid grid-cols-4 items-start gap-x-10 gap-y-16 ">
-        {members.map((member, i) => (
-          <Member key={i} {...member} />
-        ))}
-      </section>
-
-      <div className="container mx-auto text-center text-[65px]">Advisors</div>
-      <section className="container mx-auto mt-32 mb-16 grid grid-cols-4 items-start gap-x-10 gap-y-16 ">
-        {advisors.map((member, i) => (
-          <Member key={i} {...member} />
-        ))}
+      <section className="container mx-auto px-8 md:px-16">
+        <div className="mt-32 mb-32 grid grid-cols-1 items-start gap-x-10 gap-y-16 md:grid-cols-4 ">
+          {members.map((member, i) => (
+            <Member key={i} {...member} />
+          ))}
+        </div>
+        <div className="text-center text-[65px]">Advisors</div>
+        <div className="mt-32 mb-16 grid grid-cols-1 items-start gap-x-10 gap-y-16 md:grid-cols-4 ">
+          {advisors.map((member, i) => (
+            <Member key={i} {...member} />
+          ))}
+        </div>
       </section>
     </main>
   );
