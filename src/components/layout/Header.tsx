@@ -59,11 +59,11 @@ export default function Header() {
         <UnstyledLink href="/">
           <NextImage
             useSkeleton
-            className="w-32 md:w-48"
+            className="w-32 md:w-40"
             src={
               isPresale && !scroll
-                ? '/svg/nav-logo.svg'
-                : '/svg/nav-logo-black.svg'
+                ? '/images/nav-logo.png'
+                : '/images/nav-logo-black.png'
             }
             width="230"
             height="45"
@@ -72,7 +72,9 @@ export default function Header() {
         </UnstyledLink>
         <nav>
           <button onClick={openModal} className="block p-2 lg:hidden">
-            <HamburgerIcon stroke="#131531" />
+            <HamburgerIcon
+              stroke={isPresale && !scroll ? '#FFFFFF' : '#131531'}
+            />
           </button>
           <Transition appear show={isOpen} as={React.Fragment}>
             <Dialog
@@ -111,8 +113,8 @@ export default function Header() {
                         <UnstyledLink href="/">
                           <NextImage
                             useSkeleton
-                            className="mt-1.5 w-36"
-                            src="/svg/nav-logo-black.svg"
+                            className="mt-1.5 w-32"
+                            src="/images/nav-logo-black.png"
                             width="230"
                             height="45"
                             alt="Icon"
