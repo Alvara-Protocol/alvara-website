@@ -59,9 +59,24 @@ function Spot() {
   );
 }
 
+function Dot() {
+  return (
+    <svg
+      width="12"
+      height="12"
+      viewBox="0 0 12 12"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className="flex-none"
+    >
+      <circle cx="6" cy="6" r="6" fill="#FB3FFF" />
+    </svg>
+  );
+}
+
 export default function Timeline() {
   return (
-    <div className="container mx-auto grid grid-cols-3">
+    <div className="container mx-auto grid grid-cols-1 md:grid-cols-3">
       <ol className="relative border-l border-[#FB3FFF]">
         <li className="mb-10 ml-6">
           <span className="absolute -left-3 flex h-6 w-6 items-center justify-center rounded-full bg-[#dbbfed]  ring-8 ring-gray-400">
@@ -74,75 +89,27 @@ export default function Timeline() {
 
           <ul className="max-w-md list-inside list-disc space-y-1 text-xl text-black">
             <li className="flex items-center space-x-3">
-              <svg
-                width="12"
-                height="12"
-                viewBox="0 0 12 12"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <circle cx="6" cy="6" r="6" fill="#FB3FFF" />
-              </svg>
+              <Dot />
               <span>Project Development</span>
             </li>
             <li className="flex items-center space-x-3">
-              <svg
-                width="12"
-                height="12"
-                viewBox="0 0 12 12"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <circle cx="6" cy="6" r="6" fill="#FB3FFF" />
-              </svg>
+              <Dot />
               <span>ALVA Contract Development</span>
             </li>
             <li className="flex items-center space-x-3">
-              <svg
-                width="12"
-                height="12"
-                viewBox="0 0 12 12"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <circle cx="6" cy="6" r="6" fill="#FB3FFF" />
-              </svg>
+              <Dot />
               <span>Whitepaper Release</span>
             </li>
             <li className="flex items-center space-x-3">
-              <svg
-                width="12"
-                height="12"
-                viewBox="0 0 12 12"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <circle cx="6" cy="6" r="6" fill="#FB3FFF" />
-              </svg>
+              <Dot />
               <span>Alvara Socials</span>
             </li>
             <li className="flex items-center space-x-3">
-              <svg
-                width="12"
-                height="12"
-                viewBox="0 0 12 12"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <circle cx="6" cy="6" r="6" fill="#FB3FFF" />
-              </svg>
+              <Dot />
               <span>Seed Round</span>
             </li>
             <li className="flex items-center space-x-3">
-              <svg
-                width="12"
-                height="12"
-                viewBox="0 0 12 12"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <circle cx="6" cy="6" r="6" fill="#FB3FFF" />
-              </svg>
+              <Dot />
               <span>Smart Contract Audits</span>
             </li>
           </ul>
@@ -157,39 +124,15 @@ export default function Timeline() {
 
           <ul className="max-w-md list-inside list-disc space-y-1 text-xl text-black">
             <li className="flex items-center space-x-3">
-              <svg
-                width="12"
-                height="12"
-                viewBox="0 0 12 12"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <circle cx="6" cy="6" r="6" fill="#FB3FFF" />
-              </svg>
+              <Dot />
               <span>Seed Round cont.</span>
             </li>
             <li className="flex items-center space-x-3">
-              <svg
-                width="12"
-                height="12"
-                viewBox="0 0 12 12"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <circle cx="6" cy="6" r="6" fill="#FB3FFF" />
-              </svg>
+              <Dot />
               <span>Licensing Applications</span>
             </li>
             <li className="flex items-center space-x-3">
-              <svg
-                width="12"
-                height="12"
-                viewBox="0 0 12 12"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <circle cx="6" cy="6" r="6" fill="#FB3FFF" />
-              </svg>
+              <Dot />
               <span>Strategic Partnerships</span>
             </li>
           </ul>
@@ -204,52 +147,20 @@ export default function Timeline() {
 
           <ul className="max-w-md list-inside list-disc space-y-1 text-xl text-black">
             <li className="flex items-center space-x-3">
-              <svg
-                width="12"
-                height="12"
-                viewBox="0 0 12 12"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <circle cx="6" cy="6" r="6" fill="#FB3FFF" />
-              </svg>
+              <Dot />
               <span>Series A Private Round</span>
             </li>
 
             <li className="flex items-center space-x-3">
-              <svg
-                width="12"
-                height="12"
-                viewBox="0 0 12 12"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <circle cx="6" cy="6" r="6" fill="#FB3FFF" />
-              </svg>
+              <Dot />
               <span>Series B Public Round and IDO</span>
             </li>
             <li className="flex items-center space-x-3">
-              <svg
-                width="12"
-                height="12"
-                viewBox="0 0 12 12"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <circle cx="6" cy="6" r="6" fill="#FB3FFF" />
-              </svg>
+              <Dot />
               <span>ALVA TGE</span>
             </li>
             <li className="flex items-center space-x-3">
-              <svg
-                width="12"
-                height="12"
-                viewBox="0 0 12 12"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <circle cx="6" cy="6" r="6" fill="#FB3FFF" />
-              </svg>
+              <Dot />
               <span>CEX Listings</span>
             </li>
           </ul>
@@ -268,63 +179,23 @@ export default function Timeline() {
 
           <ul className="max-w-md list-inside list-disc space-y-1 text-xl text-black">
             <li className="flex items-center space-x-3">
-              <svg
-                width="12"
-                height="12"
-                viewBox="0 0 12 12"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <circle cx="6" cy="6" r="6" fill="#FB3FFF" />
-              </svg>
+              <Dot />
               <span>Licensing Approval</span>
             </li>
             <li className="flex items-center space-x-3">
-              <svg
-                width="12"
-                height="12"
-                viewBox="0 0 12 12"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <circle cx="6" cy="6" r="6" fill="#FB3FFF" />
-              </svg>
+              <Dot />
               <span>Platform Testing</span>
             </li>
             <li className="flex items-center space-x-3">
-              <svg
-                width="12"
-                height="12"
-                viewBox="0 0 12 12"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <circle cx="6" cy="6" r="6" fill="#FB3FFF" />
-              </svg>
+              <Dot />
               <span>Staking Platform Launch</span>
             </li>
             <li className="flex items-center space-x-3">
-              <svg
-                width="12"
-                height="12"
-                viewBox="0 0 12 12"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <circle cx="6" cy="6" r="6" fill="#FB3FFF" />
-              </svg>
+              <Dot />
               <span>NFT Development</span>
             </li>
             <li className="flex items-center space-x-3">
-              <svg
-                width="12"
-                height="12"
-                viewBox="0 0 12 12"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <circle cx="6" cy="6" r="6" fill="#FB3FFF" />
-              </svg>
+              <Dot />
               <span>ETF Development</span>
             </li>
           </ul>
@@ -339,63 +210,23 @@ export default function Timeline() {
 
           <ul className="max-w-md list-inside list-disc space-y-1 text-xl text-black">
             <li className="flex items-center space-x-3">
-              <svg
-                width="12"
-                height="12"
-                viewBox="0 0 12 12"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <circle cx="6" cy="6" r="6" fill="#FB3FFF" />
-              </svg>
+              <Dot />
               <span>Beta testing</span>
             </li>
             <li className="flex items-center space-x-3">
-              <svg
-                width="12"
-                height="12"
-                viewBox="0 0 12 12"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <circle cx="6" cy="6" r="6" fill="#FB3FFF" />
-              </svg>
+              <Dot />
               <span>V1 HiveX Launch</span>
             </li>
             <li className="flex items-center space-x-3">
-              <svg
-                width="12"
-                height="12"
-                viewBox="0 0 12 12"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <circle cx="6" cy="6" r="6" fill="#FB3FFF" />
-              </svg>
+              <Dot />
               <span>Alvara Spot ETF Listings</span>
             </li>
             <li className="flex items-center space-x-3">
-              <svg
-                width="12"
-                height="12"
-                viewBox="0 0 12 12"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <circle cx="6" cy="6" r="6" fill="#FB3FFF" />
-              </svg>
+              <Dot />
               <span>Fiat Gateway</span>
             </li>
             <li className="flex items-center space-x-3">
-              <svg
-                width="12"
-                height="12"
-                viewBox="0 0 12 12"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <circle cx="6" cy="6" r="6" fill="#FB3FFF" />
-              </svg>
+              <Dot />
               <span>NFT Integration</span>
             </li>
           </ul>
@@ -414,39 +245,15 @@ export default function Timeline() {
 
           <ul className="max-w-md list-inside list-disc space-y-1 text-xl text-black">
             <li className="flex items-center space-x-3">
-              <svg
-                width="12"
-                height="12"
-                viewBox="0 0 12 12"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <circle cx="6" cy="6" r="6" fill="#FB3FFF" />
-              </svg>
+              <Dot />
               <span>V2 HiveX Launch</span>
             </li>
             <li className="flex items-center space-x-3">
-              <svg
-                width="12"
-                height="12"
-                viewBox="0 0 12 12"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <circle cx="6" cy="6" r="6" fill="#FB3FFF" />
-              </svg>
+              <Dot />
               <span>Alvara Hive Social Platform</span>
             </li>
             <li className="flex items-center space-x-3">
-              <svg
-                width="12"
-                height="12"
-                viewBox="0 0 12 12"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <circle cx="6" cy="6" r="6" fill="#FB3FFF" />
-              </svg>
+              <Dot />
               <span>Leveraged ETFs</span>
             </li>
           </ul>
@@ -461,39 +268,15 @@ export default function Timeline() {
 
           <ul className="max-w-md list-inside list-disc space-y-1 text-xl text-black">
             <li className="flex items-center space-x-3">
-              <svg
-                width="12"
-                height="12"
-                viewBox="0 0 12 12"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <circle cx="6" cy="6" r="6" fill="#FB3FFF" />
-              </svg>
+              <Dot />
               <span>Mobile App Development</span>
             </li>
             <li className="flex items-center space-x-3">
-              <svg
-                width="12"
-                height="12"
-                viewBox="0 0 12 12"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <circle cx="6" cy="6" r="6" fill="#FB3FFF" />
-              </svg>
+              <Dot />
               <span>Traditional Finance Expansion</span>
             </li>
             <li className="flex items-center space-x-3">
-              <svg
-                width="12"
-                height="12"
-                viewBox="0 0 12 12"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <circle cx="6" cy="6" r="6" fill="#FB3FFF" />
-              </svg>
+              <Dot />
               <span>Tokenized Equity & Commodity ETFs</span>
             </li>
           </ul>
