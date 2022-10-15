@@ -13,7 +13,7 @@ export default function Footer() {
           <NextImage
             useSkeleton
             className="mt-1.5 mr-12 w-48"
-            src="/svg/nav-logo-black.svg"
+            src="/images/nav-logo-black.png"
             width="230"
             height="45"
             alt="Alvara"
@@ -36,7 +36,7 @@ export default function Footer() {
         <NextImage
           useSkeleton
           className="w-48 lg:hidden"
-          src="/svg/nav-logo-black.svg"
+          src="/images/nav-logo-black.png"
           width="230"
           height="45"
           alt="Alvara"
