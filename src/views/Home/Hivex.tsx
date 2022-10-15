@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Button, NextImage } from '@/components';
+import UnstyledLink from '@/components/links/UnstyledLink';
 
 import Currencies from './Currencies';
 
@@ -28,9 +29,11 @@ export default function Hivex() {
           secure trading experience. Powered by Finex&apos;s Go matching engine,
           HiveX can process over 500,000 transactions per second.
         </p>
-        <Button variant="outline" className="max-w-max py-4 uppercase">
-          join the hive
-        </Button>
+        <UnstyledLink href="/presale">
+          <Button variant="outline" className="max-w-max py-4 uppercase">
+            join the hive
+          </Button>
+        </UnstyledLink>
       </div>
     </section>
   );

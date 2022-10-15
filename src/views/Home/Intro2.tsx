@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Button, NextImage } from '@/components';
+import UnstyledLink from '@/components/links/UnstyledLink';
 
 import hives from '~/images/hives-3.png';
 
@@ -20,9 +21,11 @@ export default function Intro2() {
           the key to the SmartFund - giving the holder the exclusive rights to
           fund management and rewards.
         </p>
-        <Button variant="outline" className="max-w-max py-4 uppercase">
-          learn more
-        </Button>
+        <UnstyledLink href="/roadmap">
+          <Button variant="outline" className="max-w-max py-4 uppercase">
+            learn more
+          </Button>
+        </UnstyledLink>
       </section>
       <div className="hidden md:block md:w-1/2">
         <NextImage

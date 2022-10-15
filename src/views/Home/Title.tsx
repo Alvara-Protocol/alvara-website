@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Button, Hives, NextImage } from '@/components';
+import UnstyledLink from '@/components/links/UnstyledLink';
 
 import bee from '~/images/bee.png';
 
@@ -21,7 +22,9 @@ export default function Title() {
         Build. Manage. Earn. A cutting-edge trading platform empowering the next
         generation of fund managers.
       </p>
-      <Button className="px-8 text-xl font-light">Join The Hive</Button>
+      <UnstyledLink href="/presale">
+        <Button className="px-8 text-xl font-light">Join The Hive</Button>
+      </UnstyledLink>
     </Hives>
   );
 }

@@ -15,7 +15,7 @@ const techLinks = [
 const aboutAlvaraLinks = [
   { href: '/vision', label: 'Vision' },
   { href: '/team', label: 'Team' },
-  { href: '/roadmap-papers', label: 'Roadmap & Papers' },
+  { href: '/roadmap', label: 'Roadmap & Papers' },
 ];
 
 export default function Header() {
@@ -209,7 +209,7 @@ export default function Header() {
                             </div>
                             <div>
                               <UnstyledLink
-                                href="/the-buzz"
+                                href="/news"
                                 className="font-medium"
                               >
                                 The Buzz
