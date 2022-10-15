@@ -25,7 +25,9 @@ export default function Info({
     <div
       className={clsx(
         'flex flex-col',
-        type === 2 ? 'border-gradient4 border-b md:border-r' : '',
+        type === 2
+          ? 'border-gradient4 border-b py-10 last:border-0 md:border-b-0 md:border-r'
+          : '',
       )}
     >
       {type === 1 && (
