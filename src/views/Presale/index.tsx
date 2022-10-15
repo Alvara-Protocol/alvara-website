@@ -2,6 +2,7 @@ import { joiResolver } from '@hookform/resolvers/joi';
 import axios from 'axios';
 import { getMessageFromCode, serializeError } from 'eth-rpc-errors';
 import { BigNumberish } from 'ethers';
+import { parseEther } from 'ethers/lib/utils';
 import Joi from 'joi';
 import React, {
   MutableRefObject,
@@ -15,27 +16,25 @@ import { SubmitHandler, useForm, useWatch } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import {
   useAccount,
+  useBalance,
   useConnect,
   useNetwork,
   useQuery,
   useSwitchNetwork,
 } from 'wagmi';
 
+import clsxm from '@/lib/clsxm';
 import { metaMaskConnector } from '@/lib/web3/wagmi';
-import { usePresaleContract } from '@/hooks';
+import { usePresaleContract, useSsr } from '@/hooks';
 
-import {
-  Button,
-  InputGroup,
-  NextImage,
-  RangeWithEthereum,
-  Select,
-} from '@/components';
+import { Button, NextImage, RangeWithEthereum, Select } from '@/components';
 import UnstyledLink from '@/components/links/UnstyledLink';
 
 import { CHAIN_ID, tokenPricesInUsd } from '@/config';
 import { fetchETHPrice } from '@/service';
 import Links from '@/views/News/Links';
+
+import Subscribe from './Subscribe';
 
 // TODO: Update FormProps support Option array
 export interface Option {
@@ -45,10 +44,6 @@ export interface Option {
   maxVestAmountInUsd: number;
 }
 export interface FormProps {
-  name: string;
-  email: string;
-  telegram: string;
-  wallet: string;
   optionAActivated: boolean;
   optionA: number;
   optionBActivated: boolean;
@@ -58,16 +53,6 @@ export interface FormProps {
 }
 
 export const joiSchema = Joi.object<FormProps>({
-  name: Joi.string().required(),
-  email: Joi.string()
-    .email({ tlds: { allow: false } })
-    .messages({
-      'string.email': 'Invalid Email address',
-      'string.empty': 'Required',
-    }),
-  telegram: Joi.string().required(),
-  wallet: Joi.string().required(),
-
   optionAActivated: Joi.boolean().required(),
   optionA: Joi.number(),
   optionBActivated: Joi.boolean().required(),
@@ -117,10 +102,12 @@ export default function Presale() {
   const { chain: activeChain } = useNetwork();
   const { isLoading: isSwitchingNetwork, switchNetworkAsync } =
     useSwitchNetwork();
+  const { data: balanceResult } = useBalance({ addressOrName: address });
+  const { isBrowser } = useSsr();
 
   const { addVest } = usePresaleContract();
 
-  const { register, handleSubmit, control, formState } = useForm<FormProps>({
+  const { register, handleSubmit, control } = useForm<FormProps>({
     defaultValues: {
       optionAActivated: true,
       optionBActivated: false,
@@ -132,6 +119,7 @@ export default function Presale() {
     mode: 'onTouched',
     resolver: joiResolver(joiSchema),
   });
+
   const {
     optionAActivated,
     optionBActivated,
@@ -163,9 +151,19 @@ export default function Presale() {
     optionCActivated,
   ]);
 
+  const insufficientBalance = useMemo(() => {
+    if (!balanceResult) return false;
+    const { value } = balanceResult;
+
+    return value.lt(parseEther(totalETH.toFixed(2)));
+  }, [totalETH, balanceResult]);
+
   const onSubmit: SubmitHandler<FormProps> = async (data) => {
     try {
       if (!address || !ethPrice) return;
+      if (insufficientBalance) {
+        return toast.error('Insufficient Balance.');
+      }
       const {
         data: { ethAmounts, tokenAmounts, v, r, s, vestAmount },
       } = await axios.post<SignatureResponse>(`/api/signature/${address}`, {
@@ -249,12 +247,12 @@ export default function Presale() {
             </p>
             <ul className="mt-16 ml-8 list-disc text-[20px] font-medium uppercase">
               <li className="mb-6 underline">
-                <UnstyledLink href="/docs/tokenomics.pdf" openNewTab={true}>
+                <UnstyledLink href="/docs/tokenomics.pdf" openNewTab>
                   Tokenomics
                 </UnstyledLink>
               </li>
               <li className="underline">
-                <UnstyledLink href="/docs/token_utility.pdf" openNewTab={true}>
+                <UnstyledLink href="/docs/token_utility.pdf" openNewTab>
                   Token Utility
                 </UnstyledLink>
               </li>
@@ -382,113 +380,90 @@ export default function Presale() {
 
       <section className="container mx-auto mt-20 w-3/4">
         <form
-          className="flex flex-col items-center"
           onSubmit={handleSubmit(onSubmit)}
+          className="border-gradient3 flex w-full flex-col items-center gap-8 border-y pt-10 pb-4"
         >
-          <div className="border-gradient3 flex w-full flex-col items-center gap-8 border-y pt-10 pb-4">
-            <div className="w-full">
-              <Select
-                containerClassName="items-start"
-                label="Option1"
-                {...register('optionAActivated')}
-              />
-              <RangeWithEthereum
-                min={500}
-                max={10000}
-                rate={ethPrice}
-                tokenPriceInUsd={tokenPricesInUsd[0]}
-                disabled={!optionAActivated}
-                {...register('optionA', { min: 0, max: 400000 })}
-              />
-            </div>
-
-            <div className="w-full">
-              <Select
-                containerClassName="items-start"
-                label="Option2"
-                {...register('optionBActivated')}
-              />
-              <RangeWithEthereum
-                min={1000}
-                max={50000}
-                rate={ethPrice}
-                tokenPriceInUsd={tokenPricesInUsd[1]}
-                disabled={!optionBActivated}
-                {...register('optionB', { min: 0, max: 400000 })}
-              />
-            </div>
-
-            <div className="w-full">
-              <Select
-                containerClassName="items-start"
-                label="Option3"
-                {...register('optionCActivated')}
-              />
-              <RangeWithEthereum
-                min={10000}
-                max={100000}
-                rate={ethPrice}
-                tokenPriceInUsd={tokenPricesInUsd[2]}
-                disabled={!optionCActivated}
-                {...register('optionC', { min: 0, max: 400000 })}
-              />
-            </div>
-
-            <div className="w-full">
-              <h4 className="text-center text-2xl font-medium">Total ETH</h4>
-              <div className="border-gradient my-3 mx-auto w-2/3 border p-3 text-center">
-                {`${totalETH.toFixed(2)} ETH`}
-              </div>
-            </div>
-            <Button
-              type={isConnected ? 'submit' : 'button'}
-              onClick={
-                isConnected ? handleSubmit(onSubmit) : handleConnectWallet
-              }
-            >
-              {isConnected ? 'Join' : 'Connect Wallet'}
-            </Button>
+          <div className="w-full">
+            <Select
+              containerClassName="items-start"
+              label="Option1"
+              {...register('optionAActivated')}
+            />
+            <RangeWithEthereum
+              min={500}
+              max={10000}
+              rate={ethPrice}
+              tokenPriceInUsd={tokenPricesInUsd[0]}
+              disabled={!optionAActivated}
+              {...register('optionA', { min: 0, max: 400000 })}
+            />
           </div>
 
-          <div className="flex w-full flex-col items-center gap-4 pt-16">
-            <p className="text-center text-[20px] text-black">
-              To receive updates on the presale please fill out the form below.
-            </p>
-            <InputGroup
-              containerClassName="w-1/2"
-              label="Name"
-              required
-              {...register('name', { required: true })}
+          <div className="w-full">
+            <Select
+              containerClassName="items-start"
+              label="Option2"
+              {...register('optionBActivated')}
             />
-            <InputGroup
-              containerClassName="w-1/2"
-              label="Email Address"
-              required
-              {...register('email')}
+            <RangeWithEthereum
+              min={1000}
+              max={50000}
+              rate={ethPrice}
+              tokenPriceInUsd={tokenPricesInUsd[1]}
+              disabled={!optionBActivated}
+              {...register('optionB', { min: 0, max: 400000 })}
             />
-            <InputGroup
-              containerClassName="w-1/2"
-              label="Telegram ID"
-              required
-              {...register('telegram')}
-              error={formState.errors.email?.message}
-            />
-            <InputGroup
-              containerClassName="w-1/2"
-              label="Wallet Address"
-              required
-              {...register('wallet')}
-              error={formState.errors.email?.message}
-            />
-            <Button
-              type="submit"
-              onClick={handleSubmit(onSubmit)}
-              className="min-w-[220px] justify-center"
-            >
-              Submit
-            </Button>
           </div>
+
+          <div className="w-full">
+            <Select
+              containerClassName="items-start"
+              label="Option3"
+              {...register('optionCActivated')}
+            />
+            <RangeWithEthereum
+              min={10000}
+              max={100000}
+              rate={ethPrice}
+              tokenPriceInUsd={tokenPricesInUsd[2]}
+              disabled={!optionCActivated}
+              {...register('optionC', { min: 0, max: 400000 })}
+            />
+          </div>
+
+          <div className="w-full text-center">
+            <h4 className="text-center text-2xl font-medium">Total ETH</h4>
+            <div
+              className={clsxm(
+                'border-gradient my-3 mx-auto w-2/3 border p-3 text-center',
+                insufficientBalance && 'text-red-400',
+              )}
+            >
+              {`${totalETH.toFixed(2)} ETH`}
+            </div>
+            {isBrowser && (
+              <span>
+                {balanceResult
+                  ? `Balance: ${parseFloat(balanceResult.formatted).toFixed(
+                      4,
+                    )} ${balanceResult.symbol}`
+                  : `Unable to fetch balance`}
+              </span>
+            )}
+            {insufficientBalance && (
+              <label className="ml-4 text-sm text-red-400">
+                Insufficient balance
+              </label>
+            )}
+          </div>
+          <Button
+            type={isConnected ? 'submit' : 'button'}
+            onClick={isConnected ? handleSubmit(onSubmit) : handleConnectWallet}
+          >
+            {isConnected ? 'Join' : 'Connect Wallet'}
+          </Button>
         </form>
+        <Subscribe />
       </section>
 
       <div className="hidden">

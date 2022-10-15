@@ -1,6 +1,7 @@
 import axios from 'axios';
-import Joi from 'joi';
 import type { NextApiRequest, NextApiResponse } from 'next';
+
+import { subscribeSchema } from '@/views/Presale/Subscribe';
 
 const PORTAL_ID = '23145464';
 const FORM_ID = 'bd0baec0-1d38-4047-820a-5d2ad917c36c';
@@ -11,25 +12,11 @@ interface Response {
   error?: string;
 }
 
-export interface SubmitProps {
-  firstName: string;
-  lastName: string;
-  email: string;
-  telegram: string;
-}
-
-const submitSchema = Joi.object<SubmitProps>({
-  firstName: Joi.string().required(),
-  lastName: Joi.string().required(),
-  email: Joi.string().email({ tlds: { allow: false } }),
-  telegram: Joi.string().required(),
-});
-
 export default async function hbspt(
   req: NextApiRequest,
   res: NextApiResponse<Response>,
 ) {
-  const { error, value } = submitSchema.validate(req.body);
+  const { error, value } = subscribeSchema.validate(req.body);
 
   if (error || !value) {
     return res.status(400).json({ success: false, error: error.message });
