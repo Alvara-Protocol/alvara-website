@@ -88,27 +88,27 @@ export default function Timeline() {
           </h3>
 
           <ul className="max-w-md list-inside list-disc space-y-1 text-xl text-black">
-            <li className="flex items-center space-x-3">
+            <li className="flex items-baseline space-x-3">
               <Dot />
               <span>Project Development</span>
             </li>
-            <li className="flex items-center space-x-3">
+            <li className="flex items-baseline space-x-3">
               <Dot />
               <span>ALVA Contract Development</span>
             </li>
-            <li className="flex items-center space-x-3">
+            <li className="flex items-baseline space-x-3">
               <Dot />
               <span>Whitepaper Release</span>
             </li>
-            <li className="flex items-center space-x-3">
+            <li className="flex items-baseline space-x-3">
               <Dot />
               <span>Alvara Socials</span>
             </li>
-            <li className="flex items-center space-x-3">
+            <li className="flex items-baseline space-x-3">
               <Dot />
               <span>Seed Round</span>
             </li>
-            <li className="flex items-center space-x-3">
+            <li className="flex items-baseline space-x-3">
               <Dot />
               <span>Smart Contract Audits</span>
             </li>
@@ -123,15 +123,15 @@ export default function Timeline() {
           </h3>
 
           <ul className="max-w-md list-inside list-disc space-y-1 text-xl text-black">
-            <li className="flex items-center space-x-3">
+            <li className="flex items-baseline space-x-3">
               <Dot />
               <span>Seed Round cont.</span>
             </li>
-            <li className="flex items-center space-x-3">
+            <li className="flex items-baseline space-x-3">
               <Dot />
               <span>Licensing Applications</span>
             </li>
-            <li className="flex items-center space-x-3">
+            <li className="flex items-baseline space-x-3">
               <Dot />
               <span>Strategic Partnerships</span>
             </li>
@@ -146,20 +146,20 @@ export default function Timeline() {
           </h3>
 
           <ul className="max-w-md list-inside list-disc space-y-1 text-xl text-black">
-            <li className="flex items-center space-x-3">
+            <li className="flex items-baseline space-x-3">
               <Dot />
               <span>Series A Private Round</span>
             </li>
 
-            <li className="flex items-center space-x-3">
+            <li className="flex items-baseline space-x-3">
               <Dot />
               <span>Series B Public Round and IDO</span>
             </li>
-            <li className="flex items-center space-x-3">
+            <li className="flex items-baseline space-x-3">
               <Dot />
               <span>ALVA TGE</span>
             </li>
-            <li className="flex items-center space-x-3">
+            <li className="flex items-baseline space-x-3">
               <Dot />
               <span>CEX Listings</span>
             </li>
@@ -178,23 +178,23 @@ export default function Timeline() {
           </h3>
 
           <ul className="max-w-md list-inside list-disc space-y-1 text-xl text-black">
-            <li className="flex items-center space-x-3">
+            <li className="flex items-baseline space-x-3">
               <Dot />
               <span>Licensing Approval</span>
             </li>
-            <li className="flex items-center space-x-3">
+            <li className="flex items-baseline space-x-3">
               <Dot />
               <span>Platform Testing</span>
             </li>
-            <li className="flex items-center space-x-3">
+            <li className="flex items-baseline space-x-3">
               <Dot />
               <span>Staking Platform Launch</span>
             </li>
-            <li className="flex items-center space-x-3">
+            <li className="flex items-baseline space-x-3">
               <Dot />
               <span>NFT Development</span>
             </li>
-            <li className="flex items-center space-x-3">
+            <li className="flex items-baseline space-x-3">
               <Dot />
               <span>ETF Development</span>
             </li>
@@ -209,23 +209,23 @@ export default function Timeline() {
           </h3>
 
           <ul className="max-w-md list-inside list-disc space-y-1 text-xl text-black">
-            <li className="flex items-center space-x-3">
+            <li className="flex items-baseline space-x-3">
               <Dot />
               <span>Beta testing</span>
             </li>
-            <li className="flex items-center space-x-3">
+            <li className="flex items-baseline space-x-3">
               <Dot />
               <span>V1 HiveX Launch</span>
             </li>
-            <li className="flex items-center space-x-3">
+            <li className="flex items-baseline space-x-3">
               <Dot />
               <span>Alvara Spot ETF Listings</span>
             </li>
-            <li className="flex items-center space-x-3">
+            <li className="flex items-baseline space-x-3">
               <Dot />
               <span>Fiat Gateway</span>
             </li>
-            <li className="flex items-center space-x-3">
+            <li className="flex items-baseline space-x-3">
               <Dot />
               <span>NFT Integration</span>
             </li>
@@ -244,15 +244,15 @@ export default function Timeline() {
           </h3>
 
           <ul className="max-w-md list-inside list-disc space-y-1 text-xl text-black">
-            <li className="flex items-center space-x-3">
+            <li className="flex items-baseline space-x-3">
               <Dot />
               <span>V2 HiveX Launch</span>
             </li>
-            <li className="flex items-center space-x-3">
+            <li className="flex items-baseline space-x-3">
               <Dot />
               <span>Alvara Hive Social Platform</span>
             </li>
-            <li className="flex items-center space-x-3">
+            <li className="flex items-baseline space-x-3">
               <Dot />
               <span>Leveraged ETFs</span>
             </li>
@@ -267,15 +267,15 @@ export default function Timeline() {
           </h3>
 
           <ul className="max-w-md list-inside list-disc space-y-1 text-xl text-black">
-            <li className="flex items-center space-x-3">
+            <li className="flex items-baseline space-x-3">
               <Dot />
               <span>Mobile App Development</span>
             </li>
-            <li className="flex items-center space-x-3">
+            <li className="flex items-baseline space-x-3">
               <Dot />
               <span>Traditional Finance Expansion</span>
             </li>
-            <li className="flex items-center space-x-3">
+            <li className="flex items-baseline space-x-3">
               <Dot />
               <span>Tokenized Equity & Commodity ETFs</span>
             </li>
