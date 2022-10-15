@@ -7,9 +7,9 @@ export default function Hivex() {
     <main className="mb-10 flex flex-col items-center gap-12">
       <Hives className="flex w-full flex-col items-center">
         <div className="mx-8 flex max-w-[800px] flex-col items-center gap-12 pt-[150px]">
-          <h2 className="border-gradient w-1/2 border-b-[3px] pb-5 text-center font-montserrat font-medium uppercase tracking-widest md:text-4xl">
+          <h1 className="border-gradient w-1/2 border-b-[3px] pb-5 text-center font-montserrat font-medium uppercase tracking-widest md:text-4xl">
             Hivex
-          </h2>
+          </h1>
           <p className="text-center">
             The exclusive home of Alvara&apos;s SmartFunds, our HiveX is a
             hybridized exchange (HEX), utilizing both blockchain and off-chain

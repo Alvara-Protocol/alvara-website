@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Hives } from '@/components';
+import { Hives, Seo } from '@/components';
 
 import Member, { MemberProps } from './components/Member';
 
@@ -182,6 +182,7 @@ export default function Team() {
 
   return (
     <main>
+      <Seo templateTitle="Team" description="Alvara team" />
       <Hives className="flex w-full flex-col items-center">
         <div className=" pt-[150px] text-center">
           <h2 className="text-center font-montserrat font-medium uppercase tracking-widest">

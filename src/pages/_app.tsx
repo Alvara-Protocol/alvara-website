@@ -8,11 +8,13 @@ import '@/styles/scss/main.scss';
 import Providers from '@/lib/Providers';
 
 import Layout from '@/components/layout/Layout';
+import Seo from '@/components/Seo';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Providers>
       <Layout>
+        <Seo />
         <Component {...pageProps} />
       </Layout>
       <ToastContainer />

@@ -27,7 +27,13 @@ import clsxm from '@/lib/clsxm';
 import { metaMaskConnector } from '@/lib/web3/wagmi';
 import { usePresaleContract, useSsr } from '@/hooks';
 
-import { Button, NextImage, RangeWithEthereum, Select } from '@/components';
+import {
+  Button,
+  NextImage,
+  RangeWithEthereum,
+  Select,
+  Seo,
+} from '@/components';
 import UnstyledLink from '@/components/links/UnstyledLink';
 
 import { CHAIN_ID, tokenPricesInUsd } from '@/config';
@@ -221,6 +227,10 @@ export default function Presale() {
 
   return (
     <main>
+      <Seo
+        templateTitle="Presale"
+        description="ALVA is the utility token that powers the Alvara Protocol."
+      />
       <section className="bg-primary px-[50px] pt-[120px] pb-[50px] text-white">
         <NextImage
           className="absolute top-0 left-56"
@@ -231,9 +241,9 @@ export default function Presale() {
         />
         <div className="grid grid-cols-10 gap-6">
           <div className="col-span-4 flex flex-col gap-6">
-            <p className="mb-8 text-[38px] font-medium uppercase leading-[40px] tracking-widest">
+            <h1 className="mb-8 text-[38px] font-medium uppercase leading-[40px] tracking-widest">
               ALVA Presale.
-            </p>
+            </h1>
             <p className="text-[14px] font-medium leading-[20px]">
               ALVA is the utility token that powers the Alvara Protocol. From
               fee reductions to inclusion in every ETF,{' '}

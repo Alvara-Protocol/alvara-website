@@ -4,7 +4,7 @@ import Slider, { Settings } from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-import { Hives, NextImage } from '@/components';
+import { Hives, NextImage, Seo } from '@/components';
 
 function Arrow(props: any) {
   const { className, onClick } = props;
@@ -37,6 +37,7 @@ export default function Vision() {
   };
   return (
     <main className="relative bg-gray-400 pt-[92px]">
+      <Seo templateTitle="Vision" />
       <Hives className="px-10 md:px-20">
         <div className="py-32">
           <Slider className="" {...settings}>
