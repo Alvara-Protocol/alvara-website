@@ -6,11 +6,11 @@ export default function Hivex() {
   return (
     <main className="mb-10 flex flex-col items-center gap-12">
       <Hives className="flex w-full flex-col items-center">
-        <div className="mx-8 flex max-w-[600px] flex-col items-center gap-12 pt-[150px]">
-          <h2 className="border-gradient w-1/2 border-b-[3px] pb-5 text-center font-montserrat font-medium uppercase tracking-widest md:text-2xl">
+        <div className="mx-8 flex max-w-[800px] flex-col items-center gap-12 pt-[150px]">
+          <h2 className="border-gradient w-1/2 border-b-[3px] pb-5 text-center font-montserrat font-medium uppercase tracking-widest md:text-4xl">
             Hivex
           </h2>
-          <p>
+          <p className="text-center">
             The exclusive home of Alvara&apos;s SmartFunds, our HiveX is a
             hybridized exchange (HEX), utilizing both blockchain and off-chain
             technology to deliver a blazingly fast and secure trading
@@ -18,11 +18,9 @@ export default function Hivex() {
             process over 500,000 transactions per second.
             <br />
             <br />
-            <br />
             Trade, build, create and redeem SmartFund shares directly on the
             HiveX. Our fiat gateway provides the ability to purchase
             cryptocurrency seamlessly within the platform.
-            <br />
             <br />
             <br />
             HiveX is a licensed hybrid exchange, fully AML, CFT and KYC
@@ -30,7 +28,7 @@ export default function Hivex() {
           </p>
         </div>
       </Hives>
-      <div className="container mx-auto grid grid-cols-1 gap-7 px-8 md:grid-cols-3 md:px-32">
+      <div className="container mx-auto grid grid-cols-1 items-center justify-center gap-8 px-8 md:grid-cols-[repeat(3,minmax(250px,300px))] md:px-32">
         <Info
           image="/images/hivex/trade-c-etfs.png"
           title="Trade"

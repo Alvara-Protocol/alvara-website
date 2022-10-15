@@ -12,12 +12,12 @@ export default function Intro() {
           ALVARA PROTOCOL
         </span>
         <div>
-          <h2 className="font-[50px] uppercase tracking-wider">
+          <h2 className="text-4xl uppercase tracking-wider">
             We&apos;re Changing the Way the World Invests.
           </h2>
-          <div className="h-[4px] w-full bg-gradient-to-r from-purple-650 to-transparent"></div>
+          <div className="h-[2px] w-full bg-gradient-to-r from-purple-650 to-transparent"></div>
         </div>
-        <p>
+        <p className="w-4/5 font-poppins text-base font-light tracking-widest">
           Delivering the world’s most popular financial product - Exchange
           Traded Funds - to crypto, the Alvara Protocol is the first of its kind
           - a one-stop crypto ETF exchange with built-in fund creation and
@@ -25,9 +25,8 @@ export default function Intro() {
           testing your strategy on the HiveX leaderboard.
           <br />
           <br />
-          <br /> A cutting-edge trading platform empowering the next generation
-          of fund managers.
-          <br />
+          A cutting-edge trading platform empowering the next generation of fund
+          managers.
           <br />
           <br />
           Welcome to the Hive!

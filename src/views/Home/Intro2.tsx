@@ -12,8 +12,8 @@ export default function Intro2() {
           ALVARA PROTOCOL
         </span>
         <h2 className="font-medium uppercase tracking-wider">smart funds</h2>
-        <div className="h-[4px] w-full bg-gradient-to-r from-purple-650 to-transparent"></div>
-        <p>
+        <div className="h-[2px] w-full bg-gradient-to-r from-purple-650 to-transparent"></div>
+        <p className="w-4/5">
           Alvara SmartFunds. That&apos;s our name for Crypto ETFs - baskets of
           assets, owned by investors, with shares tradable on the HiveX. Each
           SmartFund has its own NFT counterpart. Held by the manager, the NFT is
