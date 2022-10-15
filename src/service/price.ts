@@ -12,3 +12,8 @@ export const fetchETHPrice = async () => {
   );
   return data.ethereum.usd;
 };
+
+export const fetchETHPriceFromBackend = async () => {
+  const { data } = await axios.get<{ result: number }>('/api/price');
+  return data.result;
+};

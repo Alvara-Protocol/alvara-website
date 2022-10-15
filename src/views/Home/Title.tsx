@@ -6,9 +6,9 @@ import bee from '~/images/bee.png';
 
 export default function Title() {
   return (
-    <Hives className="mb-[150px] flex flex-col pt-[250px]">
+    <Hives className="mb-[200px] flex flex-col pt-[150px] md:pt-[250px]">
       <NextImage
-        className="absolute left-0 bottom-0 translate-y-full md:left-1/2 md:-bottom-5 md:translate-y-2/3 md:translate-x-1/2"
+        className="absolute right-0 bottom-0 -z-[1] md:left-1/2 md:-bottom-5 md:translate-x-1/2"
         width={300}
         height={300}
         src={bee}

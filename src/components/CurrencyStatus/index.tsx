@@ -25,11 +25,11 @@ export default function CurrencyStatus({
         <div
           className={clsxm(
             'inline-flex items-center gap-1',
-            changes >= prevChanges && ['text-green-400'],
+            changes >= prevChanges ? ['text-green-400'] : 'text-red-400',
           )}
         >
           <TriangleIcon />
-          {changes}%
+          {changes.toFixed(2)}%
         </div>
         <div>{`${currency1}/${currency2}`}</div>
       </div>
