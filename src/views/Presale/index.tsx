@@ -3,7 +3,14 @@ import axios from 'axios';
 import { getMessageFromCode, serializeError } from 'eth-rpc-errors';
 import { BigNumberish } from 'ethers';
 import Joi from 'joi';
-import React, { useCallback, useEffect, useMemo } from 'react';
+import React, {
+  MutableRefObject,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import { SubmitHandler, useForm, useWatch } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import {
@@ -37,9 +44,10 @@ export interface Option {
   maxVestAmountInUsd: number;
 }
 export interface FormProps {
-  firstName: string;
-  lastName: string;
+  name: string;
   email: string;
+  telegram: string;
+  wallet: string;
   optionAActivated: boolean;
   optionA: number;
   optionBActivated: boolean;
@@ -49,14 +57,16 @@ export interface FormProps {
 }
 
 export const joiSchema = Joi.object<FormProps>({
-  firstName: Joi.string().required(),
-  lastName: Joi.string().required(),
+  name: Joi.string().required(),
   email: Joi.string()
     .email({ tlds: { allow: false } })
     .messages({
       'string.email': 'Invalid Email address',
       'string.empty': 'Required',
     }),
+  telegram: Joi.string().required(),
+  wallet: Joi.string().required(),
+
   optionAActivated: Joi.boolean().required(),
   optionA: Joi.number(),
   optionBActivated: Joi.boolean().required(),
@@ -75,7 +85,32 @@ export interface SignatureResponse {
   vestAmount: BigNumberish;
 }
 
+function useHover<T>(): [MutableRefObject<T>, boolean] {
+  const [value, setValue] = useState<boolean>(false);
+  const ref: any = useRef<T | null>(null);
+  const handleMouseOver = (): void => setValue(true);
+  const handleMouseOut = (): void => setValue(false);
+  useEffect(
+    () => {
+      const node: any = ref.current;
+      if (node) {
+        node.addEventListener('mouseover', handleMouseOver);
+        node.addEventListener('mouseout', handleMouseOut);
+        return () => {
+          node.removeEventListener('mouseover', handleMouseOver);
+          node.removeEventListener('mouseout', handleMouseOut);
+        };
+      }
+    },
+    [], // Recall only if ref changes
+  );
+  return [ref, value];
+}
+
 export default function Presale() {
+  const [hoverRef1, isHovered1] = useHover<HTMLDivElement>();
+  const [hoverRef2, isHovered2] = useHover<HTMLDivElement>();
+  const [hoverRef3, isHovered3] = useHover<HTMLDivElement>();
   const { isConnected, address } = useAccount();
   const { connectAsync } = useConnect();
   const { chain: activeChain } = useNetwork();
@@ -216,51 +251,132 @@ export default function Presale() {
               <li className="underline">Token Utility</li>
             </ul>
           </div>
-          <div className="col-span-6 flex flex-wrap">
-            <div className="relative h-fit w-[200px] cursor-pointer">
-              <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-poppins font-medium text-white">
-                Option 1
-              </span>
-              <NextImage
-                src="/images/presale/option.png"
-                alt="Tokenomics"
-                width={323}
-                height={280}
-                className="w-full"
-              />
+          <div className="col-span-6">
+            <div className="mb-6 grid grid-cols-3 gap-6">
+              <div
+                className="relative h-fit max-w-[200px] cursor-pointer"
+                ref={hoverRef1}
+              >
+                <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-poppins font-medium text-white">
+                  Option 1
+                </span>
+                <NextImage
+                  src="/images/presale/option.png"
+                  alt="Tokenomics"
+                  width={323}
+                  height={280}
+                  className="w-full"
+                />
+              </div>
+              <div
+                className="relative h-fit max-w-[200px] cursor-pointer"
+                ref={hoverRef2}
+              >
+                <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-poppins font-medium text-white">
+                  Option 2
+                </span>
+                <NextImage
+                  src="/images/presale/option.png"
+                  alt="Tokenomics"
+                  width={323}
+                  height={280}
+                  className="w-full"
+                />
+              </div>
+              <div
+                className="relative h-fit max-w-[200px] cursor-pointer"
+                ref={hoverRef3}
+              >
+                <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-poppins font-medium text-white">
+                  Option 3
+                </span>
+                <NextImage
+                  src="/images/presale/option.png"
+                  alt="Tokenomics"
+                  width={323}
+                  height={280}
+                  className="w-full"
+                />
+              </div>
+            </div>
+            <div className="grid min-h-[180px] grid-cols-3 gap-6">
+              <div className="relative h-fit max-w-[200px]">
+                {isHovered1 && (
+                  <>
+                    <div className="absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2 text-center font-poppins">
+                      <p className="mb-3 text-[16px] font-normal text-white">
+                        $0.10
+                      </p>
+                      <p className="font-poppins text-[12px] font-light">
+                        No Lock <br />
+                        100% of ALVA received <br /> on TGE
+                      </p>
+                    </div>
+                    <NextImage
+                      src="/images/presale/option-detail.png"
+                      alt="Tokenomics"
+                      width={323}
+                      height={280}
+                      className="w-full"
+                    />
+                  </>
+                )}
+              </div>
+              <div className="relative h-fit max-w-[200px]">
+                {isHovered2 && (
+                  <>
+                    <div className="absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2 text-center font-poppins">
+                      <p className="mb-3 text-[16px] font-normal text-white">
+                        $0.075
+                      </p>
+                      <p className="font-poppins text-[12px] font-light">
+                        6 month lock <br />
+                        16.7%/month from <br /> month 1
+                      </p>
+                    </div>
+                    <NextImage
+                      src="/images/presale/option-detail.png"
+                      alt="Tokenomics"
+                      width={323}
+                      height={280}
+                      className="w-full"
+                    />
+                  </>
+                )}
+              </div>
+              <div className="relative h-fit max-w-[200px]">
+                {isHovered3 && (
+                  <>
+                    <div className="absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2 text-center font-poppins">
+                      <p className="mb-3 text-[16px] font-normal text-white">
+                        $0.05
+                      </p>
+                      <p className="font-poppins text-[12px] font-light">
+                        18 month lock <br />
+                        5.56%/month from <br /> month 1
+                      </p>
+                    </div>
+                    <NextImage
+                      src="/images/presale/option-detail.png"
+                      alt="Tokenomics"
+                      width={323}
+                      height={280}
+                      className="w-full"
+                    />
+                  </>
+                )}
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="container mx-auto my-4 w-3/4">
-        <h2 className="text-center">Join Presale.</h2>
+      <section className="container mx-auto mt-20 w-3/4">
         <form
-          className="flex flex-col items-center gap-8"
+          className="flex flex-col items-center"
           onSubmit={handleSubmit(onSubmit)}
         >
-          <div className="flex w-full flex-col items-center gap-4 py-10">
-            <InputGroup
-              containerClassName="w-1/3"
-              label="First Name"
-              required
-              {...register('firstName', { required: true })}
-            />
-            <InputGroup
-              containerClassName="w-1/3"
-              label="Last Name"
-              required
-              {...register('lastName')}
-            />
-            <InputGroup
-              containerClassName="w-1/3"
-              label="Email Address"
-              required
-              {...register('email')}
-              error={formState.errors.email?.message}
-            />
-          </div>
-          <div className="border-gradient3 flex w-full flex-col items-center gap-4 border-y py-10 ">
+          <div className="border-gradient3 flex w-full flex-col items-center gap-4 border-y pt-10 pb-4">
             <div className="w-full">
               <Select
                 containerClassName="items-start"
@@ -308,24 +424,69 @@ export default function Presale() {
                 {...register('optionC', { min: 0, max: 400000 })}
               />
             </div>
-          </div>
-          <div className="w-full">
-            <h4 className="text-center text-2xl font-medium">Total ETH</h4>
-            <div className="border-gradient w-full border p-3 text-center">
-              {`${totalETH.toFixed(2)} ETH`}
+
+            <div className="w-full">
+              <h4 className="text-center text-2xl font-medium">Total ETH</h4>
+              <div className="border-gradient my-3 w-full border p-3 text-center">
+                {`${totalETH.toFixed(2)} ETH`}
+              </div>
             </div>
+            <Button
+              type={isConnected ? 'submit' : 'button'}
+              onClick={
+                isConnected ? handleSubmit(onSubmit) : handleConnectWallet
+              }
+            >
+              {isConnected ? 'Join' : 'Connect Wallet'}
+            </Button>
           </div>
-          <Button
-            type={isConnected ? 'submit' : 'button'}
-            onClick={isConnected ? handleSubmit(onSubmit) : handleConnectWallet}
-          >
-            {isConnected ? 'Join' : 'Connect Wallet'}
-          </Button>
+
+          <div className="flex w-full flex-col items-center gap-4 pt-16">
+            <p className="text-center text-[20px] text-black">
+              To receive updates on the presale please fill out the form below.
+            </p>
+            <InputGroup
+              containerClassName="w-1/3"
+              label="Name"
+              required
+              {...register('name', { required: true })}
+            />
+            <InputGroup
+              containerClassName="w-1/3"
+              label="Email Address"
+              required
+              {...register('email')}
+            />
+            <InputGroup
+              containerClassName="w-1/3"
+              label="Telegram ID"
+              required
+              {...register('telegram')}
+              error={formState.errors.email?.message}
+            />
+            <InputGroup
+              containerClassName="w-1/3"
+              label="Wallet Address"
+              required
+              {...register('wallet')}
+              error={formState.errors.email?.message}
+            />
+            <Button
+              type="submit"
+              onClick={handleSubmit(onSubmit)}
+              className="min-w-[220px] justify-center"
+            >
+              Submit
+            </Button>
+          </div>
         </form>
       </section>
 
-      <div>{isError ? 'Unable to fetch' : `${ethPrice} USD`}</div>
-      <div className="container mx-auto grid grid-cols-1 items-center justify-center py-14 md:grid-cols-4 lg:p-20">
+      <div className="hidden">
+        {isError ? 'Unable to fetch' : `${ethPrice} USD`}
+      </div>
+
+      <div className="container mx-auto grid grid-cols-1 items-center justify-center py-10 md:grid-cols-4 lg:p-10">
         <Links visible={true} />
       </div>
     </main>

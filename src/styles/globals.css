@@ -3,12 +3,6 @@
 @tailwind utilities;
 
 @layer base {
-    /* inter var - latin */
-
-    .cursor-newtab {
-        cursor: url('/images/new-tab.png') 10 10, pointer;
-    }
-
     /* #region  /**=========== Typography =========== */
     .h0 {
         @apply font-montserrat text-3xl font-bold md:text-5xl;
