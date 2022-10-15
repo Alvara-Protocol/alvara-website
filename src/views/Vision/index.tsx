@@ -37,7 +37,7 @@ export default function Vision() {
   };
   return (
     <main className="relative bg-gray-400 pt-[92px]">
-      <Hives className="px-20">
+      <Hives className="px-10 md:px-20">
         <div className="py-32">
           <Slider className="" {...settings}>
             <div>
