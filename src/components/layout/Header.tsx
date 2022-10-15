@@ -59,7 +59,7 @@ export default function Header() {
         <UnstyledLink href="/">
           <NextImage
             useSkeleton
-            className="w-32 md:w-40"
+            className="hidden w-32 md:w-40 lg:block"
             src={
               isPresale && !scroll
                 ? '/images/nav-logo.png'
@@ -69,12 +69,23 @@ export default function Header() {
             height="45"
             alt="Logo"
           />
+          <NextImage
+            useSkeleton
+            className="w-32 md:w-40 lg:hidden"
+            src="/images/nav-logo-black.png"
+            width="230"
+            height="45"
+            alt="Logo"
+          />
         </UnstyledLink>
         <nav>
           <button onClick={openModal} className="block p-2 lg:hidden">
             <HamburgerIcon
+              className="hidden lg:block"
               stroke={isPresale && !scroll ? '#FFFFFF' : '#131531'}
             />
+
+            <HamburgerIcon className="block lg:hidden" stroke="#131531" />
           </button>
           <Transition appear show={isOpen} as={React.Fragment}>
             <Dialog
