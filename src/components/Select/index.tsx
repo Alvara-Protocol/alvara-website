@@ -10,10 +10,8 @@ export interface SelectProps extends React.ComponentPropsWithRef<'input'> {
 const Select = React.forwardRef<HTMLInputElement, SelectProps>(
   ({ label, containerClassName, ...props }, ref) => {
     return (
-      <div
-        className={clsxm('inline-flex items-center gap-2', containerClassName)}
-      >
-        <span className="font-montserrat text-sm font-medium">{label}</span>
+      <div className={clsxm('inline-flex gap-4', containerClassName)}>
+        <span className="font-montserrat text-[16px] font-medium">{label}</span>
         <input
           ref={ref}
           type="checkbox"

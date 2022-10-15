@@ -15,7 +15,7 @@ const techLinks = [
 const aboutAlvaraLinks = [
   { href: '/vision', label: 'Vision' },
   { href: '/team', label: 'Team' },
-  { href: '/roadmap-papers', label: 'Roadmap & Papers' },
+  { href: '/roadmap', label: 'Roadmap & Papers' },
 ];
 
 export default function Header() {
@@ -59,11 +59,11 @@ export default function Header() {
         <UnstyledLink href="/">
           <NextImage
             useSkeleton
-            className="w-32 md:w-48"
+            className="w-32 md:w-40"
             src={
               isPresale && !scroll
-                ? '/svg/nav-logo.svg'
-                : '/svg/nav-logo-black.svg'
+                ? '/images/nav-logo.png'
+                : '/images/nav-logo-black.png'
             }
             width="230"
             height="45"
@@ -72,7 +72,9 @@ export default function Header() {
         </UnstyledLink>
         <nav>
           <button onClick={openModal} className="block p-2 lg:hidden">
-            <HamburgerIcon stroke="#131531" />
+            <HamburgerIcon
+              stroke={isPresale && !scroll ? '#FFFFFF' : '#131531'}
+            />
           </button>
           <Transition appear show={isOpen} as={React.Fragment}>
             <Dialog
@@ -111,8 +113,8 @@ export default function Header() {
                         <UnstyledLink href="/">
                           <NextImage
                             useSkeleton
-                            className="mt-1.5 w-36"
-                            src="/svg/nav-logo-black.svg"
+                            className="mt-1.5 w-32"
+                            src="/images/nav-logo-black.png"
                             width="230"
                             height="45"
                             alt="Icon"
@@ -146,7 +148,7 @@ export default function Header() {
                                     (isShowingTech) => !isShowingTech,
                                   )
                                 }
-                                className="font-semibold"
+                                className="font-medium"
                               >
                                 Technology
                               </button>
@@ -180,7 +182,7 @@ export default function Header() {
                                     (isShowingAbout) => !isShowingAbout,
                                   )
                                 }
-                                className="font-semibold"
+                                className="font-medium"
                               >
                                 About Alvara
                               </button>
@@ -209,8 +211,8 @@ export default function Header() {
                             </div>
                             <div>
                               <UnstyledLink
-                                href="/the-buzz"
-                                className="font-semibold"
+                                href="/news"
+                                className="font-medium"
                               >
                                 The Buzz
                               </UnstyledLink>
@@ -237,7 +239,7 @@ export default function Header() {
               <Menu as="div" className="relative inline-block text-left">
                 <Menu.Button
                   className={clsx(
-                    'inline-flex w-full items-center justify-center px-4 py-2 text-[18px] font-medium hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75',
+                    'inline-flex w-full items-center justify-center px-4 py-2 text-[16px] hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75',
                     isPresale && !scroll ? 'text-white' : 'text-dark-blue-400',
                   )}
                 >
@@ -267,7 +269,7 @@ export default function Header() {
                         <Menu.Item key={link.href} as={React.Fragment}>
                           {({ active }) => (
                             <UnstyledLink
-                              className={`block p-1 ${
+                              className={`block p-1 text-[15px] ${
                                 active
                                   ? 'bg-primary text-white'
                                   : 'bg-white text-black'
@@ -288,7 +290,7 @@ export default function Header() {
               <Menu as="div" className="relative inline-block text-left">
                 <Menu.Button
                   className={clsx(
-                    'inline-flex w-full items-center justify-center px-4 py-2 text-[18px] font-medium hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75',
+                    'inline-flex w-full items-center justify-center px-4 py-2 text-[16px] hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75',
                     isPresale && !scroll ? 'text-white' : 'text-dark-blue-400',
                   )}
                 >
@@ -318,7 +320,7 @@ export default function Header() {
                         <Menu.Item key={link.href} as={React.Fragment}>
                           {({ active }) => (
                             <UnstyledLink
-                              className={`block p-1 ${
+                              className={`block p-1 text-[15px] ${
                                 active
                                   ? 'bg-primary text-white'
                                   : 'bg-white text-black'
@@ -337,9 +339,9 @@ export default function Header() {
             </li>
             <li>
               <UnstyledLink
-                href="/the-buzz"
+                href="/news"
                 className={clsx(
-                  'text-[18px] font-medium hover:text-opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75',
+                  'text-[16px] hover:text-opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75',
                   isPresale && !scroll ? 'text-white' : 'text-dark-blue-400',
                 )}
               >

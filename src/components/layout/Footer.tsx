@@ -13,7 +13,7 @@ export default function Footer() {
           <NextImage
             useSkeleton
             className="mt-1.5 mr-12 w-48"
-            src="/svg/nav-logo-black.svg"
+            src="/images/nav-logo-black.png"
             width="230"
             height="45"
             alt="Alvara"
@@ -35,20 +35,22 @@ export default function Footer() {
       <div className="col-span-10 flex flex-col items-center lg:order-last lg:col-span-4 lg:items-start">
         <NextImage
           useSkeleton
-          className="mb-14 w-48 lg:hidden"
-          src="/svg/nav-logo-black.svg"
+          className="w-48 lg:hidden"
+          src="/images/nav-logo-black.png"
           width="230"
           height="45"
           alt="Alvara"
         />
-        <p className="text-[27px] text-dark-blue-400 lg:pt-3">SUBSCRIBE</p>
-        <p className="my-7 text-stone-600 lg:mt-6 lg:mb-5">
+        <p className="hidden text-[27px] text-dark-blue-400 lg:pt-3">
+          SUBSCRIBE
+        </p>
+        <p className="my-7 hidden text-stone-600 lg:mt-6 lg:mb-5">
           Sign up to receive Alvara news and updates
         </p>
         <form
           action="/api/form"
           method="post"
-          className="flex flex-col items-center gap-4 lg:flex-row lg:items-stretch lg:gap-0"
+          className="hidden flex-col items-center gap-4 lg:flex-row lg:items-stretch lg:gap-0"
         >
           <input
             type="email"

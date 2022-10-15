@@ -15,29 +15,36 @@ const RangeWithEthereum = React.forwardRef<
 >(({ rate, tokenPriceInUsd, ...props }, ref) => {
   const [value, setValue] = useState(0);
   return (
-    <div className="grid grid-cols-12 items-center">
+    <div className="mt-5 grid grid-cols-12 items-center">
       <Range
         ref={ref}
         {...props}
-        containerClassName="col-start-1 col-end-10"
+        containerClassName="col-start-1 col-end-9"
         onChange={(e) => {
           setValue(parseInt(e.target.value));
           props.onChange?.(e);
         }}
       />
-      <div className="col-start-10 col-end-11 mx-2 inline-flex h-20 w-20 items-center justify-center rounded-full bg-gray-400 p-2">
-        <EthereumIcon />
+      <div className="col-start-9 col-end-10 mx-2 inline-flex h-12 w-12 items-center justify-center rounded-full bg-gray-400 p-2">
+        <EthereumIcon className="w-[20px]" />
       </div>
-      <div className="col-start-11 col-end-13 bg-gray-400 px-4 py-2 text-center">
-        {props.disabled ? (
-          <>-</>
-        ) : (
-          <>
-            {rate ? `${(value / rate).toFixed(2)} ETH` : 'Unable to calculate'}
-            <br />
-            {`${(value / tokenPriceInUsd).toFixed(2)} ALVRs`}
-          </>
-        )}
+      <div className="col-start-10 col-end-13 grid grid-cols-2">
+        <div className="text-center font-medium">
+          <p className="text-[18px]">ETH</p>
+          <p className="mt-3 bg-gray-400 text-[12px]">
+            {props.disabled
+              ? '-'
+              : rate
+              ? `${(value / rate).toFixed(2)}`
+              : 'Unable to calculate'}
+          </p>
+        </div>
+        <div className="ml-1.5 text-center font-medium">
+          <p className="text-[18px]">ALVR</p>
+          <p className="mt-3 bg-gray-400 text-[12px]">
+            {props.disabled ? '-' : `${(value / tokenPriceInUsd).toFixed(2)}`}
+          </p>
+        </div>
       </div>
     </div>
   );

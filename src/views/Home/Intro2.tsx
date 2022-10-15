@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Button, NextImage } from '@/components';
+import UnstyledLink from '@/components/links/UnstyledLink';
 
 import hives from '~/images/hives-3.png';
 
@@ -12,17 +13,19 @@ export default function Intro2() {
           ALVARA PROTOCOL
         </span>
         <h2 className="font-medium uppercase tracking-wider">smart funds</h2>
-        <div className="h-[4px] w-full bg-gradient-to-r from-purple-650 to-transparent"></div>
-        <p>
+        <div className="h-[2px] w-full bg-gradient-to-r from-purple-650 to-transparent"></div>
+        <p className="w-4/5">
           Alvara SmartFunds. That&apos;s our name for Crypto ETFs - baskets of
           assets, owned by investors, with shares tradable on the HiveX. Each
           SmartFund has its own NFT counterpart. Held by the manager, the NFT is
           the key to the SmartFund - giving the holder the exclusive rights to
           fund management and rewards.
         </p>
-        <Button variant="outline" className="max-w-max py-4 uppercase">
-          learn more
-        </Button>
+        <UnstyledLink href="/roadmap">
+          <Button variant="outline" className="max-w-max py-4 uppercase">
+            learn more
+          </Button>
+        </UnstyledLink>
       </section>
       <div className="hidden md:block md:w-1/2">
         <NextImage

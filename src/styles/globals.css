@@ -3,12 +3,6 @@
 @tailwind utilities;
 
 @layer base {
-    /* inter var - latin */
-
-    .cursor-newtab {
-        cursor: url('/images/new-tab.png') 10 10, pointer;
-    }
-
     /* #region  /**=========== Typography =========== */
     .h0 {
         @apply font-montserrat text-3xl font-bold md:text-5xl;
@@ -40,7 +34,7 @@
 
     body,
     .p {
-        @apply font-montserrat text-sm md:text-base;
+        @apply font-poppins text-sm font-light leading-5 tracking-widest md:text-base;
     }
     /* #endregion  /**======== Typography =========== */
 
@@ -56,6 +50,10 @@
     /* Class to adjust with sticky footer */
     .min-h-main {
         @apply min-h-[calc(100vh-56px)];
+    }
+
+    .toggle {
+        height: 1.4rem !important;
     }
 }
 

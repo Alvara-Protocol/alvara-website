@@ -12,7 +12,9 @@ const Range = React.forwardRef<HTMLInputElement, RangeProps>(
     const [value, setValue] = useState(0);
     return (
       <div className={clsxm(containerClassName, 'w-full')}>
-        <div>${humanFormat(value)}</div>
+        <div className="mb-1 text-[18px] font-medium">
+          ${humanFormat(value)}
+        </div>
         <input
           ref={ref}
           type="range"
@@ -27,7 +29,7 @@ const Range = React.forwardRef<HTMLInputElement, RangeProps>(
             props.onChange?.(e);
           }}
         />
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between text-[12px]">
           <div>${humanFormat(parseFloat(props.min?.toString() || ''))}</div>
           <div>${humanFormat(parseFloat(props.max?.toString() || ''))}</div>
         </div>

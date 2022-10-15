@@ -54,10 +54,10 @@ export default function Info({
 
       {type !== 3 && (
         <>
-          <h4 className="mt-6 mb-8 text-center font-poppins text-[20px] text-black">
+          <h4 className="my-6 text-center font-poppins text-[16px] font-medium text-black">
             {title}
           </h4>
-          <p className="text-center font-poppins text-[13px] text-dark-blue-400">
+          <p className="text-center font-poppins text-[12px] font-light text-dark-blue-400">
             {description}
           </p>
         </>

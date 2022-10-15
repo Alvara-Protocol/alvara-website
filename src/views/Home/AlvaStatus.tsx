@@ -9,15 +9,19 @@ export default function AlvaStatus() {
         ALVA in Numbers
       </h2>
       <div className="grid w-2/3 grid-cols-1 gap-8 md:grid-cols-2">
-        <AlvaStatusItem price="200M" percent={0.2} description="alva" />
+        <AlvaStatusItem price="200M" percent={0.2} description="alva supply" />
         <AlvaStatusItem
           price="10M"
           percent={0.2}
           description="Circulating Supply at Launch"
         />
-        <AlvaStatusItem price="30M" percent={0.2} description="FDV AT LAUNCH" />
         <AlvaStatusItem
-          price="0.15"
+          price="$30M"
+          percent={0.2}
+          description="FDV AT LAUNCH"
+        />
+        <AlvaStatusItem
+          price="$0.15"
           percent={0.2}
           description="Listing Price"
         />

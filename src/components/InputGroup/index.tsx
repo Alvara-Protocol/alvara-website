@@ -25,7 +25,7 @@ const InputGroup = React.forwardRef<HTMLInputElement, InputGroupProps>(
             'border-gradient block w-full border px-4 py-2 outline-none',
           )}
         />
-        {error && <label>{error}</label>}
+        {error && <label className="text-sm text-red-500">{error}</label>}
       </div>
     );
   },

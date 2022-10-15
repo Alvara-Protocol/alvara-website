@@ -43,6 +43,18 @@ export default function Vision() {
             <div>
               <div className="mx-auto flex max-w-[560px] flex-col items-center gap-12">
                 <h2 className="border-gradient w-1/2 border-b-[3px] pb-5 text-center font-montserrat font-medium uppercase tracking-widest">
+                  VISION
+                </h2>
+                <p className="text-center">
+                  To accelerate the decentralization of the global economy;
+                  delivering the world&apos;s most popular financial product to
+                  cryptocurrency.
+                </p>
+              </div>
+            </div>
+            <div>
+              <div className="mx-auto flex max-w-[560px] flex-col items-center gap-12">
+                <h2 className="border-gradient w-1/2 border-b-[3px] pb-5 text-center font-montserrat font-medium uppercase tracking-widest">
                   Purpose.
                 </h2>
                 <p className="text-center">
@@ -52,25 +64,13 @@ export default function Vision() {
               </div>
             </div>
             <div>
-              <div className="mx-auto flex max-w-[560px] flex-col items-center gap-12">
-                <h2 className="border-gradient w-2/3 border-b-[3px] pb-5 text-center font-montserrat font-medium uppercase tracking-widest">
+              <div className="mx-auto flex max-w-[580px] flex-col items-center gap-12">
+                <h2 className="border-gradient w-2/3 border-b-[3px] pb-5 text-center font-montserrat text-xl font-medium uppercase tracking-widest">
                   Callum mitchell-clark, ceo
                 </h2>
-                <p className="text-center">
+                <q className="text-center">
                   We are building the Binance of Crypto ETFs
-                </p>
-              </div>
-            </div>
-            <div>
-              <div className="mx-auto flex max-w-[560px] flex-col items-center gap-12">
-                <h2 className="border-gradient w-1/2 border-b-[3px] pb-5 text-center font-montserrat font-medium uppercase tracking-widest">
-                  VISION
-                </h2>
-                <p className="text-center">
-                  To accelerate the decentralization of the global economy;
-                  delivering the world&apos;s most popular financial product to
-                  cryptocurrency.
-                </p>
+                </q>
               </div>
             </div>
           </Slider>
