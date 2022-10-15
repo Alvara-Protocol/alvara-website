@@ -51,6 +51,10 @@
     .min-h-main {
         @apply min-h-[calc(100vh-56px)];
     }
+
+    .toggle {
+        height: 1.4rem !important;
+    }
 }
 
 @layer utilities {

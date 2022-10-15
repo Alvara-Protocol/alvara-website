@@ -31,6 +31,7 @@ import {
   RangeWithEthereum,
   Select,
 } from '@/components';
+import UnstyledLink from '@/components/links/UnstyledLink';
 
 import { CHAIN_ID, tokenPricesInUsd } from '@/config';
 import { fetchETHPrice } from '@/service';
@@ -247,8 +248,16 @@ export default function Presale() {
               LISTING PRICE $0.15
             </p>
             <ul className="mt-16 ml-8 list-disc text-[20px] font-medium uppercase">
-              <li className="mb-6 underline">Tokenomics</li>
-              <li className="underline">Token Utility</li>
+              <li className="mb-6 underline">
+                <UnstyledLink href="/docs/tokenomics.pdf" openNewTab={true}>
+                  Tokenomics
+                </UnstyledLink>
+              </li>
+              <li className="underline">
+                <UnstyledLink href="/docs/token_utility.pdf" openNewTab={true}>
+                  Token Utility
+                </UnstyledLink>
+              </li>
             </ul>
           </div>
           <div className="col-span-6">
@@ -303,7 +312,7 @@ export default function Presale() {
               <div className="relative h-fit max-w-[200px]">
                 {isHovered1 && (
                   <>
-                    <div className="absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2 text-center font-poppins">
+                    <div className="absolute top-1/2 left-1/2 z-10 w-full -translate-x-1/2 -translate-y-1/2 text-center font-poppins">
                       <p className="mb-3 text-[16px] font-normal text-white">
                         $0.10
                       </p>
@@ -325,7 +334,7 @@ export default function Presale() {
               <div className="relative h-fit max-w-[200px]">
                 {isHovered2 && (
                   <>
-                    <div className="absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2 text-center font-poppins">
+                    <div className="absolute top-1/2 left-1/2 z-10 w-full -translate-x-1/2 -translate-y-1/2 text-center font-poppins">
                       <p className="mb-3 text-[16px] font-normal text-white">
                         $0.075
                       </p>
@@ -347,7 +356,7 @@ export default function Presale() {
               <div className="relative h-fit max-w-[200px]">
                 {isHovered3 && (
                   <>
-                    <div className="absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2 text-center font-poppins">
+                    <div className="absolute top-1/2 left-1/2 z-10 w-full -translate-x-1/2 -translate-y-1/2 text-center font-poppins">
                       <p className="mb-3 text-[16px] font-normal text-white">
                         $0.05
                       </p>
@@ -376,7 +385,7 @@ export default function Presale() {
           className="flex flex-col items-center"
           onSubmit={handleSubmit(onSubmit)}
         >
-          <div className="border-gradient3 flex w-full flex-col items-center gap-4 border-y pt-10 pb-4">
+          <div className="border-gradient3 flex w-full flex-col items-center gap-8 border-y pt-10 pb-4">
             <div className="w-full">
               <Select
                 containerClassName="items-start"
@@ -427,7 +436,7 @@ export default function Presale() {
 
             <div className="w-full">
               <h4 className="text-center text-2xl font-medium">Total ETH</h4>
-              <div className="border-gradient my-3 w-full border p-3 text-center">
+              <div className="border-gradient my-3 mx-auto w-2/3 border p-3 text-center">
                 {`${totalETH.toFixed(2)} ETH`}
               </div>
             </div>
@@ -446,26 +455,26 @@ export default function Presale() {
               To receive updates on the presale please fill out the form below.
             </p>
             <InputGroup
-              containerClassName="w-1/3"
+              containerClassName="w-1/2"
               label="Name"
               required
               {...register('name', { required: true })}
             />
             <InputGroup
-              containerClassName="w-1/3"
+              containerClassName="w-1/2"
               label="Email Address"
               required
               {...register('email')}
             />
             <InputGroup
-              containerClassName="w-1/3"
+              containerClassName="w-1/2"
               label="Telegram ID"
               required
               {...register('telegram')}
               error={formState.errors.email?.message}
             />
             <InputGroup
-              containerClassName="w-1/3"
+              containerClassName="w-1/2"
               label="Wallet Address"
               required
               {...register('wallet')}
@@ -486,7 +495,7 @@ export default function Presale() {
         {isError ? 'Unable to fetch' : `${ethPrice} USD`}
       </div>
 
-      <div className="container mx-auto grid grid-cols-1 items-center justify-center py-10 md:grid-cols-4 lg:p-10">
+      <div className="container mx-auto grid grid-cols-1 items-center justify-center py-10 md:grid-cols-4 lg:py-10">
         <Links visible={true} />
       </div>
     </main>
