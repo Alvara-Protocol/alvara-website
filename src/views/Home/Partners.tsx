@@ -2,8 +2,6 @@ import React from 'react';
 
 import Partner from './components/Partner';
 
-import logo from '~/images/logo.png';
-
 export default function Partners() {
   return (
     <section className="container mx-auto mb-24 flex flex-col items-center justify-center gap-10">
@@ -11,11 +9,12 @@ export default function Partners() {
         partners
       </h2>
       <div className="flex flex-row flex-wrap items-center justify-center gap-8">
-        <Partner image={logo} name="Hello" />
-        <Partner image={logo} name="Hello" />
-        <Partner image={logo} name="Hello" />
-        <Partner image={logo} name="Hello" />
-        <Partner image={logo} name="Hello" />
+        <Partner image="/images/partners/latch.png" name="LATCH" />
+        <Partner image="/images/partners/latch.png" name="LATCH" />
+        <Partner image="/images/partners/latch.png" name="LATCH" />
+        <Partner image="/images/partners/latch.png" name="LATCH" />
+        <Partner image="/images/partners/latch.png" name="LATCH" />
+        <Partner image="/images/partners/latch.png" name="LATCH" />
       </div>
     </section>
   );

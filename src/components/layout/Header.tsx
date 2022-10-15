@@ -339,7 +339,7 @@ export default function Header() {
             </li>
             <li>
               <UnstyledLink
-                href="/the-buzz"
+                href="/news"
                 className={clsx(
                   'text-[16px] hover:text-opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75',
                   isPresale && !scroll ? 'text-white' : 'text-dark-blue-400',

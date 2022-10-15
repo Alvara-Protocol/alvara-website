@@ -230,33 +230,42 @@ export default function Presale() {
           height="215"
         />
         <div className="grid grid-cols-10 gap-6">
-          <div className="col-span-4">
+          <div className="col-span-4 flex flex-col gap-6">
             <p className="mb-8 text-[38px] font-medium uppercase leading-[40px] tracking-widest">
-              ALVA Presale
+              ALVA Presale.
             </p>
-            <p className="text-[14px] font-medium uppercase leading-[20px]">
+            <p className="text-[14px] font-medium leading-[20px]">
               ALVA is the utility token that powers the Alvara Protocol. From
               fee reductions to inclusion in every ETF,{' '}
               <span className="text-fuchsia-450">
                 ALVA is the Honey OF the Hive.
               </span>
+              <br />
+              <br />
+              TGE scheduled for Q2 2023.
+              <br />
+              <br />
+              ALVA tokens will be claimable via this page, in accordance with
+              the vesting schedules.
             </p>
 
             <p className="mt-10 text-[20px] font-medium tracking-widest text-fuchsia-450">
               LISTING PRICE $0.15
             </p>
-            <ul className="mt-16 ml-8 list-disc text-[20px] font-medium uppercase">
-              <li className="mb-6 underline">
-                <UnstyledLink href="/docs/tokenomics.pdf" openNewTab>
-                  Tokenomics
-                </UnstyledLink>
-              </li>
-              <li className="underline">
-                <UnstyledLink href="/docs/token_utility.pdf" openNewTab>
-                  Token Utility
-                </UnstyledLink>
-              </li>
-            </ul>
+            <UnstyledLink
+              className="uppercase underline"
+              href="/docs/tokenomics.pdf"
+              openNewTab
+            >
+              Tokenomics
+            </UnstyledLink>
+            <UnstyledLink
+              className="uppercase underline"
+              href="/docs/token_utility.pdf"
+              openNewTab
+            >
+              Token Utility
+            </UnstyledLink>
           </div>
           <div className="col-span-6">
             <div className="mb-6 grid grid-cols-3 gap-6">
