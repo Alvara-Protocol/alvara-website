@@ -24,7 +24,7 @@ export default function Intro2() {
           learn more
         </Button>
       </section>
-      <div className="md:w-1/2">
+      <div className="hidden md:block md:w-1/2">
         <NextImage
           className="m-auto"
           width={370}

@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { useQuery } from 'wagmi';
 
 import clsxm from '@/lib/clsxm';
+import { usePrevious } from '@/hooks';
 
 import { CurrencyStatus, CurrencyStatusProps } from '@/components';
+
+import { fetchETHPriceFromBackend } from '@/service';
 
 import { generateCurrenciesData } from './mock';
 
@@ -13,6 +17,13 @@ export default function Currencies({ className }: { className?: string }) {
   useEffect(() => {
     setCurrenciesData(generateCurrenciesData(4));
   }, []);
+
+  const { data } = useQuery(['ethPrice-realtime'], fetchETHPriceFromBackend, {
+    refetchInterval: 1500,
+  });
+
+  const prevBalance = usePrevious(data || 0);
+
   return (
     <div
       className={clsxm([
@@ -24,6 +35,8 @@ export default function Currencies({ className }: { className?: string }) {
         <CurrencyStatus
           key={`${currencyData.currency1}-${currencyData.currency2}`}
           {...currencyData}
+          price={data || 0}
+          changes={(data || 0) / prevBalance}
         />
       ))}
     </div>

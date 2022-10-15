@@ -4,7 +4,7 @@ import AlvaStatusItem from './components/AlvaStatusItem';
 
 export default function AlvaStatus() {
   return (
-    <section className="my-20 flex flex-col items-center justify-center gap-10">
+    <section className="flex flex-col items-center justify-center gap-10">
       <h2 className="border-gradient3 border-b-[3px] pb-5 text-center font-montserrat font-medium uppercase tracking-widest">
         ALVA in Numbers
       </h2>
