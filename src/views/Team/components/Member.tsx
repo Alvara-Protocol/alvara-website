@@ -44,7 +44,7 @@ export default function Member({
   return (
     <div className="border-gradient2 gap-6 border-2 bg-white   ">
       <div className="py-4 px-8 text-center">
-        <div className="rounded-full bg-gradient-to-r from-[#FB3FFF] via-[#000] to-[#FB3FFF] p-2">
+        <div className="rounded-full bg-gradient-to-r from-fuchsia-450 via-[#000] to-fuchsia-450 p-2">
           <Image
             className="mb-4 rounded-full"
             src={photo}
@@ -55,8 +55,8 @@ export default function Member({
           />
         </div>
 
-        <div className="font-proppine mt-3 text-2xl font-medium">{name}</div>
-        <div className="text-purple-700">{designation}</div>
+        <div className="font-proppine mt-3 text-xl font-medium">{name}</div>
+        <div className="text-sm text-fuchsia-450">{designation}</div>
       </div>
 
       <div className="flex w-full flex-row items-center justify-between bg-gray-400 px-8 py-4">
