@@ -40,7 +40,7 @@ const RangeWithEthereum = React.forwardRef<
           </p>
         </div>
         <div className="ml-1.5 text-center font-medium">
-          <p className="text-[18px]">ALVR</p>
+          <p className="text-[18px]">ALVA</p>
           <p className="mt-3 bg-gray-400 text-[12px]">
             {props.disabled ? '-' : `${(value / tokenPriceInUsd).toFixed(2)}`}
           </p>

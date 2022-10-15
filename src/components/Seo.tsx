@@ -1,21 +1,20 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
-// !STARTERCONF Change these default meta
 const defaultMeta = {
-  title: 'Next.js + Tailwind CSS + TypeScript Starter',
-  siteName: 'Next.js + Tailwind CSS + TypeScript Starter',
+  title: 'Alvara',
+  siteName: 'Alvara',
   description:
-    'A starter for Next.js, Tailwind CSS, and TypeScript with Absolute Import, Seo, Link component, pre-configured with Husky',
+    'Build. Manage. Earn. A cutting-edge trading platform empowering the next generation of fund managers.',
   /** Without additional '/' on the end */
-  url: 'https://tsnext-tw.thcl.dev',
+  url: 'http://alvaraprotocol.io/',
   type: 'website',
   robots: 'follow, index',
   /**
    * No need to be filled, will be populated with openGraph function
    * If you wish to use a normal image, just specify the path below
    */
-  image: 'https://tsnext-tw.thcl.dev/images/large-og.png',
+  image: 'http://alvaraprotocol.io/logo.png',
 };
 
 type SeoProps = {

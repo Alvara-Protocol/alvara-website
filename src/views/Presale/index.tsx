@@ -27,7 +27,13 @@ import clsxm from '@/lib/clsxm';
 import { metaMaskConnector } from '@/lib/web3/wagmi';
 import { usePresaleContract, useSsr } from '@/hooks';
 
-import { Button, NextImage, RangeWithEthereum, Select } from '@/components';
+import {
+  Button,
+  NextImage,
+  RangeWithEthereum,
+  Select,
+  Seo,
+} from '@/components';
 import UnstyledLink from '@/components/links/UnstyledLink';
 
 import { CHAIN_ID, tokenPricesInUsd } from '@/config';
@@ -221,7 +227,11 @@ export default function Presale() {
 
   return (
     <main>
-      <section className="px-[50px] pt-[120px] pb-[50px] text-black lg:bg-primary lg:text-white">
+      <Seo
+        templateTitle="Presale"
+        description="ALVA is the utility token that powers the Alvara Protocol."
+      />
+      <section className="px-[50px] pt-[120px] text-black lg:bg-primary lg:pb-[50px] lg:text-white">
         <NextImage
           className="absolute top-0 left-56 hidden lg:block"
           alt="Nest"
@@ -230,33 +240,42 @@ export default function Presale() {
           height="215"
         />
         <div className="grid grid-cols-10 gap-6">
-          <div className="col-span-10 lg:col-span-4">
+          <div className="col-span-10 flex flex-col gap-7 lg:col-span-4">
             <p className="mb-8 text-[32px] font-medium uppercase leading-[40px] tracking-widest lg:text-[38px]">
-              ALVA Presale
+              ALVA Presale.
             </p>
-            <p className="text-[14px] font-medium uppercase leading-[20px]">
+            <p className="text-[14px] font-medium leading-[20px]">
               ALVA is the utility token that powers the Alvara Protocol. From
               fee reductions to inclusion in every ETF,{' '}
               <span className="text-fuchsia-450">
                 ALVA is the Honey OF the Hive.
               </span>
+              <br />
+              <br />
+              TGE scheduled for Q2 2023.
+              <br />
+              <br />
+              ALVA tokens will be claimable via this page, in accordance with
+              the vesting schedules.
             </p>
 
-            <p className="mt-10 text-[20px] font-medium tracking-widest text-fuchsia-450">
+            <p className="text-[20px] font-medium tracking-widest text-fuchsia-450">
               LISTING PRICE $0.15
             </p>
-            <ul className="mt-16 ml-8 list-disc text-[20px] font-medium uppercase">
-              <li className="mb-6 underline">
-                <UnstyledLink href="/docs/tokenomics.pdf" openNewTab>
-                  Tokenomics
-                </UnstyledLink>
-              </li>
-              <li className="underline">
-                <UnstyledLink href="/docs/token_utility.pdf" openNewTab>
-                  Token Utility
-                </UnstyledLink>
-              </li>
-            </ul>
+            <UnstyledLink
+              className="uppercase underline"
+              href="/docs/tokenomics.pdf"
+              openNewTab
+            >
+              Tokenomics
+            </UnstyledLink>
+            <UnstyledLink
+              className="uppercase underline"
+              href="/docs/token_utility.pdf"
+              openNewTab
+            >
+              Token Utility
+            </UnstyledLink>
           </div>
           <div className="col-span-10 mt-12 lg:col-span-6 lg:mt-0">
             <div className="mb-6 grid justify-center gap-6 lg:grid-cols-3 lg:justify-start">

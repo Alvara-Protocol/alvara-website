@@ -1,12 +1,13 @@
 import React from 'react';
 
-import { Button, Hives } from '@/components';
+import { Button, Hives, Seo } from '@/components';
 
 import Timeline from './components/Timeline';
 
 export default function Roadmap() {
   return (
     <main className="min-h-[calc(100vh)] ">
+      <Seo templateTitle="Roadmap" />
       <Hives className="bg-gray-400 px-20 py-28">
         <Timeline />
       </Hives>

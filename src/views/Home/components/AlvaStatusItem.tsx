@@ -14,7 +14,7 @@ export default function AlvaStatusItem({
   return (
     <div className="flex flex-col items-center gap-4">
       <span className="text-center font-montserrat text-2xl font-normal tracking-widest md:text-[40px]">
-        ${price}
+        {price}
       </span>
       <div className="relative h-[5px] w-[340px] bg-dark-blue-400">
         <div

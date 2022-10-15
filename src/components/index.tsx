@@ -7,4 +7,5 @@ export { default as InputGroup } from './InputGroup';
 export { default as NextImage } from './NextImage';
 export * from './Range';
 export { default as Select } from './Select';
+export { default as Seo } from './Seo';
 export * from './Svg';
