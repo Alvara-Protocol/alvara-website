@@ -52,28 +52,28 @@ export default function Subscribe() {
         To receive updates on the presale please fill out the form below.
       </p>
       <InputGroup
-        containerClassName="w-1/2"
+        containerClassName="w-full lg:w-1/2"
         label="Name"
         required
         {...register('name', { required: true })}
         error={formState.errors.name?.message}
       />
       <InputGroup
-        containerClassName="w-1/2"
+        containerClassName="w-full lg:w-1/2"
         label="Email Address"
         required
         {...register('email')}
         error={formState.errors.email?.message}
       />
       <InputGroup
-        containerClassName="w-1/2"
+        containerClassName="w-full lg:w-1/2"
         label="Telegram ID"
         required
         {...register('telegram')}
         error={formState.errors.telegram?.message}
       />
       <InputGroup
-        containerClassName="w-1/2"
+        containerClassName="w-full lg:w-1/2"
         label="Wallet Address"
         required
         readOnly

@@ -57,7 +57,7 @@ export default function Info({
           <h4 className="my-6 text-center font-poppins text-[16px] font-medium text-black">
             {title}
           </h4>
-          <p className="text-center font-poppins text-[12px] font-light text-dark-blue-400">
+          <p className="break-words px-2 text-center font-poppins text-[12px] font-light text-dark-blue-400">
             {description}
           </p>
         </>

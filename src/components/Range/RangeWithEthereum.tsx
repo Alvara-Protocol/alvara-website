@@ -15,20 +15,20 @@ const RangeWithEthereum = React.forwardRef<
 >(({ rate, tokenPriceInUsd, ...props }, ref) => {
   const [value, setValue] = useState(0);
   return (
-    <div className="mt-5 grid grid-cols-12 items-center">
+    <div className="relative mt-5 grid grid-cols-12 items-center">
       <Range
         ref={ref}
         {...props}
-        containerClassName="col-start-1 col-end-9"
+        containerClassName="col-span-12 lg:col-start-1 lg:col-end-9"
         onChange={(e) => {
           setValue(parseInt(e.target.value));
           props.onChange?.(e);
         }}
       />
-      <div className="col-start-9 col-end-10 mx-2 inline-flex h-12 w-12 items-center justify-center rounded-full bg-gray-400 p-2">
+      <div className="absolute right-0 -top-[30px] col-span-12 mx-2 inline-flex h-12 w-12 items-center justify-center rounded-full bg-gray-400 p-2 lg:relative lg:top-0 lg:col-start-9 lg:col-end-10">
         <EthereumIcon className="w-[20px]" />
       </div>
-      <div className="col-start-10 col-end-13 grid grid-cols-2">
+      <div className="col-start-10 col-end-13 hidden grid-cols-2 lg:grid">
         <div className="text-center font-medium">
           <p className="text-[18px]">ETH</p>
           <p className="mt-3 bg-gray-400 text-[12px]">
