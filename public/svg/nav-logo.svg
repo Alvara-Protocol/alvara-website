@@ -13,16 +13,16 @@
 <path d="M223.353 24.7497H215.738L214.519 28.3575H209.312L216.699 7.93896H222.468L229.855 28.3575H224.591L223.353 24.7497ZM222.078 20.9421L219.546 13.4601L217.042 20.9421H222.078Z" fill="white"/>
 <defs>
 <linearGradient id="paint0_linear_155_161" x1="-0.0706493" y1="21.5134" x2="44.041" y2="21.5134" gradientUnits="userSpaceOnUse">
-<stop stop-color="#8A15D5"/>
-<stop offset="1" stop-color="#FB3FFF"/>
+<stop stopColor="#8A15D5"/>
+<stop offset="1" stopColor="#FB3FFF"/>
 </linearGradient>
 <linearGradient id="paint1_linear_155_161" x1="-0.0705428" y1="21.5132" x2="44.0411" y2="21.5132" gradientUnits="userSpaceOnUse">
-<stop stop-color="#8A15D5"/>
-<stop offset="1" stop-color="#FB3FFF"/>
+<stop stopColor="#8A15D5"/>
+<stop offset="1" stopColor="#FB3FFF"/>
 </linearGradient>
 <linearGradient id="paint2_linear_155_161" x1="-0.0715013" y1="21.5134" x2="44.0401" y2="21.5134" gradientUnits="userSpaceOnUse">
-<stop stop-color="#8A15D5"/>
-<stop offset="1" stop-color="#FB3FFF"/>
+<stop stopColor="#8A15D5"/>
+<stop offset="1" stopColor="#FB3FFF"/>
 </linearGradient>
 </defs>
 </svg>

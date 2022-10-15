@@ -26,7 +26,7 @@ export default function Linkedin({ ...props }: SvgProps) {
           gradientUnits="userSpaceOnUse"
         >
           <stop stopColor="#8A15D5" />
-          <stop offset="0.994792" stop-color="#FB3FFF" />
+          <stop offset="0.994792" stopColor="#FB3FFF" />
         </linearGradient>
       </defs>
     </svg>
