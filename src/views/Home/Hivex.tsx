@@ -21,8 +21,8 @@ export default function Hivex() {
         />
       </div>
       <div className="flex flex-col gap-8 px-10 md:w-1/2">
-        <h2 className="text-3xl">HiveX</h2>
-        <div className="h-[4px] w-1/2 bg-gradient-to-r from-purple-650 to-transparent"></div>
+        <h2 className="text-4xl">HiveX</h2>
+        <div className="h-[2px] w-1/2 bg-gradient-to-r from-purple-650 to-transparent"></div>
         <p>
           Alvara&apos;s HiveX is a hybrid exchange (HEX), utilizing both
           blockchain and off-chain technology to deliver a blazingly fast and

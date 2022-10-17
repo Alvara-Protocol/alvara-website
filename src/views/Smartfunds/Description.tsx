@@ -8,7 +8,7 @@ export default function Description() {
         <br />
         so sweet?
       </h2>
-      <div className="h-[4px] w-1/2 bg-gradient-to-r from-purple-650 to-transparent"></div>
+      <div className="h-[2px] w-1/2 bg-gradient-to-r from-purple-650 to-transparent"></div>
       <ul className="intro grid grid-cols-1 gap-x-[10rem] gap-y-12 font-poppins font-light md:grid-cols-2">
         <li>
           <b className="font-bold">Build Your Own.</b>

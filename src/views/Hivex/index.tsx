@@ -61,7 +61,7 @@ export default function Hivex() {
         />
         <Info
           image="/images/hivex/item.png"
-          title="Compilance"
+          title="Compliance"
           description="Taking a pragmatic position on decentralization - the Alvara protocol is fully AML, CFT & KYC compliant."
           type={1}
         />

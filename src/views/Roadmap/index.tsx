@@ -7,7 +7,7 @@ import Timeline from './components/Timeline';
 export default function Roadmap() {
   return (
     <main className="min-h-[calc(100vh)] ">
-      <Seo templateTitle="Roadmap" />
+      <Seo templateTitle="Roadmap and Papers" />
       <Hives className="bg-gray-400 px-20 py-28">
         <Timeline />
       </Hives>

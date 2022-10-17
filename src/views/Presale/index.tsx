@@ -248,29 +248,31 @@ export default function Presale() {
               ALVA is the utility token that powers the Alvara Protocol. From
               fee reductions to inclusion in every ETF,{' '}
               <span className="text-fuchsia-450">
-                ALVA is the Honey OF the Hive.
+                ALVA is the Honey of the Hive.
               </span>
               <br />
               <br />
-              TGE scheduled for Q2 2023.
+              <span className="font-normal">TGE scheduled for Q2 2023.</span>
               <br />
               <br />
-              ALVA tokens will be claimable via this page, in accordance with
-              the vesting schedules.
+              <span className="font-normal">
+                ALVA tokens will be claimable via this page, in accordance with
+                the vesting schedules.
+              </span>
             </p>
 
             <p className="text-[20px] font-medium tracking-widest text-fuchsia-450">
               LISTING PRICE $0.15
             </p>
             <UnstyledLink
-              className="uppercase underline"
+              className="underline"
               href="/docs/tokenomics.pdf"
               openNewTab
             >
               Tokenomics
             </UnstyledLink>
             <UnstyledLink
-              className="uppercase underline"
+              className="underline"
               href="/docs/token_utility.pdf"
               openNewTab
             >
@@ -333,7 +335,9 @@ export default function Presale() {
                       <p className="mb-3 text-[16px] font-normal">$0.10</p>
                       <p className="font-poppins text-[12px] font-light">
                         No Lock <br />
-                        100% of ALVA received <br /> on TGE
+                        100% of ALVA
+                        <br /> received on
+                        <br /> TGE
                       </p>
                     </div>
                     <NextImage
