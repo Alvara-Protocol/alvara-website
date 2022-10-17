@@ -9,19 +9,30 @@ import { useAccount } from 'wagmi';
 import { Button, InputGroup } from '@/components';
 
 export interface SubscribeProps {
-  name: string;
+  firstname: string;
+  lastname: string;
   email: string;
-  telegram: string;
-  address: string;
+  telegram_id: string;
+  wallet_address: string;
 }
 
 export const subscribeSchema = Joi.object<SubscribeProps>({
-  name: Joi.string().required(),
+  firstname: Joi.string()
+    .required()
+    .messages({ 'string.empty': 'First Name is required' }),
+  lastname: Joi.string()
+    .required()
+    .messages({ 'string.empty': 'Last Name is required' }),
   email: Joi.string()
     .email({ tlds: { allow: false } })
-    .required(),
-  telegram: Joi.string().required(),
-  address: Joi.string().required(),
+    .required()
+    .messages({ 'string.empty': 'Email is required' }),
+  telegram_id: Joi.string()
+    .required()
+    .messages({ 'string.empty': 'Telegram is required' }),
+  wallet_address: Joi.string()
+    .required()
+    .messages({ 'string.empty': 'Please connect your wallet' }),
 });
 
 export default function Subscribe() {
@@ -43,7 +54,7 @@ export default function Subscribe() {
   };
 
   useEffect(() => {
-    if (address) setValue('address', address);
+    if (address) setValue('wallet_address', address);
   }, [address, setValue]);
 
   return (
@@ -53,10 +64,17 @@ export default function Subscribe() {
       </p>
       <InputGroup
         containerClassName="w-full lg:w-1/2"
-        label="Name"
+        label="First Name"
         required
-        {...register('name', { required: true })}
-        error={formState.errors.name?.message}
+        {...register('firstname', { required: true })}
+        error={formState.errors.firstname?.message}
+      />
+      <InputGroup
+        containerClassName="w-full lg:w-1/2"
+        label="Last Name"
+        required
+        {...register('lastname', { required: true })}
+        error={formState.errors.lastname?.message}
       />
       <InputGroup
         containerClassName="w-full lg:w-1/2"
@@ -69,16 +87,16 @@ export default function Subscribe() {
         containerClassName="w-full lg:w-1/2"
         label="Telegram ID"
         required
-        {...register('telegram')}
-        error={formState.errors.telegram?.message}
+        {...register('telegram_id')}
+        error={formState.errors.telegram_id?.message}
       />
       <InputGroup
         containerClassName="w-full lg:w-1/2"
         label="Wallet Address"
         required
         readOnly
-        {...register('address')}
-        error={formState.errors.address?.message}
+        {...register('wallet_address')}
+        error={formState.errors.wallet_address?.message}
       />
       <Button
         type="submit"

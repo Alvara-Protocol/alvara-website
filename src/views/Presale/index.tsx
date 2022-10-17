@@ -37,7 +37,7 @@ import {
 import UnstyledLink from '@/components/links/UnstyledLink';
 
 import { CHAIN_ID, tokenPricesInUsd } from '@/config';
-import { fetchETHPrice } from '@/service';
+import { fetchETHPriceFromBackend } from '@/service';
 import Links from '@/views/News/Links';
 
 import Subscribe from './Subscribe';
@@ -137,18 +137,23 @@ export default function Presale() {
     control,
   });
 
-  const { data: _ethPrice1, isError } = useQuery(['ethPrice'], fetchETHPrice, {
-    refetchInterval: 2000,
-  });
-  const ethPrice = 1328.1;
+  const { data: ethPrice, isError } = useQuery(
+    ['ethPrice'],
+    fetchETHPriceFromBackend,
+    {
+      refetchInterval: 2000,
+    },
+  );
 
   const totalETH = useMemo(() => {
     let total = 0;
+    if (!ethPrice) return;
     if (optionAActivated && optionA) total += optionA / ethPrice;
     if (optionBActivated && optionB) total += optionB / ethPrice;
     if (optionCActivated && optionC) total += optionC / ethPrice;
     return total;
   }, [
+    ethPrice,
     optionA,
     optionAActivated,
     optionB,
@@ -158,7 +163,7 @@ export default function Presale() {
   ]);
 
   const insufficientBalance = useMemo(() => {
-    if (!balanceResult) return false;
+    if (!balanceResult || !totalETH) return false;
     const { value } = balanceResult;
 
     return value.lt(parseEther(totalETH.toFixed(2)));
@@ -456,7 +461,7 @@ export default function Presale() {
                 insufficientBalance && 'text-red-400',
               )}
             >
-              {`${totalETH.toFixed(2)} ETH`}
+              {totalETH ? `${totalETH.toFixed(2)} ETH` : `-`}
             </div>
             {isBrowser && (
               <span>
@@ -467,7 +472,7 @@ export default function Presale() {
                   : `Unable to fetch balance`}
               </span>
             )}
-            {insufficientBalance && (
+            {isBrowser && insufficientBalance && (
               <label className="ml-4 text-sm text-red-400">
                 Insufficient balance
               </label>
