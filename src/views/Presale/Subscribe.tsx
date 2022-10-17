@@ -1,7 +1,7 @@
 import { joiResolver } from '@hookform/resolvers/joi';
 import axios from 'axios';
 import Joi from 'joi';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import { useAccount } from 'wagmi';
@@ -36,6 +36,7 @@ export const subscribeSchema = Joi.object<SubscribeProps>({
 });
 
 export default function Subscribe() {
+  const [loading, setLoading] = useState(false);
   const { address } = useAccount();
   const { register, handleSubmit, formState, setValue } =
     useForm<SubscribeProps>({
@@ -45,7 +46,10 @@ export default function Subscribe() {
 
   const onSubmit: SubmitHandler<SubscribeProps> = async (data) => {
     try {
+      setLoading(true);
       const _ = await axios.post('/api/hbspt', data);
+      setLoading(false);
+      toast.success('Welcome to the Hive!');
     } catch (error: any) {
       if (axios.isAxiosError(error)) {
         return toast.error(error.response?.data.error);
@@ -102,8 +106,9 @@ export default function Subscribe() {
         type="submit"
         onClick={handleSubmit(onSubmit)}
         className="min-w-[220px] justify-center"
+        disabled={loading}
       >
-        Submit
+        {loading ? 'Please wait...' : 'Submit'}
       </Button>
     </form>
   );
