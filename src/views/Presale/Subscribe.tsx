@@ -49,7 +49,7 @@ export default function Subscribe() {
       setLoading(true);
       const _ = await axios.post('/api/hbspt', data);
       setLoading(false);
-      toast.success('Welcome to the Hive!');
+      toast.success('Thank you for submitting your details.');
     } catch (error: any) {
       if (axios.isAxiosError(error)) {
         return toast.error(error.response?.data.error);
@@ -102,6 +102,10 @@ export default function Subscribe() {
         {...register('wallet_address')}
         error={formState.errors.wallet_address?.message}
       />
+      <p className="text-sm">
+        We will only use this data to contact you in relation to the ALVA
+        presale.
+      </p>
       <Button
         type="submit"
         onClick={handleSubmit(onSubmit)}

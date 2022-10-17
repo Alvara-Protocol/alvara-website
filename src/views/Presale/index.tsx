@@ -192,7 +192,7 @@ export default function Presale() {
 
       await transaction.wait();
 
-      toast.success(`Transaction Confirmed : ${transaction.hash}`);
+      toast.success(`Transaction Successful`);
     } catch (error: any) {
       if (axios.isAxiosError(error)) {
         return toast.error(error.response?.data.error);
