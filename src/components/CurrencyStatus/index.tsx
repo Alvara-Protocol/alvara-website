@@ -8,28 +8,28 @@ import { TriangleIcon } from '@/components/Svg';
 export interface CurrencyStatusProps {
   currency1: string;
   currency2: string;
-  changes: number;
   price: number;
 }
 
 export default function CurrencyStatus({
   currency1,
   currency2,
-  changes,
   price,
 }: CurrencyStatusProps) {
-  const prevChanges = usePrevious(changes);
+  const prevPrice = usePrevious(price);
   return (
     <div className="flex flex-col items-center gap-3">
       <div className="inline-flex items-center gap-2">
         <div
           className={clsxm(
             'inline-flex items-center gap-1',
-            changes >= prevChanges ? ['text-green-400'] : 'text-red-400',
+            price >= prevPrice ? ['text-green-400'] : 'text-red-400',
           )}
         >
-          <TriangleIcon />
-          {changes.toFixed(2)}%
+          <TriangleIcon
+            className={clsxm(price >= prevPrice ? '' : 'rotate-180')}
+          />
+          {((price / prevPrice) * 100 - 100).toFixed(2)}%
         </div>
         <div>{`${currency1}/${currency2}`}</div>
       </div>
