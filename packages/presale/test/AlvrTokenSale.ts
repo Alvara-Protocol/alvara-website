@@ -33,7 +33,7 @@ describe('Alvara Token contract', function () {
 
     const nonce = await alvrTokenSale.nonce(alice.address);
 
-    const amountsETH: BigNumberish[] = [500, 200, 300];
+    const amountsETH: BigNumberish[] = [300, 200000, 300000];
     const amountsAlvr = amountsETH.map((a) => a);
     const vestAmount = amountsETH.reduce(
       (prev, amount) => BigNumber.from(prev).add(BigNumber.from(amount)),
@@ -62,7 +62,7 @@ describe('Alvara Token contract', function () {
 
     const nonce = await alvrTokenSale.nonce(alice.address);
 
-    const amountsETH: BigNumberish[] = [500, 200, 300];
+    const amountsETH: BigNumberish[] = [300, 200000, 300000];
     const amountsAlvr = amountsETH.map((a) => a);
     const vestAmount = amountsETH.reduce(
       (prev, amount) => BigNumber.from(prev).add(BigNumber.from(amount)),

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.9;
+pragma solidity 0.8.17;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
@@ -81,6 +81,7 @@ contract AlvrTokenSale is Ownable, Pausable {
     }
 
     function setTxSigner(address txSigner_) external onlyOwner {
+        require(txSigner_ != address(0), "Invalid address");
         txSigner = txSigner_;
     }
 
@@ -153,18 +154,19 @@ contract AlvrTokenSale is Ownable, Pausable {
     }
 
     function _addInvestorChecked(address investor_) internal {
+        require(investor_ != address(0), "Invalid address");
         if (isInvestor[investor_]) return;
         investors[investorCnt++] = investor_;
         isInvestor[investor_] = true;
     }
 
     function setAlvara(address alvara_) external onlyOwner {
-        require(alvara_ != address(0));
+        require(alvara_ != address(0), "Invalid address");
         alvara = alvara_;
     }
 
     function setOptionCnt(uint256 optionCnt_) external onlyOwner {
-        require(optionCnt_ != 0);
+        require(optionCnt_ != 0, "Invalid count");
         optionCnt = optionCnt_;
     }
 
@@ -173,8 +175,8 @@ contract AlvrTokenSale is Ownable, Pausable {
         uint256 minimum_,
         uint256 maximum_
     ) external onlyOwner {
-        require(option_ < optionCnt);
-        require(minimum_ < maximum_);
+        require(option_ < optionCnt, "Invalid option");
+        require(minimum_ < maximum_, "Invalid min & max");
 
         minimumTokens[option_] = minimum_;
         maximumTokens[option_] = maximum_;
@@ -193,6 +195,10 @@ contract AlvrTokenSale is Ownable, Pausable {
         uint256 option_,
         uint256 tokens_
     ) internal returns (uint256) {
+        console.log("option: ", option_);
+        console.log("minimum: ", _minimum(option_));
+        console.log("maximum: ", _maximum(option_));
+        console.log("amount: ", _tokens(investor_, option_) + tokens_);
         require(
             _minimum(option_) <= _tokens(investor_, option_) + tokens_,
             "Vest more than minimum vest amount"
@@ -257,41 +263,25 @@ contract AlvrTokenSale is Ownable, Pausable {
         isBlocked[user_] = true;
     }
 
-    function _blockUserChecked(address user_) internal {
-        require(!isBlocked[user_]);
-
-        _blockUser(user_);
-    }
-
     function _unblockUser(address user_) internal {
         isBlocked[user_] = false;
     }
 
-    function _unblockUserChecked(address user_) internal {
-        require(isBlocked[user_]);
-
-        _unblockUser(user_);
-    }
-
-    function blockUsers(address[] memory users_, uint256 length_)
+    function blockUsers(address[] memory users_)
         external
         onlyOwner
     {
-        require(length_ > 0);
-
-        for (uint256 i = 0; i < length_; i++) {
-            _blockUserChecked(users_[i]);
+        for (uint256 i = 0; i < users_.length; i++) {
+            _blockUser(users_[i]);
         }
     }
 
-    function unblockUsers(address[] memory users_, uint256 length_)
+    function unblockUsers(address[] memory users_)
         external
         onlyOwner
     {
-        require(length_ > 0);
-
-        for (uint256 i = 0; i < length_; i++) {
-            _unblockUserChecked(users_[i]);
+        for (uint256 i = 0; i < users_.length; i++) {
+            _unblockUser(users_[i]);
         }
     }
 
@@ -315,20 +305,20 @@ contract AlvrTokenSale is Ownable, Pausable {
     }
 
     function _replaceUserChecked(address oldUser_, address newUser_) internal {
-        require(isInvestor[oldUser_] && !isBlocked[oldUser_]);
-        require(!isInvestor[newUser_] && !isBlocked[newUser_]);
+        require(oldUser_ != address(0) && newUser_ != address(0), "Invalid address");
+        require(isInvestor[oldUser_] && !isBlocked[oldUser_], "Invalid previous user");
+        require(!isInvestor[newUser_] && !isBlocked[newUser_], "Invalid next user");
 
         _replaceUser(oldUser_, newUser_);
     }
 
     function replaceUsers(
         address[] memory oldUsers_,
-        address[] memory newUsers_,
-        uint256 length_
+        address[] memory newUsers_
     ) external onlyOwner {
-        require(length_ > 0);
+        require(oldUsers_.length == newUsers_.length, "Mismatching array length");
 
-        for (uint256 i = 0; i < length_; i++) {
+        for (uint256 i = 0; i < oldUsers_.length; i++) {
             _replaceUserChecked(oldUsers_[i], newUsers_[i]);
         }
     }
@@ -364,7 +354,7 @@ contract AlvrTokenSale is Ownable, Pausable {
 
         totalVested += vestAmount_;
 
-        require(vestAmount_ == msg.value, "Invalid Amounts");
+        require(vestAmount_ == msg.value, "Invalid amounts");
         payable(treasuryWallet).transfer(msg.value); // to be confirmed
     }
 
@@ -391,7 +381,7 @@ contract AlvrTokenSale is Ownable, Pausable {
     ) internal returns (uint256) {
         require(
             _tokens(investor_, option_) >=
-                _claimed(investor_, option_) + tokens_
+                _claimed(investor_, option_) + tokens_, "Exceeds claimable"
         );
 
         claimed[investor_][option_] += tokens_;
