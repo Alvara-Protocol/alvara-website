@@ -4,7 +4,6 @@ pragma solidity 0.8.17;
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/security/Pausable.sol";
-import "hardhat/console.sol";
 
 contract AlvrTokenSale is Ownable, Pausable {
     address public alvara;
@@ -195,10 +194,6 @@ contract AlvrTokenSale is Ownable, Pausable {
         uint256 option_,
         uint256 tokens_
     ) internal returns (uint256) {
-        console.log("option: ", option_);
-        console.log("minimum: ", _minimum(option_));
-        console.log("maximum: ", _maximum(option_));
-        console.log("amount: ", _tokens(investor_, option_) + tokens_);
         require(
             _minimum(option_) <= _tokens(investor_, option_) + tokens_,
             "Vest more than minimum vest amount"
