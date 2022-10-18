@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Button, Hives, Info } from '@/components';
+import UnstyledLink from '@/components/links/UnstyledLink';
 
 export default function Intro() {
   return (
@@ -19,9 +20,14 @@ export default function Intro() {
             opportunity.
           </p>
           <div className="h-[2px] w-full bg-gradient-to-r from-purple-650 to-transparent"></div>
-          <Button variant="outline" className="max-w-max uppercase">
-            Read more
-          </Button>
+          <UnstyledLink
+            href="https://alvaraprotocol.medium.com/crypto-etfs-the-revolution-is-coming-aa969b8119b"
+            openNewTab
+          >
+            <Button variant="outline" className="max-w-max uppercase">
+              Read more
+            </Button>
+          </UnstyledLink>
         </div>
       </Hives>
       <div className="container mx-auto grid grid-cols-1 gap-8 px-8 md:grid-cols-4 md:px-20">
@@ -48,7 +54,7 @@ export default function Intro() {
         />
         <Info
           image="/images/smart-funds/join.png"
-          title="Diversificaction"
+          title="Diversification"
           description="ETFs offer instant diversification through exposure to a basket of underlying assets."
           size={114}
           type={1}

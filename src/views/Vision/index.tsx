@@ -44,7 +44,7 @@ export default function Vision() {
             <div>
               <div className="mx-auto flex max-w-[560px] flex-col items-center gap-12">
                 <h2 className="border-gradient w-1/2 border-b-[3px] pb-5 text-center font-montserrat font-medium uppercase tracking-widest">
-                  VISION
+                  VISION.
                 </h2>
                 <p className="text-center">
                   To accelerate the decentralization of the global economy;

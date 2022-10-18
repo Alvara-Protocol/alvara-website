@@ -13,7 +13,6 @@ export const generateCurrenciesData = (
     result.push({
       currency1: chance.currency().code,
       currency2: chance.currency().code,
-      changes: chance.integer({ min: 0, max: 100 }) / 100,
       price: chance.integer({ min: 25000, max: 100000 }),
     });
   }

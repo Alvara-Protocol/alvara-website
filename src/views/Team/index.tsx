@@ -23,7 +23,7 @@ export default function Team() {
     },
     {
       name: 'Jay Grant',
-      designation: '(Acting) CTO',
+      designation: 'Product Manager',
       photo: '/images/team/james.png',
       links: {
         linkedin: 'https://linkedin.com',
@@ -31,7 +31,7 @@ export default function Team() {
       achievments: [
         '10+ years active in the blockchain space with involvement in the early days of LTC',
         'Developed a number of solutions in the commercial property space to assist with in-depth demographic analysis and subsequently acquisitions',
-        'Overseeing the planning, structure and development of the upcoming ETFX platform',
+        'Overseeing the planning, structure and development of the upcoming HiveX platform',
       ],
     },
     {
@@ -70,11 +70,9 @@ export default function Team() {
         linkedin: 'https://linkedin.com',
       },
       achievments: [
-        '10+ years business owner and management experience',
-        'Project Management, Marketing, Consumer Psychology and Legal experience',
-        'Served on management teams for several crypto startups',
-        'Crypto + DeFi Enthusiast and Investor',
-        'Blockchain infrastructure support experience',
+        'Experienced product development with a demonstrated history of working in the financial services industry.',
+        'Skilled in FX spot, trading strategies, Java, Borland Delphi, and Foreign Exchange (FX) trading.',
+        'Strong product management professional with a Level 2 professional degree focused on financial management from University of Latvia.',
       ],
     },
     {
@@ -117,7 +115,7 @@ export default function Team() {
         'Strong industry expertise with a passion for building relationships ',
         'Experienced community lead ',
         'Early adopter and investor of various major cryptocurrencies ',
-        'Responsible for guarding the connection between team and community',
+        'Responsible for managing the connection between team and community',
       ],
     },
   ];
@@ -186,7 +184,7 @@ export default function Team() {
       <Hives className="flex w-full flex-col items-center">
         <div className=" pt-[150px] text-center">
           <h2 className="text-center font-montserrat font-medium uppercase tracking-widest">
-            Alvara teams
+            Core team
           </h2>
           <div className="mx-auto mt-5 h-[2px] w-3/5 bg-gradient-to-r from-purple-650 to-transparent"></div>
         </div>
@@ -197,7 +195,10 @@ export default function Team() {
             <Member key={i} {...member} />
           ))}
         </div>
-        <div className="text-center text-[65px]">Advisors</div>
+        <h2 className="text-center font-montserrat font-medium uppercase tracking-widest">
+          Advisors
+        </h2>
+        <div className="mx-auto mt-5 h-[2px] w-1/5 bg-gradient-to-r from-purple-650 to-transparent" />
         <div className="mt-32 mb-16 grid grid-cols-1 items-start gap-x-10 gap-y-16 md:grid-cols-4 ">
           {advisors.map((member, i) => (
             <Member key={i} {...member} />

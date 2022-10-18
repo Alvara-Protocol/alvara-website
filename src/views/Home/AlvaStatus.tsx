@@ -5,10 +5,10 @@ import AlvaStatusItem from './components/AlvaStatusItem';
 export default function AlvaStatus() {
   return (
     <section className="flex flex-col items-center justify-center gap-10">
-      <h2 className="border-gradient3 border-b-[3px] pb-5 text-center font-montserrat font-medium uppercase tracking-widest">
+      <h2 className="border-gradient3 border-b-[3px] pb-5 text-center font-montserrat text-4xl font-medium uppercase tracking-widest">
         ALVA in Numbers
       </h2>
-      <div className="grid w-2/3 grid-cols-1 gap-8 md:grid-cols-2">
+      <div className="grid grid-cols-[repeat(1,minmax(300px,320px))] items-center gap-8 md:grid-cols-[repeat(2,minmax(300px,350px))]">
         <AlvaStatusItem price="200M" percent={0.2} description="alva supply" />
         <AlvaStatusItem
           price="10M"

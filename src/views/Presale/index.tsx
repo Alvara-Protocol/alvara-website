@@ -37,7 +37,7 @@ import {
 import UnstyledLink from '@/components/links/UnstyledLink';
 
 import { CHAIN_ID, tokenPricesInUsd } from '@/config';
-import { fetchETHPrice } from '@/service';
+import { fetchETHPriceFromBackend } from '@/service';
 import Links from '@/views/News/Links';
 
 import Subscribe from './Subscribe';
@@ -137,18 +137,23 @@ export default function Presale() {
     control,
   });
 
-  const { data: _ethPrice1, isError } = useQuery(['ethPrice'], fetchETHPrice, {
-    refetchInterval: 2000,
-  });
-  const ethPrice = 1328.1;
+  const { data: ethPrice, isError } = useQuery(
+    ['ethPrice'],
+    fetchETHPriceFromBackend,
+    {
+      refetchInterval: 60000,
+    },
+  );
 
   const totalETH = useMemo(() => {
     let total = 0;
+    if (!ethPrice) return;
     if (optionAActivated && optionA) total += optionA / ethPrice;
     if (optionBActivated && optionB) total += optionB / ethPrice;
     if (optionCActivated && optionC) total += optionC / ethPrice;
     return total;
   }, [
+    ethPrice,
     optionA,
     optionAActivated,
     optionB,
@@ -158,7 +163,7 @@ export default function Presale() {
   ]);
 
   const insufficientBalance = useMemo(() => {
-    if (!balanceResult) return false;
+    if (!balanceResult || !totalETH) return false;
     const { value } = balanceResult;
 
     return value.lt(parseEther(totalETH.toFixed(2)));
@@ -173,9 +178,9 @@ export default function Presale() {
       const {
         data: { ethAmounts, tokenAmounts, v, r, s, vestAmount },
       } = await axios.post<SignatureResponse>(`/api/signature/${address}`, {
-        optionA: data.optionA / ethPrice,
-        optionB: data.optionB / ethPrice,
-        optionC: data.optionC / ethPrice,
+        optionA: optionAActivated ? data.optionA / ethPrice : 0,
+        optionB: optionBActivated ? data.optionB / ethPrice : 0,
+        optionC: optionCActivated ? data.optionC / ethPrice : 0,
       });
 
       // const transaction = await setUnclaimable();
@@ -187,7 +192,7 @@ export default function Presale() {
 
       await transaction.wait();
 
-      toast.success(`Transaction Confirmed : ${transaction.hash}`);
+      toast.success(`Transaction Successful`);
     } catch (error: any) {
       if (axios.isAxiosError(error)) {
         return toast.error(error.response?.data.error);
@@ -249,29 +254,31 @@ export default function Presale() {
                 ALVA is the utility token that powers the Alvara Protocol. From
                 fee reductions to inclusion in every ETF,{' '}
                 <span className="text-fuchsia-450">
-                  ALVA is the Honey OF the Hive.
+                  ALVA is the honey of the Hive.
                 </span>
                 <br />
                 <br />
-                TGE scheduled for Q2 2023.
+                <span className="font-normal">TGE scheduled for Q2 2023.</span>
                 <br />
                 <br />
-                ALVA tokens will be claimable via this page, in accordance with
-                the vesting schedules.
+                <span className="font-normal">
+                  ALVA tokens will be claimable via this page, in accordance
+                  with the vesting schedules.
+                </span>
               </p>
 
               <p className="text-[20px] font-medium tracking-widest text-fuchsia-450">
                 LISTING PRICE $0.15
               </p>
               <UnstyledLink
-                className="uppercase underline"
+                className="underline"
                 href="/docs/tokenomics.pdf"
                 openNewTab
               >
                 Tokenomics
               </UnstyledLink>
               <UnstyledLink
-                className="uppercase underline"
+                className="underline"
                 href="/docs/token_utility.pdf"
                 openNewTab
               >
@@ -399,7 +406,9 @@ export default function Presale() {
                         <p className="mb-3 text-[16px] font-normal">$0.10</p>
                         <p className="font-poppins text-[12px] font-light">
                           No Lock <br />
-                          100% of ALVA received <br /> on TGE
+                          100% of ALVA
+                          <br /> received on
+                          <br /> TGE
                         </p>
                       </div>
                       <NextImage
@@ -466,7 +475,7 @@ export default function Presale() {
           <div className="w-full">
             <Select
               containerClassName="items-start"
-              label="Option1"
+              label="Option 1"
               {...register('optionAActivated')}
             />
             <RangeWithEthereum
@@ -482,7 +491,7 @@ export default function Presale() {
           <div className="w-full">
             <Select
               containerClassName="items-start"
-              label="Option2"
+              label="Option 2"
               {...register('optionBActivated')}
             />
             <RangeWithEthereum
@@ -498,7 +507,7 @@ export default function Presale() {
           <div className="w-full">
             <Select
               containerClassName="items-start"
-              label="Option3"
+              label="Option 3"
               {...register('optionCActivated')}
             />
             <RangeWithEthereum
@@ -519,9 +528,9 @@ export default function Presale() {
                 insufficientBalance && 'text-red-400',
               )}
             >
-              {`${totalETH.toFixed(2)} ETH`}
+              {totalETH ? `${totalETH.toFixed(2)} ETH` : `-`}
             </div>
-            {isBrowser && (
+            {isBrowser && isConnected && (
               <span>
                 {balanceResult
                   ? `Balance: ${parseFloat(balanceResult.formatted).toFixed(
@@ -530,7 +539,7 @@ export default function Presale() {
                   : `Unable to fetch balance`}
               </span>
             )}
-            {insufficientBalance && (
+            {isBrowser && insufficientBalance && (
               <label className="ml-4 text-sm text-red-400">
                 Insufficient balance
               </label>

@@ -1,0 +1,6 @@
+// eslint-disable-next-line import/no-anonymous-default-export
+export default [
+  '0x61E63Eda892E416055eCa8AD29296e2E401064f7',
+  '0xE30a87e4a5d8b3685D3151D4516213D72C427012',
+  '0xE30a87e4a5d8b3685D3151D4516213D72C427012',
+];

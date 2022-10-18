@@ -6,11 +6,11 @@ import '@nomiclabs/hardhat-solhint';
 import '@typechain/hardhat';
 import 'hardhat-gas-reporter';
 
-import { BSCSCAN_API_KEY, ChainId, NetworkConfig } from './network.config';
+import { ChainId, ETHERSCAN_API_KEY, NetworkConfig } from './network.config';
 
 const config: HardhatUserConfig = {
   solidity: {
-    version: '0.8.9',
+    version: '0.8.17',
     settings: {
       optimizer: {
         enabled: true,
@@ -37,7 +37,7 @@ const config: HardhatUserConfig = {
     currency: 'USD',
   },
   etherscan: {
-    apiKey: BSCSCAN_API_KEY,
+    apiKey: ETHERSCAN_API_KEY,
   },
 };
 

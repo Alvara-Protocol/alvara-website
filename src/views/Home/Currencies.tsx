@@ -1,28 +1,73 @@
 import React, { useEffect, useState } from 'react';
-import { useQuery } from 'wagmi';
 
+// import io from 'socket.io-client';
 import clsxm from '@/lib/clsxm';
-import { usePrevious } from '@/hooks';
 
-import { CurrencyStatus, CurrencyStatusProps } from '@/components';
+import { CurrencyStatus } from '@/components';
 
-import { fetchETHPriceFromBackend } from '@/service';
+export interface RpcResponse {
+  jsonrpc: string;
+  id: number;
+  method: string;
+  result: Result;
+}
 
-import { generateCurrenciesData } from './mock';
+export interface Result {
+  channel: string;
+  data?: Data;
+}
+
+export interface Data {
+  slug: string;
+  s: string;
+  p: number;
+  p24: null;
+  v24: null;
+  mc: null;
+  t: number;
+}
+
+export interface CoinPrices {
+  bitcoin: number;
+  ethereum: number;
+  bnb: number;
+  xrp: number;
+}
 
 export default function Currencies({ className }: { className?: string }) {
-  const [currenciesData, setCurrenciesData] = useState<CurrencyStatusProps[]>(
-    [],
-  );
-  useEffect(() => {
-    setCurrenciesData(generateCurrenciesData(4));
-  }, []);
-
-  const { data } = useQuery(['ethPrice-realtime'], fetchETHPriceFromBackend, {
-    refetchInterval: 1500,
+  const [prices, setPrices] = useState<CoinPrices>({
+    bitcoin: 0,
+    ethereum: 0,
+    bnb: 0,
+    xrp: 0,
   });
+  useEffect(() => {
+    const socket = new WebSocket('wss://price-stream.crypto.com/ws/v2');
 
-  const prevBalance = usePrevious(data || 0);
+    socket.onopen = () => {
+      const coinData = {
+        jsonrpc: '2.0',
+        method: 'subscribe',
+        id: 1,
+        params: {
+          topic: 'token_price',
+          slugs: ['bitcoin', 'ethereum', 'bnb', 'xrp'],
+        },
+      };
+      socket.send(JSON.stringify(coinData));
+    };
+
+    socket.onmessage = (ev) => {
+      const parsed: RpcResponse = JSON.parse(ev.data);
+      const {
+        result: { data, channel },
+      } = parsed;
+      if (!data || channel !== 'token_price') return;
+      const { slug, p } = data;
+      if (p === null) return;
+      setPrices((prev) => ({ ...prev, [slug]: p }));
+    };
+  }, []);
 
   return (
     <div
@@ -31,14 +76,10 @@ export default function Currencies({ className }: { className?: string }) {
         className,
       ])}
     >
-      {currenciesData.map((currencyData) => (
-        <CurrencyStatus
-          key={`${currencyData.currency1}-${currencyData.currency2}`}
-          {...currencyData}
-          price={data || 0}
-          changes={(data || 0) / prevBalance}
-        />
-      ))}
+      <CurrencyStatus currency1="BTC" currency2="USD" price={prices.bitcoin} />
+      <CurrencyStatus currency1="BNB" currency2="USD" price={prices.bnb} />
+      <CurrencyStatus currency1="ETH" currency2="USD" price={prices.ethereum} />
+      <CurrencyStatus currency1="XRP" currency2="USD" price={prices.xrp} />
     </div>
   );
 }

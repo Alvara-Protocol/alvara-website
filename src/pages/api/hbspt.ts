@@ -3,8 +3,8 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 
 import { subscribeSchema } from '@/views/Presale/Subscribe';
 
-const PORTAL_ID = '23145464';
-const FORM_ID = 'bd0baec0-1d38-4047-820a-5d2ad917c36c';
+const PORTAL_ID = process.env.HUBSPOT_PORTAL_ID;
+const FORM_ID = process.env.HUBSPOT_FORM_ID;
 const ACCESS_TOKEN = process.env.HUBSPOT_ACCESS_TOKEN;
 
 interface Response {

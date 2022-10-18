@@ -19,8 +19,7 @@ export default function Footer() {
             alt="Alvara"
           />
           <UnstyledLink href="/hivex">HiveX</UnstyledLink>
-          <UnstyledLink href="/about">About</UnstyledLink>
-          <UnstyledLink href="/roadmap">Careers</UnstyledLink>
+          <UnstyledLink href="/roadmap">About</UnstyledLink>
         </div>
         <p className="mt-16 mb-10 text-center text-[18px] text-dark-blue-400 lg:text-left">
           Email: contact@alvaraprotocol.io

@@ -12,7 +12,9 @@ export default function Intro2() {
         <span className="bg-gradient-to-r from-purple-650 to-fuchsia-450 bg-clip-text text-transparent">
           ALVARA PROTOCOL
         </span>
-        <h2 className="font-medium uppercase tracking-wider">smart funds</h2>
+        <h2 className="text-4xl font-medium uppercase tracking-wider">
+          smart funds
+        </h2>
         <div className="h-[2px] w-full bg-gradient-to-r from-purple-650 to-transparent"></div>
         <p className="w-4/5">
           Alvara SmartFunds. That&apos;s our name for Crypto ETFs - baskets of
@@ -21,7 +23,7 @@ export default function Intro2() {
           the key to the SmartFund - giving the holder the exclusive rights to
           fund management and rewards.
         </p>
-        <UnstyledLink href="/roadmap">
+        <UnstyledLink href="/smart-funds">
           <Button variant="outline" className="max-w-max py-4 uppercase">
             learn more
           </Button>

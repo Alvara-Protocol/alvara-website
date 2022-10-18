@@ -7,13 +7,13 @@ const linkInfos = [
     image: '/images/social/telegram.png',
     link: 'https://t.me/alvaraannouncements',
     title: 'Telegram',
-    description: 'https://t.me/alvara',
+    description: 't.me/alvaraannouncements',
   },
   {
     image: '/images/social/twitter.png',
     link: 'https://twitter.com/alvaraprotocol',
     title: 'Twitter',
-    description: 'https://twitter.com/alvaraprotocol',
+    description: 'twitter.com/alvaraprotocol',
   },
   {
     image: '/images/social/email.png',
@@ -25,7 +25,7 @@ const linkInfos = [
     image: '/images/social/medium.png',
     link: 'https://alvaraprotocol.medium.com',
     title: 'Medium',
-    description: 'https://alvaraprotocol.medium.com',
+    description: 'alvaraprotocol.medium.com',
   },
 ];
 
