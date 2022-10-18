@@ -30,40 +30,46 @@ export default function Hivex() {
       </Hives>
       <div className="container mx-auto grid grid-cols-1 items-center justify-center gap-8 px-8 md:grid-cols-[repeat(3,minmax(250px,300px))] md:px-32">
         <Info
-          image="/images/hivex/trade-c-etfs.png"
+          image="/images/hivex/trade.svg"
           title="Trade"
           description="Trade SmartFund shares on Alvara's order book exchange, powered by a Finex Go matching engine."
           type={1}
+          imageClassName="rounded-full border border-fuchsia-450 p-6"
         />
         <Info
-          image="/images/hivex/build-a-fund.png"
+          image="/images/hivex/build.svg"
           title="Build"
           description="Access Alvara's creation portal to design your own fund. Join the next generation of digital asset fund managers."
           type={1}
+          imageClassName="rounded-full border border-fuchsia-450 p-6"
         />
         <Info
-          image="/images/hivex/create-redeem.png"
+          image="/images/hivex/create-redeem.svg"
           title="Create & Redeem"
           description="Create and redeem your SF shares for their net asset value, taking advantage of arbitrage opportunities."
           type={1}
+          imageClassName="rounded-full border border-fuchsia-450 p-6"
         />
         <Info
-          image="/images/hivex/transfer.png"
+          image="/images/hivex/transfer.svg"
           title="Transfer"
           description="Time to retire? Sell your fund's NFT on Alvara's NFT marketplace to the highest bidder."
           type={1}
+          imageClassName="rounded-full border border-fuchsia-450 p-6"
         />
         <Info
-          image="/images/hivex/fiat.png"
+          image="/images/hivex/fiat.svg"
           title="Fiat Gateway"
           description="Seamlessly bridging fiat and crypto without leaving the platform."
           type={1}
+          imageClassName="rounded-full border border-fuchsia-450 p-6"
         />
         <Info
-          image="/images/hivex/item.png"
+          image="/images/hivex/compliance.svg"
           title="Compliance"
           description="Taking a pragmatic position on decentralization - the Alvara protocol is fully AML, CFT & KYC compliant."
           type={1}
+          imageClassName="rounded-full border border-fuchsia-450 p-6"
         />
       </div>
     </main>

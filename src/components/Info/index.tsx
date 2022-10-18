@@ -1,6 +1,8 @@
 import clsx from 'clsx';
 import React from 'react';
 
+import clsxm from '@/lib/clsxm';
+
 import UnstyledLink from '@/components/links/UnstyledLink';
 
 import NextImage from '../NextImage';
@@ -11,6 +13,7 @@ export interface InfoProps {
   description?: string;
   size?: number;
   type?: number;
+  imageClassName?: string;
 }
 
 export default function Info({
@@ -20,6 +23,7 @@ export default function Info({
   description,
   size = 141,
   type = 1,
+  imageClassName,
 }: InfoProps) {
   return (
     <div
@@ -36,7 +40,7 @@ export default function Info({
           width={size}
           height={size}
           alt={title}
-          className="mx-auto"
+          className={clsxm('mx-auto ', imageClassName)}
         />
       )}
 
@@ -47,7 +51,7 @@ export default function Info({
             width={size}
             height={size}
             alt={title}
-            className="mx-auto"
+            className={clsxm('mx-auto', imageClassName)}
           />
         </UnstyledLink>
       )}

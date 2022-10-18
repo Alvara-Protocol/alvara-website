@@ -6,7 +6,7 @@ export default function Partners() {
   return (
     <section className="container mx-auto mb-24 flex flex-col items-center justify-center gap-10">
       <h2 className="border-gradient3 border-b-[3px] pb-5 text-center font-montserrat text-4xl font-medium uppercase tracking-widest">
-        partners
+        Partners & Integrations
       </h2>
       <div className="grid w-full grid-cols-[repeat(auto-fill,minmax(200px,230px))] items-center justify-center gap-8">
         <Partner image="/images/partners/chainlink.svg" name="LATCH" />
