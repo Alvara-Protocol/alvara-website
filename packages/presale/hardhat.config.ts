@@ -6,7 +6,7 @@ import '@nomiclabs/hardhat-solhint';
 import '@typechain/hardhat';
 import 'hardhat-gas-reporter';
 
-import { ETHERSCAN_API_KEY, ChainId, NetworkConfig } from './network.config';
+import { ChainId, ETHERSCAN_API_KEY, NetworkConfig } from './network.config';
 
 const config: HardhatUserConfig = {
   solidity: {

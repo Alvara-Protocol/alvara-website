@@ -141,7 +141,7 @@ export default function Presale() {
     ['ethPrice'],
     fetchETHPriceFromBackend,
     {
-      refetchInterval: 2000,
+      refetchInterval: 60000,
     },
   );
 
@@ -178,9 +178,9 @@ export default function Presale() {
       const {
         data: { ethAmounts, tokenAmounts, v, r, s, vestAmount },
       } = await axios.post<SignatureResponse>(`/api/signature/${address}`, {
-        optionA: data.optionA / ethPrice,
-        optionB: data.optionB / ethPrice,
-        optionC: data.optionC / ethPrice,
+        optionA: optionAActivated ? data.optionA / ethPrice : 0,
+        optionB: optionBActivated ? data.optionB / ethPrice : 0,
+        optionC: optionCActivated ? data.optionC / ethPrice : 0,
       });
 
       // const transaction = await setUnclaimable();
@@ -253,7 +253,7 @@ export default function Presale() {
               ALVA is the utility token that powers the Alvara Protocol. From
               fee reductions to inclusion in every ETF,{' '}
               <span className="text-fuchsia-450">
-                ALVA is the Honey of the Hive.
+                ALVA is the honey of the Hive.
               </span>
               <br />
               <br />
@@ -408,7 +408,7 @@ export default function Presale() {
           <div className="w-full">
             <Select
               containerClassName="items-start"
-              label="Option1"
+              label="Option 1"
               {...register('optionAActivated')}
             />
             <RangeWithEthereum
@@ -424,7 +424,7 @@ export default function Presale() {
           <div className="w-full">
             <Select
               containerClassName="items-start"
-              label="Option2"
+              label="Option 2"
               {...register('optionBActivated')}
             />
             <RangeWithEthereum
@@ -440,7 +440,7 @@ export default function Presale() {
           <div className="w-full">
             <Select
               containerClassName="items-start"
-              label="Option3"
+              label="Option 3"
               {...register('optionCActivated')}
             />
             <RangeWithEthereum
@@ -463,7 +463,7 @@ export default function Presale() {
             >
               {totalETH ? `${totalETH.toFixed(2)} ETH` : `-`}
             </div>
-            {isBrowser && (
+            {isBrowser && isConnected && (
               <span>
                 {balanceResult
                   ? `Balance: ${parseFloat(balanceResult.formatted).toFixed(

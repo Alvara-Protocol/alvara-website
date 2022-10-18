@@ -184,7 +184,7 @@ export default function Team() {
       <Hives className="flex w-full flex-col items-center">
         <div className=" pt-[150px] text-center">
           <h2 className="text-center font-montserrat font-medium uppercase tracking-widest">
-            Alvara teams
+            Core team
           </h2>
           <div className="mx-auto mt-5 h-[2px] w-3/5 bg-gradient-to-r from-purple-650 to-transparent"></div>
         </div>
@@ -195,7 +195,10 @@ export default function Team() {
             <Member key={i} {...member} />
           ))}
         </div>
-        <div className="text-center text-[65px]">Advisors</div>
+        <h2 className="text-center font-montserrat font-medium uppercase tracking-widest">
+          Advisors
+        </h2>
+        <div className="mx-auto mt-5 h-[2px] w-1/5 bg-gradient-to-r from-purple-650 to-transparent" />
         <div className="mt-32 mb-16 grid grid-cols-1 items-start gap-x-10 gap-y-16 md:grid-cols-4 ">
           {advisors.map((member, i) => (
             <Member key={i} {...member} />

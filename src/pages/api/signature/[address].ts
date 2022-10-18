@@ -8,7 +8,7 @@ import { publicProvider } from 'wagmi/providers/public';
 import { splitSignature } from '@/lib/web3/sign';
 
 import { contractAddress, tokenPricesInUsd } from '@/config';
-import { fetchETHPrice } from '@/service';
+import { ethPrice, updateEthBalance } from '@/pages/api/price';
 import { joiSchema } from '@/views/Presale';
 
 export default async function hello(req: NextApiRequest, res: NextApiResponse) {
@@ -61,12 +61,15 @@ export default async function hello(req: NextApiRequest, res: NextApiResponse) {
       value.optionC.toFixed(2),
     ].map(utils.parseEther);
 
-    const ethPrice = await fetchETHPrice();
+    if (!ethPrice) {
+      await updateEthBalance();
+    }
 
     const tokenAmounts = ethAmounts.map((a, i) =>
       a
-        .mul(utils.parseUnits(ethPrice.toFixed(2), 2))
-        .div(10 ** 2)
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        .mul(utils.parseUnits(ethPrice!.toFixed(2), 2))
+        .div(10 ** 2) // USD amount
         .div(tokenPricesInUsd[i] * 10 ** 3) // tokenPrices decimal is 3
         .mul(10 ** 3),
     );

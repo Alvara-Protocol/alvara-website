@@ -5,6 +5,8 @@ import { ethers } from 'hardhat';
 
 import { splitSignature } from '../utils/sign';
 
+const tokenPricesInUsd = [0.1, 0.075, 0.05];
+
 describe('Alvara Token contract', function () {
   async function deployContractFixture() {
     const [master, treasury, alice] = await ethers.getSigners();
@@ -21,7 +23,7 @@ describe('Alvara Token contract', function () {
       master.address,
     );
 
-    await alvrTokenSale.connect(master).setOptionRange(0, 50, 500);
+    // await alvrTokenSale.connect(master).setOptionRange(0, 50, 500);
 
     return { alvara, alvrTokenSale, master, treasury, alice };
   }
@@ -33,8 +35,17 @@ describe('Alvara Token contract', function () {
 
     const nonce = await alvrTokenSale.nonce(alice.address);
 
-    const amountsETH: BigNumberish[] = [300, 200000, 300000];
-    const amountsAlvr = amountsETH.map((a) => a);
+    const amountsETH: BigNumberish[] = [utils.parseEther('0.5'), 0, 0];
+    const ethPrice = 1200;
+    const amountsAlvr = amountsETH.map((a, i) =>
+      BigNumber.from(a)
+        .mul(utils.parseUnits(ethPrice.toFixed(2), 2))
+        .div(10 ** 2) // USD amount
+        .div(tokenPricesInUsd[i] * 10 ** 3) // tokenPrices decimal is 3
+        .mul(10 ** 3),
+    );
+    console.log(utils.formatUnits(amountsAlvr[0], 18));
+
     const vestAmount = amountsETH.reduce(
       (prev, amount) => BigNumber.from(prev).add(BigNumber.from(amount)),
       0,
@@ -62,8 +73,15 @@ describe('Alvara Token contract', function () {
 
     const nonce = await alvrTokenSale.nonce(alice.address);
 
-    const amountsETH: BigNumberish[] = [300, 200000, 300000];
-    const amountsAlvr = amountsETH.map((a) => a);
+    const amountsETH: BigNumberish[] = [utils.parseEther('0.5'), 0, 0];
+    const ethPrice = 1200;
+    const amountsAlvr = amountsETH.map((a, i) =>
+      BigNumber.from(a)
+        .mul(utils.parseUnits(ethPrice.toFixed(2), 2))
+        .div(10 ** 2) // USD amount
+        .div(tokenPricesInUsd[i] * 10 ** 3) // tokenPrices decimal is 3
+        .mul(10 ** 3),
+    );
     const vestAmount = amountsETH.reduce(
       (prev, amount) => BigNumber.from(prev).add(BigNumber.from(amount)),
       0,
@@ -96,8 +114,15 @@ describe('Alvara Token contract', function () {
 
     const nonce = await alvrTokenSale.nonce(alice.address);
 
-    const amountsETH: BigNumberish[] = [500, 2000, 3000];
-    const amountsAlvr = amountsETH.map((a) => a);
+    const amountsETH: BigNumberish[] = [utils.parseEther('0.5'), 0, 0];
+    const ethPrice = 1200;
+    const amountsAlvr = amountsETH.map((a, i) =>
+      BigNumber.from(a)
+        .mul(utils.parseUnits(ethPrice.toFixed(2), 2))
+        .div(10 ** 2) // USD amount
+        .div(tokenPricesInUsd[i] * 10 ** 3) // tokenPrices decimal is 3
+        .mul(10 ** 3),
+    );
     const vestAmount = amountsETH.reduce(
       (prev, amount) => BigNumber.from(prev).add(BigNumber.from(amount)),
       0,
@@ -119,8 +144,9 @@ describe('Alvara Token contract', function () {
         value: vestAmount,
       });
 
+    const totalSupply = await alvara.totalSupply();
     // Transfer Alvara token to sale contract
-    await alvara.connect(master).transfer(alvrTokenSale.address, 5000000);
+    await alvara.connect(master).transfer(alvrTokenSale.address, totalSupply);
 
     // This must failed before admin set claimable
     const failedReq = alvrTokenSale.connect(alice).claim();

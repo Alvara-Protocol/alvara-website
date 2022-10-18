@@ -12,6 +12,7 @@ const RangeWithEthereum = React.forwardRef<
   RangeWithEthereumProps
 >(({ rate, tokenPriceInUsd, ...props }, ref) => {
   const [value, setValue] = useState(0);
+
   return (
     <div className="relative mt-5 grid grid-cols-12 items-center">
       <Range

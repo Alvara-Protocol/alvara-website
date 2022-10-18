@@ -262,19 +262,13 @@ contract AlvrTokenSale is Ownable, Pausable {
         isBlocked[user_] = false;
     }
 
-    function blockUsers(address[] memory users_)
-        external
-        onlyOwner
-    {
+    function blockUsers(address[] memory users_) external onlyOwner {
         for (uint256 i = 0; i < users_.length; i++) {
             _blockUser(users_[i]);
         }
     }
 
-    function unblockUsers(address[] memory users_)
-        external
-        onlyOwner
-    {
+    function unblockUsers(address[] memory users_) external onlyOwner {
         for (uint256 i = 0; i < users_.length; i++) {
             _unblockUser(users_[i]);
         }
@@ -300,9 +294,18 @@ contract AlvrTokenSale is Ownable, Pausable {
     }
 
     function _replaceUserChecked(address oldUser_, address newUser_) internal {
-        require(oldUser_ != address(0) && newUser_ != address(0), "Invalid address");
-        require(isInvestor[oldUser_] && !isBlocked[oldUser_], "Invalid previous user");
-        require(!isInvestor[newUser_] && !isBlocked[newUser_], "Invalid next user");
+        require(
+            oldUser_ != address(0) && newUser_ != address(0),
+            "Invalid address"
+        );
+        require(
+            isInvestor[oldUser_] && !isBlocked[oldUser_],
+            "Invalid previous user"
+        );
+        require(
+            !isInvestor[newUser_] && !isBlocked[newUser_],
+            "Invalid next user"
+        );
 
         _replaceUser(oldUser_, newUser_);
     }
@@ -311,7 +314,10 @@ contract AlvrTokenSale is Ownable, Pausable {
         address[] memory oldUsers_,
         address[] memory newUsers_
     ) external onlyOwner {
-        require(oldUsers_.length == newUsers_.length, "Mismatching array length");
+        require(
+            oldUsers_.length == newUsers_.length,
+            "Mismatching array length"
+        );
 
         for (uint256 i = 0; i < oldUsers_.length; i++) {
             _replaceUserChecked(oldUsers_[i], newUsers_[i]);
@@ -376,7 +382,8 @@ contract AlvrTokenSale is Ownable, Pausable {
     ) internal returns (uint256) {
         require(
             _tokens(investor_, option_) >=
-                _claimed(investor_, option_) + tokens_, "Exceeds claimable"
+                _claimed(investor_, option_) + tokens_,
+            "Exceeds claimable"
         );
 
         claimed[investor_][option_] += tokens_;

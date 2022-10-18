@@ -2,7 +2,7 @@ import { chain } from 'wagmi';
 
 export const contractAddress = {
   [chain.mainnet.id]: '0x00000',
-  [chain.goerli.id]: '0x4415BBA8e96bBDc67CF32488d46F2C4D2bE02cb4',
+  [chain.goerli.id]: '0x69a18f76b6fd6E688B5eB59Fe1c0dd578a13D5b2',
 };
 
 export const tokenAddress = {

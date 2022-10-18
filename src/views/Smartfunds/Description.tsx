@@ -12,22 +12,22 @@ export default function Description() {
       <ul className="intro grid grid-cols-1 gap-x-[10rem] gap-y-12 font-poppins font-light md:grid-cols-2">
         <li>
           <b className="font-bold">Build Your Own.</b>
-          <br /> Design and launch your own Crypto Smart Fund via Alvara&apos;s
+          <br /> Design and launch your own crypto SmartFund via Alvara&apos;s
           creation portal. Earn rewards each time your fund&apos;s shares are
           traded on the HiveX.
         </li>
         <li>
           <b className="font-bold">Yield Generation.</b>
           <br />
-          Every smart fund contains 100% collateralized underlying assets. These
+          Every SmartFund contains 100% collateralized underlying assets. These
           assets are utilized in yield generation strategies via our partners,
-          with the rewards being fed back into the fund and distributed to share
-          holders as dividends.
+          with the rewards fed back into the fund and distributed to
+          shareholders as dividends.
         </li>
         <li>
           <b className="font-bold">Proof of Ownership.</b>
           <br />
-          NFT integration provides smart fund managers with a key to their
+          NFT integration provides SmartFund managers with a key to their
           fund&apos;s management rights and rewards structure. Transferable at
           Alvara&apos;s NFT marketplace, fund managers can, for the first time,
           sell their business.
