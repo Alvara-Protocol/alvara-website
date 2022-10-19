@@ -28,6 +28,7 @@ const RangeWithEthereum = React.forwardRef<
       <div className="col-start-10 col-end-13 hidden grid-cols-2 lg:grid">
         <div className="text-center font-medium">
           <p className="text-[18px]">ETH</p>
+          <input className="border-gradient block w-full border px-4 py-2 outline-none" />
           <p className="mt-3 bg-gray-400 text-[12px]">
             {props.disabled
               ? '-'

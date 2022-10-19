@@ -77,13 +77,13 @@ function Dot() {
 export default function Timeline() {
   return (
     <div className="container mx-auto grid grid-cols-1 md:grid-cols-3">
-      <ol className="relative border-l border-[#FB3FFF]">
+      <ol className="relative border-l border-fuchsia-450">
         <li className="mb-10 ml-6">
           <span className="absolute -left-3 flex h-6 w-6 items-center justify-center rounded-full bg-[#dbbfed]  ring-8 ring-gray-400">
             <Spot />
           </span>
 
-          <h3 className="mb-5 flex items-center pl-5 text-3xl font-semibold text-[#FB3FFF]">
+          <h3 className="mb-5 flex items-center pl-5 text-3xl font-semibold text-fuchsia-450">
             Q2-Q4 2022
           </h3>
 
@@ -118,7 +118,7 @@ export default function Timeline() {
           <span className="absolute -left-3 flex h-6 w-6 items-center justify-center rounded-full bg-[#dbbfed]  ring-8 ring-gray-400">
             <Spot />
           </span>
-          <h3 className="mb-5 flex items-center pl-5 text-3xl font-semibold text-[#FB3FFF]">
+          <h3 className="mb-5 flex items-center pl-5 text-3xl font-semibold text-fuchsia-450">
             Q1 2023
           </h3>
 
@@ -141,7 +141,7 @@ export default function Timeline() {
           <span className="absolute -left-3 flex h-6 w-6 items-center justify-center rounded-full bg-[#dbbfed]  ring-8 ring-gray-400">
             <Spot />
           </span>
-          <h3 className="mb-5 flex items-center pl-5 text-3xl font-semibold text-[#FB3FFF]">
+          <h3 className="mb-5 flex items-center pl-5 text-3xl font-semibold text-fuchsia-450">
             Q2 2023
           </h3>
 
@@ -167,13 +167,13 @@ export default function Timeline() {
         </li>
       </ol>
 
-      <ol className="relative border-l border-[#FB3FFF]">
+      <ol className="relative border-l border-fuchsia-450">
         <li className="mb-10 ml-6">
           <span className="absolute -left-3 flex h-6 w-6 items-center justify-center rounded-full bg-[#dbbfed]  ring-8 ring-gray-400">
             <Spot />
           </span>
 
-          <h3 className="mb-5 flex items-center pl-5 text-3xl font-semibold text-[#FB3FFF]">
+          <h3 className="my-5 flex items-center pl-5 text-3xl font-semibold text-fuchsia-450">
             Q3 2023
           </h3>
 
@@ -204,7 +204,7 @@ export default function Timeline() {
           <span className="absolute -left-3 flex h-6 w-6 items-center justify-center rounded-full bg-[#dbbfed]  ring-8 ring-gray-400">
             <Spot />
           </span>
-          <h3 className="mb-5 flex items-center pl-5 text-3xl font-semibold text-[#FB3FFF]">
+          <h3 className="mb-5 flex items-center pl-5 text-3xl font-semibold text-fuchsia-450">
             Q4 2023
           </h3>
 
@@ -233,13 +233,13 @@ export default function Timeline() {
         </li>
       </ol>
 
-      <ol className="relative border-l border-[#FB3FFF]">
+      <ol className="relative border-l border-fuchsia-450">
         <li className="mb-10 ml-6">
           <span className="absolute -left-3 flex h-6 w-6 items-center justify-center rounded-full bg-[#dbbfed]  ring-8 ring-gray-400">
             <Spot />
           </span>
 
-          <h3 className="mb-5 flex items-center pl-5 text-3xl font-semibold text-[#FB3FFF]">
+          <h3 className="mb-5 flex items-center pl-5 text-3xl font-semibold text-fuchsia-450">
             Q1 2024
           </h3>
 
@@ -262,7 +262,7 @@ export default function Timeline() {
           <span className="absolute -left-3 flex h-6 w-6 items-center justify-center rounded-full bg-[#dbbfed]  ring-8 ring-gray-400">
             <Spot />
           </span>
-          <h3 className="mb-5 flex items-center pl-5 text-3xl font-semibold text-[#FB3FFF]">
+          <h3 className="mb-5 flex items-center pl-5 text-3xl font-semibold text-fuchsia-450">
             Q2 2024
           </h3>
 

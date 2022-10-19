@@ -77,8 +77,8 @@ export default function Currencies({ className }: { className?: string }) {
       ])}
     >
       <CurrencyStatus currency1="BTC" currency2="USD" price={prices.bitcoin} />
-      <CurrencyStatus currency1="BNB" currency2="USD" price={prices.bnb} />
       <CurrencyStatus currency1="ETH" currency2="USD" price={prices.ethereum} />
+      <CurrencyStatus currency1="BNB" currency2="USD" price={prices.bnb} />
       <CurrencyStatus currency1="XRP" currency2="USD" price={prices.xrp} />
     </div>
   );

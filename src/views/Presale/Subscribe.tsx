@@ -9,27 +9,21 @@ import { useAccount } from 'wagmi';
 import { Button, InputGroup } from '@/components';
 
 export interface SubscribeProps {
-  firstname: string;
-  lastname: string;
+  firstname?: string;
+  lastname?: string;
   email: string;
-  telegram_id: string;
+  telegram_id?: string;
   wallet_address: string;
 }
 
 export const subscribeSchema = Joi.object<SubscribeProps>({
-  firstname: Joi.string()
-    .required()
-    .messages({ 'string.empty': 'First Name is required' }),
-  lastname: Joi.string()
-    .required()
-    .messages({ 'string.empty': 'Last Name is required' }),
+  firstname: Joi.string().allow(''),
+  lastname: Joi.string().allow(''),
   email: Joi.string()
     .email({ tlds: { allow: false } })
     .required()
     .messages({ 'string.empty': 'Email is required' }),
-  telegram_id: Joi.string()
-    .required()
-    .messages({ 'string.empty': 'Telegram is required' }),
+  telegram_id: Joi.string().allow(''),
   wallet_address: Joi.string()
     .required()
     .messages({ 'string.empty': 'Please connect your wallet' }),
@@ -69,15 +63,13 @@ export default function Subscribe() {
       <InputGroup
         containerClassName="w-full lg:w-1/2"
         label="First Name"
-        required
-        {...register('firstname', { required: true })}
+        {...register('firstname')}
         error={formState.errors.firstname?.message}
       />
       <InputGroup
         containerClassName="w-full lg:w-1/2"
         label="Last Name"
-        required
-        {...register('lastname', { required: true })}
+        {...register('lastname')}
         error={formState.errors.lastname?.message}
       />
       <InputGroup
@@ -90,7 +82,6 @@ export default function Subscribe() {
       <InputGroup
         containerClassName="w-full lg:w-1/2"
         label="Telegram ID"
-        required
         {...register('telegram_id')}
         error={formState.errors.telegram_id?.message}
       />
