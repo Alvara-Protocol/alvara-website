@@ -8,6 +8,8 @@ import { useAccount } from 'wagmi';
 
 import { Button, InputGroup } from '@/components';
 
+import SubscribeSuccessModal from './SubscribeSuccessModal';
+
 export interface SubscribeProps {
   firstname?: string;
   lastname?: string;
@@ -22,7 +24,10 @@ export const subscribeSchema = Joi.object<SubscribeProps>({
   email: Joi.string()
     .email({ tlds: { allow: false } })
     .required()
-    .messages({ 'string.empty': 'Email is required' }),
+    .messages({
+      'string.empty': 'Email is required',
+      'string.email': 'Invalid Email Address',
+    }),
   telegram_id: Joi.string().allow(''),
   wallet_address: Joi.string()
     .required()
@@ -30,6 +35,8 @@ export const subscribeSchema = Joi.object<SubscribeProps>({
 });
 
 export default function Subscribe() {
+  const [showSubscribeSuccessModal, setShowSubscribeSuccessModal] =
+    useState(false);
   const [loading, setLoading] = useState(false);
   const { address } = useAccount();
   const { register, handleSubmit, formState, setValue } =
@@ -43,7 +50,7 @@ export default function Subscribe() {
       setLoading(true);
       const _ = await axios.post('/api/hbspt', data);
       setLoading(false);
-      toast.success('Thank you for submitting your details.');
+      setShowSubscribeSuccessModal(true);
     } catch (error: any) {
       if (axios.isAxiosError(error)) {
         return toast.error(error.response?.data.error);
@@ -105,6 +112,10 @@ export default function Subscribe() {
       >
         {loading ? 'Please wait...' : 'Submit'}
       </Button>
+      <SubscribeSuccessModal
+        show={showSubscribeSuccessModal}
+        setShow={setShowSubscribeSuccessModal}
+      />
     </form>
   );
 }

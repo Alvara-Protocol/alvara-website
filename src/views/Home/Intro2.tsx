@@ -13,7 +13,7 @@ export default function Intro2() {
           ALVARA PROTOCOL
         </span>
         <h2 className="text-4xl font-medium uppercase tracking-wider">
-          smart funds
+          smart funds.
         </h2>
         <div className="h-[2px] w-full bg-gradient-to-r from-purple-650 to-transparent"></div>
         <p className="w-4/5">
