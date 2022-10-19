@@ -1,11 +1,6 @@
-import { loadFixture, time } from '@nomicfoundation/hardhat-network-helpers';
+import { loadFixture } from '@nomicfoundation/hardhat-network-helpers';
 import { expect } from 'chai';
-import { BigNumber, BigNumberish, utils } from 'ethers';
 import { ethers } from 'hardhat';
-
-import { splitSignature } from '../utils/sign';
-
-const tokenPricesInUsd = [0.1, 0.075, 0.05];
 
 describe('Alvara Token contract', function () {
   async function deployContractFixture() {
@@ -23,145 +18,153 @@ describe('Alvara Token contract', function () {
       master.address,
     );
 
-    // await alvrTokenSale.connect(master).setOptionRange(0, 50, 500);
-
     return { alvara, alvrTokenSale, master, treasury, alice };
   }
 
-  it('Should addVest', async function () {
-    const { alvrTokenSale, alice, master } = await loadFixture(
-      deployContractFixture,
-    );
+  it('should initialize properly', async function () {
+    const { alvara, alvrTokenSale } = await loadFixture(deployContractFixture);
 
-    const nonce = await alvrTokenSale.nonce(alice.address);
-
-    const amountsETH: BigNumberish[] = [utils.parseEther('0.5'), 0, 0];
-    const ethPrice = 1200;
-    const amountsAlvr = amountsETH.map((a, i) =>
-      BigNumber.from(a)
-        .mul(utils.parseUnits(ethPrice.toFixed(2), 2))
-        .div(10 ** 2) // USD amount
-        .div(tokenPricesInUsd[i] * 10 ** 3) // tokenPrices decimal is 3
-        .mul(10 ** 3),
-    );
-    console.log(utils.formatUnits(amountsAlvr[0], 18));
-
-    const vestAmount = amountsETH.reduce(
-      (prev, amount) => BigNumber.from(prev).add(BigNumber.from(amount)),
-      0,
-    );
-    const message = utils.solidityKeccak256(
-      ['address', 'uint256', 'uint256[]', 'uint256[]', 'uint256'],
-      [alice.address, vestAmount, amountsETH, amountsAlvr, nonce],
-    );
-
-    const signature = await master.signMessage(utils.arrayify(message));
-
-    const { v, r, s } = splitSignature(signature);
-
-    const _ = await alvrTokenSale
-      .connect(alice)
-      .addVest(amountsETH, amountsAlvr, v, r, s, {
-        value: vestAmount,
-      });
+    expect(await alvrTokenSale.treasuryWallet()).to.be.eq(alvara.address);
   });
 
-  it('should revert addVest with modified amounts', async function () {
-    const { alvrTokenSale, alice, master } = await loadFixture(
-      deployContractFixture,
+  it('should claim tokens', async function () {
+    const { alvara, alvrTokenSale, alice, master, treasury } =
+      await loadFixture(deployContractFixture);
+
+    const decimals = '000000000000000000';
+
+    alvara.transfer(alice.address, '10000000' + decimals);
+    expect(await alvara.balanceOf(alice.address)).to.be.eq(
+      '10000000' + decimals,
+    );
+    expect(await alvara.balanceOf(master.address)).to.be.eq('0');
+
+    alvara.connect(alice).transfer(alvrTokenSale.address, '10000' + decimals);
+    await alvrTokenSale.claimAdmin(alvara.address);
+
+    expect(await alvara.balanceOf(master.address)).to.be.eq('10000' + decimals);
+    expect(await alvara.balanceOf(alice.address)).to.be.eq(
+      '9990000' + decimals,
     );
 
-    const nonce = await alvrTokenSale.nonce(alice.address);
-
-    const amountsETH: BigNumberish[] = [utils.parseEther('0.5'), 0, 0];
-    const ethPrice = 1200;
-    const amountsAlvr = amountsETH.map((a, i) =>
-      BigNumber.from(a)
-        .mul(utils.parseUnits(ethPrice.toFixed(2), 2))
-        .div(10 ** 2) // USD amount
-        .div(tokenPricesInUsd[i] * 10 ** 3) // tokenPrices decimal is 3
-        .mul(10 ** 3),
-    );
-    const vestAmount = amountsETH.reduce(
-      (prev, amount) => BigNumber.from(prev).add(BigNumber.from(amount)),
-      0,
-    );
-
-    // Get signature of input data
-    const message = utils.solidityKeccak256(
-      ['address', 'uint256', 'uint256[]', 'uint256[]', 'uint256'],
-      [alice.address, vestAmount, amountsETH, amountsAlvr, nonce],
-    );
-    const signature = await master.signMessage(utils.arrayify(message));
-
-    const { v, r, s } = splitSignature(signature);
-
-    const modifiedAmounts = ['0', '200', '300'];
-
-    const result = alvrTokenSale
-      .connect(alice)
-      .addVest(amountsETH, modifiedAmounts, v, r, s, {
-        value: vestAmount,
-      });
-
-    await expect(result).to.be.revertedWith('Invalid signature');
+    expect(await alvrTokenSale.treasuryWallet()).to.be.eq(treasury.address);
+    await expect(
+      alvrTokenSale.connect(alice).setTreasuryWallet(alice.address),
+    ).to.be.revertedWith('Ownable: caller is not the owner');
+    await alvrTokenSale.setTreasuryWallet(alice.address);
+    expect(await alvrTokenSale.treasuryWallet()).to.be.eq(alice.address);
   });
 
-  it('Should claim amounts', async function () {
-    const { alvrTokenSale, alice, master, alvara } = await loadFixture(
-      deployContractFixture,
-    );
+  // it('Should addVest', async function () {
+  //   const { alvrTokenSale, alice, master } = await loadFixture(
+  //     deployContractFixture,
+  //   );
 
-    const nonce = await alvrTokenSale.nonce(alice.address);
+  //   const nonce = await alvrTokenSale.nonce(alice.address);
 
-    const amountsETH: BigNumberish[] = [utils.parseEther('0.5'), 0, 0];
-    const ethPrice = 1200;
-    const amountsAlvr = amountsETH.map((a, i) =>
-      BigNumber.from(a)
-        .mul(utils.parseUnits(ethPrice.toFixed(2), 2))
-        .div(10 ** 2) // USD amount
-        .div(tokenPricesInUsd[i] * 10 ** 3) // tokenPrices decimal is 3
-        .mul(10 ** 3),
-    );
-    const vestAmount = amountsETH.reduce(
-      (prev, amount) => BigNumber.from(prev).add(BigNumber.from(amount)),
-      0,
-    );
+  //   const amountsETH: BigNumberish[] = [300, 200000, 300000];
+  //   const amountsAlvr = amountsETH.map((a) => a);
+  //   const vestAmount = amountsETH.reduce(
+  //     (prev, amount) => BigNumber.from(prev).add(BigNumber.from(amount)),
+  //     0,
+  //   );
+  //   const message = utils.solidityKeccak256(
+  //     ['address', 'uint256', 'uint256[]', 'uint256[]', 'uint256'],
+  //     [alice.address, vestAmount, amountsETH, amountsAlvr, nonce],
+  //   );
 
-    // Get signature of input data
-    const message = utils.solidityKeccak256(
-      ['address', 'uint256', 'uint256[]', 'uint256[]', 'uint256'],
-      [alice.address, vestAmount, amountsETH, amountsAlvr, nonce],
-    );
+  //   const signature = await master.signMessage(utils.arrayify(message));
 
-    const signature = await master.signMessage(utils.arrayify(message));
+  //   const { v, r, s } = splitSignature(signature);
 
-    const { v, r, s } = splitSignature(signature);
+  //   const _ = await alvrTokenSale
+  //     .connect(alice)
+  //     .addVest(amountsETH, amountsAlvr, v, r, s, {
+  //       value: vestAmount,
+  //     });
+  // });
 
-    const _ = await alvrTokenSale
-      .connect(alice)
-      .addVest(amountsETH, amountsAlvr, v, r, s, {
-        value: vestAmount,
-      });
+  // it('should revert addVest with modified amounts', async function () {
+  //   const { alvrTokenSale, alice, master } = await loadFixture(
+  //     deployContractFixture,
+  //   );
 
-    const totalSupply = await alvara.totalSupply();
-    // Transfer Alvara token to sale contract
-    await alvara.connect(master).transfer(alvrTokenSale.address, totalSupply);
+  //   const nonce = await alvrTokenSale.nonce(alice.address);
 
-    // This must failed before admin set claimable
-    const failedReq = alvrTokenSale.connect(alice).claim();
-    await expect(failedReq).to.be.revertedWith('Not Claimable');
+  //   const amountsETH: BigNumberish[] = [300, 200000, 300000];
+  //   const amountsAlvr = amountsETH.map((a) => a);
+  //   const vestAmount = amountsETH.reduce(
+  //     (prev, amount) => BigNumber.from(prev).add(BigNumber.from(amount)),
+  //     0,
+  //   );
 
-    await alvrTokenSale.connect(master).setClaimable();
+  //   // Get signature of input data
+  //   const message = utils.solidityKeccak256(
+  //     ['address', 'uint256', 'uint256[]', 'uint256[]', 'uint256'],
+  //     [alice.address, vestAmount, amountsETH, amountsAlvr, nonce],
+  //   );
+  //   const signature = await master.signMessage(utils.arrayify(message));
 
-    await time.increaseTo(1665672980250);
+  //   const { v, r, s } = splitSignature(signature);
 
-    const claimableAmount = await alvrTokenSale.unclaimed(alice.address);
+  //   const modifiedAmounts = ['0', '200', '300'];
 
-    await alvrTokenSale.connect(alice).claim();
+  //   const result = alvrTokenSale
+  //     .connect(alice)
+  //     .addVest(amountsETH, modifiedAmounts, v, r, s, {
+  //       value: vestAmount,
+  //     });
 
-    const aliceBalance = await alvara.balanceOf(alice.address);
+  //   await expect(result).to.be.revertedWith('Invalid signature');
+  // });
 
-    expect(aliceBalance).to.be.eq(claimableAmount);
-  });
+  // it('Should claim amounts', async function () {
+  //   const { alvrTokenSale, alice, master, alvara } = await loadFixture(
+  //     deployContractFixture,
+  //   );
+
+  //   const nonce = await alvrTokenSale.nonce(alice.address);
+
+  //   const amountsETH: BigNumberish[] = [500, 2000, 3000];
+  //   const amountsAlvr = amountsETH.map((a) => a);
+  //   const vestAmount = amountsETH.reduce(
+  //     (prev, amount) => BigNumber.from(prev).add(BigNumber.from(amount)),
+  //     0,
+  //   );
+
+  //   // Get signature of input data
+  //   const message = utils.solidityKeccak256(
+  //     ['address', 'uint256', 'uint256[]', 'uint256[]', 'uint256'],
+  //     [alice.address, vestAmount, amountsETH, amountsAlvr, nonce],
+  //   );
+
+  //   const signature = await master.signMessage(utils.arrayify(message));
+
+  //   const { v, r, s } = splitSignature(signature);
+
+  //   const _ = await alvrTokenSale
+  //     .connect(alice)
+  //     .addVest(amountsETH, amountsAlvr, v, r, s, {
+  //       value: vestAmount,
+  //     });
+
+  //   // Transfer Alvara token to sale contract
+  //   await alvara.connect(master).transfer(alvrTokenSale.address, 5000000);
+
+  //   // This must failed before admin set claimable
+  //   const failedReq = alvrTokenSale.connect(alice).claim();
+  //   await expect(failedReq).to.be.revertedWith('Not Claimable');
+
+  //   await alvrTokenSale.connect(master).setClaimable();
+
+  //   await time.increaseTo(1665672980250);
+
+  //   const claimableAmount = await alvrTokenSale.unclaimed(alice.address);
+
+  //   await alvrTokenSale.connect(alice).claim();
+
+  //   const aliceBalance = await alvara.balanceOf(alice.address);
+
+  //   expect(aliceBalance).to.be.eq(claimableAmount);
+  // });
 });

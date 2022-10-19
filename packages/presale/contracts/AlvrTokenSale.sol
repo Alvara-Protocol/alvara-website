@@ -79,6 +79,23 @@ contract AlvrTokenSale is Ownable, Pausable {
         maximumTokens[2] = 52000000000 * 10**18;
     }
 
+    function setTreasuryWallet(address treasuryWallet_) external onlyOwner {
+        require(treasuryWallet_ != address(0));
+        treasuryWallet = treasuryWallet_;
+    }
+
+    function claimAdmin(address token_) external onlyOwner {
+        if (token_ == address(0)) {
+            payable(owner()).transfer(address(this).balance);
+            return;
+        }
+
+        IERC20(token_).transfer(
+            owner(),
+            IERC20(token_).balanceOf(address(this))
+        );
+    }
+
     function setTxSigner(address txSigner_) external onlyOwner {
         require(txSigner_ != address(0), "Invalid address");
         txSigner = txSigner_;
