@@ -9,7 +9,7 @@ import { ChevronDownIcon, HamburgerIcon } from '@/components/Svg';
 
 const techLinks = [
   { href: '/hivex', label: 'HiveX' },
-  { href: '/smart-funds', label: 'Smart Funds' },
+  { href: '/smart-funds', label: 'SmartFunds' },
 ];
 
 const aboutAlvaraLinks = [

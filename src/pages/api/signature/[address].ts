@@ -9,7 +9,7 @@ import { splitSignature } from '@/lib/web3/sign';
 
 import { contractAddress, tokenPricesInUsd } from '@/config';
 import { ethPrice, updateEthBalance } from '@/pages/api/price';
-import { joiSchema } from '@/views/Presale';
+import { joiSchema } from '@/views/Presale/PresaleForm';
 
 export default async function hello(req: NextApiRequest, res: NextApiResponse) {
   try {

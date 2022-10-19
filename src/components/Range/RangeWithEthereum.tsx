@@ -1,17 +1,56 @@
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 import Range, { RangeProps } from './Range';
 
 export interface RangeWithEthereumProps extends RangeProps {
   rate?: number;
   tokenPriceInUsd: number;
+  setValue: (v: number) => void;
 }
 
 const RangeWithEthereum = React.forwardRef<
   HTMLInputElement,
   RangeWithEthereumProps
->(({ rate, tokenPriceInUsd, ...props }, ref) => {
-  const [value, setValue] = useState(0);
+>(({ rate, tokenPriceInUsd, currentValue = 0, setValue, ...props }, ref) => {
+  const [ethValue, setEthValue] = useState<any>(0);
+
+  const parsedEthMin =
+    props.min !== undefined && rate !== undefined
+      ? (typeof props.min === 'string' ? parseFloat(props.min) : props.min) /
+        rate
+      : 0;
+
+  const parsedEthMax =
+    props.max !== undefined && rate !== undefined
+      ? (typeof props.max === 'string' ? parseFloat(props.max) : props.max) /
+        rate
+      : 0;
+
+  const handleEthChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      if (!rate) return;
+      const parsed = parseFloat(e.target.value);
+      if (!isNaN(parsed)) {
+        if (parsedEthMin <= parsed && parsed <= parsedEthMax)
+          setValue(parseFloat(e.target.value) * rate);
+      }
+      setEthValue(e.target.value);
+    },
+    [rate, parsedEthMin, parsedEthMax, setValue],
+  );
+
+  useEffect(() => {
+    if (props.disabled) setEthValue(0);
+    else if (rate)
+      setEthValue(
+        (
+          (typeof currentValue === 'string'
+            ? parseFloat(currentValue)
+            : currentValue) / rate
+        ).toFixed(2),
+      );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props.disabled]);
 
   return (
     <div className="relative mt-5 grid grid-cols-12 items-center">
@@ -20,27 +59,48 @@ const RangeWithEthereum = React.forwardRef<
         {...props}
         containerClassName="col-span-12 lg:col-start-1 lg:col-end-9"
         onChange={(e) => {
-          setValue(parseInt(e.target.value));
+          // Update eth input value
+          if (rate) setEthValue((parseFloat(e.target.value) / rate).toFixed(2));
           props.onChange?.(e);
         }}
+        currentValue={currentValue}
       />
 
       <div className="col-start-10 col-end-13 hidden grid-cols-2 lg:grid">
         <div className="text-center font-medium">
           <p className="text-[18px]">ETH</p>
-          <input className="border-gradient block w-full border px-4 py-2 outline-none" />
-          <p className="mt-3 bg-gray-400 text-[12px]">
-            {props.disabled
-              ? '-'
-              : rate
-              ? `${(value / rate).toFixed(2)}`
-              : 'Unable to calculate'}
-          </p>
+          <input
+            type="string"
+            min={
+              props.min !== undefined && rate !== undefined
+                ? (typeof props.min === 'string'
+                    ? parseFloat(props.min)
+                    : props.min) / rate
+                : 0
+            }
+            max={
+              props.max !== undefined && rate !== undefined
+                ? (typeof props.max === 'string'
+                    ? parseFloat(props.max)
+                    : props.max) / rate
+                : undefined
+            }
+            className="border-gradient block w-full border px-4 py-2 outline-none"
+            onChange={handleEthChange}
+            value={ethValue}
+            disabled={props.disabled}
+          />
         </div>
         <div className="ml-1.5 text-center font-medium">
           <p className="text-[18px]">ALVA</p>
           <p className="mt-3 bg-gray-400 text-[12px]">
-            {props.disabled ? '-' : `${(value / tokenPriceInUsd).toFixed(2)}`}
+            {props.disabled
+              ? '-'
+              : `${(
+                  (typeof currentValue === 'string'
+                    ? parseFloat(currentValue)
+                    : currentValue) / tokenPriceInUsd
+                ).toFixed(2)}`}
           </p>
         </div>
       </div>

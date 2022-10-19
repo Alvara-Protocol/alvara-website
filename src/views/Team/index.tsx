@@ -186,7 +186,7 @@ export default function Team() {
           <h2 className="px-8 text-center font-montserrat font-medium uppercase tracking-widest">
             Core team
           </h2>
-          <div className="mx-auto mt-5 h-[2px] w-full bg-gradient-to-r from-purple-650 to-transparent"></div>
+          <div className="mx-auto mt-5 h-[3px] w-full bg-gradient-to-r from-purple-650 to-transparent" />
         </div>
       </Hives>
       <section className="container mx-auto px-8 md:px-16">

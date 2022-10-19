@@ -1,19 +1,26 @@
 import humanFormat from 'human-format';
-import React, { useState } from 'react';
+import React from 'react';
 
 import clsxm from '@/lib/clsxm';
 
 export interface RangeProps extends React.ComponentPropsWithRef<'input'> {
   containerClassName?: string;
+  currentValue: number | string;
 }
 
 const Range = React.forwardRef<HTMLInputElement, RangeProps>(
-  ({ containerClassName, ...props }, ref) => {
-    const [value, setValue] = useState(0);
+  ({ containerClassName, currentValue, ...props }, ref) => {
     return (
       <div className={clsxm(containerClassName, 'w-full')}>
         <div className="mb-1 text-[18px] font-medium">
-          ${humanFormat(value)}
+          $
+          {props.disabled
+            ? 0
+            : humanFormat(
+                typeof currentValue === 'string'
+                  ? parseFloat(currentValue)
+                  : currentValue,
+              )}
         </div>
         <input
           ref={ref}
@@ -25,7 +32,6 @@ const Range = React.forwardRef<HTMLInputElement, RangeProps>(
             !props.disabled && 'range-primary',
           )}
           onChange={(e) => {
-            setValue(parseInt(e.target.value));
             props.onChange?.(e);
           }}
         />
