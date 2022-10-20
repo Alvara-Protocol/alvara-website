@@ -5,39 +5,58 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/security/Pausable.sol";
 
+/// @title A contract for Alvara token presale
+/// @author Hiroyuki Takahashi
 contract AlvrTokenSale is Ownable, Pausable {
+    // alvara token address
     address public alvara;
+    // possible option count: default is 3
     uint256 public optionCnt;
-
+    // option -> minimum token amount
     mapping(uint256 => uint256) public minimumTokens;
+    // option -> maximum token amount
     mapping(uint256 => uint256) public maximumTokens;
+    // investor -> option -> vested eth
     mapping(address => mapping(uint256 => uint256)) public vests;
+    // investor -> option -> allocated tokens
     mapping(address => mapping(uint256 => uint256)) public tokens;
+    // investor -> option -> claimed tokens
     mapping(address => mapping(uint256 => uint256)) public claimed;
+    // investor -> nonce
     mapping(address => uint256) public nonce;
+    // index -> investor
     mapping(uint256 => address) public investors;
-    mapping(address => bool) public isInvestor;
+    // investor -> isBlocked
     mapping(address => bool) public isBlocked;
-
-    // option => index => Schedule
-    mapping(uint256 => mapping(uint256 => Schedule)) public schedules;
-
+    // option -> index -> timestamp since tge
+    mapping(uint256 => mapping(uint256 => uint256)) public schedules;
+    // percent alias for 100%
+    uint256 public constant fullPercent = 10_000;
+    // timestamp for 30.44 days
+    uint256 public constant timeMonth = 2_629_743;
+    // count of investors
     uint256 public investorCnt;
-    uint256 public totalVested;
+    // total vested eth
+    uint256 public totalVests;
+    // total allocated tokens
+    uint256 public totalTokens;
+    // treasury wallet which eth is sent to
     address public treasuryWallet;
+    // tx signer to validate the params for addVest
     address public txSigner;
-    uint256 public constant fullPercent = 10000;
+    // allowed percentage to mitigate failure for min/max vest
+    uint256 public allowedPercentage;
+    // token generation event timestamp
+    uint256 public tge;
 
-    struct Schedule {
-        uint256 timestamp;
-        uint256 release;
-    }
+    // struct for returning type of getAllInvestors
     struct Investments {
         address investor;
         uint256[] amounts;
         uint256[] tokens;
     }
 
+    // false: able to vest, true: able to claim
     bool public claimable;
 
     modifier whenNotClaimable() {
@@ -60,28 +79,55 @@ contract AlvrTokenSale is Ownable, Pausable {
         treasuryWallet = treasuryWallet_;
         txSigner = txSigner_;
 
-        // TODO Update
-        schedules[0][0] = Schedule(1665671980245, 3000);
-        schedules[0][1] = Schedule(1665672980245, 7000);
+        schedules[0][0] = fullPercent;
 
-        schedules[1][0] = Schedule(1665671980245, 2000);
-        schedules[1][1] = Schedule(1665672980245, 8000);
+        schedules[1][0] = 0;
+        schedules[1][1] = 1_666 * 1;
+        schedules[1][2] = 1_666 * 2;
+        schedules[1][3] = 1_666 * 3;
+        schedules[1][4] = 1_666 * 4;
+        schedules[1][5] = 1_666 * 5;
+        schedules[1][6] = fullPercent;
 
-        schedules[2][0] = Schedule(1665671980245, 4000);
-        schedules[2][1] = Schedule(1665672980245, 6000);
+        schedules[2][0] = 0;
+        schedules[2][1] = 555 * 1;
+        schedules[2][2] = 555 * 2;
+        schedules[2][3] = 555 * 3;
+        schedules[2][4] = 555 * 4;
+        schedules[2][5] = 555 * 5;
+        schedules[2][6] = 555 * 6;
+        schedules[2][7] = 555 * 7;
+        schedules[2][8] = 555 * 8;
+        schedules[2][9] = 555 * 9;
+        schedules[2][10] = 555 * 10;
+        schedules[2][11] = 555 * 11;
+        schedules[2][12] = 555 * 12;
+        schedules[2][13] = 555 * 13;
+        schedules[2][14] = 555 * 14;
+        schedules[2][15] = 555 * 15;
+        schedules[2][16] = 555 * 16;
+        schedules[2][17] = 555 * 17;
+        schedules[2][18] = fullPercent;
 
-        minimumTokens[0] = 5000 * 10**18;
-        minimumTokens[1] = 13333 * 10**18;
-        minimumTokens[2] = 200000 * 10**18;
+        allowedPercentage = 500;
 
-        maximumTokens[0] = 100000 * 10**18;
-        maximumTokens[1] = 666666 * 10**18;
-        maximumTokens[2] = 52000000000 * 10**18;
+        minimumTokens[0] = 5_000 * 10**18;
+        minimumTokens[1] = 10_000 * 10**18;
+        minimumTokens[2] = 100_000 * 10**18;
+
+        maximumTokens[0] = 100_000 * 10**18;
+        maximumTokens[1] = 500_000 * 10**18;
+        maximumTokens[2] = 1_000_000 * 10**18;
     }
 
     function setTreasuryWallet(address treasuryWallet_) external onlyOwner {
         require(treasuryWallet_ != address(0));
         treasuryWallet = treasuryWallet_;
+    }
+
+    function setTge(uint256 tge_) external onlyOwner {
+        require(tge_ > 0);
+        tge = tge_;
     }
 
     function claimAdmin(address token_) external onlyOwner {
@@ -117,14 +163,27 @@ contract AlvrTokenSale is Ownable, Pausable {
         _unpause();
     }
 
-    function setSchedule(
-        uint256 option,
-        uint256 index,
-        Schedule memory schedule
-    ) external onlyOwner {
-        require(option < optionCnt, "Invalid option");
+    function setSchedule(uint256 option_, uint256[] memory releases_)
+        external
+        onlyOwner
+    {
+        require(option_ < optionCnt, "Invalid option");
+        require(
+            releases_[releases_.length - 1] == fullPercent,
+            "Should finish with full percent"
+        );
 
-        schedules[option][index] = schedule;
+        for (uint256 i = 0; i < releases_.length; i++)
+            schedules[option_][i] = releases_[i];
+        schedules[option_][releases_.length] = 0;
+    }
+
+    function setAllowedPercentage(uint256 allowedPercentage_)
+        external
+        onlyOwner
+    {
+        require(allowedPercentage_ <= fullPercent, "Invalid percentage");
+        allowedPercentage = allowedPercentage_;
     }
 
     function setOptionMinAmount(uint256 option, uint256 amount)
@@ -150,11 +209,15 @@ contract AlvrTokenSale is Ownable, Pausable {
     }
 
     function _minimum(uint256 option_) internal view returns (uint256) {
-        return minimumTokens[option_];
+        return
+            (minimumTokens[option_] * (fullPercent - allowedPercentage)) /
+            fullPercent;
     }
 
     function _maximum(uint256 option_) internal view returns (uint256) {
-        return maximumTokens[option_];
+        return
+            (maximumTokens[option_] * (fullPercent + allowedPercentage)) /
+            fullPercent;
     }
 
     function _tokens(address investor_, uint256 option_)
@@ -169,11 +232,17 @@ contract AlvrTokenSale is Ownable, Pausable {
         return nonce[investor_]++;
     }
 
+    function _isInvestor(address investorLike_) internal view returns (bool) {
+        for (uint256 i = 0; i < investorCnt; i++)
+            if (investors[i] == investorLike_) return true;
+        return false;
+    }
+
     function _addInvestorChecked(address investor_) internal {
+        require(!isBlocked[investor_], "Blocked investor");
         require(investor_ != address(0), "Invalid address");
-        if (isInvestor[investor_]) return;
+        if (_isInvestor(investor_)) return;
         investors[investorCnt++] = investor_;
-        isInvestor[investor_] = true;
     }
 
     function setAlvara(address alvara_) external onlyOwner {
@@ -230,13 +299,13 @@ contract AlvrTokenSale is Ownable, Pausable {
         uint256 option_,
         uint256 amount_,
         uint256 tokens_
-    ) internal returns (uint256) {
-        if (amount_ == 0 && tokens_ == 0) return amount_;
+    ) internal {
+        if (amount_ == 0 && tokens_ == 0) return;
 
         _addTokens(investor_, option_, tokens_);
         vests[msg.sender][option_] += amount_;
-
-        return amount_;
+        totalVests += amount_;
+        totalTokens += tokens_;
     }
 
     function _verifySignature(
@@ -316,11 +385,11 @@ contract AlvrTokenSale is Ownable, Pausable {
             "Invalid address"
         );
         require(
-            isInvestor[oldUser_] && !isBlocked[oldUser_],
+            _isInvestor(oldUser_) && !isBlocked[oldUser_],
             "Invalid previous user"
         );
         require(
-            !isInvestor[newUser_] && !isBlocked[newUser_],
+            !_isInvestor(newUser_) && !isBlocked[newUser_],
             "Invalid next user"
         );
 
@@ -341,10 +410,6 @@ contract AlvrTokenSale is Ownable, Pausable {
         }
     }
 
-    /**
-     * @dev Add vest by deposit ETH
-     * @param amounts_ Option amount
-     */
     function addVest(
         uint256[] memory amounts_,
         uint256[] memory tokens_,
@@ -362,18 +427,12 @@ contract AlvrTokenSale is Ownable, Pausable {
 
         uint256 vestAmount_ = 0;
         for (uint256 option_ = 0; option_ < optionCnt; option_++) {
-            vestAmount_ += _addVest(
-                msg.sender,
-                option_,
-                amounts_[option_],
-                tokens_[option_]
-            );
+            _addVest(msg.sender, option_, amounts_[option_], tokens_[option_]);
+            vestAmount_ += amounts_[option_];
         }
 
-        totalVested += vestAmount_;
-
         require(vestAmount_ == msg.value, "Invalid amounts");
-        payable(treasuryWallet).transfer(msg.value); // to be confirmed
+        payable(treasuryWallet).transfer(msg.value);
     }
 
     function getAllInvestors() external view returns (Investments[] memory) {
@@ -407,15 +466,10 @@ contract AlvrTokenSale is Ownable, Pausable {
         return tokens_;
     }
 
-    function _scheduleCnt(uint256 option_) internal view returns (uint256) {
-        uint256 i = 0;
-        while (schedules[option_][i].release > 0) i++;
-        return i;
+    function _calcScheduleTime(uint256 index_) internal view returns (uint256) {
+        return tge + index_ * timeMonth;
     }
 
-    /**
-     * @dev Calculate option release amount by given timestamp
-     */
     function _calcOptionRelease(
         address investor_,
         uint256 option_,
@@ -425,10 +479,10 @@ contract AlvrTokenSale is Ownable, Pausable {
         uint256 release_;
 
         while (
-            schedules[option_][i].release > 0 &&
-            schedules[option_][i].timestamp <= timestamp_
+            (schedules[option_][i] > 0 || i == 0) &&
+            _calcScheduleTime(i) <= timestamp_
         ) {
-            release_ = schedules[option_][i].release;
+            release_ = schedules[option_][i];
             i++;
         }
 
@@ -472,7 +526,6 @@ contract AlvrTokenSale is Ownable, Pausable {
         uint256 option_,
         uint256 timestamp_
     ) internal {
-        /// Available claim amount for given option
         uint256 claim_ = _calcOptionRelease(investor_, option_, timestamp_) -
             _claimed(investor_, option_);
 
@@ -489,4 +542,8 @@ contract AlvrTokenSale is Ownable, Pausable {
     function claim() external whenNotPaused whenClaimable {
         _claim(msg.sender, block.timestamp);
     }
+
+    fallback() external payable {}
+
+    receive() external payable {}
 }
