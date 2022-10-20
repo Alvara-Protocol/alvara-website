@@ -9,7 +9,7 @@ export default function Title() {
   return (
     <Hives className="mx-4 mb-[200px]  flex flex-col items-center gap-8 pt-[150px] md:pt-[250px]">
       <NextImage
-        className="absolute right-0 bottom-0 -z-[1] md:left-1/2 md:translate-x-1/2"
+        className="absolute -bottom-20 right-0 -z-[1] md:left-1/2 md:translate-x-1/2"
         width={300}
         height={300}
         src={bee}
