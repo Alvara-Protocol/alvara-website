@@ -18,6 +18,14 @@ const aboutAlvaraLinks = [
   { href: '/roadmap', label: 'Roadmap & Papers' },
 ];
 
+interface MobileLinkProps extends React.PropsWithChildren {
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const MobileLink = ({ setIsOpen, children }: MobileLinkProps) => {
+  return <div onClick={() => setIsOpen(false)}>{children}</div>;
+};
+
 export default function Header() {
   const [isOpen, setIsOpen] = React.useState(false);
   const [isShowingTech, setIsShowingTech] = React.useState(false);
@@ -121,16 +129,18 @@ export default function Header() {
                         Navigation
                       </Dialog.Title>
                       <div className="flex items-center justify-between py-6 px-8">
-                        <UnstyledLink href="/">
-                          <NextImage
-                            useSkeleton
-                            className="mt-1.5 w-32"
-                            src="/images/nav-logo-black.png"
-                            width="230"
-                            height="45"
-                            alt="Icon"
-                          />
-                        </UnstyledLink>
+                        <MobileLink setIsOpen={setIsOpen}>
+                          <UnstyledLink href="/">
+                            <NextImage
+                              useSkeleton
+                              className="mt-1.5 w-32"
+                              src="/images/nav-logo-black.png"
+                              width="230"
+                              height="45"
+                              alt="Icon"
+                            />
+                          </UnstyledLink>
+                        </MobileLink>
                         <button
                           type="button"
                           className="flex h-8 w-8 items-center justify-center"
@@ -174,14 +184,19 @@ export default function Header() {
                               >
                                 <ul className="ml-3">
                                   {techLinks.map((link) => (
-                                    <li key={link.href}>
-                                      <UnstyledLink
-                                        className="block p-1"
-                                        href={link.href}
-                                      >
-                                        {link.label}
-                                      </UnstyledLink>
-                                    </li>
+                                    <MobileLink
+                                      setIsOpen={setIsOpen}
+                                      key={link.href}
+                                    >
+                                      <li>
+                                        <UnstyledLink
+                                          className="block p-1"
+                                          href={link.href}
+                                        >
+                                          {link.label}
+                                        </UnstyledLink>
+                                      </li>
+                                    </MobileLink>
                                   ))}
                                 </ul>
                               </Transition>
@@ -208,35 +223,44 @@ export default function Header() {
                               >
                                 <ul className="ml-3">
                                   {aboutAlvaraLinks.map((link) => (
-                                    <li key={link.href}>
-                                      <UnstyledLink
-                                        className="block p-1"
-                                        href={link.href}
-                                      >
-                                        {link.label}
-                                      </UnstyledLink>
-                                    </li>
+                                    <MobileLink
+                                      setIsOpen={setIsOpen}
+                                      key={link.href}
+                                    >
+                                      <li>
+                                        <UnstyledLink
+                                          className="block p-1"
+                                          href={link.href}
+                                        >
+                                          {link.label}
+                                        </UnstyledLink>
+                                      </li>
+                                    </MobileLink>
                                   ))}
                                 </ul>
                               </Transition>
                             </div>
                             <div>
-                              <UnstyledLink
-                                href="/news"
-                                className="font-medium"
-                              >
-                                The Buzz
-                              </UnstyledLink>
+                              <MobileLink setIsOpen={setIsOpen}>
+                                <UnstyledLink
+                                  href="/news"
+                                  className="font-medium"
+                                >
+                                  The Buzz
+                                </UnstyledLink>
+                              </MobileLink>
                             </div>
                           </div>
                         </div>
                         <div className="py-6 px-8">
-                          <UnstyledLink
-                            href="/presale"
-                            className="focus-visible:ring-primary-500 disabled:bg-primary-400 disabled:hover:bg-primary-400 inline-block bg-gradient-to-r from-purple-650 to-fuchsia-450 py-1 px-10 text-[16px] font-medium text-white shadow-sm transition-colors duration-75 focus:outline-none focus-visible:ring disabled:cursor-not-allowed"
-                          >
-                            ALVA
-                          </UnstyledLink>
+                          <MobileLink setIsOpen={setIsOpen}>
+                            <UnstyledLink
+                              href="/presale"
+                              className="focus-visible:ring-primary-500 disabled:bg-primary-400 disabled:hover:bg-primary-400 inline-block bg-gradient-to-r from-purple-650 to-fuchsia-450 py-1 px-10 text-[16px] font-medium text-white shadow-sm transition-colors duration-75 focus:outline-none focus-visible:ring disabled:cursor-not-allowed"
+                            >
+                              ALVA
+                            </UnstyledLink>
+                          </MobileLink>
                         </div>
                       </nav>
                     </Dialog.Panel>
