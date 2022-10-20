@@ -1,29 +1,25 @@
-import { Modal } from '@/components';
-import UnstyledLink from '@/components/links/UnstyledLink';
+import { NextImage } from '@/components';
 
-interface ModalProps {
-  show: boolean;
-  setShow: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-export default function MyModal({ show, setShow }: ModalProps) {
+export default function Success() {
   return (
-    <>
-      <Modal show={show} setShow={setShow}>
-        <p className="my-5 text-center text-base text-fuchsia-450">
-          <b className="font-bold">Thank you for joining the ALVA presale.</b>
-          <br />
-          <br />
-          Please
-          <UnstyledLink href="/news" className="mx-2 underline">
-            follow our socials
-          </UnstyledLink>
-          and/or leave your details below for all updates.
-          <br />
-          <br />
-          Welcome to the Hive!
-        </p>
-      </Modal>
-    </>
+    <div className="border-gradient3 my-4 border-y py-8">
+      <NextImage
+        className="mx-auto"
+        src="/images/presale/success.png"
+        width={85}
+        height={85}
+        alt="Success"
+      />
+      <p className="my-5 text-center text-base">
+        <b className="bg-gradient-to-r from-purple-650 to-fuchsia-450 bg-clip-text text-lg text-transparent">
+          Payment successful
+        </b>
+        <br />
+        <br />
+        Thank you for joining the ALVA presale.
+        <br />
+        Welcome to the Hive!
+      </p>
+    </div>
   );
 }

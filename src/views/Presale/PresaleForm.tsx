@@ -1,6 +1,6 @@
 import { joiResolver } from '@hookform/resolvers/joi';
 import axios from 'axios';
-import { getMessageFromCode, serializeError } from 'eth-rpc-errors';
+import { serializeError } from 'eth-rpc-errors';
 import { BigNumberish } from 'ethers';
 import { parseEther } from 'ethers/lib/utils';
 import Joi from 'joi';
@@ -57,6 +57,7 @@ export interface SignatureResponse {
 
 export default function PresaleForm() {
   const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [loading, setLoading] = useState(false);
   const { addVest } = usePresaleContract();
   const { isConnected, address } = useAccount();
   const { connectAsync } = useConnect();
@@ -123,39 +124,85 @@ export default function PresaleForm() {
     return value.lt(parseEther(totalETH.toFixed(2)));
   }, [totalETH, balanceResult]);
 
-  const onSubmit: SubmitHandler<FormProps> = async (data) => {
-    try {
-      if (!address || !ethPrice) return;
-      if (insufficientBalance) {
-        return toast.error('Insufficient Balance.');
+  const onSubmit: SubmitHandler<FormProps> = useCallback(
+    async (data) => {
+      try {
+        if (!address || !ethPrice) {
+          throw Error('Connect wallet');
+        }
+        if (insufficientBalance) {
+          throw Error('Insufficient Balance.');
+        }
+
+        setLoading(true);
+        const {
+          data: { ethAmounts, tokenAmounts, v, r, s, vestAmount },
+        } = await axios.post<SignatureResponse>(`/api/signature/${address}`, {
+          optionA: optionAActivated ? data.optionA / ethPrice : 0,
+          optionB: optionBActivated ? data.optionB / ethPrice : 0,
+          optionC: optionCActivated ? data.optionC / ethPrice : 0,
+        });
+
+        const transaction = await addVest(ethAmounts, tokenAmounts, v, r, s, {
+          value: vestAmount,
+        });
+
+        await transaction.wait();
+
+        refetchBalance();
+        setShowSuccessModal(true);
+      } catch (error: any) {
+        if (axios.isAxiosError(error)) {
+          throw Error(error.response?.data.error);
+        }
+        let serializedError: any = serializeError(error);
+
+        const originalError = (serializedError.data as any)?.originalError;
+
+        if (originalError) serializedError = originalError;
+        throw Error(
+          serializedError.reason ? serializedError.reason : serializedError,
+        );
+      } finally {
+        setLoading(false);
       }
-      const {
-        data: { ethAmounts, tokenAmounts, v, r, s, vestAmount },
-      } = await axios.post<SignatureResponse>(`/api/signature/${address}`, {
-        optionA: optionAActivated ? data.optionA / ethPrice : 0,
-        optionB: optionBActivated ? data.optionB / ethPrice : 0,
-        optionC: optionCActivated ? data.optionC / ethPrice : 0,
-      });
+    },
+    [
+      addVest,
+      address,
+      ethPrice,
+      insufficientBalance,
+      optionAActivated,
+      optionBActivated,
+      optionCActivated,
+      refetchBalance,
+    ],
+  );
 
-      const transaction = await addVest(ethAmounts, tokenAmounts, v, r, s, {
-        value: vestAmount,
-      });
-
-      toast.info(`Transaction Created : ${transaction.hash}`);
-
-      await transaction.wait();
-      refetchBalance();
-      toast.success(`Transaction Successful`);
-      setShowSuccessModal(true);
-    } catch (error: any) {
-      if (axios.isAxiosError(error)) {
-        return toast.error(error.response?.data.error);
+  const handleAddVest: React.FormEventHandler = useCallback(
+    async (e) => {
+      e.preventDefault();
+      try {
+        await toast.promise(
+          handleSubmit(onSubmit),
+          {
+            pending: 'Confirming transaction',
+            success: 'Transaction Successful',
+            error: {
+              render({ data }) {
+                return data.message;
+              },
+            },
+          },
+          { position: 'bottom-right' },
+        );
+      } catch (error) {
+        //TODO
       }
-      const serializedError = serializeError(error);
-      // TODO: Update detailed error message
-      toast.error(getMessageFromCode(serializedError.code));
-    }
-  };
+    },
+
+    [handleSubmit, onSubmit],
+  );
 
   const handleConnectWallet = useCallback(async () => {
     connectAsync({ connector: metaMaskConnector })
@@ -190,112 +237,119 @@ export default function PresaleForm() {
 
   return (
     <>
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="border-gradient3 relative flex w-full flex-col items-center gap-8 border-y pt-10 pb-4"
-      >
-        <div
-          className={clsxm(
-            'absolute h-full w-full bg-black bg-opacity-30',
-            isFetchingEthPrice || isEthPriceError ? '' : 'hidden',
-          )}
+      {showSuccessModal ? (
+        <SuccessModal />
+      ) : (
+        <form
+          onSubmit={handleAddVest}
+          className="border-gradient3 relative flex w-full flex-col items-center gap-8 border-y pt-10 pb-4"
         >
-          {isFetchingEthPrice ? 'Loading...' : ''}
-        </div>
-        <div className="w-full">
-          <Select
-            containerClassName="items-start"
-            label="Option 1"
-            {...register('optionAActivated')}
-          />
-          <RangeWithEthereum
-            min={500}
-            max={10000}
-            rate={ethPrice}
-            tokenPriceInUsd={tokenPricesInUsd[0]}
-            disabled={!optionAActivated || globalDisabled}
-            currentValue={optionA || 500}
-            setValue={(v: number) => {
-              setValue('optionA', v);
-            }}
-            {...register('optionA', { min: 0, max: 400000 })}
-          />
-        </div>
-
-        <div className="w-full">
-          <Select
-            containerClassName="items-start"
-            label="Option 2"
-            {...register('optionBActivated')}
-          />
-          <RangeWithEthereum
-            min={1000}
-            max={50000}
-            rate={ethPrice}
-            tokenPriceInUsd={tokenPricesInUsd[1]}
-            disabled={!optionBActivated || globalDisabled}
-            currentValue={optionB || 1000}
-            setValue={(v: number) => {
-              setValue('optionB', v);
-            }}
-            {...register('optionB', { min: 0, max: 400000 })}
-          />
-        </div>
-
-        <div className="w-full">
-          <Select
-            containerClassName="items-start"
-            label="Option 3"
-            {...register('optionCActivated')}
-          />
-          <RangeWithEthereum
-            min={10000}
-            max={100000}
-            rate={ethPrice}
-            tokenPriceInUsd={tokenPricesInUsd[2]}
-            disabled={!optionCActivated || globalDisabled}
-            currentValue={optionC || 10000}
-            setValue={(v: number) => {
-              setValue('optionC', v);
-            }}
-            {...register('optionC', { min: 0, max: 400000 })}
-          />
-        </div>
-
-        <div className="w-full text-center">
-          <h4 className="text-center text-2xl font-medium">Total ETH</h4>
           <div
             className={clsxm(
-              'border-gradient my-3 mx-auto w-2/3 border p-3 text-center',
-              insufficientBalance && 'text-red-400',
+              'absolute h-full w-full bg-black bg-opacity-30',
+              isFetchingEthPrice || isEthPriceError ? '' : 'hidden',
             )}
           >
-            {totalETH ? `${totalETH.toFixed(2)} ETH` : `-`}
+            {isFetchingEthPrice ? 'Loading...' : ''}
           </div>
-          {isConnected && (
-            <span>
-              {balanceResult
-                ? `Balance: ${parseFloat(balanceResult.formatted).toFixed(4)} ${
-                    balanceResult.symbol
-                  }`
-                : `Unable to fetch balance`}
-            </span>
-          )}
-          {insufficientBalance && (
-            <label className="ml-4 text-sm text-red-400">
-              Insufficient balance
-            </label>
-          )}
-        </div>
-        <Button
-          type={isConnected ? 'submit' : 'button'}
-          onClick={isConnected ? handleSubmit(onSubmit) : handleConnectWallet}
-          disabled={globalDisabled}
-        >
-          {isConnected ? 'Join' : 'Connect Wallet'}
-        </Button>
-      </form>
-      <SuccessModal show={showSuccessModal} setShow={setShowSuccessModal} />
+          <div className="w-full">
+            <Select
+              containerClassName="items-start"
+              label="Option 1"
+              {...register('optionAActivated')}
+            />
+            <RangeWithEthereum
+              min={500}
+              max={10000}
+              rate={ethPrice}
+              tokenPriceInUsd={tokenPricesInUsd[0]}
+              disabled={!optionAActivated || globalDisabled}
+              currentValue={optionA || 500}
+              setValue={(v: number) => {
+                setValue('optionA', v);
+              }}
+              {...register('optionA', { min: 0, max: 400000 })}
+            />
+          </div>
+
+          <div className="w-full">
+            <Select
+              containerClassName="items-start"
+              label="Option 2"
+              {...register('optionBActivated')}
+            />
+            <RangeWithEthereum
+              min={1000}
+              max={50000}
+              rate={ethPrice}
+              tokenPriceInUsd={tokenPricesInUsd[1]}
+              disabled={!optionBActivated || globalDisabled}
+              currentValue={optionB || 1000}
+              setValue={(v: number) => {
+                setValue('optionB', v);
+              }}
+              {...register('optionB', { min: 0, max: 400000 })}
+            />
+          </div>
+
+          <div className="w-full">
+            <Select
+              containerClassName="items-start"
+              label="Option 3"
+              {...register('optionCActivated')}
+            />
+            <RangeWithEthereum
+              min={10000}
+              max={100000}
+              rate={ethPrice}
+              tokenPriceInUsd={tokenPricesInUsd[2]}
+              disabled={!optionCActivated || globalDisabled}
+              currentValue={optionC || 10000}
+              setValue={(v: number) => {
+                setValue('optionC', v);
+              }}
+              {...register('optionC', { min: 0, max: 400000 })}
+            />
+          </div>
+
+          <div className="w-full text-center">
+            <h4 className="text-center text-2xl font-medium">Total ETH</h4>
+            <div
+              className={clsxm(
+                'border-gradient my-3 mx-auto w-2/3 border p-3 text-center',
+                insufficientBalance && 'text-red-400',
+              )}
+            >
+              {totalETH ? `${totalETH.toFixed(2)} ETH` : `-`}
+            </div>
+            {isConnected && (
+              <span>
+                {balanceResult
+                  ? `Balance: ${parseFloat(balanceResult.formatted).toFixed(
+                      4,
+                    )} ${balanceResult.symbol}`
+                  : `Unable to fetch balance`}
+              </span>
+            )}
+            {insufficientBalance && (
+              <label className="ml-4 text-sm text-red-400">
+                Insufficient balance
+              </label>
+            )}
+          </div>
+          <Button
+            type={isConnected ? 'submit' : 'button'}
+            onClick={isConnected ? handleAddVest : handleConnectWallet}
+            disabled={globalDisabled || loading}
+          >
+            {isConnected
+              ? loading
+                ? 'Please wait...'
+                : 'Join'
+              : 'Connect Wallet'}
+          </Button>
+        </form>
+      )}
     </>
   );
 }

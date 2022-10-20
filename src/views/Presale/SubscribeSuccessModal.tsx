@@ -1,30 +1,32 @@
-import { Modal } from '@/components';
+import { NextImage } from '@/components';
 import UnstyledLink from '@/components/links/UnstyledLink';
 
-interface ModalProps {
-  show: boolean;
-  setShow: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-export default function SubscribeSuccessModal({ show, setShow }: ModalProps) {
+export default function SubscribeSuccessModal() {
   return (
-    <Modal show={show} setShow={setShow}>
-      <p className="my-5 text-center text-base text-fuchsia-450">
-        <b className="font-bold">Thank you for submitting your details.</b>
+    <div className="my-8 mx-auto max-w-xl">
+      <NextImage
+        className="mx-auto"
+        src="/images/presale/email.png"
+        width={85}
+        height={85}
+        alt="Success"
+      />
+      <p className="my-6 text-center text-base ">
+        <b className="bg-gradient-to-r from-purple-650 to-fuchsia-450 bg-clip-text text-lg text-transparent">
+          Thank you for submitting your details.
+        </b>
         <br />
         <br />
         If you have just joined the ALVA presale then you will receive a
-        confirmation email within 24 hours.
-        <br />
-        <br />
-        For any queries please contact the team -
+        confirmation email within 24 hours. For any queries please contact the
+        team -
         <UnstyledLink
           href="mailto:contact@alvaraprotocol"
-          className="mx-2 underline"
+          className="mx-2 text-fuchsia-450"
         >
           contact@alvaraprotocol.io
         </UnstyledLink>
       </p>
-    </Modal>
+    </div>
   );
 }

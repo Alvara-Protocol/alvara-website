@@ -63,59 +63,61 @@ export default function Subscribe() {
   }, [address, setValue]);
 
   return (
-    <form className="flex w-full flex-col items-center gap-4 pt-16">
-      <p className="text-center text-[20px] text-black">
-        To receive updates on the presale please fill out the form below.
-      </p>
-      <InputGroup
-        containerClassName="w-full lg:w-1/2"
-        label="First Name"
-        {...register('firstname')}
-        error={formState.errors.firstname?.message}
-      />
-      <InputGroup
-        containerClassName="w-full lg:w-1/2"
-        label="Last Name"
-        {...register('lastname')}
-        error={formState.errors.lastname?.message}
-      />
-      <InputGroup
-        containerClassName="w-full lg:w-1/2"
-        label="Email Address"
-        required
-        {...register('email')}
-        error={formState.errors.email?.message}
-      />
-      <InputGroup
-        containerClassName="w-full lg:w-1/2"
-        label="Telegram ID"
-        {...register('telegram_id')}
-        error={formState.errors.telegram_id?.message}
-      />
-      <InputGroup
-        containerClassName="w-full lg:w-1/2"
-        label="Wallet Address"
-        required
-        readOnly
-        {...register('wallet_address')}
-        error={formState.errors.wallet_address?.message}
-      />
-      <p className="text-sm">
-        We will only use this data to contact you in relation to the ALVA
-        presale.
-      </p>
-      <Button
-        type="submit"
-        onClick={handleSubmit(onSubmit)}
-        className="min-w-[220px] justify-center"
-        disabled={loading}
-      >
-        {loading ? 'Please wait...' : 'Submit'}
-      </Button>
-      <SubscribeSuccessModal
-        show={showSubscribeSuccessModal}
-        setShow={setShowSubscribeSuccessModal}
-      />
-    </form>
+    <>
+      {showSubscribeSuccessModal ? (
+        <SubscribeSuccessModal />
+      ) : (
+        <form className="flex w-full flex-col items-center gap-4 pt-16">
+          <p className="text-center text-[20px] text-black">
+            To receive updates on the presale please fill out the form below.
+          </p>
+          <InputGroup
+            containerClassName="w-full lg:w-1/2"
+            label="First Name"
+            {...register('firstname')}
+            error={formState.errors.firstname?.message}
+          />
+          <InputGroup
+            containerClassName="w-full lg:w-1/2"
+            label="Last Name"
+            {...register('lastname')}
+            error={formState.errors.lastname?.message}
+          />
+          <InputGroup
+            containerClassName="w-full lg:w-1/2"
+            label="Email Address"
+            required
+            {...register('email')}
+            error={formState.errors.email?.message}
+          />
+          <InputGroup
+            containerClassName="w-full lg:w-1/2"
+            label="Telegram ID"
+            {...register('telegram_id')}
+            error={formState.errors.telegram_id?.message}
+          />
+          <InputGroup
+            containerClassName="w-full lg:w-1/2"
+            label="Wallet Address"
+            required
+            readOnly
+            {...register('wallet_address')}
+            error={formState.errors.wallet_address?.message}
+          />
+          <p className="text-sm">
+            We will only use this data to contact you in relation to the ALVA
+            presale.
+          </p>
+          <Button
+            type="submit"
+            onClick={handleSubmit(onSubmit)}
+            className="min-w-[220px] justify-center"
+            disabled={loading}
+          >
+            {loading ? 'Please wait...' : 'Submit'}
+          </Button>
+        </form>
+      )}
+    </>
   );
 }
