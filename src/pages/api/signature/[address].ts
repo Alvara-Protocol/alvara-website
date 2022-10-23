@@ -3,9 +3,9 @@ import { Wallet } from '@ethersproject/wallet';
 import { BigNumber, utils } from 'ethers';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { chain } from 'wagmi';
-import { publicProvider } from 'wagmi/providers/public';
 
 import { splitSignature } from '@/lib/web3/sign';
+import { provider as wagmiProvider } from '@/lib/web3/wagmi';
 
 import { contractAddress, tokenPricesInUsd } from '@/config';
 import { ethPrice, updateEthBalance } from '@/pages/api/price';
@@ -17,9 +17,7 @@ export default async function hello(req: NextApiRequest, res: NextApiResponse) {
       process.env.NEXT_PUBLIC_CHAIN_ID || chain.goerli.id.toString(),
     );
 
-    const provider = publicProvider()(
-      chainId === chain.goerli.id ? chain.goerli : chain.mainnet,
-    )?.provider();
+    const provider = wagmiProvider({ chainId });
 
     if (!provider) {
       return;
@@ -31,7 +29,6 @@ export default async function hello(req: NextApiRequest, res: NextApiResponse) {
     }
 
     const wallet = new Wallet(masterWalletPrivateKey);
-    wallet.connect(provider);
 
     const alvrTokenSale = AlvrTokenSale__factory.connect(
       contractAddress[chainId],
