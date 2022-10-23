@@ -5,14 +5,12 @@ import { InjectedConnector } from 'wagmi/connectors/injected';
 import { MetaMaskConnector } from 'wagmi/connectors/metaMask';
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
-import { publicProvider } from 'wagmi/providers/public';
 
 const CHAINS = [chain.mainnet, chain.goerli];
-const ALCHEMY_API_KEY = process.env.NEXT_PUBLIC_ALCHEMY_API_KEY
+const ALCHEMY_API_KEY = process.env.NEXT_PUBLIC_ALCHEMY_API_KEY;
 
 export const { provider, chains } = configureChains(CHAINS, [
   alchemyProvider({ apiKey: ALCHEMY_API_KEY }),
-  publicProvider(),
 ]);
 
 export const injectedConnector = new InjectedConnector({
