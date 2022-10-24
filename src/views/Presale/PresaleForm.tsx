@@ -159,10 +159,12 @@ export default function PresaleForm() {
 
         const originalError = (serializedError.data as any)?.originalError;
 
-        if (originalError) serializedError = originalError;
-        throw Error(
-          serializedError.reason ? serializedError.reason : serializedError,
-        );
+        if (Object.keys(originalError).length !== 0)
+          serializedError = originalError;
+
+        throw serializedError.reason
+          ? Error(serializedError.reason)
+          : serializedError;
       } finally {
         setLoading(false);
       }

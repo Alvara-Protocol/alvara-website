@@ -1,5 +1,8 @@
 import React, { useCallback, useEffect, useState } from 'react';
 
+import NextImage from '@/components/NextImage';
+import { EthereumIcon } from '@/components/Svg';
+
 import Range, { RangeProps } from './Range';
 
 export interface RangeWithEthereumProps extends RangeProps {
@@ -66,9 +69,9 @@ const RangeWithEthereum = React.forwardRef<
         currentValue={currentValue}
       />
 
-      <div className="col-start-10 col-end-13 hidden grid-cols-2 lg:grid">
-        <div className="text-center font-medium">
-          <p className="text-[18px]">ETH</p>
+      <div className="col-start-1 col-end-13 grid grid-cols-2 gap-2 lg:col-start-10 lg:col-end-13">
+        <div className="inline-flex items-center gap-2 text-center font-medium">
+          <EthereumIcon className="h-6 w-6" />
           <input
             type="string"
             min={
@@ -91,9 +94,9 @@ const RangeWithEthereum = React.forwardRef<
             disabled={props.disabled}
           />
         </div>
-        <div className="ml-1.5 text-center font-medium">
-          <p className="text-[18px]">ALVA</p>
-          <p className="mt-3 bg-gray-400 text-[12px]">
+        <div className="inline-flex items-center gap-2 bg-gray-400 p-2 text-center font-medium">
+          <NextImage src="/images/logo.png" alt="ALVA" width={24} height={24} />
+          <p className="text-xs">
             {props.disabled
               ? '-'
               : `${(
