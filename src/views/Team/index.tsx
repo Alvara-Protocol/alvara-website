@@ -11,7 +11,7 @@ export default function Team() {
       designation: 'CEO',
       photo: '/images/team/callum.png',
       links: {
-        linkedin: 'https://linkedin.com',
+        linkedin: 'https://www.linkedin.com/in/callum-mitchell-clark-05183536',
       },
       achievments: [
         '10+ years business owner and management experience',
@@ -26,7 +26,7 @@ export default function Team() {
       designation: 'Product Manager',
       photo: '/images/team/james.png',
       links: {
-        linkedin: 'https://linkedin.com',
+        linkedin: 'https://www.linkedin.com/in/james-mitchell-clark-0b9155217',
       },
       achievments: [
         '10+ years active in the blockchain space with involvement in the early days of LTC',
@@ -39,7 +39,7 @@ export default function Team() {
       designation: 'CMO',
       photo: '/images/team/max.png',
       links: {
-        linkedin: 'https://linkedin.com',
+        linkedin: 'https://www.linkedin.com/in/max-green-377789225',
       },
       achievments: [
         'Experienced Marketing Technologist with specific expertise in Strategic Campaign Management',
@@ -52,7 +52,7 @@ export default function Team() {
       designation: 'Lead Blockchain Developer',
       photo: '/images/team/taka.png',
       links: {
-        linkedin: 'https://linkedin.com',
+        linkedin: 'https://www.linkedin.com/in/hiroyuki-takahashi-7aa34a221',
       },
       achievments: [
         'Highly experienced full-stack web and blockchain developer, specializing in Solidity, Rust, Python and Javascript',
@@ -67,7 +67,7 @@ export default function Team() {
       designation: 'HiveX Project Manager',
       photo: '/images/team/gunars.png',
       links: {
-        linkedin: 'https://linkedin.com',
+        linkedin: 'https://www.linkedin.com/in/gunarskepe',
       },
       achievments: [
         'Experienced product development with a demonstrated history of working in the financial services industry.',
@@ -80,7 +80,7 @@ export default function Team() {
       designation: 'GOAT Designer',
       photo: '/images/team/miha.png',
       links: {
-        linkedin: 'https://linkedin.com',
+        linkedin: 'https://www.linkedin.com/in/mihasodja',
       },
       achievments: [
         '10 years of graphic design experience including working for Fortune 500 companies',
@@ -94,7 +94,7 @@ export default function Team() {
       designation: 'Graphic Designer',
       photo: '/images/team/hicham.png',
       links: {
-        linkedin: 'https://linkedin.com',
+        linkedin: 'https://www.linkedin.com/in/hicham-elgouraid-b777891b2',
       },
       achievments: [
         '6+ years of Graphic Design experience',
@@ -105,17 +105,17 @@ export default function Team() {
     },
     {
       name: 'Joey van Etten',
-      designation: 'Community Lead',
+      designation: 'Business Development Manager',
       photo: '/images/team/joe.png',
       links: {
-        linkedin: 'https://linkedin.com',
+        linkedin: 'https://www.linkedin.com/in/joey-van-etten-12b228184',
       },
       achievments: [
-        '6+ years experience in TradFi and DeFi ',
-        'Strong industry expertise with a passion for building relationships ',
-        'Experienced community lead ',
-        'Early adopter and investor of various major cryptocurrencies ',
-        'Responsible for managing the connection between team and community',
+        '6+ years experience in TradFi and DeFi',
+        'Strong industry expertise with a passion for building relationships',
+        'Extensive experience in networking and strategy inside crypto space',
+        'Early adopter and investor of various major cryptocurrencies',
+        'Responsible for researching and connecting strategic partnerships',
       ],
     },
   ];
@@ -126,7 +126,7 @@ export default function Team() {
       designation: 'Chief Advisor',
       photo: '/images/team/neil.png',
       links: {
-        linkedin: 'https://linkedin.com',
+        linkedin: 'https://www.linkedin.com/in/neil-mitchell-clark-68177913',
       },
       achievments: [
         '20+ years senior executive experience in sales oriented, B2B, financial services, distribution and logistics organisations',
@@ -139,7 +139,7 @@ export default function Team() {
       designation: 'ETF Advisor',
       photo: '/images/team/deon.png',
       links: {
-        linkedin: 'https://linkedin.com',
+        linkedin: 'https://www.linkedin.com/in/deon-dreyer',
       },
       achievments: [
         '20+ years experience in advising on traditional and alternative asset classes to institutional clients',
@@ -153,7 +153,7 @@ export default function Team() {
       designation: 'Compliance Advisor',
       photo: '/images/team/peter.png',
       links: {
-        linkedin: 'https://linkedin.com',
+        linkedin: 'https://www.linkedin.com/in/peter-arnold-181aa28a',
       },
       achievments: [
         '30+ years’ working in Australia’s commercial, industrial and retail property markets specialising in the area of Funds Management',
@@ -167,7 +167,7 @@ export default function Team() {
       designation: 'Blockchain and Metaverse Advisor',
       photo: '/images/team/dominic.png',
       links: {
-        linkedin: 'https://linkedin.com',
+        linkedin: 'https://www.linkedin.com/in/dominic-ryder-9024699a',
       },
       achievments: [
         'Founder and CEO of vEmpire Digital',

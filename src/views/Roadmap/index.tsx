@@ -35,7 +35,7 @@ export default function Roadmap() {
             A quick glance at what makes Alvara so sweet
           </p>
 
-          <a href="/docs/deck.pdf" target="_blank" rel="noreferrer">
+          <a href="/docs/pitch_deck.pdf" target="_blank" rel="noreferrer">
             <Button variant="outline" className="max-w-max uppercase ">
               View here
             </Button>
