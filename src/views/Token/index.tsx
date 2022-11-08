@@ -25,7 +25,11 @@ export default function Token() {
             <br />
             <br />
             The full ALVA distribution and emission schedules can be found
-            <UnderlineLink className="ml-2" href="/roadmap">
+            <UnderlineLink
+              className="ml-2"
+              href="https://docs.google.com/spreadsheets/d/1RUSn39an455ohStdlq5UdZf2laCgPX7Qadn9UEpdOjQ/edit#gid=1379240481"
+              openNewTab
+            >
               here.
             </UnderlineLink>
           </p>
