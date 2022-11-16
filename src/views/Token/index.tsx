@@ -46,7 +46,7 @@ export default function Token() {
         <Info
           image="/images/token/income.svg"
           title="Passive Income"
-          description="An equivalent 10% of all transaction fees will be gift-airdropped to ALVA holders on a monthly basis, weighted according to their holdings."
+          description="An equivalent 10% of all HiveX transaction fees will be gift-airdropped to ALVA holders on a monthly basis, weighted according to their holdings."
           type={1}
           imageClassName="w-8 h-8"
         />
