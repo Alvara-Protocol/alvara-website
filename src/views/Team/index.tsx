@@ -103,21 +103,21 @@ export default function Team() {
         'Experienced Webflow Developer',
       ],
     },
-    {
-      name: 'Joey van Etten',
-      designation: 'Business Development Manager',
-      photo: '/images/team/joe.png',
-      links: {
-        linkedin: 'https://www.linkedin.com/in/joey-van-etten-12b228184',
-      },
-      achievments: [
-        '6+ years experience in TradFi and DeFi',
-        'Strong industry expertise with a passion for building relationships',
-        'Extensive experience in networking and strategy inside crypto space',
-        'Early adopter and investor of various major cryptocurrencies',
-        'Responsible for researching and connecting strategic partnerships',
-      ],
-    },
+    // {
+    //   name: 'Joey van Etten',
+    //   designation: 'Business Development Manager',
+    //   photo: '/images/team/joe.png',
+    //   links: {
+    //     linkedin: 'https://www.linkedin.com/in/joey-van-etten-12b228184',
+    //   },
+    //   achievments: [
+    //     '6+ years experience in TradFi and DeFi',
+    //     'Strong industry expertise with a passion for building relationships',
+    //     'Extensive experience in networking and strategy inside crypto space',
+    //     'Early adopter and investor of various major cryptocurrencies',
+    //     'Responsible for researching and connecting strategic partnerships',
+    //   ],
+    // },
   ];
 
   const advisors: MemberProps[] = [
