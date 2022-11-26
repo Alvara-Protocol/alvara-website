@@ -28,7 +28,7 @@ export default function Info({
   return (
     <div
       className={clsx(
-        'grid h-full grid-rows-5',
+        'text-center',
         type === 2
           ? 'border-gradient4 border-b py-10 last:border-0 md:border-b-0 md:border-r'
           : '',
@@ -60,10 +60,10 @@ export default function Info({
 
       {type !== 3 && (
         <>
-          <h4 className="row-span-1  row-start-3 inline-flex items-center justify-center font-poppins text-[16px] font-medium text-black">
+          <h4 className="my-4 font-poppins text-[16px] font-medium text-black">
             {title}
           </h4>
-          <p className="row-start-4  row-end-6 break-words px-2 text-center font-poppins text-[12px] font-light text-dark-blue-400">
+          <p className="break-words px-2 text-center font-poppins text-[12px] font-light text-dark-blue-400">
             {description}
           </p>
         </>

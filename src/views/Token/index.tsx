@@ -35,7 +35,7 @@ export default function Token() {
           </p>
         </div>
       </Hives>
-      <div className="grid-on-right container mx-auto my-8 items-center justify-center gap-8 px-8 md:px-32">
+      <div className="mx-auto my-8 grid grid-cols-1 justify-center gap-8 px-8 md:grid-cols-3 md:px-32 xl:container">
         <Info
           image="/images/token/fee.svg"
           title="Fee Reductions"
@@ -74,7 +74,7 @@ export default function Token() {
         <Info
           image="/images/token/farm.svg"
           title="Farming"
-          description="Third party farming platforms will reward ALVA liquiity providers for bolstering ALVAs DEX pools."
+          description="Third party farming platforms will reward ALVA liquidity providers for bolstering ALVAs DEX pools."
           type={1}
           imageClassName="w-8 h-8"
         />
