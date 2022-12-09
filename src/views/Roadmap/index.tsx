@@ -2,13 +2,13 @@ import React from 'react';
 
 import { Button, Hives, Seo } from '@/components';
 
-import Timeline from './components/Timeline';
+import Timeline from './components/Timeline2';
 
 export default function Roadmap() {
   return (
     <main className="min-h-[calc(100vh)] ">
       <Seo templateTitle="Roadmap and Papers" />
-      <Hives className="bg-gray-400 px-8 pt-28 pb-10 md:px-20 md:py-28">
+      <Hives className="px-8 pt-28 pb-10 md:px-20 md:py-28">
         <h1 className="border-gradient mx-auto mb-8 w-1/2 border-b-[3px] pb-5 text-center font-montserrat font-medium uppercase tracking-widest md:text-4xl">
           Roadmap and Papers
         </h1>

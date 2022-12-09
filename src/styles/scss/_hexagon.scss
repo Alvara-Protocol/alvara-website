@@ -1,0 +1,149 @@
+@property --color1 {
+    syntax: '<color>';
+    initial-value: #fff;
+    inherits: false;
+}
+
+@property --color2 {
+    syntax: '<color>';
+    initial-value: #fff;
+    inherits: false;
+}
+
+@mixin hex($direction: true, $transition: true) {
+    $border-width: 1.7px;
+    position: relative;
+    float: left;
+    width: 323px;
+    height: 280px;
+    padding: 50px 40px 50px 40px;
+    @screen md {
+        background-size: 484.5px 420px;
+        width: 484.5px;
+        height: 420px;
+        padding: 50px 40px 50px 40px;
+    }
+
+    clip-path: polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);
+    -webkit-clip-path: polygon(
+        0% 25%,
+        0% 75%,
+        50% 100%,
+        100% 75%,
+        100% 25%,
+        50% 0%
+    );
+
+    &:before {
+        position: absolute;
+        content: '';
+        height: calc(100% - $border-width * 2);
+        width: calc(100% - $border-width * 2);
+
+        left: $border-width;
+        top: $border-width;
+        clip-path: polygon(
+            0% 25%,
+            0% 75%,
+            50% 100%,
+            100% 75%,
+            100% 25%,
+            50% 0%
+        );
+        -webkit-clip-path: polygon(
+            0% 25%,
+            0% 75%,
+            50% 100%,
+            100% 75%,
+            100% 25%,
+            50% 0%
+        );
+        z-index: -1;
+    }
+    &.gradient-border {
+        @if $direction {
+            background: linear-gradient(
+                180deg,
+                rgba(138, 21, 213, 0) 0%,
+                #fb3fff 89.21%
+            );
+        } @else {
+            background: linear-gradient(
+                0deg,
+                rgba(138, 21, 213, 0) 0%,
+                #fb3fff 89.21%
+            );
+        }
+
+        &:before {
+            background: linear-gradient(
+                    90deg,
+                    var(--color1) 0%,
+                    var(--color2) 99.48%
+                ),
+                linear-gradient(0deg, #ffffff, #ffffff);
+            transition: --color1 0.3s, --color2 0.3s;
+        }
+
+        @if $transition {
+            &:hover {
+                cursor: pointer;
+                &:before {
+                    --color1: #8a15d5;
+                    --color2: #fb3fff;
+                }
+                li {
+                    color: #fff;
+                }
+            }
+        }
+    }
+
+    li {
+        margin-top: 4px;
+        margin-bottom: 4px;
+        padding: 0px 0 0px 40px;
+        list-style: none;
+        background-image: url('/images/logo.png');
+        background-repeat: no-repeat;
+        background-position: left center;
+        background-size: 24px;
+    }
+}
+
+.hex-container {
+    position: relative;
+    width: 323px;
+    height: 280px;
+    margin: 4px;
+    @screen md {
+        background-size: 484.5px 420px;
+        width: 484.5px;
+        height: 420px;
+    }
+    svg {
+        opacity: 1;
+        transition: opacity 0.5s;
+    }
+    &:hover {
+        svg {
+            opacity: 0;
+        }
+    }
+}
+
+.hex-up {
+    @include hex($direction: true);
+}
+
+.hex-down {
+    @include hex($direction: false);
+}
+
+.hex-up-disabled {
+    @include hex($direction: true, $transition: false);
+}
+
+.hex-down-disabled {
+    @include hex($direction: false, $transition: false);
+}

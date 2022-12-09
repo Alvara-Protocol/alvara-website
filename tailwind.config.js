@@ -20,6 +20,7 @@ module.exports = {
           700: '#971ADA',
         },
         fuchsia: {
+          400: '#F53DFD',
           450: '#FB3FFF',
         },
         gray: {

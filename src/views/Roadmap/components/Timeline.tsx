@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Spot() {
+export function Spot() {
   return (
     <svg
       width="30"
@@ -59,7 +59,7 @@ function Spot() {
   );
 }
 
-function Dot() {
+export function Dot() {
   return (
     <svg
       width="12"
