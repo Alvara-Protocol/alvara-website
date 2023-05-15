@@ -7,7 +7,7 @@ import Links from '@/views/News/Links';
 
 export default function Footer() {
   return (
-    <footer className=" mb-8 grid grid-cols-10 justify-center border-t pt-14 pb-4 font-montserrat shadow-xl lg:mx-10 lg:justify-start lg:px-20 lg:py-16">
+    <footer className=" mb-8 grid grid-cols-10 justify-center border-t border-[#D515AD] pt-14 pb-4 font-montserrat shadow-xl lg:mx-10 lg:justify-start lg:px-20 lg:py-16">
       <div className=" col-span-10 items-center lg:col-span-4">
         <div className="grid justify-items-center gap-8 lg:flex">
           <NextImage
