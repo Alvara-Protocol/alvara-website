@@ -31,9 +31,9 @@ export default function CurrencyStatus({
           />
           {((price / prevPrice) * 100 - 100).toFixed(2)}%
         </div>
-        <div>{`${currency1}/${currency2}`}</div>
+        <div className="text-gray-400">{`${currency1}/${currency2}`}</div>
       </div>
-      <div className="font-poppins text-2xl font-normal leading-5 text-dark-blue-400 md:text-[36px]">
+      <div className="font-poppins text-xl font-normal leading-5 text-gray-400 md:text-[36px]">
         {price.toLocaleString()}
       </div>
     </div>

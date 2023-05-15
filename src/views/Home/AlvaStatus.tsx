@@ -11,19 +11,9 @@ export default function AlvaStatus() {
       <div className="grid grid-cols-[repeat(1,minmax(300px,320px))] items-center gap-8 md:grid-cols-[repeat(2,minmax(300px,350px))]">
         <AlvaStatusItem price="200M" percent={0.2} description="alva supply" />
         <AlvaStatusItem
-          price="10M"
+          price="16M"
           percent={0.2}
           description="Circulating Supply at Launch"
-        />
-        <AlvaStatusItem
-          price="$30M"
-          percent={0.2}
-          description="FDV AT LAUNCH"
-        />
-        <AlvaStatusItem
-          price="$0.15"
-          percent={0.2}
-          description="Listing Price"
         />
       </div>
     </section>

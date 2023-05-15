@@ -1,23 +1,11 @@
-import { Dialog, Menu, Transition } from '@headlessui/react';
+import { Dialog, Transition } from '@headlessui/react';
 import clsx from 'clsx';
 import { useRouter } from 'next/router';
 import * as React from 'react';
 
 import { NextImage } from '@/components';
 import UnstyledLink from '@/components/links/UnstyledLink';
-import { ChevronDownIcon, HamburgerIcon } from '@/components/Svg';
-
-const techLinks = [
-  { href: '/hivex', label: 'HiveX' },
-  { href: '/smart-funds', label: 'SmartFunds' },
-  { href: '/token', label: 'ALVA Token' },
-];
-
-const aboutAlvaraLinks = [
-  { href: '/vision', label: 'Vision' },
-  { href: '/team', label: 'Team' },
-  { href: '/roadmap', label: 'Roadmap & Papers' },
-];
+import { HamburgerIcon } from '@/components/Svg';
 
 interface MobileLinkProps extends React.PropsWithChildren {
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -27,10 +15,18 @@ const MobileLink = ({ setIsOpen, children }: MobileLinkProps) => {
   return <div onClick={() => setIsOpen(false)}>{children}</div>;
 };
 
+const titles = [
+  { title: 'BTS Factory', link: '/bts-factory' },
+  { title: 'Stacking', link: '/stacking' },
+  { title: 'Governance', link: '/governance' },
+  { title: 'Marketplace', link: '/market-place' },
+  { title: 'HiveX', link: '/hivex' },
+  { title: 'About Alvara', link: '/team' },
+  { title: 'News', link: '/news' },
+];
+
 export default function Header() {
   const [isOpen, setIsOpen] = React.useState(false);
-  const [isShowingTech, setIsShowingTech] = React.useState(false);
-  const [isShowingAbout, setIsShowingAbout] = React.useState(false);
   const [scroll, setScroll] = React.useState(false);
   const [isPresale, setIsPresale] = React.useState(false);
   const router = useRouter();
@@ -60,28 +56,16 @@ export default function Header() {
       className={clsx(
         'fixed top-0 z-50 w-full py-[18px] font-montserrat',
         scroll
-          ? 'bg-white bg-opacity-80 shadow backdrop-blur-sm'
+          ? 'bg-opacity-80 bg-gradient-to-r from-[#10122A]  to-[#3F1960] shadow backdrop-blur-sm'
           : 'bg-transparent shadow-none',
       )}
     >
-      <div className="layout flex h-14 items-center justify-between">
-        <UnstyledLink href="/">
+      <div className="layout flex h-14 items-center justify-between gap-40">
+        <UnstyledLink className="justify-self-start" href="/">
           <NextImage
             useSkeleton
-            className="hidden w-32 md:w-40 lg:block"
-            src={
-              isPresale && !scroll
-                ? '/images/nav-logo.png'
-                : '/images/nav-logo-black.png'
-            }
-            width="230"
-            height="45"
-            alt="Logo"
-          />
-          <NextImage
-            useSkeleton
-            className="w-32 md:w-40 lg:hidden"
-            src="/images/nav-logo-black.png"
+            className="w-32 md:w-40"
+            src="/images/nav-logo.png"
             width="230"
             height="45"
             alt="Logo"
@@ -89,12 +73,7 @@ export default function Header() {
         </UnstyledLink>
         <nav>
           <button onClick={openModal} className="block p-2 lg:hidden">
-            <HamburgerIcon
-              className="hidden lg:block"
-              stroke={isPresale && !scroll ? '#FFFFFF' : '#131531'}
-            />
-
-            <HamburgerIcon className="block lg:hidden" stroke="#131531" />
+            <HamburgerIcon className="hidden lg:block" />
           </button>
           <Transition appear show={isOpen} as={React.Fragment}>
             <Dialog
@@ -163,105 +142,19 @@ export default function Header() {
                       <nav className="divide-y divide-slate-900/10 text-base leading-7 text-slate-900">
                         <div className="py-6 px-8">
                           <div className="items-start space-y-2">
-                            <div>
-                              <button
-                                onClick={() =>
-                                  setIsShowingTech(
-                                    (isShowingTech) => !isShowingTech,
-                                  )
-                                }
-                                className="font-medium"
-                              >
-                                Technology
-                              </button>
-                              <Transition
-                                show={isShowingTech}
-                                enter="transition-opacity duration-50"
-                                enterFrom="opacity-0"
-                                enterTo="opacity-100"
-                                leave="transition-opacity duration-50"
-                                leaveFrom="opacity-100"
-                                leaveTo="opacity-0"
-                              >
-                                <ul className="ml-3">
-                                  {techLinks.map((link) => (
-                                    <MobileLink
-                                      setIsOpen={setIsOpen}
-                                      key={link.href}
-                                    >
-                                      <li>
-                                        <UnstyledLink
-                                          className="block p-1"
-                                          href={link.href}
-                                        >
-                                          {link.label}
-                                        </UnstyledLink>
-                                      </li>
-                                    </MobileLink>
-                                  ))}
-                                </ul>
-                              </Transition>
-                            </div>
-                            <div>
-                              <button
-                                onClick={() =>
-                                  setIsShowingAbout(
-                                    (isShowingAbout) => !isShowingAbout,
-                                  )
-                                }
-                                className="font-medium"
-                              >
-                                About Alvara
-                              </button>
-                              <Transition
-                                show={isShowingAbout}
-                                enter="transition-opacity duration-50"
-                                enterFrom="opacity-0"
-                                enterTo="opacity-100"
-                                leave="transition-opacity duration-50"
-                                leaveFrom="opacity-100"
-                                leaveTo="opacity-0"
-                              >
-                                <ul className="ml-3">
-                                  {aboutAlvaraLinks.map((link) => (
-                                    <MobileLink
-                                      setIsOpen={setIsOpen}
-                                      key={link.href}
-                                    >
-                                      <li>
-                                        <UnstyledLink
-                                          className="block p-1"
-                                          href={link.href}
-                                        >
-                                          {link.label}
-                                        </UnstyledLink>
-                                      </li>
-                                    </MobileLink>
-                                  ))}
-                                </ul>
-                              </Transition>
-                            </div>
-                            <div>
-                              <MobileLink setIsOpen={setIsOpen}>
-                                <UnstyledLink
-                                  href="/news"
-                                  className="font-medium"
-                                >
-                                  The Buzz
-                                </UnstyledLink>
-                              </MobileLink>
-                            </div>
+                            {titles.map((title, index) => (
+                              <div key={index}>
+                                <MobileLink setIsOpen={setIsOpen}>
+                                  <UnstyledLink
+                                    href={title.link}
+                                    className="font-medium "
+                                  >
+                                    {title.title}
+                                  </UnstyledLink>
+                                </MobileLink>
+                              </div>
+                            ))}
                           </div>
-                        </div>
-                        <div className="py-6 px-8">
-                          <MobileLink setIsOpen={setIsOpen}>
-                            <UnstyledLink
-                              href="/presale"
-                              className="focus-visible:ring-primary-500 disabled:bg-primary-400 disabled:hover:bg-primary-400 inline-block bg-gradient-to-r from-purple-650 to-fuchsia-450 py-1 px-10 text-[16px] font-medium text-white shadow-sm transition-colors duration-75 focus:outline-none focus-visible:ring disabled:cursor-not-allowed"
-                            >
-                              ALVA
-                            </UnstyledLink>
-                          </MobileLink>
                         </div>
                       </nav>
                     </Dialog.Panel>
@@ -270,130 +163,24 @@ export default function Header() {
               </div>
             </Dialog>
           </Transition>
-          <ul className="hidden items-center justify-between space-x-3 lg:flex">
-            <li>
-              <Menu as="div" className="relative inline-block text-left">
-                <Menu.Button
+          <ul className="hidden gap-10 text-xl lg:flex ">
+            {titles.map((title, index) => (
+              <li key={index} className="">
+                <UnstyledLink
+                  href={title.link}
                   className={clsx(
-                    'inline-flex w-full items-center justify-center px-4 py-2 text-[16px] hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75',
-                    isPresale && !scroll ? 'text-white' : 'text-dark-blue-400',
+                    'text-[16px]  text-gray-400 hover:text-opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75',
+                    isPresale && !scroll ? 'text-white' : 'text-white',
                   )}
                 >
-                  Technology
-                  <ChevronDownIcon
-                    className={clsx(
-                      'ml-1.5 mt-0.5 h-4 w-4',
-                      isPresale && !scroll
-                        ? 'text-white'
-                        : 'text-dark-blue-400',
-                    )}
-                    aria-hidden="true"
-                  />
-                </Menu.Button>
-                <Transition
-                  as={React.Fragment}
-                  enter="transition ease-out duration-100"
-                  enterFrom="transform opacity-0 scale-95"
-                  enterTo="transform opacity-100 scale-100"
-                  leave="transition ease-in duration-75"
-                  leaveFrom="transform opacity-100 scale-100"
-                  leaveTo="transform opacity-0 scale-95"
-                >
-                  <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white text-dark-blue-400 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                    <div className="p-2">
-                      {techLinks.map((link) => (
-                        <Menu.Item key={link.href} as={React.Fragment}>
-                          {({ active }) => (
-                            <UnstyledLink
-                              className={`block p-1 text-[15px] ${
-                                active
-                                  ? 'bg-primary text-white'
-                                  : 'bg-white text-black'
-                              }`}
-                              href={link.href}
-                            >
-                              {link.label}
-                            </UnstyledLink>
-                          )}
-                        </Menu.Item>
-                      ))}
-                    </div>
-                  </Menu.Items>
-                </Transition>
-              </Menu>
-            </li>
-            <li>
-              <Menu as="div" className="relative inline-block text-left">
-                <Menu.Button
-                  className={clsx(
-                    'inline-flex w-full items-center justify-center px-4 py-2 text-[16px] hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75',
-                    isPresale && !scroll ? 'text-white' : 'text-dark-blue-400',
-                  )}
-                >
-                  About Alvara
-                  <ChevronDownIcon
-                    className={clsx(
-                      'ml-1.5 mt-0.5 h-4 w-4',
-                      isPresale && !scroll
-                        ? 'text-white'
-                        : 'text-dark-blue-400',
-                    )}
-                    aria-hidden="true"
-                  />
-                </Menu.Button>
-                <Transition
-                  as={React.Fragment}
-                  enter="transition ease-out duration-100"
-                  enterFrom="transform opacity-0 scale-95"
-                  enterTo="transform opacity-100 scale-100"
-                  leave="transition ease-in duration-75"
-                  leaveFrom="transform opacity-100 scale-100"
-                  leaveTo="transform opacity-0 scale-95"
-                >
-                  <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                    <div className="px-3 py-2">
-                      {aboutAlvaraLinks.map((link) => (
-                        <Menu.Item key={link.href} as={React.Fragment}>
-                          {({ active }) => (
-                            <UnstyledLink
-                              className={`block p-1 text-[15px] ${
-                                active
-                                  ? 'bg-primary text-white'
-                                  : 'bg-white text-black'
-                              }`}
-                              href={link.href}
-                            >
-                              {link.label}
-                            </UnstyledLink>
-                          )}
-                        </Menu.Item>
-                      ))}
-                    </div>
-                  </Menu.Items>
-                </Transition>
-              </Menu>
-            </li>
-            <li>
-              <UnstyledLink
-                href="/news"
-                className={clsx(
-                  'text-[16px] hover:text-opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75',
-                  isPresale && !scroll ? 'text-white' : 'text-dark-blue-400',
-                )}
-              >
-                The Buzz
-              </UnstyledLink>
-            </li>
-            <li className="">
-              <UnstyledLink
-                href="/presale"
-                className="focus-visible:ring-primary-500 disabled:bg-primary-400 disabled:hover:bg-primary-400 ml-20 items-center bg-gradient-to-r from-purple-650 to-fuchsia-450 py-2 px-10 font-medium text-white shadow-sm transition-colors duration-75 focus:outline-none focus-visible:ring disabled:cursor-not-allowed"
-              >
-                ALVA
-              </UnstyledLink>
-            </li>
+                  {title.title}
+                </UnstyledLink>
+              </li>
+            ))}
           </ul>
         </nav>
+        <div className="hidden md:block"></div>
+        <div className="hidden md:block"></div>
       </div>
     </header>
   );

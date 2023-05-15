@@ -6,30 +6,34 @@ import logo from '~/images/logo.png';
 
 export default function Intro() {
   return (
-    <div className="container mx-auto mb-20 flex w-full flex-col  items-center justify-around gap-8 p-5 md:flex-row md:p-20">
+    <div className="container mx-auto mb-10 flex w-full flex-col  items-center justify-around gap-8 p-5 md:flex-row  md:px-20">
       <section className="flex flex-col gap-[60px] md:w-1/2 ">
-        <span className="bg-gradient-to-r from-purple-650 to-fuchsia-450 bg-clip-text text-transparent">
+        <span className="bg-gradient-to-r from-purple-650 to-fuchsia-450 bg-clip-text text-xl text-transparent">
           ALVARA PROTOCOL
         </span>
         <div>
           <h2 className="text-4xl uppercase tracking-wider">
             We&apos;re Changing the Way the World Invests.
           </h2>
-          <div className="h-[2px] w-full bg-gradient-to-r from-purple-650 to-transparent"></div>
+          <div className="h-[2px] w-full bg-gradient-to-r from-fuchsia-400 to-transparent md:mt-5"></div>
         </div>
-        <p className="w-4/5 font-poppins text-base font-light tracking-widest">
-          Delivering the world’s most popular financial product - Exchange
-          Traded Funds - to crypto, the Alvara Protocol is the first of its kind
-          - a one-stop crypto ETF exchange with built-in fund creation and
-          management portal. Buzz into the portal and build your own SmartFund,
-          testing your strategy on the HiveX leaderboard.
+        <p className="w-full font-poppins text-base font-light tracking-widest">
+          The desire and need for a successful mechanism by which the wider
+          crypto markets can enjoy the benefits of something akin to an ETF have
+          been long-standing. That wait is over.
           <br />
           <br />
-          A cutting-edge trading platform empowering the next generation of fund
-          managers.
+          The Alvara Protocol is a first of its kind - one-stop decentralised
+          crypto fund exchange with the capacity for built-in basket tokenised
+          funds creation and own management portal.
           <br />
           <br />
-          Welcome to the Hive!
+          This cutting-edge tokenised basket platform will play a pivotal role
+          in empowering the next generation of fund managers. Welcome to the
+          future of DeFi.
+          <br />
+          <br />
+          Welcome to the Alvara Protcol
         </p>
       </section>
       <NextImage

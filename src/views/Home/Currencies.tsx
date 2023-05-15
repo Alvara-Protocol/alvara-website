@@ -72,7 +72,7 @@ export default function Currencies({ className }: { className?: string }) {
   return (
     <div
       className={clsxm([
-        'border-gradient m-auto grid min-w-max grid-cols-[repeat(2,minmax(200px,1fr))] items-center justify-center gap-4 border bg-purple-300 p-2 md:grid-cols-4 md:gap-20 md:py-4 md:px-10',
+        'border-gradient m-auto grid min-w-max grid-cols-[repeat(2,minmax(200px,1fr))] items-center justify-center gap-4 border bg-gradient-to-r from-[#10122A] to-[#3F1960]  p-2 md:grid-cols-4 md:gap-20 md:py-4 md:px-10',
         className,
       ])}
     >
