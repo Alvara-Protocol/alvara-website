@@ -38,7 +38,7 @@ export default function Team() {
     },
     {
       name: 'Max Green',
-      designation: 'CMO',
+      designation: 'Business Development Manager',
       photo: '/images/team/max.png',
       links: {
         linkedin: 'https://www.linkedin.com/in/max-green-377789225',
@@ -51,7 +51,7 @@ export default function Team() {
     },
     {
       name: 'Joey van Etten',
-      designation: 'Business Development Manager',
+      designation: 'CMO',
       photo: '/images/team/joe.png',
       links: {
         linkedin: 'https://www.linkedin.com/in/joey-van-etten-12b228184',

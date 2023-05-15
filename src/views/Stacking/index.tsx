@@ -9,7 +9,7 @@ export default function Stacking() {
         <Hives className="flex flex-col items-center gap-10 px-4  pt-40 md:flex-row md:justify-around md:px-11">
           <div className="grid">
             <h1 className="z-10 text-center text-3xl uppercase leading-normal  text-gray-400 md:text-[60px]">
-              Stacking
+              Staking
             </h1>
             <div className="mb-32 mt-5 h-[2px] w-full bg-gradient-to-r from-fuchsia-400 to-transparent"></div>
           </div>

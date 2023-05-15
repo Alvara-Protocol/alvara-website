@@ -13,7 +13,7 @@ export default function Title() {
         A cutting-edge trading platform empowering the next generation of fund
         managers. Build. Manage. Earn.
       </p>
-      <UnstyledLink href="/presale">
+      <UnstyledLink href="http://discord.gg/pHDDF2MS8v ">
         <Button className="rounded-lg px-8 py-3 text-xl font-light">
           Join The Discord
         </Button>
