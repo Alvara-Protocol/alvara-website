@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Hives } from '@/components';
 
-export default function Stacking() {
+export default function Staking() {
   return (
     <main>
       <section className="flex flex-col gap-28 bg-gray-400 pb-20">

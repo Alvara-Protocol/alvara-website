@@ -17,7 +17,7 @@ const MobileLink = ({ setIsOpen, children }: MobileLinkProps) => {
 
 const titles = [
   { title: 'BTS Factory', link: '/bts-factory' },
-  { title: 'Staking', link: '/stacking' },
+  { title: 'Staking', link: '/staking' },
   { title: 'Governance', link: '/governance' },
   { title: 'Marketplace', link: '/market-place' },
   { title: 'HiveX', link: '/hivex' },

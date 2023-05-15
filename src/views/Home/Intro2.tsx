@@ -26,7 +26,7 @@ export default function Intro2() {
           marketplace provides comprehensive information about each fund, and
           sellers have full control over their auction listings.
         </p>
-        <UnstyledLink href="http://discord.gg/pHDDF2MS8v ">
+        <UnstyledLink href="http://discord.gg/pHDDF2MS8v">
           <Button
             variant="primary"
             className="max-w-max rounded-lg py-4 uppercase"

@@ -36,8 +36,8 @@ export default function Footer() {
           <UnstyledLink href="/news">News</UnstyledLink>
         </div>
         <div className="grid content-start gap-3">
-          <h1 className="text-lg font-bold ">Stacking</h1>
-          <UnstyledLink href="/stacking">Stacking</UnstyledLink>
+          <h1 className="text-lg font-bold ">Staking</h1>
+          <UnstyledLink href="/staking">Staking</UnstyledLink>
           <div className="mt-5 block lg:hidden">
             <h1 className="text-lg font-bold ">Govenance</h1>
             <UnstyledLink href="/governance">Govenance</UnstyledLink>
