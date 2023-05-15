@@ -2,6 +2,7 @@ import Image from 'next/image';
 import React from 'react';
 
 import { Button, Hives, Seo } from '@/components';
+import UnstyledLink from '@/components/links/UnstyledLink';
 
 import Member, { MemberProps } from './components/Member';
 
@@ -9,7 +10,7 @@ export default function Team() {
   const members: MemberProps[] = [
     {
       name: 'Callum Mitchell-Clark',
-      designation: 'CEO',
+      designation: 'Co-founder',
       photo: '/images/team/callum.png',
       links: {
         linkedin: 'https://www.linkedin.com/in/callum-mitchell-clark-05183536',
@@ -31,14 +32,15 @@ export default function Team() {
           'https://www.linkedin.com/in/dominic-mitchell-clark-0b9155217',
       },
       achievments: [
-        '10+ years active in the blockchain space with involvement in the early days of LTC',
-        'Developed a number of solutions in the commercial property space to assist with in-depth demographic analysis and subsequently acquisitions',
-        'Overseeing the planning, structure and development of the upcoming HiveX platform',
+        'Founder and CEO of vEmpire Digital ',
+        "Experienced Senior Derivatives Trader and Head of Desk; partner at FTSE100 London-based wealth management firm- St James' Place",
+        'Anarchist at heart and strong advocate for decentralization',
+        'One of the largest Metaverse real estate managers',
       ],
     },
     {
       name: 'Max Green',
-      designation: 'Business Development Manager',
+      designation: 'Lead Marketing & PR',
       photo: '/images/team/max.png',
       links: {
         linkedin: 'https://www.linkedin.com/in/max-green-377789225',
@@ -51,7 +53,7 @@ export default function Team() {
     },
     {
       name: 'Joey van Etten',
-      designation: 'CMO',
+      designation: "Founder's Associate",
       photo: '/images/team/joe.png',
       links: {
         linkedin: 'https://www.linkedin.com/in/joey-van-etten-12b228184',
@@ -109,7 +111,7 @@ export default function Team() {
     },
     {
       name: 'Deon Dreyer',
-      designation: 'ETF adviser',
+      designation: 'ETF Advisor',
       photo: '/images/team/deon.png',
       links: {
         linkedin: 'https://www.linkedin.com/in/deon-dreyer',
@@ -144,9 +146,11 @@ export default function Team() {
             with Alvara.
           </p>
           <div className="mb-5 mt-5 h-[2px] w-full bg-gradient-to-r from-fuchsia-400 to-transparent"></div>
-          <Button variant="primary" className="rounded-lg py-5 px-10">
-            Read More
-          </Button>
+          <UnstyledLink href="https://alvaraprotocol.medium.com">
+            <Button variant="primary" className="rounded-lg py-5 px-10">
+              Read More
+            </Button>
+          </UnstyledLink>
         </div>
         <div className="col-span-2 mb-16 px-5 text-gray-300 md:px-24">
           <div className="grid gap-5 md:grid-cols-4 ">

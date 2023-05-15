@@ -31,7 +31,7 @@ export default function Footer() {
           <h1 className="text-lg font-bold ">General</h1>
           <UnstyledLink href="/team">About Alvara</UnstyledLink>
           <UnstyledLink href="/bts-factory">BTS Factory</UnstyledLink>
-          <UnstyledLink href="/market-place">Market place</UnstyledLink>
+          <UnstyledLink href="/market-place">Marketplace</UnstyledLink>
           <UnstyledLink href="/hivex">HiveX</UnstyledLink>
           <UnstyledLink href="/news">News</UnstyledLink>
         </div>
