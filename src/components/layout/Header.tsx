@@ -73,7 +73,7 @@ export default function Header() {
         </UnstyledLink>
         <nav>
           <button onClick={openModal} className="block p-2 lg:hidden">
-            <HamburgerIcon className="hidden lg:block" />
+            <HamburgerIcon />
           </button>
           <Transition appear show={isOpen} as={React.Fragment}>
             <Dialog
