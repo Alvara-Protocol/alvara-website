@@ -70,7 +70,7 @@ export default function Team() {
       designation: 'Lead Blockchain Developer',
       photo: '/images/team/taka.png',
       links: {
-        linkedin: 'https://www.linkedin.com/in/hiroyuki-takahashi-7aa34a221',
+        linkedin: 'http://linkedin.com/in/takahashi-hiroyuki-930458276',
       },
       achievments: [
         'Highly experienced full-stack web and blockchain developer, specializing in Solidity, Rust, Python and Javascript',
