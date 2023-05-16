@@ -17,47 +17,48 @@ export default function Staking() {
         <div className="container mx-auto grid grid-cols-1  gap-8 px-8 text-base leading-10 md:grid-cols-1 md:px-48 md:leading-6">
           Rewarding and benefiting users is at the forefront of everything we’ve
           created. <br />
+          <br />
           By staking your ALVA on our platform, you will gain access to the
-          Staking Rewards Vault (SRV). <br />
-          In turn, the vault is fed from a percentage of all fees collected by
-          the platform, meaning those availing of the staking opportunity will
-          be eligible to claim rewards on a weekly basis.
+          Staking Rewards Vault (SRV). In turn, the vault is fed from a
+          percentage of all fees collected by the platform, meaning those
+          availing of the staking opportunity will be eligible to claim rewards
+          on a weekly basis.
+          <br />
           <br />
           The amount of rewards you can claim will depend on the ratio of your
           staked ALVA as a percentage of the total staked, segmented by locking
-          periods. <br />
-          For example, if you have locked your tokens for 4 years, you will take
-          from the same pool each week (20% of the total rewards vault).
+          periods. For example, if you have locked your tokens for 4 years, you
+          will take from the same pool each week (20% of the total rewards
+          vault). The rewards you can claim will be calculated based on the
+          total rewards for your pool, divided by the total ALVA staked across
+          all pools, and then multiplied by your staked ALVA balance.
           <br />
-          The rewards you can claim will be calculated based on the total
-          rewards for your pool, divided by the total ALVA staked across all
-          pools, and then multiplied by your staked ALVA balance.
           <br /> In addition to staking ALVA, you can also stake your BTS LP
           tokens to receive a percentage of the weekly ALVA rewards allocated to
           your ERC-BTS. However, please note that your BTS LP tokens must belong
-          to an ERC-BTS that has an open pool on our platform. <br />
-          If you would like to propose a fund to have its own staking pool, you
-          can do so within the Alvara DAO and request approval from the
-          community.
-          <br /> Once approved, veALVA holders can allocate their tokens on a
-          weekly basis during “The Dance”. <br />
-          Only staked BTS LP tokens will be eligible to receive a percentage of
-          the reward supply. The rewards you can claim are based on reward
-          supply, user balance, and locking period. <br />
+          to an ERC-BTS that has an open pool on our platform. If you would like
+          to propose a fund to have its own staking pool, you can do so within
+          the Alvara DAO and request approval from the community. Once approved,
+          veALVA holders can allocate their tokens on a weekly basis during “The
+          Dance”. Only staked BTS LP tokens will be eligible to receive a
+          percentage of the reward supply. The rewards you can claim are based
+          on reward supply, user balance, and locking period. <br />
+          <br />
           Users also have the option of utilising the compounding rewards
-          feature. <br />
-          By opting to compound your rewards, those rewards will be used to
-          purchase and then stake ALVA, giving them a larger percentage of the
-          total pool and therefore a larger percentage of the fee rewards at the
-          following distribution.
-          <br /> Compounding rewards is the only way to add more ALVA to your
-          staked balance without resetting your locking period. However, please
-          note that compounding rewards will not replenish your veALVA balance.
+          feature. By opting to compound your rewards, those rewards will be
+          used to purchase and then stake ALVA, giving them a larger percentage
+          of the total pool and therefore a larger percentage of the fee rewards
+          at the following distribution. Compounding rewards is the only way to
+          add more ALVA to your staked balance without resetting your locking
+          period. However, please note that compounding rewards will not
+          replenish your veALVA balance.
+          <br />
           <br /> The user will be responsible for paying all gas fees associated
           with our platform. However, there&apos;s no need to claim rewards
           every week, and any unclaimed balance will accrue and be available to
           claim at a later date.
-          <br /> We&apos;re fully committed to delivering our users a secure and
+          <br /> <br />
+          We&apos;re fully committed to delivering our users a secure and
           rewarding staking experience. <br />
           Join our discord today to find out more about our staking platform!
         </div>
