@@ -116,9 +116,10 @@ export default function Team() {
         linkedin: 'https://www.linkedin.com/in/deon-dreyer',
       },
       achievments: [
-        'Experienced product development with a demonstrated history of working in the financial services industry.',
-        'Skilled in FX spot, trading strategies, Java, Borland Delphi, and Foreign Exchange (FX) trading.',
-        'Strong product management professional with a Level 2 professional degree focused on financial management from University of Latvia.',
+        '20+ years experience in advising on traditional and alternative asset classes to institutional clients',
+        'Extensive derivative trading and structuring experience including the creation of a range of ETFs',
+        'Helping people make informed investment decisions using mathematical models and technology',
+        'Incorporating climate aware scenario anaysis into strategic asset allocation decisions',
       ],
     },
   ];
