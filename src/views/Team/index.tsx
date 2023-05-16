@@ -28,8 +28,7 @@ export default function Team() {
       designation: 'Co-founder',
       photo: '/images/team/dominic.png',
       links: {
-        linkedin:
-          'https://www.linkedin.com/in/dominic-mitchell-clark-0b9155217',
+        linkedin: 'https://www.linkedin.com/in/dominic-ryder-9024699a',
       },
       achievments: [
         'Founder and CEO of vEmpire Digital ',

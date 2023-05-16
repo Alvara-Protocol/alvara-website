@@ -39,13 +39,13 @@ export default function Footer() {
           <h1 className="text-lg font-bold ">Staking</h1>
           <UnstyledLink href="/staking">Staking</UnstyledLink>
           <div className="mt-5 block lg:hidden">
-            <h1 className="text-lg font-bold ">Govenance</h1>
-            <UnstyledLink href="/governance">Govenance</UnstyledLink>
+            <h1 className="text-lg font-bold ">Governance</h1>
+            <UnstyledLink href="/governance">Governance</UnstyledLink>
           </div>
         </div>
         <div className="hidden content-start gap-3 lg:grid">
-          <h1 className="text-lg font-bold ">Govenance</h1>
-          <UnstyledLink href="/governance">Govenance</UnstyledLink>
+          <h1 className="text-lg font-bold ">Governance</h1>
+          <UnstyledLink href="/governance">Governance</UnstyledLink>
         </div>
         <div></div>
         <div></div>

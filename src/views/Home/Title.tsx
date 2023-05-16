@@ -5,7 +5,7 @@ import UnstyledLink from '@/components/links/UnstyledLink';
 
 export default function Title() {
   return (
-    <Hives className=" flex  flex-col items-center gap-8  p-10 pt-[150px] md:pt-[200px]">
+    <Hives className="flex flex-col items-center gap-8 p-10 pt-[150px] md:pt-[200px]">
       <h1 className="text-center text-3xl font-bold leading-[70px] text-gray-400 md:text-4xl ">
         TOKENISED FUNDS FOR A DEFI FUTURE
       </h1>
