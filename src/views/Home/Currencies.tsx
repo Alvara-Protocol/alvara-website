@@ -72,7 +72,7 @@ export default function Currencies({ className }: { className?: string }) {
   return (
     <div
       className={clsxm([
-        'border-gradient  grid grid-cols-2 gap-3 border bg-gradient-to-r from-[#10122A] to-[#3F1960] py-2 md:min-w-max md:grid-cols-4   md:gap-20 md:p-2 md:py-4 md:px-10',
+        'border-gradient  grid grid-cols-2 gap-3 border bg-gradient-to-r from-[#10122A] to-[#3F1960] py-2 md:min-w-max md:grid-cols-4   md:gap-20 md:p-2 md:py-6 md:px-10',
         className,
       ])}
     >
