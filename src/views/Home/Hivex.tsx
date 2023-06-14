@@ -43,7 +43,7 @@ export default function Hivex() {
           access to management rights and management fees. The ownership rights
           are transferred to the user in the form of an NFT. Join The Hive
         </p>
-        <UnstyledLink href="http://discord.gg/pHDDF2MS8v ">
+        <UnstyledLink href="http://discord.gg/pHDDF2MS8v">
           <Button
             variant="primary"
             className="max-w-max rounded-lg py-4 uppercase "
