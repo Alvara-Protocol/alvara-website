@@ -23,6 +23,8 @@ export default function Hivex() {
         <br /> As a liquidity provider, users will receive 30% of transaction
         fees, distributed proportionately based on their LP holdings.
       </div>
+      <div className="hidden h-[1085px] w-full bg-[url('/images/hivex/back.svg')] bg-cover bg-center bg-no-repeat md:block"></div>
+      <div className="block h-[1800px] w-full bg-[url('/images/hivex/mobile-back.svg')] bg-cover bg-center bg-no-repeat md:hidden"></div>
     </main>
   );
 }

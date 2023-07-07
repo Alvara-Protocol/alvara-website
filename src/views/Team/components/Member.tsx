@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import React, { useState } from 'react';
 
-import { Arrow2Icon, LinkedinIcon } from '@/components';
+import { LinkedinIcon } from '@/components';
 import UnstyledLink from '@/components/links/UnstyledLink';
 
 function Dot() {
@@ -67,9 +67,9 @@ export default function Member({
             </UnstyledLink>
           )}
         </div>
-        <button onClick={() => setOpened(!opened)}>
+        {/* <button onClick={() => setOpened(!opened)}>
           <Arrow2Icon className={opened ? 'rotate-180' : ''} />
-        </button>
+        </button> */}
       </div>
 
       {opened && achievments.length !== 0 && (

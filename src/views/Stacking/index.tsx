@@ -62,6 +62,8 @@ export default function Staking() {
           rewarding staking experience. <br />
           Join our discord today to find out more about our staking platform!
         </div>
+        <div className="hidden h-[1085px] w-full bg-[url('/images/staking/back.svg')] bg-cover bg-center bg-no-repeat md:block"></div>
+        <div className="block h-[1300px] w-full bg-[url('/images/staking/mobile-back.svg')] bg-cover bg-center bg-no-repeat md:hidden"></div>
       </section>
     </main>
   );

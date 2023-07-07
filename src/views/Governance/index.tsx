@@ -46,6 +46,8 @@ export default function Governance() {
           organization, ensures that the protocol&apos;s development and
           management aligns with the interests of its users.
         </div>
+        <div className="hidden h-[1085px] w-full bg-[url('/images/governance/back.svg')] bg-cover bg-center bg-no-repeat md:block"></div>
+        <div className="block h-[2000px] w-full bg-[url('/images/governance/mobile-back.svg')] bg-cover bg-center bg-no-repeat md:hidden"></div>
       </section>
     </main>
   );

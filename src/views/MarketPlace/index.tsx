@@ -49,6 +49,8 @@ export default function MarketPlace() {
           <br />
           Don’t miss out.
         </div>
+        <div className="hidden h-[1085px] w-full bg-[url('/images/market/back.svg')] bg-cover bg-center bg-no-repeat md:block"></div>
+        <div className="block h-[1800px] w-full bg-[url('/images/market/mobile-back.svg')] bg-cover bg-center bg-no-repeat md:hidden"></div>
       </section>
     </main>
   );
