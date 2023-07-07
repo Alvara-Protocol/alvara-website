@@ -51,7 +51,7 @@ export default function MarketPlace() {
           <br />
           Don’t miss out.
         </div>
-        <div className="hidden h-[1085px] w-full bg-[url('/images/market/back.svg')] bg-cover bg-center bg-no-repeat md:block"></div>
+        <div className="hidden h-[1085px] w-[100wh] bg-[url('/images/market/back.svg')] bg-cover bg-center bg-no-repeat md:block"></div>
         <div className="block h-[1800px] w-full bg-[url('/images/market/mobile-back.svg')] bg-cover bg-center bg-no-repeat md:hidden">
           <div className=" group relative mt-[1400px] flex h-8 w-full place-content-center   bg-center bg-no-repeat ">
             <Button className=" place-self-center bg-none px-0">
