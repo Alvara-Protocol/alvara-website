@@ -1,23 +1,24 @@
 import Image from 'next/image';
-import React, { useState } from 'react';
+import React from 'react';
 
-import { Arrow2Icon, LinkedinIcon } from '@/components';
+import { LinkedinIcon } from '@/components';
+// import { Arrow2Icon } from '@/components';
 import UnstyledLink from '@/components/links/UnstyledLink';
 
-function Dot() {
-  return (
-    <svg
-      width="12"
-      height="12"
-      viewBox="0 0 12 12"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className="flex-none"
-    >
-      <circle cx="6" cy="6" r="6" fill="#FB3FFF" />
-    </svg>
-  );
-}
+// function Dot() {
+//   return (
+//     <svg
+//       width="12"
+//       height="12"
+//       viewBox="0 0 12 12"
+//       fill="none"
+//       xmlns="http://www.w3.org/2000/svg"
+//       className="flex-none"
+//     >
+//       <circle cx="6" cy="6" r="6" fill="#FB3FFF" />
+//     </svg>
+//   );
+// }
 
 export interface SocialLinks {
   linkedin?: string;
@@ -37,9 +38,9 @@ export default function Member({
   photo,
   designation,
   links,
-  achievments = [],
-}: MemberProps) {
-  const [opened, setOpened] = useState(false);
+}: // achievments = [],
+MemberProps) {
+  // const [opened, setOpened] = useState(false);
 
   return (
     <div className="border-gradient2 gap-6 border-2 bg-white">
@@ -67,12 +68,12 @@ export default function Member({
             </UnstyledLink>
           )}
         </div>
-        <button onClick={() => setOpened(!opened)}>
+        {/* <button onClick={() => setOpened(!opened)}>
           <Arrow2Icon className={opened ? 'rotate-180' : ''} />
-        </button>
+        </button> */}
       </div>
 
-      {opened && achievments.length !== 0 && (
+      {/* {opened && achievments.length !== 0 && (
         <div className="bg-gray-400 p-4">
           <ul className="max-w-md list-outside list-none  space-y-1 text-black">
             {achievments.map((v, i) => (
@@ -83,7 +84,7 @@ export default function Member({
             ))}
           </ul>
         </div>
-      )}
+      )} */}
     </div>
   );
 }
