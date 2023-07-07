@@ -1,6 +1,8 @@
 import React from 'react';
 
-import { Hives } from '@/components';
+import { Button, Hives, NextImage } from '@/components';
+
+import exclamationSvg from '~/images/bts-factory/exclamation.png';
 
 export default function Hivex() {
   return (
@@ -24,7 +26,26 @@ export default function Hivex() {
         fees, distributed proportionately based on their LP holdings.
       </div>
       <div className="hidden h-[1085px] w-full bg-[url('/images/hivex/back.svg')] bg-cover bg-center bg-no-repeat md:block"></div>
-      <div className="block h-[1800px] w-full bg-[url('/images/hivex/mobile-back.svg')] bg-cover bg-center bg-no-repeat md:hidden"></div>
+      <div className="block h-[1800px] w-full bg-[url('/images/hivex/mobile-back.svg')] bg-cover bg-center bg-no-repeat md:hidden">
+        <div className=" group relative mt-[680px] flex h-8 w-full place-content-center   bg-center bg-no-repeat ">
+          <Button className=" place-self-center bg-none px-0">
+            <NextImage
+              className="m-auto "
+              width={30}
+              height={30}
+              src={exclamationSvg}
+              alt="exclamation"
+            />
+          </Button>
+          <span
+            className="absolute left-1/2 my-4 hidden w-60  translate-y-10 -translate-x-1/2 rounded-md  border-2 border-[#8A15D5] 
+    bg-[#1C043C] px-1 text-center text-sm text-white transition-opacity group-hover:block"
+          >
+            User deposits LP token paired with{' '}
+            <a className="text-fuchsia-450">eth/usdt/avax/bnb</a> into HiveX DEX
+          </span>
+        </div>
+      </div>
     </main>
   );
 }

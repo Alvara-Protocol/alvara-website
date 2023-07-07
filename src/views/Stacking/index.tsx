@@ -1,6 +1,8 @@
 import React from 'react';
 
-import { Hives } from '@/components';
+import { Button, Hives, NextImage } from '@/components';
+
+import exclamationSvg from '~/images/bts-factory/exclamation.png';
 
 export default function Staking() {
   return (
@@ -62,8 +64,51 @@ export default function Staking() {
           rewarding staking experience. <br />
           Join our discord today to find out more about our staking platform!
         </div>
-        <div className="hidden h-[1085px] w-full bg-[url('/images/staking/back.svg')] bg-cover bg-center bg-no-repeat md:block"></div>
-        <div className="block h-[1300px] w-full bg-[url('/images/staking/mobile-back.svg')] bg-cover bg-center bg-no-repeat md:hidden"></div>
+        <div className="hidden h-[1085px]  w-full bg-[url('/images/staking/back.svg')] bg-cover bg-center bg-no-repeat md:block"></div>
+        <div className=" flex h-[1300px]   w-full place-content-between bg-[url('/images/staking/mobile-back.svg')] bg-cover bg-center bg-no-repeat  pt-[440px] md:hidden">
+          <div
+            className={
+              " group relative flex  h-[600px] w-20  place-content-center bg-[url('/images/staking/arrow1.svg')] bg-center bg-no-repeat "
+            }
+          >
+            <Button className=" -ml-10 bg-none px-0">
+              <NextImage
+                className="m-auto "
+                width={30}
+                height={30}
+                src={exclamationSvg}
+                alt="exclamation"
+              />
+            </Button>
+            <span
+              className="absolute left-1/2 my-4 hidden w-32  translate-y-64 translate-x-0 rounded-md  border-2 border-[#8A15D5] 
+    bg-[#1C043C] px-1 text-center text-sm text-white transition-opacity group-hover:block"
+            >
+              x% APY based on locking period
+            </span>
+          </div>
+          <div
+            className={
+              " group relative flex  h-[600px] w-20  place-content-center bg-[url('/images/staking/arrow2.svg')] bg-center bg-no-repeat "
+            }
+          >
+            <Button className=" ml-10 bg-none px-0">
+              <NextImage
+                className="m-auto "
+                width={30}
+                height={30}
+                src={exclamationSvg}
+                alt="exclamation"
+              />
+            </Button>
+            <span
+              className="absolute left-1/2 my-4 hidden w-32   translate-y-64 -translate-x-32 rounded-md  border-2 border-[#8A15D5] 
+    bg-[#1C043C] px-1 text-center text-sm text-white transition-opacity group-hover:block"
+            >
+              veALVA which decays based on locking period
+            </span>
+          </div>
+        </div>
       </section>
     </main>
   );

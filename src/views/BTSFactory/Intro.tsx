@@ -2,6 +2,8 @@ import React from 'react';
 
 import { Hives } from '@/components';
 
+import MobileBtsFactory from '@/views/BTSFactory/MobileBtsFactory';
+
 export default function Intro() {
   return (
     <section className="flex flex-col gap-28 bg-gray-400 pb-20">
@@ -66,7 +68,7 @@ export default function Intro() {
         member of our dedicated team will be on hand to provide assistance.
       </div>
       <div className="hidden h-[1262px] w-full bg-[url('/images/bts-factory/back.svg')] bg-cover bg-center bg-no-repeat md:block"></div>
-      <div className="block h-[2403px] w-full bg-[url('/images/bts-factory/mobile-back.svg')] bg-cover bg-center bg-no-repeat md:hidden"></div>
+      <MobileBtsFactory className="block md:hidden" />
     </section>
   );
 }

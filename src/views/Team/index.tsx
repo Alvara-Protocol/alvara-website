@@ -236,7 +236,7 @@ export default function Team() {
         <div className="">
           <div className="flex items-center">
             <div className="mr-4 h-3 w-3 rounded-full bg-fuchsia-400"></div>
-            <h1 className="text-base font-black text-black">Build Your Own.</h1>
+            <h1 className="text-xl font-black text-black">Build Your Own.</h1>
           </div>
           <p className="px-7">
             Design and launch your own ERC-BTS via Alvara&apos;s BTS Factory.
