@@ -1,1 +1,1 @@
-export * from './typechain-types';
+export * from './typechaintypes';
