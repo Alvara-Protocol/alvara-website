@@ -2,6 +2,8 @@ import React from 'react';
 
 import { Button, Hives, NextImage } from '@/components';
 
+import Back from '@/views/Stacking/Back';
+
 import exclamationSvg from '~/images/bts-factory/exclamation.png';
 
 export default function Staking() {
@@ -64,7 +66,9 @@ export default function Staking() {
           rewarding staking experience. <br />
           Join our discord today to find out more about our staking platform!
         </div>
-        <div className="hidden h-[1085px]  w-[100wh] bg-[url('/images/staking/back.svg')] bg-cover bg-center bg-no-repeat md:block"></div>
+        <div className="hidden md:block">
+          <Back />
+        </div>
         <div className=" flex h-[1300px]   w-full place-content-between bg-[url('/images/staking/mobile-back.svg')] bg-cover bg-center bg-no-repeat  pt-[440px] md:hidden">
           <div
             className={

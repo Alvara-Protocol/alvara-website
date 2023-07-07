@@ -2,6 +2,8 @@ import React from 'react';
 
 import { Hives } from '@/components';
 
+import Back from '@/views/Governance/Back';
+
 export default function Governance() {
   return (
     <main>
@@ -46,7 +48,9 @@ export default function Governance() {
           organization, ensures that the protocol&apos;s development and
           management aligns with the interests of its users.
         </div>
-        <div className="hidden h-[1085px] w-[100wh] bg-[url('/images/governance/back.svg')] bg-cover bg-center bg-no-repeat md:block"></div>
+        <div className=" hidden md:grid">
+          <Back />
+        </div>
         <div className="block h-[2200px] w-full bg-[url('/images/governance/mobile-back.svg')] bg-cover bg-center bg-no-repeat md:hidden"></div>
       </section>
     </main>

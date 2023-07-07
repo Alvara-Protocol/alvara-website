@@ -2,6 +2,7 @@ import React from 'react';
 
 import { Hives } from '@/components';
 
+import Back from '@/views/BTSFactory/Back';
 import MobileBtsFactory from '@/views/BTSFactory/MobileBtsFactory';
 
 export default function Intro() {
@@ -67,7 +68,9 @@ export default function Intro() {
         If you have any queries, be sure to join our Discord server where a
         member of our dedicated team will be on hand to provide assistance.
       </div>
-      <div className="hidden h-[1262px] w-[100wh] bg-[url('/images/bts-factory/back.svg')] bg-cover bg-center bg-no-repeat md:block"></div>
+      <div className="hidden md:block">
+        <Back />
+      </div>
       <MobileBtsFactory className="block md:hidden" />
     </section>
   );
