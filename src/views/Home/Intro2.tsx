@@ -9,7 +9,7 @@ export default function Intro2() {
   return (
     <div className="container mx-auto flex flex-col items-end p-5 md:flex-row md:px-20 ">
       <section className="flex flex-col gap-[48px] md:w-1/2 ">
-        <span className="bg-gradient-to-r from-purple-650 to-fuchsia-450 bg-clip-text text-transparent">
+        <span className="bg-gradient-to-r from-purple-650 to-fuchsia-450 bg-clip-text text-3xl text-transparent">
           ALVARA PROTOCOL
         </span>
         <h2 className="text-4xl font-medium uppercase tracking-wider">

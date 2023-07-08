@@ -8,7 +8,7 @@ export default function Partners() {
       <h2 className="border-gradient3 border-b-[3px] pb-5 text-center font-montserrat text-4xl font-medium uppercase tracking-widest">
         Partners
       </h2>
-      <div className="grid  place-content-center items-center gap-8  md:grid-cols-7">
+      <div className="grid place-content-center items-center gap-28   md:grid-cols-7">
         <Partner
           image="/images/partners/hacken-io.svg"
           width="100"
@@ -56,7 +56,7 @@ export default function Partners() {
           zIndex="z-20"
         />
       </div>
-      <div className="grid place-content-center items-center gap-8 md:w-96 md:grid-cols-2">
+      <div className="grid place-content-center items-center gap-20 md:w-96 md:grid-cols-2">
         <Partner
           image="/images/partners/qan.svg"
           name="LATCH"

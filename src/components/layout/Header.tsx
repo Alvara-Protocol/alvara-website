@@ -165,11 +165,11 @@ export default function Header() {
           </Transition>
           <ul className="hidden gap-10 text-xl lg:flex ">
             {titles.map((title, index) => (
-              <li key={index} className="">
+              <li key={index} className="min-w-max">
                 <UnstyledLink
                   href={title.link}
                   className={clsx(
-                    'text-[16px]  text-gray-400 hover:text-opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75',
+                    '  text-gray-400 hover:text-opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75',
                     isPresale && !scroll ? 'text-white' : 'text-white',
                   )}
                 >
