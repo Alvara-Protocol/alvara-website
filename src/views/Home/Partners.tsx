@@ -48,7 +48,6 @@ export default function Partners() {
           width="130"
           heigth="30"
         />
-
         <Partner
           image="/images/partners/vEmpire.png"
           name="LATCH"
