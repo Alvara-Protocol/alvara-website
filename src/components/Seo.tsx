@@ -41,7 +41,6 @@ export default function Seo(props: SeoProps) {
   //   siteName: props.templateTitle ? meta.siteName : meta.title,
   //   templateTitle: props.templateTitle,
   // });
-
   return (
     <Head>
       <title>{meta.title}</title>
