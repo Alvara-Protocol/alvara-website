@@ -53,7 +53,6 @@ export default function Staking() {
           platform. However, claiming rewards weekly is not mandatory; unclaimed
           balances accumulate for future claims.
           <br />
-          <br />
           <div>
             At Alvara, we&apos;re committed to delivering a secure and rewarding
             staking experience. Join our{' '}

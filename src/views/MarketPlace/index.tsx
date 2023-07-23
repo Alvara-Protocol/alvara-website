@@ -36,9 +36,9 @@ export default function MarketPlace() {
           effortlessly. <br />
           <br />
           Sellers retain full autonomy over their auction listings, from setting
-          the starting price, reserve price, to a &quto;buy-it-now&quto; price.
+          the starting price, reserve price, to a &quot;buy-it-now &quot; price.
           If a buyer wishes to bid lower than the listed price, they can use the
-          &quto;make-an-offer&quto; feature. Sellers can further enhance their
+          &quot;make-an-offer&quot; feature. Sellers can further enhance their
           listings by including a brief description to illustrate their fund and
           attract potential buyers.
           <br />

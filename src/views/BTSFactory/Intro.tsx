@@ -55,7 +55,6 @@ export default function Intro() {
         everyone to explore the advantages of tokenised investment funds on the
         blockchain.
         <br />
-        <br />{' '}
         <div>
           If you have any questions, we invite you to join our{' '}
           <a

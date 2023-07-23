@@ -13,7 +13,7 @@ export default function AlvaStatusItem({
 }: AlvaStatusItemProps) {
   return (
     <div className="flex flex-col items-center gap-4">
-      <span className="text-center font-montserrat text-xl font-normal tracking-widest md:text-2xl">
+      <span className="text-center font-montserrat text-xl font-normal tracking-widest md:text-3xl">
         {price}
       </span>
       <div className="relative h-[3px] w-[340px] bg-dark-blue-400">

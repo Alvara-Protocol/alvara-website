@@ -21,6 +21,8 @@ class MyDocument extends Document {
             rel="stylesheet"
             href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Poppins:wght@300;400;500;700&display=swap"
           />
+
+          <link key="/favicon/favicon-32x32.png" type="image/png" rel="icon" />
         </Head>
         <body>
           <Main />

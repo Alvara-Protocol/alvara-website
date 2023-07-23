@@ -5,9 +5,9 @@ import { Info } from '@/components';
 const linkInfos = [
   {
     image: '/images/social/telegram.png',
-    link: 'https://t.me/alvaraannouncements',
+    link: 'https://t.me/alvaraprotocol',
     title: 'Telegram',
-    description: 't.me/alvaraannouncements',
+    description: 't.me/alvaraprotocol',
   },
   {
     image: '/images/social/twitter.png',

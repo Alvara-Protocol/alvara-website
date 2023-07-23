@@ -136,13 +136,13 @@ export default function Team() {
         <div className="mx-5 mb-10 md:mx-0">
           <p className=" leading-10  text-gray-300 md:max-w-2xl">
             The Alvara Protocol is a transformative platform in the DeFi space
-            designed to democratize the world of fund management. Built on the
+            designed to democratise the world of fund management. Built on the
             newly developed ERC-BTS token standard, Alvara provides an
-            innovative tokenized fund factory that paves the way for anyone to
+            innovative tokenised fund factory that paves the way for anyone to
             become a fund manager. This unique ecosystem maintains complete
             transparency, allowing other investors to confidently contribute to
-            the fund. Alvara adds a new dimension to decentralized finance by
-            revolutionizing how we perceive and engage with fund management as
+            the fund. Alvara adds a new dimension to decentralised finance by
+            revolutionising how we perceive and engage with fund management as
             managers and investors.
           </p>
 
@@ -282,7 +282,7 @@ export default function Team() {
             <h1 className="text-xl font-bold text-black">Yield Optimization</h1>
           </div>
           <p className="px-7">
-            Every ERC-BTS houses 100% collateralized underlying assets. These
+            Every ERC-BTS houses 100% collateralised underlying assets. These
             assets can be employed in non-custodial yield generation strategies
             through Alvara&apos;s partners. The rewards are cycled back into the
             fund to increase total AUM, or can be dispersed to contributors as
@@ -297,10 +297,10 @@ export default function Team() {
             </h1>
           </div>
           <p className="px-7">
-            Paragraph: Alvara boasts the first-mover advantage, constructing the
-            very first comprehensive protocol integrating a decentralised
-            exchange, creation, and management portal. We are bringing tokenised
-            funds to DeFi like never before.
+            Alvara boasts the first-mover advantage, constructing the very first
+            comprehensive protocol integrating a decentralised exchange,
+            creation, and management portal. We are bringing tokenised funds to
+            DeFi like never before.
           </p>
         </div>
         <div>

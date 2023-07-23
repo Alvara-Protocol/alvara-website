@@ -25,7 +25,7 @@ export default function Hivex() {
         USDT, AVAX, or BNB. In exchange, users are granted HiveX LP tokens,
         signifying their stake in the pool. As liquidity providers, users will
         share 30% of all transaction fees, distributed based on the proportion
-        of
+        of their LP holdings.
       </div>
       <div className=" hidden md:grid">
         <Back />
