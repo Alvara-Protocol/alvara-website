@@ -1,13 +1,13 @@
 const Back = () => {
   return (
     <svg
-      width="full"
-      height="full"
+      width="100%"
+      height="100%"
       viewBox="0 0 1915 1085"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_1150_2821)">
+      <g clipPath="url(#clip0_1150_2821)">
         <rect width="1915" height="1085" fill="url(#paint0_radial_1150_2821)" />
         <path
           d="M728.578 629.061C729.164 628.475 729.164 627.525 728.578 626.939L719.032 617.393C718.447 616.808 717.497 616.808 716.911 617.393C716.325 617.979 716.325 618.929 716.911 619.515L725.396 628L716.911 636.485C716.325 637.071 716.325 638.021 716.911 638.607C717.497 639.192 718.447 639.192 719.032 638.607L728.578 629.061ZM727.518 626.5L472 626.5L472 629.5L727.518 629.5L727.518 626.5Z"
@@ -29,8 +29,8 @@ const Back = () => {
           opacity="0.5"
           d="M775.111 172H1146.33"
           stroke="url(#paint1_linear_1150_2821)"
-          stroke-width="5.0292"
-          stroke-linecap="round"
+          strokeWidth="5.0292"
+          strokeLinecap="round"
         />
         <path
           d="M470.709 407.237C470.287 407.95 470.523 408.87 471.237 409.291L482.858 416.162C483.571 416.583 484.491 416.347 484.912 415.634C485.334 414.92 485.098 414.001 484.384 413.579L474.055 407.472L480.161 397.142C480.583 396.429 480.347 395.509 479.634 395.088C478.92 394.666 478.001 394.902 477.579 395.616L470.709 407.237ZM1424 408C1424.37 406.547 1424.37 406.547 1424.37 406.546C1424.37 406.546 1424.36 406.545 1424.36 406.544C1424.35 406.541 1424.34 406.538 1424.32 406.534C1424.29 406.525 1424.23 406.511 1424.16 406.494C1424.03 406.459 1423.82 406.406 1423.55 406.337C1423 406.198 1422.19 405.993 1421.13 405.725C1419 405.19 1415.85 404.405 1411.77 403.406C1403.62 401.409 1391.77 398.556 1376.94 395.132C1347.3 388.285 1305.77 379.156 1258.24 370.027C1163.2 351.773 1044.09 333.5 948 333.5L948 336.5C1043.79 336.5 1162.67 354.727 1257.67 372.973C1305.16 382.094 1346.65 391.215 1376.27 398.055C1391.08 401.475 1402.92 404.325 1411.06 406.32C1415.13 407.317 1418.27 408.101 1420.4 408.635C1421.46 408.902 1422.27 409.107 1422.81 409.244C1423.08 409.313 1423.29 409.365 1423.42 409.4C1423.49 409.418 1423.54 409.431 1423.58 409.44C1423.59 409.444 1423.61 409.447 1423.61 409.45C1423.62 409.451 1423.62 409.451 1423.62 409.452C1423.63 409.453 1423.63 409.453 1424 408ZM948 333.5C851.915 333.5 732.8 351.773 637.764 370.027C590.234 379.156 548.704 388.285 519.055 395.132C504.231 398.556 492.376 401.409 484.226 403.406C480.151 404.405 477.003 405.19 474.872 405.725C473.807 405.993 472.996 406.198 472.451 406.337C472.179 406.406 471.973 406.459 471.835 406.494C471.766 406.512 471.714 406.525 471.68 406.534C471.662 406.538 471.649 406.542 471.64 406.544C471.636 406.545 471.632 406.546 471.63 406.546C471.628 406.547 471.627 406.547 472 408C472.373 409.453 472.374 409.453 472.376 409.452C472.378 409.452 472.382 409.451 472.386 409.45C472.394 409.448 472.407 409.444 472.424 409.44C472.458 409.431 472.51 409.418 472.578 409.4C472.715 409.366 472.919 409.313 473.19 409.244C473.733 409.107 474.541 408.902 475.603 408.635C477.728 408.101 480.871 407.318 484.94 406.32C493.078 404.326 504.92 401.476 519.73 398.055C549.351 391.215 590.845 382.094 638.33 372.973C733.327 354.727 852.212 336.5 948 336.5L948 333.5Z"
@@ -137,7 +137,7 @@ const Back = () => {
             rx="152.5"
             transform="rotate(90 504 476)"
             fill="url(#paint6_radial_1150_2821)"
-            fill-opacity="0.5"
+            fillOpacity="0.5"
           />
         </g>
         <g opacity="0.21" filter="url(#filter1_i_1150_2821)">
@@ -149,7 +149,7 @@ const Back = () => {
             rx="152.5"
             transform="rotate(90 1708 476)"
             fill="url(#paint7_radial_1150_2821)"
-            fill-opacity="0.5"
+            fillOpacity="0.5"
           />
         </g>
         <g opacity="0.34">
@@ -245,9 +245,9 @@ const Back = () => {
           width="305"
           height="308.119"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feBlend
             mode="normal"
             in="SourceGraphic"
@@ -280,9 +280,9 @@ const Back = () => {
           width="305"
           height="308.119"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feBlend
             mode="normal"
             in="SourceGraphic"
@@ -315,9 +315,9 @@ const Back = () => {
           width="158.334"
           height="131.64"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -351,9 +351,9 @@ const Back = () => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(256.927 398.58) rotate(15.3248) scale(1542.64 2208.97)"
         >
-          <stop stop-color="#3F1960" />
-          <stop offset="0.526042" stop-color="#10122A" />
-          <stop offset="1" stop-color="#3F1960" />
+          <stop stopColor="#3F1960" />
+          <stop offset="0.526042" stopColor="#10122A" />
+          <stop offset="1" stopColor="#3F1960" />
         </radialGradient>
         <linearGradient
           id="paint1_linear_1150_2821"
@@ -363,9 +363,9 @@ const Back = () => {
           y2="178.544"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#FA3EFE" stop-opacity="0" />
-          <stop offset="0.494792" stop-color="#FA3EFE" />
-          <stop offset="1" stop-color="#FA3EFE" stop-opacity="0" />
+          <stop stopColor="#FA3EFE" stopOpacity="0" />
+          <stop offset="0.494792" stopColor="#FA3EFE" />
+          <stop offset="1" stopColor="#FA3EFE" stopOpacity="0" />
         </linearGradient>
         <radialGradient
           id="paint2_diamond_1150_2821"
@@ -375,8 +375,8 @@ const Back = () => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(947.008 591.98) rotate(-162.164) scale(319.884 613.086)"
         >
-          <stop stop-color="#3F1960" />
-          <stop offset="1" stop-color="#10122A" />
+          <stop stopColor="#3F1960" />
+          <stop offset="1" stopColor="#10122A" />
         </radialGradient>
         <radialGradient
           id="paint3_diamond_1150_2821"
@@ -386,8 +386,8 @@ const Back = () => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(2151.01 591.98) rotate(-162.164) scale(319.884 613.086)"
         >
-          <stop stop-color="#3F1960" />
-          <stop offset="1" stop-color="#10122A" />
+          <stop stopColor="#3F1960" />
+          <stop offset="1" stopColor="#10122A" />
         </radialGradient>
         <radialGradient
           id="paint4_radial_1150_2821"
@@ -397,8 +397,8 @@ const Back = () => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(829.584 599.181) rotate(140.405) scale(250.061 479.265)"
         >
-          <stop stop-color="#3F1960" />
-          <stop offset="1" stop-color="#10122A" />
+          <stop stopColor="#3F1960" />
+          <stop offset="1" stopColor="#10122A" />
         </radialGradient>
         <radialGradient
           id="paint5_radial_1150_2821"
@@ -408,8 +408,8 @@ const Back = () => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(2033.58 599.181) rotate(140.405) scale(250.061 479.265)"
         >
-          <stop stop-color="#3F1960" />
-          <stop offset="1" stop-color="#10122A" />
+          <stop stopColor="#3F1960" />
+          <stop offset="1" stopColor="#10122A" />
         </radialGradient>
         <radialGradient
           id="paint6_radial_1150_2821"
@@ -419,8 +419,8 @@ const Back = () => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(716.953 606.088) rotate(140.405) scale(191.15 366.356)"
         >
-          <stop stop-color="#3F1960" />
-          <stop offset="1" stop-color="#10122A" />
+          <stop stopColor="#3F1960" />
+          <stop offset="1" stopColor="#10122A" />
         </radialGradient>
         <radialGradient
           id="paint7_radial_1150_2821"
@@ -430,8 +430,8 @@ const Back = () => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(1920.95 606.088) rotate(140.405) scale(191.15 366.356)"
         >
-          <stop stop-color="#3F1960" />
-          <stop offset="1" stop-color="#10122A" />
+          <stop stopColor="#3F1960" />
+          <stop offset="1" stopColor="#10122A" />
         </radialGradient>
         <linearGradient
           id="paint8_linear_1150_2821"
@@ -441,8 +441,8 @@ const Back = () => {
           y2="573.51"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#8A15D5" />
-          <stop offset="0.994792" stop-color="#FB3FFF" />
+          <stop stopColor="#8A15D5" />
+          <stop offset="0.994792" stopColor="#FB3FFF" />
         </linearGradient>
         <linearGradient
           id="paint9_linear_1150_2821"
@@ -452,8 +452,8 @@ const Back = () => {
           y2="945.942"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#FB3FFF" />
-          <stop offset="1" stop-color="#DFDFDF" stop-opacity="0" />
+          <stop stopColor="#FB3FFF" />
+          <stop offset="1" stopColor="#DFDFDF" stopOpacity="0" />
         </linearGradient>
         <linearGradient
           id="paint10_linear_1150_2821"
@@ -463,8 +463,8 @@ const Back = () => {
           y2="805.465"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#FB3FFF" />
-          <stop offset="1" stop-color="#DFDFDF" stop-opacity="0" />
+          <stop stopColor="#FB3FFF" />
+          <stop offset="1" stopColor="#DFDFDF" stopOpacity="0" />
         </linearGradient>
         <linearGradient
           id="paint11_linear_1150_2821"
@@ -474,8 +474,8 @@ const Back = () => {
           y2="1085.78"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#FB3FFF" />
-          <stop offset="1" stop-color="#DFDFDF" stop-opacity="0" />
+          <stop stopColor="#FB3FFF" />
+          <stop offset="1" stopColor="#DFDFDF" stopOpacity="0" />
         </linearGradient>
         <linearGradient
           id="paint12_linear_1150_2821"
@@ -485,8 +485,8 @@ const Back = () => {
           y2="664.996"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#FB3FFF" />
-          <stop offset="1" stop-color="#DFDFDF" stop-opacity="0" />
+          <stop stopColor="#FB3FFF" />
+          <stop offset="1" stopColor="#DFDFDF" stopOpacity="0" />
         </linearGradient>
         <linearGradient
           id="paint13_linear_1150_2821"
@@ -496,8 +496,8 @@ const Back = () => {
           y2="945.315"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#FB3FFF" />
-          <stop offset="1" stop-color="#DFDFDF" stop-opacity="0" />
+          <stop stopColor="#FB3FFF" />
+          <stop offset="1" stopColor="#DFDFDF" stopOpacity="0" />
         </linearGradient>
         <linearGradient
           id="paint14_linear_1150_2821"
@@ -507,8 +507,8 @@ const Back = () => {
           y2="1225.63"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#FB3FFF" />
-          <stop offset="1" stop-color="#DFDFDF" stop-opacity="0" />
+          <stop stopColor="#FB3FFF" />
+          <stop offset="1" stopColor="#DFDFDF" stopOpacity="0" />
         </linearGradient>
         <linearGradient
           id="paint15_linear_1150_2821"
@@ -518,8 +518,8 @@ const Back = () => {
           y2="1365.48"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#FB3FFF" />
-          <stop offset="1" stop-color="#DFDFDF" stop-opacity="0" />
+          <stop stopColor="#FB3FFF" />
+          <stop offset="1" stopColor="#DFDFDF" stopOpacity="0" />
         </linearGradient>
         <clipPath id="clip0_1150_2821">
           <rect width="1915" height="1085" fill="white" />

@@ -20,7 +20,7 @@ function Dot({ className }: { className?: string }) {
         r="23"
         transform="matrix(-4.37114e-08 1 1 4.37114e-08 23 23)"
         fill="#8A15D5"
-        fill-opacity="0.24"
+        fillOpacity="0.24"
       />
       <g filter="url(#filter0_d_903_2839)">
         <circle
@@ -37,9 +37,9 @@ function Dot({ className }: { className?: string }) {
           width="25.8092"
           height="25.8099"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
