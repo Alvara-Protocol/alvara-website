@@ -44,7 +44,6 @@ export default function Seo(props: SeoProps) {
   return (
     <Head>
       <title>{meta.title}</title>
-      <link rel="icon" href="/public/favicon.ico"></link>
       <meta name="robots" content={meta.robots} />
       <meta content={meta.description} name="description" />
       <meta property="og:url" content={`${meta.url}${router.asPath}`} />

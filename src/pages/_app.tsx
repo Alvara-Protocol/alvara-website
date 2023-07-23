@@ -10,7 +10,7 @@ import Providers from '@/lib/Providers';
 import Layout from '@/components/layout/Layout';
 import Seo from '@/components/Seo';
 
-function MyApp({ Component, pageProps }: AppProps) {
+function App({ Component, pageProps }: AppProps) {
   return (
     <Providers>
       <Layout>
@@ -22,4 +22,4 @@ function MyApp({ Component, pageProps }: AppProps) {
   );
 }
 
-export default MyApp;
+export default App;

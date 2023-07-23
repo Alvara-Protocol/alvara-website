@@ -27,6 +27,18 @@ const linkInfos = [
     title: 'Medium',
     description: 'alvaraprotocol.medium.com',
   },
+  {
+    image: '/images/social/discord.png',
+    link: 'http://discord.gg/pHDDF2MS8v',
+    title: 'Discord',
+    description: 'discord.gg/alvaraprotocol',
+  },
+  {
+    image: '/images/social/instagram.png',
+    link: 'https://instagram.com/alvaraprotocol?igshid=MzRlODBiNWFlZA==',
+    title: 'Instagram',
+    description: 'instagram.com/alvaraprotocol',
+  },
 ];
 
 export default function Links({ visible }: { visible: boolean }) {

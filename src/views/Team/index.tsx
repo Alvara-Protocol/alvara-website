@@ -129,22 +129,23 @@ export default function Team() {
       <Seo templateTitle="Team" description="Alvara team" />
       <Hives className=" gap-10 px-4 pt-40 md:grid md:grid-cols-2  md:justify-between md:px-11">
         <div className="grid  content-center">
-          <h1 className="mb-32 px-5 text-4xl uppercase text-gray-400 md:mb-0 md:max-w-xs md:px-20 md:text-center md:text-6xl">
-            About <p>Alvara.</p>
+          <h1 className="mb-32 px-5 text-4xl  text-gray-400 md:mb-0 md:max-w-xs md:px-20 md:text-center md:text-6xl">
+            About <p>Alvara</p>
           </h1>
         </div>
         <div className="mx-5 mb-10 md:mx-0">
           <p className=" leading-10  text-gray-300 md:max-w-2xl">
-            ERC-BTS is the name for our new token standard that&apos;ll allow
-            users to create tokenised crypto funds. Unleashing the full
-            capabilities of the blockchain to offer investors the world&apos;s
-            most popular investment vehicle.
-            <br />
-            <br /> Basket funds are number one for a reason - they provide a low
-            risk, low cost, diversified and transparent investment opportunity.
-            For the first time, that opportunity is available to anyone. Only
-            with Alvara.
+            The Alvara Protocol is a transformative platform in the DeFi space
+            designed to democratize the world of fund management. Built on the
+            newly developed ERC-BTS token standard, Alvara provides an
+            innovative tokenized fund factory that paves the way for anyone to
+            become a fund manager. This unique ecosystem maintains complete
+            transparency, allowing other investors to confidently contribute to
+            the fund. Alvara adds a new dimension to decentralized finance by
+            revolutionizing how we perceive and engage with fund management as
+            managers and investors.
           </p>
+
           <div className="mb-5 mt-5 h-[2px] w-full bg-gradient-to-r from-fuchsia-400 to-transparent"></div>
           <UnstyledLink href="https://alvaraprotocol.medium.com">
             <Button variant="primary" className="rounded-lg py-5 px-10">
@@ -227,7 +228,7 @@ export default function Team() {
       </Hives>
       <div className="grid gap-10 p-10 leading-10 md:grid-cols-2 md:p-20">
         <div>
-          <h1 className="font-montserrat text-4xl font-medium uppercase md:text-5xl">
+          <h1 className="font-montserrat text-4xl font-medium  md:text-5xl">
             What makes Alvara so sweet?
           </h1>
           <div className="my-8 h-[2px] w-full bg-gradient-to-r from-fuchsia-400 to-transparent"></div>
@@ -236,36 +237,28 @@ export default function Team() {
         <div className="">
           <div className="flex items-center">
             <div className="mr-4 h-3 w-3 rounded-full bg-fuchsia-400"></div>
-            <h1 className="text-xl font-black text-black">Build Your Own.</h1>
+            <h1 className="text-xl font-black text-black">
+              Construct and Launch
+            </h1>
           </div>
           <p className="px-7">
-            Design and launch your own ERC-BTS via Alvara&apos;s BTS Factory.
-            Earn rewards each time your fund&apos;s are traded on the HiveX.
-          </p>
-        </div>
-        <div>
-          <div className="flex items-center">
-            <div className="mr-4 h-3 w-3 rounded-full bg-fuchsia-400"></div>
-            <h1 className="text-xl font-bold text-black">Yield Generation.</h1>
-          </div>
-          <p className="px-7">
-            Every ERC-BTS contains 100% collateralised underlying assets. These
-            assets are utilized in yield generation strategies via our partners,
-            with the rewards being fed back into the fund and distributed to
-            share holders as dividends.
+            With Alvara&apos;s BTS Factory, you can design and launch your own
+            ERC-BTS and begin earning management fees based on your BTS’s total
+            AUM.
           </p>
         </div>
         <div>
           <div className="flex items-center">
             <div className="mr-4 h-3 w-3 rounded-full bg-fuchsia-400"></div>
             <h1 className="text-xl font-bold text-black">
-              Proof of Ownership.
+              {' '}
+              Verified Ownership
             </h1>
           </div>
           <p className="px-7">
-            NFT integration provides smart fund managers with a key to their
-            fund&apos;s management rights and rewards structure. Transferable at
-            Alvara&apos;s NFT marketplace, fund managers can, for the first
+            Our integration with NFTs provides savvy fund managers with access
+            to their fund&apos;s management rights and rewards structure. Using
+            Alvara&apos;s BTS marketplace, fund managers can, for the first
             time, sell their business.
           </p>
         </div>
@@ -273,44 +266,63 @@ export default function Team() {
           <div className="flex items-center">
             <div className="mr-4 h-3 w-3 rounded-full bg-fuchsia-400"></div>
             <h1 className="text-xl font-bold text-black">
-              First Mover Advantage.
+              Competitive Leaderboard.
             </h1>
           </div>
           <p className="px-7">
-            Alvara has first mover advantage, building the very first one-stop
-            protocol with a decentralised exchange, creation and management
-            portal. Bringing tokanised funds to DeFi like never before.
+            Battle for top positions on Alvara&apos;s leaderboard alongside
+            other fund managers and institutions. Track the strategies of the
+            most profitable managers to mitigate your risk in the crypto
+            markets.
+          </p>
+        </div>
+        <div>
+          <div className="flex items-center">
+            <div className="mr-4 h-3 w-3 rounded-full bg-fuchsia-400"></div>
+            <h1 className="text-xl font-bold text-black">Yield Optimization</h1>
+          </div>
+          <p className="px-7">
+            Every ERC-BTS houses 100% collateralized underlying assets. These
+            assets can be employed in non-custodial yield generation strategies
+            through Alvara&apos;s partners. The rewards are cycled back into the
+            fund to increase total AUM, or can be dispersed to contributors as
+            rewards.
           </p>
         </div>
         <div>
           <div className="flex items-center">
             <div className="mr-4 h-3 w-3 rounded-full bg-fuchsia-400"></div>
             <h1 className="text-xl font-bold text-black">
-              Advanced Leaderboard.
+              Pioneering Advantage.
             </h1>
           </div>
           <p className="px-7">
-            Compete against your fellow fund managers for top ranking positions
-            on Alvara&apos;s leaderboard. Follow the most profitable fund
-            managers to minimise your risk exposure to the crypto markets.
+            Paragraph: Alvara boasts the first-mover advantage, constructing the
+            very first comprehensive protocol integrating a decentralised
+            exchange, creation, and management portal. We are bringing tokenised
+            funds to DeFi like never before.
           </p>
         </div>
         <div>
           <div className="flex items-center">
             <div className="mr-4 h-3 w-3 rounded-full bg-fuchsia-400"></div>
-            <h1 className="text-xl font-bold text-black">Low Cost.</h1>
+            <h1 className="text-xl font-bold text-black">
+              {' '}
+              Economical Transactions.
+            </h1>
           </div>
           <p className="px-7">
-            Underlying assets are purchased through APIs linked to leading DEXs,
-            making the costs of creating, redeeming and rebalancing much cheaper
-            than fully on-chain alternatives.
+            Alvara smart contracts purchase underlying assets through APIs
+            linked to leading DEXs. This makes the costs of creating, redeeming,
+            and rebalancing considerably cheaper than fully on-chain
+            alternatives.
           </p>
         </div>
       </div>
       <div className="my-16 h-[2px] w-full bg-gradient-to-r from-transparent via-fuchsia-400 to-transparent"></div>
       <div className="grid place-content-center">
         <h1 className="text-center text-4xl text-black md:text-5xl">
-          ALVARA TEAM
+          Alvara Team
         </h1>
         <div className="my-16 h-[2px] w-72 place-self-center bg-gradient-to-r from-transparent via-fuchsia-400 to-transparent"></div>
       </div>

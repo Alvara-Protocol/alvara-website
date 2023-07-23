@@ -22,7 +22,7 @@ export default function Footer() {
         <p className="mt-10 mb-10 text-center text-[18px] text-dark-blue-400 lg:text-left">
           Email: contact@alvaraprotocol.io
         </p>
-        <div className="flex justify-center gap-6 lg:justify-start">
+        <div className="flex  justify-center gap-6 lg:justify-start">
           <Links visible={false} />
         </div>
       </div>

@@ -12,23 +12,29 @@ export default function Intro() {
           ALVARA PROTOCOL
         </span>
         <div>
-          <h2 className="text-4xl uppercase tracking-wider">
+          <h1 className="text-4xl tracking-wider">
             We&apos;re Changing the Way the World Invests.
-          </h2>
+          </h1>
           <div className="h-[2px] w-full bg-gradient-to-r from-fuchsia-400 to-transparent md:mt-5"></div>
         </div>
         <p className="w-full font-poppins text-base font-light tracking-widest">
-          The desire and need for a successful mechanism that enables the wider
-          crypto markets to enjoy the benefits of something akin to an ETF have
-          been long-standing. That wait is over. <br />
-          <br /> The Alvara Protocol is a first of its kind - one-stop
-          decentralised crypto fund exchange with the capacity for built-in
-          basket tokenised funds creation and own management portal.
+          There has been a longstanding demand for a mechanism within the vast
+          cryptocurrency market that mirrors the benefits akin to an
+          Exchange-Traded Fund (ETF).
           <br />
-          <br /> This cutting-edge tokenised basket platform will play a pivotal
-          role in empowering the next generation of fund managers.
           <br />
-          <br /> Welcome to the future of DeFi. Welcome to the Alvara Protcol
+          <b className="font-bold"> The wait is now over. </b>
+          <br />
+          <br />
+          Introducing the Alvara Protocol, a groundbreaking decentralised
+          crypto-fund platform.
+          <br /> This all-in-one solution enables the creation and
+          self-management of tokenised basket funds. <br />
+          This innovative platform for tokenised funds is poised to empower the
+          upcoming generation of fund managers, transforming the industry
+          landscape. <br />
+          Embrace the future of Decentralised Finance (DeFi). <br /> Welcome to
+          the Alvara Protocol.
         </p>
       </section>
       <NextImage

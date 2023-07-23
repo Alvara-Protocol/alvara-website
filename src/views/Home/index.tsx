@@ -4,7 +4,6 @@ import AlvaStatus from './AlvaStatus';
 import Hivex from './Hivex';
 import Intro from './Intro';
 import Intro2 from './Intro2';
-import Partners from './Partners';
 import Title from './Title';
 
 export default function Home() {
@@ -15,7 +14,7 @@ export default function Home() {
       <Hivex />
       <Intro2 />
       <AlvaStatus />
-      <Partners />
+      {/* <Partners /> */}
     </main>
   );
 }

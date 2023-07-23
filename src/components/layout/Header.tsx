@@ -163,7 +163,7 @@ export default function Header() {
               </div>
             </Dialog>
           </Transition>
-          <ul className="hidden gap-10 text-xl lg:flex ">
+          <ul className="hidden justify-center gap-5 text-sm lg:flex ">
             {titles.map((title, index) => (
               <li key={index} className="min-w-max">
                 <UnstyledLink
