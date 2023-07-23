@@ -244,7 +244,7 @@ export default function PresaleForm() {
       ) : (
         <form
           onSubmit={handleAddVest}
-          className="border-gradient3 relative flex w-full flex-col items-center gap-8 border-y pt-10 pb-4"
+          className="border-gradient3 relative flex w-full flex-col items-center gap-8 border-y pb-4 pt-10"
         >
           <div
             className={clsxm(
@@ -318,7 +318,7 @@ export default function PresaleForm() {
             <h4 className="text-center text-2xl font-medium">Total ETH</h4>
             <div
               className={clsxm(
-                'border-gradient my-3 mx-auto w-2/3 border p-3 text-center',
+                'border-gradient mx-auto my-3 w-2/3 border p-3 text-center',
                 insufficientBalance && 'text-red-400',
               )}
             >

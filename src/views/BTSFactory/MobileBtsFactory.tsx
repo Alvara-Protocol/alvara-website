@@ -27,7 +27,7 @@ export default function MobileBtsFactory({
         <p className="pl-2 tracking-tight text-fuchsia-400"> BTS with ETH</p>
       </div>
       <div className="px-15 mt-10">
-        <div className="rounded-2xl bg-[#1C043C] py-10 px-16 text-center text-2xl font-bold text-purple-50 outline outline-1 outline-fuchsia-450">
+        <div className="outline rounded-2xl bg-[#1C043C] px-16 py-10 text-center text-2xl font-bold text-purple-50 outline-1 outline-fuchsia-450">
           Manager
         </div>
       </div>

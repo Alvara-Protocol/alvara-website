@@ -77,7 +77,7 @@ export default function Timeline2() {
       <div className=" flex w-full flex-col items-center justify-center gap-4 xl:-mb-20 xl:flex-row">
         <div className="hex-up-disabled gradient-border -mb-12 -translate-x-1/2 xl:mb-0 xl:translate-x-0">
           <NextImage
-            className="absolute top-1/2 left-1/2 m-auto -translate-y-1/2 -translate-x-1/2 opacity-50"
+            className="absolute left-1/2 top-1/2 m-auto -translate-x-1/2 -translate-y-1/2 opacity-50"
             src="/images/logo.png"
             width={120}
             height={120}
@@ -108,7 +108,7 @@ export default function Timeline2() {
         <div className="hex-down-disabled gradient-border hidden opacity-0 hover:cursor-default xl:block" />
         <div className="hex-down-disabled gradient-border -mt-12 translate-x-1/2 xl:mt-0 xl:translate-x-0">
           <NextImage
-            className="absolute top-1/2 left-1/2 m-auto -translate-x-1/2 -translate-y-1/2 opacity-50"
+            className="absolute left-1/2 top-1/2 m-auto -translate-x-1/2 -translate-y-1/2 opacity-50"
             src="/images/logo.png"
             width={120}
             height={120}

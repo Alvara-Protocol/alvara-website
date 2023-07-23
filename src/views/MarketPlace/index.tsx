@@ -65,7 +65,7 @@ export default function MarketPlace() {
               />
             </Button>
             <span
-              className="absolute left-1/2 my-4 hidden w-72  translate-y-10 -translate-x-1/2 rounded-md  border-2 border-[#8A15D5] 
+              className="absolute left-1/2 my-4 hidden w-72  -translate-x-1/2 translate-y-10 rounded-md  border-2 border-[#8A15D5] 
     bg-[#1C043C] px-1 text-center text-sm text-white transition-opacity group-hover:block"
             >
               The NFT holds the rights for proposals regarding the fund and

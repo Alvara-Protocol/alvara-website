@@ -35,7 +35,7 @@ export default function Token() {
           </p>
         </div>
       </Hives>
-      <div className="mx-auto my-8 grid grid-cols-1 justify-center gap-8 px-8 md:grid-cols-3 md:px-32 xl:container">
+      <div className="mx-auto my-8 grid grid-cols-1 justify-center gap-8 px-8 xl:container md:grid-cols-3 md:px-32">
         <Info
           image="/images/token/fee.svg"
           title="Fee Reductions"

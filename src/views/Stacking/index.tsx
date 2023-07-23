@@ -96,7 +96,7 @@ export default function Staking() {
               />
             </Button>
             <span
-              className="absolute left-1/2 my-4 hidden w-32  translate-y-64 translate-x-0 rounded-md  border-2 border-[#8A15D5] 
+              className="absolute left-1/2 my-4 hidden w-32  translate-x-0 translate-y-64 rounded-md  border-2 border-[#8A15D5] 
     bg-[#1C043C] px-1 text-center text-sm text-white transition-opacity group-hover:block"
             >
               x% APY based on locking period
@@ -117,7 +117,7 @@ export default function Staking() {
               />
             </Button>
             <span
-              className="absolute left-1/2 my-4 hidden w-32   translate-y-64 -translate-x-32 rounded-md  border-2 border-[#8A15D5] 
+              className="absolute left-1/2 my-4 hidden w-32   -translate-x-32 translate-y-64 rounded-md  border-2 border-[#8A15D5] 
     bg-[#1C043C] px-1 text-center text-sm text-white transition-opacity group-hover:block"
             >
               veALVA which decays based on locking period

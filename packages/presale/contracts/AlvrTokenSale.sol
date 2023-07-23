@@ -69,11 +69,7 @@ contract AlvrTokenSale is Ownable, Pausable {
         _;
     }
 
-    constructor(
-        address alvara_,
-        address treasuryWallet_,
-        address txSigner_
-    ) {
+    constructor(address alvara_, address treasuryWallet_, address txSigner_) {
         optionCnt = 3;
         alvara = alvara_;
         treasuryWallet = treasuryWallet_;
@@ -111,13 +107,13 @@ contract AlvrTokenSale is Ownable, Pausable {
 
         allowedPercentage = 500;
 
-        minimumTokens[0] = 5_000 * 10**18;
-        minimumTokens[1] = 10_000 * 10**18;
-        minimumTokens[2] = 100_000 * 10**18;
+        minimumTokens[0] = 5_000 * 10 ** 18;
+        minimumTokens[1] = 10_000 * 10 ** 18;
+        minimumTokens[2] = 100_000 * 10 ** 18;
 
-        maximumTokens[0] = 100_000 * 10**18;
-        maximumTokens[1] = 500_000 * 10**18;
-        maximumTokens[2] = 1_000_000 * 10**18;
+        maximumTokens[0] = 100_000 * 10 ** 18;
+        maximumTokens[1] = 500_000 * 10 ** 18;
+        maximumTokens[2] = 1_000_000 * 10 ** 18;
     }
 
     function setTreasuryWallet(address treasuryWallet_) external onlyOwner {
@@ -163,10 +159,10 @@ contract AlvrTokenSale is Ownable, Pausable {
         _unpause();
     }
 
-    function setSchedule(uint256 option_, uint256[] memory releases_)
-        external
-        onlyOwner
-    {
+    function setSchedule(
+        uint256 option_,
+        uint256[] memory releases_
+    ) external onlyOwner {
         require(option_ < optionCnt, "Invalid option");
         require(
             releases_[releases_.length - 1] == fullPercent,
@@ -178,33 +174,31 @@ contract AlvrTokenSale is Ownable, Pausable {
         schedules[option_][releases_.length] = 0;
     }
 
-    function setAllowedPercentage(uint256 allowedPercentage_)
-        external
-        onlyOwner
-    {
+    function setAllowedPercentage(
+        uint256 allowedPercentage_
+    ) external onlyOwner {
         require(allowedPercentage_ <= fullPercent, "Invalid percentage");
         allowedPercentage = allowedPercentage_;
     }
 
-    function setOptionMinAmount(uint256 option, uint256 amount)
-        external
-        onlyOwner
-    {
+    function setOptionMinAmount(
+        uint256 option,
+        uint256 amount
+    ) external onlyOwner {
         minimumTokens[option] = amount;
     }
 
-    function setOptionMaxAmount(uint256 option, uint256 amount)
-        external
-        onlyOwner
-    {
+    function setOptionMaxAmount(
+        uint256 option,
+        uint256 amount
+    ) external onlyOwner {
         maximumTokens[option] = amount;
     }
 
-    function _claimed(address investor_, uint256 option_)
-        internal
-        view
-        returns (uint256)
-    {
+    function _claimed(
+        address investor_,
+        uint256 option_
+    ) internal view returns (uint256) {
         return claimed[investor_][option_];
     }
 
@@ -220,11 +214,10 @@ contract AlvrTokenSale is Ownable, Pausable {
             fullPercent;
     }
 
-    function _tokens(address investor_, uint256 option_)
-        internal
-        view
-        returns (uint256)
-    {
+    function _tokens(
+        address investor_,
+        uint256 option_
+    ) internal view returns (uint256) {
         return tokens[investor_][option_];
     }
 
@@ -267,11 +260,10 @@ contract AlvrTokenSale is Ownable, Pausable {
         maximumTokens[option_] = maximum_;
     }
 
-    function _vested(address investor_, uint256 option_)
-        internal
-        view
-        returns (uint256)
-    {
+    function _vested(
+        address investor_,
+        uint256 option_
+    ) internal view returns (uint256) {
         return vests[investor_][option_];
     }
 
@@ -489,11 +481,10 @@ contract AlvrTokenSale is Ownable, Pausable {
         return (_tokens(investor_, option_) * release_) / fullPercent;
     }
 
-    function _calcRelease(address investor_, uint256 timestamp_)
-        internal
-        view
-        returns (uint256)
-    {
+    function _calcRelease(
+        address investor_,
+        uint256 timestamp_
+    ) internal view returns (uint256) {
         uint256 release_ = 0;
         for (uint256 option_ = 0; option_ < optionCnt; option_++) {
             release_ += _calcOptionRelease(investor_, option_, timestamp_);
@@ -502,11 +493,9 @@ contract AlvrTokenSale is Ownable, Pausable {
         return release_;
     }
 
-    function _calcInvestorClaim(address investor_)
-        internal
-        view
-        returns (uint256)
-    {
+    function _calcInvestorClaim(
+        address investor_
+    ) internal view returns (uint256) {
         uint256 claimed_ = 0;
         for (uint256 option_ = 0; option_ < optionCnt; option_++) {
             claimed_ += _claimed(investor_, option_);

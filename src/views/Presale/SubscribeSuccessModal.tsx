@@ -3,7 +3,7 @@ import UnstyledLink from '@/components/links/UnstyledLink';
 
 export default function SubscribeSuccessModal() {
   return (
-    <div className="my-8 mx-auto max-w-xl">
+    <div className="mx-auto my-8 max-w-xl">
       <NextImage
         className="mx-auto"
         src="/images/presale/email.png"

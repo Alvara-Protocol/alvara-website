@@ -15,7 +15,7 @@ export default function Hives({ children, className }: HivesProps) {
       className={'bg-gradient-to-r from-[#10122A] to-[#3F1960] ' + className}
     >
       <NextImage
-        className="absolute top-0 right-0 z-10 w-48 md:w-[420px]"
+        className="absolute right-0 top-0 z-10 w-48 md:w-[420px]"
         width={634}
         height={600}
         src={hives1}

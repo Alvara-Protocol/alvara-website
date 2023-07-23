@@ -108,7 +108,7 @@ export default function Header() {
                       <Dialog.Title as="h3" className="sr-only">
                         Navigation
                       </Dialog.Title>
-                      <div className="flex items-center justify-between py-6 px-8">
+                      <div className="flex items-center justify-between px-8 py-6">
                         <MobileLink setIsOpen={setIsOpen}>
                           <UnstyledLink href="/">
                             <NextImage
@@ -140,7 +140,7 @@ export default function Header() {
                       </div>
 
                       <nav className="divide-y divide-slate-900/10 text-base leading-7 text-slate-900">
-                        <div className="py-6 px-8">
+                        <div className="px-8 py-6">
                           <div className="items-start space-y-2">
                             {titles.map((title, index) => (
                               <div key={index}>

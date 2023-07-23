@@ -10,7 +10,7 @@ import hives from '~/images/hives-2.png';
 export default function Hivex() {
   return (
     <section className="relative mx-auto flex flex-col-reverse items-center gap-4   bg-gradient-to-r from-[#10122A] to-[#3F1960] py-[90px] md:flex-row">
-      <Currencies className="absolute top-10 left-1/2 w-full -translate-y-full -translate-x-1/2 md:w-3/4 " />
+      <Currencies className="absolute left-1/2 top-10 w-full -translate-x-1/2 -translate-y-full md:w-3/4 " />
       <div className="md:w-1/2">
         <NextImage
           className="m-auto "

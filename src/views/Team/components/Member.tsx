@@ -44,7 +44,7 @@ export default function Member({
 
   return (
     <div className="border-gradient2 gap-6 border-2 bg-white">
-      <div className="py-4 px-8 text-center">
+      <div className="px-8 py-4 text-center">
         <div className="rounded-full bg-gradient-to-r from-fuchsia-450 via-[#000] to-fuchsia-450 p-2">
           <Image
             className="mb-4 rounded-full"

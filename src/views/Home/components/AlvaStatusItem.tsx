@@ -18,7 +18,7 @@ export default function AlvaStatusItem({
       </span>
       <div className="relative h-[3px] w-[340px] bg-dark-blue-400">
         <div
-          className="absolute top-0 left-0 h-[3px] bg-gradient-to-r from-fuchsia-450 to-purple-650"
+          className="absolute left-0 top-0 h-[3px] bg-gradient-to-r from-fuchsia-450 to-purple-650"
           style={{ width: `${percent * 340}px` }}
         />
       </div>

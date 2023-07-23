@@ -44,14 +44,14 @@ export default function Presale() {
           templateTitle="Presale"
           description="ALVA is the utility token that powers the Alvara Protocol."
         />
-        <div className="absolute top-1/2 left-1/2 z-20 w-3/4 -translate-x-1/2 -translate-y-1/2 rounded-xl bg-black py-10 px-8 text-center text-[24px] font-bold leading-[45px] text-white lg:w-auto lg:px-20 lg:text-[40px]">
+        <div className="absolute left-1/2 top-1/2 z-20 w-3/4 -translate-x-1/2 -translate-y-1/2 rounded-xl bg-black px-8 py-10 text-center text-[24px] font-bold leading-[45px] text-white lg:w-auto lg:px-20 lg:text-[40px]">
           Presale Starting Soon!
         </div>
         <div className="h-screen overflow-hidden blur-sm">
-          <div className="absolute top-0 left-0 bottom-0 right-0 z-10 h-full w-full"></div>
+          <div className="absolute bottom-0 left-0 right-0 top-0 z-10 h-full w-full"></div>
           <section className="px-[30px] pt-[120px] text-black lg:bg-primary lg:pb-[50px] lg:text-white">
             <NextImage
-              className="absolute top-0 left-56 hidden lg:block"
+              className="absolute left-56 top-0 hidden lg:block"
               alt="Nest"
               src="/images/presale/top-back.png"
               width="550"
@@ -106,7 +106,7 @@ export default function Presale() {
                       className="relative h-fit w-[200px] cursor-pointer"
                       ref={hoverRef1}
                     >
-                      <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-poppins font-medium text-black lg:text-white">
+                      <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 font-poppins font-medium text-black lg:text-white">
                         Option 1
                       </span>
                       <NextImage
@@ -121,7 +121,7 @@ export default function Presale() {
                     <div className="relative h-fit w-[200px] lg:mx-0 lg:hidden">
                       {isHovered1 && (
                         <>
-                          <div className="absolute top-1/2 left-1/2 z-10 w-full -translate-x-1/2 -translate-y-1/2 text-center font-poppins text-white">
+                          <div className="absolute left-1/2 top-1/2 z-10 w-full -translate-x-1/2 -translate-y-1/2 text-center font-poppins text-white">
                             <p className="mb-3 text-[16px] font-normal">
                               $0.10
                             </p>
@@ -145,7 +145,7 @@ export default function Presale() {
                       className="relative h-fit w-[200px] cursor-pointer"
                       ref={hoverRef2}
                     >
-                      <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-poppins font-medium text-black lg:text-white">
+                      <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 font-poppins font-medium text-black lg:text-white">
                         Option 2
                       </span>
                       <NextImage
@@ -160,7 +160,7 @@ export default function Presale() {
                     <div className="relative h-fit w-[200px] lg:mx-0 lg:hidden">
                       {isHovered2 && (
                         <>
-                          <div className="absolute top-1/2 left-1/2 z-10 w-full -translate-x-1/2 -translate-y-1/2 text-center font-poppins text-white">
+                          <div className="absolute left-1/2 top-1/2 z-10 w-full -translate-x-1/2 -translate-y-1/2 text-center font-poppins text-white">
                             <p className="mb-3 text-[16px] font-normal">
                               $0.075
                             </p>
@@ -184,7 +184,7 @@ export default function Presale() {
                       className="relative h-fit w-[200px] cursor-pointer"
                       ref={hoverRef3}
                     >
-                      <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-poppins font-medium text-black lg:text-white">
+                      <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 font-poppins font-medium text-black lg:text-white">
                         Option 3
                       </span>
                       <NextImage
@@ -199,7 +199,7 @@ export default function Presale() {
                     <div className="relative h-fit w-[200px] lg:mx-0 lg:hidden">
                       {isHovered3 && (
                         <>
-                          <div className="absolute top-1/2 left-1/2 z-10 w-full -translate-x-1/2 -translate-y-1/2 text-center font-poppins text-white">
+                          <div className="absolute left-1/2 top-1/2 z-10 w-full -translate-x-1/2 -translate-y-1/2 text-center font-poppins text-white">
                             <p className="mb-3 text-[16px] font-normal">
                               $0.05
                             </p>
@@ -223,7 +223,7 @@ export default function Presale() {
                     <div className="relative h-fit w-[200px] lg:mx-0">
                       {isHovered1 && (
                         <>
-                          <div className="absolute top-1/2 left-1/2 z-10 w-full -translate-x-1/2 -translate-y-1/2 text-center font-poppins text-white">
+                          <div className="absolute left-1/2 top-1/2 z-10 w-full -translate-x-1/2 -translate-y-1/2 text-center font-poppins text-white">
                             <p className="mb-3 text-[16px] font-normal">
                               $0.10
                             </p>
@@ -247,7 +247,7 @@ export default function Presale() {
                     <div className="relative h-fit w-[200px] lg:mx-0">
                       {isHovered2 && (
                         <>
-                          <div className="absolute top-1/2 left-1/2 z-10 w-full -translate-x-1/2 -translate-y-1/2 text-center font-poppins text-white">
+                          <div className="absolute left-1/2 top-1/2 z-10 w-full -translate-x-1/2 -translate-y-1/2 text-center font-poppins text-white">
                             <p className="mb-3 text-[16px] font-normal">
                               $0.075
                             </p>
@@ -269,7 +269,7 @@ export default function Presale() {
                     <div className="relative h-fit w-[200px] lg:mx-0">
                       {isHovered3 && (
                         <>
-                          <div className="absolute top-1/2 left-1/2 z-10 w-full -translate-x-1/2 -translate-y-1/2 text-center font-poppins text-white">
+                          <div className="absolute left-1/2 top-1/2 z-10 w-full -translate-x-1/2 -translate-y-1/2 text-center font-poppins text-white">
                             <p className="mb-3 text-[16px] font-normal">
                               $0.05
                             </p>

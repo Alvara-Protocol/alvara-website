@@ -42,7 +42,7 @@ export default function Hivex() {
             />
           </Button>
           <span
-            className="absolute left-1/2 my-4 hidden w-60  translate-y-10 -translate-x-1/2 rounded-md  border-2 border-[#8A15D5] 
+            className="absolute left-1/2 my-4 hidden w-60  -translate-x-1/2 translate-y-10 rounded-md  border-2 border-[#8A15D5] 
     bg-[#1C043C] px-1 text-center text-sm text-white transition-opacity group-hover:block"
           >
             User deposits LP token paired with{' '}

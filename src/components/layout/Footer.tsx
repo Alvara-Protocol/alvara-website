@@ -7,7 +7,7 @@ import Links from '@/views/News/Links';
 
 export default function Footer() {
   return (
-    <footer className=" mb-8 grid grid-cols-10 justify-center border-t border-[#D515AD] pt-14 pb-4 font-montserrat shadow-xl lg:mx-10 lg:justify-start lg:px-20 lg:py-16">
+    <footer className=" mb-8 grid grid-cols-10 justify-center border-t border-[#D515AD] pb-4 pt-14 font-montserrat shadow-xl lg:mx-10 lg:justify-start lg:px-20 lg:py-16">
       <div className=" col-span-10 items-center lg:col-span-4">
         <div className="grid justify-items-center gap-8 lg:flex">
           <NextImage
@@ -19,7 +19,7 @@ export default function Footer() {
             alt="Alvara"
           />
         </div>
-        <p className="mt-10 mb-10 text-center text-[18px] text-dark-blue-400 lg:text-left">
+        <p className="mb-10 mt-10 text-center text-[18px] text-dark-blue-400 lg:text-left">
           Email: contact@alvaraprotocol.io
         </p>
         <div className="flex  justify-center gap-6 lg:justify-start">
@@ -55,7 +55,7 @@ export default function Footer() {
         <p className="text-xl font-bold text-dark-blue-400 lg:pt-3">
           SUBSCRIBE
         </p>
-        <p className="my-7 text-center text-stone-600 lg:mt-1 lg:mb-5">
+        <p className="my-7 text-center text-stone-600 lg:mb-5 lg:mt-1">
           Sign up to receive Alvara news and updates
         </p>
         <form
