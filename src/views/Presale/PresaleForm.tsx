@@ -191,8 +191,8 @@ export default function PresaleForm() {
             pending: 'Confirming transaction',
             success: 'Transaction Successful',
             error: {
-              render({ data }) {
-                return data.message;
+              render() {
+                return 'data.message';
               },
             },
           },
