@@ -13,20 +13,20 @@ import type {
   PopulatedTransaction,
   Signer,
   utils,
-} from "ethers";
+} from 'ethers';
 import type {
   FunctionFragment,
   Result,
   EventFragment,
-} from "@ethersproject/abi";
-import type { Listener, Provider } from "@ethersproject/providers";
+} from '@ethersproject/abi';
+import type { Listener, Provider } from '@ethersproject/providers';
 import type {
   TypedEventFilter,
   TypedEvent,
   TypedListener,
   OnEvent,
   PromiseOrValue,
-} from "../common";
+} from '../common';
 
 export declare namespace AlvrTokenSale {
   export type InvestmentsStruct = {
@@ -44,401 +44,401 @@ export declare namespace AlvrTokenSale {
 
 export interface AlvrTokenSaleInterface extends utils.Interface {
   functions: {
-    "addVest(uint256[],uint256[],uint8,bytes32,bytes32)": FunctionFragment;
-    "allowedPercentage()": FunctionFragment;
-    "alvara()": FunctionFragment;
-    "blockUsers(address[])": FunctionFragment;
-    "claim()": FunctionFragment;
-    "claimAdmin(address)": FunctionFragment;
-    "claimable()": FunctionFragment;
-    "claimed(address,uint256)": FunctionFragment;
-    "fullPercent()": FunctionFragment;
-    "getAllInvestors()": FunctionFragment;
-    "investorCnt()": FunctionFragment;
-    "investors(uint256)": FunctionFragment;
-    "isBlocked(address)": FunctionFragment;
-    "maximumTokens(uint256)": FunctionFragment;
-    "minimumTokens(uint256)": FunctionFragment;
-    "nonce(address)": FunctionFragment;
-    "optionCnt()": FunctionFragment;
-    "owner()": FunctionFragment;
-    "pauseSale()": FunctionFragment;
-    "paused()": FunctionFragment;
-    "renounceOwnership()": FunctionFragment;
-    "replaceUsers(address[],address[])": FunctionFragment;
-    "schedules(uint256,uint256)": FunctionFragment;
-    "setAllowedPercentage(uint256)": FunctionFragment;
-    "setAlvara(address)": FunctionFragment;
-    "setClaimable()": FunctionFragment;
-    "setOptionCnt(uint256)": FunctionFragment;
-    "setOptionMaxAmount(uint256,uint256)": FunctionFragment;
-    "setOptionMinAmount(uint256,uint256)": FunctionFragment;
-    "setOptionRange(uint256,uint256,uint256)": FunctionFragment;
-    "setSchedule(uint256,uint256[])": FunctionFragment;
-    "setTge(uint256)": FunctionFragment;
-    "setTreasuryWallet(address)": FunctionFragment;
-    "setTxSigner(address)": FunctionFragment;
-    "setUnclaimable()": FunctionFragment;
-    "tge()": FunctionFragment;
-    "timeMonth()": FunctionFragment;
-    "tokens(address,uint256)": FunctionFragment;
-    "totalTokens()": FunctionFragment;
-    "totalVests()": FunctionFragment;
-    "transferOwnership(address)": FunctionFragment;
-    "treasuryWallet()": FunctionFragment;
-    "txSigner()": FunctionFragment;
-    "unblockUsers(address[])": FunctionFragment;
-    "unclaimed(address)": FunctionFragment;
-    "unpauseSale()": FunctionFragment;
-    "vests(address,uint256)": FunctionFragment;
+    'addVest(uint256[],uint256[],uint8,bytes32,bytes32)': FunctionFragment;
+    'allowedPercentage()': FunctionFragment;
+    'alvara()': FunctionFragment;
+    'blockUsers(address[])': FunctionFragment;
+    'claim()': FunctionFragment;
+    'claimAdmin(address)': FunctionFragment;
+    'claimable()': FunctionFragment;
+    'claimed(address,uint256)': FunctionFragment;
+    'fullPercent()': FunctionFragment;
+    'getAllInvestors()': FunctionFragment;
+    'investorCnt()': FunctionFragment;
+    'investors(uint256)': FunctionFragment;
+    'isBlocked(address)': FunctionFragment;
+    'maximumTokens(uint256)': FunctionFragment;
+    'minimumTokens(uint256)': FunctionFragment;
+    'nonce(address)': FunctionFragment;
+    'optionCnt()': FunctionFragment;
+    'owner()': FunctionFragment;
+    'pauseSale()': FunctionFragment;
+    'paused()': FunctionFragment;
+    'renounceOwnership()': FunctionFragment;
+    'replaceUsers(address[],address[])': FunctionFragment;
+    'schedules(uint256,uint256)': FunctionFragment;
+    'setAllowedPercentage(uint256)': FunctionFragment;
+    'setAlvara(address)': FunctionFragment;
+    'setClaimable()': FunctionFragment;
+    'setOptionCnt(uint256)': FunctionFragment;
+    'setOptionMaxAmount(uint256,uint256)': FunctionFragment;
+    'setOptionMinAmount(uint256,uint256)': FunctionFragment;
+    'setOptionRange(uint256,uint256,uint256)': FunctionFragment;
+    'setSchedule(uint256,uint256[])': FunctionFragment;
+    'setTge(uint256)': FunctionFragment;
+    'setTreasuryWallet(address)': FunctionFragment;
+    'setTxSigner(address)': FunctionFragment;
+    'setUnclaimable()': FunctionFragment;
+    'tge()': FunctionFragment;
+    'timeMonth()': FunctionFragment;
+    'tokens(address,uint256)': FunctionFragment;
+    'totalTokens()': FunctionFragment;
+    'totalVests()': FunctionFragment;
+    'transferOwnership(address)': FunctionFragment;
+    'treasuryWallet()': FunctionFragment;
+    'txSigner()': FunctionFragment;
+    'unblockUsers(address[])': FunctionFragment;
+    'unclaimed(address)': FunctionFragment;
+    'unpauseSale()': FunctionFragment;
+    'vests(address,uint256)': FunctionFragment;
   };
 
   getFunction(
     nameOrSignatureOrTopic:
-      | "addVest"
-      | "allowedPercentage"
-      | "alvara"
-      | "blockUsers"
-      | "claim"
-      | "claimAdmin"
-      | "claimable"
-      | "claimed"
-      | "fullPercent"
-      | "getAllInvestors"
-      | "investorCnt"
-      | "investors"
-      | "isBlocked"
-      | "maximumTokens"
-      | "minimumTokens"
-      | "nonce"
-      | "optionCnt"
-      | "owner"
-      | "pauseSale"
-      | "paused"
-      | "renounceOwnership"
-      | "replaceUsers"
-      | "schedules"
-      | "setAllowedPercentage"
-      | "setAlvara"
-      | "setClaimable"
-      | "setOptionCnt"
-      | "setOptionMaxAmount"
-      | "setOptionMinAmount"
-      | "setOptionRange"
-      | "setSchedule"
-      | "setTge"
-      | "setTreasuryWallet"
-      | "setTxSigner"
-      | "setUnclaimable"
-      | "tge"
-      | "timeMonth"
-      | "tokens"
-      | "totalTokens"
-      | "totalVests"
-      | "transferOwnership"
-      | "treasuryWallet"
-      | "txSigner"
-      | "unblockUsers"
-      | "unclaimed"
-      | "unpauseSale"
-      | "vests"
+      | 'addVest'
+      | 'allowedPercentage'
+      | 'alvara'
+      | 'blockUsers'
+      | 'claim'
+      | 'claimAdmin'
+      | 'claimable'
+      | 'claimed'
+      | 'fullPercent'
+      | 'getAllInvestors'
+      | 'investorCnt'
+      | 'investors'
+      | 'isBlocked'
+      | 'maximumTokens'
+      | 'minimumTokens'
+      | 'nonce'
+      | 'optionCnt'
+      | 'owner'
+      | 'pauseSale'
+      | 'paused'
+      | 'renounceOwnership'
+      | 'replaceUsers'
+      | 'schedules'
+      | 'setAllowedPercentage'
+      | 'setAlvara'
+      | 'setClaimable'
+      | 'setOptionCnt'
+      | 'setOptionMaxAmount'
+      | 'setOptionMinAmount'
+      | 'setOptionRange'
+      | 'setSchedule'
+      | 'setTge'
+      | 'setTreasuryWallet'
+      | 'setTxSigner'
+      | 'setUnclaimable'
+      | 'tge'
+      | 'timeMonth'
+      | 'tokens'
+      | 'totalTokens'
+      | 'totalVests'
+      | 'transferOwnership'
+      | 'treasuryWallet'
+      | 'txSigner'
+      | 'unblockUsers'
+      | 'unclaimed'
+      | 'unpauseSale'
+      | 'vests',
   ): FunctionFragment;
 
   encodeFunctionData(
-    functionFragment: "addVest",
+    functionFragment: 'addVest',
     values: [
       PromiseOrValue<BigNumberish>[],
       PromiseOrValue<BigNumberish>[],
       PromiseOrValue<BigNumberish>,
       PromiseOrValue<BytesLike>,
-      PromiseOrValue<BytesLike>
-    ]
+      PromiseOrValue<BytesLike>,
+    ],
   ): string;
   encodeFunctionData(
-    functionFragment: "allowedPercentage",
-    values?: undefined
+    functionFragment: 'allowedPercentage',
+    values?: undefined,
   ): string;
-  encodeFunctionData(functionFragment: "alvara", values?: undefined): string;
+  encodeFunctionData(functionFragment: 'alvara', values?: undefined): string;
   encodeFunctionData(
-    functionFragment: "blockUsers",
-    values: [PromiseOrValue<string>[]]
+    functionFragment: 'blockUsers',
+    values: [PromiseOrValue<string>[]],
   ): string;
-  encodeFunctionData(functionFragment: "claim", values?: undefined): string;
+  encodeFunctionData(functionFragment: 'claim', values?: undefined): string;
   encodeFunctionData(
-    functionFragment: "claimAdmin",
-    values: [PromiseOrValue<string>]
+    functionFragment: 'claimAdmin',
+    values: [PromiseOrValue<string>],
   ): string;
-  encodeFunctionData(functionFragment: "claimable", values?: undefined): string;
+  encodeFunctionData(functionFragment: 'claimable', values?: undefined): string;
   encodeFunctionData(
-    functionFragment: "claimed",
-    values: [PromiseOrValue<string>, PromiseOrValue<BigNumberish>]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "fullPercent",
-    values?: undefined
+    functionFragment: 'claimed',
+    values: [PromiseOrValue<string>, PromiseOrValue<BigNumberish>],
   ): string;
   encodeFunctionData(
-    functionFragment: "getAllInvestors",
-    values?: undefined
+    functionFragment: 'fullPercent',
+    values?: undefined,
   ): string;
   encodeFunctionData(
-    functionFragment: "investorCnt",
-    values?: undefined
+    functionFragment: 'getAllInvestors',
+    values?: undefined,
   ): string;
   encodeFunctionData(
-    functionFragment: "investors",
-    values: [PromiseOrValue<BigNumberish>]
+    functionFragment: 'investorCnt',
+    values?: undefined,
   ): string;
   encodeFunctionData(
-    functionFragment: "isBlocked",
-    values: [PromiseOrValue<string>]
+    functionFragment: 'investors',
+    values: [PromiseOrValue<BigNumberish>],
   ): string;
   encodeFunctionData(
-    functionFragment: "maximumTokens",
-    values: [PromiseOrValue<BigNumberish>]
+    functionFragment: 'isBlocked',
+    values: [PromiseOrValue<string>],
   ): string;
   encodeFunctionData(
-    functionFragment: "minimumTokens",
-    values: [PromiseOrValue<BigNumberish>]
+    functionFragment: 'maximumTokens',
+    values: [PromiseOrValue<BigNumberish>],
   ): string;
   encodeFunctionData(
-    functionFragment: "nonce",
-    values: [PromiseOrValue<string>]
-  ): string;
-  encodeFunctionData(functionFragment: "optionCnt", values?: undefined): string;
-  encodeFunctionData(functionFragment: "owner", values?: undefined): string;
-  encodeFunctionData(functionFragment: "pauseSale", values?: undefined): string;
-  encodeFunctionData(functionFragment: "paused", values?: undefined): string;
-  encodeFunctionData(
-    functionFragment: "renounceOwnership",
-    values?: undefined
+    functionFragment: 'minimumTokens',
+    values: [PromiseOrValue<BigNumberish>],
   ): string;
   encodeFunctionData(
-    functionFragment: "replaceUsers",
-    values: [PromiseOrValue<string>[], PromiseOrValue<string>[]]
+    functionFragment: 'nonce',
+    values: [PromiseOrValue<string>],
+  ): string;
+  encodeFunctionData(functionFragment: 'optionCnt', values?: undefined): string;
+  encodeFunctionData(functionFragment: 'owner', values?: undefined): string;
+  encodeFunctionData(functionFragment: 'pauseSale', values?: undefined): string;
+  encodeFunctionData(functionFragment: 'paused', values?: undefined): string;
+  encodeFunctionData(
+    functionFragment: 'renounceOwnership',
+    values?: undefined,
   ): string;
   encodeFunctionData(
-    functionFragment: "schedules",
-    values: [PromiseOrValue<BigNumberish>, PromiseOrValue<BigNumberish>]
+    functionFragment: 'replaceUsers',
+    values: [PromiseOrValue<string>[], PromiseOrValue<string>[]],
   ): string;
   encodeFunctionData(
-    functionFragment: "setAllowedPercentage",
-    values: [PromiseOrValue<BigNumberish>]
+    functionFragment: 'schedules',
+    values: [PromiseOrValue<BigNumberish>, PromiseOrValue<BigNumberish>],
   ): string;
   encodeFunctionData(
-    functionFragment: "setAlvara",
-    values: [PromiseOrValue<string>]
+    functionFragment: 'setAllowedPercentage',
+    values: [PromiseOrValue<BigNumberish>],
   ): string;
   encodeFunctionData(
-    functionFragment: "setClaimable",
-    values?: undefined
+    functionFragment: 'setAlvara',
+    values: [PromiseOrValue<string>],
   ): string;
   encodeFunctionData(
-    functionFragment: "setOptionCnt",
-    values: [PromiseOrValue<BigNumberish>]
+    functionFragment: 'setClaimable',
+    values?: undefined,
   ): string;
   encodeFunctionData(
-    functionFragment: "setOptionMaxAmount",
-    values: [PromiseOrValue<BigNumberish>, PromiseOrValue<BigNumberish>]
+    functionFragment: 'setOptionCnt',
+    values: [PromiseOrValue<BigNumberish>],
   ): string;
   encodeFunctionData(
-    functionFragment: "setOptionMinAmount",
-    values: [PromiseOrValue<BigNumberish>, PromiseOrValue<BigNumberish>]
+    functionFragment: 'setOptionMaxAmount',
+    values: [PromiseOrValue<BigNumberish>, PromiseOrValue<BigNumberish>],
   ): string;
   encodeFunctionData(
-    functionFragment: "setOptionRange",
+    functionFragment: 'setOptionMinAmount',
+    values: [PromiseOrValue<BigNumberish>, PromiseOrValue<BigNumberish>],
+  ): string;
+  encodeFunctionData(
+    functionFragment: 'setOptionRange',
     values: [
       PromiseOrValue<BigNumberish>,
       PromiseOrValue<BigNumberish>,
-      PromiseOrValue<BigNumberish>
-    ]
+      PromiseOrValue<BigNumberish>,
+    ],
   ): string;
   encodeFunctionData(
-    functionFragment: "setSchedule",
-    values: [PromiseOrValue<BigNumberish>, PromiseOrValue<BigNumberish>[]]
+    functionFragment: 'setSchedule',
+    values: [PromiseOrValue<BigNumberish>, PromiseOrValue<BigNumberish>[]],
   ): string;
   encodeFunctionData(
-    functionFragment: "setTge",
-    values: [PromiseOrValue<BigNumberish>]
+    functionFragment: 'setTge',
+    values: [PromiseOrValue<BigNumberish>],
   ): string;
   encodeFunctionData(
-    functionFragment: "setTreasuryWallet",
-    values: [PromiseOrValue<string>]
+    functionFragment: 'setTreasuryWallet',
+    values: [PromiseOrValue<string>],
   ): string;
   encodeFunctionData(
-    functionFragment: "setTxSigner",
-    values: [PromiseOrValue<string>]
+    functionFragment: 'setTxSigner',
+    values: [PromiseOrValue<string>],
   ): string;
   encodeFunctionData(
-    functionFragment: "setUnclaimable",
-    values?: undefined
+    functionFragment: 'setUnclaimable',
+    values?: undefined,
   ): string;
-  encodeFunctionData(functionFragment: "tge", values?: undefined): string;
-  encodeFunctionData(functionFragment: "timeMonth", values?: undefined): string;
+  encodeFunctionData(functionFragment: 'tge', values?: undefined): string;
+  encodeFunctionData(functionFragment: 'timeMonth', values?: undefined): string;
   encodeFunctionData(
-    functionFragment: "tokens",
-    values: [PromiseOrValue<string>, PromiseOrValue<BigNumberish>]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "totalTokens",
-    values?: undefined
+    functionFragment: 'tokens',
+    values: [PromiseOrValue<string>, PromiseOrValue<BigNumberish>],
   ): string;
   encodeFunctionData(
-    functionFragment: "totalVests",
-    values?: undefined
+    functionFragment: 'totalTokens',
+    values?: undefined,
   ): string;
   encodeFunctionData(
-    functionFragment: "transferOwnership",
-    values: [PromiseOrValue<string>]
+    functionFragment: 'totalVests',
+    values?: undefined,
   ): string;
   encodeFunctionData(
-    functionFragment: "treasuryWallet",
-    values?: undefined
-  ): string;
-  encodeFunctionData(functionFragment: "txSigner", values?: undefined): string;
-  encodeFunctionData(
-    functionFragment: "unblockUsers",
-    values: [PromiseOrValue<string>[]]
+    functionFragment: 'transferOwnership',
+    values: [PromiseOrValue<string>],
   ): string;
   encodeFunctionData(
-    functionFragment: "unclaimed",
-    values: [PromiseOrValue<string>]
+    functionFragment: 'treasuryWallet',
+    values?: undefined,
+  ): string;
+  encodeFunctionData(functionFragment: 'txSigner', values?: undefined): string;
+  encodeFunctionData(
+    functionFragment: 'unblockUsers',
+    values: [PromiseOrValue<string>[]],
   ): string;
   encodeFunctionData(
-    functionFragment: "unpauseSale",
-    values?: undefined
+    functionFragment: 'unclaimed',
+    values: [PromiseOrValue<string>],
   ): string;
   encodeFunctionData(
-    functionFragment: "vests",
-    values: [PromiseOrValue<string>, PromiseOrValue<BigNumberish>]
+    functionFragment: 'unpauseSale',
+    values?: undefined,
+  ): string;
+  encodeFunctionData(
+    functionFragment: 'vests',
+    values: [PromiseOrValue<string>, PromiseOrValue<BigNumberish>],
   ): string;
 
-  decodeFunctionResult(functionFragment: "addVest", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'addVest', data: BytesLike): Result;
   decodeFunctionResult(
-    functionFragment: "allowedPercentage",
-    data: BytesLike
+    functionFragment: 'allowedPercentage',
+    data: BytesLike,
   ): Result;
-  decodeFunctionResult(functionFragment: "alvara", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "blockUsers", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "claim", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "claimAdmin", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "claimable", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "claimed", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'alvara', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'blockUsers', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'claim', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'claimAdmin', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'claimable', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'claimed', data: BytesLike): Result;
   decodeFunctionResult(
-    functionFragment: "fullPercent",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "getAllInvestors",
-    data: BytesLike
+    functionFragment: 'fullPercent',
+    data: BytesLike,
   ): Result;
   decodeFunctionResult(
-    functionFragment: "investorCnt",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "investors", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "isBlocked", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "maximumTokens",
-    data: BytesLike
+    functionFragment: 'getAllInvestors',
+    data: BytesLike,
   ): Result;
   decodeFunctionResult(
-    functionFragment: "minimumTokens",
-    data: BytesLike
+    functionFragment: 'investorCnt',
+    data: BytesLike,
   ): Result;
-  decodeFunctionResult(functionFragment: "nonce", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "optionCnt", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "owner", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "pauseSale", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "paused", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'investors', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'isBlocked', data: BytesLike): Result;
   decodeFunctionResult(
-    functionFragment: "renounceOwnership",
-    data: BytesLike
+    functionFragment: 'maximumTokens',
+    data: BytesLike,
   ): Result;
   decodeFunctionResult(
-    functionFragment: "replaceUsers",
-    data: BytesLike
+    functionFragment: 'minimumTokens',
+    data: BytesLike,
   ): Result;
-  decodeFunctionResult(functionFragment: "schedules", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'nonce', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'optionCnt', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'owner', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'pauseSale', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'paused', data: BytesLike): Result;
   decodeFunctionResult(
-    functionFragment: "setAllowedPercentage",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "setAlvara", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "setClaimable",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "setOptionCnt",
-    data: BytesLike
+    functionFragment: 'renounceOwnership',
+    data: BytesLike,
   ): Result;
   decodeFunctionResult(
-    functionFragment: "setOptionMaxAmount",
-    data: BytesLike
+    functionFragment: 'replaceUsers',
+    data: BytesLike,
+  ): Result;
+  decodeFunctionResult(functionFragment: 'schedules', data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: 'setAllowedPercentage',
+    data: BytesLike,
+  ): Result;
+  decodeFunctionResult(functionFragment: 'setAlvara', data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: 'setClaimable',
+    data: BytesLike,
   ): Result;
   decodeFunctionResult(
-    functionFragment: "setOptionMinAmount",
-    data: BytesLike
+    functionFragment: 'setOptionCnt',
+    data: BytesLike,
   ): Result;
   decodeFunctionResult(
-    functionFragment: "setOptionRange",
-    data: BytesLike
+    functionFragment: 'setOptionMaxAmount',
+    data: BytesLike,
   ): Result;
   decodeFunctionResult(
-    functionFragment: "setSchedule",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "setTge", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "setTreasuryWallet",
-    data: BytesLike
+    functionFragment: 'setOptionMinAmount',
+    data: BytesLike,
   ): Result;
   decodeFunctionResult(
-    functionFragment: "setTxSigner",
-    data: BytesLike
+    functionFragment: 'setOptionRange',
+    data: BytesLike,
   ): Result;
   decodeFunctionResult(
-    functionFragment: "setUnclaimable",
-    data: BytesLike
+    functionFragment: 'setSchedule',
+    data: BytesLike,
   ): Result;
-  decodeFunctionResult(functionFragment: "tge", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "timeMonth", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "tokens", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'setTge', data: BytesLike): Result;
   decodeFunctionResult(
-    functionFragment: "totalTokens",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "totalVests", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "transferOwnership",
-    data: BytesLike
+    functionFragment: 'setTreasuryWallet',
+    data: BytesLike,
   ): Result;
   decodeFunctionResult(
-    functionFragment: "treasuryWallet",
-    data: BytesLike
+    functionFragment: 'setTxSigner',
+    data: BytesLike,
   ): Result;
-  decodeFunctionResult(functionFragment: "txSigner", data: BytesLike): Result;
   decodeFunctionResult(
-    functionFragment: "unblockUsers",
-    data: BytesLike
+    functionFragment: 'setUnclaimable',
+    data: BytesLike,
   ): Result;
-  decodeFunctionResult(functionFragment: "unclaimed", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'tge', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'timeMonth', data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'tokens', data: BytesLike): Result;
   decodeFunctionResult(
-    functionFragment: "unpauseSale",
-    data: BytesLike
+    functionFragment: 'totalTokens',
+    data: BytesLike,
   ): Result;
-  decodeFunctionResult(functionFragment: "vests", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: 'totalVests', data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: 'transferOwnership',
+    data: BytesLike,
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: 'treasuryWallet',
+    data: BytesLike,
+  ): Result;
+  decodeFunctionResult(functionFragment: 'txSigner', data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: 'unblockUsers',
+    data: BytesLike,
+  ): Result;
+  decodeFunctionResult(functionFragment: 'unclaimed', data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: 'unpauseSale',
+    data: BytesLike,
+  ): Result;
+  decodeFunctionResult(functionFragment: 'vests', data: BytesLike): Result;
 
   events: {
-    "OwnershipTransferred(address,address)": EventFragment;
-    "Paused(address)": EventFragment;
-    "Unpaused(address)": EventFragment;
+    'OwnershipTransferred(address,address)': EventFragment;
+    'Paused(address)': EventFragment;
+    'Unpaused(address)': EventFragment;
   };
 
-  getEvent(nameOrSignatureOrTopic: "OwnershipTransferred"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "Paused"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "Unpaused"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: 'OwnershipTransferred'): EventFragment;
+  getEvent(nameOrSignatureOrTopic: 'Paused'): EventFragment;
+  getEvent(nameOrSignatureOrTopic: 'Unpaused'): EventFragment;
 }
 
 export interface OwnershipTransferredEventObject {
@@ -477,15 +477,15 @@ export interface AlvrTokenSale extends BaseContract {
   queryFilter<TEvent extends TypedEvent>(
     event: TypedEventFilter<TEvent>,
     fromBlockOrBlockhash?: string | number | undefined,
-    toBlock?: string | number | undefined
+    toBlock?: string | number | undefined,
   ): Promise<Array<TEvent>>;
 
   listeners<TEvent extends TypedEvent>(
-    eventFilter?: TypedEventFilter<TEvent>
+    eventFilter?: TypedEventFilter<TEvent>,
   ): Array<TypedListener<TEvent>>;
   listeners(eventName?: string): Array<Listener>;
   removeAllListeners<TEvent extends TypedEvent>(
-    eventFilter: TypedEventFilter<TEvent>
+    eventFilter: TypedEventFilter<TEvent>,
   ): this;
   removeAllListeners(eventName?: string): this;
   off: OnEvent<this>;
@@ -500,7 +500,7 @@ export interface AlvrTokenSale extends BaseContract {
       v_: PromiseOrValue<BigNumberish>,
       r_: PromiseOrValue<BytesLike>,
       s_: PromiseOrValue<BytesLike>,
-      overrides?: PayableOverrides & { from?: PromiseOrValue<string> }
+      overrides?: PayableOverrides & { from?: PromiseOrValue<string> },
     ): Promise<ContractTransaction>;
 
     allowedPercentage(overrides?: CallOverrides): Promise<[BigNumber]>;
@@ -509,16 +509,16 @@ export interface AlvrTokenSale extends BaseContract {
 
     blockUsers(
       users_: PromiseOrValue<string>[],
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
     ): Promise<ContractTransaction>;
 
     claim(
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
     ): Promise<ContractTransaction>;
 
     claimAdmin(
       token_: PromiseOrValue<string>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
     ): Promise<ContractTransaction>;
 
     claimable(overrides?: CallOverrides): Promise<[boolean]>;
@@ -526,40 +526,40 @@ export interface AlvrTokenSale extends BaseContract {
     claimed(
       arg0: PromiseOrValue<string>,
       arg1: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
+      overrides?: CallOverrides,
     ): Promise<[BigNumber]>;
 
     fullPercent(overrides?: CallOverrides): Promise<[BigNumber]>;
 
     getAllInvestors(
-      overrides?: CallOverrides
+      overrides?: CallOverrides,
     ): Promise<[AlvrTokenSale.InvestmentsStructOutput[]]>;
 
     investorCnt(overrides?: CallOverrides): Promise<[BigNumber]>;
 
     investors(
       arg0: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
+      overrides?: CallOverrides,
     ): Promise<[string]>;
 
     isBlocked(
       arg0: PromiseOrValue<string>,
-      overrides?: CallOverrides
+      overrides?: CallOverrides,
     ): Promise<[boolean]>;
 
     maximumTokens(
       arg0: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
+      overrides?: CallOverrides,
     ): Promise<[BigNumber]>;
 
     minimumTokens(
       arg0: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
+      overrides?: CallOverrides,
     ): Promise<[BigNumber]>;
 
     nonce(
       arg0: PromiseOrValue<string>,
-      overrides?: CallOverrides
+      overrides?: CallOverrides,
     ): Promise<[BigNumber]>;
 
     optionCnt(overrides?: CallOverrides): Promise<[BigNumber]>;
@@ -567,88 +567,88 @@ export interface AlvrTokenSale extends BaseContract {
     owner(overrides?: CallOverrides): Promise<[string]>;
 
     pauseSale(
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
     ): Promise<ContractTransaction>;
 
     paused(overrides?: CallOverrides): Promise<[boolean]>;
 
     renounceOwnership(
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
     ): Promise<ContractTransaction>;
 
     replaceUsers(
       oldUsers_: PromiseOrValue<string>[],
       newUsers_: PromiseOrValue<string>[],
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
     ): Promise<ContractTransaction>;
 
     schedules(
       arg0: PromiseOrValue<BigNumberish>,
       arg1: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
+      overrides?: CallOverrides,
     ): Promise<[BigNumber]>;
 
     setAllowedPercentage(
       allowedPercentage_: PromiseOrValue<BigNumberish>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
     ): Promise<ContractTransaction>;
 
     setAlvara(
       alvara_: PromiseOrValue<string>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
     ): Promise<ContractTransaction>;
 
     setClaimable(
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
     ): Promise<ContractTransaction>;
 
     setOptionCnt(
       optionCnt_: PromiseOrValue<BigNumberish>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
     ): Promise<ContractTransaction>;
 
     setOptionMaxAmount(
       option: PromiseOrValue<BigNumberish>,
       amount: PromiseOrValue<BigNumberish>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
     ): Promise<ContractTransaction>;
 
     setOptionMinAmount(
       option: PromiseOrValue<BigNumberish>,
       amount: PromiseOrValue<BigNumberish>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
     ): Promise<ContractTransaction>;
 
     setOptionRange(
       option_: PromiseOrValue<BigNumberish>,
       minimum_: PromiseOrValue<BigNumberish>,
       maximum_: PromiseOrValue<BigNumberish>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
     ): Promise<ContractTransaction>;
 
     setSchedule(
       option_: PromiseOrValue<BigNumberish>,
       releases_: PromiseOrValue<BigNumberish>[],
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
     ): Promise<ContractTransaction>;
 
     setTge(
       tge_: PromiseOrValue<BigNumberish>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
     ): Promise<ContractTransaction>;
 
     setTreasuryWallet(
       treasuryWallet_: PromiseOrValue<string>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
     ): Promise<ContractTransaction>;
 
     setTxSigner(
       txSigner_: PromiseOrValue<string>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
     ): Promise<ContractTransaction>;
 
     setUnclaimable(
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
     ): Promise<ContractTransaction>;
 
     tge(overrides?: CallOverrides): Promise<[BigNumber]>;
@@ -658,7 +658,7 @@ export interface AlvrTokenSale extends BaseContract {
     tokens(
       arg0: PromiseOrValue<string>,
       arg1: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
+      overrides?: CallOverrides,
     ): Promise<[BigNumber]>;
 
     totalTokens(overrides?: CallOverrides): Promise<[BigNumber]>;
@@ -667,7 +667,7 @@ export interface AlvrTokenSale extends BaseContract {
 
     transferOwnership(
       newOwner: PromiseOrValue<string>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
     ): Promise<ContractTransaction>;
 
     treasuryWallet(overrides?: CallOverrides): Promise<[string]>;
@@ -676,22 +676,22 @@ export interface AlvrTokenSale extends BaseContract {
 
     unblockUsers(
       users_: PromiseOrValue<string>[],
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
     ): Promise<ContractTransaction>;
 
     unclaimed(
       investor_: PromiseOrValue<string>,
-      overrides?: CallOverrides
+      overrides?: CallOverrides,
     ): Promise<[BigNumber]>;
 
     unpauseSale(
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
     ): Promise<ContractTransaction>;
 
     vests(
       arg0: PromiseOrValue<string>,
       arg1: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
+      overrides?: CallOverrides,
     ): Promise<[BigNumber]>;
   };
 
@@ -701,7 +701,7 @@ export interface AlvrTokenSale extends BaseContract {
     v_: PromiseOrValue<BigNumberish>,
     r_: PromiseOrValue<BytesLike>,
     s_: PromiseOrValue<BytesLike>,
-    overrides?: PayableOverrides & { from?: PromiseOrValue<string> }
+    overrides?: PayableOverrides & { from?: PromiseOrValue<string> },
   ): Promise<ContractTransaction>;
 
   allowedPercentage(overrides?: CallOverrides): Promise<BigNumber>;
@@ -710,16 +710,16 @@ export interface AlvrTokenSale extends BaseContract {
 
   blockUsers(
     users_: PromiseOrValue<string>[],
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
+    overrides?: Overrides & { from?: PromiseOrValue<string> },
   ): Promise<ContractTransaction>;
 
   claim(
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
+    overrides?: Overrides & { from?: PromiseOrValue<string> },
   ): Promise<ContractTransaction>;
 
   claimAdmin(
     token_: PromiseOrValue<string>,
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
+    overrides?: Overrides & { from?: PromiseOrValue<string> },
   ): Promise<ContractTransaction>;
 
   claimable(overrides?: CallOverrides): Promise<boolean>;
@@ -727,40 +727,40 @@ export interface AlvrTokenSale extends BaseContract {
   claimed(
     arg0: PromiseOrValue<string>,
     arg1: PromiseOrValue<BigNumberish>,
-    overrides?: CallOverrides
+    overrides?: CallOverrides,
   ): Promise<BigNumber>;
 
   fullPercent(overrides?: CallOverrides): Promise<BigNumber>;
 
   getAllInvestors(
-    overrides?: CallOverrides
+    overrides?: CallOverrides,
   ): Promise<AlvrTokenSale.InvestmentsStructOutput[]>;
 
   investorCnt(overrides?: CallOverrides): Promise<BigNumber>;
 
   investors(
     arg0: PromiseOrValue<BigNumberish>,
-    overrides?: CallOverrides
+    overrides?: CallOverrides,
   ): Promise<string>;
 
   isBlocked(
     arg0: PromiseOrValue<string>,
-    overrides?: CallOverrides
+    overrides?: CallOverrides,
   ): Promise<boolean>;
 
   maximumTokens(
     arg0: PromiseOrValue<BigNumberish>,
-    overrides?: CallOverrides
+    overrides?: CallOverrides,
   ): Promise<BigNumber>;
 
   minimumTokens(
     arg0: PromiseOrValue<BigNumberish>,
-    overrides?: CallOverrides
+    overrides?: CallOverrides,
   ): Promise<BigNumber>;
 
   nonce(
     arg0: PromiseOrValue<string>,
-    overrides?: CallOverrides
+    overrides?: CallOverrides,
   ): Promise<BigNumber>;
 
   optionCnt(overrides?: CallOverrides): Promise<BigNumber>;
@@ -768,88 +768,88 @@ export interface AlvrTokenSale extends BaseContract {
   owner(overrides?: CallOverrides): Promise<string>;
 
   pauseSale(
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
+    overrides?: Overrides & { from?: PromiseOrValue<string> },
   ): Promise<ContractTransaction>;
 
   paused(overrides?: CallOverrides): Promise<boolean>;
 
   renounceOwnership(
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
+    overrides?: Overrides & { from?: PromiseOrValue<string> },
   ): Promise<ContractTransaction>;
 
   replaceUsers(
     oldUsers_: PromiseOrValue<string>[],
     newUsers_: PromiseOrValue<string>[],
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
+    overrides?: Overrides & { from?: PromiseOrValue<string> },
   ): Promise<ContractTransaction>;
 
   schedules(
     arg0: PromiseOrValue<BigNumberish>,
     arg1: PromiseOrValue<BigNumberish>,
-    overrides?: CallOverrides
+    overrides?: CallOverrides,
   ): Promise<BigNumber>;
 
   setAllowedPercentage(
     allowedPercentage_: PromiseOrValue<BigNumberish>,
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
+    overrides?: Overrides & { from?: PromiseOrValue<string> },
   ): Promise<ContractTransaction>;
 
   setAlvara(
     alvara_: PromiseOrValue<string>,
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
+    overrides?: Overrides & { from?: PromiseOrValue<string> },
   ): Promise<ContractTransaction>;
 
   setClaimable(
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
+    overrides?: Overrides & { from?: PromiseOrValue<string> },
   ): Promise<ContractTransaction>;
 
   setOptionCnt(
     optionCnt_: PromiseOrValue<BigNumberish>,
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
+    overrides?: Overrides & { from?: PromiseOrValue<string> },
   ): Promise<ContractTransaction>;
 
   setOptionMaxAmount(
     option: PromiseOrValue<BigNumberish>,
     amount: PromiseOrValue<BigNumberish>,
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
+    overrides?: Overrides & { from?: PromiseOrValue<string> },
   ): Promise<ContractTransaction>;
 
   setOptionMinAmount(
     option: PromiseOrValue<BigNumberish>,
     amount: PromiseOrValue<BigNumberish>,
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
+    overrides?: Overrides & { from?: PromiseOrValue<string> },
   ): Promise<ContractTransaction>;
 
   setOptionRange(
     option_: PromiseOrValue<BigNumberish>,
     minimum_: PromiseOrValue<BigNumberish>,
     maximum_: PromiseOrValue<BigNumberish>,
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
+    overrides?: Overrides & { from?: PromiseOrValue<string> },
   ): Promise<ContractTransaction>;
 
   setSchedule(
     option_: PromiseOrValue<BigNumberish>,
     releases_: PromiseOrValue<BigNumberish>[],
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
+    overrides?: Overrides & { from?: PromiseOrValue<string> },
   ): Promise<ContractTransaction>;
 
   setTge(
     tge_: PromiseOrValue<BigNumberish>,
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
+    overrides?: Overrides & { from?: PromiseOrValue<string> },
   ): Promise<ContractTransaction>;
 
   setTreasuryWallet(
     treasuryWallet_: PromiseOrValue<string>,
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
+    overrides?: Overrides & { from?: PromiseOrValue<string> },
   ): Promise<ContractTransaction>;
 
   setTxSigner(
     txSigner_: PromiseOrValue<string>,
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
+    overrides?: Overrides & { from?: PromiseOrValue<string> },
   ): Promise<ContractTransaction>;
 
   setUnclaimable(
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
+    overrides?: Overrides & { from?: PromiseOrValue<string> },
   ): Promise<ContractTransaction>;
 
   tge(overrides?: CallOverrides): Promise<BigNumber>;
@@ -859,7 +859,7 @@ export interface AlvrTokenSale extends BaseContract {
   tokens(
     arg0: PromiseOrValue<string>,
     arg1: PromiseOrValue<BigNumberish>,
-    overrides?: CallOverrides
+    overrides?: CallOverrides,
   ): Promise<BigNumber>;
 
   totalTokens(overrides?: CallOverrides): Promise<BigNumber>;
@@ -868,7 +868,7 @@ export interface AlvrTokenSale extends BaseContract {
 
   transferOwnership(
     newOwner: PromiseOrValue<string>,
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
+    overrides?: Overrides & { from?: PromiseOrValue<string> },
   ): Promise<ContractTransaction>;
 
   treasuryWallet(overrides?: CallOverrides): Promise<string>;
@@ -877,22 +877,22 @@ export interface AlvrTokenSale extends BaseContract {
 
   unblockUsers(
     users_: PromiseOrValue<string>[],
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
+    overrides?: Overrides & { from?: PromiseOrValue<string> },
   ): Promise<ContractTransaction>;
 
   unclaimed(
     investor_: PromiseOrValue<string>,
-    overrides?: CallOverrides
+    overrides?: CallOverrides,
   ): Promise<BigNumber>;
 
   unpauseSale(
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
+    overrides?: Overrides & { from?: PromiseOrValue<string> },
   ): Promise<ContractTransaction>;
 
   vests(
     arg0: PromiseOrValue<string>,
     arg1: PromiseOrValue<BigNumberish>,
-    overrides?: CallOverrides
+    overrides?: CallOverrides,
   ): Promise<BigNumber>;
 
   callStatic: {
@@ -902,7 +902,7 @@ export interface AlvrTokenSale extends BaseContract {
       v_: PromiseOrValue<BigNumberish>,
       r_: PromiseOrValue<BytesLike>,
       s_: PromiseOrValue<BytesLike>,
-      overrides?: CallOverrides
+      overrides?: CallOverrides,
     ): Promise<void>;
 
     allowedPercentage(overrides?: CallOverrides): Promise<BigNumber>;
@@ -911,14 +911,14 @@ export interface AlvrTokenSale extends BaseContract {
 
     blockUsers(
       users_: PromiseOrValue<string>[],
-      overrides?: CallOverrides
+      overrides?: CallOverrides,
     ): Promise<void>;
 
     claim(overrides?: CallOverrides): Promise<void>;
 
     claimAdmin(
       token_: PromiseOrValue<string>,
-      overrides?: CallOverrides
+      overrides?: CallOverrides,
     ): Promise<void>;
 
     claimable(overrides?: CallOverrides): Promise<boolean>;
@@ -926,40 +926,40 @@ export interface AlvrTokenSale extends BaseContract {
     claimed(
       arg0: PromiseOrValue<string>,
       arg1: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
+      overrides?: CallOverrides,
     ): Promise<BigNumber>;
 
     fullPercent(overrides?: CallOverrides): Promise<BigNumber>;
 
     getAllInvestors(
-      overrides?: CallOverrides
+      overrides?: CallOverrides,
     ): Promise<AlvrTokenSale.InvestmentsStructOutput[]>;
 
     investorCnt(overrides?: CallOverrides): Promise<BigNumber>;
 
     investors(
       arg0: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
+      overrides?: CallOverrides,
     ): Promise<string>;
 
     isBlocked(
       arg0: PromiseOrValue<string>,
-      overrides?: CallOverrides
+      overrides?: CallOverrides,
     ): Promise<boolean>;
 
     maximumTokens(
       arg0: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
+      overrides?: CallOverrides,
     ): Promise<BigNumber>;
 
     minimumTokens(
       arg0: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
+      overrides?: CallOverrides,
     ): Promise<BigNumber>;
 
     nonce(
       arg0: PromiseOrValue<string>,
-      overrides?: CallOverrides
+      overrides?: CallOverrides,
     ): Promise<BigNumber>;
 
     optionCnt(overrides?: CallOverrides): Promise<BigNumber>;
@@ -975,70 +975,70 @@ export interface AlvrTokenSale extends BaseContract {
     replaceUsers(
       oldUsers_: PromiseOrValue<string>[],
       newUsers_: PromiseOrValue<string>[],
-      overrides?: CallOverrides
+      overrides?: CallOverrides,
     ): Promise<void>;
 
     schedules(
       arg0: PromiseOrValue<BigNumberish>,
       arg1: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
+      overrides?: CallOverrides,
     ): Promise<BigNumber>;
 
     setAllowedPercentage(
       allowedPercentage_: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
+      overrides?: CallOverrides,
     ): Promise<void>;
 
     setAlvara(
       alvara_: PromiseOrValue<string>,
-      overrides?: CallOverrides
+      overrides?: CallOverrides,
     ): Promise<void>;
 
     setClaimable(overrides?: CallOverrides): Promise<void>;
 
     setOptionCnt(
       optionCnt_: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
+      overrides?: CallOverrides,
     ): Promise<void>;
 
     setOptionMaxAmount(
       option: PromiseOrValue<BigNumberish>,
       amount: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
+      overrides?: CallOverrides,
     ): Promise<void>;
 
     setOptionMinAmount(
       option: PromiseOrValue<BigNumberish>,
       amount: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
+      overrides?: CallOverrides,
     ): Promise<void>;
 
     setOptionRange(
       option_: PromiseOrValue<BigNumberish>,
       minimum_: PromiseOrValue<BigNumberish>,
       maximum_: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
+      overrides?: CallOverrides,
     ): Promise<void>;
 
     setSchedule(
       option_: PromiseOrValue<BigNumberish>,
       releases_: PromiseOrValue<BigNumberish>[],
-      overrides?: CallOverrides
+      overrides?: CallOverrides,
     ): Promise<void>;
 
     setTge(
       tge_: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
+      overrides?: CallOverrides,
     ): Promise<void>;
 
     setTreasuryWallet(
       treasuryWallet_: PromiseOrValue<string>,
-      overrides?: CallOverrides
+      overrides?: CallOverrides,
     ): Promise<void>;
 
     setTxSigner(
       txSigner_: PromiseOrValue<string>,
-      overrides?: CallOverrides
+      overrides?: CallOverrides,
     ): Promise<void>;
 
     setUnclaimable(overrides?: CallOverrides): Promise<void>;
@@ -1050,7 +1050,7 @@ export interface AlvrTokenSale extends BaseContract {
     tokens(
       arg0: PromiseOrValue<string>,
       arg1: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
+      overrides?: CallOverrides,
     ): Promise<BigNumber>;
 
     totalTokens(overrides?: CallOverrides): Promise<BigNumber>;
@@ -1059,7 +1059,7 @@ export interface AlvrTokenSale extends BaseContract {
 
     transferOwnership(
       newOwner: PromiseOrValue<string>,
-      overrides?: CallOverrides
+      overrides?: CallOverrides,
     ): Promise<void>;
 
     treasuryWallet(overrides?: CallOverrides): Promise<string>;
@@ -1068,12 +1068,12 @@ export interface AlvrTokenSale extends BaseContract {
 
     unblockUsers(
       users_: PromiseOrValue<string>[],
-      overrides?: CallOverrides
+      overrides?: CallOverrides,
     ): Promise<void>;
 
     unclaimed(
       investor_: PromiseOrValue<string>,
-      overrides?: CallOverrides
+      overrides?: CallOverrides,
     ): Promise<BigNumber>;
 
     unpauseSale(overrides?: CallOverrides): Promise<void>;
@@ -1081,24 +1081,24 @@ export interface AlvrTokenSale extends BaseContract {
     vests(
       arg0: PromiseOrValue<string>,
       arg1: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
+      overrides?: CallOverrides,
     ): Promise<BigNumber>;
   };
 
   filters: {
-    "OwnershipTransferred(address,address)"(
+    'OwnershipTransferred(address,address)'(
       previousOwner?: PromiseOrValue<string> | null,
-      newOwner?: PromiseOrValue<string> | null
+      newOwner?: PromiseOrValue<string> | null,
     ): OwnershipTransferredEventFilter;
     OwnershipTransferred(
       previousOwner?: PromiseOrValue<string> | null,
-      newOwner?: PromiseOrValue<string> | null
+      newOwner?: PromiseOrValue<string> | null,
     ): OwnershipTransferredEventFilter;
 
-    "Paused(address)"(account?: null): PausedEventFilter;
+    'Paused(address)'(account?: null): PausedEventFilter;
     Paused(account?: null): PausedEventFilter;
 
-    "Unpaused(address)"(account?: null): UnpausedEventFilter;
+    'Unpaused(address)'(account?: null): UnpausedEventFilter;
     Unpaused(account?: null): UnpausedEventFilter;
   };
 
@@ -1109,7 +1109,7 @@ export interface AlvrTokenSale extends BaseContract {
       v_: PromiseOrValue<BigNumberish>,
       r_: PromiseOrValue<BytesLike>,
       s_: PromiseOrValue<BytesLike>,
-      overrides?: PayableOverrides & { from?: PromiseOrValue<string> }
+      overrides?: PayableOverrides & { from?: PromiseOrValue<string> },
     ): Promise<BigNumber>;
 
     allowedPercentage(overrides?: CallOverrides): Promise<BigNumber>;
@@ -1118,16 +1118,16 @@ export interface AlvrTokenSale extends BaseContract {
 
     blockUsers(
       users_: PromiseOrValue<string>[],
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
     ): Promise<BigNumber>;
 
     claim(
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
     ): Promise<BigNumber>;
 
     claimAdmin(
       token_: PromiseOrValue<string>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
     ): Promise<BigNumber>;
 
     claimable(overrides?: CallOverrides): Promise<BigNumber>;
@@ -1135,7 +1135,7 @@ export interface AlvrTokenSale extends BaseContract {
     claimed(
       arg0: PromiseOrValue<string>,
       arg1: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
+      overrides?: CallOverrides,
     ): Promise<BigNumber>;
 
     fullPercent(overrides?: CallOverrides): Promise<BigNumber>;
@@ -1146,27 +1146,27 @@ export interface AlvrTokenSale extends BaseContract {
 
     investors(
       arg0: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
+      overrides?: CallOverrides,
     ): Promise<BigNumber>;
 
     isBlocked(
       arg0: PromiseOrValue<string>,
-      overrides?: CallOverrides
+      overrides?: CallOverrides,
     ): Promise<BigNumber>;
 
     maximumTokens(
       arg0: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
+      overrides?: CallOverrides,
     ): Promise<BigNumber>;
 
     minimumTokens(
       arg0: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
+      overrides?: CallOverrides,
     ): Promise<BigNumber>;
 
     nonce(
       arg0: PromiseOrValue<string>,
-      overrides?: CallOverrides
+      overrides?: CallOverrides,
     ): Promise<BigNumber>;
 
     optionCnt(overrides?: CallOverrides): Promise<BigNumber>;
@@ -1174,88 +1174,88 @@ export interface AlvrTokenSale extends BaseContract {
     owner(overrides?: CallOverrides): Promise<BigNumber>;
 
     pauseSale(
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
     ): Promise<BigNumber>;
 
     paused(overrides?: CallOverrides): Promise<BigNumber>;
 
     renounceOwnership(
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
     ): Promise<BigNumber>;
 
     replaceUsers(
       oldUsers_: PromiseOrValue<string>[],
       newUsers_: PromiseOrValue<string>[],
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
     ): Promise<BigNumber>;
 
     schedules(
       arg0: PromiseOrValue<BigNumberish>,
       arg1: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
+      overrides?: CallOverrides,
     ): Promise<BigNumber>;
 
     setAllowedPercentage(
       allowedPercentage_: PromiseOrValue<BigNumberish>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
     ): Promise<BigNumber>;
 
     setAlvara(
       alvara_: PromiseOrValue<string>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
     ): Promise<BigNumber>;
 
     setClaimable(
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
     ): Promise<BigNumber>;
 
     setOptionCnt(
       optionCnt_: PromiseOrValue<BigNumberish>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
     ): Promise<BigNumber>;
 
     setOptionMaxAmount(
       option: PromiseOrValue<BigNumberish>,
       amount: PromiseOrValue<BigNumberish>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
     ): Promise<BigNumber>;
 
     setOptionMinAmount(
       option: PromiseOrValue<BigNumberish>,
       amount: PromiseOrValue<BigNumberish>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
     ): Promise<BigNumber>;
 
     setOptionRange(
       option_: PromiseOrValue<BigNumberish>,
       minimum_: PromiseOrValue<BigNumberish>,
       maximum_: PromiseOrValue<BigNumberish>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
     ): Promise<BigNumber>;
 
     setSchedule(
       option_: PromiseOrValue<BigNumberish>,
       releases_: PromiseOrValue<BigNumberish>[],
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
     ): Promise<BigNumber>;
 
     setTge(
       tge_: PromiseOrValue<BigNumberish>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
     ): Promise<BigNumber>;
 
     setTreasuryWallet(
       treasuryWallet_: PromiseOrValue<string>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
     ): Promise<BigNumber>;
 
     setTxSigner(
       txSigner_: PromiseOrValue<string>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
     ): Promise<BigNumber>;
 
     setUnclaimable(
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
     ): Promise<BigNumber>;
 
     tge(overrides?: CallOverrides): Promise<BigNumber>;
@@ -1265,7 +1265,7 @@ export interface AlvrTokenSale extends BaseContract {
     tokens(
       arg0: PromiseOrValue<string>,
       arg1: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
+      overrides?: CallOverrides,
     ): Promise<BigNumber>;
 
     totalTokens(overrides?: CallOverrides): Promise<BigNumber>;
@@ -1274,7 +1274,7 @@ export interface AlvrTokenSale extends BaseContract {
 
     transferOwnership(
       newOwner: PromiseOrValue<string>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
     ): Promise<BigNumber>;
 
     treasuryWallet(overrides?: CallOverrides): Promise<BigNumber>;
@@ -1283,22 +1283,22 @@ export interface AlvrTokenSale extends BaseContract {
 
     unblockUsers(
       users_: PromiseOrValue<string>[],
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
     ): Promise<BigNumber>;
 
     unclaimed(
       investor_: PromiseOrValue<string>,
-      overrides?: CallOverrides
+      overrides?: CallOverrides,
     ): Promise<BigNumber>;
 
     unpauseSale(
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
     ): Promise<BigNumber>;
 
     vests(
       arg0: PromiseOrValue<string>,
       arg1: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
+      overrides?: CallOverrides,
     ): Promise<BigNumber>;
   };
 
@@ -1309,7 +1309,7 @@ export interface AlvrTokenSale extends BaseContract {
       v_: PromiseOrValue<BigNumberish>,
       r_: PromiseOrValue<BytesLike>,
       s_: PromiseOrValue<BytesLike>,
-      overrides?: PayableOverrides & { from?: PromiseOrValue<string> }
+      overrides?: PayableOverrides & { from?: PromiseOrValue<string> },
     ): Promise<PopulatedTransaction>;
 
     allowedPercentage(overrides?: CallOverrides): Promise<PopulatedTransaction>;
@@ -1318,16 +1318,16 @@ export interface AlvrTokenSale extends BaseContract {
 
     blockUsers(
       users_: PromiseOrValue<string>[],
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
     ): Promise<PopulatedTransaction>;
 
     claim(
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
     ): Promise<PopulatedTransaction>;
 
     claimAdmin(
       token_: PromiseOrValue<string>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
     ): Promise<PopulatedTransaction>;
 
     claimable(overrides?: CallOverrides): Promise<PopulatedTransaction>;
@@ -1335,7 +1335,7 @@ export interface AlvrTokenSale extends BaseContract {
     claimed(
       arg0: PromiseOrValue<string>,
       arg1: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
+      overrides?: CallOverrides,
     ): Promise<PopulatedTransaction>;
 
     fullPercent(overrides?: CallOverrides): Promise<PopulatedTransaction>;
@@ -1346,27 +1346,27 @@ export interface AlvrTokenSale extends BaseContract {
 
     investors(
       arg0: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
+      overrides?: CallOverrides,
     ): Promise<PopulatedTransaction>;
 
     isBlocked(
       arg0: PromiseOrValue<string>,
-      overrides?: CallOverrides
+      overrides?: CallOverrides,
     ): Promise<PopulatedTransaction>;
 
     maximumTokens(
       arg0: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
+      overrides?: CallOverrides,
     ): Promise<PopulatedTransaction>;
 
     minimumTokens(
       arg0: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
+      overrides?: CallOverrides,
     ): Promise<PopulatedTransaction>;
 
     nonce(
       arg0: PromiseOrValue<string>,
-      overrides?: CallOverrides
+      overrides?: CallOverrides,
     ): Promise<PopulatedTransaction>;
 
     optionCnt(overrides?: CallOverrides): Promise<PopulatedTransaction>;
@@ -1374,88 +1374,88 @@ export interface AlvrTokenSale extends BaseContract {
     owner(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     pauseSale(
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
     ): Promise<PopulatedTransaction>;
 
     paused(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     renounceOwnership(
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
     ): Promise<PopulatedTransaction>;
 
     replaceUsers(
       oldUsers_: PromiseOrValue<string>[],
       newUsers_: PromiseOrValue<string>[],
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
     ): Promise<PopulatedTransaction>;
 
     schedules(
       arg0: PromiseOrValue<BigNumberish>,
       arg1: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
+      overrides?: CallOverrides,
     ): Promise<PopulatedTransaction>;
 
     setAllowedPercentage(
       allowedPercentage_: PromiseOrValue<BigNumberish>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
     ): Promise<PopulatedTransaction>;
 
     setAlvara(
       alvara_: PromiseOrValue<string>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
     ): Promise<PopulatedTransaction>;
 
     setClaimable(
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
     ): Promise<PopulatedTransaction>;
 
     setOptionCnt(
       optionCnt_: PromiseOrValue<BigNumberish>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
     ): Promise<PopulatedTransaction>;
 
     setOptionMaxAmount(
       option: PromiseOrValue<BigNumberish>,
       amount: PromiseOrValue<BigNumberish>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
     ): Promise<PopulatedTransaction>;
 
     setOptionMinAmount(
       option: PromiseOrValue<BigNumberish>,
       amount: PromiseOrValue<BigNumberish>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
     ): Promise<PopulatedTransaction>;
 
     setOptionRange(
       option_: PromiseOrValue<BigNumberish>,
       minimum_: PromiseOrValue<BigNumberish>,
       maximum_: PromiseOrValue<BigNumberish>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
     ): Promise<PopulatedTransaction>;
 
     setSchedule(
       option_: PromiseOrValue<BigNumberish>,
       releases_: PromiseOrValue<BigNumberish>[],
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
     ): Promise<PopulatedTransaction>;
 
     setTge(
       tge_: PromiseOrValue<BigNumberish>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
     ): Promise<PopulatedTransaction>;
 
     setTreasuryWallet(
       treasuryWallet_: PromiseOrValue<string>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
     ): Promise<PopulatedTransaction>;
 
     setTxSigner(
       txSigner_: PromiseOrValue<string>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
     ): Promise<PopulatedTransaction>;
 
     setUnclaimable(
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
     ): Promise<PopulatedTransaction>;
 
     tge(overrides?: CallOverrides): Promise<PopulatedTransaction>;
@@ -1465,7 +1465,7 @@ export interface AlvrTokenSale extends BaseContract {
     tokens(
       arg0: PromiseOrValue<string>,
       arg1: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
+      overrides?: CallOverrides,
     ): Promise<PopulatedTransaction>;
 
     totalTokens(overrides?: CallOverrides): Promise<PopulatedTransaction>;
@@ -1474,7 +1474,7 @@ export interface AlvrTokenSale extends BaseContract {
 
     transferOwnership(
       newOwner: PromiseOrValue<string>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
     ): Promise<PopulatedTransaction>;
 
     treasuryWallet(overrides?: CallOverrides): Promise<PopulatedTransaction>;
@@ -1483,22 +1483,22 @@ export interface AlvrTokenSale extends BaseContract {
 
     unblockUsers(
       users_: PromiseOrValue<string>[],
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
     ): Promise<PopulatedTransaction>;
 
     unclaimed(
       investor_: PromiseOrValue<string>,
-      overrides?: CallOverrides
+      overrides?: CallOverrides,
     ): Promise<PopulatedTransaction>;
 
     unpauseSale(
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
     ): Promise<PopulatedTransaction>;
 
     vests(
       arg0: PromiseOrValue<string>,
       arg1: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
+      overrides?: CallOverrides,
     ): Promise<PopulatedTransaction>;
   };
 }
