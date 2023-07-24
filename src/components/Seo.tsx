@@ -44,6 +44,25 @@ export default function Seo(props: SeoProps) {
   return (
     <Head>
       <title>{meta.title}</title>
+      <link rel="icon" href="/favicon_io/favicon.ico" />
+      <link
+        rel="apple-touch-icon"
+        sizes="180x180"
+        href="/favicon_io/apple-touch-icon.png"
+      />
+      <link
+        rel="icon"
+        type="image/png"
+        sizes="32x32"
+        href="/favicon_io/favicon-32x32.png"
+      />
+      <link
+        rel="icon"
+        type="image/png"
+        sizes="16x16"
+        href="/favicon_io/favicon-16x16.png"
+      />
+      <link rel="manifest" href="/favicon_io/site.webmanifest"></link>
       <meta name="robots" content={meta.robots} />
       <meta content={meta.description} name="description" />
       <meta property="og:url" content={`${meta.url}${router.asPath}`} />
@@ -80,8 +99,6 @@ export default function Seo(props: SeoProps) {
       {/* {favicons.map((linkProps) => (
         <link key={linkProps.href} {...linkProps} />
       ))} */}
-
-      <link rel="icon" href="/favicon.ico" />
 
       <meta name="msapplication-TileColor" content="#ffffff" />
       <meta
