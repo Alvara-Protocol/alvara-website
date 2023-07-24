@@ -81,7 +81,8 @@ export default function Seo(props: SeoProps) {
         <link key={linkProps.href} {...linkProps} />
       ))} */}
 
-      <link rel="icon" href="/favicon/favicon.ico" />
+      <link rel="icon" href="/favicon.ico" />
+
       <meta name="msapplication-TileColor" content="#ffffff" />
       <meta
         name="msapplication-TileImage"
