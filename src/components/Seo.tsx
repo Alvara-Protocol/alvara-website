@@ -77,9 +77,11 @@ export default function Seo(props: SeoProps) {
       )}
 
       {/* Favicons */}
-      {favicons.map((linkProps) => (
+      {/* {favicons.map((linkProps) => (
         <link key={linkProps.href} {...linkProps} />
-      ))}
+      ))} */}
+
+      <link rel="icon" href="/favicon/favicon.ico" />
       <meta name="msapplication-TileColor" content="#ffffff" />
       <meta
         name="msapplication-TileImage"
@@ -90,34 +92,34 @@ export default function Seo(props: SeoProps) {
   );
 }
 
-type Favicons = {
-  rel: string;
-  href: string;
-  sizes?: string;
-  type?: string;
-};
+// type Favicons = {
+//   rel: string;
+//   href: string;
+//   sizes?: string;
+//   type?: string;
+// };
 
 // !STARTERCONF this is the default favicon, you can generate your own from https://favicon.io/ then replace the whole /public/favicon folder
-const favicons: Array<Favicons> = [
-  {
-    rel: 'apple-touch-icon',
-    sizes: '180x180',
-    href: '/favicon/apple-icon.png',
-  },
-  {
-    rel: 'icon',
-    type: 'image/png',
-    sizes: '32x32',
-    href: '/favicon/favicon-32x32.png',
-  },
-  {
-    rel: 'icon',
-    type: 'image/png',
-    sizes: '16x16',
-    href: '/favicon/favicon-16x16.png',
-  },
-  {
-    rel: 'manifest',
-    href: '/favicon/site.webmanifest',
-  },
-];
+// const favicons: Array<Favicons> = [
+//   {
+//     rel: 'apple-touch-icon',
+//     sizes: '180x180',
+//     href: '/favicon/apple-icon.png',
+//   },
+//   {
+//     rel: 'icon',
+//     type: 'image/png',
+//     sizes: '32x32',
+//     href: '/favicon/favicon-32x32.png',
+//   },
+//   {
+//     rel: 'icon',
+//     type: 'image/png',
+//     sizes: '16x16',
+//     href: '/favicon/favicon-16x16.png',
+//   },
+//   {
+//     rel: 'manifest',
+//     href: '/favicon/site.webmanifest',
+//   },
+// ];
