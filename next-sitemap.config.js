@@ -5,7 +5,7 @@
 module.exports = {
   // !STARTERCONF Change the siteUrl
   /** Without additional '/' on the end, e.g. */
-  siteUrl: 'https://tsnext-tw.thcl.dev',
+  siteUrl: 'https://www.alvaraprotocol.io',
   generateRobotsTxt: true,
   robotsTxtOptions: {
     policies: [{ userAgent: '*', allow: '/' }],
