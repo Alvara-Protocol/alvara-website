@@ -72,6 +72,7 @@ export default function Footer() {
           />
           <Button
             variant="primary"
+            type="submit"
             className="h-12 max-w-max  self-center rounded-xl py-4 uppercase "
           >
             Subscribe

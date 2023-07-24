@@ -20,12 +20,12 @@ export default function Title() {
       <div className="flex gap-5">
         <UnstyledLink href="http://discord.gg/pHDDF2MS8v ">
           <Button className="rounded-lg px-8 py-3 text-xl font-light ">
-            Join The Discord
+            Discord
           </Button>
         </UnstyledLink>
         <UnstyledLink href="http://t.me/alvaraprotocol">
           <Button className="rounded-lg px-8 py-3 text-xl font-light ">
-            Join The Telegram
+            Telegram
           </Button>
         </UnstyledLink>
       </div>
