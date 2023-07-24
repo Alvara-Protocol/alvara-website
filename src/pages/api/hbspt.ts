@@ -26,7 +26,6 @@ export default async function hbspt(
     const fields = Array.from(Object.entries(value).values()).map(
       ([name, value]) => ({ name, value }),
     );
-
     await axios.post(
       `https://api.hsforms.com/submissions/v3/integration/secure/submit/${PORTAL_ID}/${FORM_ID}`,
       { fields },
