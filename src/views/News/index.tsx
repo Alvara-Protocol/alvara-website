@@ -14,16 +14,15 @@ export default function News() {
         </div>
       </Hives>
       <div className="container mx-auto grid grid-cols-1 gap-8 px-8 text-sm leading-10 text-black md:grid-cols-1 md:px-48">
-        This is the go-to place for all the latest updates, articles, and
-        announcements related to the protocol. Here, you&apos;ll find insightful
-        blogs, in-depth analysis, and breaking news about Alvara Protocol&apos;s
-        progress towards its mission of democratising access to financial
-        services for all. Our team of experts will keep you up-to-date on all
-        the developments and breakthroughs in the field of decentralised
-        finance, blockchain technology, and financial inclusion. So, whether
-        you&apos;re a curious learner, an industry insider, or an enthusiastic
-        supporter of the Alvara Protocol, this is the page you don&apos;t want
-        to miss!
+        Welcome to your one-stop hub for everything Alvara Protocol related. Fancy deep-diving into insightful 
+        blogs? Looking for detailed analysis? Or, want the latest news on how the Protocol is 
+        making financial services accessible for all? You'll find all of that here.
+        <br />
+        <br />
+        Our expert team is dedicated to keeping you in the loop about everything happening 
+        in the exciting worlds of decentralized finance, blockchain technology, 
+        and financial inclusion. Whether you're just starting your journey, deeply involved in the industry, 
+        or a passionate supporter of Alvara Protocol, this is the space you can't afford to miss!
       </div>
     </main>
   );
