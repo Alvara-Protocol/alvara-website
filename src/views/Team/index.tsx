@@ -279,7 +279,7 @@ export default function Team() {
         <div>
           <div className="flex items-center">
             <div className="mr-4 h-3 w-3 rounded-full bg-fuchsia-400"></div>
-            <h1 className="text-xl font-bold text-black">Yield Optimization</h1>
+            <h1 className="text-xl font-bold text-black">Yield Optimisation</h1>
           </div>
           <p className="px-7">
             Every ERC-BTS houses 100% collateralised underlying assets. These

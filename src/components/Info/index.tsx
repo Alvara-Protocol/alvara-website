@@ -20,20 +20,12 @@ export default function Info({
   image,
   link = '/',
   title,
-  description,
   size = 141,
   type = 1,
   imageClassName,
 }: InfoProps) {
   return (
-    <div
-      className={clsx(
-        'text-center',
-        type === 2
-          ? 'border-gradient4 border-b py-10 last:border-0 md:border-b-0 md:border-r'
-          : '',
-      )}
-    >
+    <div className={clsx('text-center')}>
       {type === 1 && (
         <img
           src={image}
@@ -60,12 +52,12 @@ export default function Info({
 
       {type !== 3 && (
         <>
-          <h4 className="my-4 font-poppins text-[16px] font-medium text-black">
+          <h4 className=" font-poppins text-[16px] font-medium text-black">
             {title}
           </h4>
-          <p className="break-words px-2 text-center font-poppins text-[12px] font-light text-dark-blue-400">
+          {/* <p className="break-words px-2 text-center font-poppins text-[12px] font-light text-dark-blue-400">
             {description}
-          </p>
+          </p> */}
         </>
       )}
     </div>
