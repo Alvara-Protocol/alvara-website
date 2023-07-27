@@ -31,7 +31,18 @@ export default function Team() {
         linkedin: 'https://www.linkedin.com/in/dominic-ryder-9024699a',
       },
       achievments: [
-        'Founder and CEO of vEmpire Digital ',
+        <>
+          Founder and CEO of{' '}
+          <a
+            href="https://www.vemp.xyz/"
+            className="font-bold"
+            target="_blank"
+            rel="noreferrer"
+          >
+            VEMP Studios
+          </a>{' '}
+          Digital{' '}
+        </>,
         "Experienced Senior Derivatives Trader and Head of Desk; partner at FTSE100 London-based wealth management firm- St James' Place",
         'Anarchist at heart and strong advocate for decentralization',
         'One of the largest Metaverse real estate managers',

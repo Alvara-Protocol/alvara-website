@@ -30,7 +30,7 @@ export interface MemberProps {
   photo: string;
   designation: string;
   links?: SocialLinks;
-  achievments?: string[];
+  achievments?: any[];
 }
 
 export default function Member({
