@@ -44,7 +44,10 @@ export default function Seo(props: SeoProps) {
   return (
     <Head>
       <title>{meta.title}</title>
-      <link rel="icon" href="/favicon_io/favicon.ico" />
+      <link
+        rel="icon"
+        href="https://www.alvaraprotocol.io/favicon_io/favicon.ico"
+      />
       <link
         rel="apple-touch-icon"
         sizes="180x180"
