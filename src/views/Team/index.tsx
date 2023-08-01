@@ -96,7 +96,7 @@ export default function Team() {
       designation: 'Lead Product Designer',
       photo: '/images/team/miha.png',
       links: {
-        linkedin: 'https://www.linkedin.com/in/mihasodja',
+        linkedin: 'https://www.linkedin.com/in/sodmi/',
       },
       achievments: [
         '10 years of graphic design experience including working for Fortune 500 companies',
