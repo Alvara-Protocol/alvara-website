@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 
 const defaultMeta = {
-  title: 'Alvara',
+  title: 'Alvara Protocol',
   siteName: 'Alvara',
   description:
     'Build. Manage. Earn. A cutting-edge trading platform empowering the next generation of fund managers.',
@@ -14,7 +14,7 @@ const defaultMeta = {
    * No need to be filled, will be populated with openGraph function
    * If you wish to use a normal image, just specify the path below
    */
-  image: 'http://alvaraprotocol.io/logo.png',
+  image: 'https://www.alvaraprotocol.io/favicon_io/favicon.ico',
 };
 
 type SeoProps = {
@@ -46,6 +46,11 @@ export default function Seo(props: SeoProps) {
       <title>{meta.title}</title>
       <link
         rel="icon"
+        type="image/svg+xml"
+        href="https://www.alvaraprotocol.io/favicon_io/favicon-32x32.png"
+      />
+      {/* <link
+        rel="icon"
         href="https://www.alvaraprotocol.io/favicon_io/favicon.ico"
         type="image/x-icon"
       />
@@ -70,7 +75,7 @@ export default function Seo(props: SeoProps) {
         type="image/png"
         sizes="16x16"
         href="/favicon_io/favicon-16x16.png"
-      />
+      /> */}
       <link rel="manifest" href="/favicon_io/site.webmanifest"></link>
       <meta name="robots" content={meta.robots} />
       <meta content={meta.description} name="description" />

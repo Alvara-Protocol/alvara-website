@@ -93,7 +93,7 @@ export default function Team() {
 
     {
       name: 'Miha Sodja',
-      designation: 'GOAT Designer',
+      designation: 'Lead Product Designer',
       photo: '/images/team/miha.png',
       links: {
         linkedin: 'https://www.linkedin.com/in/mihasodja',
