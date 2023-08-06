@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import React from 'react';
 
-import { Button, Hives, Seo } from '@/components';
+import { Button, Hives } from '@/components';
 import UnstyledLink from '@/components/links/UnstyledLink';
 
 import Member, { MemberProps } from './components/Member';
@@ -137,7 +137,6 @@ export default function Team() {
 
   return (
     <main>
-      <Seo templateTitle="Team" description="Alvara team" />
       <Hives className=" gap-10 px-4 pt-40 md:grid md:grid-cols-2  md:justify-between md:px-11">
         <div className="grid  content-center">
           <h1 className="mb-32 px-5 text-4xl  text-gray-400 md:mb-0 md:max-w-xs md:px-20 md:text-center md:text-6xl">

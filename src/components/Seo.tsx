@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import { useRouter } from 'next/router';
 
 const defaultMeta = {
   title: 'Alvara Protocol',
@@ -14,7 +13,7 @@ const defaultMeta = {
    * No need to be filled, will be populated with openGraph function
    * If you wish to use a normal image, just specify the path below
    */
-  image: 'https://www.alvaraprotocol.io/favicon_io/favicon.ico',
+  image: '/alvara.png',
 };
 
 type SeoProps = {
@@ -23,7 +22,7 @@ type SeoProps = {
 } & Partial<typeof defaultMeta>;
 
 export default function Seo(props: SeoProps) {
-  const router = useRouter();
+  // const router = useRouter();
   const meta = {
     ...defaultMeta,
     ...props,
@@ -44,11 +43,7 @@ export default function Seo(props: SeoProps) {
   return (
     <Head>
       <title>{meta.title}</title>
-      <link
-        rel="icon"
-        type="image/svg+xml"
-        href="https://www.alvaraprotocol.io/favicon_io/favicon-32x32.png"
-      />
+      {/* <link rel="icon" type="image/svg+xml" href="/download.jpg" /> */}
       {/* <link
         rel="icon"
         href="https://www.alvaraprotocol.io/favicon_io/favicon.ico"
@@ -76,19 +71,19 @@ export default function Seo(props: SeoProps) {
         sizes="16x16"
         href="/favicon_io/favicon-16x16.png"
       /> */}
-      <link rel="manifest" href="/favicon_io/site.webmanifest"></link>
+      {/* <link rel="manifest" href="/favicon_io/site.webmanifest"></link>
       <meta name="robots" content={meta.robots} />
       <meta content={meta.description} name="description" />
       <meta property="og:url" content={`${meta.url}${router.asPath}`} />
       <link rel="canonical" href={`${meta.url}${router.asPath}`} />
       {/* Open Graph */}
-      <meta property="og:type" content={meta.type} />
+      {/* <meta property="og:type" content={meta.type} />
       <meta property="og:site_name" content={meta.siteName} />
       <meta property="og:description" content={meta.description} />
-      <meta property="og:title" content={meta.title} />
-      <meta name="image" property="og:image" content={meta.image} />
+      <meta property="og:title" content={meta.title} /> */}
+      {/* <meta name="image" property="og:image" content={meta.image} /> */}
       {/* Twitter */}
-      <meta name="twitter:card" content="summary_large_image" />
+      {/* <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:site" content="@th_clarence" />
       <meta name="twitter:title" content={meta.title} />
       <meta name="twitter:description" content={meta.description} />
@@ -107,19 +102,19 @@ export default function Seo(props: SeoProps) {
             content="Theodorus Clarence"
           />
         </>
-      )}
+      )} */}
 
       {/* Favicons */}
       {/* {favicons.map((linkProps) => (
         <link key={linkProps.href} {...linkProps} />
       ))} */}
 
-      <meta name="msapplication-TileColor" content="#ffffff" />
+      {/* <meta name="msapplication-TileColor" content="#ffffff" />
       <meta
         name="msapplication-TileImage"
         content="/favicon/ms-icon-144x144.png"
       />
-      <meta name="theme-color" content="#ffffff" />
+      <meta name="theme-color" content="#ffffff" /> */}
     </Head>
   );
 }
