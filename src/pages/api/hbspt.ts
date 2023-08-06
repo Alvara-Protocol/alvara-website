@@ -1,7 +1,30 @@
 import axios from 'axios';
+import Joi from 'joi';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-import { subscribeSchema } from '@/views/Presale/Subscribe';
+interface SubscribeProps {
+  firstname?: string;
+  lastname?: string;
+  email: string;
+  telegram_id?: string;
+  wallet_address: string;
+}
+
+const subscribeSchema = Joi.object<SubscribeProps>({
+  firstname: Joi.string().allow(''),
+  lastname: Joi.string().allow(''),
+  email: Joi.string()
+    .email({ tlds: { allow: false } })
+    .required()
+    .messages({
+      'string.empty': 'Email is required',
+      'string.email': 'Invalid Email Address',
+    }),
+  telegram_id: Joi.string().allow(''),
+  wallet_address: Joi.string()
+    .required()
+    .messages({ 'string.empty': 'Please connect your wallet' }),
+});
 
 const PORTAL_ID = process.env.HUBSPOT_PORTAL_ID;
 const FORM_ID = process.env.HUBSPOT_FORM_ID;
