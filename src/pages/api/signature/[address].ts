@@ -1,6 +1,7 @@
 import { AlvrTokenSale__factory } from '@alvara/presale';
 import { Wallet } from '@ethersproject/wallet';
 import { BigNumber, utils } from 'ethers';
+import Joi from 'joi';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { chain } from 'wagmi';
 
@@ -9,7 +10,24 @@ import { provider as wagmiProvider } from '@/lib/web3/wagmi';
 
 import { contractAddress, tokenPricesInUsd } from '@/config';
 import { ethPrice, updateEthBalance } from '@/pages/api/price';
-import { joiSchema } from '@/views/Presale/PresaleForm';
+
+export interface FormProps {
+  optionAActivated: boolean;
+  optionA: number;
+  optionBActivated: boolean;
+  optionB: number;
+  optionCActivated: boolean;
+  optionC: number;
+}
+
+export const joiSchema = Joi.object<FormProps>({
+  optionAActivated: Joi.boolean().required(),
+  optionA: Joi.number(),
+  optionBActivated: Joi.boolean().required(),
+  optionB: Joi.number(),
+  optionCActivated: Joi.boolean().required(),
+  optionC: Joi.number(),
+});
 
 export default async function hello(req: NextApiRequest, res: NextApiResponse) {
   try {
