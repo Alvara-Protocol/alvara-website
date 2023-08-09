@@ -1,7 +1,7 @@
 import Head from 'next/head';
 
 const defaultMeta = {
-  title: 'Alvara Protocol',
+  title: 'Alvara',
   siteName: 'Alvara',
   description:
     'Build. Manage. Earn. A cutting-edge trading platform empowering the next generation of fund managers.',

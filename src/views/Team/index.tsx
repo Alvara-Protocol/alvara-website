@@ -157,7 +157,7 @@ export default function Team() {
           </p>
 
           <div className="mb-5 mt-5 h-[2px] w-full bg-gradient-to-r from-fuchsia-400 to-transparent"></div>
-          <UnstyledLink href="https://alvaraprotocol.medium.com">
+          <UnstyledLink href="./alvara.pdf">
             <Button variant="primary" className="rounded-lg px-10 py-5">
               Read More
             </Button>
