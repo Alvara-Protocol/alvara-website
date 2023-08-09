@@ -160,7 +160,7 @@ export default function Header() {
                                   href="./Alvara_Protocol_White_Paper.pdf"
                                   className="font-medium "
                                 >
-                                  White Paper
+                                  WhitePaper
                                 </UnstyledLink>
                               </MobileLink>
                             </div>
@@ -194,7 +194,7 @@ export default function Header() {
                 isPresale && !scroll ? 'text-white' : 'text-white',
               )}
             >
-              White Paper
+              WhitePaper
             </UnstyledLink>
           </ul>
         </nav>
