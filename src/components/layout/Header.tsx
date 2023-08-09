@@ -154,6 +154,16 @@ export default function Header() {
                                 </MobileLink>
                               </div>
                             ))}
+                            <div>
+                              <MobileLink setIsOpen={setIsOpen}>
+                                <UnstyledLink
+                                  href="./alvara.pdf"
+                                  className="font-medium "
+                                >
+                                  White Paper
+                                </UnstyledLink>
+                              </MobileLink>
+                            </div>
                           </div>
                         </div>
                       </nav>
@@ -177,6 +187,15 @@ export default function Header() {
                 </UnstyledLink>
               </li>
             ))}
+            <UnstyledLink
+              href="./alvara.pdf"
+              className={clsx(
+                '  text-gray-400 hover:text-opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75',
+                isPresale && !scroll ? 'text-white' : 'text-white',
+              )}
+            >
+              White Paper
+            </UnstyledLink>
           </ul>
         </nav>
         <div className="hidden md:block"></div>
