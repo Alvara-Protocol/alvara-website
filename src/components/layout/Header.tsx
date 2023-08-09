@@ -160,7 +160,7 @@ export default function Header() {
                                   href="./Alvara_Protocol_White_Paper.pdf"
                                   className="font-medium "
                                 >
-                                  WhitePaper
+                                  White Paper
                                 </UnstyledLink>
                               </MobileLink>
                             </div>
@@ -187,15 +187,17 @@ export default function Header() {
                 </UnstyledLink>
               </li>
             ))}
-            <UnstyledLink
-              href="./Alvara_Protocol_White_Paper.pdf"
-              className={clsx(
-                '  text-gray-400 hover:text-opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75',
-                isPresale && !scroll ? 'text-white' : 'text-white',
-              )}
-            >
-              WhitePaper
-            </UnstyledLink>
+            <li className="min-w-max">
+              <UnstyledLink
+                href="./Alvara_Protocol_White_Paper.pdf"
+                className={clsx(
+                  '  text-gray-400 hover:text-opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75',
+                  isPresale && !scroll ? 'text-white' : 'text-white',
+                )}
+              >
+                White Paper
+              </UnstyledLink>
+            </li>
           </ul>
         </nav>
         <div className="hidden md:block"></div>
