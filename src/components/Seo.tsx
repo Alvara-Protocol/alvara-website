@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import router from 'next/router';
+import { useRouter } from 'next/router';
 
 const defaultMeta = {
   title: 'Alvara',
@@ -23,7 +23,7 @@ type SeoProps = {
 } & Partial<typeof defaultMeta>;
 
 export default function Seo(props: SeoProps) {
-  // const router = useRouter();
+  const router = useRouter();
   const meta = {
     ...defaultMeta,
     ...props,
