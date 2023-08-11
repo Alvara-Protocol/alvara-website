@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import router from 'next/router';
 
 const defaultMeta = {
   title: 'Alvara',
@@ -71,19 +72,19 @@ export default function Seo(props: SeoProps) {
         sizes="16x16"
         href="/favicon_io/favicon-16x16.png"
       /> */}
-      {/* <link rel="manifest" href="/favicon_io/site.webmanifest"></link>
+      <link rel="manifest" href="/favicon_io/site.webmanifest"></link>
       <meta name="robots" content={meta.robots} />
       <meta content={meta.description} name="description" />
       <meta property="og:url" content={`${meta.url}${router.asPath}`} />
       <link rel="canonical" href={`${meta.url}${router.asPath}`} />
       {/* Open Graph */}
-      {/* <meta property="og:type" content={meta.type} />
+      <meta property="og:type" content={meta.type} />
       <meta property="og:site_name" content={meta.siteName} />
       <meta property="og:description" content={meta.description} />
-      <meta property="og:title" content={meta.title} /> */}
-      {/* <meta name="image" property="og:image" content={meta.image} /> */}
+      <meta property="og:title" content={meta.title} />
+      <meta name="image" property="og:image" content={meta.image} />
       {/* Twitter */}
-      {/* <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:site" content="@th_clarence" />
       <meta name="twitter:title" content={meta.title} />
       <meta name="twitter:description" content={meta.description} />
@@ -102,7 +103,7 @@ export default function Seo(props: SeoProps) {
             content="Theodorus Clarence"
           />
         </>
-      )} */}
+      )}
 
       {/* Favicons */}
       {/* {favicons.map((linkProps) => (
