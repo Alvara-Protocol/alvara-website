@@ -69,11 +69,10 @@ export default function Team() {
         linkedin: 'https://www.linkedin.com/in/joey-van-etten-12b228184',
       },
       achievments: [
-        '6+ years experience in TradFi and DeFi',
-        'Strong industry expertise with a passion for building relationships',
-        'Extensive experience in networking and strategy inside crypto space',
-        'Early adopter and investor of various major cryptocurrencies',
-        'Responsible for researching and connecting strategic partnerships',
+        '7 years of experience in public accounting, financial & tax advisory and advisory to start-ups and scale-ups, including experience at Deloitte and EY',
+        'Strong crypto industry expertise with experience in operations management & business development',
+        "Bachelor's degree in accounting & finance including courses as financial markets, strategic management and economics",
+        'Responsible for managing operations and general business development',
       ],
     },
     {

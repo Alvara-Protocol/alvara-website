@@ -5,6 +5,8 @@ import * as React from 'react';
 
 import { NextImage } from '@/components';
 import UnstyledLink from '@/components/links/UnstyledLink';
+import { RoadMapModal } from '@/components/Modals';
+import TokenomicsModal from '@/components/Modals/TokenomicsModal';
 import { HamburgerIcon } from '@/components/Svg';
 
 interface MobileLinkProps extends React.PropsWithChildren {
@@ -30,6 +32,9 @@ export default function Header() {
   const [scroll, setScroll] = React.useState(false);
   const [isPresale, setIsPresale] = React.useState(false);
   const router = useRouter();
+  const [flag, setFlag] = React.useState(false);
+  const [showTokenomic, setShowTokenomic] = React.useState(false);
+  const [showRoadMap, setShowRoadMap] = React.useState(false);
 
   function closeModal() {
     setIsOpen(false);
@@ -187,22 +192,47 @@ export default function Header() {
                 </UnstyledLink>
               </li>
             ))}
-            <li className="min-w-max">
+            <li className="group min-w-max">
               <UnstyledLink
-                href="./Alvara_Protocol_White_Paper.pdf"
-                className={clsx(
-                  '  text-gray-400 hover:text-opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75',
-                  isPresale && !scroll ? 'text-white' : 'text-white',
-                )}
+                onClick={() => setFlag(!flag)}
+                href=""
+                id="docs"
+                className=" text-gray-400 hover:text-opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
               >
-                White Paper
+                Docs
               </UnstyledLink>
+              <div className="absolute hidden gap-3 p-3 group-hover:grid">
+                <a
+                  href="./Alvara_Protocol_White_Paper.pdf"
+                  className=" h over:cursor-pointer text-base text-gray-400 hover:text-opacity-80"
+                  id="whitepaper"
+                  target="_blank"
+                >
+                  White Paper
+                </a>
+                <h1
+                  id="tokenomics"
+                  className=" text-base text-gray-400 hover:cursor-pointer hover:text-opacity-80"
+                  onClick={() => setShowTokenomic(true)}
+                >
+                  Tokenomics
+                </h1>
+                <h1
+                  id="roadmap"
+                  className=" text-base text-gray-400 hover:cursor-pointer hover:text-opacity-80"
+                  onClick={() => setShowRoadMap(true)}
+                >
+                  Roadmap
+                </h1>
+              </div>
             </li>
           </ul>
         </nav>
         <div className="hidden md:block"></div>
         <div className="hidden md:block"></div>
       </div>
+      <TokenomicsModal show={showTokenomic} setShow={setShowTokenomic} />
+      <RoadMapModal show={showRoadMap} setShow={setShowRoadMap} />
     </header>
   );
 }

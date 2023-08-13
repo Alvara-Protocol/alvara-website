@@ -4,9 +4,15 @@ import { Fragment } from 'react';
 interface ModalProps extends React.PropsWithChildren {
   show: boolean;
   setShow: React.Dispatch<React.SetStateAction<boolean>>;
+  className?: string;
 }
 
-export default function Modal({ show, setShow, children }: ModalProps) {
+export default function Modal({
+  show,
+  setShow,
+  children,
+  className,
+}: ModalProps) {
   function closeModal() {
     setShow(false);
   }
@@ -25,11 +31,16 @@ export default function Modal({ show, setShow, children }: ModalProps) {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel className="w-full max-w-xs transform overflow-hidden bg-gray-400 p-6 text-left align-middle shadow-xl transition-all md:max-w-lg">
+              <Dialog.Panel
+                className={
+                  'h-5/6 w-11/12 transform overflow-hidden bg-gray-400 p-6 text-left align-middle shadow-xl transition-all ' +
+                  className
+                }
+              >
                 <div className="inline-flex w-full justify-end">
                   <button
                     type="button"
-                    className="inline-flex justify-center rounded-md border border-transparent bg-gray-500/30 px-4 py-2 text-sm font-medium hover:bg-gray-500/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                    className="inline-flex justify-center rounded-full border border-transparent bg-gray-500/30 p-2 text-sm font-medium text-purple-300 hover:bg-gray-500/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                     onClick={closeModal}
                   >
                     X
