@@ -1,7 +1,7 @@
-import Image from 'next/image';
 import React from 'react';
 
 import Modal from '@/components/Modal';
+import NextImage from '@/components/NextImage';
 
 export default function TokenomicsModal({
   show,
@@ -12,7 +12,7 @@ export default function TokenomicsModal({
 }) {
   return (
     <Modal show={show} setShow={setShow} className=" bg-transparent">
-      <Image
+      <NextImage
         className=" h-screen w-screen"
         src="/docs/Alvara_Tokenomics.svg"
         width="1800px"

@@ -159,16 +159,31 @@ export default function Header() {
                                 </MobileLink>
                               </div>
                             ))}
-                            <div>
-                              <MobileLink setIsOpen={setIsOpen}>
-                                <UnstyledLink
-                                  href="./Alvara_Protocol_White_Paper.pdf"
-                                  className="font-medium "
-                                >
-                                  White Paper
-                                </UnstyledLink>
-                              </MobileLink>
-                            </div>
+                            <MobileLink setIsOpen={setIsOpen}>
+                              <UnstyledLink
+                                href="./Alvara_Protocol_White_Paper.pdf"
+                                className="font-medium "
+                              >
+                                White Paper
+                              </UnstyledLink>
+                            </MobileLink>
+                            <MobileLink setIsOpen={setIsOpen}>
+                              <UnstyledLink
+                                href="./Alvara_Tokenomics.pdf"
+                                className="font-medium "
+                              >
+                                Tokenomics
+                              </UnstyledLink>
+                            </MobileLink>
+                            <MobileLink setIsOpen={setIsOpen}>
+                              <UnstyledLink
+                                href="./Alvara_Roadmap.pdf"
+                                className="font-medium "
+                              >
+                                Roadmap
+                              </UnstyledLink>
+                            </MobileLink>
+                            <div></div>
                           </div>
                         </div>
                       </nav>
@@ -210,20 +225,36 @@ export default function Header() {
                 >
                   White Paper
                 </a>
-                <h1
+                <a
+                  href="./Alvara_Tokenomics.svg"
+                  className=" h over:cursor-pointer text-base text-gray-400 hover:text-opacity-80"
+                  id="whitepaper"
+                  target="_blank"
+                >
+                  Tokenomics
+                </a>
+                <a
+                  href="./Alvara_Roadmap.svg"
+                  className=" h over:cursor-pointer text-base text-gray-400 hover:text-opacity-80"
+                  id="whitepaper"
+                  target="_blank"
+                >
+                  Roadmap
+                </a>
+                {/* <h1
                   id="tokenomics"
                   className=" text-base text-gray-400 hover:cursor-pointer hover:text-opacity-80"
                   onClick={() => setShowTokenomic(true)}
                 >
                   Tokenomics
-                </h1>
-                <h1
+                </h1> */}
+                {/* <h1
                   id="roadmap"
                   className=" text-base text-gray-400 hover:cursor-pointer hover:text-opacity-80"
                   onClick={() => setShowRoadMap(true)}
                 >
                   Roadmap
-                </h1>
+                </h1> */}
               </div>
             </li>
           </ul>
