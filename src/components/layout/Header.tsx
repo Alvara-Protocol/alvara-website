@@ -226,7 +226,7 @@ export default function Header() {
                   White Paper
                 </a>
                 <a
-                  href="./Alvara_Tokenomics.svg"
+                  href="./Alvara_Tokenomics.pdf"
                   className=" h over:cursor-pointer text-base text-gray-400 hover:text-opacity-80"
                   id="whitepaper"
                   target="_blank"
@@ -234,7 +234,7 @@ export default function Header() {
                   Tokenomics
                 </a>
                 <a
-                  href="./Alvara_Roadmap.svg"
+                  href="./Alvara_Roadmap.pdf"
                   className=" h over:cursor-pointer text-base text-gray-400 hover:text-opacity-80"
                   id="whitepaper"
                   target="_blank"

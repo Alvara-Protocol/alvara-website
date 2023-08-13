@@ -1,6 +1,8 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
+import { openGraph } from '@/lib/helper';
+
 const defaultMeta = {
   title: 'Alvara',
   siteName: 'Alvara',
@@ -36,43 +38,43 @@ export default function Seo(props: SeoProps) {
   // but show full title if there is none
   // !STARTERCONF Follow config for opengraph, by deploying one on https://github.com/.../og
   // ? Uncomment code below if you want to use default open graph
-  // meta['image'] = openGraph({
-  //   description: meta.description,
-  //   siteName: props.templateTitle ? meta.siteName : meta.title,
-  //   templateTitle: props.templateTitle,
-  // });
+  meta['image'] = openGraph({
+    description: meta.description,
+    siteName: props.templateTitle ? meta.siteName : meta.title,
+    templateTitle: props.templateTitle,
+  });
   return (
     <Head>
       <title>{meta.title}</title>
-      {/* <link rel="icon" type="image/svg+xml" href="/download.jpg" /> */}
-      {/* <link
+      <link rel="icon" type="image/svg+xml" href="/alvara.png" />
+      <link
         rel="icon"
         href="https://www.alvaraprotocol.io/favicon_io/favicon.ico"
         type="image/x-icon"
       />
       <link
         rel="shortcut icon"
-        href="https://www.alvaraprotocol.io/favicon_io/favicon.ico"
+        href="https://www.alvaraprotocol.io/favicon/favicon.ico"
         type="image/x-icon"
       />
       <link
         rel="apple-touch-icon"
         sizes="180x180"
-        href="/favicon_io/apple-touch-icon.png"
+        href="/favicon/apple-touch-icon.png"
       />
       <link
         rel="icon"
         type="image/png"
         sizes="32x32"
-        href="/favicon_io/favicon-32x32.png"
+        href="/favicon/favicon-32x32.png"
       />
       <link
         rel="icon"
         type="image/png"
         sizes="16x16"
-        href="/favicon_io/favicon-16x16.png"
-      /> */}
-      <link rel="manifest" href="/favicon_io/site.webmanifest"></link>
+        href="/favicon/favicon-16x16.png"
+      />
+      <link rel="manifest" href="/favicon/site.webmanifest"></link>
       <meta name="robots" content={meta.robots} />
       <meta content={meta.description} name="description" />
       <meta property="og:url" content={`${meta.url}${router.asPath}`} />
