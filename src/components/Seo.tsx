@@ -1,11 +1,12 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import favicon from 'public/images/favicon.ico';
 
 import { openGraph } from '@/lib/helper';
 
 const defaultMeta = {
-  title: 'Alvara',
-  siteName: 'Alvara',
+  title: 'Alvara Protocol',
+  siteName: 'Alvara Protocol',
   description:
     'Build. Manage. Earn. A cutting-edge trading platform empowering the next generation of fund managers.',
   /** Without additional '/' on the end */
@@ -46,33 +47,23 @@ export default function Seo(props: SeoProps) {
   return (
     <Head>
       <title>{meta.title}</title>
-      <link rel="icon" type="image/svg+xml" href="/alvara.png" />
-      <link
-        rel="icon"
-        href="https://www.alvaraprotocol.io/favicon_io/favicon.ico"
-        type="image/x-icon"
-      />
-      <link
-        rel="shortcut icon"
-        href="https://www.alvaraprotocol.io/favicon/favicon.ico"
-        type="image/x-icon"
-      />
+      <link rel="shortcut icon" href={favicon.src} type="image/x-icon" />
       <link
         rel="apple-touch-icon"
         sizes="180x180"
-        href="/favicon/apple-touch-icon.png"
+        href="/images/apple-touch-icon.png"
       />
       <link
         rel="icon"
         type="image/png"
         sizes="32x32"
-        href="/favicon/favicon-32x32.png"
+        href="/images/favicon-32x32.png"
       />
       <link
         rel="icon"
         type="image/png"
         sizes="16x16"
-        href="/favicon/favicon-16x16.png"
+        href="/images/favicon-16x16.png"
       />
       <link rel="manifest" href="/favicon/site.webmanifest"></link>
       <meta name="robots" content={meta.robots} />

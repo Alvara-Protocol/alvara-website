@@ -7,14 +7,15 @@ import '@/styles/scss/main.scss';
 
 import Providers from '@/lib/Providers';
 
+import { Seo } from '@/components';
 import Layout from '@/components/layout/Layout';
-import Seo from '@/components/Seo';
 
 function App({ Component, pageProps }: AppProps) {
   return (
     <Providers>
       <Layout>
         <Seo />
+
         <Component {...pageProps} />
       </Layout>
       <ToastContainer />

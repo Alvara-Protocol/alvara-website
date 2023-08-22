@@ -21,7 +21,7 @@ class MyDocument extends Document {
             rel="stylesheet"
             href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Poppins:wght@300;400;500;700&display=swap"
           />
-          <link rel="icon" type="image/svg+xml" href="/alvara.png" />
+          {/* <link rel="icon" type="image/png" href="/alvara.png" /> */}
         </Head>
         <body>
           <Main />
