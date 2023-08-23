@@ -17,7 +17,7 @@ const defaultMeta = {
    * No need to be filled, will be populated with openGraph function
    * If you wish to use a normal image, just specify the path below
    */
-  image: '/alvara.png',
+  image: favicon.src,
 };
 
 type SeoProps = {
@@ -37,7 +37,7 @@ export default function Seo(props: SeoProps) {
 
   // Use siteName if there is templateTitle
   // but show full title if there is none
-  // !STARTERCONF Follow config for opengraph, by deploying one on https://github.com/.../og
+  // STARTERCONF Follow config for opengraph, by deploying one on https://github.com/.../og
   // ? Uncomment code below if you want to use default open graph
   meta['image'] = openGraph({
     description: meta.description,
@@ -65,7 +65,7 @@ export default function Seo(props: SeoProps) {
         sizes="16x16"
         href="/images/favicon-16x16.png"
       />
-      <link rel="manifest" href="/favicon/site.webmanifest"></link>
+      <link rel="manifest" href="/images/site.webmanifest"></link>
       <meta name="robots" content={meta.robots} />
       <meta content={meta.description} name="description" />
       <meta property="og:url" content={`${meta.url}${router.asPath}`} />
@@ -98,49 +98,9 @@ export default function Seo(props: SeoProps) {
         </>
       )}
 
-      {/* Favicons */}
-      {/* {favicons.map((linkProps) => (
-        <link key={linkProps.href} {...linkProps} />
-      ))} */}
-
-      {/* <meta name="msapplication-TileColor" content="#ffffff" />
-      <meta
-        name="msapplication-TileImage"
-        content="/favicon/ms-icon-144x144.png"
-      />
-      <meta name="theme-color" content="#ffffff" /> */}
+      <meta name="msapplication-TileColor" content="#ffffff" />
+      <meta name="msapplication-TileImage" content={favicon.src} />
+      <meta name="theme-color" content="#ffffff" />
     </Head>
   );
 }
-
-// type Favicons = {
-//   rel: string;
-//   href: string;
-//   sizes?: string;
-//   type?: string;
-// };
-
-// !STARTERCONF this is the default favicon, you can generate your own from https://favicon.io/ then replace the whole /public/favicon folder
-// const favicons: Array<Favicons> = [
-//   {
-//     rel: 'apple-touch-icon',
-//     sizes: '180x180',
-//     href: '/favicon/apple-icon.png',
-//   },
-//   {
-//     rel: 'icon',
-//     type: 'image/png',
-//     sizes: '32x32',
-//     href: '/favicon/favicon-32x32.png',
-//   },
-//   {
-//     rel: 'icon',
-//     type: 'image/png',
-//     sizes: '16x16',
-//     href: '/favicon/favicon-16x16.png',
-//   },
-//   {
-//     rel: 'manifest',
-//     href: '/favicon/site.webmanifest',
-//   },
-// ];
