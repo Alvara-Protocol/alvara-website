@@ -1,9 +1,12 @@
 import React from 'react';
 
 import { Hives } from '@/components';
+import ImageWithModal from '@/components/ImageWithModal';
 
-import Back from '@/views/BTSFactory/Back';
 import MobileBtsFactory from '@/views/BTSFactory/MobileBtsFactory';
+import ProcessImage from '@/views/BTSFactory/ProcessImage';
+
+import BtsBack from '~/images/bts-back.png';
 
 export default function Intro() {
   return (
@@ -16,39 +19,82 @@ export default function Intro() {
           <div className="mb-32 mt-5 h-[2px] w-full bg-gradient-to-r from-fuchsia-400 to-transparent"></div>
         </div>
       </Hives>
-      <div className="container mx-auto grid grid-cols-1 gap-8 px-8 text-base leading-10 md:grid-cols-1 md:px-48 md:leading-6">
-        Alvara&apos;s BTS Factory is the backbone of the Protocol, creating a
-        platform for the birth of decentralised, meritocratic, tokenised
-        investment funds. It brings all the crucial elements together, fostering
-        mass acceptance of this novel ERC-BTS token technology. <br />
+      <div className="lg-px-12 container mx-auto grid grid-cols-1 gap-8 px-8 text-base leading-10 md:grid-cols-1 md:leading-6 ">
+        <div className="grid">
+          <h1 className="text-4xl font-medium text-[#131531]">
+            Revolutionary Technology
+          </h1>
+          <div className=" mt-5 h-[2px] w-full bg-gradient-to-r from-fuchsia-400 to-transparent md:w-96"></div>
+        </div>
+        <p>
+          An ERC-BTS is our basket token standard, allowing users to pull a
+          collection of assets, across different chains into a single,
+          manageable public fund. Enabling users to showcase their skills within
+          crypto markets or take advantage of other skilled traders by
+          contributing to their fund. <br />
+          <br />
+          Our ERC-BTS Factory is the primary architectural arm of the protocol.{' '}
+          <br />
+          <br />
+          The ERC-BTS Factory enables users to design and deploy brand new
+          tokenised funds on the blockchain. Tokens from any blockchain are
+          supported, allowing for a first of its kind cross-chain fund creation.
+        </p>
+        <div className="grid">
+          <h1 className="text-4xl font-medium text-[#131531]">
+            Simplified Creation Process
+          </h1>
+          <div className=" mt-5 h-[2px] w-full bg-gradient-to-r from-fuchsia-400 to-transparent md:w-96"></div>
+        </div>
+        <div className="flex flex-col items-center lg:flex-row ">
+          <p>
+            Connect a compatible web3 wallet (such as Metamask or Trust Wallet).
+            <br />
+            <br />
+            Add the token you would like to include in your basket. These can be
+            tokens across different chains and soon, NFTs too.
+            <br />
+            <br /> Allocate the percentage weighting of your chosen assets. You
+            can also set this to auto rebalance every month. What is
+            rebalancing?
+            <br />
+            <br />
+            Name your ERC-BTS and upload its logo. Be creative and inviting to
+            potential contributors, be descriptive to show them how you
+            allocate.
+            <br />
+            <br /> The ERC-BTS can now be minted by making a minimum
+            contribution of 1 ETH (or equivalent in any currency).{' '}
+          </p>
+          <ProcessImage className="h-full" />
+        </div>
+        <div className="grid">
+          <h1 className="text-4xl font-medium text-[#131531]">Fee Structure</h1>
+          <div className=" mt-5 h-[2px] w-full bg-gradient-to-r from-fuchsia-400 to-transparent md:w-96"></div>
+        </div>
+        To prevent the frivolous creation of numerous ERC-BTSs, we have set a
+        minimum creation amount. The creator holds the ERC-BTS token and BTS LP
+        tokens, which only represent their personal capital investment in the
+        fund. Although the ERC-BTS token is held by the fund creator, the
+        underlying assets themselves are non-custodial. The end result is safe
+        storage within the security of a smart contract. <br />
         <br />
-        The Factory guides users through designing and launching their tokenised
-        funds on the blockchain. It&apos;s flexible, supporting tokens from any
-        blockchain, making it a trailblazer in cross-chain fund creation.
-        <br />
-        <br /> Fund creation is as easy as connecting a compatible web3 wallet,
-        such as Metamask or Trust Wallet, adding the token contracts of your
-        chosen assets, and naming and branding your ERC-BTS. Minting your
-        ERC-BTS simply requires a minimum contribution of 1 ETH (or equivalent).{' '}
+        The creation mechanism enables users to create (mint) new BTS LP tokens
+        at the net asset value (NAV) of the underlying assets of any ERC-BTS
+        created on our protocol. Users pay all gas fees associated and a 0.5%
+        fee is charged by the Alvara Foundation each time a user creates new BTS
+        LP tokens in a fund.
         <br />
         <br />
-        To maintain the integrity of the system and avoid superfluous fund
-        creation, we&apos;ve set a minimum contribution. Fund creators hold the
-        ERC-BTS token and BTS LP tokens, reflecting their personal investment in
-        the fund. Despite the creator holding the ERC-BTS token, the underlying
-        assets remain non-custodial. <br />
+        The total cost of initial creation of a new ERC-BTS is 1%.
         <br />
-        The end product is a safely and securely stored fund within a smart
-        contract. <br />
+        <br /> During the minting process, a 0.5% fee is charged by the Alvara
+        Foundation, and an additional 0.5% is used to buy and burn ALVA. During
+        both the contribution and redemption processes, a 0.5% fee is charged by
+        the Alvara Foundation.
         <br />
-        Our Factory also facilitates the creation (minting) of new BTS LP
-        tokens, which are valued at the net asset value (NAV) of the underlying
-        assets within that BTS. <br />
-        <br />
-        The total cost for minting a new BTS is set at 1%, which includes a 0.5%
-        Alvara platform fee as well as a 0.5% $ALVA “buy and burn” event. The
-        same costs apply for both contributing to and redeeming from an existing
-        BTS.
+        <br /> Everyone can experience the benefits of tokenised investment
+        funds on the blockchain with Alvara Protocol&apos;s ERC-BTS Factory.
         <br />
         <br />
         The Alvara Protocol&apos;s ERC-BTS Factory is an open gateway for
@@ -56,29 +102,22 @@ export default function Intro() {
         blockchain.
         <br />
         <div>
-          If you have any questions, we invite you to join our{' '}
+          If you have any queries, be sure to join our{' '}
           <a
-            className=" font-bold "
-            target="_blank"
-            rel="noreferrer"
-            href="https://t.me/alvaraprotocol"
-          >
-            Telegram
-          </a>{' '}
-          or{' '}
-          <a
-            className=" font-bold "
+            className=" underline "
             target="_blank"
             rel="noreferrer"
             href="http://discord.gg/pHDDF2MS8v"
           >
             Discord
           </a>{' '}
-          server where our dedicated team will gladly assist you.
+          server where a member of our dedicated team will be on hand to provide
+          assistance.
         </div>
       </div>
       <div className="hidden md:block">
-        <Back />
+        {/* <Back /> */}
+        <ImageWithModal src={BtsBack} alt="bts-back" width={831} height={544} />
       </div>
       <MobileBtsFactory className="block md:hidden" />
     </section>

@@ -1,8 +1,6 @@
 import React from 'react';
 
-import { Hives } from '@/components';
-
-import Links from '@/views/News/Links';
+import { Button, Hives } from '@/components';
 
 export default function News() {
   return (
@@ -19,15 +17,34 @@ export default function News() {
         Welcome to your one-stop hub for everything Alvara Protocol related.
         Fancy deep-diving into insightful blogs? Looking for detailed analysis?
         Or, want the latest news on how the Protocol is making financial
-        services accessible for all? You&apos;ll find all of that here. Our
-        expert team is dedicated to keeping you in the loop about everything
-        happening in the exciting worlds of decentralised finance, blockchain
-        technology, and financial inclusion. Whether you&apos;re just starting
-        your journey, deeply involved in the industry, or a passionate supporter
-        of Alvara Protocol, this is the space you can&apos;t afford to miss!
+        services accessible for all? You&apos;ll find all of that here. <br />
+        <br /> Our expert team is dedicated to keeping you in the loop about
+        everything happening in the exciting worlds of decentralised finance,
+        blockchain technology, and financial inclusion. Whether you&apos;re just
+        starting your journey, deeply involved in the industry, or a passionate
+        supporter of Alvara Protocol, this is the space you can&apos;t afford to
+        miss!
       </div>
       <div className="flex flex-wrap items-center justify-center gap-2 md:gap-10">
-        <Links visible={true} />
+        <form
+          action="/api/form"
+          method="post"
+          className="flex h-14 items-center gap-4  rounded-xl bg-gray-400 px-1   lg:flex-row lg:items-stretch  lg:gap-0"
+        >
+          <input
+            type="email"
+            className="font-inter h-12 items-center  rounded-xl bg-gray-400 px-3 font-normal text-[black] placeholder-[#94A3B8] outline-none lg:min-w-[30rem] "
+            name="email"
+            placeholder="Email"
+            required
+          />
+          <Button
+            variant="primary"
+            className="h-12 max-w-max  self-center rounded-xl py-4 uppercase "
+          >
+            Subscribe
+          </Button>
+        </form>
       </div>
     </main>
   );

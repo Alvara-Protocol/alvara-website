@@ -1,4 +1,4 @@
-export * from './buttons';
+export * from './Button';
 export * from './CurrencyStatus';
 export { default as CurrencyStatus } from './CurrencyStatus';
 export { default as Hives } from './Hives';

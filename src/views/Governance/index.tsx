@@ -1,8 +1,9 @@
 import React from 'react';
 
 import { Hives } from '@/components';
+import ImageWithModal from '@/components/ImageWithModal';
 
-import Back from '@/views/Governance/Back';
+import governanceBack from '~/images/govervance.png';
 
 export default function Governance() {
   return (
@@ -17,31 +18,59 @@ export default function Governance() {
           </div>
         </Hives>
         <div className="container mx-auto  grid grid-cols-1 gap-8 px-8 text-base leading-10 md:grid-cols-1 md:px-48 md:leading-6">
-          Alvara operates as a Decentralised Autonomous Organisation (DAO) led
-          by ALVA token holders. By staking tokens, holders receive veALVA and
-          gain the ability to participate in protocol governance.
-          <br />
-          <br /> Anyone with a minimum of 2000 veALVA can create proposals, and
-          every veALVA holder is entitled to vote on them. <br />
-          <br />
-          The Alvara DAO operates with a 20% quorum. This means at least 20% of
-          veALVA holders must participate in a vote for it to be valid. Any
-          changes to this quorum can only be made via DAO proposals. Similarly,
-          the pass rate, which stands at 51% for a proposal to succeed, can also
-          be adjusted through DAO proposals.
-          <br />
-          <br />
-          Importantly, enacted proposals can be rescinded by submitting another
-          proposal that fulfils the same quorum and pass rate conditions.
-          <br />
-          <br /> In a nutshell, Alvara Protocol&apos;s governance structure
-          empowers token holders with a clear, democratic mechanism for
-          participating in decision-making. As a DAO, Alvara ensures that the
-          Protocol&apos;s evolution aligns with the best interests of its
-          community members.
+          <div className="grid">
+            <h1 className="text-4xl font-medium text-[#131531]">VeALVA</h1>
+            <div className=" mt-5 h-[2px] w-full bg-gradient-to-r from-fuchsia-400 to-transparent md:w-96"></div>
+          </div>
+          <p>
+            Alvara is a decentralised autonomous organisation (DAO) that is
+            governed by ALVA token holders who have staked their tokens to
+            receive veALVA.
+            <br />
+            <br /> veALVA holders can participate in the management and
+            development of the protocol. The Alvara DAO makes decisions
+            regarding the distribution of ALVA rewards and the allocation of
+            veALVA to different decentralised BTS platforms that have been
+            deployed via Alvara&apos;s platform.
+            <br />
+            <br /> To vote on proposals, you must hold veALVA. However, anyone
+            can view the proposals on the platform. Proposals can be made by any
+            user who holds a minimum of 2000 veALVA, and any user holding veALVA
+            can vote on a proposal.
+            <br />
+            <br />
+          </p>
+          <div className="grid">
+            <h1 className="text-4xl font-medium text-[#131531]">
+              Voting Mechanism
+            </h1>
+            <div className=" mt-5 h-[2px] w-full bg-gradient-to-r from-fuchsia-400 to-transparent md:w-96"></div>
+          </div>
+          <p>
+            The quorum for the Alvara DAO is 20%, which means that at least 20%
+            of the veALVA holders must participate in a vote for it to be valid.
+            This quorum can only be altered via proposals made to the DAO. The
+            pass rate, which is the percentage of votes required for a proposal
+            to be successful, is 51%. This pass rate can also be altered via
+            proposals to the DAO. <br />
+            <br /> Enacted proposals can be reversed by submitting another
+            proposal that meets the same pass rate and quorum requirements.{' '}
+            <br />
+            <br /> To summarise, the Alvara Protocol&apos;s governance structure
+            provides a transparent and democratic way for token holders to
+            participate in decision-making. The Alvara DAO, as a decentralised
+            autonomous organisation, ensures that the protocol&apos;s
+            development and management aligns with the interests of its users.
+          </p>
         </div>
         <div className=" hidden md:grid">
-          <Back />
+          {/* <Back /> */}
+          <ImageWithModal
+            src={governanceBack}
+            alt="governance"
+            width={833}
+            height={483}
+          />
         </div>
         <div className="block h-[2200px] w-full bg-[url('/images/governance/mobile-back.svg')] bg-cover bg-center bg-no-repeat md:hidden"></div>
       </section>

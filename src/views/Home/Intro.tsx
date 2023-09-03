@@ -1,13 +1,11 @@
 import React from 'react';
 
-import { NextImage } from '@/components';
-
-import logo from '~/images/logo.png';
+import TokenGroup from '@/views/Home/components/TokenGroup';
 
 export default function Intro() {
   return (
-    <div className="container mx-auto mb-10 flex w-full flex-col  items-center justify-around gap-8 p-5 md:flex-row  md:px-20">
-      <section className="flex flex-col gap-12 md:w-1/2 ">
+    <div className=" container mx-auto flex w-full flex-col items-center justify-between gap-8 p-5 lg:flex-row  ">
+      <section className="flex flex-col gap-12 lg:w-1/2 ">
         <span className="bg-gradient-to-r from-purple-650 to-fuchsia-450 bg-clip-text text-3xl text-transparent">
           ALVARA PROTOCOL
         </span>
@@ -34,13 +32,8 @@ export default function Intro() {
           the Alvara Protocol.
         </p>
       </section>
-      <NextImage
-        className="h-64 w-64 md:h-80 md:w-80 "
-        width={380}
-        height={380}
-        src={logo}
-        alt="top-right-hives"
-      />
+
+      <TokenGroup />
     </div>
   );
 }

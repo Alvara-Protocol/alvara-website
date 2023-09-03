@@ -144,15 +144,10 @@ export default function Team() {
         </div>
         <div className="mx-5 mb-10 md:mx-0">
           <p className=" leading-10  text-gray-300 md:max-w-2xl">
-            The Alvara Protocol is a transformative platform in the DeFi space
-            designed to democratise the world of fund management. Built on the
-            newly developed ERC-BTS token standard, Alvara provides an
-            innovative tokenised fund factory that paves the way for anyone to
-            become a fund manager. This unique ecosystem maintains complete
-            transparency, allowing other investors to confidently contribute to
-            the fund. Alvara adds a new dimension to decentralised finance by
-            revolutionising how we perceive and engage with fund management as
-            managers and investors.
+            Basket funds are number one for a reason - they provide a low risk,
+            low cost, diversified and transparent investment opportunity. For
+            the first time, that opportunity is available to anyone. Only with
+            Alvara.
           </p>
 
           <div className="mb-5 mt-5 h-[2px] w-full bg-gradient-to-r from-fuchsia-400 to-transparent"></div>
@@ -291,40 +286,34 @@ export default function Team() {
             <h1 className="text-xl font-bold text-black">Yield Optimisation</h1>
           </div>
           <p className="px-7">
-            Every ERC-BTS houses 100% collateralised underlying assets. These
-            assets can be employed in non-custodial yield generation strategies
-            through Alvara&apos;s partners. The rewards are cycled back into the
-            fund to increase total AUM, or can be dispersed to contributors as
-            rewards.
+            Every ERC-BTS contains 100% collateralised underlying assets. These
+            assets are utilized in yield generation strategies via our partners,
+            with the rewards being fed back into the fund and distributed to
+            share holders as dividends.
           </p>
         </div>
         <div>
           <div className="flex items-center">
             <div className="mr-4 h-3 w-3 rounded-full bg-fuchsia-400"></div>
             <h1 className="text-xl font-bold text-black">
-              Pioneering Advantage.
+              First Mover Advantage.
             </h1>
           </div>
           <p className="px-7">
-            Alvara boasts the first-mover advantage, constructing the very first
-            comprehensive protocol integrating a decentralised exchange,
-            creation, and management portal. We are bringing tokenised funds to
-            DeFi like never before.
+            Alvara has first mover advantage, building the very first one-stop
+            protocol with a decentralised exchange, creation and management
+            portal. Bringing tokanised funds to DeFi like never before.
           </p>
         </div>
         <div>
           <div className="flex items-center">
             <div className="mr-4 h-3 w-3 rounded-full bg-fuchsia-400"></div>
-            <h1 className="text-xl font-bold text-black">
-              {' '}
-              Economical Transactions.
-            </h1>
+            <h1 className="text-xl font-bold text-black"> Low Cost.</h1>
           </div>
           <p className="px-7">
-            Alvara smart contracts purchase underlying assets through APIs
-            linked to leading DEXs. This makes the costs of creating, redeeming,
-            and rebalancing considerably cheaper than fully on-chain
-            alternatives.
+            Underlying assets are purchased through APIs linked to leading DEXs,
+            making the costs of creating, redeeming and rebalancing much cheaper
+            than fully on-chain alternatives.
           </p>
         </div>
       </div>

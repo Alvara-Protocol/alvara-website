@@ -1,12 +1,9 @@
 import { Dialog, Transition } from '@headlessui/react';
 import clsx from 'clsx';
-import { useRouter } from 'next/router';
 import * as React from 'react';
 
 import { NextImage } from '@/components';
 import UnstyledLink from '@/components/links/UnstyledLink';
-import { RoadMapModal } from '@/components/Modals';
-import TokenomicsModal from '@/components/Modals/TokenomicsModal';
 import { HamburgerIcon } from '@/components/Svg';
 
 interface MobileLinkProps extends React.PropsWithChildren {
@@ -25,16 +22,12 @@ const titles = [
   { title: 'HiveX', link: '/hivex' },
   { title: 'About Alvara', link: '/team' },
   { title: 'News', link: '/news' },
+  { title: 'Faq', link: '/faq' },
 ];
 
 export default function Header() {
   const [isOpen, setIsOpen] = React.useState(false);
-  const [scroll, setScroll] = React.useState(false);
-  const [isPresale, setIsPresale] = React.useState(false);
-  const router = useRouter();
   const [flag, setFlag] = React.useState(false);
-  const [showTokenomic, setShowTokenomic] = React.useState(false);
-  const [showRoadMap, setShowRoadMap] = React.useState(false);
 
   function closeModal() {
     setIsOpen(false);
@@ -44,25 +37,11 @@ export default function Header() {
     setIsOpen(true);
   }
 
-  React.useEffect(() => {
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 50) {
-        setScroll(true);
-      } else {
-        setScroll(false);
-      }
-    });
-
-    setIsPresale(router.pathname === '/presale');
-  }, [router.pathname]);
-
   return (
     <header
       className={clsx(
-        'fixed top-0 z-50 w-full py-[18px] font-montserrat',
-        scroll
-          ? 'bg-opacity-80 bg-gradient-to-r from-[#10122A]  to-[#3F1960] shadow backdrop-blur-sm'
-          : 'bg-transparent shadow-none',
+        'fixed top-0 z-50 w-full py-[18px] font-[Poppins]',
+        ' bg-gradient-to-r  from-[#101229] to-[#331752] shadow-lg backdrop-blur-sm',
       )}
     >
       <div className="layout flex h-14 items-center justify-between gap-40">
@@ -200,7 +179,7 @@ export default function Header() {
                   href={title.link}
                   className={clsx(
                     '  text-gray-400 hover:text-opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75',
-                    isPresale && !scroll ? 'text-white' : 'text-white',
+                    'text-white',
                   )}
                 >
                   {title.title}
@@ -259,11 +238,9 @@ export default function Header() {
             </li>
           </ul>
         </nav>
-        <div className="hidden md:block"></div>
-        <div className="hidden md:block"></div>
+        <div className="hidden lg:block"></div>
+        <div className="hidden lg:block"></div>
       </div>
-      <TokenomicsModal show={showTokenomic} setShow={setShowTokenomic} />
-      <RoadMapModal show={showRoadMap} setShow={setShowRoadMap} />
     </header>
   );
 }

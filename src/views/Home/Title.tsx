@@ -6,14 +6,12 @@ import UnstyledLink from '@/components/links/UnstyledLink';
 export default function Title() {
   return (
     <Hives className="flex flex-col items-center gap-8 p-10 pt-[150px] md:pt-[200px]">
-      <h1 className="text-center text-3xl font-bold leading-[70px] text-gray-400 md:text-4xl ">
-        Tokenised Funds For A Defi Future
+      <h1 className="text-center text-3xl font-bold leading-[70px] text-gray-400 md:text-5xl ">
+        Tokenised Funds For <br /> A Defi Future
       </h1>
       <p className="mt-8 max-w-5xl text-center text-lg text-gray-400">
-        A state-of-the-art trading platform designed to empower the next wave of
-        fund managers. <br />
-        <br />
-        Harness the power of decentralisation. <br />
+        A cutting-edge trading platform empowering the next generation of fund
+        managers.
         <br />
         Build. Manage. Earn.
       </p>

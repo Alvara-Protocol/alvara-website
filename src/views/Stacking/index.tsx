@@ -1,10 +1,11 @@
 import React from 'react';
 
 import { Button, Hives, NextImage } from '@/components';
-
-import Back from '@/views/Stacking/Back';
+import ImageWithModal from '@/components/ImageWithModal';
+import UnstyledLink from '@/components/links/UnstyledLink';
 
 import exclamationSvg from '~/images/bts-factory/exclamation.png';
+import StakeAlvaBack from '~/images/stake-alva.png';
 
 export default function Staking() {
   return (
@@ -19,33 +20,56 @@ export default function Staking() {
           </div>
         </Hives>
         <div className="container mx-auto grid grid-cols-1  gap-8 px-8 text-base leading-10 md:grid-cols-1 md:px-48 md:leading-6">
-          At Alvara, we prioritise delivering rewards and benefits to our users,
-          integrating this ethos into every aspect of our development.
-          <br />
-          <br /> By staking your ALVA tokens on our platform, you unlock access
-          to the Staking Rewards Vault (SRV). This vault is replenished with a
-          percentage of all fees collected by the platform, meaning stakers can
-          claim rewards weekly. <br />
-          <br />
-          Your claimable rewards are based on your staked ALVA&apos;s proportion
-          of the total stake, considering specific locking periods. For example,
-          if you lock your tokens for 4 years, you&apos;re eligible to claim
-          from a specific pool each week, calculated based on your staked ALVA
-          balance relative to the total staked across all pools.
-          <br />
-          <br /> Moreover, you can stake your BTS LP tokens to get a slice of
-          the weekly ALVA rewards designated to your ERC-BTS. But remember, this
-          applies if your BTS LP tokens belong to an ERC-BTS with an open
-          staking pool on our platform. If you want to propose a staking pool
-          for a fund, do so within Alvara DAO and earn community approval.
-          Approved veALVA holders can allocate their tokens weekly during
-          &quot;The Dance&quot;. Only staked BTS LP tokens can receive rewards,
-          calculated based on supply, user balance, and locking period.
-          <br />
-          <br /> The compounding rewards feature provides the option to boost
-          your rewards. If used, your rewards will be re-invested to purchase
-          and stake additional ALVA, enhancing your share of the total pool and
-          the subsequent fee rewards. Note that this is the only way to increase
+          <div className="grid">
+            <h1 className="text-4xl font-medium text-[#131531]">
+              Endless Reward Cycle
+            </h1>
+            <div className=" mt-5 h-[2px] w-full bg-gradient-to-r from-fuchsia-400 to-transparent md:w-96"></div>
+          </div>
+          <p>
+            At Alvara, we prioritise delivering rewards and benefits to our
+            users, integrating this ethos into every aspect of our development.{' '}
+            <br />
+            <br />
+            By staking your ALVA tokens on our platform, you unlock access to
+            the Staking Rewards Vault (SRV). This vault is replenished with a
+            percentage of all fees collected by the platform, meaning stakers
+            can claim rewards weekly. <br />
+            <br />
+          </p>
+          <div className="grid">
+            <h1 className="text-4xl font-medium text-[#131531]">
+              Rewards Calculation
+            </h1>
+            <div className=" mt-5 h-[2px] w-full bg-gradient-to-r from-fuchsia-400 to-transparent md:w-96"></div>
+          </div>
+          <p>
+            Your claimable rewards are based on your staked ALVA&apos;s
+            proportion of the total stake, considering specific locking periods.
+            For example, if you lock your tokens for 4 years, you&apos;re
+            eligible to claim from a specific pool each week, calculated based
+            on your staked ALVA balance relative to the total staked across all
+            pools.
+            <br />
+            <br /> Moreover, you can stake your BTS LP tokens to get a slice of
+            the weekly ALVA rewards designated to your ERC-BTS. But remember,
+            this applies if your BTS LP tokens belong to an ERC-BTS with an open
+            staking pool on our platform. If you want to propose a staking pool
+            for a fund, do so within Alvara DAO and earn community approval.
+            Approved veALVA holders can allocate their tokens weekly during
+            &quot;The Dance&quot;. Only staked BTS LP tokens can receive
+            rewards, calculated based on supply, user balance, and locking
+            period.
+            <br />
+          </p>
+          <div className="grid">
+            <h1 className="text-4xl font-medium text-[#131531]">The Dance</h1>
+            <div className=" mt-5 h-[2px] w-full bg-gradient-to-r from-fuchsia-400 to-transparent md:w-96"></div>
+          </div>
+          The compounding rewards feature provides the option to boost your
+          rewards. If used, your rewards will be re-invested to purchase and
+          stake additional ALVA, enhancing your share of the total pool and the
+          subsequent fee rewards. Note that this is the only way to increase
           your ALVA stake without resetting your locking period, but it
           won&apos;t replenish your veALVA balance. <br />
           <br />
@@ -57,7 +81,7 @@ export default function Staking() {
             At Alvara, we&apos;re committed to delivering a secure and rewarding
             staking experience. Join our{' '}
             <a
-              className=" font-bold "
+              className=" underline "
               target="_blank"
               rel="noreferrer"
               href="https://t.me/alvaraprotocol"
@@ -66,7 +90,7 @@ export default function Staking() {
             </a>{' '}
             or{' '}
             <a
-              className=" font-bold "
+              className=" underline "
               target="_blank"
               rel="noreferrer"
               href="http://discord.gg/pHDDF2MS8v"
@@ -75,9 +99,29 @@ export default function Staking() {
             </a>{' '}
             today and explore the staking platform further!
           </div>
+          <div className="hidden gap-5 md:flex">
+            <UnstyledLink href="http://discord.gg/pHDDF2MS8v ">
+              <Button className="rounded-lg px-8 py-3 text-xl font-light ">
+                Discord
+              </Button>
+            </UnstyledLink>
+            <UnstyledLink href="http://t.me/alvaraprotocol">
+              <Button
+                variant="light"
+                className="!rounded-lg border border-[#8F17D7] px-8 py-3 text-xl font-light "
+              >
+                Telegram
+              </Button>
+            </UnstyledLink>
+          </div>
         </div>
         <div className="hidden md:block">
-          <Back />
+          <ImageWithModal
+            src={StakeAlvaBack}
+            width={831}
+            height={468}
+            alt="stakeAlva"
+          />
         </div>
         <div className=" flex h-[1300px]   w-full place-content-between bg-[url('/images/staking/mobile-back.svg')] bg-cover bg-center bg-no-repeat  pt-[440px] md:hidden">
           <div

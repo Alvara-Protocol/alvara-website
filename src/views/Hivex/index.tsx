@@ -1,10 +1,10 @@
 import React from 'react';
 
 import { Button, Hives, NextImage } from '@/components';
-
-import Back from '@/views/Hivex/Back';
+import ImageWithModal from '@/components/ImageWithModal';
 
 import exclamationSvg from '~/images/bts-factory/exclamation.png';
+import hiveXBack from '~/images/hivex.png';
 
 export default function Hivex() {
   return (
@@ -18,17 +18,17 @@ export default function Hivex() {
         </div>
       </Hives>
       <div className="container mx-auto grid grid-cols-1 gap-8 px-8 text-base leading-10 md:grid-cols-1 md:px-48 md:leading-6">
-        Our platform offers a unique opportunity for users to invest in BTS
-        tokens and receive BTS LP tokens in return, representing their stake in
-        the BTS. These tokens can then be committed to the HiveX liquidity pool.
-        This can be done individually or paired with another asset such as ETH,
-        USDT, AVAX, or BNB. In exchange, users are granted HiveX LP tokens,
-        signifying their stake in the pool. As liquidity providers, users will
-        share 30% of all transaction fees, distributed based on the proportion
-        of their LP holdings.
+        In our platform users can add capital to a ERC-BTS and receive ERC-BTS
+        LP tokens, which represent their stake in the BTS. These tokens can be
+        deposited into the HiveX liquidity pool, either on their own or with a
+        paired asset, such as ETH/USDT/AVAX/BNB, and in return, users receive
+        HiveX LP tokens representing their share in the pool. As a liquidity
+        provider, users will receive 30% of transaction fees, distributed
+        proportionately based on their LP holdings.
       </div>
       <div className=" hidden md:grid">
-        <Back />
+        {/* <Back /> */}
+        <ImageWithModal src={hiveXBack} alt="hiv-x" width={1118} height={561} />
       </div>
       <div className="block h-[1800px] w-full bg-[url('/images/hivex/mobile-back.svg')] bg-cover bg-center bg-no-repeat md:hidden">
         <div className=" group relative mt-[680px] flex h-8 w-full place-content-center   bg-center bg-no-repeat ">

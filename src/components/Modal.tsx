@@ -33,14 +33,14 @@ export default function Modal({
             >
               <Dialog.Panel
                 className={
-                  'h-5/6 w-11/12 transform overflow-hidden bg-gray-400 p-6 text-left align-middle shadow-xl transition-all ' +
+                  'h-5/6 w-11/12  transform overflow-hidden bg-gray-400 p-6 text-left align-middle shadow-xl transition-all ' +
                   className
                 }
               >
                 <div className="inline-flex w-full justify-end">
                   <button
                     type="button"
-                    className="inline-flex justify-center rounded-full border border-transparent bg-gray-500/30 p-2 text-sm font-medium text-purple-300 hover:bg-gray-500/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                    className="fixed right-20 top-20 z-50 inline-flex justify-center rounded-full border border-transparent bg-gray-500/30 p-3 text-xl font-medium text-purple-300 hover:bg-gray-500/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                     onClick={closeModal}
                   >
                     X
