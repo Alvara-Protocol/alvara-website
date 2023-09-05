@@ -191,11 +191,11 @@ export default function Header() {
                 onClick={() => setFlag(!flag)}
                 href=""
                 id="docs"
-                className=" text-gray-400 hover:text-opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
+                className="  text-gray-400 hover:text-opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
               >
                 Docs
               </UnstyledLink>
-              <div className="absolute hidden gap-3 p-3 group-hover:grid">
+              <div className="absolute hidden gap-3 rounded-lg bg-gradient-to-r from-[#101229] to-[#331752]  p-3 group-hover:grid">
                 <a
                   href="./Alvara_Protocol_White_Paper.pdf"
                   className=" h over:cursor-pointer text-base text-gray-400 hover:text-opacity-80"

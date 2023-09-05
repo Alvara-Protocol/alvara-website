@@ -66,7 +66,7 @@ export default function Intro() {
             <br /> The ERC-BTS can now be minted by making a minimum
             contribution of 1 ETH (or equivalent in any currency).{' '}
           </p>
-          <ProcessImage className="h-full" />
+          <ProcessImage className=" w-full md:h-full md:w-[500px] " />
         </div>
         <div className="grid">
           <h1 className="text-4xl font-medium text-[#131531]">Fee Structure</h1>

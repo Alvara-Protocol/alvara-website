@@ -38,7 +38,7 @@ export default function Intro2() {
           </Button>
         </UnstyledLink>
       </section>
-      <div className=" lg-w-1/2 max-w-xl items-center justify-center   lg:min-w-[500px]">
+      <div className=" lg-w-1/2 max-w-xl items-center justify-center py-5   lg:min-w-[500px]">
         <AppScreenImage className="h-full w-full" />
       </div>
     </div>

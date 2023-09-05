@@ -143,7 +143,7 @@ export default function Team() {
           </h1>
         </div>
         <div className="mx-5 mb-10 md:mx-0">
-          <p className=" leading-10  text-gray-300 md:max-w-2xl">
+          <p className=" text-base  leading-10 text-gray-300 md:max-w-2xl md:leading-6 ">
             Basket funds are number one for a reason - they provide a low risk,
             low cost, diversified and transparent investment opportunity. For
             the first time, that opportunity is available to anyone. Only with
@@ -230,7 +230,7 @@ export default function Team() {
           </div>
         </div>
       </Hives>
-      <div className="grid gap-10 p-10 leading-10 md:grid-cols-2 md:p-20">
+      <div className="grid gap-10 p-10 text-base leading-10 md:grid-cols-2  md:p-20 md:leading-6">
         <div>
           <h1 className="font-montserrat text-4xl font-medium  md:text-5xl">
             What makes Alvara so sweet?

@@ -75,7 +75,7 @@ export default function Footer() {
         >
           <input
             type="email"
-            className="font-inter h-12  rounded-xl bg-gray-400 px-3 font-normal text-[black] placeholder-[#94A3B8] outline-none lg:min-w-[30rem] "
+            className="font-inter h-12  w-full rounded-xl bg-gray-400 px-3 font-normal text-[black] placeholder-[#94A3B8] outline-none lg:min-w-[30rem] "
             name="email"
             placeholder="Email"
             required

@@ -16,7 +16,7 @@ export default function Faq() {
         </div>
       </Hives>
 
-      <div className=" relative flex flex-col justify-center gap-8 rounded-xl px-5 text-sm leading-10 text-black md:mx-auto  md:border-2 md:border-[#808080/10] md:px-48 md:py-14 ">
+      <div className=" relative flex flex-col justify-center gap-8 rounded-xl px-5 text-base  leading-10 text-black  md:mx-auto md:border-2  md:border-[#808080/10] md:px-48 md:py-14 md:leading-6 ">
         <div className="absolute -right-32 top-32 z-10  hidden h-96 w-96 bg-[#FB3FFF]/10 blur-[70.06295776367188px] md:block "></div>
         <div className="absolute -left-32 bottom-32 z-10  hidden h-96 w-96 bg-[#FB3FFF]/10 blur-[70.06295776367188px] md:block "></div>
         <QuestionDrop title="What is the Alvara Protocol?">

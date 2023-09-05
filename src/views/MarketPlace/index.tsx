@@ -18,7 +18,7 @@ export default function MarketPlace() {
             <div className="mb-32 mt-5 h-[2px] w-full bg-gradient-to-r from-fuchsia-400 to-transparent"></div>
           </div>
         </Hives>
-        <div className="container mx-auto grid grid-cols-1 gap-8 px-8 text-base leading-10 md:grid-cols-1 md:px-48 md:leading-6">
+        <div className="container mx-auto grid grid-cols-1 gap-8 px-8 text-base leading-10 md:grid-cols-1 md:px-48 md:leading-6 ">
           <div className="grid">
             <h1 className="text-4xl font-medium text-[#131531]">
               Buy and Sell BTS tokens
@@ -70,8 +70,8 @@ export default function MarketPlace() {
             alt="market-place"
           />
         </div>
-        <div className="block h-[1800px] w-full bg-[url('/images/market/mobile-back.svg')] bg-cover bg-center bg-no-repeat md:hidden">
-          <div className=" group relative mt-[1400px] flex h-8 w-full place-content-center   bg-center bg-no-repeat ">
+        <div className="block h-[1705px] w-full bg-[url('/images/market/mobile-back.svg')] bg-cover bg-center bg-no-repeat md:hidden">
+          <div className=" group relative mt-[1325px] flex h-8 w-full place-content-center   bg-center bg-no-repeat ">
             <Button className=" place-self-center bg-none px-0">
               <NextImage
                 className="m-auto "

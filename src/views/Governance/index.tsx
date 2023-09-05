@@ -72,7 +72,7 @@ export default function Governance() {
             height={483}
           />
         </div>
-        <div className="block h-[2200px] w-full bg-[url('/images/governance/mobile-back.svg')] bg-cover bg-center bg-no-repeat md:hidden"></div>
+        <div className="block h-[1940px] w-full bg-[url('/images/governance/mobile-back.svg')] bg-cover  bg-center bg-no-repeat  md:hidden"></div>
       </section>
     </main>
   );

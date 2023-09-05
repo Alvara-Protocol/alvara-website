@@ -12,7 +12,7 @@ export default function MobileBtsFactory({
   return (
     <div
       className={
-        "h-[2300px] bg-[url('/images/bts-factory/mobile-sub-back.png')] bg-cover bg-center bg-no-repeat  py-20 " +
+        "h-[2300px] w-full bg-[url('/images/bts-factory/mobile-sub-back.png')] bg-cover bg-center bg-no-repeat  " +
         className
       }
     >
@@ -27,7 +27,7 @@ export default function MobileBtsFactory({
         <p className="pl-2 tracking-tight text-fuchsia-400"> BTS with ETH</p>
       </div>
       <div className="px-15 mt-10">
-        <div className="outline rounded-2xl bg-[#1C043C] px-16 py-10 text-center text-2xl font-bold text-purple-50 outline-1 outline-fuchsia-450">
+        <div className="outline mx-2 rounded-2xl bg-[#1C043C] px-16 py-10 text-center text-2xl font-bold text-purple-50 outline-1 outline-fuchsia-450">
           Manager
         </div>
       </div>
@@ -36,7 +36,7 @@ export default function MobileBtsFactory({
         <Exclamation title="Manager gets LP tokens" />
         <Exclamation title="Management fee" />
       </div>
-      <div className="mt-10 rounded-lg border border-dashed border-[#8A15D5] bg-[#1C043C] p-5 px-5 text-center text-base text-white">
+      <div className="mx-3 mt-10 rounded-lg border border-dashed border-[#8A15D5] bg-[#1C043C] p-5 px-5 text-center text-base text-white">
         Creation, contribution and redeem will be divided according to token
         weightings
       </div>

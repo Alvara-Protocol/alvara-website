@@ -13,7 +13,7 @@ export default function News() {
           <div className="mb-32 mt-5 h-[2px] w-full bg-gradient-to-r from-fuchsia-400 to-transparent"></div>
         </div>
       </Hives>
-      <div className="container mx-auto grid grid-cols-1 gap-8 px-8 text-sm leading-10 text-black md:grid-cols-1 md:px-48">
+      <div className="container mx-auto grid grid-cols-1 gap-8 px-8 text-base  leading-10 text-black  md:grid-cols-1 md:px-48 md:leading-6">
         Welcome to your one-stop hub for everything Alvara Protocol related.
         Fancy deep-diving into insightful blogs? Looking for detailed analysis?
         Or, want the latest news on how the Protocol is making financial
@@ -33,7 +33,7 @@ export default function News() {
         >
           <input
             type="email"
-            className="font-inter h-12 items-center  rounded-xl bg-gray-400 px-3 font-normal text-[black] placeholder-[#94A3B8] outline-none lg:min-w-[30rem] "
+            className="font-inter h-12 w-full items-center  rounded-xl bg-gray-400 px-3 font-normal text-[black] placeholder-[#94A3B8] outline-none lg:min-w-[30rem] "
             name="email"
             placeholder="Email"
             required

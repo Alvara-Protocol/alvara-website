@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { Button, Hives, ItemWithModal, NextImage } from '@/components';
-
-import Back from '@/views/Hivex/Back';
+import { Button, Hives, NextImage } from '@/components';
+import ImageWithModal from '@/components/ImageWithModal';
 
 import exclamationSvg from '~/images/bts-factory/exclamation.png';
+import HivexBack from '~/images/hivex.png';
 
 export default function Hivex() {
   return (
@@ -27,12 +27,18 @@ export default function Hivex() {
         proportionately based on their LP holdings.
       </div>
       <div className=" hidden items-center justify-center md:grid">
-        <ItemWithModal className="h-[478px] w-[830px]">
+        {/* <ItemWithModal className="h-[478px] w-[830px]">
           <Back />
-        </ItemWithModal>
+        </ItemWithModal> */}
+        <ImageWithModal
+          src={HivexBack}
+          width={833}
+          height={478}
+          alt="hivex-back"
+        />
       </div>
-      <div className="block h-[1800px] w-full bg-[url('/images/hivex/mobile-back.svg')] bg-cover bg-center bg-no-repeat md:hidden">
-        <div className=" group relative mt-[680px] flex h-8 w-full place-content-center   bg-center bg-no-repeat ">
+      <div className="block h-[1513px] w-full bg-[url('/images/hivex/mobile-back.svg')] bg-cover bg-clip-padding bg-center bg-no-repeat bg-origin-padding px-6 md:hidden">
+        <div className=" group relative mt-[565px] flex h-8 w-full place-content-center   bg-center bg-no-repeat ">
           <Button className=" place-self-center bg-none px-0">
             <NextImage
               className="m-auto "
