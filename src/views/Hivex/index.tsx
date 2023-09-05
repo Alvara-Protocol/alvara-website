@@ -27,6 +27,7 @@ export default function Hivex() {
         share 30% of all transaction fees, distributed based on the proportion
         of their LP holdings.
       </div>
+
       <div className=" hidden md:grid">
         <Back />
       </div>
