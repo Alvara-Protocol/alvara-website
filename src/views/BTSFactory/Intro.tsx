@@ -10,7 +10,7 @@ import BtsBack from '~/images/bts-back.png';
 
 export default function Intro() {
   return (
-    <section className="flex flex-col gap-28 bg-gray-400 pb-20">
+    <section className=" flex flex-col gap-28 bg-gray-400 pb-20">
       <Hives className="flex flex-col items-center gap-10 px-4  pt-40 md:flex-row md:justify-around md:px-11">
         <div className="grid">
           <h1 className="z-10 text-center text-3xl leading-normal  text-gray-400 md:text-[60px]">
@@ -19,7 +19,7 @@ export default function Intro() {
           <div className="mb-32 mt-5 h-[2px] w-full bg-gradient-to-r from-fuchsia-400 to-transparent"></div>
         </div>
       </Hives>
-      <div className="lg-px-12 container mx-auto grid grid-cols-1 gap-8 px-8 text-base leading-10 md:grid-cols-1 md:leading-6 ">
+      <div className="container  mx-auto grid grid-cols-1 gap-8 px-8 text-base leading-10 md:grid-cols-1 md:px-12 md:leading-6 lg:px-48 ">
         <div className="grid">
           <h1 className="text-4xl font-medium text-[#131531]">
             Revolutionary Technology

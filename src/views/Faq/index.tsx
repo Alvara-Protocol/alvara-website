@@ -83,7 +83,7 @@ export default function Faq() {
         <QuestionDrop title="How can other users invest in my BTS?">
           <p className=" text-[11px] font-normal text-[#6F6C90] md:text-lg">
             Users must navigate the Alvara platform&apos;s BTS Factory
-            Contribution page to invest in a BTS. Here, they can browse various
+            contribution page to invest in a BTS. Here, they can browse various
             BTSs and select the one they wish to invest in. Once a BTS is
             chosen, they input the amount of ETH they want to contribute and hit
             the &apos;CONTRIBUTE&apos; button. Before they confirm the
@@ -121,7 +121,6 @@ export default function Faq() {
               </li>
             </ol>{' '}
             <br />
-            <br />
             Upon the confirmation of the transaction, the chosen ETH or tokens
             are instantly transferred to the user&apos;s wallet, and the
             corresponding LP tokens are burnt. This ensures a transparent and
@@ -152,7 +151,6 @@ export default function Faq() {
                 related to their BTS&apos; management and future direction.
               </li>
             </ol>{' '}
-            <br />
             <br />
             In essence, your BTS token not only represents your ownership and
             success as a fund manager but also provides you with the tools to
@@ -228,7 +226,6 @@ export default function Faq() {
                 within
               </li>
             </ol>{' '}
-            <br />
             <br />
             This transferability empowers you to manage your assets on the
             Alvara platform in a way that best aligns with your investment

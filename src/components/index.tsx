@@ -4,6 +4,7 @@ export { default as CurrencyStatus } from './CurrencyStatus';
 export { default as Hives } from './Hives';
 export { default as Info } from './Info';
 export { default as InputGroup } from './InputGroup';
+export { default as ItemWithModal } from './ItemWithModal';
 export { default as Modal } from './Modal';
 export { default as NextImage } from './NextImage';
 export * from './Range';

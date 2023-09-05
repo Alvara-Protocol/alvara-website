@@ -100,6 +100,7 @@ export default function TokenGroup() {
           <Ardr className="w-16" /> <Arg className="w-16" />{' '}
           <Ark className="w-16" /> <Arn className="w-16" />{' '}
           <Arnx className="w-16" /> <Ary className="w-16" />{' '}
+          <Bch1 className="w-16" /> <Bcio className="w-16" />
           <Ast className="w-16" /> <Atm className="w-16" />
           <Atom className="w-16" /> <Aud className="w-16" />{' '}
           <Audr className="w-16" /> <Auto className="w-16" />{' '}
@@ -109,7 +110,6 @@ export default function TokenGroup() {
           <Bat1 className="w-16" /> <Bay className="w-16" />{' '}
           <Bcbc className="w-16" /> <Bcc className="w-16" />
           <Bcd className="w-16" /> <Bch className="w-16" />{' '}
-          <Bch1 className="w-16" /> <Bcio className="w-16" />
         </div>
       </Marquee>
       <Marquee gradient={true} autoFill={true}>
@@ -118,14 +118,14 @@ export default function TokenGroup() {
           <Bcpt className="w-16" /> <Bdl className="w-16" />{' '}
           <Beam className="w-16" /> <Bela className="w-16" />{' '}
           <Bix className="w-16" /> <Blcn className="w-16" />
-          <Blk className="w-16" /> <Block className="w-16" />{' '}
-          <Blz className="w-16" /> <Bnb className="w-16" />{' '}
-          <Bnt className="w-16" />
+          <Btc1 className="w-16" /> <Blk className="w-16" />{' '}
+          <Block className="w-16" /> <Blz className="w-16" />{' '}
+          <Bnb className="w-16" /> <Bnt className="w-16" />
           <Bnty className="w-16" /> <Booty className="w-16" />{' '}
-          <Bos className="w-16" /> <Bpt className="w-16" />{' '}
-          <Bq className="w-16" /> <Brd className="w-16" />{' '}
-          <Bsd className="w-16" /> <Bsv className="w-16" />
-          <Btc1 className="w-16" /> <Btc1 className="w-16" />{' '}
+          <Bos className="w-16" /> <Btc1 className="w-16" />
+          <Bpt className="w-16" /> <Bq className="w-16" />{' '}
+          <Brd className="w-16" /> <Bsd className="w-16" />{' '}
+          <Bsv className="w-16" />
           <Btcd className="w-16" /> <Btch className="w-16" />
         </div>
       </Marquee>

@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { Button, Hives, NextImage } from '@/components';
-import ImageWithModal from '@/components/ImageWithModal';
+import { Button, Hives, ItemWithModal, NextImage } from '@/components';
+
+import Back from '@/views/Hivex/Back';
 
 import exclamationSvg from '~/images/bts-factory/exclamation.png';
-import hiveXBack from '~/images/hivex.png';
 
 export default function Hivex() {
   return (
@@ -18,7 +18,7 @@ export default function Hivex() {
         </div>
       </Hives>
       <div className="container mx-auto grid grid-cols-1 gap-8 px-8 text-base leading-10 md:grid-cols-1 md:px-48 md:leading-6">
-        In our platform users can add capital to a ERC-BTS and receive ERC-BTS
+        In our platform users can add capital to an ERC-BTS and receive ERC-BTS
         LP tokens, which represent their stake in the BTS. These tokens can be
         deposited into the HiveX liquidity pool, either on their own or with a
         paired asset, such as ETH/USDT/AVAX/BNB, and in return, users receive
@@ -26,9 +26,10 @@ export default function Hivex() {
         provider, users will receive 30% of transaction fees, distributed
         proportionately based on their LP holdings.
       </div>
-      <div className=" hidden md:grid">
-        {/* <Back /> */}
-        <ImageWithModal src={hiveXBack} alt="hiv-x" width={1118} height={561} />
+      <div className=" hidden items-center justify-center md:grid">
+        <ItemWithModal className="h-[478px] w-[830px]">
+          <Back />
+        </ItemWithModal>
       </div>
       <div className="block h-[1800px] w-full bg-[url('/images/hivex/mobile-back.svg')] bg-cover bg-center bg-no-repeat md:hidden">
         <div className=" group relative mt-[680px] flex h-8 w-full place-content-center   bg-center bg-no-repeat ">

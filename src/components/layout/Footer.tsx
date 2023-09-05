@@ -34,6 +34,16 @@ export default function Footer() {
           <UnstyledLink href="/market-place">Marketplace</UnstyledLink>
           <UnstyledLink href="/hivex">HiveX</UnstyledLink>
           <UnstyledLink href="/news">News</UnstyledLink>
+          <UnstyledLink href="/faq">Faq</UnstyledLink>
+          <UnstyledLink href="/Alvara_Protocol_White_Paper.pdf" target="_blank">
+            White Paper
+          </UnstyledLink>
+          <UnstyledLink href="/Alvara_Tokenomics.pdf" target="_blank">
+            Tokenomics
+          </UnstyledLink>
+          <UnstyledLink href="/Alvara_Roadmap.pdf" target="_blank">
+            Roadmap
+          </UnstyledLink>
         </div>
         <div className="grid content-start gap-3">
           <h1 className="text-lg font-bold ">Staking</h1>
