@@ -1,39 +1,87 @@
 import React from 'react';
 
-import { Button } from '@/components';
-import UnstyledLink from '@/components/links/UnstyledLink';
-import TokenSelectImage from '@/components/Svg/TokenSelectImage';
+import { NextImage } from '@/components';
 
 export default function Hivex() {
   return (
-    <div className="flex w-full flex-col  bg-gradient-to-r from-[#10122A] to-[#3F1960] p-5 py-36 lg:flex-row ">
-      <div className="flex items-center justify-center px-10 ">
-        <TokenSelectImage className=" h-full w-full max-w-xl lg:w-1/2 lg:min-w-[500px]" />
-      </div>
-      <section className="flex flex-col items-center justify-center gap-8 text-gray-400  lg:w-1/2 ">
-        <h1 className="text-4xl">BTS Factory</h1>
-        <div className="h-[2px] w-1/2 bg-gradient-to-r from-purple-650 to-transparent"></div>
-        <p>
-          The traditional prerequisites tied to conventional fund management no
-          longer apply. <br />
-          <br />
-          Alvara&apos;s BTS Factory provides a platform for users to design and
-          mint their unique BTS tokens. <br />
-          In essence, anyone can step into the shoes of a fund manager by
-          incorporating tokens from any supported blockchain into their BTS.
-          <br />
-          <br /> Once minted, the BTS token is held by the creator, granting
-          access to management rights and associated revenue streams. These
-          ownership rights are conveniently transferred to the user in the form
-          of a Non-Fungible Token. Each fund has its own governance system which
-          prevents centralised resource control by the fund manager.
+    <div className=" container mx-auto  flex w-full flex-col gap-[26px] font-montserrat md:flex-row">
+      <div className=" flex flex-col items-center justify-center gap-[26px] rounded-xl border-[1px] border-solid border-gray-500 bg-[#0D0F23] px-10 py-16">
+        <h1 className="w-full text-left text-[24px] font-medium">
+          Thousands of tokens to choose
+        </h1>
+        <p className="w-full text-left font-poppins text-[20px]">
+          Taking our tokens straight from Uniswap, you have access to an
+          unlimited amount of tokens.
         </p>
-        <UnstyledLink href="http://discord.gg/pHDDF2MS8v">
-          <Button variant="primary" className="max-w-max rounded-lg py-4 ">
-            Join The Hive
-          </Button>
-        </UnstyledLink>
-      </section>
+        <NextImage
+          // useSkeleton
+          className="md:mt-7 "
+          src="/images/home/token.png"
+          width="300"
+          height="170"
+          alt="Logo"
+        />
+      </div>
+      <div className="flex flex-col gap-[26px] overflow-hidden">
+        <div className=" relative z-10 flex flex-col items-center justify-start gap-[26px] rounded-xl border-[1px] border-solid border-gray-500 bg-[#0D0F23] px-10 py-10 pb-5">
+          <h1 className="w-full text-left text-[24px] font-medium">
+            My portfolio
+          </h1>
+          <p className="z-10 w-full text-left font-poppins text-[20px]">
+            One place to manage all of your created and contributed baskets with
+            understandable data.
+          </p>
+          <NextImage
+            // useSkeleton
+            className=" absolute -right-20 bottom-0"
+            src="/images/home/Pie.png"
+            width="200"
+            height="200"
+            alt="Pie"
+          />
+          <div className="z-10 hidden w-full flex-wrap items-start justify-start gap-2 md:flex">
+            <div className="flex items-center justify-center rounded-lg bg-[#EC4899] px-2 py-1">
+              GameFi aggressive
+            </div>{' '}
+            <div className="flex items-center justify-center rounded-lg bg-[#A855F7] px-2 py-1">
+              Masterblox
+            </div>{' '}
+            <div className="flex items-center justify-center rounded-lg bg-[#6366F1] px-2 py-1">
+              Metaverse
+            </div>{' '}
+            <div className="flex items-center justify-center rounded-lg bg-[#3B82F6] px-2 py-1">
+              GemFinder
+            </div>{' '}
+            <div className="flex items-center justify-center rounded-lg bg-[#14B8A6] px-2 py-1">
+              Animoca
+            </div>{' '}
+            <div className="flex items-center justify-center rounded-lg bg-[#FACC15] px-2 py-1">
+              DAOs
+            </div>{' '}
+            <div className="flex items-center justify-center rounded-lg bg-[#F59E0B] px-2 py-1">
+              Arrow Capital
+            </div>
+          </div>
+        </div>
+        <div className=" flex flex-col items-center justify-center gap-[26px] rounded-xl border-[1px] border-solid border-gray-500 bg-[#0D0F23] px-10 py-7 md:flex-row">
+          <div className="flex flex-col gap-[26px]">
+            <h1 className="w-full text-left text-[24px] font-medium">
+              Choose your weightings
+            </h1>
+            <p className="w-full text-left font-poppins text-[20px]">
+              Distribute evenly or be meticulous with the weightings of your
+              basket.
+            </p>{' '}
+          </div>
+          <NextImage
+            // useSkeleton
+            src="/images/home/weight.png"
+            width="300"
+            height="100"
+            alt="weigth"
+          />
+        </div>
+      </div>
     </div>
   );
 }

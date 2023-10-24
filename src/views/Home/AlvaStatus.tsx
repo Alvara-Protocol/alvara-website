@@ -1,32 +1,71 @@
 import React from 'react';
 
-import { NextImage } from '@/components';
-
-import AlvaStatusItem from './components/AlvaStatusItem';
-
-import statusBack from '~/images/status-back.png';
+import { Button, LeaderBoardImage, NextImage } from '@/components';
 
 export default function AlvaStatus() {
   return (
-    <section className="relative flex flex-col items-center justify-center gap-10">
-      <h1 className="border-gradient3 border-b-[3px] pb-5 text-center font-montserrat text-4xl font-medium tracking-widest">
-        ALVA in Numbers
-      </h1>
-      <div className="mb-20 grid grid-cols-[repeat(1,minmax(300px,320px))] items-center gap-8 md:grid-cols-[repeat(2,minmax(300px,350px))]">
-        <AlvaStatusItem price="200M" percent={1} description="alva supply" />
-        <AlvaStatusItem
-          price="16M"
-          percent={0.2}
-          description="Circulating Supply at Launch"
-        />
+    <div className=" container mx-auto flex w-full flex-col gap-[26px] py-32 font-montserrat md:flex-row">
+      <div className=" flex flex-col items-center justify-center gap-[26px] rounded-xl border-[1px] border-solid border-gray-500 bg-[#0D0F23] pt-10 md:max-w-[800px] ">
+        <div className="flex flex-col gap-[26px] px-10">
+          <h1 className="w-full text-left text-[24px] font-medium">
+            Leaderboard
+          </h1>
+          <p className="w-full text-left font-poppins text-[20px]">
+            Whether the ERC-BTS is minted from the factory contract, or coded by
+            hand, we will recognize it just like how Opensea recognizes any NFT.
+            Every BTS manager is displayed against everybody else, no matter
+            their circumstances, background or education.
+          </p>
+          <Button
+            variant="ghost"
+            className=" outline self-start rounded-lg outline-1 outline-[#8A15D5]"
+          >
+            Ask for a demo
+          </Button>
+        </div>
+        <LeaderBoardImage className="h-auto w-full" />
       </div>
-      <NextImage
-        className="absolute -bottom-10 right-0 hidden opacity-40  md:block "
-        width={600}
-        height={300}
-        src={statusBack}
-        alt="top-right-hives"
-      />
-    </section>
+      <div className="flex flex-col gap-[26px] overflow-hidden">
+        <div className="  z-10 flex flex-col items-center justify-between gap-[26px] rounded-xl border-[1px] border-solid border-gray-500 bg-[#0D0F23] pl-5 pt-5 md:flex-row">
+          <div className="flex flex-col gap-[26px]">
+            <h1 className=" text-left text-[24px] font-medium">Learn</h1>
+            <p className="z-10 text-left font-poppins text-[20px]">
+              Read our whitepaper
+            </p>
+            <a
+              href="http://"
+              target="_blank"
+              rel="noopener noreferrer"
+              className=" text-left"
+            >
+              Whitepaper
+            </a>
+          </div>
+          <NextImage
+            // useSkeleton
+            className=""
+            src="/images/home/book-bg.png"
+            width="200"
+            height="200"
+            alt="book"
+          />
+        </div>
+        <div className=" flex grow flex-col items-start justify-start gap-[26px] rounded-xl border-[1px] border-solid border-gray-500 bg-[#0D0F23] bg-[url('/images/home/chart-bg.png')] bg-cover bg-center bg-no-repeat px-10 py-7 pb-40">
+          <h1 className="text-left text-[24px] font-medium">
+            Choose your weightings
+          </h1>
+          <p className="text-left font-poppins text-[20px]">
+            Stay updated on your fund and others.
+            <br />
+            <br /> Find data ranging from contribution activity, marketplace
+            listings all the way to the funds latest acquisitions and
+            performance.
+            <br />
+            <br /> You now have the ability to find the fund perfect for you, or
+            better yet, create your own.
+          </p>{' '}
+        </div>
+      </div>
+    </div>
   );
 }

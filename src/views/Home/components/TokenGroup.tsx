@@ -76,8 +76,8 @@ import Pac from '@/components/Svg/Tokens/Pac';
 
 export default function TokenGroup() {
   return (
-    <div className="w-full  lg:w-1/2">
-      <Marquee gradient={true} autoFill={true}>
+    <div className="w-full md:w-1/2 ">
+      <Marquee autoFill={true} gradient gradientColor={[15, 23, 42]}>
         <div className="ml-5 flex gap-5">
           <Btc className="w-16" /> <Give className="w-16" />{' '}
           <Inch className="w-16" /> <Pac className="w-16" />{' '}
@@ -95,7 +95,7 @@ export default function TokenGroup() {
           <Appc className="w-16" />
         </div>
       </Marquee>
-      <Marquee gradient={true} autoFill={true}>
+      <Marquee autoFill={true} gradient gradientColor={[15, 23, 42]}>
         <div className="ml-5 flex gap-5">
           <Ardr className="w-16" /> <Arg className="w-16" />{' '}
           <Ark className="w-16" /> <Arn className="w-16" />{' '}
@@ -112,7 +112,7 @@ export default function TokenGroup() {
           <Bcd className="w-16" /> <Bch className="w-16" />{' '}
         </div>
       </Marquee>
-      <Marquee gradient={true} autoFill={true}>
+      <Marquee autoFill={true} gradient gradientColor={[15, 23, 42]}>
         <div className="ml-5 flex gap-5">
           <Bcn className="w-16" /> <Bco className="w-16" />{' '}
           <Bcpt className="w-16" /> <Bdl className="w-16" />{' '}

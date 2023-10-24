@@ -3,8 +3,6 @@ import { ImSpinner2 } from 'react-icons/im';
 
 import clsxm from '@/lib/clsxm';
 
-import { ArrowIcon } from '@/components/Svg';
-
 enum ButtonVariant {
   'primary',
   'outline',
@@ -94,10 +92,8 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         )}
         {variant === 'outline' ? (
           <>
-            <span className="border-gradient2 w-full border-r pr-4">
-              {children}
-            </span>
-            <ArrowIcon className="ml-4" />
+            <span className="border-gradient2 w-full ">{children}</span>
+            {/* <ArrowIcon className="ml-4" /> */}
           </>
         ) : (
           children

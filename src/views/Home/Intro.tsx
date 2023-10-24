@@ -1,21 +1,32 @@
 import React from 'react';
 
+import { NextImage } from '@/components';
+
 import TokenGroup from '@/views/Home/components/TokenGroup';
 
 export default function Intro() {
   return (
-    <div className=" container mx-auto flex w-full flex-col items-center justify-between gap-8 p-5 lg:flex-row  ">
-      <section className="flex flex-col gap-12 lg:w-1/2 ">
-        <span className="bg-gradient-to-r from-purple-650 to-fuchsia-450 bg-clip-text text-3xl text-transparent">
+    <div className=" container mx-auto flex w-full flex-col items-center justify-between gap-8 p-5 md:flex-row  ">
+      <section className="flex flex-col gap-12 md:w-1/2 ">
+        {/* <span className="bg-gradient-to-r from-purple-650 to-fuchsia-450 bg-clip-text text-3xl text-transparent">
           ALVARA PROTOCOL
-        </span>
+        </span> */}
+        <div className="flex max-w-fit items-center gap-5 rounded-xl bg-[#1B1F489C] px-4 py-[10px]">
+          <NextImage
+            useSkeleton
+            src="/images/logo.png"
+            width="30"
+            height="30"
+            alt="Logo"
+          />
+          ALVARA PROTOCOL
+        </div>
         <div>
           <h1 className="text-4xl tracking-wider">
-            We&apos;re Changing the Way the World Invests.
+            We&apos;re Changing the Way the World Invests
           </h1>
-          <div className="h-[2px] w-full bg-gradient-to-r from-fuchsia-400 to-transparent md:mt-5"></div>
         </div>
-        <p className="w-full font-poppins text-base font-light tracking-widest">
+        <p className="w-full font-poppins text-sm font-normal leading-['140%'] tracking-widest">
           There has been a longstanding demand for a mechanism within the vast
           cryptocurrency market that mirrors the benefits of Exchange-Traded
           Funds (ETFs). <b className="font-bold"> The wait is now over. </b>
@@ -26,10 +37,8 @@ export default function Intro() {
           tokenised basket funds.
           <br />
           <br /> Poised to empower the upcoming generation of fund managers,
-          Alvara is transforming the industry landscape.
-          <br />
-          <br /> Embrace the future of Decentralised Finance (DeFi). Welcome to
-          the Alvara Protocol.
+          Alvara is transforming the industry landscape. Embrace the future of
+          Decentralised Finance (DeFi). Welcome to the Alvara Protocol.
         </p>
       </section>
 
