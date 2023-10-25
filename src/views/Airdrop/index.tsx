@@ -3,10 +3,12 @@ import React from 'react';
 
 import { Button, Hives } from '@/components';
 
+import { styles } from '@/styles';
+
 export default function Airdrop() {
   return (
     <main className="flex flex-col gap-16 bg-[#10122A] pb-20 text-white md:gap-28">
-      <Hives className="grid place-content-center items-center gap-9 px-4 pt-40 md:grid-cols-3 md:flex-row md:px-11 md:pb-40">
+      <Hives className="md:flex-rowmd:pb-40 grid place-content-center items-center gap-2 px-4  pt-[140px] md:grid-cols-3 md:pt-[110px]">
         <div className="hidden md:block">
           <Image
             className="mb-4  rounded-full "
@@ -18,10 +20,15 @@ export default function Airdrop() {
           />
         </div>
         <div className="grid gap-9">
-          <h1 className="z-10 text-center text-3xl  leading-normal  md:text-[60px]">
+          <h1
+            className={[
+              'z-10 break-normal text-center',
+              styles.hives_title,
+            ].join(' ')}
+          >
             Airdrop League
           </h1>
-          <div className="grid max-w-[584px] gap-8 px-8 text-center text-base leading-10 md:leading-6">
+          <div className="grid gap-8 px-8 text-center text-base leading-10 md:leading-6">
             With a total reward pool of 4,000,000 ALVA tokens - worth $1,200,000
             at TGE - this colossal airdrop is a lucrative opportunity for
             blockchain enthusiasts, tech wizards and dedicated degens.

@@ -3,14 +3,25 @@ import React from 'react';
 
 import { NextImage } from '@/components';
 
+import { styles } from '@/styles';
+
 export default function Hivex() {
   return (
     <div className=" container mx-auto  flex w-full flex-col gap-[26px] font-montserrat md:flex-row">
       <div className=" flex flex-col items-center justify-center gap-6 rounded-xl border-[1px] border-solid border-gray-500 bg-[#0D0F23] px-10 py-8">
-        <h1 className="w-full text-left text-xl font-medium">
+        <h1
+          className={[
+            'w-full text-left font-medium',
+            styles.context_title,
+          ].join(' ')}
+        >
           Thousands of tokens to choose
         </h1>
-        <p className="w-full text-left font-poppins text-sm">
+        <p
+          className={['w-full text-left font-poppins', styles.context].join(
+            ' ',
+          )}
+        >
           Taking our tokens straight from Uniswap, you have access to an
           unlimited amount of tokens.
         </p>
@@ -25,8 +36,20 @@ export default function Hivex() {
       </div>
       <div className="flex flex-col gap-[26px] overflow-hidden">
         <div className="  z-10 grid items-center justify-start gap-[26px] rounded-xl border-[1px] border-solid border-gray-500 bg-[#0D0F23] bg-cover bg-center bg-no-repeat px-10 py-8 pb-5 md:bg-[url('/images/home/pie-bg.png')]">
-          <h1 className="w-full text-left text-xl font-medium">My portfolio</h1>
-          <p className="z-10 w-full text-left font-poppins text-sm">
+          <h1
+            className={[
+              'w-full text-left font-medium',
+              styles.context_title,
+            ].join(' ')}
+          >
+            My portfolio
+          </h1>
+          <p
+            className={[
+              'z-10 w-full text-left font-poppins',
+              styles.context,
+            ].join(' ')}
+          >
             One place to manage all of your created and contributed baskets with
             understandable data.
           </p>
@@ -65,10 +88,19 @@ export default function Hivex() {
         </div>
         <div className=" flex flex-col items-center justify-center gap-[26px] rounded-xl border-[1px] border-solid border-gray-500 bg-[#0D0F23] px-10 py-7 md:flex-row">
           <div className="flex flex-col gap-[26px]">
-            <h1 className="w-full text-left text-xl font-medium">
+            <h1
+              className={[
+                'w-full text-left font-medium',
+                styles.context_title,
+              ].join(' ')}
+            >
               Choose your weightings
             </h1>
-            <p className="w-full text-left font-poppins text-sm">
+            <p
+              className={['w-full text-left font-poppins', styles.context].join(
+                ' ',
+              )}
+            >
               Distribute evenly or be meticulous with the weightings of your
               basket.
             </p>{' '}

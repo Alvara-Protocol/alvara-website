@@ -2,6 +2,7 @@ import React from 'react';
 
 import { NextImage } from '@/components';
 
+import { styles } from '@/styles';
 import TokenGroup from '@/views/Home/components/TokenGroup';
 
 export default function Intro() {
@@ -19,14 +20,14 @@ export default function Intro() {
           ALVARA PROTOCOL
         </div>
         <div>
-          <h1 className="text-4xl tracking-wider">
+          <h1 className={[' tracking-wider', styles.secondary_title].join(' ')}>
             We&apos;re Changing <br /> the Way the World Invests
           </h1>
         </div>
-        <p className="w-full font-poppins text-sm font-normal leading-['140%'] tracking-widest">
+        <p className={['w-full opacity-80', styles.context].join(' ')}>
           There has been a longstanding demand for a mechanism within the vast
           cryptocurrency market that mirrors the benefits of Exchange-Traded
-          Funds (ETFs). <b className="font-bold"> The wait is now over. </b>
+          Funds (ETFs). <b className="font-bold "> The wait is now over. </b>
           <br />
           <br />
           Introducing the Alvara Protocol, a groundbreaking decentralised

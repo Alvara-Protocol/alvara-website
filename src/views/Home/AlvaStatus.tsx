@@ -8,13 +8,26 @@ import {
   WhitepaperIcon,
 } from '@/components';
 
+import { styles } from '@/styles';
+
 export default function AlvaStatus() {
   return (
     <div className=" container mx-auto flex w-full flex-col gap-[26px] py-32 font-montserrat md:flex-row">
       <div className=" flex flex-col items-center justify-center gap-[26px] rounded-xl border-[1px] border-solid border-gray-500 bg-[#0D0F23] pt-10 md:max-w-[800px] ">
         <div className="flex flex-col gap-[26px] px-10">
-          <h1 className="w-full text-left text-xl font-medium">Leaderboard</h1>
-          <p className="w-full text-left font-poppins text-sm">
+          <h1
+            className={[
+              'w-full text-left font-medium',
+              styles.context_title,
+            ].join(' ')}
+          >
+            Leaderboard
+          </h1>
+          <p
+            className={['w-full text-left font-poppins', styles.context].join(
+              ' ',
+            )}
+          >
             Whether the ERC-BTS is minted from the factory contract, or coded by
             hand, we will recognize it just like how Opensea recognizes any NFT.
             Every BTS manager is displayed against everybody else, no matter
@@ -32,10 +45,21 @@ export default function AlvaStatus() {
       </div>
       <div className="flex flex-col gap-[26px] overflow-hidden">
         <div className="  z-10 flex flex-col items-start justify-between gap-[26px] rounded-xl border-[1px] border-solid border-gray-500 bg-[#0D0F23] pl-5 md:flex-row">
-          <div className="flex h-full flex-col justify-between py-5">
-            <div className="grid gap-[26px]">
-              <h1 className=" text-left text-xl font-medium">Learn</h1>
-              <p className="z-10 text-left font-poppins text-sm">
+          <div className="flex h-full w-full flex-col justify-between py-5">
+            <div className="grid  gap-[26px]">
+              <h1
+                className={[
+                  ' text-left font-medium',
+                  styles.context_title,
+                ].join(' ')}
+              >
+                Learn
+              </h1>
+              <p
+                className={['z-10 break-normal text-left', styles.context].join(
+                  ' ',
+                )}
+              >
                 Read our whitepaper
               </p>
             </div>
@@ -43,7 +67,7 @@ export default function AlvaStatus() {
               href="http://"
               target="_blank"
               rel="noopener noreferrer"
-              className=" mt-5 flex items-center gap-3 border-b-2 text-left md:mt-0"
+              className=" mt-5 flex items-center gap-3 text-left underline md:mt-0"
             >
               Whitepaper <WhitepaperIcon />
             </a>
@@ -60,8 +84,14 @@ export default function AlvaStatus() {
           </div>
         </div>
         <div className=" flex grow flex-col items-start justify-start gap-[26px] rounded-xl border-[1px] border-solid border-gray-500 bg-[#0D0F23] bg-[url('/images/home/chart-bg.png')] bg-cover bg-center bg-no-repeat px-10 py-7 pb-40">
-          <h1 className="text-left text-xl font-medium">Constant updates</h1>
-          <p className="text-left font-poppins text-sm">
+          <h1
+            className={['text-left font-medium', styles.context_title].join(
+              ' ',
+            )}
+          >
+            Constant updates
+          </h1>
+          <p className={['text-left ', styles.context].join(' ')}>
             Stay updated on your fund and others.
             <br />
             <br /> Find data ranging from contribution activity, marketplace

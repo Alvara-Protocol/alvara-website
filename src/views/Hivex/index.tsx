@@ -1,7 +1,10 @@
+import Image from 'next/image';
 import React from 'react';
 import Zoom from 'react-medium-image-zoom';
 
 import { Button, Hives, NextImage } from '@/components';
+
+import { styles } from '@/styles';
 
 import exclamationSvg from '~/images/bts-factory/exclamation.png';
 import HivexBack from '~/images/hivex.png';
@@ -9,21 +12,23 @@ import beeSvg from '~/images/hivex/bee.png';
 
 export default function Hivex() {
   return (
-    <main className="flex flex-col gap-28 bg-[#10122A] pb-20 font-poppins text-white">
-      <Hives className="flex flex-col items-center gap-10 px-4  pt-40 md:flex-row md:justify-around md:px-11">
-        <div className="grid">
-          <h1 className="z-10 text-center text-3xl  leading-normal  text-gray-400 md:text-[60px]">
+    <main className="flex flex-col gap-28 bg-[#10122A] pb-20 font-poppins text-white ">
+      <Hives className="flex flex-col items-center  px-4  pt-[167px]  md:flex-row md:justify-around  md:px-11 md:pt-[205px]">
+        <div className="grid gap-[38px] ">
+          <h1 className={['z-10 text-center', styles.hives_title].join(' ')}>
             Hivex
           </h1>
-          <h1 className=" text-center text-xl font-light">
+          <h1 className=" text-center  text-sm font-light text-neutral-200 md:text-xl">
             Trade BTS LP tokens and earn fees by contributing liquidity.
           </h1>
         </div>
       </Hives>
       <div className="bg-[#0D0F23]text-left  container mx-auto flex flex-col items-center justify-between gap-[26px] rounded-xl border-[1px] border-solid border-gray-500 md:flex-row">
         <div className="grid gap-[26px] p-10  md:py-[49px] md:pl-10">
-          <h1 className=" text-xl font-medium">Add LP to any BTS</h1>
-          <p className="text-sm font-normal opacity-80">
+          <h1 className={['font-medium', styles.context_title].join(' ')}>
+            Add LP to any BTS
+          </h1>
+          <p className={[' opacity-80', styles.context].join(' ')}>
             Our platform offers a unique opportunity for users to invest in BTS
             tokens and receive BTS LP tokens in return, representing their stake
             in the BTS.
@@ -36,7 +41,7 @@ export default function Hivex() {
             based on the proportion of their LP holdings.
           </p>
         </div>
-        <NextImage width={200} height={400} src={beeSvg} alt="bee" />
+        <Image width={300} height={300} src={beeSvg} layout="fixed" alt="bee" />
       </div>
       <div className=" hidden items-center justify-center md:grid">
         <Zoom>

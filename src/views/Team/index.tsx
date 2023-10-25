@@ -4,6 +4,8 @@ import React from 'react';
 import { Button, Hives } from '@/components';
 import UnstyledLink from '@/components/links/UnstyledLink';
 
+import { styles } from '@/styles';
+
 import Member, { MemberProps } from './components/Member';
 
 export default function Team() {
@@ -135,13 +137,18 @@ export default function Team() {
   ];
 
   return (
-    <main className="flex flex-col gap-20 bg-[#10122A] text-white">
-      <Hives className=" flex flex-col items-center justify-center gap-8 p-10 pt-[150px] font-montserrat  md:pt-[200px]">
+    <div className="flex flex-col gap-20 bg-[#10122A] text-white">
+      <Hives className=" flex flex-col items-center justify-center gap-8 p-10 pt-[167px] md:px-11 md:pt-[205px]">
         <div className="container mx-auto grid w-full items-end justify-center">
-          <h1 className="text-center text-3xl font-medium leading-[70px] text-gray-400 md:text-5xl ">
+          <h1
+            className={[
+              'text-center font-medium  text-gray-400  ',
+              styles.hives_title,
+            ].join(' ')}
+          >
             About Alvara
           </h1>
-          <p className="mt-8 max-w-5xl text-center text-xl text-gray-400">
+          <p className="mt-8 max-w-5xl text-center text-sm text-gray-400 md:text-xl">
             Whether you&apos;re an individual or an institution, our unique
             solution empowers you to easily create, manage and invest in
             on-chain funds. Only with Alvara.
@@ -252,7 +259,11 @@ export default function Team() {
         </div>
         <div className="flex flex-col place-content-center items-start justify-between gap-4 rounded-xl border-[1px] border-solid border-gray-500 bg-[#0D0F23] p-4 text-start">
           <div className="flex items-center">
-            <h1 className="text-xl font-medium text-white">
+            <h1
+              className={['font-medium text-white', styles.context_title].join(
+                ' ',
+              )}
+            >
               Construct and Launch.
             </h1>
           </div>
@@ -264,7 +275,11 @@ export default function Team() {
         </div>
         <div className="flex flex-col place-content-center items-start justify-between gap-4 rounded-xl border-[1px] border-solid border-gray-500 bg-[#0D0F23] p-4 text-start">
           <div className="flex items-center">
-            <h1 className="text-xl font-medium text-white">
+            <h1
+              className={['font-medium text-white', styles.context_title].join(
+                ' ',
+              )}
+            >
               {' '}
               Verified Ownership.
             </h1>
@@ -291,7 +306,11 @@ export default function Team() {
         </div>
         <div className="flex flex-col place-content-center items-start justify-between gap-4 rounded-xl border-[1px] border-solid border-gray-500 bg-[#0D0F23] p-4 text-start">
           <div className="flex items-center">
-            <h1 className="text-xl font-medium text-white">
+            <h1
+              className={['font-medium text-white', styles.context_title].join(
+                ' ',
+              )}
+            >
               Yield Optimisation
             </h1>
           </div>
@@ -304,7 +323,11 @@ export default function Team() {
         </div>
         <div className="flex flex-col place-content-center items-start justify-between gap-4 rounded-xl border-[1px] border-solid border-gray-500 bg-[#0D0F23] p-4 text-start">
           <div className="flex items-center">
-            <h1 className="text-xl font-medium text-white">
+            <h1
+              className={['font-medium text-white', styles.context_title].join(
+                ' ',
+              )}
+            >
               First Mover Advantage.
             </h1>
           </div>
@@ -337,6 +360,6 @@ export default function Team() {
           ))}
         </div>
       </section>
-    </main>
+    </div>
   );
 }
