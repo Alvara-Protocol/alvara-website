@@ -4,8 +4,8 @@ import Intro from './Intro';
 
 export default function BTSFactory() {
   return (
-    <main>
+    <>
       <Intro />
-    </main>
+    </>
   );
 }

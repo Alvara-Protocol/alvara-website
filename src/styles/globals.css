@@ -12,7 +12,7 @@
     /* #region  /**=========== Typography =========== */
 
     body {
-        @apply overflow-x-hidden;
+        @apply overflow-x-hidden font-montserrat leading-normal text-white;
     }
 
     /* #endregion  /**======== Typography =========== */

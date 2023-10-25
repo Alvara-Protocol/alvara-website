@@ -1,10 +1,13 @@
 export { default as ArrowIcon } from './Arrow';
 export { default as Arrow2Icon } from './Arrow2';
 export { default as ArrowWhiteIcon } from './ArrowWhite';
+export { default as CheckIcon } from './Check';
 export { default as ChevronDownIcon } from './ChevronDown';
 export { default as EthereumIcon } from './Ethereum';
 export { default as HamburgerIcon } from './Hamburger';
 export { default as Hives } from './Hives';
 export { default as LeaderBoardImage } from './LeaderBoardImage';
 export { default as LinkedinIcon } from './Linkedin';
+export { default as LoaderIcon } from './Loader';
+export { default as PlusWithCircleIcon } from './PlusWithCircle';
 export { default as TriangleIcon } from './Triangle';
