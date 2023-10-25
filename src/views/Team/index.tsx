@@ -135,31 +135,45 @@ export default function Team() {
   ];
 
   return (
-    <main>
-      <Hives className=" gap-10 px-4 pt-40 md:grid md:grid-cols-2  md:justify-between md:px-11">
-        <div className="grid  content-center">
-          <h1 className="mb-32 px-5 text-4xl  text-gray-400 md:mb-0 md:max-w-xs md:px-20 md:text-center md:text-6xl">
-            About <p>Alvara</p>
+    <main className="flex flex-col gap-20 bg-[#10122A] text-white">
+      <Hives className=" flex flex-col items-center justify-center gap-8 p-10 pt-[150px] font-montserrat  md:pt-[200px]">
+        <div className="container mx-auto grid w-full items-end justify-center">
+          <h1 className="text-center text-3xl font-medium leading-[70px] text-gray-400 md:text-5xl ">
+            About Alvara
           </h1>
-        </div>
-        <div className="mx-5 mb-10 md:mx-0">
-          <p className=" text-base  leading-10 text-gray-300 md:max-w-2xl md:leading-6 ">
-            Basket funds are number one for a reason - they provide a low risk,
-            low cost, diversified and transparent investment opportunity. For
-            the first time, that opportunity is available to anyone. Only with
-            Alvara.
+          <p className="mt-8 max-w-5xl text-center text-xl text-gray-400">
+            Whether you&apos;re an individual or an institution, our unique
+            solution empowers you to easily create, manage and invest in
+            on-chain funds. Only with Alvara.
           </p>
-
-          <div className="mb-5 mt-5 h-[2px] w-full bg-gradient-to-r from-fuchsia-400 to-transparent"></div>
-          <UnstyledLink href="./Alvara_Protocol_White_Paper.pdf">
-            <Button variant="primary" className="rounded-lg px-10 py-5">
-              White Paper
-            </Button>
-          </UnstyledLink>
+          <div className="mt-10 flex w-full flex-col items-center justify-center gap-5 md:flex-row">
+            <UnstyledLink
+              href="./Alvara_Protocol_White_Paper.pdf"
+              className="w-full md:w-auto"
+            >
+              <Button
+                variant="light"
+                className="flex !w-full items-center justify-center rounded-lg px-8 py-3 text-center text-xl font-light"
+              >
+                Whitepaper
+              </Button>
+            </UnstyledLink>
+            <UnstyledLink
+              href="https://alvaraprotocol.medium.com/unpacking-the-mechanics-how-does-the-alvara-protocol-work-68cd4efaa06d"
+              className="w-full md:w-auto"
+            >
+              <Button
+                className="outline flex w-full items-center justify-center rounded-lg px-8 py-3 text-xl font-light outline-1"
+                variant="ghost"
+              >
+                Read More
+              </Button>
+            </UnstyledLink>
+          </div>
         </div>
-        <div className="col-span-2 mb-16 px-5 text-gray-300 md:px-24">
+        <div className="container col-span-2 mx-auto mb-16 px-5 text-gray-300  md:mt-20 md:px-24">
           <div className="grid gap-5 md:grid-cols-4 ">
-            <div className="grid grid-rows-3 place-items-center items-start gap-5 text-center">
+            <div className="flex flex-col place-content-center items-center justify-between gap-4 rounded-xl border-[1px] border-solid border-gray-500 bg-[#0D0F23] p-4 text-center">
               <div className="w-20">
                 <Image
                   className="mb-4 rounded-full"
@@ -171,12 +185,12 @@ export default function Team() {
                 />
               </div>
               <h1 className="text-2xl text-gray-400">Low Risk</h1>
-              <p className="-mt-10 text-sm">
+              <p className="text-sm">
                 Risk is spread through investing in multiple assets and asset
                 classes.
               </p>
             </div>
-            <div className="grid grid-rows-3 place-items-center items-start gap-5 text-center">
+            <div className="flex flex-col place-content-center items-center justify-between gap-4 rounded-xl border-[1px] border-solid border-gray-500 bg-[#0D0F23] p-4 text-center">
               <div className="w-20">
                 <Image
                   className="mb-4 rounded-full"
@@ -188,12 +202,12 @@ export default function Team() {
                 />
               </div>
               <h1 className="text-2xl text-gray-400">Low Cost</h1>
-              <p className="-mt-10 text-sm">
+              <p className="text-sm">
                 Management and operating expenses lower than other investment
                 vehicles.
               </p>
             </div>
-            <div className="grid grid-rows-3 place-items-center items-start gap-5 text-center ">
+            <div className="flex flex-col place-content-center items-center justify-between gap-4 rounded-xl border-[1px] border-solid border-gray-500 bg-[#0D0F23] p-4 text-center">
               <div className="w-20">
                 <Image
                   className="mb-4 rounded-full"
@@ -205,12 +219,12 @@ export default function Team() {
                 />
               </div>
               <h1 className="text-2xl text-gray-400">Transparent</h1>
-              <p className="-mt-10 text-sm">
+              <p className="text-sm">
                 A funds holdings and weightings are disclosed publicly and
                 regularly.
               </p>
             </div>
-            <div className="grid grid-rows-3 place-items-center items-start gap-5 text-center">
+            <div className="flex flex-col place-content-center items-center justify-between gap-4 rounded-xl border-[1px] border-solid border-gray-500 bg-[#0D0F23] p-4 text-center">
               <div className="w-20">
                 <Image
                   className="mb-4 rounded-full"
@@ -222,7 +236,7 @@ export default function Team() {
                 />
               </div>
               <h1 className="text-2xl text-gray-400">Diversification</h1>
-              <p className="-mt-10 text-sm">
+              <p className="text-sm">
                 ERC-BTS offer instant diversification through exposure to a
                 basket of underlying assets.
               </p>
@@ -230,99 +244,91 @@ export default function Team() {
           </div>
         </div>
       </Hives>
-      <div className="grid gap-10 p-10 text-base leading-10 md:grid-cols-2  md:p-20 md:leading-6">
-        <div>
+      <div className="container mx-auto grid gap-10 p-10 text-base leading-10 md:grid-cols-2  md:p-20 md:leading-6">
+        <div className="text-center md:col-span-2">
           <h1 className="font-montserrat text-4xl font-medium  md:text-5xl">
             What makes Alvara so sweet?
           </h1>
-          <div className="my-8 h-[2px] w-full bg-gradient-to-r from-fuchsia-400 to-transparent"></div>
         </div>
-        <div className="hidden md:block"></div>
-        <div className="">
+        <div className="flex flex-col place-content-center items-start justify-between gap-4 rounded-xl border-[1px] border-solid border-gray-500 bg-[#0D0F23] p-4 text-start">
           <div className="flex items-center">
-            <div className="mr-4 h-3 w-3 rounded-full bg-fuchsia-400"></div>
-            <h1 className="text-xl font-black text-black">
+            <h1 className="text-xl font-medium text-white">
               Construct and Launch.
             </h1>
           </div>
-          <p className="px-7">
+          <p className="">
             With Alvara&apos;s BTS Factory, you can design and launch your own
             ERC-BTS and begin earning management fees based on your BTS’s total
             AUM.
           </p>
         </div>
-        <div>
+        <div className="flex flex-col place-content-center items-start justify-between gap-4 rounded-xl border-[1px] border-solid border-gray-500 bg-[#0D0F23] p-4 text-start">
           <div className="flex items-center">
-            <div className="mr-4 h-3 w-3 rounded-full bg-fuchsia-400"></div>
-            <h1 className="text-xl font-bold text-black">
+            <h1 className="text-xl font-medium text-white">
               {' '}
               Verified Ownership.
             </h1>
           </div>
-          <p className="px-7">
+          <p>
             Our integration with NFTs provides savvy fund managers with access
             to their fund&apos;s management rights and rewards structure. Using
             Alvara&apos;s BTS marketplace, fund managers can, for the first
             time, sell their business.
           </p>
         </div>
-        <div>
+        <div className="flex flex-col place-content-center items-start justify-between gap-4 rounded-xl border-[1px] border-solid border-gray-500 bg-[#0D0F23] p-4 text-start">
           <div className="flex items-center">
-            <div className="mr-4 h-3 w-3 rounded-full bg-fuchsia-400"></div>
-            <h1 className="text-xl font-bold text-black">
+            <h1 className="text-whie text-xl font-medium">
               Competitive Leaderboard.
             </h1>
           </div>
-          <p className="px-7">
+          <p>
             Battle for top positions on Alvara&apos;s leaderboard alongside
             other fund managers and institutions. Track the strategies of the
             most profitable managers to mitigate your risk in the crypto
             markets.
           </p>
         </div>
-        <div>
+        <div className="flex flex-col place-content-center items-start justify-between gap-4 rounded-xl border-[1px] border-solid border-gray-500 bg-[#0D0F23] p-4 text-start">
           <div className="flex items-center">
-            <div className="mr-4 h-3 w-3 rounded-full bg-fuchsia-400"></div>
-            <h1 className="text-xl font-bold text-black">Yield Optimisation</h1>
+            <h1 className="text-xl font-medium text-white">
+              Yield Optimisation
+            </h1>
           </div>
-          <p className="px-7">
+          <p>
             Every ERC-BTS contains 100% collateralised underlying assets. These
             assets are utilized in yield generation strategies via our partners,
             with the rewards being fed back into the fund and distributed to
             share holders as dividends.
           </p>
         </div>
-        <div>
+        <div className="flex flex-col place-content-center items-start justify-between gap-4 rounded-xl border-[1px] border-solid border-gray-500 bg-[#0D0F23] p-4 text-start">
           <div className="flex items-center">
-            <div className="mr-4 h-3 w-3 rounded-full bg-fuchsia-400"></div>
-            <h1 className="text-xl font-bold text-black">
+            <h1 className="text-xl font-medium text-white">
               First Mover Advantage.
             </h1>
           </div>
-          <p className="px-7">
+          <p>
             Alvara has first mover advantage, building the very first one-stop
             protocol with a decentralised exchange, creation and management
             portal. Bringing tokanised funds to DeFi like never before.
           </p>
         </div>
-        <div>
+        <div className="flex flex-col place-content-center items-start justify-between gap-4 rounded-xl border-[1px] border-solid border-gray-500 bg-[#0D0F23] p-4 text-start">
           <div className="flex items-center">
-            <div className="mr-4 h-3 w-3 rounded-full bg-fuchsia-400"></div>
-            <h1 className="text-xl font-bold text-black"> Low Cost.</h1>
+            <h1 className="font-meduum text-xl text-white"> Low Cost.</h1>
           </div>
-          <p className="px-7">
+          <p>
             Underlying assets are purchased through APIs linked to leading DEXs,
             making the costs of creating, redeeming and rebalancing much cheaper
             than fully on-chain alternatives.
           </p>
         </div>
       </div>
-      <div className="my-16 h-[2px] w-full bg-gradient-to-r from-transparent via-fuchsia-400 to-transparent"></div>
-      <div className="grid place-content-center">
-        <h1 className="text-center text-4xl text-black md:text-5xl">
+      <div className="container mx-auto grid place-content-center">
+        <h1 className="text-center text-4xl text-white md:text-5xl">
           Alvara Team
         </h1>
-        <div className="my-16 h-[2px] w-72 place-self-center bg-gradient-to-r from-transparent via-fuchsia-400 to-transparent"></div>
       </div>
       <section className="container mx-auto px-8 md:px-16">
         <div className=" mb-32 grid grid-cols-1 items-start gap-x-10 gap-y-16 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">

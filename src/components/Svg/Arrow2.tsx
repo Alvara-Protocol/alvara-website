@@ -4,19 +4,14 @@ import { SvgProps } from './types';
 export default function Arrow2({ ...props }: SvgProps) {
   return (
     <svg
-      width="16"
-      height="8"
-      viewBox="0 0 16 8"
-      fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      width="15"
+      height="10"
+      viewBox="0 0 15 10"
+      fill="none"
       {...props}
     >
-      <path
-        d="M1 1.5L7.21905 6.83061C7.66844 7.2158 8.33156 7.2158 8.78095 6.83061L15 1.5"
-        stroke="#131531"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-      />
+      <path d="M14 1L7.5 8L1 1" stroke="white" stroke-width="2" />
     </svg>
   );
 }

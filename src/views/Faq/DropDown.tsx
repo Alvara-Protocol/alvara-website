@@ -16,7 +16,7 @@ export default function DropDown({
     >
       <path
         d="M1.38281 17.916L9.60209 9.65943L1.38281 1.40284"
-        stroke={direction === 'right' ? '#FB3FFF' : 'white'}
+        stroke={direction === 'right' ? '#FFFFFF60' : 'black'}
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"

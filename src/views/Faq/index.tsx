@@ -6,21 +6,17 @@ import QuestionDrop from '@/views/Faq/QuestionDrop';
 
 export default function Faq() {
   return (
-    <main className="flex flex-col gap-16 bg-[white] pb-20 md:gap-28">
-      <Hives className="flex flex-col items-center gap-10 px-4 pt-40 md:flex-row md:justify-around md:px-11">
-        <div className="grid">
+    <main className="flex flex-col bg-[#10122A]  pb-20 ">
+      <Hives className="flex flex-col items-center px-4 pt-40 md:flex-row md:justify-around md:px-11">
+        <div className="grid pb-20">
           <h1 className="z-10 text-center text-3xl  leading-normal  text-gray-400 md:text-[60px]">
             FAQ
           </h1>
-          <div className="mb-32 mt-5 h-[2px] w-full bg-gradient-to-r from-fuchsia-400 to-transparent"></div>
         </div>
       </Hives>
-
-      <div className=" relative flex flex-col justify-center gap-8 rounded-xl px-5 text-base  leading-10 text-black  md:mx-auto md:border-2  md:border-[#808080/10] md:px-48 md:py-14 md:leading-6 ">
-        <div className="absolute -right-32 top-32 z-10  hidden h-96 w-96 bg-[#FB3FFF]/10 blur-[70.06295776367188px] md:block "></div>
-        <div className="absolute -left-32 bottom-32 z-10  hidden h-96 w-96 bg-[#FB3FFF]/10 blur-[70.06295776367188px] md:block "></div>
+      <div className=" relative flex flex-col justify-center gap-8 rounded-xl px-5 text-base  leading-10 text-white  md:mx-auto   md:leading-6 ">
         <QuestionDrop title="What is the Alvara Protocol?">
-          <p className=" text-[11px] font-normal text-[#6F6C90] md:text-lg">
+          <p className=" text-[11px] font-normal text-[#EAEAEA] md:text-lg">
             The Alvara Protocol is a transformative platform in the DeFi space
             designed to democratize the world of fund management. Built on the
             newly developed ERC-BTS token standard, Alvara provides an
@@ -33,7 +29,7 @@ export default function Faq() {
           </p>
         </QuestionDrop>
         <QuestionDrop title="What is a BTS token & how can I mint one?">
-          <p className=" text-[11px] font-normal text-[#6F6C90] md:text-lg">
+          <p className=" text-[11px] font-normal text-[#EAEAEA] md:text-lg">
             A BTS, or Basket Token Standard, is a new revolutionary token
             standard developed by Alvara. A BTS token encapsulates a portfolio
             of various cryptocurrencies (ERC-20 tokens), offering unique
@@ -55,7 +51,7 @@ export default function Faq() {
           </p>
         </QuestionDrop>
         <QuestionDrop title="What is a BTS LP token?">
-          <p className=" text-[11px] font-normal text-[#6F6C90] md:text-lg">
+          <p className=" text-[11px] font-normal text-[#EAEAEA] md:text-lg">
             A BTS LP (Liquidity Provider) token emulates your stake or ownership
             in a specific Basket Token Standard (BTS). When you contribute
             assets to a BTS, you are issued BTS LP tokens to represent your
@@ -65,7 +61,7 @@ export default function Faq() {
           </p>
         </QuestionDrop>
         <QuestionDrop title="How does the BTS minting process work?">
-          <p className=" text-[11px] font-normal text-[#6F6C90] md:text-lg">
+          <p className=" text-[11px] font-normal text-[#EAEAEA] md:text-lg">
             Minting a BTS is a straightforward process. When a creator initiates
             the minting process, their ETH contribution is the capital for
             acquiring the desired assets for the BTS. The proportion in which
@@ -81,7 +77,7 @@ export default function Faq() {
           </p>
         </QuestionDrop>
         <QuestionDrop title="How can other users invest in my BTS?">
-          <p className=" text-[11px] font-normal text-[#6F6C90] md:text-lg">
+          <p className=" text-[11px] font-normal text-[#EAEAEA] md:text-lg">
             Users must navigate the Alvara platform&apos;s BTS Factory
             contribution page to invest in a BTS. Here, they can browse various
             BTSs and select the one they wish to invest in. Once a BTS is
@@ -96,7 +92,7 @@ export default function Faq() {
           </p>
         </QuestionDrop>
         <QuestionDrop title="How can users exit from a BTS when they want to?">
-          <div className=" text-[11px] font-normal text-[#6F6C90] md:text-lg">
+          <div className=" text-[11px] font-normal text-[#EAEAEA] md:text-lg">
             Exiting or redeeming from a BTS is as simple and intuitive as
             contributing to it. Users must specify the number of LP tokens they
             want to redeem on the Alvara platform. They can then preview the
@@ -129,7 +125,7 @@ export default function Faq() {
           </div>
         </QuestionDrop>
         <QuestionDrop title="What is the utility of my BTS token?">
-          <div className=" text-[11px] font-normal text-[#6F6C90] md:text-lg">
+          <div className=" text-[11px] font-normal text-[#EAEAEA] md:text-lg">
             A BTS token serves multiple functions, granting the holder various
             privileges within the Alvara ecosystem, with the two primary
             utilities being: <br />
@@ -160,7 +156,7 @@ export default function Faq() {
           </div>
         </QuestionDrop>
         <QuestionDrop title="What can I do with my LP tokens?">
-          <div className=" text-[11px] font-normal text-[#6F6C90] md:text-lg">
+          <div className=" text-[11px] font-normal text-[#EAEAEA] md:text-lg">
             LP (Liquidity Provider) tokens serve two primary purposes within the
             Alvara ecosystem, extending beyond just representing a share in a
             particular BTS. These are: <br />
@@ -185,7 +181,7 @@ export default function Faq() {
           </div>
         </QuestionDrop>
         <QuestionDrop title="Can the fund manager access my funds?">
-          <p className=" text-[11px] font-normal text-[#6F6C90] md:text-lg">
+          <p className=" text-[11px] font-normal text-[#EAEAEA] md:text-lg">
             No. In the Alvara ecosystem, fund managers do not have access to
             your funds at any point. Your assets are securely stored in the
             factory contract, ensuring complete security and control over your
@@ -198,7 +194,7 @@ export default function Faq() {
           </p>
         </QuestionDrop>
         <QuestionDrop title="Can I redeem my funds at any time?">
-          <p className=" text-[11px] font-normal text-[#6F6C90] md:text-lg">
+          <p className=" text-[11px] font-normal text-[#EAEAEA] md:text-lg">
             Yes, you can redeem your funds anytime via the Alvara platform. You
             can initiate the redemption process, select &apos;Redeem ETH&apos;
             or &apos;Redeem tokens&apos;, and your assets will be returned to
@@ -206,7 +202,7 @@ export default function Faq() {
           </p>
         </QuestionDrop>
         <QuestionDrop title="Are my BTS token and LP tokens transferable?">
-          <div className=" text-[11px] font-normal text-[#6F6C90] md:text-lg">
+          <div className=" text-[11px] font-normal text-[#EAEAEA] md:text-lg">
             Your BTS and LP tokens are fully transferable, providing great
             flexibility and liquidity.
             <br />
@@ -233,7 +229,7 @@ export default function Faq() {
           </div>
         </QuestionDrop>
         <QuestionDrop title="What does the ALVA token do?">
-          <div className=" text-[11px] font-normal text-[#6F6C90] md:text-lg">
+          <div className=" text-[11px] font-normal text-[#EAEAEA] md:text-lg">
             The ALVA token serves multiple important roles within the Alvara
             ecosystem, adding value to its holders in several ways:
             <br />

@@ -1,41 +1,55 @@
 import React from 'react';
+import Zoom from 'react-medium-image-zoom';
 
 import { Button, Hives, NextImage } from '@/components';
-import ImageWithModal from '@/components/ImageWithModal';
 
 import exclamationSvg from '~/images/bts-factory/exclamation.png';
 import HivexBack from '~/images/hivex.png';
+import beeSvg from '~/images/hivex/bee.png';
 
 export default function Hivex() {
   return (
-    <main className="flex flex-col gap-28 bg-gray-400 pb-20">
+    <main className="flex flex-col gap-28 bg-[#10122A] pb-20 font-poppins text-white">
       <Hives className="flex flex-col items-center gap-10 px-4  pt-40 md:flex-row md:justify-around md:px-11">
         <div className="grid">
           <h1 className="z-10 text-center text-3xl  leading-normal  text-gray-400 md:text-[60px]">
             Hivex
           </h1>
-          <div className="mb-32 mt-5 h-[2px] w-full bg-gradient-to-r from-fuchsia-400 to-transparent"></div>
+          <h1 className=" text-xl font-light">
+            Trade BTS LP tokens and earn fees by contributing liquidity.
+          </h1>
         </div>
       </Hives>
-      <div className="container mx-auto grid grid-cols-1 gap-8 px-8 text-base leading-10 md:grid-cols-1 md:px-48 md:leading-6">
-        In our platform users can add capital to an ERC-BTS and receive ERC-BTS
-        LP tokens, which represent their stake in the BTS. These tokens can be
-        deposited into the HiveX liquidity pool, either on their own or with a
-        paired asset, such as ETH/USDT/AVAX/BNB, and in return, users receive
-        HiveX LP tokens representing their share in the pool. As a liquidity
-        provider, users will receive 30% of transaction fees, distributed
-        proportionately based on their LP holdings.
+      <div className="bg-[#0D0F23]text-left container mx-auto flex flex-col items-center justify-between gap-[26px] rounded-xl border-[1px] border-solid border-gray-500 md:flex-row">
+        <div className="grid gap-[26px] p-10  md:py-[49px] md:pl-20">
+          <h1 className=" text-2xl font-medium">Add LP to any BTS</h1>
+          <p className="text-xl font-normal opacity-80">
+            Our platform offers a unique opportunity for users to invest in BTS
+            tokens and receive BTS LP tokens in return, representing their stake
+            in the BTS.
+            <br />
+            <br /> These tokens can then be committed to the HiveX liquidity
+            pool. This can be done individually or paired with another asset
+            such as ETH, USDT, AVAX, or BNB. In exchange, users are granted
+            HiveX LP tokens, signifying their stake in the pool. As liquidity
+            providers, users will share 30% of all transaction fees, distributed
+            based on the proportion of their LP holdings.
+          </p>
+        </div>
+        <NextImage width={200} height={400} src={beeSvg} alt="bee" />
       </div>
       <div className=" hidden items-center justify-center md:grid">
         {/* <ItemWithModal className="h-[478px] w-[830px]">
           <Back />
         </ItemWithModal> */}
-        <ImageWithModal
-          src={HivexBack}
-          width={833}
-          height={478}
-          alt="hivex-back"
-        />
+        <Zoom>
+          <NextImage
+            src={HivexBack}
+            width={833}
+            height={478}
+            alt="hivex-back"
+          />
+        </Zoom>
       </div>
       <div className="block h-[1513px] w-full bg-[url('/images/hivex/mobile-back.svg')] bg-cover bg-clip-padding bg-center bg-no-repeat bg-origin-padding px-6 md:hidden">
         <div className=" group relative mt-[565px] flex h-8 w-full place-content-center   bg-center bg-no-repeat ">

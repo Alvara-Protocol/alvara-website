@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+    .container {
+        @apply default:max-w-['100%'] sm:max-w-['100%'] lg:max-w-[896px] xl:max-w-[1024px] 2xl:max-w-[1536px];
+    }
+}
+
 @layer base {
     /* #region  /**=========== Typography =========== */
 

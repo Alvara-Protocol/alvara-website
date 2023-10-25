@@ -3,7 +3,7 @@ import * as React from 'react';
 import { ArrowIcon, ArrowWhiteIcon, Button } from '@/components';
 import UnstyledLink from '@/components/links/UnstyledLink';
 
-import Links from '@/views/News/Links';
+import Links from '@/views/Airdrop/Links';
 
 export default function NewFooter() {
   return (

@@ -8,7 +8,7 @@ import Title from './Title';
 
 export default function Home() {
   return (
-    <main className="flex min-h-[calc(100vh)] flex-col gap-20 bg-slate-900 px-2 text-white">
+    <main className="flex min-h-[calc(100vh)] flex-col gap-20 bg-slate-900  text-white">
       <Title />
       <Intro />
       <Hivex />

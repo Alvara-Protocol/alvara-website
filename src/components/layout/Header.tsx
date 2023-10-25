@@ -16,18 +16,16 @@ const MobileLink = ({ setIsOpen, children }: MobileLinkProps) => {
 
 const titles = [
   { title: 'BTS Factory', link: '/bts-factory' },
-  { title: 'Staking', link: '/staking' },
-  { title: 'Governance', link: '/governance' },
-  { title: 'Marketplace', link: '/market-place' },
+  { title: 'veALVA', link: '/staking' },
   { title: 'HiveX', link: '/hivex' },
   { title: 'About Alvara', link: '/team' },
-  { title: 'News', link: '/news' },
+  { title: 'Airdrop', link: '/airdrop' },
   { title: 'Faq', link: '/faq' },
 ];
 
 export default function Header() {
   const [isOpen, setIsOpen] = React.useState(false);
-  const [flag, setFlag] = React.useState(false);
+  // const [flag, setFlag] = React.useState(false);
 
   function closeModal() {
     setIsOpen(false);
@@ -138,7 +136,7 @@ export default function Header() {
                                 </MobileLink>
                               </div>
                             ))}
-                            <MobileLink setIsOpen={setIsOpen}>
+                            {/* <MobileLink setIsOpen={setIsOpen}>
                               <UnstyledLink
                                 href="./Alvara_Protocol_White_Paper.pdf"
                                 className="font-medium "
@@ -161,7 +159,7 @@ export default function Header() {
                               >
                                 Roadmap
                               </UnstyledLink>
-                            </MobileLink>
+                            </MobileLink> */}
                             <div></div>
                           </div>
                         </div>
@@ -186,7 +184,7 @@ export default function Header() {
                 </UnstyledLink>
               </li>
             ))}
-            <li className="group min-w-max">
+            {/* <li className="group min-w-max">
               <UnstyledLink
                 onClick={() => setFlag(!flag)}
                 href=""
@@ -220,22 +218,8 @@ export default function Header() {
                 >
                   Roadmap
                 </a>
-                {/* <h1
-                  id="tokenomics"
-                  className=" text-base text-gray-400 hover:cursor-pointer hover:text-opacity-80"
-                  onClick={() => setShowTokenomic(true)}
-                >
-                  Tokenomics
-                </h1> */}
-                {/* <h1
-                  id="roadmap"
-                  className=" text-base text-gray-400 hover:cursor-pointer hover:text-opacity-80"
-                  onClick={() => setShowRoadMap(true)}
-                >
-                  Roadmap
-                </h1> */}
               </div>
-            </li>
+            </li> */}
           </ul>
         </nav>
         <div className="hidden lg:block"></div>

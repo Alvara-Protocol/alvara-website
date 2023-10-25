@@ -22,28 +22,26 @@ const QuestionDrop = React.forwardRef<HTMLElement, DivProps>(({ ...props }) => {
     <div
       className={
         open
-          ? ' z-20 grid w-full grid-cols-1 gap-5 rounded-xl border-2 border-[#FB3FFF] px-5 py-2 text-left text-sm  hover:cursor-pointer md:w-[896px] md:px-10 md:py-7 md:text-xl '
-          : ' z-20 grid w-full grid-cols-1 gap-5 rounded-xl  px-5 py-3 text-left text-sm shadow-lg  hover:cursor-pointer md:w-[896px] md:px-10 md:py-7 md:text-xl '
+          ? ' z-20 grid w-full grid-cols-1 gap-5 rounded-xl border-2 border-gray-500 px-5 py-2 text-left text-sm  hover:cursor-pointer md:w-[896px] md:px-10 md:py-7 md:text-xl '
+          : ' z-20 grid w-full grid-cols-1 gap-5 rounded-xl border-2 border-gray-500 px-5 py-3 text-left text-sm shadow-lg  hover:cursor-pointer md:w-[896px] md:px-10 md:py-7 md:text-xl '
       }
       onClick={handleOpen}
     >
       <div className="flex w-full items-center justify-between">
-        <h1 className=" color-[#131531] text-xs font-medium md:text-xl ">
-          {title}
-        </h1>
+        <h1 className=" text-xs font-medium text-white md:text-xl ">{title}</h1>
         <div
           className={
             open
-              ? 'flex h-5 w-5 items-center justify-center rounded-full bg-[#FB3FFF] md:h-12 md:w-12'
-              : 'flex h-5 w-5 items-center justify-center rounded-full shadow-md md:h-12 md:w-12'
+              ? 'flex h-5 w-5 items-center justify-center rounded-full bg-white md:h-10 md:w-10'
+              : 'flex h-5 w-5 items-center justify-center rounded-full bg-neutral-700 shadow-md md:h-10 md:w-10'
           }
         >
           <DropDown
             direction={open ? 'down' : 'right'}
             className={
               open
-                ? '  h-3 w-3 rotate-90 md:h-6 md:w-6 '
-                : 'h-3 w-3 md:h-6 md:w-6'
+                ? '  h-3 w-3 rotate-90 md:h-5 md:w-5 '
+                : 'h-3 w-3 md:h-5 md:w-5'
             }
           />
         </div>
