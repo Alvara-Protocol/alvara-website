@@ -8,10 +8,7 @@ export default function Intro() {
   return (
     <div className=" container mx-auto flex w-full flex-col items-center justify-between gap-8 p-5 md:flex-row  ">
       <section className="flex flex-col gap-12 md:w-1/2 ">
-        {/* <span className="bg-gradient-to-r from-purple-650 to-fuchsia-450 bg-clip-text text-3xl text-transparent">
-          ALVARA PROTOCOL
-        </span> */}
-        <div className="flex max-w-fit items-center gap-5 rounded-xl bg-[#1B1F489C] px-4 py-[10px]">
+        <div className="pointer-events-none flex max-w-fit items-center gap-5 rounded-xl bg-[#1B1F489C] px-4 py-[10px]">
           <NextImage
             useSkeleton
             src="/images/logo.png"
@@ -23,7 +20,7 @@ export default function Intro() {
         </div>
         <div>
           <h1 className="text-4xl tracking-wider">
-            We&apos;re Changing the Way the World Invests
+            We&apos;re Changing <br /> the Way the World Invests
           </h1>
         </div>
         <p className="w-full font-poppins text-sm font-normal leading-['140%'] tracking-widest">
