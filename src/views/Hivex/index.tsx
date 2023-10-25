@@ -15,15 +15,15 @@ export default function Hivex() {
           <h1 className="z-10 text-center text-3xl  leading-normal  text-gray-400 md:text-[60px]">
             Hivex
           </h1>
-          <h1 className=" text-xl font-light">
+          <h1 className=" text-center text-xl font-light">
             Trade BTS LP tokens and earn fees by contributing liquidity.
           </h1>
         </div>
       </Hives>
-      <div className="bg-[#0D0F23]text-left container mx-auto flex flex-col items-center justify-between gap-[26px] rounded-xl border-[1px] border-solid border-gray-500 md:flex-row">
-        <div className="grid gap-[26px] p-10  md:py-[49px] md:pl-20">
-          <h1 className=" text-2xl font-medium">Add LP to any BTS</h1>
-          <p className="text-xl font-normal opacity-80">
+      <div className="bg-[#0D0F23]text-left  container mx-auto flex flex-col items-center justify-between gap-[26px] rounded-xl border-[1px] border-solid border-gray-500 md:flex-row">
+        <div className="grid gap-[26px] p-10  md:py-[49px] md:pl-10">
+          <h1 className=" text-xl font-medium">Add LP to any BTS</h1>
+          <p className="text-sm font-normal opacity-80">
             Our platform offers a unique opportunity for users to invest in BTS
             tokens and receive BTS LP tokens in return, representing their stake
             in the BTS.
@@ -39,9 +39,6 @@ export default function Hivex() {
         <NextImage width={200} height={400} src={beeSvg} alt="bee" />
       </div>
       <div className=" hidden items-center justify-center md:grid">
-        {/* <ItemWithModal className="h-[478px] w-[830px]">
-          <Back />
-        </ItemWithModal> */}
         <Zoom>
           <NextImage
             src={HivexBack}

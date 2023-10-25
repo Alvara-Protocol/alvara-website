@@ -16,9 +16,9 @@ const MobileLink = ({ setIsOpen, children }: MobileLinkProps) => {
 
 const titles = [
   { title: 'BTS Factory', link: '/bts-factory' },
-  { title: 'veALVA', link: '/staking' },
+  { title: 'veALVA', link: '/vealva' },
   { title: 'HiveX', link: '/hivex' },
-  { title: 'About Alvara', link: '/team' },
+  { title: 'About', link: '/team' },
   { title: 'Airdrop', link: '/airdrop' },
   { title: 'Faq', link: '/faq' },
 ];
@@ -39,7 +39,7 @@ export default function Header() {
     <header
       className={clsx(
         'fixed top-0 z-50 w-full py-[18px] font-[Poppins]',
-        ' bg-gradient-to-r  from-[#101229] to-[#331752] shadow-lg backdrop-blur-sm',
+        ' bg-[#331752] shadow-lg backdrop-blur-sm',
       )}
     >
       <div className="layout flex h-14 items-center justify-between gap-40">
@@ -222,7 +222,6 @@ export default function Header() {
             </li> */}
           </ul>
         </nav>
-        <div className="hidden lg:block"></div>
         <div className="hidden lg:block"></div>
       </div>
     </header>

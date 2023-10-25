@@ -76,7 +76,7 @@ import Pac from '@/components/Svg/Tokens/Pac';
 
 export default function TokenGroup() {
   return (
-    <div className="w-full md:w-1/2 ">
+    <div className="w-full md:w-1/3 ">
       <Marquee autoFill={true} gradient gradientColor={[15, 23, 42]}>
         <div className="ml-5 flex gap-5">
           <Btc className="w-16" /> <Give className="w-16" />{' '}

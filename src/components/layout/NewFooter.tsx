@@ -6,8 +6,11 @@ import UnstyledLink from '@/components/links/UnstyledLink';
 import Links from '@/views/Airdrop/Links';
 
 export default function NewFooter() {
+  const handleTop = React.useCallback(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
   return (
-    <footer className=" z-50 flex flex-col-reverse justify-between gap-10 bg-[#0C0E21] px-5 py-4  font-montserrat text-white shadow-xl md:flex-row md:px-10 ">
+    <footer className=" z-50 flex flex-col-reverse justify-between gap-10 bg-[#0C0E21] px-5 py-4 font-montserrat  text-white shadow-xl md:flex-row md:gap-20 md:px-10 ">
       <div className="grid gap-10">
         <div className=" flex flex-wrap justify-start gap-10 py-4 md:py-10">
           <div className=" grid gap-3 ">
@@ -139,6 +142,7 @@ export default function NewFooter() {
           <div className="flex w-full justify-center">
             <Button
               variant="ghost"
+              onClick={handleTop}
               className="w-fit rounded-full border  border-white p-2 md:absolute md:bottom-10 md:right-10"
             >
               <ArrowWhiteIcon className=" -rotate-90 " />
