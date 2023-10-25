@@ -11,7 +11,7 @@ export default function Arrow2({ ...props }: SvgProps) {
       fill="none"
       {...props}
     >
-      <path d="M14 1L7.5 8L1 1" stroke="white" stroke-width="2" />
+      <path d="M14 1L7.5 8L1 1" stroke="white" strokeWidth="2" />
     </svg>
   );
 }
