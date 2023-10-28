@@ -13,7 +13,7 @@ export default function Title() {
         <div className="">
           <h1
             className={[
-              'text-center  font-medium leading-[70px] text-gray-400 ',
+              'text-center  font-medium leading-[70px] text-gray-400',
               styles.hives_title,
             ].join(' ')}
           >

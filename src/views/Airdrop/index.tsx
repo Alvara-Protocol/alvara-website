@@ -7,19 +7,19 @@ import { styles } from '@/styles';
 
 export default function Airdrop() {
   return (
-    <main className="flex flex-col gap-16 bg-[#10122A] pb-20 text-white md:gap-28">
-      <Hives className="md:flex-rowmd:pb-40 grid place-content-center items-center gap-2 px-4  pt-[140px] md:grid-cols-3 md:pt-[110px]">
+    <div className=" flex flex-col gap-16 bg-[#10122A] pb-20 text-white md:gap-28">
+      <Hives className="relative grid place-content-center items-center gap-2 px-4 pt-[167px] md:grid-cols-3 md:px-11 md:pb-40 md:pt-[205px]">
         <div className="hidden md:block">
           <Image
-            className="mb-4  rounded-full "
+            className="absolute top-0 mb-4 rounded-full "
             src="/images/airdrop.png"
             layout="responsive"
             width={10}
             height={10}
-            alt="roat"
+            alt="roatss "
           />
         </div>
-        <div className="grid gap-9">
+        <div className="grid gap-9 self-start text-start">
           <h1
             className={[
               'z-10 break-normal text-center',
@@ -50,7 +50,7 @@ export default function Airdrop() {
           </div>
         </div>
         <Image
-          className="mb-4 rounded-full "
+          className="absolute top-0 mb-4 rounded-full"
           src="/images/airdrop.png"
           layout="responsive"
           width={10}
@@ -58,6 +58,6 @@ export default function Airdrop() {
           alt="row risk"
         />
       </Hives>
-    </main>
+    </div>
   );
 }

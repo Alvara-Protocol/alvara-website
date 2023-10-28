@@ -4,15 +4,17 @@ import Zoom from 'react-medium-image-zoom';
 
 import { Hives, NextImage } from '@/components';
 
+import { styles } from '@/styles';
+
 export default function VeAlva() {
   return (
-    <div className="flex min-h-[calc(100vh)] flex-col gap-20 bg-slate-900 px-2 text-white sm:px-0">
-      <Hives className="flex flex-col items-center gap-10 px-4 pt-40 md:flex-row md:justify-around md:px-11">
+    <div className="flex min-h-[calc(100vh)] flex-col gap-20 bg-slate-900 px-2 text-white sm:px-0 ">
+      <Hives className="flex flex-col items-center gap-10 px-4 pt-[167px] md:flex-row md:justify-around md:px-11 md:pt-[205px]">
         <div className="grid">
-          <h1 className="z-10 text-center text-3xl leading-normal  text-gray-400 md:text-[60px]">
+          <h1 className={['z-10 text-center', styles.hives_title].join(' ')}>
             veALVA
           </h1>
-          <h1 className=" text-center text-xl font-light">
+          <h1 className=" text-center font-poppins text-xl font-light">
             veALVA is your key to influence and rewards within the Alvara
             ecosystem.
           </h1>
@@ -21,8 +23,10 @@ export default function VeAlva() {
       <div className="container mx-auto">
         <div className="bg-[#0D0F23]text-left  container mx-auto flex flex-col items-center justify-between gap-[26px] rounded-xl border-[1px] border-solid border-gray-500 md:flex-row">
           <div className="grid gap-[26px] p-10  md:py-[49px] md:pl-10">
-            <h1 className=" text-xl font-medium">Staking</h1>
-            <p className="text-sm font-normal opacity-80">
+            <h1 className={['font-medium', styles.secondary_title].join(' ')}>
+              Staking
+            </h1>
+            <p className={['opacity-80', styles.context].join(' ')}>
               By staking ALVA tokens on our platform, you will unlock access to
               the Staking Rewards Vault (SRV). This vault is replenished with a
               percentage of all fees collected by the platform. <br />
@@ -44,14 +48,16 @@ export default function VeAlva() {
         </div>
 
         <section className="mt-[60px]">
-          <h1 className="mb-[20px] text-4xl font-medium">Governance</h1>
+          <h1 className={['mb-[20px]', styles.secondary_title].join(' ')}>
+            Governance
+          </h1>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
             <div className="bg-[#0D0F23]text-left  container mx-auto flex flex-col items-center justify-between gap-[26px] rounded-xl border-[1px] border-solid border-gray-500 md:flex-row">
               <div className="grid gap-[26px] p-10  md:py-[49px] md:pl-10">
-                <h1 className=" text-xl font-medium">
+                <h1 className={styles.context_title}>
                   VeALVA (Vote-escrowed ALVA)
                 </h1>
-                <p className="text-sm font-normal opacity-80">
+                <p className={['opacity-80', styles.context].join(' ')}>
                   Alvara is a decentralized autonomous organisation (DAO) that
                   is governed by ALVA token holders who have staked their tokens
                   to receive veALVA.
@@ -86,8 +92,8 @@ export default function VeAlva() {
 
             <div className="bg-[#0D0F23]text-left  container mx-auto flex flex-col items-center justify-between gap-[26px] rounded-xl border-[1px] border-solid border-gray-500 md:flex-row">
               <div className="grid gap-[26px] p-10  md:py-[49px] md:pl-10">
-                <h1 className=" text-xl font-medium">Voting Mechanism</h1>
-                <p className="text-sm font-normal opacity-80">
+                <h1 className={styles.context_title}>Voting Mechanism</h1>
+                <p className={['opacity-80', styles.context].join(' ')}>
                   The quorum for the Alvara DAO is 20%, which means that at
                   least 20% of the veALVA holders must participate in a vote for
                   it to be valid. The pass rate, which is the percentage of
@@ -112,8 +118,8 @@ export default function VeAlva() {
         <section className="mt-[60px]">
           <div className="bg-[#0D0F23]text-left  container mx-auto flex flex-col items-center justify-between gap-[26px] rounded-xl border-[1px] border-solid border-gray-500 md:flex-row">
             <div className="grid gap-[26px] p-10  md:pl-10">
-              <h1 className=" text-xl font-medium">ALVA Wars</h1>
-              <p className="text-sm font-normal opacity-80">
+              <h1 className={styles.secondary_title}>ALVA Wars</h1>
+              <p className={['opacity-80', styles.context].join(' ')}>
                 The ALVA wars are focused around controlling as much of
                 ALVA&apos;s supply as possible. Holding and staking ALVA gives
                 the power of governance, and the power of governance grants

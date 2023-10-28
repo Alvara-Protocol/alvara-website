@@ -142,7 +142,7 @@ export default function Team() {
         <div className="container mx-auto grid w-full items-end justify-center">
           <h1
             className={[
-              'text-center font-medium  text-gray-400  ',
+              'text-center  text-gray-400  ',
               styles.hives_title,
             ].join(' ')}
           >

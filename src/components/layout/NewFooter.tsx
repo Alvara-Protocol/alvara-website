@@ -12,7 +12,7 @@ export default function NewFooter() {
   return (
     <footer className=" z-50 flex flex-col-reverse justify-between gap-10 bg-[#0C0E21] px-5 py-4 font-montserrat  text-white shadow-xl md:flex-row md:gap-20 md:px-10 ">
       <div className="grid gap-10">
-        <div className=" flex flex-wrap justify-start gap-10 py-4 md:py-10">
+        <div className=" flex flex-wrap justify-center gap-10 py-4 md:py-10">
           <div className=" grid gap-3 ">
             <h1 className="text-lg font-bold ">Company</h1>
             <UnstyledLink
@@ -37,11 +37,11 @@ export default function NewFooter() {
               BTS Factory
             </UnstyledLink>
             <UnstyledLink
-              href="/market-place"
+              href="/vealva"
               className="flex items-center justify-start gap-2"
             >
               <ArrowWhiteIcon />
-              Marketplace
+              veAlva
             </UnstyledLink>
             <UnstyledLink
               href="/hivex"
@@ -52,30 +52,38 @@ export default function NewFooter() {
             </UnstyledLink>
           </div>
           <div className="grid content-start gap-3">
-            <h1 className="text-lg font-bold ">Website</h1>
+            <h1 className="text-lg font-bold ">Documents</h1>
             <UnstyledLink
-              href="/hivex"
+              href="/Alvara_Protocol_White_Paper.pdf"
               className="flex items-center justify-start gap-2"
             >
               <ArrowWhiteIcon />
               Whitepaper
             </UnstyledLink>
             <UnstyledLink
-              href="/hivex"
+              href="/Alvara_Roadmap.pdf"
               className="flex items-center justify-start gap-2"
             >
               <ArrowWhiteIcon />
-              Privacy Policy
+              Roadmap
             </UnstyledLink>
             <UnstyledLink
+              href="/Alvara_Tokenomics.pdf"
+              className="flex items-center justify-start gap-2"
+            >
+              <ArrowWhiteIcon />
+              Tokenomics
+            </UnstyledLink>
+
+            {/* <UnstyledLink
               href="/hivex"
               className="flex items-center justify-start gap-2"
             >
               <ArrowWhiteIcon />
               Support
-            </UnstyledLink>
+            </UnstyledLink> */}
           </div>
-          <div className="grid content-start gap-3 ">
+          {/*<div className="grid content-start gap-3 ">
             <h1 className="text-lg font-bold uppercase">Staking</h1>
             <UnstyledLink
               href="/staking"
@@ -108,13 +116,13 @@ export default function NewFooter() {
               <ArrowWhiteIcon />
               BTS DAO&apos;s
             </UnstyledLink>
-          </div>
+          </div> */}
         </div>
         <p className="container mx-auto text-center text-[18px] text-white lg:text-left">
           © Copyright 2023, Alvara, All rights reserved
         </p>
       </div>
-      <div className="bg-radial flex grow flex-col items-start justify-between rounded-lg p-10 md:relative">
+      <div className="bg-radial flex grow flex-col items-start justify-between rounded-lg p-10 md:relative md:max-w-[80vw]">
         <div className="flex flex-wrap items-center justify-start">
           <Links visible={false} />
         </div>
