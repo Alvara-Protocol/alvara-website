@@ -26,17 +26,19 @@ export default function Intro() {
         </div>
         <p className={['w-full opacity-80', styles.context].join(' ')}>
           There has been a longstanding demand for a mechanism within the vast
-          cryptocurrency market that mirrors the benefits of Exchange-Traded
-          Funds (ETFs). <b className="font-bold "> The wait is now over. </b>
+          cryptocurrency market that allows users to hold multiple cross-chain
+          assets in single, trackable basket.
+          <b className="font-bold "> The wait is now over. </b>
           <br />
           <br />
-          Introducing the Alvara Protocol, a groundbreaking decentralised
+          Introducing the Alvara Protocol, a groundbreaking decentralized
           crypto-fund platform that enables the creation and self-management of
-          tokenised basket funds.
+          tokenized basket funds.
           <br />
-          <br /> Poised to empower the upcoming generation of fund managers,
-          Alvara is transforming the industry landscape. Embrace the future of
-          Decentralised Finance (DeFi). Welcome to the Alvara Protocol.
+          <br />
+          Poised to empower the upcoming generation of fund managers, Alvara is
+          transforming the industry landscape. Embrace the future of
+          Decentralized Finance. Welcome to the Alvara Protocol.
         </p>
       </section>
 

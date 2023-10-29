@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import React from 'react';
 
 import { NextImage } from '@/components';
@@ -35,7 +34,7 @@ export default function Hivex() {
         />
       </div>
       <div className="flex flex-col gap-[26px] overflow-hidden">
-        <div className="  z-10 grid items-center justify-start gap-[26px] rounded-xl border-[1px] border-solid border-gray-500 bg-[#0D0F23] bg-cover bg-center bg-no-repeat px-10 py-8 pb-5 md:bg-[url('/images/home/pie-bg.png')]">
+        <div className="  z-10 grid items-center justify-start gap-[26px] rounded-xl border-[1px] border-solid border-gray-500 bg-[#0D0F23] bg-[url('/images/home/pie-bg.png')] bg-[100%_100%] bg-no-repeat px-10 py-8 pb-5 md:bg-[url('/images/home/pie-bg.png')]">
           <h1
             className={[
               'w-full text-left font-medium',
@@ -76,7 +75,7 @@ export default function Hivex() {
               Arrow Capital
             </div>
           </div>
-          <div className="flex items-end justify-end md:hidden">
+          {/* <div className="flex items-end justify-end md:hidden">
             <Image
               src="/images/home/Pie.png"
               layout="fixed"
@@ -84,7 +83,7 @@ export default function Hivex() {
               height={271}
               alt="Pie"
             />
-          </div>
+          </div> */}
         </div>
         <div className=" flex flex-col items-center justify-center gap-[26px] rounded-xl border-[1px] border-solid border-gray-500 bg-[#0D0F23] px-10 py-7 md:flex-row">
           <div className="flex flex-col gap-[26px]">

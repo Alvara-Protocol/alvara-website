@@ -9,7 +9,7 @@ export default function Title() {
   return (
     <div className="bg-gradient-to-b from-[#3F1960] to-slate-900">
       <div className="  md:h-24"></div>
-      <Hives className="container mx-auto flex flex-col items-center justify-center gap-8 bg-cover bg-center bg-no-repeat p-10  font-montserrat md:bg-[url('/images/home/bg.png')] md:py-32">
+      <Hives className="container mx-auto flex flex-col items-center justify-center gap-8 bg-[100%_auto] bg-center bg-no-repeat p-10  font-montserrat md:bg-[url('/images/home/bg.png')] md:py-32">
         <div className="">
           <h1
             className={[
@@ -17,7 +17,7 @@ export default function Title() {
               styles.hives_title,
             ].join(' ')}
           >
-            Tokenised Funds <br /> for a{' '}
+            Tokenized Funds <br /> for a{' '}
             <a className="font-bold text-[#8A15D5]">DeFi</a> Future
           </h1>
           <p className="mt-8 max-w-5xl text-center text-lg text-gray-400">
