@@ -22,8 +22,8 @@ const QuestionDrop = React.forwardRef<HTMLElement, DivProps>(({ ...props }) => {
     <div
       className={
         open
-          ? ' z-20 grid w-full grid-cols-1 gap-5 rounded-xl border-2 border-gray-500 px-5 py-2 text-left text-sm  hover:cursor-pointer md:w-[896px] md:px-10 md:py-7 md:text-xl '
-          : ' z-20 grid w-full grid-cols-1 gap-5 rounded-xl border-2 border-gray-500 px-5 py-3 text-left text-sm shadow-lg  hover:cursor-pointer md:w-[896px] md:px-10 md:py-7 md:text-xl '
+          ? ' z-20 grid w-full grid-cols-1 gap-5 rounded-lg border-[1px] border-gray-500 px-5 py-2 text-left text-sm  hover:cursor-pointer md:w-[896px] md:px-10 md:py-7 md:text-xl '
+          : ' z-20 grid w-full grid-cols-1 gap-5 rounded-lg border-[1px] border-gray-500 px-5 py-3 text-left text-sm shadow-lg  hover:cursor-pointer md:w-[896px] md:px-10 md:py-7 md:text-xl '
       }
       onClick={handleOpen}
     >

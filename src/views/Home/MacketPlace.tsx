@@ -8,7 +8,7 @@ import { styles } from '@/styles';
 export default function MacketPlace() {
   return (
     <div className=" container mx-auto  flex w-full flex-col gap-[26px] font-montserrat ">
-      <div className=" flex flex-col items-start justify-between gap-[26px] rounded-xl border-[1px] border-solid border-gray-500 bg-[#0D0F23] px-10 py-2  md:flex-row">
+      <div className=" flex flex-col items-start justify-between gap-[26px] rounded-lg border-[1px] border-solid border-gray-500 bg-[#0D0F23] px-10 py-2  md:flex-row">
         <div className="grid place-content-start gap-[26px] py-5 md:max-w-[50%]">
           <h1
             className={[
@@ -31,14 +31,14 @@ export default function MacketPlace() {
         <NextImage
           // useSkeleton
           imgClassName=" w-2/4 h-[190px]"
-          src="/images/home/chart.png"
+          src="/images/home/chart.svg"
           width="300"
           height="200"
           alt="chart"
         />
       </div>
       <div className="grid grid-cols-1 flex-row gap-[26px] overflow-hidden md:grid-cols-2">
-        <div className="flex flex-col items-start rounded-xl border-[1px] border-solid border-gray-500 bg-[#0D0F23]  bg-[url('/images/home/button-bg.png')] bg-cover bg-center bg-no-repeat py-10 pb-5 md:flex-row ">
+        <div className="flex flex-col items-start rounded-lg border-[1px] border-solid border-gray-500 bg-[#0D0F23]  bg-[100%_auto] bg-center bg-no-repeat py-10 pb-5 md:flex-row md:bg-[url('/images/home/button-bg.png')] ">
           <div className="flex flex-col gap-[28px]  px-10 md:w-3/4">
             <h1
               className={[
@@ -68,7 +68,7 @@ export default function MacketPlace() {
             />
           </div>
         </div>
-        <div className="flex flex-col items-center justify-start gap-[26px] rounded-xl border-[1px]  border-solid border-gray-500 bg-[url('/images/home/last-bg.png')] bg-cover bg-center bg-no-repeat px-10 py-7 md:flex-row md:bg-[#0D0F23]">
+        <div className="flex flex-col items-center justify-start gap-[26px] rounded-lg border-[1px]  border-solid border-gray-500 bg-[url('/images/home/last-bg.png')] bg-cover bg-center bg-no-repeat px-10 py-7 md:flex-row md:bg-[#0D0F23]">
           <div className="flex flex-col gap-[26px] md:w-4/5">
             <h1
               className={[

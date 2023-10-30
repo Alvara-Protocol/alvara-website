@@ -2,19 +2,20 @@ import React from 'react';
 
 import { Hives } from '@/components';
 
+import { styles } from '@/styles';
 import QuestionDrop from '@/views/Faq/QuestionDrop';
 
 export default function Faq() {
   return (
     <main className="flex flex-col bg-[#10122A]  pb-20 ">
-      <Hives className="flex flex-col items-center px-4 pt-40 md:flex-row md:justify-around md:px-11">
+      <Hives className="flex flex-col items-center px-4   pt-[167px]  md:flex-row md:justify-around  md:px-11 md:pt-[205px]">
         <div className="grid pb-20">
-          <h1 className="z-10 text-center text-3xl  leading-normal  text-gray-400 md:text-[60px]">
+          <h1 className={['z-10 text-center', styles.hives_title].join(' ')}>
             FAQ
           </h1>
         </div>
       </Hives>
-      <div className=" relative flex flex-col justify-center gap-8 rounded-xl px-5 text-base  leading-10 text-white  md:mx-auto   md:leading-6 ">
+      <div className=" relative flex flex-col justify-center gap-8 rounded-lg px-5 text-base  leading-10 text-white  md:mx-auto   md:leading-6 ">
         <QuestionDrop title="What is the Alvara Protocol?">
           <p className=" text-[11px] font-normal text-[#EAEAEA] md:text-lg">
             The Alvara Protocol is a transformative platform in the DeFi space

@@ -2,7 +2,7 @@ import Image from 'next/image';
 import React from 'react';
 import Zoom from 'react-medium-image-zoom';
 
-import { Hives, NextImage } from '@/components';
+import { Hives } from '@/components';
 
 import { styles } from '@/styles';
 
@@ -21,7 +21,7 @@ export default function VeAlva() {
         </div>
       </Hives>
       <div className="container mx-auto">
-        <div className="bg-[#0D0F23]text-left  container mx-auto flex flex-col items-center justify-between gap-[26px] rounded-xl border-[1px] border-solid border-gray-500 md:flex-row">
+        <div className=" relative flex flex-col items-center justify-between gap-[26px] rounded-lg border-[1px] border-solid border-gray-500 bg-[#0D0F23] text-left md:flex-row">
           <div className="grid gap-[26px] p-10  md:py-[49px] md:pl-10">
             <h1 className={['font-medium', styles.secondary_title].join(' ')}>
               Staking
@@ -39,12 +39,15 @@ export default function VeAlva() {
               become eligible it must be voted in via Alvara&apos;s DAO.
             </p>
           </div>
-          <NextImage
-            width={300}
-            height={400}
-            src="/images/staking/staking-back.svg"
-            alt="bee"
-          />
+          <div className=" right-0 grid min-h-[240px] w-full min-w-[269px] justify-end ">
+            <Image
+              width={269}
+              height={240}
+              src="/images/staking/staking-back.png"
+              alt="bee"
+              className="h-full w-full"
+            />
+          </div>
         </div>
 
         <section className="mt-[60px]">
@@ -52,7 +55,7 @@ export default function VeAlva() {
             Governance
           </h1>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-            <div className="bg-[#0D0F23]text-left  container mx-auto flex flex-col items-center justify-between gap-[26px] rounded-xl border-[1px] border-solid border-gray-500 md:flex-row">
+            <div className="bg-[#0D0F23]text-left  container mx-auto flex flex-col items-center justify-between gap-[26px] rounded-lg border-[1px] border-solid border-gray-500 xl:flex-row">
               <div className="grid gap-[26px] p-10  md:py-[49px] md:pl-10">
                 <h1 className={styles.context_title}>
                   VeALVA (Vote-escrowed ALVA)
@@ -72,25 +75,28 @@ export default function VeAlva() {
                   stream, you must hold veALVA.
                 </p>
               </div>
-              <div>
-                <NextImage
+              <div className=" hidden h-full min-w-[250px] overflow-hidden xl:grid">
+                <Image
                   width={200}
                   height={200}
                   src="/images/staking/governance-back1.png"
                   alt="governance"
+                  className="m-n self-stretch"
                 />
-                <div className="hidden md:block">
-                  <NextImage
-                    width={200}
-                    height={200}
-                    src="/images/staking/governance-back1.png"
-                    alt="governance"
-                  />
-                </div>
+              </div>
+
+              <div className="grid w-full items-center py-5 xl:hidden">
+                <Image
+                  width={200}
+                  height={200}
+                  src="/images/staking/governance-back2.png"
+                  alt="governance"
+                  className="self-stretch"
+                />
               </div>
             </div>
 
-            <div className="bg-[#0D0F23]text-left  container mx-auto flex flex-col items-center justify-between gap-[26px] rounded-xl border-[1px] border-solid border-gray-500 md:flex-row">
+            <div className="bg-[#0D0F23]text-left  container mx-auto flex flex-col items-center justify-between gap-[26px] rounded-lg border-[1px] border-solid border-gray-500 md:flex-row">
               <div className="grid gap-[26px] p-10  md:py-[49px] md:pl-10">
                 <h1 className={styles.context_title}>Voting Mechanism</h1>
                 <p className={['opacity-80', styles.context].join(' ')}>
@@ -116,8 +122,8 @@ export default function VeAlva() {
         </section>
 
         <section className="mt-[60px]">
-          <div className="bg-[#0D0F23]text-left  container mx-auto flex flex-col items-center justify-between gap-[26px] rounded-xl border-[1px] border-solid border-gray-500 md:flex-row">
-            <div className="grid gap-[26px] p-10  md:pl-10">
+          <div className="bg-[#0D0F23]text-left grid grid-cols-1 items-center justify-between gap-[26px] rounded-lg border-[1px] border-solid border-gray-500 md:grid-cols-3">
+            <div className="grid gap-[26px] p-10  md:col-span-2 md:pl-10">
               <h1 className={styles.secondary_title}>ALVA Wars</h1>
               <p className={['opacity-80', styles.context].join(' ')}>
                 The ALVA wars are focused around controlling as much of
@@ -131,12 +137,15 @@ export default function VeAlva() {
                 Let the games begin.
               </p>
             </div>
-            <NextImage
-              width={300}
-              height={300}
-              src="/images/staking/alva-war-back.png"
-              alt="bee"
-            />
+            <div className="flex h-full w-full min-w-min  items-stretch justify-center md:justify-end ">
+              <Image
+                src="/images/staking/alva-war-back.png"
+                width={400}
+                height={365}
+                alt="war-back"
+                className="h-full self-stretch "
+              ></Image>
+            </div>
           </div>
         </section>
 

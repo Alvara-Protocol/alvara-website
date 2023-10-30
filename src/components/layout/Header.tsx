@@ -20,7 +20,7 @@ const titles = [
   { title: 'HiveX', link: '/hivex' },
   { title: 'About', link: '/team' },
   { title: 'Airdrop', link: '/airdrop' },
-  { title: 'Faq', link: '/faq' },
+  { title: 'FAQ', link: '/faq' },
 ];
 
 export default function Header() {
@@ -42,8 +42,8 @@ export default function Header() {
         ' bg-[#331752] shadow-lg backdrop-blur-sm',
       )}
     >
-      <div className="layout flex h-14 items-center justify-between gap-40">
-        <UnstyledLink className="justify-self-start" href="/">
+      <div className="layout relative flex h-14 items-center justify-end lg:justify-center ">
+        <UnstyledLink className="absolute left-0 justify-self-start" href="/">
           <NextImage
             useSkeleton
             className="w-32 md:w-40"
@@ -76,7 +76,7 @@ export default function Header() {
               </Transition.Child>
 
               <div className="fixed inset-0 flex translate-x-0 items-start justify-end overflow-y-auto">
-                <div className="min-h-full w-[min(19rem,calc(100vw-theme(spacing.10)))] bg-white shadow-2xl ring-1 ring-black/10 transition">
+                <div className="bg-linear min-h-full w-[min(19rem,calc(100vw-theme(spacing.10)))] shadow-2xl ring-1 ring-black/10 transition">
                   <Transition.Child
                     as={React.Fragment}
                     enter="ease-out duration-300"
@@ -86,7 +86,7 @@ export default function Header() {
                     leaveFrom="opacity-100 scale-100"
                     leaveTo="opacity-0 scale-95"
                   >
-                    <Dialog.Panel className="w-full max-w-md transform divide-y divide-slate-900/10 overflow-hidden bg-white text-left align-middle transition-all">
+                    <Dialog.Panel className=" w-full max-w-md transform divide-y divide-slate-900/10 overflow-hidden text-left align-middle transition-all">
                       <Dialog.Title as="h3" className="sr-only">
                         Navigation
                       </Dialog.Title>
@@ -96,7 +96,7 @@ export default function Header() {
                             <NextImage
                               useSkeleton
                               className="mt-1.5 w-32"
-                              src="/images/nav-logo-black.png"
+                              src="/images/nav-logo.png"
                               width="230"
                               height="45"
                               alt="Icon"
@@ -121,7 +121,7 @@ export default function Header() {
                         </button>
                       </div>
 
-                      <nav className="divide-y divide-slate-900/10 text-base leading-7 text-slate-900">
+                      <nav className="divide-y divide-slate-900/10 text-base leading-7 text-white">
                         <div className="px-8 py-6">
                           <div className="items-start space-y-2">
                             {titles.map((title, index) => (
@@ -170,7 +170,7 @@ export default function Header() {
               </div>
             </Dialog>
           </Transition>
-          <ul className="hidden justify-center gap-5 text-sm lg:flex ">
+          <ul className="hidden justify-center gap-5 text-sm lg:flex">
             {titles.map((title, index) => (
               <li key={index} className="min-w-max">
                 <UnstyledLink

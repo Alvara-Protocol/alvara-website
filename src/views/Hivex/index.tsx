@@ -2,11 +2,10 @@ import Image from 'next/image';
 import React from 'react';
 import Zoom from 'react-medium-image-zoom';
 
-import { Button, Hives, NextImage } from '@/components';
+import { Hives } from '@/components';
 
 import { styles } from '@/styles';
 
-import exclamationSvg from '~/images/bts-factory/exclamation.png';
 import HivexBack from '~/images/hivex.png';
 import beeSvg from '~/images/hivex/bee.png';
 
@@ -23,7 +22,7 @@ export default function Hivex() {
           </h1>
         </div>
       </Hives>
-      <div className="bg-[#0D0F23]text-left  container mx-auto flex flex-col items-center justify-between gap-[26px] rounded-xl border-[1px] border-solid border-gray-500 md:flex-row">
+      <div className="bg-[#0D0F23]text-left  container mx-auto flex flex-col items-center justify-between gap-[26px] rounded-lg border-[1px] border-solid border-gray-500 md:flex-row">
         <div className="grid gap-[26px] p-10  md:py-[49px] md:pl-10">
           <h1 className={['font-medium', styles.context_title].join(' ')}>
             Add LP to any BTS
@@ -41,19 +40,22 @@ export default function Hivex() {
             based on the proportion of their LP holdings.
           </p>
         </div>
-        <Image width={300} height={300} src={beeSvg} layout="fixed" alt="bee" />
-      </div>
-      <div className=" hidden items-center justify-center md:grid">
-        <Zoom>
-          <NextImage
-            src={HivexBack}
-            width={833}
-            height={478}
-            alt="hivex-back"
+        <div className="flex min-w-full items-center justify-end justify-items-end md:min-w-fit">
+          <Image
+            width={200}
+            height={300}
+            src={beeSvg}
+            layout="fixed"
+            alt="bee"
           />
+        </div>
+      </div>
+      <div className="grid items-center justify-center">
+        <Zoom>
+          <Image src={HivexBack} width={833} height={478} alt="hivex-back" />
         </Zoom>
       </div>
-      <div className="block h-[1513px] w-full bg-[url('/images/hivex/mobile-back.svg')] bg-cover bg-clip-padding bg-center bg-no-repeat bg-origin-padding px-6 md:hidden">
+      {/* <div className="block h-[1513px] w-full bg-[url('/images/hivex/mobile-back.svg')] bg-cover bg-clip-padding bg-center bg-no-repeat bg-origin-padding px-6 md:hidden">
         <div className=" group relative mt-[565px] flex h-8 w-full place-content-center   bg-center bg-no-repeat ">
           <Button className=" place-self-center bg-none px-0">
             <NextImage
@@ -72,7 +74,7 @@ export default function Hivex() {
             <a className="text-fuchsia-450">eth/usdt/avax/bnb</a> into HiveX DEX
           </span>
         </div>
-      </div>
+      </div> */}
     </main>
   );
 }

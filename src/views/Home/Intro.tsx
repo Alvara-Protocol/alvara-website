@@ -9,7 +9,7 @@ export default function Intro() {
   return (
     <div className=" container mx-auto flex w-full flex-col items-center justify-between gap-8 p-5 md:flex-row  ">
       <section className="flex flex-col gap-12 md:w-1/2 ">
-        <div className="pointer-events-none flex max-w-fit items-center gap-5 rounded-xl bg-[#1B1F489C] px-4 py-[10px]">
+        <div className="pointer-events-none flex max-w-fit items-center gap-5 rounded-lg bg-[#1B1F489C] px-4 py-[10px]">
           <NextImage
             useSkeleton
             src="/images/logo.png"

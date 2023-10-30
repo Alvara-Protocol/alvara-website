@@ -8,17 +8,12 @@ import { styles } from '@/styles';
 export default function Title() {
   return (
     <div className="bg-gradient-to-b from-[#3F1960] to-slate-900">
-      <div className="  md:h-24"></div>
-      <Hives className="container mx-auto flex flex-col items-center justify-center gap-8 bg-[100%_auto] bg-center bg-no-repeat p-10  font-montserrat md:bg-[url('/images/home/bg.png')] md:py-32">
+      <div className=" md:h-24"></div>
+      <Hives className="container mx-auto flex flex-col items-center justify-center gap-8 bg-[100%_auto] bg-center bg-no-repeat p-10  py-32 font-montserrat md:bg-[url('/images/home/bg.png')]">
         <div className="">
-          <h1
-            className={[
-              'text-center  font-medium leading-[70px] text-gray-400',
-              styles.hives_title,
-            ].join(' ')}
-          >
+          <h1 className={['text-center  ', styles.hives_title].join(' ')}>
             Tokenized Funds <br /> for a{' '}
-            <a className="font-bold text-[#8A15D5]">DeFi</a> Future
+            <a className="gradient-text font-bold">DeFi</a> Future
           </h1>
           <p className="mt-8 max-w-5xl text-center text-lg text-gray-400">
             A full suite built for the next generation of fund managers. <br />{' '}
@@ -31,7 +26,7 @@ export default function Title() {
             >
               <Button
                 variant="light"
-                className="flex !w-full items-center justify-center rounded-lg px-8 py-3 text-center text-xl font-light"
+                className="flex !w-full items-center justify-center rounded-[6px] px-8 py-3 text-center text-[18px] font-medium"
               >
                 Discord
               </Button>
@@ -41,7 +36,7 @@ export default function Title() {
               className="w-full md:w-auto"
             >
               <Button
-                className="outline flex w-full items-center justify-center rounded-lg px-8 py-3 text-xl font-light outline-1"
+                className="outline flex w-full items-center justify-center rounded-[6px] px-8 py-3 text-[18px] font-medium outline-1"
                 variant="ghost"
               >
                 Telegram

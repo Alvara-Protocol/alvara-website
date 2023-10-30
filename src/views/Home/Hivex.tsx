@@ -1,13 +1,12 @@
+import Image from 'next/image';
 import React from 'react';
-
-import { NextImage } from '@/components';
 
 import { styles } from '@/styles';
 
 export default function Hivex() {
   return (
     <div className=" container mx-auto  flex w-full flex-col gap-[26px] font-montserrat md:flex-row">
-      <div className=" flex flex-col items-center justify-center gap-6 rounded-xl border-[1px] border-solid border-gray-500 bg-[#0D0F23] px-10 py-8">
+      <div className=" flex flex-col items-center justify-center gap-6 rounded-lg border-[1px] border-solid border-gray-500 bg-[#0D0F23] px-10 py-8">
         <h1
           className={[
             'w-full text-left font-medium',
@@ -24,17 +23,16 @@ export default function Hivex() {
           Taking our tokens straight from Uniswap, you have access to an
           unlimited amount of tokens.
         </p>
-        <NextImage
-          // useSkeleton
+        <Image
           className="md:mt-7 "
           src="/images/home/token.png"
-          width="300"
-          height="170"
+          width="428"
+          height="198"
           alt="Logo"
         />
       </div>
       <div className="flex flex-col gap-[26px] overflow-hidden">
-        <div className="  z-10 grid items-center justify-start gap-[26px] rounded-xl border-[1px] border-solid border-gray-500 bg-[#0D0F23] bg-[url('/images/home/pie-bg.png')] bg-[100%_100%] bg-no-repeat px-10 py-8 pb-5 md:bg-[url('/images/home/pie-bg.png')]">
+        <div className="  z-10 grid items-center justify-start gap-[26px] rounded-lg border-[1px] border-solid border-gray-500 bg-[#0D0F23] bg-[100%_100%] bg-no-repeat px-10 py-8 pb-5 md:bg-[url('/images/home/pie-bg.png')]">
           <h1
             className={[
               'w-full text-left font-medium',
@@ -75,17 +73,17 @@ export default function Hivex() {
               Arrow Capital
             </div>
           </div>
-          {/* <div className="flex items-end justify-end md:hidden">
+          <div className="flex items-end justify-end md:hidden">
             <Image
-              src="/images/home/Pie.png"
+              src="/images/home/pie-j.svg"
               layout="fixed"
-              width={271}
-              height={271}
-              alt="Pie"
+              width={299}
+              height={241}
+              alt="Pie-pie"
             />
-          </div> */}
+          </div>
         </div>
-        <div className=" flex flex-col items-center justify-center gap-[26px] rounded-xl border-[1px] border-solid border-gray-500 bg-[#0D0F23] px-10 py-7 md:flex-row">
+        <div className=" grid grid-cols-1 items-center justify-center gap-[26px] rounded-lg border-[1px] border-solid border-gray-500 bg-[#0D0F23] px-10 py-7 md:grid-cols-2 md:flex-row">
           <div className="flex flex-col gap-[26px]">
             <h1
               className={[
@@ -102,9 +100,9 @@ export default function Hivex() {
             >
               Distribute evenly or be meticulous with the weightings of your
               basket.
-            </p>{' '}
+            </p>
           </div>
-          <NextImage
+          <Image
             // useSkeleton
             src="/images/home/weight.png"
             width="300"

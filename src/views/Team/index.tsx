@@ -160,7 +160,7 @@ export default function Team() {
             >
               <Button
                 variant="light"
-                className="flex !w-full items-center justify-center rounded-lg px-8 py-3 text-center text-xl font-light"
+                className="flex !w-full items-center justify-center rounded-[6px] px-8 py-3 text-center text-xl font-light"
               >
                 Whitepaper
               </Button>
@@ -170,7 +170,7 @@ export default function Team() {
               className="w-full md:w-auto"
             >
               <Button
-                className="outline flex w-full items-center justify-center rounded-lg px-8 py-3 text-xl font-light outline-1"
+                className="outline flex w-full items-center justify-center rounded-[6px] px-8 py-3 text-xl font-light outline-1"
                 variant="ghost"
               >
                 Read More
@@ -180,7 +180,7 @@ export default function Team() {
         </div>
         <div className="container col-span-2 mx-auto mb-16 px-5 text-gray-300  md:mt-20 md:px-24">
           <div className="grid gap-5 md:grid-cols-4 ">
-            <div className="flex flex-col place-content-center items-center justify-between gap-4 rounded-xl border-[1px] border-solid border-gray-500 bg-[#0D0F23] p-4 text-center">
+            <div className="flex flex-col place-content-center items-center justify-between gap-4 rounded-lg border-[1px] border-solid border-gray-500 bg-[#0D0F23] p-4 text-center">
               <div className="w-20">
                 <Image
                   className="mb-4 rounded-full"
@@ -197,7 +197,7 @@ export default function Team() {
                 classes.
               </p>
             </div>
-            <div className="flex flex-col place-content-center items-center justify-between gap-4 rounded-xl border-[1px] border-solid border-gray-500 bg-[#0D0F23] p-4 text-center">
+            <div className="flex flex-col place-content-center items-center justify-between gap-4 rounded-lg border-[1px] border-solid border-gray-500 bg-[#0D0F23] p-4 text-center">
               <div className="w-20">
                 <Image
                   className="mb-4 rounded-full"
@@ -214,7 +214,7 @@ export default function Team() {
                 vehicles.
               </p>
             </div>
-            <div className="flex flex-col place-content-center items-center justify-between gap-4 rounded-xl border-[1px] border-solid border-gray-500 bg-[#0D0F23] p-4 text-center">
+            <div className="flex flex-col place-content-center items-center justify-between gap-4 rounded-lg border-[1px] border-solid border-gray-500 bg-[#0D0F23] p-4 text-center">
               <div className="w-20">
                 <Image
                   className="mb-4 rounded-full"
@@ -231,7 +231,7 @@ export default function Team() {
                 regularly.
               </p>
             </div>
-            <div className="flex flex-col place-content-center items-center justify-between gap-4 rounded-xl border-[1px] border-solid border-gray-500 bg-[#0D0F23] p-4 text-center">
+            <div className="flex flex-col place-content-center items-center justify-between gap-4 rounded-lg border-[1px] border-solid border-gray-500 bg-[#0D0F23] p-4 text-center">
               <div className="w-20">
                 <Image
                   className="mb-4 rounded-full"
@@ -257,7 +257,7 @@ export default function Team() {
             What makes Alvara so sweet?
           </h1>
         </div>
-        <div className="flex flex-col place-content-center items-start justify-between gap-4 rounded-xl border-[1px] border-solid border-gray-500 bg-[#0D0F23] p-4 text-start">
+        <div className="flex flex-col place-content-center items-start justify-start gap-4 rounded-lg border-[1px] border-solid border-gray-500 bg-[#0D0F23] p-4 text-start">
           <div className="flex items-center">
             <h1
               className={['font-medium text-white', styles.context_title].join(
@@ -273,7 +273,7 @@ export default function Team() {
             AUM.
           </p>
         </div>
-        <div className="flex flex-col place-content-center items-start justify-between gap-4 rounded-xl border-[1px] border-solid border-gray-500 bg-[#0D0F23] p-4 text-start">
+        <div className="flex flex-col place-content-center items-start justify-start gap-4 rounded-lg border-[1px] border-solid border-gray-500 bg-[#0D0F23] p-4 text-start">
           <div className="flex items-center">
             <h1
               className={['font-medium text-white', styles.context_title].join(
@@ -291,7 +291,7 @@ export default function Team() {
             time, sell their business.
           </p>
         </div>
-        <div className="flex flex-col place-content-center items-start justify-between gap-4 rounded-xl border-[1px] border-solid border-gray-500 bg-[#0D0F23] p-4 text-start">
+        <div className="flex flex-col place-content-center items-start justify-start gap-4 rounded-lg border-[1px] border-solid border-gray-500 bg-[#0D0F23] p-4 text-start">
           <div className="flex items-center">
             <h1 className="text-whie text-xl font-medium">
               Competitive Leaderboard.
@@ -304,7 +304,7 @@ export default function Team() {
             markets.
           </p>
         </div>
-        <div className="flex flex-col place-content-center items-start justify-between gap-4 rounded-xl border-[1px] border-solid border-gray-500 bg-[#0D0F23] p-4 text-start">
+        <div className="flex flex-col place-content-center items-start justify-start gap-4 rounded-lg border-[1px] border-solid border-gray-500 bg-[#0D0F23] p-4 text-start">
           <div className="flex items-center">
             <h1
               className={['font-medium text-white', styles.context_title].join(
@@ -321,7 +321,7 @@ export default function Team() {
             share holders as dividends.
           </p>
         </div>
-        <div className="flex flex-col place-content-center items-start justify-between gap-4 rounded-xl border-[1px] border-solid border-gray-500 bg-[#0D0F23] p-4 text-start">
+        <div className="flex flex-col place-content-center items-start justify-start gap-4 rounded-lg border-[1px] border-solid border-gray-500 bg-[#0D0F23] p-4 text-start">
           <div className="flex items-center">
             <h1
               className={['font-medium text-white', styles.context_title].join(
@@ -337,9 +337,16 @@ export default function Team() {
             portal. Bringing tokanised funds to DeFi like never before.
           </p>
         </div>
-        <div className="flex flex-col place-content-center items-start justify-between gap-4 rounded-xl border-[1px] border-solid border-gray-500 bg-[#0D0F23] p-4 text-start">
+        <div className="flex flex-col place-content-center items-start justify-start gap-4 rounded-lg border-[1px] border-solid border-gray-500 bg-[#0D0F23] p-4 text-start">
           <div className="flex items-center">
-            <h1 className="font-meduum text-xl text-white"> Low Cost.</h1>
+            <h1
+              className={['font-medium text-white', styles.context_title].join(
+                ' ',
+              )}
+            >
+              {' '}
+              Low Cost
+            </h1>
           </div>
           <p>
             Underlying assets are purchased through APIs linked to leading DEXs,

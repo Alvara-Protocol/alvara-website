@@ -147,8 +147,8 @@ export default function Intro() {
       </div>
 
       <div className="container mx-auto px-5">
-        <div className="mt-[82px] flex flex-col gap-[28px] lg:flex-row lg:gap-[33px]">
-          <div className="relative flex w-full flex-col gap-[28px] rounded-lg border border-white border-opacity-20 bg-gray-900 px-[20px] py-[66px] md:px-[35px]">
+        <div className="mt-[82px] flex flex-col items-start gap-[28px] lg:flex-row lg:gap-[33px]">
+          <div className="relative flex w-full flex-col gap-[28px] rounded-lg border border-white border-opacity-20 bg-gray-900 px-[20px] py-[66px] pb-[30px] md:px-[35px]">
             <NextImage
               src="/images/bts-factory/percent_1.png"
               alt=""
