@@ -259,11 +259,7 @@ export default function Team() {
         </div>
         <div className="flex flex-col place-content-center items-start justify-start gap-4 rounded-lg border-[1px] border-solid border-gray-500 bg-[#0D0F23] pb-5 pl-[35px] pr-3 pt-[51px] text-start md:pr-12">
           <div className="flex items-center">
-            <h1
-              className={['font-medium text-white', styles.context_title].join(
-                ' ',
-              )}
-            >
+            <h1 className={['', styles.team_title].join(' ')}>
               Construct and Launch.
             </h1>
           </div>
@@ -275,11 +271,7 @@ export default function Team() {
         </div>
         <div className="flex flex-col place-content-center items-start justify-start gap-4 rounded-lg border-[1px] border-solid border-gray-500 bg-[#0D0F23] pb-5 pl-[35px] pr-3 pt-[51px] text-start md:pr-12">
           <div className="flex items-center">
-            <h1
-              className={['font-medium text-white', styles.context_title].join(
-                ' ',
-              )}
-            >
+            <h1 className={['', styles.team_title].join(' ')}>
               {' '}
               Verified Ownership.
             </h1>
@@ -293,7 +285,7 @@ export default function Team() {
         </div>
         <div className="flex flex-col place-content-center items-start justify-start gap-4 rounded-lg border-[1px] border-solid border-gray-500 bg-[#0D0F23] pb-5 pl-[35px] pr-3 pt-[51px] text-start md:pr-12">
           <div className="flex items-center">
-            <h1 className="text-whie text-xl font-medium">
+            <h1 className={['', styles.team_title].join(' ')}>
               Competitive Leaderboard.
             </h1>
           </div>
@@ -306,11 +298,7 @@ export default function Team() {
         </div>
         <div className="flex flex-col place-content-center items-start justify-start gap-4 rounded-lg border-[1px] border-solid border-gray-500 bg-[#0D0F23] pb-5 pl-[35px] pr-3 pt-[51px] text-start md:pr-12">
           <div className="flex items-center">
-            <h1
-              className={['font-medium text-white', styles.context_title].join(
-                ' ',
-              )}
-            >
+            <h1 className={['', styles.team_title].join(' ')}>
               Yield Optimisation
             </h1>
           </div>
@@ -323,11 +311,7 @@ export default function Team() {
         </div>
         <div className="flex flex-col place-content-center items-start justify-start gap-4 rounded-lg border-[1px] border-solid border-gray-500 bg-[#0D0F23] pb-5 pl-[35px] pr-3 pt-[51px] text-start md:pr-12">
           <div className="flex items-center">
-            <h1
-              className={['font-medium text-white', styles.context_title].join(
-                ' ',
-              )}
-            >
+            <h1 className={['', styles.team_title].join(' ')}>
               First Mover Advantage.
             </h1>
           </div>
@@ -339,14 +323,7 @@ export default function Team() {
         </div>
         <div className="flex flex-col place-content-center items-start justify-start gap-4 rounded-lg border-[1px] border-solid border-gray-500 bg-[#0D0F23] pb-5 pl-[35px] pr-3 pt-[51px] text-start md:pr-12">
           <div className="flex items-center">
-            <h1
-              className={['font-medium text-white', styles.context_title].join(
-                ' ',
-              )}
-            >
-              {' '}
-              Low Cost
-            </h1>
+            <h1 className={['', styles.team_title].join(' ')}> Low Cost</h1>
           </div>
           <p className={styles.context}>
             Underlying assets are purchased through APIs linked to leading DEXs,
