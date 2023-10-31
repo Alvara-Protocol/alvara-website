@@ -257,7 +257,7 @@ export default function Team() {
             What makes Alvara so sweet?
           </h1>
         </div>
-        <div className="flex flex-col place-content-center items-start justify-start gap-4 rounded-lg border-[1px] border-solid border-gray-500 bg-[#0D0F23] p-4 text-start">
+        <div className="flex flex-col place-content-center items-start justify-start gap-4 rounded-lg border-[1px] border-solid border-gray-500 bg-[#0D0F23] pb-5 pl-[35px] pr-3 pt-[51px] text-start md:pr-12">
           <div className="flex items-center">
             <h1
               className={['font-medium text-white', styles.context_title].join(
@@ -267,13 +267,13 @@ export default function Team() {
               Construct and Launch.
             </h1>
           </div>
-          <p className="">
+          <p className={styles.context}>
             With Alvara&apos;s BTS Factory, you can design and launch your own
             ERC-BTS and begin earning management fees based on your BTS’s total
             AUM.
           </p>
         </div>
-        <div className="flex flex-col place-content-center items-start justify-start gap-4 rounded-lg border-[1px] border-solid border-gray-500 bg-[#0D0F23] p-4 text-start">
+        <div className="flex flex-col place-content-center items-start justify-start gap-4 rounded-lg border-[1px] border-solid border-gray-500 bg-[#0D0F23] pb-5 pl-[35px] pr-3 pt-[51px] text-start md:pr-12">
           <div className="flex items-center">
             <h1
               className={['font-medium text-white', styles.context_title].join(
@@ -284,27 +284,27 @@ export default function Team() {
               Verified Ownership.
             </h1>
           </div>
-          <p>
+          <p className={styles.context}>
             Our integration with NFTs provides savvy fund managers with access
             to their fund&apos;s management rights and rewards structure. Using
             Alvara&apos;s BTS marketplace, fund managers can, for the first
             time, sell their business.
           </p>
         </div>
-        <div className="flex flex-col place-content-center items-start justify-start gap-4 rounded-lg border-[1px] border-solid border-gray-500 bg-[#0D0F23] p-4 text-start">
+        <div className="flex flex-col place-content-center items-start justify-start gap-4 rounded-lg border-[1px] border-solid border-gray-500 bg-[#0D0F23] pb-5 pl-[35px] pr-3 pt-[51px] text-start md:pr-12">
           <div className="flex items-center">
             <h1 className="text-whie text-xl font-medium">
               Competitive Leaderboard.
             </h1>
           </div>
-          <p>
+          <p className={styles.context}>
             Battle for top positions on Alvara&apos;s leaderboard alongside
             other fund managers and institutions. Track the strategies of the
             most profitable managers to mitigate your risk in the crypto
             markets.
           </p>
         </div>
-        <div className="flex flex-col place-content-center items-start justify-start gap-4 rounded-lg border-[1px] border-solid border-gray-500 bg-[#0D0F23] p-4 text-start">
+        <div className="flex flex-col place-content-center items-start justify-start gap-4 rounded-lg border-[1px] border-solid border-gray-500 bg-[#0D0F23] pb-5 pl-[35px] pr-3 pt-[51px] text-start md:pr-12">
           <div className="flex items-center">
             <h1
               className={['font-medium text-white', styles.context_title].join(
@@ -314,14 +314,14 @@ export default function Team() {
               Yield Optimisation
             </h1>
           </div>
-          <p>
+          <p className={styles.context}>
             Every ERC-BTS contains 100% collateralised underlying assets. These
             assets are utilized in yield generation strategies via our partners,
             with the rewards being fed back into the fund and distributed to
             share holders as dividends.
           </p>
         </div>
-        <div className="flex flex-col place-content-center items-start justify-start gap-4 rounded-lg border-[1px] border-solid border-gray-500 bg-[#0D0F23] p-4 text-start">
+        <div className="flex flex-col place-content-center items-start justify-start gap-4 rounded-lg border-[1px] border-solid border-gray-500 bg-[#0D0F23] pb-5 pl-[35px] pr-3 pt-[51px] text-start md:pr-12">
           <div className="flex items-center">
             <h1
               className={['font-medium text-white', styles.context_title].join(
@@ -331,13 +331,13 @@ export default function Team() {
               First Mover Advantage.
             </h1>
           </div>
-          <p>
+          <p className={styles.context}>
             Alvara has first mover advantage, building the very first one-stop
             protocol with a decentralised exchange, creation and management
             portal. Bringing tokanised funds to DeFi like never before.
           </p>
         </div>
-        <div className="flex flex-col place-content-center items-start justify-start gap-4 rounded-lg border-[1px] border-solid border-gray-500 bg-[#0D0F23] p-4 text-start">
+        <div className="flex flex-col place-content-center items-start justify-start gap-4 rounded-lg border-[1px] border-solid border-gray-500 bg-[#0D0F23] pb-5 pl-[35px] pr-3 pt-[51px] text-start md:pr-12">
           <div className="flex items-center">
             <h1
               className={['font-medium text-white', styles.context_title].join(
@@ -348,7 +348,7 @@ export default function Team() {
               Low Cost
             </h1>
           </div>
-          <p>
+          <p className={styles.context}>
             Underlying assets are purchased through APIs linked to leading DEXs,
             making the costs of creating, redeeming and rebalancing much cheaper
             than fully on-chain alternatives.

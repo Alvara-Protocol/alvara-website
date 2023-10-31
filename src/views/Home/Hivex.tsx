@@ -43,7 +43,7 @@ export default function Hivex() {
           </h1>
           <p
             className={[
-              'z-10 w-full text-left font-poppins',
+              'z-10 w-full max-w-[500px] text-left font-poppins',
               styles.context,
             ].join(' ')}
           >

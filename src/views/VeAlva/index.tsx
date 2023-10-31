@@ -10,7 +10,7 @@ export default function VeAlva() {
   return (
     <div className="flex min-h-[calc(100vh)] flex-col gap-20 bg-slate-900 px-2 text-white sm:px-0 ">
       <Hives className="flex flex-col items-center gap-10 px-4 pt-[167px] md:flex-row md:justify-around md:px-11 md:pt-[205px]">
-        <div className="grid">
+        <div className="grid gap-8">
           <h1 className={['z-10 text-center', styles.hives_title].join(' ')}>
             veALVA
           </h1>
@@ -96,27 +96,24 @@ export default function VeAlva() {
               </div>
             </div>
 
-            <div className="bg-[#0D0F23]text-left  container mx-auto flex flex-col items-center justify-between gap-[26px] rounded-lg border-[1px] border-solid border-gray-500 md:flex-row">
-              <div className="grid gap-[26px] p-10  md:py-[49px] md:pl-10">
-                <h1 className={styles.context_title}>Voting Mechanism</h1>
-                <p className={['opacity-80', styles.context].join(' ')}>
-                  The quorum for the Alvara DAO is 20%, which means that at
-                  least 20% of the veALVA holders must participate in a vote for
-                  it to be valid. The pass rate, which is the percentage of
-                  votes required for a proposal to be successful, is 51%. <br />
-                  <br />
-                  Enacted proposals can be reversed by submitting another
-                  proposal that meets the same pass rate and quorum
-                  requirements. <br />
-                  <br /> To summarize, the Alvara Protocol&apos;s governance
-                  structure provides a transparent and democratic way for token
-                  holders to participate in decision-making.
-                  <br />
-                  <br /> The Alvara DAO, as a decentralized autonomous
-                  organisation, ensures that the protocol&apos;s development and
-                  management aligns with the interests of its users.
-                </p>
-              </div>
+            <div className="bg-[#0D0F23]text-left flex  flex-col items-start justify-start gap-[26px] rounded-lg border-[1px] border-solid border-gray-500 p-10 md:py-[49px] md:pl-10">
+              <h1 className={styles.context_title}>Voting Mechanism</h1>
+              <p className={['opacity-80', styles.context].join(' ')}>
+                The quorum for the Alvara DAO is 20%, which means that at least
+                20% of the veALVA holders must participate in a vote for it to
+                be valid. The pass rate, which is the percentage of votes
+                required for a proposal to be successful, is 51%. <br />
+                <br />
+                Enacted proposals can be reversed by submitting another proposal
+                that meets the same pass rate and quorum requirements. <br />
+                <br /> To summarize, the Alvara Protocol&apos;s governance
+                structure provides a transparent and democratic way for token
+                holders to participate in decision-making.
+                <br />
+                <br /> The Alvara DAO, as a decentralized autonomous
+                organisation, ensures that the protocol&apos;s development and
+                management aligns with the interests of its users.
+              </p>
             </div>
           </div>
         </section>
@@ -140,7 +137,7 @@ export default function VeAlva() {
             <div className="flex h-full w-full min-w-min  items-stretch justify-center md:justify-end ">
               <Image
                 src="/images/staking/alva-war-back.png"
-                width={400}
+                width={483}
                 height={365}
                 alt="war-back"
                 className="h-full self-stretch "

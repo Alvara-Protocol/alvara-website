@@ -76,57 +76,57 @@ import Pac from '@/components/Svg/Tokens/Pac';
 
 export default function TokenGroup() {
   return (
-    <div className="w-full md:w-1/2 ">
+    <div className="grid w-full gap-1 md:w-2/5 md:gap-11 ">
       <Marquee autoFill={true} gradient gradientColor={[15, 23, 42]}>
-        <div className="ml-5 flex gap-5">
-          <Btc className="w-16" /> <Give className="w-16" />{' '}
-          <Inch className="w-16" /> <Pac className="w-16" />{' '}
-          <Aave className="w-16" /> <Abt className="w-16" />{' '}
-          <Act className="w-16" />
-          <Actn className="w-16" /> <Ada className="w-16" />{' '}
-          <Add className="w-16" /> <Adx className="w-16" />{' '}
-          <Ae className="w-16" /> <Aeon className="w-16" />{' '}
-          <Agi className="w-16" /> <Agrs className="w-16" />
-          <Aion className="w-16" /> <Aion className="w-16" />{' '}
-          <Albt className="w-16" /> <Algo className="w-16" />{' '}
-          <Amb className="w-16" /> <Amp className="w-16" />{' '}
-          <Ampl className="w-16" />
-          <Ant className="w-16" /> <Apex className="w-16" />{' '}
-          <Appc className="w-16" />
+        <div className="ml-5 flex gap-5 md:gap-11">
+          <Btc className=" w-16 md:w-24" /> <Give className=" w-16 md:w-24" />{' '}
+          <Inch className=" w-16 md:w-24" /> <Pac className=" w-16 md:w-24" />{' '}
+          <Aave className=" w-16 md:w-24" /> <Abt className=" w-16 md:w-24" />{' '}
+          <Act className=" w-16 md:w-24" />
+          <Actn className=" w-16 md:w-24" /> <Ada className=" w-16 md:w-24" />{' '}
+          <Add className=" w-16 md:w-24" /> <Adx className=" w-16 md:w-24" />{' '}
+          <Ae className=" w-16 md:w-24" /> <Aeon className=" w-16 md:w-24" />{' '}
+          <Agi className=" w-16 md:w-24" /> <Agrs className=" w-16 md:w-24" />
+          <Aion className=" w-16 md:w-24" /> <Aion className=" w-16 md:w-24" />{' '}
+          <Albt className=" w-16 md:w-24" /> <Algo className=" w-16 md:w-24" />{' '}
+          <Amb className=" w-16 md:w-24" /> <Amp className=" w-16 md:w-24" />{' '}
+          <Ampl className=" w-16 md:w-24" />
+          <Ant className=" w-16 md:w-24" /> <Apex className=" w-16 md:w-24" />{' '}
+          <Appc className=" w-16 md:w-24" />
         </div>
       </Marquee>
       <Marquee autoFill={true} gradient gradientColor={[15, 23, 42]}>
         <div className="ml-5 flex gap-5">
-          <Ardr className="w-16" /> <Arg className="w-16" />{' '}
-          <Ark className="w-16" /> <Arn className="w-16" />{' '}
-          <Arnx className="w-16" /> <Ary className="w-16" />{' '}
-          <Bch1 className="w-16" /> <Bcio className="w-16" />
-          <Ast className="w-16" /> <Atm className="w-16" />
-          <Atom className="w-16" /> <Aud className="w-16" />{' '}
-          <Audr className="w-16" /> <Auto className="w-16" />{' '}
-          <Aywa className="w-16" />
-          <Bab className="w-16" /> <Bal className="w-16" />{' '}
-          <Band className="w-16" /> <Bat className="w-16" />{' '}
-          <Bat1 className="w-16" /> <Bay className="w-16" />{' '}
-          <Bcbc className="w-16" /> <Bcc className="w-16" />
-          <Bcd className="w-16" /> <Bch className="w-16" />{' '}
+          <Ardr className=" w-16 md:w-24" /> <Arg className=" w-16 md:w-24" />{' '}
+          <Ark className=" w-16 md:w-24" /> <Arn className=" w-16 md:w-24" />{' '}
+          <Arnx className=" w-16 md:w-24" /> <Ary className=" w-16 md:w-24" />{' '}
+          <Bch1 className=" w-16 md:w-24" /> <Bcio className=" w-16 md:w-24" />
+          <Ast className=" w-16 md:w-24" /> <Atm className=" w-16 md:w-24" />
+          <Atom className=" w-16 md:w-24" /> <Aud className=" w-16 md:w-24" />{' '}
+          <Audr className=" w-16 md:w-24" /> <Auto className=" w-16 md:w-24" />{' '}
+          <Aywa className=" w-16 md:w-24" />
+          <Bab className=" w-16 md:w-24" /> <Bal className=" w-16 md:w-24" />{' '}
+          <Band className=" w-16 md:w-24" /> <Bat className=" w-16 md:w-24" />{' '}
+          <Bat1 className=" w-16 md:w-24" /> <Bay className=" w-16 md:w-24" />{' '}
+          <Bcbc className=" w-16 md:w-24" /> <Bcc className=" w-16 md:w-24" />
+          <Bcd className=" w-16 md:w-24" /> <Bch className=" w-16 md:w-24" />{' '}
         </div>
       </Marquee>
       <Marquee autoFill={true} gradient gradientColor={[15, 23, 42]}>
         <div className="ml-5 flex gap-5">
-          <Bcn className="w-16" /> <Bco className="w-16" />{' '}
-          <Bcpt className="w-16" /> <Bdl className="w-16" />{' '}
-          <Beam className="w-16" /> <Bela className="w-16" />{' '}
-          <Bix className="w-16" /> <Blcn className="w-16" />
-          <Btc1 className="w-16" /> <Blk className="w-16" />{' '}
-          <Block className="w-16" /> <Blz className="w-16" />{' '}
-          <Bnb className="w-16" /> <Bnt className="w-16" />
-          <Bnty className="w-16" /> <Booty className="w-16" />{' '}
-          <Bos className="w-16" /> <Btc1 className="w-16" />
-          <Bpt className="w-16" /> <Bq className="w-16" />{' '}
-          <Brd className="w-16" /> <Bsd className="w-16" />{' '}
-          <Bsv className="w-16" />
-          <Btcd className="w-16" /> <Btch className="w-16" />
+          <Bcn className=" w-16 md:w-24" /> <Bco className=" w-16 md:w-24" />{' '}
+          <Bcpt className=" w-16 md:w-24" /> <Bdl className=" w-16 md:w-24" />{' '}
+          <Beam className=" w-16 md:w-24" /> <Bela className=" w-16 md:w-24" />{' '}
+          <Bix className=" w-16 md:w-24" /> <Blcn className=" w-16 md:w-24" />
+          <Btc1 className=" w-16 md:w-24" /> <Blk className=" w-16 md:w-24" />{' '}
+          <Block className=" w-16 md:w-24" /> <Blz className=" w-16 md:w-24" />{' '}
+          <Bnb className=" w-16 md:w-24" /> <Bnt className=" w-16 md:w-24" />
+          <Bnty className=" w-16 md:w-24" /> <Booty className=" w-16 md:w-24" />{' '}
+          <Bos className=" w-16 md:w-24" /> <Btc1 className=" w-16 md:w-24" />
+          <Bpt className=" w-16 md:w-24" /> <Bq className=" w-16 md:w-24" />{' '}
+          <Brd className=" w-16 md:w-24" /> <Bsd className=" w-16 md:w-24" />{' '}
+          <Bsv className=" w-16 md:w-24" />
+          <Btcd className=" w-16 md:w-24" /> <Btch className=" w-16 md:w-24" />
         </div>
       </Marquee>
     </div>

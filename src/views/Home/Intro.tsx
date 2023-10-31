@@ -7,9 +7,9 @@ import TokenGroup from '@/views/Home/components/TokenGroup';
 
 export default function Intro() {
   return (
-    <div className=" container mx-auto flex w-full flex-col items-center justify-between gap-8 p-5 md:flex-row  ">
-      <section className="flex flex-col gap-12 md:w-1/2 ">
-        <div className="pointer-events-none flex max-w-fit items-center gap-5 rounded-lg bg-[#1B1F489C] px-4 py-[10px]">
+    <div className=" container mx-auto flex w-full flex-col items-center justify-between gap-10 p-5 md:flex-row md:gap-0">
+      <section className="flex grow flex-col gap-8 md:w-1/2 ">
+        <div className="pointer-events-none mb-2 flex max-w-fit items-center gap-5 rounded-lg bg-[#1B1F489C] px-4 py-[10px]">
           <NextImage
             useSkeleton
             src="/images/logo.png"
@@ -20,11 +20,11 @@ export default function Intro() {
           ALVARA PROTOCOL
         </div>
         <div>
-          <h1 className={[' tracking-wider', styles.secondary_title].join(' ')}>
+          <h1 className={[' leading-[110%]', styles.secondary_title].join(' ')}>
             We&apos;re Changing <br /> the Way the World Invests
           </h1>
         </div>
-        <p className={['w-full opacity-80', styles.context].join(' ')}>
+        <p className={['w-full leading-[120%]', styles.context].join(' ')}>
           There has been a longstanding demand for a mechanism within the vast
           cryptocurrency market that allows users to hold multiple cross-chain
           assets in single, trackable basket.
@@ -38,7 +38,8 @@ export default function Intro() {
           <br />
           Poised to empower the upcoming generation of fund managers, Alvara is
           transforming the industry landscape. Embrace the future of
-          Decentralized Finance. Welcome to the Alvara Protocol.
+          Decentralized Finance.
+          <br /> Welcome to the Alvara Protocol.
         </p>
       </section>
 

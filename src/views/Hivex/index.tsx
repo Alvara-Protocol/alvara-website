@@ -7,7 +7,6 @@ import { Hives } from '@/components';
 import { styles } from '@/styles';
 
 import HivexBack from '~/images/hivex.png';
-import beeSvg from '~/images/hivex/bee.png';
 
 export default function Hivex() {
   return (
@@ -40,7 +39,7 @@ export default function Hivex() {
             based on the proportion of their LP holdings.
           </p>
         </div>
-        <div className="flex min-w-full items-center justify-end justify-items-end md:min-w-fit">
+        {/* <div className="flex min-w-full items-center justify-end justify-items-end md:min-w-fit">
           <Image
             width={200}
             height={300}
@@ -48,11 +47,11 @@ export default function Hivex() {
             layout="fixed"
             alt="bee"
           />
-        </div>
+        </div> */}
       </div>
       <div className="grid items-center justify-center">
         <Zoom>
-          <Image src={HivexBack} width={833} height={478} alt="hivex-back" />
+          <Image src={HivexBack} width={1118} height={491} alt="hivex-back" />
         </Zoom>
       </div>
       {/* <div className="block h-[1513px] w-full bg-[url('/images/hivex/mobile-back.svg')] bg-cover bg-clip-padding bg-center bg-no-repeat bg-origin-padding px-6 md:hidden">

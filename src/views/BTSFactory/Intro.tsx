@@ -18,7 +18,7 @@ import BtsBack from '~/images/bts-back.png';
 export default function Intro() {
   return (
     <section className="flex flex-col bg-slate-900 text-white">
-      <Hives className="flex flex-col items-center gap-[38px] px-4 pt-[167px] md:px-11 md:pt-[205px]">
+      <Hives className="flex flex-col items-center gap-8 px-4 pt-[167px] md:px-11 md:pt-[205px]">
         <h1 className={['z-10 text-center', styles.hives_title].join(' ')}>
           BTS Factory
         </h1>
@@ -187,7 +187,7 @@ export default function Intro() {
         </div>
       </div>
 
-      <div className="container mx-auto mb-[41px] mt-[70px] flex items-center justify-center px-5 lg:mb-[200px] lg:mt-[306px]">
+      <div className="container mx-auto mb-[41px] mt-[70px] flex items-center justify-center px-5 lg:mb-[100px] lg:mt-[106px]">
         <Zoom>
           <div>
             <Image src={BtsBack} width={831} height={544} alt="bts-back" />
