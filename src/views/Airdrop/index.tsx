@@ -34,19 +34,25 @@ export default function Airdrop() {
             blockchain enthusiasts, tech wizards and dedicated degens.
           </div>
           <div className="flex items-center justify-center">
-            <Button
-              variant="light"
-              className="flex max-w-fit items-center justify-center gap-2 rounded-md "
+            <a
+              href="https://zealy.io/c/alvara"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              <Image
-                className="bg-white "
-                src="/images/zealy.png"
-                width={29}
-                height={29}
-                alt="zealty"
-              />
-              Zealy Airdrop
-            </Button>
+              <Button
+                variant="light"
+                className="flex max-w-fit items-center justify-center gap-2 rounded-md "
+              >
+                <Image
+                  className="bg-white "
+                  src="/images/zealy.png"
+                  width={29}
+                  height={29}
+                  alt="zealty"
+                />
+                Zealy Airdrop
+              </Button>
+            </a>
           </div>
         </div>
         <Image
