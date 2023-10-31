@@ -60,7 +60,7 @@ export default function AlvaStatus() {
               </p>
             </div>
             <a
-              href="http://"
+              href="/Alvara_Protocol_White_Paper.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className=" mt-5 flex items-center gap-3 text-left underline md:mt-0"

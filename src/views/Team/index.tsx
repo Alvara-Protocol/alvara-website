@@ -160,7 +160,7 @@ export default function Team() {
             >
               <Button
                 variant="light"
-                className="flex !w-full items-center justify-center rounded-[6px] px-8 py-3 text-center text-xl font-light"
+                className="flex !w-full items-center justify-center rounded-[6px] px-8 py-3 text-center text-base font-light"
               >
                 Whitepaper
               </Button>
@@ -170,7 +170,7 @@ export default function Team() {
               className="w-full md:w-auto"
             >
               <Button
-                className="outline flex w-full items-center justify-center rounded-[6px] px-8 py-3 text-xl font-light outline-1"
+                className="outline flex w-full items-center justify-center rounded-[6px] px-8 py-3 text-base font-light outline-1"
                 variant="ghost"
               >
                 Read More
@@ -178,7 +178,7 @@ export default function Team() {
             </UnstyledLink>
           </div>
         </div>
-        <div className="container col-span-2 mx-auto mb-16 px-5 text-gray-300  md:mt-20 md:px-24">
+        <div className="container col-span-2 mx-auto  px-5 text-gray-300  md:mt-20 md:px-24">
           <div className="grid gap-5 md:grid-cols-4 ">
             <div className="flex flex-col place-content-center items-center justify-between gap-4 rounded-lg border-[1px] border-solid border-gray-500 bg-[#0D0F23] p-4 text-center">
               <div className="w-20">
@@ -251,7 +251,7 @@ export default function Team() {
           </div>
         </div>
       </Hives>
-      <div className="container mx-auto grid gap-10 p-10 text-base leading-10 md:grid-cols-2  md:p-20 md:leading-6">
+      <div className="container mx-auto grid gap-10 p-10 text-base leading-10 md:grid-cols-2  md:px-20 md:pb-20 md:pt-5 md:leading-6">
         <div className="text-center md:col-span-2">
           <h1 className="font-montserrat text-4xl font-medium  md:text-5xl">
             What makes Alvara so sweet?

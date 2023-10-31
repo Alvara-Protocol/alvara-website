@@ -11,24 +11,24 @@ export default function Airdrop() {
       <Hives className="relative grid place-content-center items-center gap-2 px-4 pt-[167px] md:grid-cols-3 md:px-11 md:pb-40 md:pt-[205px]">
         <div className="hidden md:block">
           <Image
-            className="absolute top-0 mb-4 rounded-full "
+            className="absolute top-0 mb-4 "
             src="/images/airdrop.png"
             layout="responsive"
             width={10}
             height={10}
-            alt="roatss "
+            alt="roatss"
           />
         </div>
-        <div className="grid gap-9 self-start text-start">
+        <div className="mt-3 grid gap-9 self-start text-start">
           <h1
             className={[
-              'z-10 break-normal text-center',
+              'z-10  text-center  leading-[110%]',
               styles.hives_title,
             ].join(' ')}
           >
             Airdrop League
           </h1>
-          <div className="grid gap-8 px-8 text-center text-base leading-10 md:leading-6">
+          <div className="mt-2 grid gap-8 px-8 text-center text-lg leading-10 md:leading-6">
             With a total reward pool of 4,000,000 ALVA tokens - worth $1,200,000
             at TGE - this colossal airdrop is a lucrative opportunity for
             blockchain enthusiasts, tech wizards and dedicated degens.
@@ -50,7 +50,7 @@ export default function Airdrop() {
           </div>
         </div>
         <Image
-          className="absolute top-0 mb-4 rounded-full"
+          className=" absolute top-0 mb-4 -scale-x-100 "
           src="/images/airdrop.png"
           layout="responsive"
           width={10}
