@@ -102,13 +102,15 @@ export default function Hivex() {
               basket.
             </p>
           </div>
-          <Image
-            // useSkeleton
-            src="/images/home/weight.png"
-            width="300"
-            height="100"
-            alt="weigth"
-          />
+          <div className="flex items-center justify-center">
+            <Image
+              // useSkeleton
+              src="/images/home/weight.png"
+              width="265"
+              height="84"
+              alt="weigth"
+            />
+          </div>
         </div>
       </div>
     </div>
