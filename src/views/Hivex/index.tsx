@@ -1,38 +1,61 @@
+import Image from 'next/image';
 import React from 'react';
+import Zoom from 'react-medium-image-zoom';
 
-import { Button, Hives, NextImage } from '@/components';
+import { Hives } from '@/components';
 
-import Back from '@/views/Hivex/Back';
+import { styles } from '@/styles';
 
-import exclamationSvg from '~/images/bts-factory/exclamation.png';
+import HivexBack from '~/images/hivex.png';
 
 export default function Hivex() {
   return (
-    <main className="flex flex-col gap-28 bg-gray-400 pb-20">
-      <Hives className="flex flex-col items-center gap-10 px-4  pt-40 md:flex-row md:justify-around md:px-11">
-        <div className="grid">
-          <h1 className="z-10 text-center text-3xl  leading-normal  text-gray-400 md:text-[60px]">
+    <main className="flex flex-col gap-28 bg-[#10122A] pb-20 font-poppins text-white ">
+      <Hives className="flex flex-col items-center  px-4  pt-[167px]  md:flex-row md:justify-around  md:px-11 md:pt-[205px]">
+        <div className="grid gap-[38px] ">
+          <h1 className={['z-10 text-center', styles.hives_title].join(' ')}>
             Hivex
           </h1>
-          <div className="mb-32 mt-5 h-[2px] w-full bg-gradient-to-r from-fuchsia-400 to-transparent"></div>
+          <h1 className=" text-center  text-sm font-light text-neutral-200 md:text-xl">
+            Trade BTS LP tokens and earn fees by contributing liquidity.
+          </h1>
         </div>
       </Hives>
-      <div className="container mx-auto grid grid-cols-1 gap-8 px-8 text-base leading-10 md:grid-cols-1 md:px-48 md:leading-6">
-        Our platform offers a unique opportunity for users to invest in BTS
-        tokens and receive BTS LP tokens in return, representing their stake in
-        the BTS. These tokens can then be committed to the HiveX liquidity pool.
-        This can be done individually or paired with another asset such as ETH,
-        USDT, AVAX, or BNB. In exchange, users are granted HiveX LP tokens,
-        signifying their stake in the pool. As liquidity providers, users will
-        share 30% of all transaction fees, distributed based on the proportion
-        of their LP holdings.
+      <div className="bg-[#0D0F23]text-left  container mx-auto flex flex-col items-center justify-between gap-[26px] rounded-lg border-[1px] border-solid border-gray-500 md:flex-row">
+        <div className="grid gap-[26px] p-10  md:py-[49px] md:pl-10">
+          <h1 className={['font-medium', styles.context_title].join(' ')}>
+            Add LP to any BTS
+          </h1>
+          <p className={[' opacity-80', styles.context].join(' ')}>
+            Our platform offers a unique opportunity for users to invest in BTS
+            tokens and receive BTS LP tokens in return, representing their stake
+            in the BTS.
+            <br />
+            <br /> These tokens can then be committed to the HiveX liquidity
+            pool. This can be done individually or paired with another asset
+            such as ETH, USDT, AVAX, or BNB. In exchange, users are granted
+            HiveX LP tokens, signifying their stake in the pool. As liquidity
+            providers, users will share 30% of all transaction fees, distributed
+            based on the proportion of their LP holdings.
+          </p>
+        </div>
+        {/* <div className="flex min-w-full items-center justify-end justify-items-end md:min-w-fit">
+          <Image
+            width={200}
+            height={300}
+            src={beeSvg}
+            layout="fixed"
+            alt="bee"
+          />
+        </div> */}
       </div>
-
-      <div className=" hidden md:grid">
-        <Back />
+      <div className="grid items-center justify-center">
+        <Zoom>
+          <Image src={HivexBack} width={1118} height={491} alt="hivex-back" />
+        </Zoom>
       </div>
-      <div className="block h-[1800px] w-full bg-[url('/images/hivex/mobile-back.svg')] bg-cover bg-center bg-no-repeat md:hidden">
-        <div className=" group relative mt-[680px] flex h-8 w-full place-content-center   bg-center bg-no-repeat ">
+      {/* <div className="block h-[1513px] w-full bg-[url('/images/hivex/mobile-back.svg')] bg-cover bg-clip-padding bg-center bg-no-repeat bg-origin-padding px-6 md:hidden">
+        <div className=" group relative mt-[565px] flex h-8 w-full place-content-center   bg-center bg-no-repeat ">
           <Button className=" place-self-center bg-none px-0">
             <NextImage
               className="m-auto "
@@ -50,7 +73,7 @@ export default function Hivex() {
             <a className="text-fuchsia-450">eth/usdt/avax/bnb</a> into HiveX DEX
           </span>
         </div>
-      </div>
+      </div> */}
     </main>
   );
 }

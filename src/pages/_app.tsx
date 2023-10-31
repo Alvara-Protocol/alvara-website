@@ -4,6 +4,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '@/styles/globals.css';
 import '@/styles/scss/main.scss';
+import 'react-medium-image-zoom/dist/styles.css';
 
 import Providers from '@/lib/Providers';
 

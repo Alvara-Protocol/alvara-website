@@ -1,12 +1,9 @@
 import { Dialog, Transition } from '@headlessui/react';
 import clsx from 'clsx';
-import { useRouter } from 'next/router';
 import * as React from 'react';
 
 import { NextImage } from '@/components';
 import UnstyledLink from '@/components/links/UnstyledLink';
-import { RoadMapModal } from '@/components/Modals';
-import TokenomicsModal from '@/components/Modals/TokenomicsModal';
 import { HamburgerIcon } from '@/components/Svg';
 
 interface MobileLinkProps extends React.PropsWithChildren {
@@ -19,22 +16,16 @@ const MobileLink = ({ setIsOpen, children }: MobileLinkProps) => {
 
 const titles = [
   { title: 'BTS Factory', link: '/bts-factory' },
-  { title: 'Staking', link: '/staking' },
-  { title: 'Governance', link: '/governance' },
-  { title: 'Marketplace', link: '/market-place' },
+  { title: 'veALVA', link: '/vealva' },
   { title: 'HiveX', link: '/hivex' },
-  { title: 'About Alvara', link: '/team' },
-  { title: 'News', link: '/news' },
+  { title: 'About', link: '/team' },
+  { title: 'Airdrop', link: '/airdrop' },
+  { title: 'FAQ', link: '/faq' },
 ];
 
 export default function Header() {
   const [isOpen, setIsOpen] = React.useState(false);
-  const [scroll, setScroll] = React.useState(false);
-  const [isPresale, setIsPresale] = React.useState(false);
-  const router = useRouter();
-  const [flag, setFlag] = React.useState(false);
-  const [showTokenomic, setShowTokenomic] = React.useState(false);
-  const [showRoadMap, setShowRoadMap] = React.useState(false);
+  // const [flag, setFlag] = React.useState(false);
 
   function closeModal() {
     setIsOpen(false);
@@ -44,29 +35,15 @@ export default function Header() {
     setIsOpen(true);
   }
 
-  React.useEffect(() => {
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 50) {
-        setScroll(true);
-      } else {
-        setScroll(false);
-      }
-    });
-
-    setIsPresale(router.pathname === '/presale');
-  }, [router.pathname]);
-
   return (
     <header
       className={clsx(
-        'fixed top-0 z-50 w-full py-[18px] font-montserrat',
-        scroll
-          ? 'bg-opacity-80 bg-gradient-to-r from-[#10122A]  to-[#3F1960] shadow backdrop-blur-sm'
-          : 'bg-transparent shadow-none',
+        'fixed top-0 z-50 w-full py-[18px] font-[Poppins]',
+        ' bg-[#331752] shadow-lg backdrop-blur-sm',
       )}
     >
-      <div className="layout flex h-14 items-center justify-between gap-40">
-        <UnstyledLink className="justify-self-start" href="/">
+      <div className="layout relative flex h-14 items-center justify-end lg:justify-center ">
+        <UnstyledLink className="absolute left-0 justify-self-start" href="/">
           <NextImage
             useSkeleton
             className="w-32 md:w-40"
@@ -99,7 +76,7 @@ export default function Header() {
               </Transition.Child>
 
               <div className="fixed inset-0 flex translate-x-0 items-start justify-end overflow-y-auto">
-                <div className="min-h-full w-[min(19rem,calc(100vw-theme(spacing.10)))] bg-white shadow-2xl ring-1 ring-black/10 transition">
+                <div className="bg-linear min-h-full w-[min(19rem,calc(100vw-theme(spacing.10)))] shadow-2xl ring-1 ring-black/10 transition">
                   <Transition.Child
                     as={React.Fragment}
                     enter="ease-out duration-300"
@@ -109,7 +86,7 @@ export default function Header() {
                     leaveFrom="opacity-100 scale-100"
                     leaveTo="opacity-0 scale-95"
                   >
-                    <Dialog.Panel className="w-full max-w-md transform divide-y divide-slate-900/10 overflow-hidden bg-white text-left align-middle transition-all">
+                    <Dialog.Panel className=" w-full max-w-md transform divide-y divide-slate-900/10 overflow-hidden text-left align-middle transition-all">
                       <Dialog.Title as="h3" className="sr-only">
                         Navigation
                       </Dialog.Title>
@@ -119,7 +96,7 @@ export default function Header() {
                             <NextImage
                               useSkeleton
                               className="mt-1.5 w-32"
-                              src="/images/nav-logo-black.png"
+                              src="/images/nav-logo.png"
                               width="230"
                               height="45"
                               alt="Icon"
@@ -144,7 +121,7 @@ export default function Header() {
                         </button>
                       </div>
 
-                      <nav className="divide-y divide-slate-900/10 text-base leading-7 text-slate-900">
+                      <nav className="divide-y divide-slate-900/10 text-base leading-7 text-white">
                         <div className="px-8 py-6">
                           <div className="items-start space-y-2">
                             {titles.map((title, index) => (
@@ -159,7 +136,7 @@ export default function Header() {
                                 </MobileLink>
                               </div>
                             ))}
-                            <MobileLink setIsOpen={setIsOpen}>
+                            {/* <MobileLink setIsOpen={setIsOpen}>
                               <UnstyledLink
                                 href="./Alvara_Protocol_White_Paper.pdf"
                                 className="font-medium "
@@ -182,7 +159,7 @@ export default function Header() {
                               >
                                 Roadmap
                               </UnstyledLink>
-                            </MobileLink>
+                            </MobileLink> */}
                             <div></div>
                           </div>
                         </div>
@@ -193,30 +170,30 @@ export default function Header() {
               </div>
             </Dialog>
           </Transition>
-          <ul className="hidden justify-center gap-5 text-sm lg:flex ">
+          <ul className="hidden justify-center gap-5 text-sm lg:flex">
             {titles.map((title, index) => (
               <li key={index} className="min-w-max">
                 <UnstyledLink
                   href={title.link}
                   className={clsx(
                     '  text-gray-400 hover:text-opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75',
-                    isPresale && !scroll ? 'text-white' : 'text-white',
+                    'text-white',
                   )}
                 >
                   {title.title}
                 </UnstyledLink>
               </li>
             ))}
-            <li className="group min-w-max">
+            {/* <li className="group min-w-max">
               <UnstyledLink
                 onClick={() => setFlag(!flag)}
                 href=""
                 id="docs"
-                className=" text-gray-400 hover:text-opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
+                className="  text-gray-400 hover:text-opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
               >
                 Docs
               </UnstyledLink>
-              <div className="absolute hidden gap-3 p-3 group-hover:grid">
+              <div className="absolute hidden gap-3 rounded-lg bg-gradient-to-r from-[#101229] to-[#331752]  p-3 group-hover:grid">
                 <a
                   href="./Alvara_Protocol_White_Paper.pdf"
                   className=" h over:cursor-pointer text-base text-gray-400 hover:text-opacity-80"
@@ -241,29 +218,12 @@ export default function Header() {
                 >
                   Roadmap
                 </a>
-                {/* <h1
-                  id="tokenomics"
-                  className=" text-base text-gray-400 hover:cursor-pointer hover:text-opacity-80"
-                  onClick={() => setShowTokenomic(true)}
-                >
-                  Tokenomics
-                </h1> */}
-                {/* <h1
-                  id="roadmap"
-                  className=" text-base text-gray-400 hover:cursor-pointer hover:text-opacity-80"
-                  onClick={() => setShowRoadMap(true)}
-                >
-                  Roadmap
-                </h1> */}
               </div>
-            </li>
+            </li> */}
           </ul>
         </nav>
-        <div className="hidden md:block"></div>
-        <div className="hidden md:block"></div>
+        <div className="hidden lg:block"></div>
       </div>
-      <TokenomicsModal show={showTokenomic} setShow={setShowTokenomic} />
-      <RoadMapModal show={showRoadMap} setShow={setShowRoadMap} />
     </header>
   );
 }

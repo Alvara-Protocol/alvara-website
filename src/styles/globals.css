@@ -2,40 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+    .container {
+        @apply default:max-w-['100%'] sm:max-w-['100%'] lg:max-w-[1024px] xl:max-w-[1280px] 2xl:max-w-[1536px];
+    }
+}
+
 @layer base {
     /* #region  /**=========== Typography =========== */
-    .h0 {
-        @apply font-montserrat text-3xl font-bold md:text-5xl;
-    }
-
-    h1,
-    .h1 {
-        @apply font-montserrat text-2xl font-medium tracking-widest md:text-4xl;
-    }
-
-    h2,
-    .h2 {
-        @apply font-montserrat text-xl font-medium uppercase tracking-widest md:text-3xl;
-    }
-
-    h3,
-    .h3 {
-        @apply font-montserrat text-lg font-bold md:text-2xl;
-    }
-
-    h4,
-    .h4 {
-        @apply font-montserrat text-base font-bold md:text-lg;
-    }
 
     body {
-        @apply overflow-x-hidden;
+        @apply overflow-x-hidden font-montserrat leading-normal text-white;
     }
 
-    body,
-    .p {
-        @apply font-poppins text-sm font-light leading-5 tracking-widest md:text-base;
-    }
     /* #endregion  /**======== Typography =========== */
 
     .layout {
@@ -54,6 +33,36 @@
 
     .toggle {
         height: 1.4rem !important;
+    }
+
+    .bg-radial {
+        background: radial-gradient(
+            81.96% 70.07% at 53.66% 0%,
+            #8a15d5 0%,
+            #131531 100%
+        );
+    }
+
+    .bg-linear {
+        background: linear-gradient(180deg, #350b50 0%, #10122a 25%);
+    }
+
+    .gradient-outline {
+        border: 1px solid transparent;
+        border-radius: 8px;
+        background: linear-gradient(to right, #0d0f23, #0d0f23),
+            linear-gradient(to right, #8a15d5, grey);
+        background-clip: padding-box, border-box;
+        background-origin: padding-box, border-box;
+
+        /* Other styles */
+        padding: 8px 12px 8px 12px;
+    }
+
+    .gradient-text {
+        background: linear-gradient(85deg, #8a15d5 29.8%, #c932cc 55.64%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
     }
 }
 

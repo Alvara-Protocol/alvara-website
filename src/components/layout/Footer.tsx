@@ -3,11 +3,11 @@ import * as React from 'react';
 import { Button, NextImage } from '@/components';
 import UnstyledLink from '@/components/links/UnstyledLink';
 
-import Links from '@/views/News/Links';
+import Links from '@/views/Airdrop/Links';
 
 export default function Footer() {
   return (
-    <footer className=" mb-8 grid grid-cols-10 justify-center border-t border-[#D515AD] pb-4 pt-14 font-montserrat shadow-xl lg:mx-10 lg:justify-start lg:px-20 lg:py-16">
+    <footer className=" z-50 mb-8 grid grid-cols-10 justify-center border-t border-[#D515AD] pb-4 pt-14 font-montserrat shadow-xl lg:mx-10 lg:justify-start lg:px-20 lg:py-16">
       <div className=" col-span-10 items-center lg:col-span-4">
         <div className="grid justify-items-center gap-8 lg:flex">
           <NextImage
@@ -34,6 +34,16 @@ export default function Footer() {
           <UnstyledLink href="/market-place">Marketplace</UnstyledLink>
           <UnstyledLink href="/hivex">HiveX</UnstyledLink>
           <UnstyledLink href="/news">News</UnstyledLink>
+          <UnstyledLink href="/faq">Faq</UnstyledLink>
+          <UnstyledLink href="/Alvara_Protocol_White_Paper.pdf" target="_blank">
+            White Paper
+          </UnstyledLink>
+          <UnstyledLink href="/Alvara_Tokenomics.pdf" target="_blank">
+            Tokenomics
+          </UnstyledLink>
+          <UnstyledLink href="/Alvara_Roadmap.pdf" target="_blank">
+            Roadmap
+          </UnstyledLink>
         </div>
         <div className="grid content-start gap-3">
           <h1 className="text-lg font-bold ">Staking</h1>
@@ -65,7 +75,7 @@ export default function Footer() {
         >
           <input
             type="email"
-            className="font-inter h-12  rounded-xl bg-gray-400 px-3 font-normal text-[black] placeholder-[#94A3B8] outline-none lg:min-w-[30rem] "
+            className="font-inter h-12  w-full rounded-xl bg-gray-400 px-3 font-normal text-[black] placeholder-[#94A3B8] outline-none lg:min-w-[30rem] "
             name="email"
             placeholder="Email"
             required

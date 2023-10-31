@@ -20,12 +20,16 @@ export default function Info({
   image,
   link = '/',
   title,
-  size = 141,
+  size = 24,
   type = 1,
   imageClassName,
 }: InfoProps) {
   return (
-    <div className={clsx('text-center')}>
+    <div
+      className={clsx(
+        'bg-[url("/images/social/bg.png")] bg-cover bg-center bg-no-repeat p-5 text-center',
+      )}
+    >
       {type === 1 && (
         <img
           src={image}

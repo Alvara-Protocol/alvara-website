@@ -1,49 +1,118 @@
+import Image from 'next/image';
 import React from 'react';
 
-import { Button, NextImage } from '@/components';
-import UnstyledLink from '@/components/links/UnstyledLink';
-
-import Currencies from './Currencies';
-
-import hives from '~/images/hives-2.png';
+import { styles } from '@/styles';
 
 export default function Hivex() {
   return (
-    <section className="relative mx-auto flex flex-col-reverse items-center gap-4   bg-gradient-to-r from-[#10122A] to-[#3F1960] py-[90px] md:flex-row">
-      <Currencies className="absolute left-1/2 top-10 w-full -translate-x-1/2 -translate-y-full md:w-3/4 " />
-      <div className="md:w-1/2">
-        <NextImage
-          className="m-auto "
-          width={335}
-          height={490}
-          src={hives}
-          alt="top-right-hives"
+    <div className=" container mx-auto  flex w-full flex-col gap-[26px] font-montserrat md:flex-row">
+      <div className=" flex flex-col items-center justify-center gap-6 rounded-lg border-[1px] border-solid border-gray-500 bg-[#0D0F23] px-10 py-8">
+        <h1
+          className={[
+            'w-full text-left font-medium',
+            styles.context_title,
+          ].join(' ')}
+        >
+          Thousands of tokens to choose
+        </h1>
+        <p
+          className={['w-full text-left font-poppins', styles.context].join(
+            ' ',
+          )}
+        >
+          Taking our tokens straight from Uniswap, you have access to an
+          unlimited amount of tokens.
+        </p>
+        <Image
+          className="md:mt-7 "
+          src="/images/home/token.png"
+          width="428"
+          height="198"
+          alt="Logo"
         />
       </div>
-      <div className="flex flex-col gap-8 px-10 text-gray-400 md:mr-32 md:w-1/2">
-        <h1 className="text-4xl">BTS Factory</h1>
-        <div className="h-[2px] w-1/2 bg-gradient-to-r from-purple-650 to-transparent"></div>
-        <p>
-          The traditional prerequisites tied to conventional fund management no
-          longer apply. <br />
-          <br />
-          Alvara&apos;s BTS Factory provides a platform for users to design and
-          mint their unique BTS tokens. <br />
-          In essence, anyone can step into the shoes of a fund manager by
-          incorporating tokens from any supported blockchain into their BTS.
-          <br />
-          <br /> Once minted, the BTS token is held by the creator, granting
-          access to management rights and associated revenue streams. <br />
-          <br />
-          These ownership rights are conveniently transferred to the user in the
-          form of a Non-Fungible Token (NFT).
-        </p>
-        <UnstyledLink href="http://discord.gg/pHDDF2MS8v">
-          <Button variant="primary" className="max-w-max rounded-lg py-4 ">
-            Join The Hive
-          </Button>
-        </UnstyledLink>
+      <div className="flex flex-col gap-[26px] overflow-hidden">
+        <div className="  z-10 grid items-center justify-start gap-[26px] rounded-lg border-[1px] border-solid border-gray-500 bg-[#0D0F23] bg-[100%_100%] bg-no-repeat px-10 py-8 pb-5 md:bg-[url('/images/home/pie-bg.png')]">
+          <h1
+            className={[
+              'w-full text-left font-medium',
+              styles.context_title,
+            ].join(' ')}
+          >
+            My portfolio
+          </h1>
+          <p
+            className={[
+              'z-10 w-full max-w-[500px] text-left font-poppins',
+              styles.context,
+            ].join(' ')}
+          >
+            One place to manage all of your created and contributed baskets with
+            understandable data.
+          </p>
+          <div className="z-10 hidden w-full max-w-md flex-wrap items-start justify-start gap-2 md:flex">
+            <div className="flex items-center justify-center rounded-lg bg-[#EC4899] px-2 py-1">
+              GameFi aggressive
+            </div>{' '}
+            <div className="flex items-center justify-center rounded-lg bg-[#A855F7] px-2 py-1">
+              Masterblox
+            </div>{' '}
+            <div className="flex items-center justify-center rounded-lg bg-[#6366F1] px-2 py-1">
+              Metaverse
+            </div>{' '}
+            <div className="flex items-center justify-center rounded-lg bg-[#3B82F6] px-2 py-1">
+              GemFinder
+            </div>{' '}
+            <div className="flex items-center justify-center rounded-lg bg-[#14B8A6] px-2 py-1">
+              Animoca
+            </div>{' '}
+            <div className="flex items-center justify-center rounded-lg bg-[#FACC15] px-2 py-1">
+              DAOs
+            </div>{' '}
+            <div className="flex items-center justify-center rounded-lg bg-[#F59E0B] px-2 py-1">
+              Arrow Capital
+            </div>
+          </div>
+          <div className="flex items-end justify-end md:hidden">
+            <Image
+              src="/images/home/pie-j.svg"
+              layout="fixed"
+              width={299}
+              height={241}
+              alt="Pie-pie"
+            />
+          </div>
+        </div>
+        <div className=" grid grid-cols-1 items-center justify-center gap-[26px] rounded-lg border-[1px] border-solid border-gray-500 bg-[#0D0F23] px-10 py-7 md:grid-cols-2 md:flex-row">
+          <div className="flex flex-col gap-[26px]">
+            <h1
+              className={[
+                'w-full text-left font-medium',
+                styles.context_title,
+              ].join(' ')}
+            >
+              Choose your weightings
+            </h1>
+            <p
+              className={['w-full text-left font-poppins', styles.context].join(
+                ' ',
+              )}
+            >
+              Distribute evenly or be meticulous with the weightings of your
+              basket.
+            </p>
+          </div>
+          <div className="flex items-center justify-center ">
+            <Image
+              // useSkeleton
+              src="/images/home/weight.png"
+              width="265"
+              height="84"
+              alt="weigth"
+            />
+          </div>
+        </div>
       </div>
-    </section>
+    </div>
   );
 }
