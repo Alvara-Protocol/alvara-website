@@ -10,6 +10,11 @@ module.exports = {
   sassOptions: {
     includePaths: [path.join(__dirname, 'src/styles')],
   },
+  env: {
+    HUBSPOT_FORM_ID: process.env.HUBSPOT_FORM_ID,
+    HUBSPOT_PORTAL_ID: process.env.HUBSPOT_PORTAL_ID,
+    HUBSPOT_ACCESS_TOKEN: process.env.HUBSPOT_ACCESS_TOKEN,
+  },
 
   // Uncoment to add domain whitelist
   // images: {

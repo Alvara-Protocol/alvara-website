@@ -104,7 +104,7 @@ export default function LeaderBoardImage({ ...props }: SvgProps) {
             rx="6.10923"
             stroke="#CBD5E1"
             strokeOpacity="0.2"
-            stroke-width="0.814564"
+            strokeWidth="0.814564"
           />
         </g>
         <path
@@ -120,14 +120,14 @@ export default function LeaderBoardImage({ ...props }: SvgProps) {
           <path
             d="M221.912 56.4688V66.9224"
             stroke="white"
-            stroke-width="1.22185"
+            strokeWidth="1.22185"
             strokeLinecap="round"
             strokeLinejoin="round"
           />
           <path
             d="M224.288 58.3684H220.724C220.283 58.3684 219.86 58.5436 219.548 58.8555C219.236 59.1674 219.061 59.5904 219.061 60.0315C219.061 60.4725 219.236 60.8956 219.548 61.2074C219.86 61.5193 220.283 61.6945 220.724 61.6945H223.1C223.541 61.6945 223.964 61.8698 224.276 62.1816C224.588 62.4935 224.763 62.9165 224.763 63.3576C224.763 63.7987 224.588 64.2217 224.276 64.5336C223.964 64.8455 223.541 65.0207 223.1 65.0207H219.061"
             stroke="white"
-            stroke-width="1.22185"
+            strokeWidth="1.22185"
             strokeLinecap="round"
             strokeLinejoin="round"
           />
@@ -149,7 +149,7 @@ export default function LeaderBoardImage({ ...props }: SvgProps) {
             rx="6.10923"
             stroke="#CBD5E1"
             strokeOpacity="0.2"
-            stroke-width="0.814564"
+            strokeWidth="0.814564"
           />
         </g>
         <path
@@ -502,7 +502,7 @@ export default function LeaderBoardImage({ ...props }: SvgProps) {
             rx="6.10923"
             stroke="#CBD5E1"
             strokeOpacity="0.2"
-            stroke-width="0.814564"
+            strokeWidth="0.814564"
           />
         </g>
         <path
@@ -522,14 +522,14 @@ export default function LeaderBoardImage({ ...props }: SvgProps) {
           <path
             d="M556.165 65.2194H549.513C548.988 65.2194 548.562 65.6449 548.562 66.1697V69.4959C548.562 70.0207 548.988 70.4462 549.513 70.4462H556.165C556.69 70.4462 557.115 70.0207 557.115 69.4959V66.1697C557.115 65.6449 556.69 65.2194 556.165 65.2194Z"
             stroke="white"
-            stroke-width="1.22185"
+            strokeWidth="1.22185"
             strokeLinecap="round"
             strokeLinejoin="round"
           />
           <path
             d="M550.463 65.2202V63.3195C550.462 62.7304 550.681 62.162 551.075 61.7247C551.47 61.2875 552.014 61.0126 552.6 60.9534C553.186 60.8942 553.773 61.0549 554.248 61.4043C554.722 61.7538 555.05 62.267 555.167 62.8444"
             stroke="white"
-            stroke-width="1.22185"
+            strokeWidth="1.22185"
             strokeLinecap="round"
             strokeLinejoin="round"
           />

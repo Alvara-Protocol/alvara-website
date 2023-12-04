@@ -19,7 +19,18 @@ function App({ Component, pageProps }: AppProps) {
 
         <Component {...pageProps} />
       </Layout>
-      <ToastContainer />
+      <ToastContainer
+        position="bottom-left"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss={false}
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
     </Providers>
   );
 }
