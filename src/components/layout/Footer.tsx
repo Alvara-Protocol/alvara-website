@@ -1,95 +1,187 @@
+import axios from 'axios';
 import * as React from 'react';
+import { FormEvent } from 'react';
+import { toast } from 'react-toastify';
 
-import { Button, NextImage } from '@/components';
+import { ArrowIcon, ArrowWhiteIcon, Button } from '@/components';
 import UnstyledLink from '@/components/links/UnstyledLink';
 
 import Links from '@/views/Airdrop/Links';
 
 export default function Footer() {
+  const [email, setEmail] = React.useState('');
+  const handleTop = React.useCallback(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
+
+  async function onSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    try {
+      await axios.post('/api/hbspt', {
+        email,
+      });
+      toast.success('Successfully submitted.');
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        toast.error(error.response?.data?.error);
+      }
+    }
+  }
+
   return (
-    <footer className=" z-50 mb-8 grid grid-cols-10 justify-center border-t border-[#D515AD] pb-4 pt-14 font-montserrat shadow-xl lg:mx-10 lg:justify-start lg:px-20 lg:py-16">
-      <div className=" col-span-10 items-center lg:col-span-4">
-        <div className="grid justify-items-center gap-8 lg:flex">
-          <NextImage
-            useSkeleton
-            className="mt-1.5   w-48 "
-            src="/images/nav-logo-black.png"
-            width="230"
-            height="45"
-            alt="Alvara"
-          />
+    <footer className=" z-50 flex flex-col-reverse justify-between gap-10 bg-[#0C0E21] px-5 py-4 font-montserrat  text-white shadow-xl md:flex-row md:gap-20 md:px-10 ">
+      <div className="grid gap-10">
+        <div className=" flex flex-wrap justify-center gap-10 py-4 md:py-10">
+          <div className=" grid gap-3 ">
+            <h1 className="text-lg font-bold ">Company</h1>
+            <UnstyledLink
+              href="/"
+              className="flex items-center justify-start gap-2"
+            >
+              <ArrowWhiteIcon />
+              Home
+            </UnstyledLink>
+            <UnstyledLink
+              href="/team"
+              className="flex items-center justify-start gap-2"
+            >
+              <ArrowWhiteIcon />
+              About us
+            </UnstyledLink>
+            <UnstyledLink
+              href="/bts-factory"
+              className="flex items-center justify-start gap-2"
+            >
+              <ArrowWhiteIcon />
+              BTS Factory
+            </UnstyledLink>
+            <UnstyledLink
+              href="/vealva"
+              className="flex items-center justify-start gap-2"
+            >
+              <ArrowWhiteIcon />
+              veAlva
+            </UnstyledLink>
+            <UnstyledLink
+              href="/hivex"
+              className="flex items-center justify-start gap-2"
+            >
+              <ArrowWhiteIcon />
+              HiveX
+            </UnstyledLink>
+          </div>
+          <div className="grid content-start gap-3">
+            <h1 className="text-lg font-bold ">Documents</h1>
+            <UnstyledLink
+              href="/Alvara_Protocol_White_Paper.pdf"
+              className="flex items-center justify-start gap-2"
+              target="_blank"
+            >
+              <ArrowWhiteIcon />
+              Whitepaper
+            </UnstyledLink>
+            <UnstyledLink
+              href="/Alvara_Roadmap.pdf"
+              className="flex items-center justify-start gap-2"
+              target="_blank"
+            >
+              <ArrowWhiteIcon />
+              Roadmap
+            </UnstyledLink>
+            <UnstyledLink
+              href="/Alvara_Tokenomics.pdf"
+              className="flex items-center justify-start gap-2"
+              target="_blank"
+            >
+              <ArrowWhiteIcon />
+              Tokenomics
+            </UnstyledLink>
+
+            {/* <UnstyledLink
+              href="/hivex"
+              className="flex items-center justify-start gap-2"
+            >
+              <ArrowWhiteIcon />
+              Support
+            </UnstyledLink> */}
+          </div>
+          {/*<div className="grid content-start gap-3 ">
+            <h1 className="text-lg font-bold uppercase">Staking</h1>
+            <UnstyledLink
+              href="/staking"
+              className="flex items-center justify-start gap-2"
+            >
+              <ArrowWhiteIcon />
+              ALVA Staking
+            </UnstyledLink>
+            <UnstyledLink
+              href="/fac"
+              className="flex items-center justify-start gap-2"
+            >
+              <ArrowWhiteIcon />
+              BTS Staking
+            </UnstyledLink>
+          </div>
+          <div className="grid content-start gap-3">
+            <h1 className="text-lg font-bold ">Governance</h1>
+            <UnstyledLink
+              href="/fac"
+              className="flex items-center justify-start gap-2"
+            >
+              <ArrowWhiteIcon />
+              ALVA DAO
+            </UnstyledLink>
+            <UnstyledLink
+              href="/fac"
+              className="flex items-center justify-start gap-2"
+            >
+              <ArrowWhiteIcon />
+              BTS DAO&apos;s
+            </UnstyledLink>
+          </div> */}
         </div>
-        <p className="mb-10 mt-10 text-center text-[18px] text-dark-blue-400 lg:text-left">
-          Email: contact@alvaraprotocol.io
+        <p className="container mx-auto text-center text-[18px] text-white lg:text-left">
+          © Copyright 2023, Alvara, All rights reserved
         </p>
-        <div className="flex  justify-center gap-6 lg:justify-start">
+      </div>
+      <div className="bg-radial flex grow flex-col items-start justify-between rounded-lg p-10 md:relative md:max-w-[80vw]">
+        <div className="flex flex-wrap items-center justify-start">
           <Links visible={false} />
         </div>
-      </div>
-      <div className=" col-span-10 mt-5 flex justify-between lg:col-span-6 lg:mt-0">
-        <div className="mx-10 grid gap-3 lg:mx-0">
-          <h1 className="text-lg font-bold ">General</h1>
-          <UnstyledLink href="/team">About Alvara</UnstyledLink>
-          <UnstyledLink href="/bts-factory">BTS Factory</UnstyledLink>
-          <UnstyledLink href="/market-place">Marketplace</UnstyledLink>
-          <UnstyledLink href="/hivex">HiveX</UnstyledLink>
-          <UnstyledLink href="/news">News</UnstyledLink>
-          <UnstyledLink href="/faq">Faq</UnstyledLink>
-          <UnstyledLink href="/Alvara_Protocol_White_Paper.pdf" target="_blank">
-            White Paper
-          </UnstyledLink>
-          <UnstyledLink href="/Alvara_Tokenomics.pdf" target="_blank">
-            Tokenomics
-          </UnstyledLink>
-          <UnstyledLink href="/Alvara_Roadmap.pdf" target="_blank">
-            Roadmap
-          </UnstyledLink>
-        </div>
-        <div className="grid content-start gap-3">
-          <h1 className="text-lg font-bold ">Staking</h1>
-          <UnstyledLink href="/staking">Staking</UnstyledLink>
-          <div className="mt-5 block lg:hidden">
-            <h1 className="text-lg font-bold ">Governance</h1>
-            <UnstyledLink href="/governance">Governance</UnstyledLink>
+        <div className="grid gap-4">
+          <h1 className="text-2xl">Become an early adopter</h1>
+          <form
+            onSubmit={onSubmit}
+            method="post"
+            className="flex h-11  max-w-[306px] items-center justify-center gap-4 rounded-xl bg-white px-1  lg:flex-row lg:items-stretch  lg:gap-0"
+          >
+            <input
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              type="email"
+              className="font-inter h-10  w-full rounded-xl  px-3 font-normal text-[black] placeholder-[#94A3B8] outline-none  "
+              name="email"
+              placeholder="Enter your email"
+              required
+            />
+            <Button
+              variant="ghost"
+              type="submit"
+              className="h-12 max-w-max  self-center rounded-xl py-4 uppercase "
+            >
+              <ArrowIcon />
+            </Button>
+          </form>
+          <div className="flex w-full justify-center">
+            <Button
+              variant="ghost"
+              onClick={handleTop}
+              className="w-fit rounded-full border  border-white p-2 md:absolute md:bottom-10 md:right-10"
+            >
+              <ArrowWhiteIcon className=" -rotate-90 " />
+            </Button>
           </div>
         </div>
-        <div className="hidden content-start gap-3 lg:grid">
-          <h1 className="text-lg font-bold ">Governance</h1>
-          <UnstyledLink href="/governance">Governance</UnstyledLink>
-        </div>
-        <div></div>
-        <div></div>
-      </div>
-      <div className=" col-span-10 my-10 h-[2px] w-3/5 justify-self-center bg-[#D515AD]/40"></div>
-      <div className="col-span-10 mx-5 flex flex-col items-center lg:order-last lg:col-span-10 lg:mx-0 ">
-        <p className="text-xl font-bold text-dark-blue-400 lg:pt-3">
-          SUBSCRIBE
-        </p>
-        <p className="my-7 text-center text-stone-600 lg:mb-5 lg:mt-1">
-          Sign up to receive Alvara news and updates
-        </p>
-        <form
-          action="/api/form"
-          method="post"
-          className="flex h-14 items-center gap-4  rounded-xl bg-gray-400 px-1   lg:flex-row lg:items-stretch  lg:gap-0"
-        >
-          <input
-            type="email"
-            className="font-inter h-12  w-full rounded-xl bg-gray-400 px-3 font-normal text-[black] placeholder-[#94A3B8] outline-none lg:min-w-[30rem] "
-            name="email"
-            placeholder="Email"
-            required
-          />
-          <Button
-            variant="primary"
-            className="h-12 max-w-max  self-center rounded-xl py-4 uppercase "
-          >
-            Subscribe
-          </Button>
-        </form>
-        <p className="mt-12 text-center text-[18px] text-dark-blue-400 lg:text-left">
-          ©2023 by Alvara
-        </p>
       </div>
     </footer>
   );
