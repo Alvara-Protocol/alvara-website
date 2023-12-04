@@ -7,7 +7,7 @@ interface SubscribeProps {
   lastname?: string;
   email: string;
   telegram_id?: string;
-  wallet_address: string;
+  wallet_address?: string;
 }
 
 const subscribeSchema = Joi.object<SubscribeProps>({
@@ -21,9 +21,7 @@ const subscribeSchema = Joi.object<SubscribeProps>({
       'string.email': 'Invalid Email Address',
     }),
   telegram_id: Joi.string().allow(''),
-  wallet_address: Joi.string()
-    .required()
-    .messages({ 'string.empty': 'Please connect your wallet' }),
+  wallet_address: Joi.string().allow(''),
 });
 
 const PORTAL_ID = process.env.HUBSPOT_PORTAL_ID;
