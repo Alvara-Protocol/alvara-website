@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import NewFooter from '@/components/layout/NewFooter';
+import Footer from '@/components/layout/Footer';
 
 import Header from './Header';
 
@@ -10,7 +10,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <>
       <Header />
       {children}
-      <NewFooter />
+      <Footer />
     </>
   );
 }
