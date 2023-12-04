@@ -1,5 +1,4 @@
 import axios from 'axios';
-import Joi from 'joi';
 import * as React from 'react';
 import { FormEvent } from 'react';
 import { toast } from 'react-toastify';
@@ -9,32 +8,6 @@ import UnstyledLink from '@/components/links/UnstyledLink';
 
 import Links from '@/views/Airdrop/Links';
 
-const PORTAL_ID = process.env.HUBSPOT_PORTAL_ID;
-const FORM_ID = process.env.HUBSPOT_FORM_ID;
-const ACCESS_TOKEN = process.env.HUBSPOT_ACCESS_TOKEN;
-
-interface SubscribeProps {
-  firstname?: string;
-  lastname?: string;
-  email: string;
-  telegram_id?: string;
-  wallet_address?: string;
-}
-
-const subscribeSchema = Joi.object<SubscribeProps>({
-  firstname: Joi.string().allow(''),
-  lastname: Joi.string().allow(''),
-  email: Joi.string()
-    .email({ tlds: { allow: false } })
-    .required()
-    .messages({
-      'string.empty': 'Email is required',
-      'string.email': 'Invalid Email Address',
-    }),
-  telegram_id: Joi.string().allow(''),
-  wallet_address: Joi.string().allow(''),
-});
-
 export default function Footer() {
   const [email, setEmail] = React.useState('');
   const handleTop = React.useCallback(() => {
@@ -43,39 +16,16 @@ export default function Footer() {
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-
-    // const formData = new FormData(event.currentTarget);
-    const data = { email: email };
-    const { error, value } = subscribeSchema.validate(data);
-
-    if (error || !value) {
-      // return res.status(400).json({ success: false, error: error.message });
-      toast.error(error.message);
-      return;
-    }
-    // const response = await fetch('/api/hbspt', {
-    //   method: 'POST',
-    //   body: formData,
-    // });
     try {
-      const fields = Array.from(Object.entries(value).values()).map(
-        ([name, value]) => ({ name, value }),
-      );
-      await axios.post(
-        `https://api.hsforms.com/submissions/v3/integration/secure/submit/${PORTAL_ID}/${FORM_ID}`,
-        { fields },
-        { headers: { Authorization: `Bearer ${ACCESS_TOKEN}` } },
-      );
+      await axios.post('/api/hbspt', {
+        email,
+      });
       toast.success('Successfully submitted.');
-    } catch (error: any) {
+    } catch (error) {
       if (axios.isAxiosError(error)) {
-        console.error(error.response?.data);
+        toast.error(error.response?.data?.error);
       }
-      toast.error('Something went wrong. Please try for a while.');
     }
-
-    // Handle response if necessary
-    // ...
   }
 
   return (
@@ -201,7 +151,6 @@ export default function Footer() {
         <div className="grid gap-4">
           <h1 className="text-2xl">Become an early adopter</h1>
           <form
-            // action="/api/hbspt"
             onSubmit={onSubmit}
             method="post"
             className="flex h-11  max-w-[306px] items-center justify-center gap-4 rounded-xl bg-white px-1  lg:flex-row lg:items-stretch  lg:gap-0"
