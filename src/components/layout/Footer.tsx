@@ -96,6 +96,14 @@ export default function Footer() {
               <ArrowWhiteIcon />
               Tokenomics
             </UnstyledLink>
+            <UnstyledLink
+              href="/Alvara_Litepaper.pdf"
+              className="flex items-center justify-start gap-2"
+              target="_blank"
+            >
+              <ArrowWhiteIcon />
+              Litepaper
+            </UnstyledLink>
 
             {/* <UnstyledLink
               href="/hivex"
