@@ -21,7 +21,7 @@ export default function Partner({
   return (
     <div
       className={
-        `border-[rgba(255, 255, 255, 0.20)] grid h-[67px] items-center rounded-lg border-2 bg-[#0D0F23] p-2 px-4 ` +
+        `grid h-[67px] items-center rounded-lg border-[1px] border-solid border-gray-500 bg-[#0D0F23] p-2 px-4 ` +
         zIndex
       }
       style={{ width: (+(width || '10') + 10).toString() + 'px' }}
