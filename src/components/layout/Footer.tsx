@@ -158,9 +158,9 @@ export default function Footer() {
         </div>
         {/* Insert the contract address here */}
         <div className="my-4 text-center text-xs sm:text-sm md:text-lg font-medium">
-          Contract Address ERC20:{' '}
+          Contract Address ERC20 & Dextools:{' '}
           <a
-            href="https://www.dextools.io/app/en/ether/pairs"
+            href="https://www.dextools.io/app/en/ether/pair-explorer/0x01c49e7550d670759b2d54cbba3b65ce3a2e39a2?t=1709564055557"
             target="_blank"
             rel="noopener noreferrer"
             className="font-bold break-words"
