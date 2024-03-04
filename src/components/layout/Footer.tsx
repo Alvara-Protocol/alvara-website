@@ -156,13 +156,6 @@ export default function Footer() {
         <div className="flex flex-wrap items-center justify-start">
           <Links visible={false} />
         </div>
-        {/* Insert the contract address here */}
-        <div className="my-4 text-center text-lg font-medium">
-          Contract Address ERC-20:{' '}
-          <span className="font-bold">
-            0x8e729198d1C59B82bd6bBa579310C40d740A11C2
-          </span>
-        </div>
         <div className="grid gap-4">
           <h1 className="text-2xl">Become an early adopter</h1>
           <form
