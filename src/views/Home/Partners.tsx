@@ -35,6 +35,12 @@ export default function Partners() {
           heigth="43"
           name="gda"
         />
+        <PartnerV2
+          image="/images/partners/ATH.png"
+          width="82"
+          heigth="63"
+          name="gda"
+        />
       </div>
     </section>
   );
