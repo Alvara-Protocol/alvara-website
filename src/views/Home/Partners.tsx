@@ -11,6 +11,12 @@ export default function Partners() {
 
       <div className="flex flex-wrap place-content-center items-center justify-center gap-10 md:w-4/5 md:gap-10">
         <PartnerV2
+          image="/images/partners/ATH.png"
+          width="82"
+          heigth="63"
+          name="gda"
+        />
+        <PartnerV2
           image="/images/partners/ventures.png"
           width="279"
           heigth="28"
@@ -33,12 +39,6 @@ export default function Partners() {
           image="/images/partners/gda.png"
           width="186"
           heigth="43"
-          name="gda"
-        />
-        <PartnerV2
-          image="/images/partners/ATH.png"
-          width="82"
-          heigth="63"
           name="gda"
         />
       </div>
