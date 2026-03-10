@@ -96,9 +96,9 @@
 <article class="blog-post-content">
   <div class="container-narrow">
 
-    <p>If you've spent any time in DeFi, you know the drill: you find a promising token, buy it, then discover three more you also want exposure to. Before long, you're managing a dozen positions across multiple protocols, checking prices constantly, and paying gas fees every time you rebalance. It's a mess.</p>
+    <p>We started building Alvara because we kept watching the same thing happen: someone with a genuinely good investment thesis would share it on Twitter, maybe get a few hundred likes, and then... nothing. No way to package it. No way for other people to follow it transparently. No way to earn from it. The thesis just evaporated into the timeline.</p>
 
-    <p>Basket tokens solve this problem. A basket token (or BSKT) is an ERC-7621 token that holds a bundle of ERC-20 tokens inside it. Think of it as an onchain ETF or index fund, but one that anyone can create, manage, and invest in without asking permission from a financial institution.</p>
+    <p>A basket token (or BSKT) changes that. It's a single ERC-7621 token that holds a portfolio of ERC-20 tokens inside it. Think of it as a tokenized strategy: one asset that represents a rules-based allocation across multiple assets, with transparent composition and built-in management fees. No fund license, no legal entity, no minimum capital.</p>
 
     <h2>How Basket Tokens Work</h2>
 
@@ -134,11 +134,22 @@
       <li><strong>Rebalanceable.</strong> The basket creator can adjust weights over time, keeping the portfolio allocation in line with their strategy.</li>
     </ul>
 
+    <h2>Who BSKTs Are For</h2>
+
+    <p>BSKTs work best for a few specific groups:</p>
+
+    <ul>
+      <li><strong>Crypto analysts with a thesis.</strong> If you spend your time researching tokens and have strong sector views, a BSKT lets you package that conviction into something others can follow and invest in.</li>
+      <li><strong>DeFi-native users managing 10+ positions.</strong> Consolidating into themed baskets cuts gas costs, simplifies tracking, and forces discipline in your allocation strategy.</li>
+      <li><strong>DAOs diversifying treasury.</strong> A BSKT gives a DAO treasury transparent, auditable diversification without relying on a multisig signer to manually rebalance.</li>
+      <li><strong>Builders looking for composable portfolio primitives.</strong> Because BSKTs follow ERC-7621, they plug into DeFi protocols the same way any other token standard does.</li>
+    </ul>
+
     <h2>Key Benefits of Basket Tokens</h2>
 
     <h3>Permissionless Creation</h3>
 
-    <p>Anyone can create a basket token. You don't need to be a licensed fund manager or pass any regulatory gatekeeping. If you have a thesis about which tokens will perform well together, you can build a basket around it and let the market decide if your strategy has merit.</p>
+    <p>There's no application form, no licensing requirement, and no minimum AUM. If you have a thesis about which tokens will perform well together, you can build a basket around it and let the market decide if your strategy has merit. In practice, the cost is a gas fee and whatever ETH you deposit to seed the basket.</p>
 
     <h3>Composability with DeFi</h3>
 
@@ -164,21 +175,32 @@
 
     <p><strong>Simplified onboarding.</strong> New users entering DeFi can buy a single basket token instead of trying to evaluate and purchase dozens of individual tokens. It lowers the barrier to getting diversified crypto exposure.</p>
 
+    <h2>What BSKTs Don't Solve</h2>
+
+    <p>Basket tokens are powerful, but they're not a fit for everything. A few things worth understanding before you create or invest in one:</p>
+
+    <ul>
+      <li><strong>Liquidity depends on the underlying tokens.</strong> If your basket contains tokens with thin trading volume, minting and redeeming will be more expensive due to slippage. This is a real constraint today, especially for smaller-cap tokens.</li>
+      <li><strong>Manager quality varies.</strong> Permissionless creation means there's no quality filter. Some baskets will have well-considered allocations; others won't. That's why Alvara includes Xerberus risk ratings (AAA to D) and a public manager leaderboard, so you can evaluate before you invest.</li>
+      <li><strong>Regulation is still evolving.</strong> Tokenized basket products operate in a legal grey area in many jurisdictions. The protocol is decentralized and permissionless, but users should understand the regulatory landscape where they operate.</li>
+      <li><strong>Smart contract risk exists.</strong> BSKTs depend on ERC-7621 contracts that have been audited (by Certik, Quill, Adevar Labs, and SolidProof), but no audit eliminates all risk. This is DeFi; understand what you're interacting with.</li>
+    </ul>
+
     <h2>How Alvara Makes It Simple</h2>
 
-    <p>Alvara Protocol is the platform built around ERC-7621. It provides the smart contracts, the UI, and the infrastructure for creating and managing basket tokens. You don't need to write any code or deploy your own contracts. The process takes minutes: pick your assets, set your weights, name your basket, choose your management fee, and deploy.</p>
+    <p>Alvara Protocol is the platform built around ERC-7621. It provides the smart contracts, the UI, and the infrastructure for creating and managing basket tokens. You don't need to write any code or deploy your own contracts. Pick your assets, set your weights, name your basket, and deploy. If you're not sure where to start, choose from pre-built templates like Blue Chip, DeFi, or AI that come with curated allocations.</p>
 
-    <p>Once your basket is live, anyone can mint it by depositing the underlying tokens, and you start earning fees from day one. The protocol handles all the accounting, fee accrual, and redemption logic.</p>
+    <p>Once your basket is live, anyone can mint it by depositing the underlying tokens, and you start earning fees from day one. Managers can verify their identity through X and Gitcoin Passport to earn trust badges, and every BSKT gets an independent Xerberus risk rating so contributors know what they're getting into.</p>
 
     <div class="callout">
-      <p><strong>Want to try it yourself?</strong> You can create your first basket token in about five minutes using the <a href="https://bskt.alvara.xyz/" target="_blank" rel="noopener">Alvara app</a>. Check out our <a href="/blog/how-to-create-onchain-etf/">step-by-step tutorial</a> to get started.</p>
+      <p><strong>Want to try it yourself?</strong> The easiest way to understand BSKTs is to create one. Check out our <a href="/blog/how-to-create-onchain-etf/">step-by-step tutorial</a> or browse existing baskets on the <a href="https://bskt.alvara.xyz/" target="_blank" rel="noopener">Alvara app</a>.</p>
     </div>
 
-    <h2>What's Next for Basket Tokens</h2>
+    <h2>Why We Think This Matters</h2>
 
-    <p>The ERC-7621 standard is still early, but the foundation is solid. As more DeFi protocols recognize and integrate BSKTs, the use cases will keep expanding. Cross-chain baskets, automated rebalancing strategies, and deeper integration with lending and derivatives protocols are all on the roadmap.</p>
+    <p>The idea behind basket tokens isn't complicated: let people package investment strategies into composable, transparent, tradeable tokens. What makes ERC-7621 different from ad hoc wrapper contracts is standardization. A consistent interface means wallets can display basket composition, DEXs can list them natively, and lending protocols can eventually accept them as collateral. Without a standard, every basket implementation is a one-off.</p>
 
-    <p>The core idea is straightforward: make diversified investing onchain as simple as buying a single token. Basket tokens, powered by ERC-7621, are how we get there.</p>
+    <p>We're still early. But the foundation, a recognized Ethereum standard, multiple chain deployments, live baskets with real TVL, is already in place. The question isn't whether onchain portfolio products will exist. It's whether they'll be built on open standards or proprietary walled gardens. We're betting on the standard.</p>
 
   </div>
 </article>
@@ -189,8 +211,8 @@
     <div class="blog-related-grid">
       <a href="/blog/how-to-create-onchain-etf/" class="blog-card">
         <div class="blog-card-category">Tutorial</div>
-        <h3>How to Create Your Own Onchain ETF in Minutes</h3>
-        <p>Step-by-step guide to creating your own onchain ETF using Alvara Protocol. Pick assets, set weights, deploy, and start earning management fees.</p>
+        <h3>How to Create Your First Onchain ETF</h3>
+        <p>A practical walkthrough of building a thematic basket, with a real sample allocation and the mistakes first-time creators make.</p>
         <span class="blog-card-link">Read more &rarr;</span>
       </a>
       <a href="/blog/erc-7621-token-standard-explained/" class="blog-card">
@@ -207,7 +229,7 @@
   <div class="container">
     <h2>Ready to Build Your First Basket?</h2>
     <p>Create a diversified onchain portfolio in minutes. No code required.</p>
-    <a href="https://bskt.alvara.xyz/" target="_blank" rel="noopener" class="btn-white">Launch App &rarr;</a>
+    <a href="https://bskt.alvara.xyz/" target="_blank" rel="noopener" class="btn-white">Mint BSKT &rarr;</a>
   </div>
 </section>
 
@@ -223,13 +245,13 @@
             <linearGradient id="fg2" x1="78.32" y1="33.29" x2="-9.15" y2="66.7" gradientUnits="userSpaceOnUse"><stop stop-color="#FC75AF"/><stop offset="1" stop-color="#D73D80"/></linearGradient>
           </defs>
         </svg>
-        &copy; 2025 Alvara Protocol
+        &copy; 2025-2026 Alvara Protocol
       </div>
       <div class="blog-footer-links">
         <a href="/">Home</a>
         <a href="/blog/">Blog</a>
         <a href="https://docs.alvara.xyz/" target="_blank" rel="noopener">Docs</a>
-        <a href="https://bskt.alvara.xyz/" target="_blank" rel="noopener">Launch App</a>
+        <a href="https://bskt.alvara.xyz/" target="_blank" rel="noopener">Mint BSKT</a>
       </div>
     </div>
   </div>

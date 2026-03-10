@@ -98,19 +98,21 @@
 <article class="blog-post-content">
   <div class="container-narrow">
 
-    <p>Portfolio management has always been a gated profession. If you wanted to manage money for other people, you needed licenses, legal entities, bank relationships, and enough capital to make the overhead worthwhile. The result: a system where the best investment ideas often come from people who can't actually offer them to the public.</p>
+    <p>The person running the best-performing DeFi basket on our platform right now is not a fund manager. They are a developer who got interested in tokenomics, built a thesis around yield-bearing assets, and deployed a BSKT that now has real holders and growing TVL. Their entire track record is onchain. Anyone can verify it.</p>
 
-    <p>That's changing. Onchain portfolio management strips away the gatekeepers and lets anyone with a sound strategy put it into practice. With Alvara Protocol's BSKTs (basket tokens built on the <a href="/blog/erc-7621-token-standard-explained/">ERC-7621 standard</a>), portfolio creation takes minutes instead of months, costs nothing instead of thousands, and is open to participants worldwide instead of accredited investors only.</p>
+    <p>That scenario was impossible two years ago. Not because the strategy was hard, but because offering a managed portfolio to other people required licenses, legal entities, bank relationships, and six figures in setup costs. Alvara changes that equation. BSKTs (basket tokens built on the <a href="/blog/erc-7621-token-standard-explained/">ERC-7621 standard</a>) let anyone with a strategy put it into practice and earn fees from holders who trust it.</p>
 
-    <h2>What's Wrong with Traditional Portfolio Management</h2>
+    <p>This post is about what we think good onchain portfolio management looks like, who it is for, and where it still falls short.</p>
 
-    <p>The traditional fund management industry runs on a model that hasn't fundamentally changed in decades. Here are the core problems:</p>
+    <h2>The Problems We Are Solving</h2>
+
+    <p>These are not abstract criticisms. They are the specific problems that pushed us to build ERC-7621:</p>
 
     <h3>High barriers to entry</h3>
     <p>Launching a hedge fund in the US typically requires $50,000 to $100,000 in legal and compliance costs before you manage a single dollar. Mutual funds cost even more. These costs filter out small, innovative managers and concentrate power among established firms.</p>
 
     <h3>Opacity by default</h3>
-    <p>Most funds report holdings quarterly, with a 45-day delay. Investors have no real-time visibility into what they own. This creates information asymmetry that benefits managers at the expense of investors. The FTX collapse showed exactly how dangerous this opacity can be, as billions in customer funds were misallocated without anyone outside the company knowing.</p>
+    <p>Most funds report holdings quarterly, with a 45-day delay. Investors have no real-time visibility into what they own. This creates information asymmetry that benefits managers at the expense of investors.</p>
 
     <h3>Excessive fees</h3>
     <p>The traditional "2 and 20" fee structure (2% management fee plus 20% of profits) has eroded somewhat, but the average actively managed mutual fund still charges around 0.68% annually. Layer on trading costs, administrative fees, and distribution costs, and the real drag on performance is often well above 1%. Over a 30-year horizon, a 1% fee difference can reduce final portfolio value by 25% or more.</p>
@@ -120,67 +122,76 @@
 
     <h2>How BSKTs Fix This</h2>
 
-    <p>BSKTs are onchain basket tokens that represent a portfolio of underlying assets. Think of them as a programmable wrapper around a specific investment strategy. They're built on the <a href="/blog/erc-7621-token-standard-explained/">ERC-7621 token standard</a>, which defines how basket tokens are created, managed, rebalanced, and dissolved.</p>
+    <p>BSKTs are onchain basket tokens that represent a portfolio of underlying assets. A programmable wrapper around a specific investment strategy. They are built on the <a href="/blog/erc-7621-token-standard-explained/">ERC-7621 token standard</a>, which defines how basket tokens are created, managed, rebalanced, and dissolved.</p>
 
-    <p>Here's why that matters for portfolio management:</p>
+    <p>Here is what that changes in practice:</p>
 
     <h3>Permissionless creation</h3>
-    <p>Anyone can create a BSKT. There's no application process, no minimum AUM, no licensing requirement. If you have a thesis on which tokens will outperform over the next year, you can express that thesis as a BSKT and make it available to others. The total cost is a gas fee, typically under $10 on L2 networks.</p>
+    <p>Anyone can create a BSKT. No application process, no minimum AUM, no licensing requirement. If you have a thesis on which tokens will outperform over the next year, you can express that thesis as a BSKT and make it available to others. The total cost is a gas fee.</p>
 
     <h3>Real-time transparency</h3>
-    <p>Every BSKT's holdings are visible onchain at all times. There's no quarterly reporting delay, no window dressing (where managers buy winning stocks right before reporting dates), and no possibility of hidden positions. Investors can verify exactly what they hold, at any moment, without relying on a fund administrator's word.</p>
+    <p>Every BSKT's holdings are visible onchain at all times. No quarterly reporting delay, no window dressing, and no possibility of hidden positions. Every token, every weight, every rebalance is verifiable by anyone.</p>
 
     <h3>Programmable fee structures</h3>
-    <p>BSKT managers set their own fees, and these fees are encoded in the smart contract. They can't be changed retroactively or applied selectively. Competition drives fees down naturally because investors can compare fee structures across BSKTs transparently and switch with a single transaction.</p>
+    <p>BSKT managers set their own fees, and these fees are encoded in the smart contract. They cannot be changed retroactively or applied selectively. Competition drives fees down naturally because investors can compare fee structures across BSKTs transparently and switch with a single transaction.</p>
 
     <h3>Global access, 24/7</h3>
     <p>BSKTs trade on decentralized exchanges with no market close, no settlement delay, and no geographic restrictions. An investor in Buenos Aires has the same access as one in Boston. Entry and exit happen in seconds, not days.</p>
 
-    <h2>The BSKT Manager Role</h2>
+    <h2>What a Good BSKT Manager Actually Does</h2>
 
-    <p>Onchain portfolio management through Alvara isn't just about buying and holding a static basket of tokens. BSKT managers actively manage their portfolios, and the protocol incentivizes good performance.</p>
+    <p>Managing a BSKT is not passive. The managers attracting the most holders on our platform share a few habits:</p>
 
-    <h3>Building a verifiable track record</h3>
-    <p>In traditional finance, track records are self-reported and often difficult to verify independently. Onchain, your track record is your transaction history. Every rebalance, every asset swap, and every fee collection is recorded permanently. This creates a reputation system based on actual performance, not marketing materials.</p>
+    <h3>Verify your identity first</h3>
+    <p>Connect your X account and complete Human Passport verification through Gitcoin Passport. This gives you a trust tier (Bronze, Silver, or Gold) that shows up on every basket you create. Unverified managers can still deploy baskets, but holders overwhelmingly choose verified ones. It takes a few minutes and it is the single highest-ROI action you can take as a manager.</p>
 
-    <h3>Earning management fees</h3>
-    <p>BSKT managers earn fees from investors who hold their basket tokens. The fee is set at creation and collected automatically by the protocol. Good managers attract more capital, which means more fees, creating a direct incentive to perform well. Unlike traditional funds, there's no minimum fund size needed to make management economically viable. A manager with $10,000 in AUM can operate just as efficiently as one with $10 million.</p>
+    <h3>Build a verifiable track record</h3>
+    <p>Every rebalance, every asset swap, and every fee collection is recorded permanently onchain. The manager leaderboard ranks baskets by performance, holder count, and TVL. Your track record is not a pitch deck you can edit. It is your transaction history. This creates a reputation system based on actual performance.</p>
+
+    <h3>Set fees that make sense</h3>
+    <p>Fees are locked at deployment. You cannot raise them later. Start competitive (1-2%) and let the track record justify the fee. Holders can see every basket's fee before they mint, so overcharging with no history just means no holders.</p>
+
+    <h3>Use the analytics</h3>
+    <p>The platform gives managers 13 technical indicators and Xerberus risk ratings (AAA to D) for every token in their basket. Good managers use these to make rebalancing decisions and share the data publicly to build trust. Holders want to see that decisions are data-driven, not vibes.</p>
 
     <h3>Composability as a competitive advantage</h3>
-    <p>BSKTs are ERC-7621 tokens, a standard built on top of ERC-721 (NFTs), which means each basket is a unique onchain asset that can hold an unlimited number of ERC-20 tokens inside it. They can be used as collateral in lending protocols, traded on DEXs, or even included in other BSKTs. This composability creates opportunities that don't exist in traditional finance. A manager could create a "BSKT of BSKTs," essentially building a fund-of-funds with zero additional overhead.</p>
+    <p>BSKTs are ERC-7621 tokens, built on ERC-721, so each basket is a unique onchain asset that can hold an unlimited number of ERC-20 tokens inside it. They can be used as collateral in lending protocols, traded on DEXs, or even included in other BSKTs. A manager could create a "BSKT of BSKTs," essentially building a fund-of-funds with zero additional overhead.</p>
 
     <h2>Why Onchain Beats Off-Chain</h2>
 
-    <p>Some might argue that centralized platforms can offer similar features without the complexity of blockchain. Here's why onchain portfolio management is structurally better:</p>
+    <p>Centralized platforms can offer some of these features. Here is what they cannot replicate:</p>
 
     <ul>
-      <li><strong>Self-custody:</strong> Investors hold their BSKT tokens in their own wallets. No counterparty risk from exchange failures, bank runs, or corporate fraud. Your assets are yours.</li>
-      <li><strong>Censorship resistance:</strong> No single entity can freeze your portfolio, block your redemptions, or prevent you from trading. This matters more than people think until they need it.</li>
-      <li><strong>Atomic transactions:</strong> Rebalancing a BSKT happens in a single transaction. There's no settlement risk, no failed trades to reconcile, and no timing gaps between buying and selling.</li>
-      <li><strong>Auditability:</strong> Smart contract code is open source and auditable. The rules governing a BSKT aren't buried in a 200-page prospectus. They're visible in the contract, verifiable by anyone with the technical knowledge to read them.</li>
-      <li><strong>Interoperability:</strong> BSKTs work with the broader DeFi ecosystem immediately. No API integrations, no partnership agreements, no technical onboarding. Because the underlying assets inside a BSKT are standard ERC-20 tokens, they integrate naturally with existing DeFi infrastructure.</li>
+      <li><strong>Self-custody:</strong> Investors hold their BSKT tokens in their own wallets. No counterparty risk from exchange failures, bank runs, or corporate fraud.</li>
+      <li><strong>Censorship resistance:</strong> No single entity can freeze your portfolio, block your redemptions, or prevent you from trading.</li>
+      <li><strong>Atomic transactions:</strong> Rebalancing a BSKT happens in a single transaction. No settlement risk, no failed trades to reconcile, and no timing gaps between buying and selling.</li>
+      <li><strong>Auditability:</strong> The rules governing a BSKT are not buried in a 200-page prospectus. They are visible in the contract, verifiable by anyone.</li>
+      <li><strong>Interoperability:</strong> BSKTs work with the broader DeFi ecosystem immediately. No API integrations, no partnership agreements. Standard ERC-20 tokens inside, standard ERC-721 token outside.</li>
     </ul>
 
-    <h2>Who Should Be Managing Onchain Portfolios?</h2>
+    <h2>Who This Is For</h2>
 
-    <p>The beauty of permissionless systems is that they let the market decide who the best managers are. That said, several groups stand to benefit most from BSKT management:</p>
+    <p><strong>Crypto-native analysts</strong> who have been sharing calls on X or Discord but never had a way to monetize their insights directly. A BSKT lets them put real capital behind their thesis and earn fees from holders who trust it.</p>
 
-    <p><strong>Crypto-native analysts</strong> who have been sharing alpha on Twitter or Discord but have never had a way to monetize their insights directly. Creating a BSKT lets them put real capital behind their calls and earn fees from followers who trust their judgment.</p>
+    <p><strong>DeFi protocols</strong> looking to offer curated exposure to their ecosystem. A lending protocol could create a BSKT of all the major assets it supports, giving users diversified exposure through a single token.</p>
 
-    <p><strong>DeFi protocols</strong> looking to offer curated exposure to their ecosystem. A lending protocol could create a BSKT of all the major assets it supports, giving users a single token that represents diversified exposure.</p>
+    <p><strong>DAOs</strong> managing treasuries. Instead of holding a static mix of stablecoins and governance tokens, a DAO could allocate treasury funds to BSKTs managed by proven onchain managers with verifiable track records.</p>
 
-    <p><strong>DAOs</strong> that want to manage their treasuries more actively. Instead of holding a static mix of stablecoins and governance tokens, a DAO could allocate treasury funds to BSKTs managed by proven onchain managers.</p>
+    <h2>Where Onchain Portfolio Management Still Falls Short</h2>
 
-    <p><strong>Traditional fund managers</strong> who want to experiment with onchain strategies without the overhead of launching a new fund vehicle. A BSKT can serve as a proof of concept for a strategy before committing to the full regulatory process.</p>
+    <p>We would be dishonest if we did not mention the limitations:</p>
 
-    <h2>Getting Started</h2>
+    <ul>
+      <li><strong>Liquidity constraints.</strong> BSKTs are only as liquid as their underlying tokens. A basket full of mid-cap tokens with thin order books will be expensive to mint and redeem. This is a real barrier for larger allocations.</li>
+      <li><strong>No performance guarantee.</strong> Permissionless creation means anyone can deploy a basket, including people with no strategy and no experience. The leaderboard and verification system help surface quality, but holders still need to do their own research.</li>
+      <li><strong>Gas costs on mainnet.</strong> Minting a basket with five underlying tokens means five ERC-20 approvals plus the mint transaction. On Ethereum mainnet during congestion, this gets expensive. L2 deployment helps, but it is not free.</li>
+      <li><strong>Smart contract risk.</strong> BSKTs rely on smart contracts. Contracts can have bugs. The code is audited and open source, but that does not eliminate risk entirely. This applies to every DeFi protocol, not just Alvara, but it is still a real consideration.</li>
+    </ul>
 
-    <p>Onchain portfolio management through BSKTs is live today. If you want to create your own basket token, check out our guide on <a href="/blog/how-to-create-onchain-etf/">how to create an onchain ETF</a>. The process takes minutes and requires no technical background.</p>
-
-    <p>The future of portfolio management is open, transparent, and accessible to everyone. BSKTs are the vehicle that makes it possible.</p>
+    <p>If you want to create your own basket token, our guide on <a href="/blog/how-to-create-onchain-etf/">how to create your first onchain ETF</a> walks through the entire process.</p>
 
     <div class="callout">
-      <strong>Ready to build your first onchain portfolio?</strong> Launch the Alvara app at <a href="https://bskt.alvara.xyz/">bskt.alvara.xyz</a> and create a BSKT today. No minimums, no applications, no waiting periods.
+      <strong>Check the leaderboard first.</strong> See what managers are building and how their baskets perform at <a href="https://bskt.alvara.xyz/">bskt.alvara.xyz</a>. Then decide if you want to hold, contribute, or build your own.
     </div>
 
   </div>
@@ -192,7 +203,7 @@
     <div class="blog-related-grid">
       <a href="/blog/how-to-create-onchain-etf/" class="blog-card">
         <div class="blog-card-category">Tutorial</div>
-        <h3>How to Create Your Own Onchain ETF in Minutes</h3>
+        <h3>How to Create Your First Onchain ETF</h3>
         <p>Step-by-step walkthrough of creating a basket token on Alvara Protocol, from choosing assets to setting fees and launching your BSKT.</p>
         <span class="blog-card-link">Read more &rarr;</span>
       </a>
@@ -208,9 +219,9 @@
 
 <section class="blog-cta">
   <div class="container">
-    <h2>Start Building Your Portfolio</h2>
-    <p>Create, manage, and share onchain basket tokens with Alvara Protocol.</p>
-    <a href="https://bskt.alvara.xyz/" class="btn-white" target="_blank" rel="noopener">Launch App &rarr;</a>
+    <h2>Browse the Leaderboard</h2>
+    <p>See verified managers, risk ratings, and real performance data.</p>
+    <a href="https://bskt.alvara.xyz/" class="btn-white" target="_blank" rel="noopener">Mint BSKT &rarr;</a>
   </div>
 </section>
 
@@ -226,13 +237,13 @@
             <linearGradient id="fg2" x1="78.32" y1="33.29" x2="-9.15" y2="66.7" gradientUnits="userSpaceOnUse"><stop stop-color="#FC75AF"/><stop offset="1" stop-color="#D73D80"/></linearGradient>
           </defs>
         </svg>
-        &copy; 2025 Alvara Protocol
+        &copy; 2025-2026 Alvara Protocol
       </div>
       <div class="blog-footer-links">
         <a href="/">Home</a>
         <a href="/blog/">Blog</a>
         <a href="https://docs.alvara.xyz/" target="_blank" rel="noopener">Docs</a>
-        <a href="https://bskt.alvara.xyz/" target="_blank" rel="noopener">Launch App</a>
+        <a href="https://bskt.alvara.xyz/" target="_blank" rel="noopener">Mint BSKT</a>
       </div>
     </div>
   </div>

@@ -96,9 +96,9 @@
 <article class="blog-post-content">
   <div class="container-narrow">
 
-    <p>Exchange-traded funds are the most popular investment vehicle in traditional finance. They're simple, cheap, and give investors exposure to entire markets through a single ticker. Now, tokenized index funds are bringing the same concept onchain. Basket tokens (BSKTs) built on the ERC-7621 standard let anyone bundle crypto assets into a single tradeable token on Ethereum.</p>
+    <p>We get asked this question a lot, usually framed as "why would anyone use a BSKT when ETFs already exist?" The short answer: they solve different problems. A Vanguard ETF gives you cheap, passive exposure to the S&P 500 with decades of regulatory infrastructure behind it. A BSKT gives you permissionless, composable, 24/7 exposure to any ERC-20 tokens you want, managed by anyone with a verifiable track record onchain.</p>
 
-    <p>But how do these two approaches actually compare? Where do tokenized funds have an edge, and where do traditional ETFs still come out ahead? This post breaks it down across the categories that matter most.</p>
+    <p>Neither one replaces the other. But the overlap is growing. This post is an honest comparison of where each approach wins and where it falls short, written by a team that obviously has a stake in the onchain side but tries to be straight about the tradeoffs.</p>
 
     <h2>What Is a Traditional ETF?</h2>
 
@@ -114,27 +114,27 @@
 
     <h2>Comparison: Access</h2>
 
-    <p>Getting into a traditional ETF requires a brokerage account. That means KYC verification, proof of address, and in many cases, geographic eligibility. Not every ETF is available in every country. And once you have an account, you can only trade during market hours, typically 9:30 AM to 4:00 PM Eastern Time on weekdays. If something happens on a Saturday night, you're waiting until Monday.</p>
+    <p>Getting into a traditional ETF requires a brokerage account. That means KYC verification, proof of address, and in many cases, geographic eligibility. Not every ETF is available in every country. And once you have an account, you can only trade during market hours, typically 9:30 AM to 4:00 PM Eastern Time on weekdays.</p>
 
-    <p>Tokenized index funds work differently. All you need is a crypto wallet and an internet connection. There's no sign-up process, no identity verification, and no geographic restrictions built into the protocol. BSKTs trade 24 hours a day, 7 days a week, 365 days a year. Markets don't close, and there are no holidays.</p>
+    <p>Tokenized index funds work differently. All you need is a crypto wallet and an internet connection. No sign-up process, no identity verification at the protocol level (though Alvara offers optional verification for managers through X and Gitcoin Passport), and no geographic restrictions built into the protocol. BSKTs trade 24/7/365.</p>
 
     <h2>Comparison: Fees</h2>
 
     <p>Traditional ETFs charge an expense ratio, which is a percentage of your holdings taken annually to cover fund management. These range from as low as 0.03% for broad market index funds to 0.75% or more for specialty or actively managed funds. On top of that, you may pay brokerage commissions (though many brokers have eliminated these) and bid-ask spreads when trading.</p>
 
-    <p>Tokenized index funds have a different fee structure. The basket creator sets a management fee, which can be anything, including zero. Beyond that, costs come from gas fees when minting or burning on Ethereum and trading fees if you buy or sell the BSKT on a decentralized exchange. Gas costs vary with network activity, but they're a one-time transaction cost rather than an ongoing drag on returns. There's no custodian taking a cut, no clearing fees, and no transfer agent charges.</p>
+    <p>Tokenized index funds have a different fee structure. The basket creator sets a management fee, which can be anything, including zero. Beyond that, costs come from gas fees when minting or burning on Ethereum and trading fees if you buy or sell the BSKT on a decentralized exchange. Gas costs vary with network activity, but they are a one-time transaction cost rather than an ongoing drag on returns. No custodian taking a cut, no clearing fees, and no transfer agent charges.</p>
 
     <h2>Comparison: Transparency</h2>
 
-    <p>Traditional ETFs disclose their holdings, but the frequency and depth vary. Most large ETFs publish their full holdings daily, while some actively managed funds only disclose quarterly. The SEC mandates certain disclosures, which is good, but at the end of the day you're trusting the fund provider to report accurately. You can't independently verify what's in the fund at any given moment.</p>
+    <p>Traditional ETFs disclose their holdings, but the frequency and depth vary. Most large ETFs publish their full holdings daily, while some actively managed funds only disclose quarterly. The SEC mandates certain disclosures, which is good, but at the end of the day you are trusting the fund provider to report accurately.</p>
 
-    <p>Tokenized index funds are transparent by default. Every asset in a BSKT, along with its exact quantity, is recorded on the Ethereum blockchain. Anyone can verify the composition of a basket at any time by looking at the smart contract. There's no trust involved. You don't need to rely on a quarterly report or a fund provider's website. The data is onchain, public, and updated in real time with every transaction.</p>
+    <p>Tokenized index funds are transparent by default. Every asset in a BSKT, along with its exact quantity, is recorded on the Ethereum blockchain. Anyone can verify the composition at any time by looking at the smart contract. On the Alvara platform, every basket also gets a Xerberus risk rating (AAA to D) calculated from the underlying tokens, so holders can assess risk before committing. The data is onchain, public, and updated in real time.</p>
 
     <h2>Comparison: Settlement</h2>
 
     <p>In traditional markets, when you buy an ETF, the trade settles on a T+1 basis, meaning the actual transfer of ownership happens one business day after the trade. It used to be T+2 until recently. This process involves a chain of intermediaries: custodians, clearinghouses, and transfer agents all play a role. Each adds a layer of counterparty risk and operational complexity.</p>
 
-    <p>Onchain settlement is instant. When you mint, burn, or trade a BSKT, the transaction is final as soon as it's included in a block. Transactions are atomic, meaning either everything goes through or nothing does. There's no waiting period, no counterparty risk in the settlement process, and no chain of intermediaries that need to reconcile their books. You own the tokens the moment the transaction confirms.</p>
+    <p>Onchain settlement is instant. When you mint, burn, or trade a BSKT, the transaction is final as soon as it is included in a block. Transactions are atomic, meaning either everything goes through or nothing does. No waiting period, no counterparty risk in the settlement process, and no chain of intermediaries that need to reconcile their books.</p>
 
     <h2>Comparison: Composability</h2>
 
@@ -150,27 +150,36 @@
 
     <h2>When Traditional ETFs Still Win</h2>
 
-    <p>This isn't a one-sided comparison. Traditional ETFs have real advantages that matter, especially for certain types of investors.</p>
+    <p>We would be doing readers a disservice if we pretended this was one-sided. Traditional ETFs have real advantages that matter:</p>
 
     <ul>
       <li><strong>Regulatory clarity.</strong> ETFs operate within well-understood legal frameworks. Investors have defined protections and recourse if something goes wrong.</li>
       <li><strong>Institutional trust.</strong> Decades of track record from established firms. Pension funds, endowments, and insurance companies can invest in ETFs without the governance questions that come with DeFi.</li>
-      <li><strong>Insurance.</strong> Brokerage accounts in the US are covered by SIPC insurance up to $500,000. There's no equivalent for tokens in a self-custodied wallet.</li>
-      <li><strong>Broader asset coverage.</strong> ETFs can hold stocks, bonds, commodities, real estate, and more. Tokenized funds are currently limited to assets that exist as ERC-20 tokens on supported chains.</li>
-      <li><strong>Liquidity depth.</strong> The most popular ETFs trade billions of dollars per day. Even the most liquid BSKTs are nowhere near that level yet.</li>
-      <li><strong>Tax-advantaged accounts.</strong> You can hold ETFs in an IRA, 401(k), or ISA. These account types don't generally support holding DeFi tokens directly.</li>
+      <li><strong>Insurance.</strong> Brokerage accounts in the US are covered by SIPC insurance up to $500,000. There is no equivalent for tokens in a self-custodied wallet.</li>
+      <li><strong>Broader asset coverage.</strong> ETFs can hold stocks, bonds, commodities, real estate, and more. Tokenized funds are currently limited to assets that exist as ERC-20 tokens.</li>
+      <li><strong>Liquidity depth.</strong> The most popular ETFs trade billions of dollars per day. BSKTs are not even close to that level yet.</li>
+      <li><strong>Tax-advantaged accounts.</strong> You can hold ETFs in an IRA, 401(k), or ISA. These account types do not generally support holding DeFi tokens directly.</li>
+    </ul>
+
+    <h2>Where Tokenized Funds Are Genuinely Better Today</h2>
+
+    <p>After the honest comparison above, here is where we think BSKTs have a clear, present-day advantage over traditional ETFs:</p>
+
+    <ul>
+      <li><strong>Manager accessibility.</strong> If you have a good thesis on DeFi tokens, you can express it as a live product today. No minimum capital, no lawyers, no six-month regulatory process. Verify your identity on the platform, deploy your basket, and let your track record speak for itself on the leaderboard.</li>
+      <li><strong>Holder transparency.</strong> You do not need to trust a quarterly report. The composition, risk rating, manager verification status, and performance history are all verifiable onchain or visible in the app at any time.</li>
+      <li><strong>Composability.</strong> An ETF sits in your brokerage account. A BSKT can be used as collateral, traded on DEXs, included in other baskets, or integrated into yield strategies. Your diversified portfolio does not just sit idle.</li>
+      <li><strong>Speed of innovation.</strong> A new category of tokens appears (AI, RWA, restaking), and within hours there can be a BSKT tracking it. A traditional ETF for the same category takes months to years to launch, if it gets approved at all.</li>
     </ul>
 
     <h2>The Convergence</h2>
 
-    <p>The interesting thing is that these two worlds are moving toward each other. Traditional finance is already moving onchain. BlackRock launched its BUIDL fund, a tokenized money market fund on Ethereum. Franklin Templeton has a tokenized US government bond fund. Major banks are experimenting with blockchain-based settlement.</p>
+    <p>These two worlds are moving toward each other. Traditional finance is already moving onchain. Major institutions have launched tokenized funds on Ethereum. At the same time, crypto is developing clearer regulatory frameworks across the US, Europe, and Asia.</p>
 
-    <p>At the same time, crypto is becoming more regulated. Clearer rules around digital assets are emerging in the US, Europe, and Asia. The gap between what a tokenized fund can do and what a traditional fund can do is getting smaller every year.</p>
-
-    <p>BSKTs sit right at that intersection. They offer the permissionless creation and DeFi composability that traditional products can't match, while the underlying concept of a diversified, transparent, managed basket of assets is identical to what ETFs have offered for decades. As traditional and onchain finance continue to converge, the tools you learn to use today will be the ones that matter most tomorrow.</p>
+    <p>BSKTs sit at that intersection. They offer the permissionless creation and DeFi composability that traditional products cannot match, while the underlying concept, a diversified, transparent, managed basket of assets, is identical to what ETFs have offered for decades. We think both will coexist, serving different users and different use cases, with increasing overlap.</p>
 
     <div class="callout">
-      <p><strong>Ready to see it in action?</strong> Create your own tokenized index fund at <a href="https://bskt.alvara.xyz/" target="_blank" rel="noopener">bskt.alvara.xyz</a></p>
+      <p><strong>Compare for yourself.</strong> Browse the baskets on <a href="https://bskt.alvara.xyz/" target="_blank" rel="noopener">bskt.alvara.xyz</a>, check the risk ratings and manager verification, and see how they stack up against what you are currently holding.</p>
     </div>
 
   </div>
@@ -198,9 +207,9 @@
 
 <section class="blog-cta">
   <div class="container">
-    <h2>Ready to Build Your First Basket?</h2>
-    <p>Create a diversified onchain portfolio in minutes. No code required.</p>
-    <a href="https://bskt.alvara.xyz/" target="_blank" rel="noopener" class="btn-white">Launch App &rarr;</a>
+    <h2>Explore the Platform</h2>
+    <p>Verified managers. Risk ratings. Real-time composition. See the difference.</p>
+    <a href="https://bskt.alvara.xyz/" target="_blank" rel="noopener" class="btn-white">Mint BSKT &rarr;</a>
   </div>
 </section>
 
@@ -216,13 +225,13 @@
             <linearGradient id="fg2" x1="78.32" y1="33.29" x2="-9.15" y2="66.7" gradientUnits="userSpaceOnUse"><stop stop-color="#FC75AF"/><stop offset="1" stop-color="#D73D80"/></linearGradient>
           </defs>
         </svg>
-        &copy; 2025 Alvara Protocol
+        &copy; 2025-2026 Alvara Protocol
       </div>
       <div class="blog-footer-links">
         <a href="/">Home</a>
         <a href="/blog/">Blog</a>
         <a href="https://docs.alvara.xyz/" target="_blank" rel="noopener">Docs</a>
-        <a href="https://bskt.alvara.xyz/" target="_blank" rel="noopener">Launch App</a>
+        <a href="https://bskt.alvara.xyz/" target="_blank" rel="noopener">Mint BSKT</a>
       </div>
     </div>
   </div>

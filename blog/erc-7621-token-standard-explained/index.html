@@ -96,17 +96,21 @@
 <article class="blog-post-content">
   <div class="container-narrow">
 
-    <p>ERC-7621 is an Ethereum token standard designed for multi-asset basket tokens. It extends the ERC-721 (NFT) standard with a set of additional functions for managing a portfolio of underlying ERC-20 assets entirely onchain. If you already know <a href="/blog/what-are-basket-tokens/">what basket tokens are</a>, this is where we break down how they actually work at the contract level.</p>
+    <p>We spent over a year trying to make basket tokens work with existing Ethereum standards before accepting that we needed to write a new one. ERC-20 could not represent a token that holds other tokens inside it. ERC-1155 got closer but forced every basket into the same contract, killing composability. Wrapping everything in a custom vault contract worked technically but meant no wallet, marketplace, or lending protocol would know what to do with it.</p>
 
-    <p>This post covers the standard's architecture, its minting and burning mechanics, how rebalancing and fees are handled, and why the design choices matter for composability across DeFi.</p>
+    <p>ERC-7621 is the result of that process. It extends ERC-721 (the NFT standard) with a set of functions for managing a weighted portfolio of ERC-20 assets entirely onchain. If you already know <a href="/blog/what-are-basket-tokens/">what basket tokens are</a>, this is where we break down how they actually work at the contract level, including the tradeoffs we made and why.</p>
 
-    <h2>Why a New Standard?</h2>
+    <h2>Why Not Use an Existing Standard?</h2>
 
-    <p>Ethereum has well-established token standards. ERC-20 handles fungible tokens. ERC-721 covers non-fungible tokens. ERC-1155 provides a multi-token contract for managing many token types in a single deployment. But none of these standards were designed to represent a single token that holds and manages a weighted collection of other tokens inside it. ERC-7621 builds on ERC-721 to create exactly this: a non-fungible basket token that contains an unlimited number of ERC-20 tokens within it.</p>
+    <p>We tried. Here is what we ran into:</p>
 
-    <p>You could build basket-like functionality using custom contracts, but you'd end up writing custom logic for asset registration, weight management, proportional minting, proportional burning, and fee accrual. Every implementation would be different. Wallets wouldn't know how to display the underlying composition. Protocols couldn't build generic integrations. Users would have to trust each implementation independently, with no common interface to rely on.</p>
+    <p><strong>ERC-20</strong> is a single-asset token. There is no concept of "this token contains other tokens." You could deploy a vault contract and issue ERC-20 receipt tokens, but the receipt token has no standard way to describe its composition. Wallets cannot show what is inside it. Protocols cannot programmatically inspect the underlying assets. You end up building everything custom.</p>
 
-    <p>ERC-7621 fills that gap with purpose-built interfaces. It defines a common set of functions that all basket tokens share, so any wallet, DEX, or protocol that supports the standard can work with every BSKT built on it. That interoperability is the whole point of standardization.</p>
+    <p><strong>ERC-1155</strong> supports multiple token types in one contract, but it was designed for batch operations across distinct token IDs, not for a single token that wraps a weighted portfolio. It also forces all baskets into one contract, which creates shared-state risks and kills the modularity we needed.</p>
+
+    <p><strong>Custom vault contracts</strong> work but produce fragmented ecosystems. Every team reinvents asset registration, weight management, proportional minting, proportional burning, and fee accrual. Every implementation is different. No common interface means no generic tooling.</p>
+
+    <p>ERC-7621 fills that gap. It defines a common set of functions that all basket tokens share, so any wallet, DEX, or protocol that supports the standard can work with every BSKT built on it.</p>
 
     <h2>Core Architecture</h2>
 
@@ -124,11 +128,21 @@
 
     <p>Each of these layers has its own set of interface functions, events, and invariants. The sections below walk through them one by one.</p>
 
+    <h2>Design Tradeoffs We Made</h2>
+
+    <p>Every standard is a set of tradeoffs. Here are the ones we chose deliberately:</p>
+
+    <p><strong>NFT-based, not fungible.</strong> We built on ERC-721 instead of ERC-20. This means each basket is a unique, non-fungible token. The upside is that each basket can have its own composition, manager, and fee structure without needing a factory pattern that deploys new ERC-20 contracts per basket. The downside is that BSKTs do not plug directly into AMMs or lending protocols that expect fungible tokens. We think the uniqueness is worth it because basket tokens are inherently unique (different compositions, different managers), but this is a real constraint that affects DeFi integrations today.</p>
+
+    <p><strong>Strict proportional minting.</strong> The contract requires exact proportional deposits. We considered allowing partial mints (deposit Token A now, Token B later) but rejected it because partial state creates under-collateralization windows. Strict minting is a worse UX for the minter but a hard safety guarantee for every holder.</p>
+
+    <p><strong>Immutable fees.</strong> The management fee is locked at deployment. We debated making it adjustable with a timelock, but immutability is simpler and removes an entire class of governance attacks. If a manager wants different fees, they deploy a new basket. This is more expensive but more honest.</p>
+
     <h2>The Minting Process</h2>
 
     <p>Minting is how new BSKT tokens come into existence. When a user wants to mint, they specify how many BSKT tokens they want to receive. The contract then calculates exactly how much of each underlying token needs to be deposited, based on the basket's current weight configuration.</p>
 
-    <p>Here's what happens step by step:</p>
+    <p>Here is what happens step by step:</p>
 
     <ol>
       <li>The user approves the BSKT contract to spend the required amounts of each underlying ERC-20 token.</li>
@@ -138,7 +152,7 @@
       <li>The contract mints the corresponding BSKT tokens to the user's address.</li>
     </ol>
 
-    <p>The proportions are strict. If a basket is configured as 50% Token A and 50% Token B, the user must deposit exactly the right amount of both tokens. The contract will revert if the proportions don't match. There is no partial minting or rounding that could leave the basket under-collateralized.</p>
+    <p>The proportions are strict. If a basket is configured as 50% Token A and 50% Token B, the user must deposit exactly the right amount of both tokens. The contract will revert if the proportions do not match. There is no partial minting or rounding that could leave the basket under-collateralized.</p>
 
     <p>After minting, the underlying tokens sit inside the basket contract. They are not lent out, staked elsewhere, or used for anything else. They back the BSKT tokens directly and can be reclaimed at any time through burning.</p>
 
@@ -161,7 +175,7 @@
 
     <h2>Rebalancing</h2>
 
-    <p>A basket's composition doesn't have to be static. The basket creator (or a designated manager address) can trigger a rebalance to adjust the target weights of the underlying assets. This is how active portfolio management works onchain.</p>
+    <p>A basket's composition does not have to be static. The basket creator (or a designated manager address) can trigger a rebalance to adjust the target weights of the underlying assets. This is how active portfolio management works onchain.</p>
 
     <p>When a rebalance is triggered, the contract updates its internal weight configuration. This changes the proportions required for future mints and the proportions returned on future burns. The assets already held inside the contract don't get swapped or moved during a weight change. Instead, the new weights take effect for all subsequent minting and burning interactions.</p>
 
@@ -173,7 +187,7 @@
 
     <p>Management fees are one of the most important features of ERC-7621, because they create an economic incentive for skilled managers to build and maintain quality baskets.</p>
 
-    <p>The fee percentage is set when the basket is created and encoded directly in the smart contract. It cannot be changed after deployment. This gives holders certainty about what they're paying. There are no surprise fee increases, hidden charges, or manual invoicing.</p>
+    <p>The fee percentage is set when the basket is created and encoded directly in the smart contract. It cannot be changed after deployment. This gives holders certainty about what they are paying. There are no surprise fee increases, hidden charges, or manual invoicing.</p>
 
     <p>Fees accrue continuously over time based on the assets held in the basket. The accrual happens automatically through the contract's internal accounting. When fees are collected, the basket creator receives their share without any off-chain payment processing or dispute resolution. Everything runs through the smart contract code.</p>
 
@@ -209,6 +223,18 @@
 
     <p>The smart contracts are open source and verifiable. As with any smart contract system, users should review audit reports and understand the specific implementation they are interacting with before committing capital. The contract code is the final source of truth for how a basket behaves.</p>
 
+    <h2>What Implementers Should Watch Out For</h2>
+
+    <p>If you are building on ERC-7621 or integrating with baskets, these are the things that have tripped up other teams:</p>
+
+    <ul>
+      <li><strong>Token approval sequencing.</strong> Minting requires approvals on every underlying ERC-20 before the mint call. If your frontend batches these transactions, make sure all approvals confirm before submitting the mint. A reverted mint after partial approvals wastes gas and confuses users.</li>
+      <li><strong>Rebasing tokens.</strong> ERC-7621 tracks fixed balances. If you include a rebasing token (like stETH) as an underlying asset, the basket's internal accounting will not reflect the rebasing. Use the wrapped, non-rebasing version (wstETH) instead.</li>
+      <li><strong>Fee-on-transfer tokens.</strong> Some ERC-20 tokens deduct a fee on every transfer. The basket contract expects to receive the exact amount it requested via <code>transferFrom</code>. If a token skims 1% on transfer, the proportions will be off and the mint may revert or create accounting mismatches.</li>
+      <li><strong>Low-liquidity underlying tokens.</strong> The standard does not check liquidity. A basket can include a token with $10K daily volume. That basket will technically work, but minting and burning will hit severe slippage. Check the liquidity of every token before deploying.</li>
+      <li><strong>Manager key security.</strong> The manager address controls rebalancing. If this is a single EOA and it gets compromised, the attacker can rebalance the basket into worthless tokens. Consider using a multisig for the manager address on any basket with meaningful TVL.</li>
+    </ul>
+
     <h2>Future Development</h2>
 
     <p>ERC-7621 establishes the core standard, but there is a clear path for extending what basket tokens can do.</p>
@@ -222,7 +248,7 @@
     <p>These are natural extensions of the existing architecture and are actively being explored by the Alvara team and the broader community building on ERC-7621.</p>
 
     <div class="callout">
-      <p><strong>Want to dig into the code?</strong> Explore the ERC-7621 contracts on <a href="https://github.com/AlvaraProtocol" target="_blank" rel="noopener">GitHub</a> or try building a BSKT at <a href="https://bskt.alvara.xyz/" target="_blank" rel="noopener">bskt.alvara.xyz</a>.</p>
+      <p><strong>Read the contracts yourself.</strong> The ERC-7621 implementation is open source on <a href="https://github.com/AlvaraProtocol" target="_blank" rel="noopener">GitHub</a>. If you are building an integration, start with the interface definitions and the minting flow. Questions or feedback go to the team on <a href="https://x.com/AlvaraProtocol" target="_blank" rel="noopener">X</a>.</p>
     </div>
 
   </div>
@@ -250,9 +276,9 @@
 
 <section class="blog-cta">
   <div class="container">
-    <h2>Ready to Build Your First Basket?</h2>
-    <p>Create a diversified onchain portfolio in minutes. No code required.</p>
-    <a href="https://bskt.alvara.xyz/" target="_blank" rel="noopener" class="btn-white">Launch App &rarr;</a>
+    <h2>Read the Standard, Then Build</h2>
+    <p>The contracts are open source. The docs cover the interfaces. Start building.</p>
+    <a href="https://bskt.alvara.xyz/" target="_blank" rel="noopener" class="btn-white">Mint BSKT &rarr;</a>
   </div>
 </section>
 
@@ -268,13 +294,13 @@
             <linearGradient id="fg2" x1="78.32" y1="33.29" x2="-9.15" y2="66.7" gradientUnits="userSpaceOnUse"><stop stop-color="#FC75AF"/><stop offset="1" stop-color="#D73D80"/></linearGradient>
           </defs>
         </svg>
-        &copy; 2025 Alvara Protocol
+        &copy; 2025-2026 Alvara Protocol
       </div>
       <div class="blog-footer-links">
         <a href="/">Home</a>
         <a href="/blog/">Blog</a>
         <a href="https://docs.alvara.xyz/" target="_blank" rel="noopener">Docs</a>
-        <a href="https://bskt.alvara.xyz/" target="_blank" rel="noopener">Launch App</a>
+        <a href="https://bskt.alvara.xyz/" target="_blank" rel="noopener">Mint BSKT</a>
       </div>
     </div>
   </div>
