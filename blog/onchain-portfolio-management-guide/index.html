@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Onchain Portfolio Management: Why BSKTs Are the Future | Alvara Protocol</title>
+<meta name="description" content="Onchain portfolio management is replacing centralized fund managers. Learn how BSKTs let anyone build, manage, and share investment strategies onchain.">
+<link rel="canonical" href="https://alvara.xyz/blog/onchain-portfolio-management-guide/" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://alvara.xyz/blog/onchain-portfolio-management-guide/" />
+<meta property="og:title" content="Onchain Portfolio Management: Why BSKTs Are the Future" />
+<meta property="og:description" content="Onchain portfolio management is replacing centralized fund managers. Learn how BSKTs let anyone build, manage, and share investment strategies onchain." />
+<meta property="og:image" content="https://alvara.xyz/images/og-cover.jpg" />
+<meta property="og:site_name" content="Alvara Protocol" />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Onchain Portfolio Management: Why BSKTs Are the Future" />
+<meta name="twitter:description" content="Onchain portfolio management is replacing centralized fund managers. Learn how BSKTs let anyone build, manage, and share investment strategies onchain." />
+<meta name="twitter:image" content="https://alvara.xyz/images/og-cover.jpg" />
+
+<!-- JSON-LD Article -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Onchain Portfolio Management: Why BSKTs Are the Future",
+  "description": "Onchain portfolio management is replacing centralized fund managers. Learn how BSKTs let anyone build, manage, and share investment strategies onchain.",
+  "author": {
+    "@type": "Organization",
+    "name": "Alvara Protocol",
+    "url": "https://alvara.xyz"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Alvara Protocol",
+    "url": "https://alvara.xyz"
+  },
+  "datePublished": "2025-03-05",
+  "mainEntityOfPage": "https://alvara.xyz/blog/onchain-portfolio-management-guide/",
+  "keywords": ["onchain portfolio", "decentralized portfolio management", "DeFi portfolio", "crypto portfolio manager", "BSKTs", "ERC-7621"]
+}
+</script>
+
+<link rel="stylesheet" href="/css/blog.css">
+</head>
+<body>
+
+<nav class="blog-nav" id="blogNav">
+  <div class="blog-nav-inner">
+    <a href="/" class="blog-nav-logo" aria-label="Alvara Protocol">
+      <svg viewBox="0 0 315 69" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M99.8927 23.2031C87.4607 23.2031 77.3828 33.2822 77.3828 45.7142C77.3828 58.1461 87.4607 68.224 99.8927 68.224H119.79V35.5138H107.613V56.413H100.462C94.6862 56.413 90.0033 51.7302 90.0033 45.9544C90.0033 40.1786 94.6862 35.4958 100.462 35.4958H107.605V23.328" fill="#FDF2FF"/>
+        <path d="M140.661 0.472656H128.295V68.2232H140.661V0.472656Z" fill="#FDF2FF"/>
+        <path d="M175.324 23.4766V45.2082C175.324 50.9839 170.641 55.6668 164.865 55.6668C164.727 55.6668 164.589 55.6632 164.452 55.6584H159.912V67.7913C159.929 67.7949 159.946 67.7973 159.961 67.8009V68.2765H163.964C164.184 68.2825 164.404 68.2873 164.625 68.2873C177.057 68.2873 187.135 58.2094 187.135 45.7774V23.4778H175.324V23.4766Z" fill="#FDF2FF"/>
+        <path d="M159.911 55.8317V23.2031H148.1V37.7837V53.6434V55.8317H159.911Z" fill="#FDF2FF"/>
+        <path d="M254.059 68.2873V46.5557C254.059 40.7799 258.742 36.0971 264.518 36.0971C264.656 36.0971 264.794 36.1007 264.931 36.1055H269.471V23.9726C269.454 23.969 269.437 23.9666 269.422 23.963V23.4874H265.418C265.199 23.4814 264.979 23.4766 264.758 23.4766C252.326 23.4766 242.248 33.5545 242.248 45.9864V68.2861H254.059V68.2873Z" fill="#FDF2FF"/>
+        <path d="M214.412 23.2031C201.98 23.2031 191.902 33.281 191.902 45.713C191.902 58.1449 201.98 68.2229 214.412 68.2229H234.31V35.5126H222.132V56.4118H214.982C209.206 56.4118 204.523 51.729 204.523 45.9532C204.523 40.1774 209.206 35.4946 214.982 35.4946H222.124V23.3268" fill="#FDF2FF"/>
+        <path d="M295.106 23.3711C282.674 23.3711 272.596 33.449 272.596 45.881C272.596 58.3129 282.674 68.3908 295.106 68.3908H315.003V35.6805H302.826V56.5798H295.675C289.899 56.5798 285.216 51.897 285.216 46.1212C285.216 40.3454 289.899 35.6625 295.675 35.6625H302.817V23.4948" fill="#FDF2FF"/>
+        <path d="M0.00585938 52.1767V28.3406L20.3972 7.94922H44.2333V24.0807H16.1373V52.1767H0.00585938Z" fill="url(#nav-g1)"/>
+        <path d="M16.2224 68.3932V52.2617H44.3184V24.1657H60.4499V48.0018L40.0585 68.3932H16.2224Z" fill="url(#nav-g2)"/>
+        <defs>
+          <linearGradient id="nav-g1" x1="78.32" y1="33.29" x2="-9.15" y2="66.7" gradientUnits="userSpaceOnUse"><stop stop-color="#FC75AF"/><stop offset="1" stop-color="#D73D80"/></linearGradient>
+          <linearGradient id="nav-g2" x1="78.32" y1="33.29" x2="-9.15" y2="66.7" gradientUnits="userSpaceOnUse"><stop stop-color="#FC75AF"/><stop offset="1" stop-color="#D73D80"/></linearGradient>
+        </defs>
+      </svg>
+    </a>
+    <div class="blog-nav-links">
+      <a href="/blog/" class="blog-back">&larr; <span>All Posts</span></a>
+      <a href="/">Home</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+        <svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<header class="blog-post-header">
+  <div class="container-narrow">
+    <div class="blog-breadcrumb">
+      <a href="/">Home</a> / <a href="/blog/">Blog</a> / Onchain Portfolio Management
+    </div>
+    <div class="blog-category">Insight</div>
+    <h1>Onchain Portfolio Management: Why BSKTs Are the Future</h1>
+    <div class="blog-meta">
+      <span>Alvara Protocol</span>
+      <span class="blog-meta-dot">&middot;</span>
+      <span>March 5, 2025</span>
+      <span class="blog-meta-dot">&middot;</span>
+      <span>8 min read</span>
+    </div>
+  </div>
+</header>
+
+<article class="blog-post-content">
+  <div class="container-narrow">
+
+    <p>Portfolio management has always been a gated profession. If you wanted to manage money for other people, you needed licenses, legal entities, bank relationships, and enough capital to make the overhead worthwhile. The result: a system where the best investment ideas often come from people who can't actually offer them to the public.</p>
+
+    <p>That's changing. Onchain portfolio management strips away the gatekeepers and lets anyone with a sound strategy put it into practice. With Alvara Protocol's BSKTs (basket tokens built on the <a href="/blog/erc-7621-token-standard-explained/">ERC-7621 standard</a>), portfolio creation takes minutes instead of months, costs nothing instead of thousands, and is open to participants worldwide instead of accredited investors only.</p>
+
+    <h2>What's Wrong with Traditional Portfolio Management</h2>
+
+    <p>The traditional fund management industry runs on a model that hasn't fundamentally changed in decades. Here are the core problems:</p>
+
+    <h3>High barriers to entry</h3>
+    <p>Launching a hedge fund in the US typically requires $50,000 to $100,000 in legal and compliance costs before you manage a single dollar. Mutual funds cost even more. These costs filter out small, innovative managers and concentrate power among established firms.</p>
+
+    <h3>Opacity by default</h3>
+    <p>Most funds report holdings quarterly, with a 45-day delay. Investors have no real-time visibility into what they own. This creates information asymmetry that benefits managers at the expense of investors. The FTX collapse showed exactly how dangerous this opacity can be, as billions in customer funds were misallocated without anyone outside the company knowing.</p>
+
+    <h3>Excessive fees</h3>
+    <p>The traditional "2 and 20" fee structure (2% management fee plus 20% of profits) has eroded somewhat, but the average actively managed mutual fund still charges around 0.68% annually. Layer on trading costs, administrative fees, and distribution costs, and the real drag on performance is often well above 1%. Over a 30-year horizon, a 1% fee difference can reduce final portfolio value by 25% or more.</p>
+
+    <h3>Limited access</h3>
+    <p>The best-performing funds are often closed to new investors or require minimum investments of $250,000 to $1 million. Geographic restrictions add another layer. A skilled analyst in Lagos or Jakarta can't easily invest in a fund domiciled in the Cayman Islands, regardless of their capital or sophistication.</p>
+
+    <h2>How BSKTs Fix This</h2>
+
+    <p>BSKTs are onchain basket tokens that represent a portfolio of underlying assets. Think of them as a programmable wrapper around a specific investment strategy. They're built on the <a href="/blog/erc-7621-token-standard-explained/">ERC-7621 token standard</a>, which defines how basket tokens are created, managed, rebalanced, and dissolved.</p>
+
+    <p>Here's why that matters for portfolio management:</p>
+
+    <h3>Permissionless creation</h3>
+    <p>Anyone can create a BSKT. There's no application process, no minimum AUM, no licensing requirement. If you have a thesis on which tokens will outperform over the next year, you can express that thesis as a BSKT and make it available to others. The total cost is a gas fee, typically under $10 on L2 networks.</p>
+
+    <h3>Real-time transparency</h3>
+    <p>Every BSKT's holdings are visible onchain at all times. There's no quarterly reporting delay, no window dressing (where managers buy winning stocks right before reporting dates), and no possibility of hidden positions. Investors can verify exactly what they hold, at any moment, without relying on a fund administrator's word.</p>
+
+    <h3>Programmable fee structures</h3>
+    <p>BSKT managers set their own fees, and these fees are encoded in the smart contract. They can't be changed retroactively or applied selectively. Competition drives fees down naturally because investors can compare fee structures across BSKTs transparently and switch with a single transaction.</p>
+
+    <h3>Global access, 24/7</h3>
+    <p>BSKTs trade on decentralized exchanges with no market close, no settlement delay, and no geographic restrictions. An investor in Buenos Aires has the same access as one in Boston. Entry and exit happen in seconds, not days.</p>
+
+    <h2>The BSKT Manager Role</h2>
+
+    <p>Onchain portfolio management through Alvara isn't just about buying and holding a static basket of tokens. BSKT managers actively manage their portfolios, and the protocol incentivizes good performance.</p>
+
+    <h3>Building a verifiable track record</h3>
+    <p>In traditional finance, track records are self-reported and often difficult to verify independently. Onchain, your track record is your transaction history. Every rebalance, every asset swap, and every fee collection is recorded permanently. This creates a reputation system based on actual performance, not marketing materials.</p>
+
+    <h3>Earning management fees</h3>
+    <p>BSKT managers earn fees from investors who hold their basket tokens. The fee is set at creation and collected automatically by the protocol. Good managers attract more capital, which means more fees, creating a direct incentive to perform well. Unlike traditional funds, there's no minimum fund size needed to make management economically viable. A manager with $10,000 in AUM can operate just as efficiently as one with $10 million.</p>
+
+    <h3>Composability as a competitive advantage</h3>
+    <p>BSKTs are ERC-7621 tokens, a standard built on top of ERC-721 (NFTs), which means each basket is a unique onchain asset that can hold an unlimited number of ERC-20 tokens inside it. They can be used as collateral in lending protocols, traded on DEXs, or even included in other BSKTs. This composability creates opportunities that don't exist in traditional finance. A manager could create a "BSKT of BSKTs," essentially building a fund-of-funds with zero additional overhead.</p>
+
+    <h2>Why Onchain Beats Off-Chain</h2>
+
+    <p>Some might argue that centralized platforms can offer similar features without the complexity of blockchain. Here's why onchain portfolio management is structurally better:</p>
+
+    <ul>
+      <li><strong>Self-custody:</strong> Investors hold their BSKT tokens in their own wallets. No counterparty risk from exchange failures, bank runs, or corporate fraud. Your assets are yours.</li>
+      <li><strong>Censorship resistance:</strong> No single entity can freeze your portfolio, block your redemptions, or prevent you from trading. This matters more than people think until they need it.</li>
+      <li><strong>Atomic transactions:</strong> Rebalancing a BSKT happens in a single transaction. There's no settlement risk, no failed trades to reconcile, and no timing gaps between buying and selling.</li>
+      <li><strong>Auditability:</strong> Smart contract code is open source and auditable. The rules governing a BSKT aren't buried in a 200-page prospectus. They're visible in the contract, verifiable by anyone with the technical knowledge to read them.</li>
+      <li><strong>Interoperability:</strong> BSKTs work with the broader DeFi ecosystem immediately. No API integrations, no partnership agreements, no technical onboarding. Because the underlying assets inside a BSKT are standard ERC-20 tokens, they integrate naturally with existing DeFi infrastructure.</li>
+    </ul>
+
+    <h2>Who Should Be Managing Onchain Portfolios?</h2>
+
+    <p>The beauty of permissionless systems is that they let the market decide who the best managers are. That said, several groups stand to benefit most from BSKT management:</p>
+
+    <p><strong>Crypto-native analysts</strong> who have been sharing alpha on Twitter or Discord but have never had a way to monetize their insights directly. Creating a BSKT lets them put real capital behind their calls and earn fees from followers who trust their judgment.</p>
+
+    <p><strong>DeFi protocols</strong> looking to offer curated exposure to their ecosystem. A lending protocol could create a BSKT of all the major assets it supports, giving users a single token that represents diversified exposure.</p>
+
+    <p><strong>DAOs</strong> that want to manage their treasuries more actively. Instead of holding a static mix of stablecoins and governance tokens, a DAO could allocate treasury funds to BSKTs managed by proven onchain managers.</p>
+
+    <p><strong>Traditional fund managers</strong> who want to experiment with onchain strategies without the overhead of launching a new fund vehicle. A BSKT can serve as a proof of concept for a strategy before committing to the full regulatory process.</p>
+
+    <h2>Getting Started</h2>
+
+    <p>Onchain portfolio management through BSKTs is live today. If you want to create your own basket token, check out our guide on <a href="/blog/how-to-create-onchain-etf/">how to create an onchain ETF</a>. The process takes minutes and requires no technical background.</p>
+
+    <p>The future of portfolio management is open, transparent, and accessible to everyone. BSKTs are the vehicle that makes it possible.</p>
+
+    <div class="callout">
+      <strong>Ready to build your first onchain portfolio?</strong> Launch the Alvara app at <a href="https://bskt.alvara.xyz/">bskt.alvara.xyz</a> and create a BSKT today. No minimums, no applications, no waiting periods.
+    </div>
+
+  </div>
+</article>
+
+<section class="blog-related">
+  <div class="container-narrow">
+    <h2>Related Posts</h2>
+    <div class="blog-related-grid">
+      <a href="/blog/how-to-create-onchain-etf/" class="blog-card">
+        <div class="blog-card-category">Tutorial</div>
+        <h3>How to Create Your Own Onchain ETF in Minutes</h3>
+        <p>Step-by-step walkthrough of creating a basket token on Alvara Protocol, from choosing assets to setting fees and launching your BSKT.</p>
+        <span class="blog-card-link">Read more &rarr;</span>
+      </a>
+      <a href="/blog/tokenized-index-funds-vs-traditional-etfs/" class="blog-card">
+        <div class="blog-card-category">Comparison</div>
+        <h3>Tokenized Index Funds vs Traditional ETFs: What's the Difference?</h3>
+        <p>A side-by-side breakdown of how tokenized index funds compare to traditional ETFs across access, fees, transparency, and composability.</p>
+        <span class="blog-card-link">Read more &rarr;</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="blog-cta">
+  <div class="container">
+    <h2>Start Building Your Portfolio</h2>
+    <p>Create, manage, and share onchain basket tokens with Alvara Protocol.</p>
+    <a href="https://bskt.alvara.xyz/" class="btn-white" target="_blank" rel="noopener">Launch App &rarr;</a>
+  </div>
+</section>
+
+<footer class="blog-footer">
+  <div class="container">
+    <div class="blog-footer-inner">
+      <div class="blog-footer-brand">
+        <svg viewBox="0 0 60 69" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0.00585938 52.1767V28.3406L20.3972 7.94922H44.2333V24.0807H16.1373V52.1767H0.00585938Z" fill="url(#fg1)"/>
+          <path d="M16.2224 68.3932V52.2617H44.3184V24.1657H60.4499V48.0018L40.0585 68.3932H16.2224Z" fill="url(#fg2)"/>
+          <defs>
+            <linearGradient id="fg1" x1="78.32" y1="33.29" x2="-9.15" y2="66.7" gradientUnits="userSpaceOnUse"><stop stop-color="#FC75AF"/><stop offset="1" stop-color="#D73D80"/></linearGradient>
+            <linearGradient id="fg2" x1="78.32" y1="33.29" x2="-9.15" y2="66.7" gradientUnits="userSpaceOnUse"><stop stop-color="#FC75AF"/><stop offset="1" stop-color="#D73D80"/></linearGradient>
+          </defs>
+        </svg>
+        &copy; 2025 Alvara Protocol
+      </div>
+      <div class="blog-footer-links">
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+        <a href="https://docs.alvara.xyz/" target="_blank" rel="noopener">Docs</a>
+        <a href="https://bskt.alvara.xyz/" target="_blank" rel="noopener">Launch App</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function() {
+  const saved = localStorage.getItem('alvara-theme');
+  if (saved) document.documentElement.setAttribute('data-theme', saved);
+  else if (window.matchMedia('(prefers-color-scheme: light)').matches) document.documentElement.setAttribute('data-theme', 'light');
+
+  document.getElementById('themeToggle').addEventListener('click', () => {
+    const current = document.documentElement.getAttribute('data-theme');
+    const next = current === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('alvara-theme', next);
+  });
+
+  window.addEventListener('scroll', () => {
+    document.getElementById('blogNav').classList.toggle('scrolled', window.scrollY > 10);
+  }, { passive: true });
+})();
+</script>
+
+</body>
+</html>

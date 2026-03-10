@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What Are Basket Tokens? A Complete Guide to ERC-7621 | Alvara Protocol</title>
+  <meta name="description" content="Basket tokens (BSKTs) are multi-asset tokens built on ERC-7621. Learn how they work, why they matter, and how anyone can create one.">
+  <link rel="canonical" href="https://alvara.xyz/blog/what-are-basket-tokens/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="What Are Basket Tokens? A Complete Guide to ERC-7621">
+  <meta property="og:description" content="Basket tokens (BSKTs) are multi-asset tokens built on ERC-7621. Learn how they work, why they matter, and how anyone can create one.">
+  <meta property="og:url" content="https://alvara.xyz/blog/what-are-basket-tokens/">
+  <meta property="og:site_name" content="Alvara Protocol">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="What Are Basket Tokens? A Complete Guide to ERC-7621">
+  <meta name="twitter:description" content="Basket tokens (BSKTs) are multi-asset tokens built on ERC-7621. Learn how they work, why they matter, and how anyone can create one.">
+
+  <link rel="stylesheet" href="/css/blog.css">
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "What Are Basket Tokens? A Complete Guide to ERC-7621",
+    "description": "Basket tokens (BSKTs) are multi-asset tokens built on ERC-7621. Learn how they work, why they matter, and how anyone can create one.",
+    "datePublished": "2025-03-05",
+    "author": {
+      "@type": "Organization",
+      "name": "Alvara Protocol"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Alvara Protocol"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://alvara.xyz/blog/what-are-basket-tokens/"
+    }
+  }
+  </script>
+</head>
+<body>
+
+<nav class="blog-nav" id="blogNav">
+  <div class="blog-nav-inner">
+    <a href="/" class="blog-nav-logo" aria-label="Alvara Protocol">
+      <svg viewBox="0 0 315 69" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M99.8927 23.2031C87.4607 23.2031 77.3828 33.2822 77.3828 45.7142C77.3828 58.1461 87.4607 68.224 99.8927 68.224H119.79V35.5138H107.613V56.413H100.462C94.6862 56.413 90.0033 51.7302 90.0033 45.9544C90.0033 40.1786 94.6862 35.4958 100.462 35.4958H107.605V23.328" fill="#FDF2FF"/>
+        <path d="M140.661 0.472656H128.295V68.2232H140.661V0.472656Z" fill="#FDF2FF"/>
+        <path d="M175.324 23.4766V45.2082C175.324 50.9839 170.641 55.6668 164.865 55.6668C164.727 55.6668 164.589 55.6632 164.452 55.6584H159.912V67.7913C159.929 67.7949 159.946 67.7973 159.961 67.8009V68.2765H163.964C164.184 68.2825 164.404 68.2873 164.625 68.2873C177.057 68.2873 187.135 58.2094 187.135 45.7774V23.4778H175.324V23.4766Z" fill="#FDF2FF"/>
+        <path d="M159.911 55.8317V23.2031H148.1V37.7837V53.6434V55.8317H159.911Z" fill="#FDF2FF"/>
+        <path d="M254.059 68.2873V46.5557C254.059 40.7799 258.742 36.0971 264.518 36.0971C264.656 36.0971 264.794 36.1007 264.931 36.1055H269.471V23.9726C269.454 23.969 269.437 23.9666 269.422 23.963V23.4874H265.418C265.199 23.4814 264.979 23.4766 264.758 23.4766C252.326 23.4766 242.248 33.5545 242.248 45.9864V68.2861H254.059V68.2873Z" fill="#FDF2FF"/>
+        <path d="M214.412 23.2031C201.98 23.2031 191.902 33.281 191.902 45.713C191.902 58.1449 201.98 68.2229 214.412 68.2229H234.31V35.5126H222.132V56.4118H214.982C209.206 56.4118 204.523 51.729 204.523 45.9532C204.523 40.1774 209.206 35.4946 214.982 35.4946H222.124V23.3268" fill="#FDF2FF"/>
+        <path d="M295.106 23.3711C282.674 23.3711 272.596 33.449 272.596 45.881C272.596 58.3129 282.674 68.3908 295.106 68.3908H315.003V35.6805H302.826V56.5798H295.675C289.899 56.5798 285.216 51.897 285.216 46.1212C285.216 40.3454 289.899 35.6625 295.675 35.6625H302.817V23.4948" fill="#FDF2FF"/>
+        <path d="M0.00585938 52.1767V28.3406L20.3972 7.94922H44.2333V24.0807H16.1373V52.1767H0.00585938Z" fill="url(#nav-g1)"/>
+        <path d="M16.2224 68.3932V52.2617H44.3184V24.1657H60.4499V48.0018L40.0585 68.3932H16.2224Z" fill="url(#nav-g2)"/>
+        <defs>
+          <linearGradient id="nav-g1" x1="78.32" y1="33.29" x2="-9.15" y2="66.7" gradientUnits="userSpaceOnUse"><stop stop-color="#FC75AF"/><stop offset="1" stop-color="#D73D80"/></linearGradient>
+          <linearGradient id="nav-g2" x1="78.32" y1="33.29" x2="-9.15" y2="66.7" gradientUnits="userSpaceOnUse"><stop stop-color="#FC75AF"/><stop offset="1" stop-color="#D73D80"/></linearGradient>
+        </defs>
+      </svg>
+    </a>
+    <div class="blog-nav-links">
+      <a href="/blog/" class="blog-back">&larr; <span>All Posts</span></a>
+      <a href="/">Home</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+        <svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<header class="blog-post-header">
+  <div class="container-narrow">
+    <nav class="blog-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> / <a href="/blog/">Blog</a> / <span>What Are Basket Tokens?</span>
+    </nav>
+    <div class="blog-category">Education</div>
+    <h1>What Are Basket Tokens? A Complete Guide to ERC-7621</h1>
+    <div class="blog-meta">
+      <span>Alvara Protocol</span>
+      <span class="blog-meta-dot">&middot;</span>
+      <time datetime="2025-03-05">March 5, 2025</time>
+      <span class="blog-meta-dot">&middot;</span>
+      <span>8 min read</span>
+    </div>
+  </div>
+</header>
+
+<article class="blog-post-content">
+  <div class="container-narrow">
+
+    <p>If you've spent any time in DeFi, you know the drill: you find a promising token, buy it, then discover three more you also want exposure to. Before long, you're managing a dozen positions across multiple protocols, checking prices constantly, and paying gas fees every time you rebalance. It's a mess.</p>
+
+    <p>Basket tokens solve this problem. A basket token (or BSKT) is an ERC-7621 token that holds a bundle of ERC-20 tokens inside it. Think of it as an onchain ETF or index fund, but one that anyone can create, manage, and invest in without asking permission from a financial institution.</p>
+
+    <h2>How Basket Tokens Work</h2>
+
+    <p>At a high level, a basket token wraps multiple ERC-20 tokens into one. When you mint a BSKT, you deposit the underlying assets in the correct proportions. When you burn it, you get those underlying assets back. The basket token itself is fully transferable and tradeable, just like any other token on Ethereum.</p>
+
+    <p>Here's a concrete example. Say someone creates a "DeFi Blue Chips" basket with the following composition:</p>
+
+    <ul>
+      <li><strong>40% AAVE</strong></li>
+      <li><strong>30% UNI</strong></li>
+      <li><strong>20% MKR</strong></li>
+      <li><strong>10% COMP</strong></li>
+    </ul>
+
+    <p>When you mint one unit of this basket token, you deposit those four tokens in exactly those proportions. You receive a single BSKT token in return. That one token gives you diversified exposure to all four assets. No need to manage each position individually.</p>
+
+    <h2>The ERC-7621 Standard</h2>
+
+    <p>Basket tokens are built on <a href="/blog/erc-7621-token-standard-explained/">ERC-7621</a>, a token standard designed specifically for multi-asset tokens. ERC-7621 is built on top of ERC-721 (the NFT standard), giving each basket a unique identity, while adding the interfaces needed to manage a basket of underlying ERC-20 assets.</p>
+
+    <p>The standard defines how assets are added to a basket, how weights are maintained, how minting and burning works, and how management fees are collected. Because it's a standard, any BSKT created through the protocol follows a consistent interface that DeFi protocols can integrate with. You can hold BSKTs in any Ethereum wallet that supports NFTs, and as protocol integrations grow, new trading and collateral use cases will follow.</p>
+
+    <h2>BSKTs vs. Regular Tokens</h2>
+
+    <p>A regular ERC-20 token represents one asset. It might be a governance token, a stablecoin, or a wrapped version of another chain's native currency. Either way, one token equals one thing.</p>
+
+    <p>A basket token represents many assets bundled together. The key differences:</p>
+
+    <ul>
+      <li><strong>Diversification built in.</strong> Holding one BSKT gives you exposure to every asset in that basket. You don't need to manage multiple positions.</li>
+      <li><strong>Transparent composition.</strong> The underlying assets and their weights are onchain and verifiable at all times. There's no black box.</li>
+      <li><strong>Redeemable for underlying assets.</strong> You can always burn your BSKT and receive the underlying tokens. The basket is fully backed, always.</li>
+      <li><strong>Rebalanceable.</strong> The basket creator can adjust weights over time, keeping the portfolio allocation in line with their strategy.</li>
+    </ul>
+
+    <h2>Key Benefits of Basket Tokens</h2>
+
+    <h3>Permissionless Creation</h3>
+
+    <p>Anyone can create a basket token. You don't need to be a licensed fund manager or pass any regulatory gatekeeping. If you have a thesis about which tokens will perform well together, you can build a basket around it and let the market decide if your strategy has merit.</p>
+
+    <h3>Composability with DeFi</h3>
+
+    <p>Because BSKTs are built on ERC-7621 (which extends ERC-721), they benefit from the existing NFT infrastructure on Ethereum. As DeFi protocols add ERC-7621 support, BSKTs will be usable across DEXs, lending protocols, and more. This growing composability is what makes basket tokens genuinely useful, not just a theoretical concept.</p>
+
+    <h3>Management Fees</h3>
+
+    <p>Basket creators can set a management fee that accrues over time. This creates a direct incentive for talented portfolio managers to share their strategies publicly. If your basket performs well and attracts holders, you earn fees. It's a business model that aligns incentives: the creator is motivated to maintain a good portfolio, and holders benefit from professional management.</p>
+
+    <h3>Gas Efficiency</h3>
+
+    <p>Buying five tokens individually means five separate transactions and five sets of gas fees. Minting a basket that contains those same five tokens is one transaction. For anyone managing a diversified portfolio onchain, the gas savings alone make baskets worth considering.</p>
+
+    <h2>Real Use Cases</h2>
+
+    <p>Basket tokens aren't just a neat idea. They address real problems that DeFi users face today.</p>
+
+    <p><strong>Thematic investing.</strong> Want exposure to the AI token sector without picking individual winners? Create a basket of the top 10 AI-related tokens weighted by market cap. One token, broad exposure.</p>
+
+    <p><strong>Portfolio management as a service.</strong> Skilled traders can package their strategies into baskets and earn management fees. Holders get access to expertise they might not have themselves.</p>
+
+    <p><strong>DAO treasury diversification.</strong> DAOs that hold concentrated positions in their own governance token can create baskets to diversify their treasury, all onchain and fully auditable by their community.</p>
+
+    <p><strong>Simplified onboarding.</strong> New users entering DeFi can buy a single basket token instead of trying to evaluate and purchase dozens of individual tokens. It lowers the barrier to getting diversified crypto exposure.</p>
+
+    <h2>How Alvara Makes It Simple</h2>
+
+    <p>Alvara Protocol is the platform built around ERC-7621. It provides the smart contracts, the UI, and the infrastructure for creating and managing basket tokens. You don't need to write any code or deploy your own contracts. The process takes minutes: pick your assets, set your weights, name your basket, choose your management fee, and deploy.</p>
+
+    <p>Once your basket is live, anyone can mint it by depositing the underlying tokens, and you start earning fees from day one. The protocol handles all the accounting, fee accrual, and redemption logic.</p>
+
+    <div class="callout">
+      <p><strong>Want to try it yourself?</strong> You can create your first basket token in about five minutes using the <a href="https://bskt.alvara.xyz/" target="_blank" rel="noopener">Alvara app</a>. Check out our <a href="/blog/how-to-create-onchain-etf/">step-by-step tutorial</a> to get started.</p>
+    </div>
+
+    <h2>What's Next for Basket Tokens</h2>
+
+    <p>The ERC-7621 standard is still early, but the foundation is solid. As more DeFi protocols recognize and integrate BSKTs, the use cases will keep expanding. Cross-chain baskets, automated rebalancing strategies, and deeper integration with lending and derivatives protocols are all on the roadmap.</p>
+
+    <p>The core idea is straightforward: make diversified investing onchain as simple as buying a single token. Basket tokens, powered by ERC-7621, are how we get there.</p>
+
+  </div>
+</article>
+
+<section class="blog-related">
+  <div class="container-narrow">
+    <h2>Related Posts</h2>
+    <div class="blog-related-grid">
+      <a href="/blog/how-to-create-onchain-etf/" class="blog-card">
+        <div class="blog-card-category">Tutorial</div>
+        <h3>How to Create Your Own Onchain ETF in Minutes</h3>
+        <p>Step-by-step guide to creating your own onchain ETF using Alvara Protocol. Pick assets, set weights, deploy, and start earning management fees.</p>
+        <span class="blog-card-link">Read more &rarr;</span>
+      </a>
+      <a href="/blog/erc-7621-token-standard-explained/" class="blog-card">
+        <div class="blog-card-category">Technical</div>
+        <h3>ERC-7621 Token Standard Explained: The Technical Deep Dive</h3>
+        <p>A technical breakdown of ERC-7621, the Ethereum token standard for basket tokens. Architecture, interfaces, composability, and more.</p>
+        <span class="blog-card-link">Read more &rarr;</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="blog-cta">
+  <div class="container">
+    <h2>Ready to Build Your First Basket?</h2>
+    <p>Create a diversified onchain portfolio in minutes. No code required.</p>
+    <a href="https://bskt.alvara.xyz/" target="_blank" rel="noopener" class="btn-white">Launch App &rarr;</a>
+  </div>
+</section>
+
+<footer class="blog-footer">
+  <div class="container">
+    <div class="blog-footer-inner">
+      <div class="blog-footer-brand">
+        <svg viewBox="0 0 60 69" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0.00585938 52.1767V28.3406L20.3972 7.94922H44.2333V24.0807H16.1373V52.1767H0.00585938Z" fill="url(#fg1)"/>
+          <path d="M16.2224 68.3932V52.2617H44.3184V24.1657H60.4499V48.0018L40.0585 68.3932H16.2224Z" fill="url(#fg2)"/>
+          <defs>
+            <linearGradient id="fg1" x1="78.32" y1="33.29" x2="-9.15" y2="66.7" gradientUnits="userSpaceOnUse"><stop stop-color="#FC75AF"/><stop offset="1" stop-color="#D73D80"/></linearGradient>
+            <linearGradient id="fg2" x1="78.32" y1="33.29" x2="-9.15" y2="66.7" gradientUnits="userSpaceOnUse"><stop stop-color="#FC75AF"/><stop offset="1" stop-color="#D73D80"/></linearGradient>
+          </defs>
+        </svg>
+        &copy; 2025 Alvara Protocol
+      </div>
+      <div class="blog-footer-links">
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+        <a href="https://docs.alvara.xyz/" target="_blank" rel="noopener">Docs</a>
+        <a href="https://bskt.alvara.xyz/" target="_blank" rel="noopener">Launch App</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function() {
+  const saved = localStorage.getItem('alvara-theme');
+  if (saved) document.documentElement.setAttribute('data-theme', saved);
+  else if (window.matchMedia('(prefers-color-scheme: light)').matches) document.documentElement.setAttribute('data-theme', 'light');
+
+  document.getElementById('themeToggle').addEventListener('click', () => {
+    const current = document.documentElement.getAttribute('data-theme');
+    const next = current === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('alvara-theme', next);
+  });
+
+  window.addEventListener('scroll', () => {
+    document.getElementById('blogNav').classList.toggle('scrolled', window.scrollY > 10);
+  }, { passive: true });
+})();
+</script>
+
+</body>
+</html>

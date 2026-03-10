@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog - Alvara Protocol</title>
+<meta name="description" content="Insights, tutorials, and deep dives on basket tokens, ERC-7621, onchain portfolio management, and the future of decentralized finance.">
+<link rel="canonical" href="https://alvara.xyz/blog/" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://alvara.xyz/blog/" />
+<meta property="og:title" content="Blog - Alvara Protocol" />
+<meta property="og:description" content="Insights, tutorials, and deep dives on basket tokens, ERC-7621, onchain portfolio management, and the future of decentralized finance." />
+<meta property="og:image" content="https://alvara.xyz/images/og-cover.jpg" />
+<meta property="og:site_name" content="Alvara Protocol" />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Blog - Alvara Protocol" />
+<meta name="twitter:description" content="Insights, tutorials, and deep dives on basket tokens, ERC-7621, onchain portfolio management, and the future of decentralized finance." />
+<meta name="twitter:image" content="https://alvara.xyz/images/og-cover.jpg" />
+
+<link rel="stylesheet" href="/css/blog.css">
+</head>
+<body>
+
+<nav class="blog-nav" id="blogNav">
+  <div class="blog-nav-inner">
+    <a href="/" class="blog-nav-logo" aria-label="Alvara Protocol">
+      <svg viewBox="0 0 315 69" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M99.8927 23.2031C87.4607 23.2031 77.3828 33.2822 77.3828 45.7142C77.3828 58.1461 87.4607 68.224 99.8927 68.224H119.79V35.5138H107.613V56.413H100.462C94.6862 56.413 90.0033 51.7302 90.0033 45.9544C90.0033 40.1786 94.6862 35.4958 100.462 35.4958H107.605V23.328" fill="#FDF2FF"/>
+        <path d="M140.661 0.472656H128.295V68.2232H140.661V0.472656Z" fill="#FDF2FF"/>
+        <path d="M175.324 23.4766V45.2082C175.324 50.9839 170.641 55.6668 164.865 55.6668C164.727 55.6668 164.589 55.6632 164.452 55.6584H159.912V67.7913C159.929 67.7949 159.946 67.7973 159.961 67.8009V68.2765H163.964C164.184 68.2825 164.404 68.2873 164.625 68.2873C177.057 68.2873 187.135 58.2094 187.135 45.7774V23.4778H175.324V23.4766Z" fill="#FDF2FF"/>
+        <path d="M159.911 55.8317V23.2031H148.1V37.7837V53.6434V55.8317H159.911Z" fill="#FDF2FF"/>
+        <path d="M254.059 68.2873V46.5557C254.059 40.7799 258.742 36.0971 264.518 36.0971C264.656 36.0971 264.794 36.1007 264.931 36.1055H269.471V23.9726C269.454 23.969 269.437 23.9666 269.422 23.963V23.4874H265.418C265.199 23.4814 264.979 23.4766 264.758 23.4766C252.326 23.4766 242.248 33.5545 242.248 45.9864V68.2861H254.059V68.2873Z" fill="#FDF2FF"/>
+        <path d="M214.412 23.2031C201.98 23.2031 191.902 33.281 191.902 45.713C191.902 58.1449 201.98 68.2229 214.412 68.2229H234.31V35.5126H222.132V56.4118H214.982C209.206 56.4118 204.523 51.729 204.523 45.9532C204.523 40.1774 209.206 35.4946 214.982 35.4946H222.124V23.3268" fill="#FDF2FF"/>
+        <path d="M295.106 23.3711C282.674 23.3711 272.596 33.449 272.596 45.881C272.596 58.3129 282.674 68.3908 295.106 68.3908H315.003V35.6805H302.826V56.5798H295.675C289.899 56.5798 285.216 51.897 285.216 46.1212C285.216 40.3454 289.899 35.6625 295.675 35.6625H302.817V23.4948" fill="#FDF2FF"/>
+        <path d="M0.00585938 52.1767V28.3406L20.3972 7.94922H44.2333V24.0807H16.1373V52.1767H0.00585938Z" fill="url(#nav-g1)"/>
+        <path d="M16.2224 68.3932V52.2617H44.3184V24.1657H60.4499V48.0018L40.0585 68.3932H16.2224Z" fill="url(#nav-g2)"/>
+        <defs>
+          <linearGradient id="nav-g1" x1="78.32" y1="33.29" x2="-9.15" y2="66.7" gradientUnits="userSpaceOnUse"><stop stop-color="#FC75AF"/><stop offset="1" stop-color="#D73D80"/></linearGradient>
+          <linearGradient id="nav-g2" x1="78.32" y1="33.29" x2="-9.15" y2="66.7" gradientUnits="userSpaceOnUse"><stop stop-color="#FC75AF"/><stop offset="1" stop-color="#D73D80"/></linearGradient>
+        </defs>
+      </svg>
+    </a>
+    <div class="blog-nav-links">
+      <a href="/blog/">Blog</a>
+      <a href="/">Home</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+        <svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<header class="blog-listing-header">
+  <div class="container">
+    <h1>Blog</h1>
+    <p>Guides, deep dives, and analysis on basket tokens, onchain portfolios, and decentralized finance infrastructure.</p>
+  </div>
+</header>
+
+<section>
+  <div class="container">
+    <div class="blog-listing-grid">
+
+      <a href="/blog/tokenized-index-funds-vs-traditional-etfs/" class="blog-card">
+        <div class="blog-card-category">Comparison</div>
+        <h2>Tokenized Index Funds vs Traditional ETFs: What's the Difference?</h2>
+        <p>How do tokenized index funds compare to traditional ETFs? A side-by-side breakdown of access, fees, transparency, settlement, and composability.</p>
+        <span class="blog-card-link">Read more &rarr;</span>
+      </a>
+
+      <a href="/blog/onchain-portfolio-management-guide/" class="blog-card">
+        <div class="blog-card-category">Insight</div>
+        <h2>Onchain Portfolio Management: Why BSKTs Are the Future</h2>
+        <p>Onchain portfolio management is replacing centralized fund managers. Learn how BSKTs let anyone build, manage, and share investment strategies transparently.</p>
+        <span class="blog-card-link">Read more &rarr;</span>
+      </a>
+
+      <a href="/blog/erc-7621-token-standard-explained/" class="blog-card">
+        <div class="blog-card-category">Technical</div>
+        <h2>ERC-7621 Token Standard Explained: The Technical Deep Dive</h2>
+        <p>A detailed technical breakdown of the ERC-7621 standard, covering smart contract architecture, key functions, and the design decisions behind basket tokens.</p>
+        <span class="blog-card-link">Read more &rarr;</span>
+      </a>
+
+      <a href="/blog/how-to-create-onchain-etf/" class="blog-card">
+        <div class="blog-card-category">Tutorial</div>
+        <h2>How to Create Your Own Onchain ETF in Minutes</h2>
+        <p>Step-by-step walkthrough of creating a basket token on Alvara Protocol, from choosing underlying assets to setting management fees and launching your BSKT.</p>
+        <span class="blog-card-link">Read more &rarr;</span>
+      </a>
+
+      <a href="/blog/what-are-basket-tokens/" class="blog-card">
+        <div class="blog-card-category">Education</div>
+        <h2>What Are Basket Tokens? A Complete Guide to ERC-7621</h2>
+        <p>Everything you need to know about basket tokens, how they work, and why the ERC-7621 standard is creating a new category of onchain financial products.</p>
+        <span class="blog-card-link">Read more &rarr;</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<section class="blog-cta">
+  <div class="container">
+    <h2>Start Building Your Portfolio</h2>
+    <p>Create, manage, and share onchain basket tokens with Alvara Protocol.</p>
+    <a href="https://bskt.alvara.xyz/" class="btn-white" target="_blank" rel="noopener">Launch App &rarr;</a>
+  </div>
+</section>
+
+<footer class="blog-footer">
+  <div class="container">
+    <div class="blog-footer-inner">
+      <div class="blog-footer-brand">
+        <svg viewBox="0 0 60 69" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0.00585938 52.1767V28.3406L20.3972 7.94922H44.2333V24.0807H16.1373V52.1767H0.00585938Z" fill="url(#fg1)"/>
+          <path d="M16.2224 68.3932V52.2617H44.3184V24.1657H60.4499V48.0018L40.0585 68.3932H16.2224Z" fill="url(#fg2)"/>
+          <defs>
+            <linearGradient id="fg1" x1="78.32" y1="33.29" x2="-9.15" y2="66.7" gradientUnits="userSpaceOnUse"><stop stop-color="#FC75AF"/><stop offset="1" stop-color="#D73D80"/></linearGradient>
+            <linearGradient id="fg2" x1="78.32" y1="33.29" x2="-9.15" y2="66.7" gradientUnits="userSpaceOnUse"><stop stop-color="#FC75AF"/><stop offset="1" stop-color="#D73D80"/></linearGradient>
+          </defs>
+        </svg>
+        &copy; 2025 Alvara Protocol
+      </div>
+      <div class="blog-footer-links">
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+        <a href="https://docs.alvara.xyz/" target="_blank" rel="noopener">Docs</a>
+        <a href="https://bskt.alvara.xyz/" target="_blank" rel="noopener">Launch App</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function() {
+  const saved = localStorage.getItem('alvara-theme');
+  if (saved) document.documentElement.setAttribute('data-theme', saved);
+  else if (window.matchMedia('(prefers-color-scheme: light)').matches) document.documentElement.setAttribute('data-theme', 'light');
+
+  document.getElementById('themeToggle').addEventListener('click', () => {
+    const current = document.documentElement.getAttribute('data-theme');
+    const next = current === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('alvara-theme', next);
+  });
+
+  window.addEventListener('scroll', () => {
+    document.getElementById('blogNav').classList.toggle('scrolled', window.scrollY > 10);
+  }, { passive: true });
+})();
+</script>
+
+</body>
+</html>

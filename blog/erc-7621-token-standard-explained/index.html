@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ERC-7621 Token Standard Explained: The Technical Deep Dive | Alvara Protocol</title>
+  <meta name="description" content="A technical breakdown of ERC-7621, the Ethereum token standard powering basket tokens. Learn about the architecture, interfaces, and composability of BSKTs.">
+  <link rel="canonical" href="https://alvara.xyz/blog/erc-7621-token-standard-explained/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="ERC-7621 Token Standard Explained: The Technical Deep Dive">
+  <meta property="og:description" content="A technical breakdown of ERC-7621, the Ethereum token standard powering basket tokens. Learn about the architecture, interfaces, and composability of BSKTs.">
+  <meta property="og:url" content="https://alvara.xyz/blog/erc-7621-token-standard-explained/">
+  <meta property="og:site_name" content="Alvara Protocol">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ERC-7621 Token Standard Explained: The Technical Deep Dive">
+  <meta name="twitter:description" content="A technical breakdown of ERC-7621, the Ethereum token standard powering basket tokens. Learn about the architecture, interfaces, and composability of BSKTs.">
+
+  <link rel="stylesheet" href="/css/blog.css">
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "ERC-7621 Token Standard Explained: The Technical Deep Dive",
+    "description": "A technical breakdown of ERC-7621, the Ethereum token standard powering basket tokens. Learn about the architecture, interfaces, and composability of BSKTs.",
+    "datePublished": "2025-03-05",
+    "author": {
+      "@type": "Organization",
+      "name": "Alvara Protocol"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Alvara Protocol"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://alvara.xyz/blog/erc-7621-token-standard-explained/"
+    }
+  }
+  </script>
+</head>
+<body>
+
+<nav class="blog-nav" id="blogNav">
+  <div class="blog-nav-inner">
+    <a href="/" class="blog-nav-logo" aria-label="Alvara Protocol">
+      <svg viewBox="0 0 315 69" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M99.8927 23.2031C87.4607 23.2031 77.3828 33.2822 77.3828 45.7142C77.3828 58.1461 87.4607 68.224 99.8927 68.224H119.79V35.5138H107.613V56.413H100.462C94.6862 56.413 90.0033 51.7302 90.0033 45.9544C90.0033 40.1786 94.6862 35.4958 100.462 35.4958H107.605V23.328" fill="#FDF2FF"/>
+        <path d="M140.661 0.472656H128.295V68.2232H140.661V0.472656Z" fill="#FDF2FF"/>
+        <path d="M175.324 23.4766V45.2082C175.324 50.9839 170.641 55.6668 164.865 55.6668C164.727 55.6668 164.589 55.6632 164.452 55.6584H159.912V67.7913C159.929 67.7949 159.946 67.7973 159.961 67.8009V68.2765H163.964C164.184 68.2825 164.404 68.2873 164.625 68.2873C177.057 68.2873 187.135 58.2094 187.135 45.7774V23.4778H175.324V23.4766Z" fill="#FDF2FF"/>
+        <path d="M159.911 55.8317V23.2031H148.1V37.7837V53.6434V55.8317H159.911Z" fill="#FDF2FF"/>
+        <path d="M254.059 68.2873V46.5557C254.059 40.7799 258.742 36.0971 264.518 36.0971C264.656 36.0971 264.794 36.1007 264.931 36.1055H269.471V23.9726C269.454 23.969 269.437 23.9666 269.422 23.963V23.4874H265.418C265.199 23.4814 264.979 23.4766 264.758 23.4766C252.326 23.4766 242.248 33.5545 242.248 45.9864V68.2861H254.059V68.2873Z" fill="#FDF2FF"/>
+        <path d="M214.412 23.2031C201.98 23.2031 191.902 33.281 191.902 45.713C191.902 58.1449 201.98 68.2229 214.412 68.2229H234.31V35.5126H222.132V56.4118H214.982C209.206 56.4118 204.523 51.729 204.523 45.9532C204.523 40.1774 209.206 35.4946 214.982 35.4946H222.124V23.3268" fill="#FDF2FF"/>
+        <path d="M295.106 23.3711C282.674 23.3711 272.596 33.449 272.596 45.881C272.596 58.3129 282.674 68.3908 295.106 68.3908H315.003V35.6805H302.826V56.5798H295.675C289.899 56.5798 285.216 51.897 285.216 46.1212C285.216 40.3454 289.899 35.6625 295.675 35.6625H302.817V23.4948" fill="#FDF2FF"/>
+        <path d="M0.00585938 52.1767V28.3406L20.3972 7.94922H44.2333V24.0807H16.1373V52.1767H0.00585938Z" fill="url(#nav-g1)"/>
+        <path d="M16.2224 68.3932V52.2617H44.3184V24.1657H60.4499V48.0018L40.0585 68.3932H16.2224Z" fill="url(#nav-g2)"/>
+        <defs>
+          <linearGradient id="nav-g1" x1="78.32" y1="33.29" x2="-9.15" y2="66.7" gradientUnits="userSpaceOnUse"><stop stop-color="#FC75AF"/><stop offset="1" stop-color="#D73D80"/></linearGradient>
+          <linearGradient id="nav-g2" x1="78.32" y1="33.29" x2="-9.15" y2="66.7" gradientUnits="userSpaceOnUse"><stop stop-color="#FC75AF"/><stop offset="1" stop-color="#D73D80"/></linearGradient>
+        </defs>
+      </svg>
+    </a>
+    <div class="blog-nav-links">
+      <a href="/blog/" class="blog-back">&larr; <span>All Posts</span></a>
+      <a href="/">Home</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+        <svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<header class="blog-post-header">
+  <div class="container-narrow">
+    <nav class="blog-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> / <a href="/blog/">Blog</a> / <span>ERC-7621 Token Standard Explained</span>
+    </nav>
+    <div class="blog-category">Technical</div>
+    <h1>ERC-7621 Token Standard Explained: The Technical Deep Dive</h1>
+    <div class="blog-meta">
+      <span>Alvara Protocol</span>
+      <span class="blog-meta-dot">&middot;</span>
+      <time datetime="2025-03-05">March 5, 2025</time>
+      <span class="blog-meta-dot">&middot;</span>
+      <span>10 min read</span>
+    </div>
+  </div>
+</header>
+
+<article class="blog-post-content">
+  <div class="container-narrow">
+
+    <p>ERC-7621 is an Ethereum token standard designed for multi-asset basket tokens. It extends the ERC-721 (NFT) standard with a set of additional functions for managing a portfolio of underlying ERC-20 assets entirely onchain. If you already know <a href="/blog/what-are-basket-tokens/">what basket tokens are</a>, this is where we break down how they actually work at the contract level.</p>
+
+    <p>This post covers the standard's architecture, its minting and burning mechanics, how rebalancing and fees are handled, and why the design choices matter for composability across DeFi.</p>
+
+    <h2>Why a New Standard?</h2>
+
+    <p>Ethereum has well-established token standards. ERC-20 handles fungible tokens. ERC-721 covers non-fungible tokens. ERC-1155 provides a multi-token contract for managing many token types in a single deployment. But none of these standards were designed to represent a single token that holds and manages a weighted collection of other tokens inside it. ERC-7621 builds on ERC-721 to create exactly this: a non-fungible basket token that contains an unlimited number of ERC-20 tokens within it.</p>
+
+    <p>You could build basket-like functionality using custom contracts, but you'd end up writing custom logic for asset registration, weight management, proportional minting, proportional burning, and fee accrual. Every implementation would be different. Wallets wouldn't know how to display the underlying composition. Protocols couldn't build generic integrations. Users would have to trust each implementation independently, with no common interface to rely on.</p>
+
+    <p>ERC-7621 fills that gap with purpose-built interfaces. It defines a common set of functions that all basket tokens share, so any wallet, DEX, or protocol that supports the standard can work with every BSKT built on it. That interoperability is the whole point of standardization.</p>
+
+    <h2>Core Architecture</h2>
+
+    <p>An ERC-7621 token is, first and foremost, a valid ERC-721 token. Each BSKT is a non-fungible token with a unique token ID. It supports transfers and approvals just like any NFT. You can send it to any Ethereum address, trade it on any NFT marketplace, or use it in any protocol that supports ERC-721 tokens. Nothing about the basket functionality breaks standard ERC-721 compatibility.</p>
+
+    <p>On top of that ERC-721 foundation, ERC-7621 adds several distinct layers:</p>
+
+    <ul>
+      <li><strong>Asset registry.</strong> The contract maintains an ordered list of underlying ERC-20 token addresses and their corresponding weights. This registry defines what the basket contains and in what proportions.</li>
+      <li><strong>Minting mechanism.</strong> Users deposit the underlying tokens in the correct proportions to mint new BSKT tokens. The contract enforces that deposits match the basket's weight configuration exactly.</li>
+      <li><strong>Burning mechanism.</strong> Holders burn their BSKT tokens to withdraw the underlying assets proportionally. This guarantees that BSKTs are always fully redeemable.</li>
+      <li><strong>Rebalancing.</strong> The basket creator or designated manager can adjust the target weights of underlying assets, changing the basket's composition over time.</li>
+      <li><strong>Fee collection.</strong> Management fees are encoded at the contract level at creation time and accrue continuously to the basket creator.</li>
+    </ul>
+
+    <p>Each of these layers has its own set of interface functions, events, and invariants. The sections below walk through them one by one.</p>
+
+    <h2>The Minting Process</h2>
+
+    <p>Minting is how new BSKT tokens come into existence. When a user wants to mint, they specify how many BSKT tokens they want to receive. The contract then calculates exactly how much of each underlying token needs to be deposited, based on the basket's current weight configuration.</p>
+
+    <p>Here's what happens step by step:</p>
+
+    <ol>
+      <li>The user approves the BSKT contract to spend the required amounts of each underlying ERC-20 token.</li>
+      <li>The user calls the mint function, specifying the desired quantity of BSKT tokens.</li>
+      <li>The contract calculates the required deposit for each underlying token based on the basket weights and the requested mint amount.</li>
+      <li>The contract transfers the underlying tokens from the user into the basket contract using <code>transferFrom</code> calls.</li>
+      <li>The contract mints the corresponding BSKT tokens to the user's address.</li>
+    </ol>
+
+    <p>The proportions are strict. If a basket is configured as 50% Token A and 50% Token B, the user must deposit exactly the right amount of both tokens. The contract will revert if the proportions don't match. There is no partial minting or rounding that could leave the basket under-collateralized.</p>
+
+    <p>After minting, the underlying tokens sit inside the basket contract. They are not lent out, staked elsewhere, or used for anything else. They back the BSKT tokens directly and can be reclaimed at any time through burning.</p>
+
+    <h2>The Burning Process</h2>
+
+    <p>Burning is the reverse of minting. Any BSKT holder can burn their tokens at any time and receive the underlying assets back in proportion to their share of the total supply.</p>
+
+    <p>The process works like this:</p>
+
+    <ol>
+      <li>The holder calls the burn function, specifying how many BSKT tokens to burn.</li>
+      <li>The contract calculates the holder's proportional claim on each underlying asset. If you hold 1% of the total BSKT supply and burn all of it, you receive 1% of every underlying token held by the contract.</li>
+      <li>The contract burns the BSKT tokens, reducing the total supply.</li>
+      <li>The contract transfers the proportional share of underlying tokens to the burner's address.</li>
+    </ol>
+
+    <p>This mechanism ensures that BSKTs are always fully backed. There is no scenario where a BSKT exists without the underlying tokens to support it. The contract cannot mint tokens out of thin air, and it cannot prevent redemptions. This is enforced at the smart contract level, not by policy or governance decisions.</p>
+
+    <p>The guaranteed burn-and-redeem function is also what keeps BSKT market prices anchored to their net asset value. If a BSKT trades below the value of its underlying tokens on an NFT marketplace, arbitrageurs can buy the BSKT cheaply and burn it for the more valuable underlying assets, pocketing the difference and pushing the price back up.</p>
+
+    <h2>Rebalancing</h2>
+
+    <p>A basket's composition doesn't have to be static. The basket creator (or a designated manager address) can trigger a rebalance to adjust the target weights of the underlying assets. This is how active portfolio management works onchain.</p>
+
+    <p>When a rebalance is triggered, the contract updates its internal weight configuration. This changes the proportions required for future mints and the proportions returned on future burns. The assets already held inside the contract don't get swapped or moved during a weight change. Instead, the new weights take effect for all subsequent minting and burning interactions.</p>
+
+    <p>For example, suppose a basket starts with a 60/40 split between Token A and Token B. The manager decides conditions warrant a shift to 50/50. After the rebalance call, any new minting will require equal amounts of both tokens. The actual token holdings in the contract will gradually align with the new weights as new mints and burns occur over time.</p>
+
+    <p>Rebalancing is permissioned. Only the address designated as the basket manager can call the rebalance function. This prevents random addresses from altering a basket's strategy. The manager address is set at basket creation and is visible onchain, so holders always know who controls the composition. This creates accountability: if a manager makes poor rebalancing decisions, holders can simply burn their BSKTs and exit.</p>
+
+    <h2>Fee Mechanics</h2>
+
+    <p>Management fees are one of the most important features of ERC-7621, because they create an economic incentive for skilled managers to build and maintain quality baskets.</p>
+
+    <p>The fee percentage is set when the basket is created and encoded directly in the smart contract. It cannot be changed after deployment. This gives holders certainty about what they're paying. There are no surprise fee increases, hidden charges, or manual invoicing.</p>
+
+    <p>Fees accrue continuously over time based on the assets held in the basket. The accrual happens automatically through the contract's internal accounting. When fees are collected, the basket creator receives their share without any off-chain payment processing or dispute resolution. Everything runs through the smart contract code.</p>
+
+    <p>In practice, the contract tracks when fees were last collected and the current total supply. When a collection is triggered (which can happen during mints, burns, or explicit collection calls), the contract calculates how much time has passed and mints new BSKT tokens to the manager's address. This means the fee is paid through dilution rather than direct deductions from the underlying assets. Economically, it's equivalent to charging a percentage fee on assets under management.</p>
+
+    <p>The model is straightforward: the more assets a basket attracts, the more fees the creator earns. This aligns incentives cleanly. Creators are motivated to build baskets that people actually want to hold, which means choosing good assets, setting sensible weights, and rebalancing when market conditions call for it.</p>
+
+    <h2>Composability with DeFi</h2>
+
+    <p>This is where the design of ERC-7621 pays off the most. Because every BSKT is a fully compliant ERC-721 token, it works with any protocol that supports NFTs. No special integration is required. The basket functionality is invisible to external contracts that only care about the ERC-721 interface, while the underlying ERC-20 tokens inside the BSKT remain fully accessible through the standard's dedicated functions.</p>
+
+    <p>Here are concrete examples of what this enables:</p>
+
+    <p><strong>Trading on NFT marketplaces and DEXs.</strong> BSKTs can be listed and traded on any NFT marketplace or platform that supports ERC-721 tokens. This gives baskets liquidity and allows anyone to buy exposure to a basket's strategy without minting directly. Because BSKTs are always fully backed by their underlying ERC-20 tokens, buyers can verify onchain exactly what they are getting.</p>
+
+    <p><strong>Collateral in NFT-compatible lending.</strong> A BSKT token can be used as collateral on NFT lending protocols. Because the basket is always fully backed by its underlying ERC-20 tokens, it has intrinsic and verifiable value that makes it suitable as collateral. A lender can verify onchain exactly what backs the BSKT and price the collateral accordingly.</p>
+
+    <p><strong>Yield strategies.</strong> BSKTs can hold yield-bearing ERC-20 tokens like stETH, rETH, and sDAI inside them, creating a diversified yield portfolio in a single NFT. The underlying tokens continue to accrue value while held inside the basket, giving the BSKT holder broad yield exposure through one position.</p>
+
+    <p><strong>Baskets of baskets.</strong> Since BSKTs can contain any ERC-20 tokens, and since wrapper mechanisms can bridge between token standards, layered portfolio structures are possible. A higher-level basket could gain exposure to other basket strategies as components. This allows for sophisticated portfolio architectures, all managed through the same standard interface.</p>
+
+    <p>This composability is not a theoretical benefit. It works today with existing infrastructure because ERC-7621 was designed as a strict extension of ERC-721, not a replacement for it. Any platform that supports NFTs can work with BSKTs, while the underlying ERC-20 tokens inside each basket remain accessible through the standard's minting and burning mechanics.</p>
+
+    <h2>Security Considerations</h2>
+
+    <p>The security model of ERC-7621 is built on a few key invariants that the contract enforces at all times.</p>
+
+    <p><strong>Full backing.</strong> The contract cannot mint BSKT tokens without receiving the corresponding underlying assets. There is no credit, no fractional reserve, no unbacked issuance. Every BSKT in circulation is matched by real tokens sitting in the contract.</p>
+
+    <p><strong>Guaranteed redemption.</strong> Any holder can burn their BSKTs and receive underlying tokens at any time. The contract cannot block redemptions or freeze assets. This is a hard guarantee enforced by the code itself.</p>
+
+    <p><strong>Transparent composition.</strong> The asset registry and weights are readable onchain by anyone. There are no hidden assets, off-chain reserves, or opaque accounting. Anyone can verify exactly what backs a BSKT at any block height.</p>
+
+    <p>The smart contracts are open source and verifiable. As with any smart contract system, users should review audit reports and understand the specific implementation they are interacting with before committing capital. The contract code is the final source of truth for how a basket behaves.</p>
+
+    <h2>Future Development</h2>
+
+    <p>ERC-7621 establishes the core standard, but there is a clear path for extending what basket tokens can do.</p>
+
+    <p><strong>Cross-chain BSKTs.</strong> Today, baskets operate on a single chain. Future implementations could allow baskets that hold assets across multiple networks, using bridge infrastructure to maintain the backing guarantees. A basket holding tokens on Ethereum, Arbitrum, and Base simultaneously would give users cross-chain diversification through a single token.</p>
+
+    <p><strong>Automated rebalancing triggers.</strong> Currently, rebalancing is a manual action taken by the basket manager. Future versions could integrate with onchain automation services (like Chainlink Automation) to trigger rebalances based on predefined conditions. For instance, a rebalance could fire automatically when an asset's actual weight drifts more than 5% from its target.</p>
+
+    <p><strong>Oracle integration for market-cap weighting.</strong> Many traditional index funds weight their holdings by market capitalization. By integrating price oracles, baskets could automatically adjust their weights to track market-cap-weighted allocations without manual intervention. The basket would stay current with market conditions on its own.</p>
+
+    <p>These are natural extensions of the existing architecture and are actively being explored by the Alvara team and the broader community building on ERC-7621.</p>
+
+    <div class="callout">
+      <p><strong>Want to dig into the code?</strong> Explore the ERC-7621 contracts on <a href="https://github.com/AlvaraProtocol" target="_blank" rel="noopener">GitHub</a> or try building a BSKT at <a href="https://bskt.alvara.xyz/" target="_blank" rel="noopener">bskt.alvara.xyz</a>.</p>
+    </div>
+
+  </div>
+</article>
+
+<section class="blog-related">
+  <div class="container-narrow">
+    <h2>Related Posts</h2>
+    <div class="blog-related-grid">
+      <a href="/blog/what-are-basket-tokens/" class="blog-card">
+        <div class="blog-card-category">Education</div>
+        <h3>What Are Basket Tokens? A Complete Guide to ERC-7621</h3>
+        <p>Basket tokens (BSKTs) are multi-asset tokens built on ERC-7621. Learn how they work, why they matter, and how anyone can create one.</p>
+        <span class="blog-card-link">Read more &rarr;</span>
+      </a>
+      <a href="/blog/onchain-portfolio-management-guide/" class="blog-card">
+        <div class="blog-card-category">Insight</div>
+        <h3>Onchain Portfolio Management: Why BSKTs Are the Future</h3>
+        <p>How basket tokens are changing the way investors manage diversified portfolios onchain. Transparent, composable, and fully backed.</p>
+        <span class="blog-card-link">Read more &rarr;</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="blog-cta">
+  <div class="container">
+    <h2>Ready to Build Your First Basket?</h2>
+    <p>Create a diversified onchain portfolio in minutes. No code required.</p>
+    <a href="https://bskt.alvara.xyz/" target="_blank" rel="noopener" class="btn-white">Launch App &rarr;</a>
+  </div>
+</section>
+
+<footer class="blog-footer">
+  <div class="container">
+    <div class="blog-footer-inner">
+      <div class="blog-footer-brand">
+        <svg viewBox="0 0 60 69" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0.00585938 52.1767V28.3406L20.3972 7.94922H44.2333V24.0807H16.1373V52.1767H0.00585938Z" fill="url(#fg1)"/>
+          <path d="M16.2224 68.3932V52.2617H44.3184V24.1657H60.4499V48.0018L40.0585 68.3932H16.2224Z" fill="url(#fg2)"/>
+          <defs>
+            <linearGradient id="fg1" x1="78.32" y1="33.29" x2="-9.15" y2="66.7" gradientUnits="userSpaceOnUse"><stop stop-color="#FC75AF"/><stop offset="1" stop-color="#D73D80"/></linearGradient>
+            <linearGradient id="fg2" x1="78.32" y1="33.29" x2="-9.15" y2="66.7" gradientUnits="userSpaceOnUse"><stop stop-color="#FC75AF"/><stop offset="1" stop-color="#D73D80"/></linearGradient>
+          </defs>
+        </svg>
+        &copy; 2025 Alvara Protocol
+      </div>
+      <div class="blog-footer-links">
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+        <a href="https://docs.alvara.xyz/" target="_blank" rel="noopener">Docs</a>
+        <a href="https://bskt.alvara.xyz/" target="_blank" rel="noopener">Launch App</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function() {
+  const saved = localStorage.getItem('alvara-theme');
+  if (saved) document.documentElement.setAttribute('data-theme', saved);
+  else if (window.matchMedia('(prefers-color-scheme: light)').matches) document.documentElement.setAttribute('data-theme', 'light');
+
+  document.getElementById('themeToggle').addEventListener('click', () => {
+    const current = document.documentElement.getAttribute('data-theme');
+    const next = current === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('alvara-theme', next);
+  });
+
+  window.addEventListener('scroll', () => {
+    document.getElementById('blogNav').classList.toggle('scrolled', window.scrollY > 10);
+  }, { passive: true });
+})();
+</script>
+
+</body>
+</html>

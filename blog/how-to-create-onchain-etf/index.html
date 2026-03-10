@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Create Your Own Onchain ETF in Minutes | Alvara Protocol</title>
+  <meta name="description" content="Step-by-step guide to creating your own onchain ETF using Alvara Protocol. Pick assets, set weights, deploy your BSKT, and start earning management fees.">
+  <link rel="canonical" href="https://alvara.xyz/blog/how-to-create-onchain-etf/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="How to Create Your Own Onchain ETF in Minutes">
+  <meta property="og:description" content="Step-by-step guide to creating your own onchain ETF using Alvara Protocol. Pick assets, set weights, deploy your BSKT, and start earning management fees.">
+  <meta property="og:url" content="https://alvara.xyz/blog/how-to-create-onchain-etf/">
+  <meta property="og:site_name" content="Alvara Protocol">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="How to Create Your Own Onchain ETF in Minutes">
+  <meta name="twitter:description" content="Step-by-step guide to creating your own onchain ETF using Alvara Protocol. Pick assets, set weights, deploy your BSKT, and start earning management fees.">
+
+  <link rel="stylesheet" href="/css/blog.css">
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "How to Create Your Own Onchain ETF in Minutes",
+    "description": "Step-by-step guide to creating your own onchain ETF using Alvara Protocol. Pick assets, set weights, deploy your BSKT, and start earning management fees.",
+    "datePublished": "2025-03-05",
+    "author": {
+      "@type": "Organization",
+      "name": "Alvara Protocol"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Alvara Protocol"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://alvara.xyz/blog/how-to-create-onchain-etf/"
+    }
+  }
+  </script>
+</head>
+<body>
+
+<nav class="blog-nav" id="blogNav">
+  <div class="blog-nav-inner">
+    <a href="/" class="blog-nav-logo" aria-label="Alvara Protocol">
+      <svg viewBox="0 0 315 69" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M99.8927 23.2031C87.4607 23.2031 77.3828 33.2822 77.3828 45.7142C77.3828 58.1461 87.4607 68.224 99.8927 68.224H119.79V35.5138H107.613V56.413H100.462C94.6862 56.413 90.0033 51.7302 90.0033 45.9544C90.0033 40.1786 94.6862 35.4958 100.462 35.4958H107.605V23.328" fill="#FDF2FF"/>
+        <path d="M140.661 0.472656H128.295V68.2232H140.661V0.472656Z" fill="#FDF2FF"/>
+        <path d="M175.324 23.4766V45.2082C175.324 50.9839 170.641 55.6668 164.865 55.6668C164.727 55.6668 164.589 55.6632 164.452 55.6584H159.912V67.7913C159.929 67.7949 159.946 67.7973 159.961 67.8009V68.2765H163.964C164.184 68.2825 164.404 68.2873 164.625 68.2873C177.057 68.2873 187.135 58.2094 187.135 45.7774V23.4778H175.324V23.4766Z" fill="#FDF2FF"/>
+        <path d="M159.911 55.8317V23.2031H148.1V37.7837V53.6434V55.8317H159.911Z" fill="#FDF2FF"/>
+        <path d="M254.059 68.2873V46.5557C254.059 40.7799 258.742 36.0971 264.518 36.0971C264.656 36.0971 264.794 36.1007 264.931 36.1055H269.471V23.9726C269.454 23.969 269.437 23.9666 269.422 23.963V23.4874H265.418C265.199 23.4814 264.979 23.4766 264.758 23.4766C252.326 23.4766 242.248 33.5545 242.248 45.9864V68.2861H254.059V68.2873Z" fill="#FDF2FF"/>
+        <path d="M214.412 23.2031C201.98 23.2031 191.902 33.281 191.902 45.713C191.902 58.1449 201.98 68.2229 214.412 68.2229H234.31V35.5126H222.132V56.4118H214.982C209.206 56.4118 204.523 51.729 204.523 45.9532C204.523 40.1774 209.206 35.4946 214.982 35.4946H222.124V23.3268" fill="#FDF2FF"/>
+        <path d="M295.106 23.3711C282.674 23.3711 272.596 33.449 272.596 45.881C272.596 58.3129 282.674 68.3908 295.106 68.3908H315.003V35.6805H302.826V56.5798H295.675C289.899 56.5798 285.216 51.897 285.216 46.1212C285.216 40.3454 289.899 35.6625 295.675 35.6625H302.817V23.4948" fill="#FDF2FF"/>
+        <path d="M0.00585938 52.1767V28.3406L20.3972 7.94922H44.2333V24.0807H16.1373V52.1767H0.00585938Z" fill="url(#nav-g1)"/>
+        <path d="M16.2224 68.3932V52.2617H44.3184V24.1657H60.4499V48.0018L40.0585 68.3932H16.2224Z" fill="url(#nav-g2)"/>
+        <defs>
+          <linearGradient id="nav-g1" x1="78.32" y1="33.29" x2="-9.15" y2="66.7" gradientUnits="userSpaceOnUse"><stop stop-color="#FC75AF"/><stop offset="1" stop-color="#D73D80"/></linearGradient>
+          <linearGradient id="nav-g2" x1="78.32" y1="33.29" x2="-9.15" y2="66.7" gradientUnits="userSpaceOnUse"><stop stop-color="#FC75AF"/><stop offset="1" stop-color="#D73D80"/></linearGradient>
+        </defs>
+      </svg>
+    </a>
+    <div class="blog-nav-links">
+      <a href="/blog/" class="blog-back">&larr; <span>All Posts</span></a>
+      <a href="/">Home</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+        <svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<header class="blog-post-header">
+  <div class="container-narrow">
+    <nav class="blog-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> / <a href="/blog/">Blog</a> / <span>How to Create Your Own Onchain ETF</span>
+    </nav>
+    <div class="blog-category">Tutorial</div>
+    <h1>How to Create Your Own Onchain ETF in Minutes</h1>
+    <div class="blog-meta">
+      <span>Alvara Protocol</span>
+      <span class="blog-meta-dot">&middot;</span>
+      <time datetime="2025-03-05">March 5, 2025</time>
+      <span class="blog-meta-dot">&middot;</span>
+      <span>6 min read</span>
+    </div>
+  </div>
+</header>
+
+<article class="blog-post-content">
+  <div class="container-narrow">
+
+    <p>Creating a traditional ETF is not a weekend project. You need millions in seed capital, a team of lawyers, regulatory approvals, relationships with authorized participants, and months of paperwork. The entire process is designed for large financial institutions, not individual investors or portfolio managers with good ideas.</p>
+
+    <p>With Alvara Protocol, you can create an onchain equivalent in minutes. No legal team, no minimum capital requirements, no gatekeepers. If you have a wallet and a strategy, you can build a basket token (BSKT) and make it available to anyone in the world.</p>
+
+    <p>This guide walks through the entire process, from picking your assets to deploying your live basket.</p>
+
+    <h2>What Is an Onchain ETF?</h2>
+
+    <p>An onchain ETF is a <a href="/blog/what-are-basket-tokens/">basket token (BSKT)</a> built on the ERC-7621 standard that bundles multiple ERC-20 tokens into a single, tradeable unit. ERC-7621 extends ERC-721 (the NFT standard), meaning each BSKT is a unique, non-fungible token that holds a portfolio of ERC-20 assets inside it. It works similarly to a traditional ETF: investors get diversified exposure through one asset, and the underlying holdings are transparent and verifiable.</p>
+
+    <p>The key differences are what make it interesting. BSKTs are fully decentralized, meaning no custodian holds the underlying assets on your behalf. They're permissionless, so anyone can create one or invest in one. And as ERC-7621 tokens, they're composable with the rest of DeFi, so your basket token can be traded on DEXs, used as collateral, or integrated into other protocols.</p>
+
+    <h2>Before You Start</h2>
+
+    <p>You'll need three things:</p>
+
+    <ul>
+      <li><strong>An Ethereum wallet.</strong> MetaMask, Rabby, or any wallet that supports Ethereum. Make sure it's connected to the right network.</li>
+      <li><strong>Some ETH for gas.</strong> Deploying a basket is an onchain transaction, so you'll need ETH to cover gas fees.</li>
+      <li><strong>A clear strategy.</strong> Know which tokens you want to include and why. The best baskets have a coherent thesis, not just a random collection of tokens.</li>
+    </ul>
+
+    <h2>Step 1: Choose Your Assets</h2>
+
+    <p>Start by deciding which tokens belong in your basket. The best approach is to pick a theme and stick with it. Some examples:</p>
+
+    <ul>
+      <li><strong>DeFi blue chips:</strong> AAVE, UNI, MKR, LINK</li>
+      <li><strong>AI tokens:</strong> FET, RNDR, OCEAN, AGIX</li>
+      <li><strong>Layer 2 ecosystem:</strong> OP, ARB, MATIC, METIS</li>
+      <li><strong>Stablecoin yield:</strong> A basket of yield-bearing stablecoins</li>
+    </ul>
+
+    <p>When choosing assets, consider diversification (don't put everything in one sub-sector), liquidity (tokens with thin trading volume will make your basket harder to mint and redeem), and correlation (assets that all move in lockstep don't provide much diversification benefit).</p>
+
+    <p>For this walkthrough, let's build a "DeFi Core" basket containing AAVE, UNI, MKR, and LINK.</p>
+
+    <h2>Step 2: Set Your Weights</h2>
+
+    <p>Next, decide how much of each token should make up your basket. Weights are expressed as percentages and must add up to 100%. There are a few common approaches:</p>
+
+    <ul>
+      <li><strong>Equal weight:</strong> Give every asset the same allocation. Simple and avoids concentration risk. For four assets, that's 25% each.</li>
+      <li><strong>Market-cap weighted:</strong> Allocate more to larger assets. This mirrors how most traditional index funds work.</li>
+      <li><strong>Conviction weighted:</strong> Put more weight on the assets you're most bullish on. Higher potential returns, but more concentrated risk.</li>
+    </ul>
+
+    <p>For our DeFi Core basket, let's go with a conviction-weighted approach:</p>
+
+    <ul>
+      <li><strong>AAVE:</strong> 35%</li>
+      <li><strong>LINK:</strong> 30%</li>
+      <li><strong>UNI:</strong> 20%</li>
+      <li><strong>MKR:</strong> 15%</li>
+    </ul>
+
+    <p>There's no single correct answer here. The weights reflect your investment thesis. You can always rebalance later if your view changes.</p>
+
+    <h2>Step 3: Configure Your Basket</h2>
+
+    <p>Now give your basket an identity. You'll need to set a few things:</p>
+
+    <ul>
+      <li><strong>Name:</strong> Something descriptive that tells potential holders what the basket is about. Example: "DeFi Core Index"</li>
+      <li><strong>Ticker symbol:</strong> A short symbol, like a stock ticker. Example: "DEFI4"</li>
+      <li><strong>Description:</strong> A brief explanation of your strategy and what the basket aims to achieve.</li>
+      <li><strong>Management fee:</strong> The annual fee you'll charge holders, expressed as a percentage. This is how you earn revenue as a basket creator.</li>
+    </ul>
+
+    <p>On management fees: keep them competitive. High fees discourage holders and make your basket less attractive compared to alternatives. Look at what similar products charge and price accordingly. A fee between 1-3% annually is a reasonable starting range for most strategies.</p>
+
+    <h2>Step 4: Deploy</h2>
+
+    <p>With everything configured, it's time to go live.</p>
+
+    <ol>
+      <li>Go to <a href="https://bskt.alvara.xyz/" target="_blank" rel="noopener">bskt.alvara.xyz</a> and connect your wallet.</li>
+      <li>Navigate to the basket creation interface.</li>
+      <li>Enter your assets, weights, name, ticker, description, and fee.</li>
+      <li>Review everything carefully. Once deployed, some parameters can't be changed.</li>
+      <li>Submit the transaction and confirm it in your wallet.</li>
+      <li>Pay the gas fee and wait for the transaction to be confirmed onchain.</li>
+    </ol>
+
+    <p>That's it. Your basket token is now live on Ethereum. It has its own contract address, and anyone with that address can view the basket's composition, mint new units, or redeem existing ones.</p>
+
+    <h2>Step 5: Share and Grow</h2>
+
+    <p>A basket with no holders doesn't earn any fees. Once your BSKT is deployed, you need to get it in front of people.</p>
+
+    <p>Share your basket's contract address and a link to it on the Alvara app. Explain your strategy and thesis. Tell people why you chose these specific assets and weights. Transparency builds trust, and trust attracts holders.</p>
+
+    <p>When someone mints your basket, they deposit the underlying tokens in the proportions you set. They receive your BSKT token in return. The more holders you attract, the more management fees accrue to you.</p>
+
+    <p>Some practical tips for growing your basket:</p>
+
+    <ul>
+      <li><strong>Build in public.</strong> Share your reasoning when you make changes. Write about your strategy on social media.</li>
+      <li><strong>Track performance.</strong> Show potential holders how your basket has performed over time compared to holding individual assets.</li>
+      <li><strong>Be consistent.</strong> The best fund managers have a clear, consistent strategy. Don't chase trends with every rebalance.</li>
+    </ul>
+
+    <h2>Managing Your Basket Over Time</h2>
+
+    <p>Creating the basket is just the beginning. Good portfolio management is an ongoing process.</p>
+
+    <p>You can rebalance your basket's weights as market conditions change. If one asset has outperformed and now represents a larger share of the basket than intended, adjust the weights to bring it back in line. If your thesis on a particular token changes, update the allocation accordingly.</p>
+
+    <p>Management fees accrue automatically based on the total value held in your basket. You don't need to manually collect anything. The protocol handles fee accounting onchain.</p>
+
+    <p>Monitor your basket's performance regularly. Pay attention to how the underlying assets are doing individually and as a group. A well-managed basket that adapts to changing conditions will attract and retain more holders than one that's set and forgotten.</p>
+
+    <div class="callout">
+      <p><strong>Ready to build?</strong> Launch the app at <a href="https://bskt.alvara.xyz/" target="_blank" rel="noopener">bskt.alvara.xyz</a> and create your first basket token today. The whole process takes less than five minutes.</p>
+    </div>
+
+  </div>
+</article>
+
+<section class="blog-related">
+  <div class="container-narrow">
+    <h2>Related Posts</h2>
+    <div class="blog-related-grid">
+      <a href="/blog/what-are-basket-tokens/" class="blog-card">
+        <div class="blog-card-category">Education</div>
+        <h3>What Are Basket Tokens? A Complete Guide to ERC-7621</h3>
+        <p>Basket tokens (BSKTs) are multi-asset tokens built on ERC-7621. Learn how they work, why they matter, and how anyone can create one.</p>
+        <span class="blog-card-link">Read more &rarr;</span>
+      </a>
+      <a href="/blog/erc-7621-token-standard-explained/" class="blog-card">
+        <div class="blog-card-category">Technical</div>
+        <h3>ERC-7621 Token Standard Explained: The Technical Deep Dive</h3>
+        <p>A technical breakdown of ERC-7621, the Ethereum token standard for basket tokens. Architecture, interfaces, composability, and more.</p>
+        <span class="blog-card-link">Read more &rarr;</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="blog-cta">
+  <div class="container">
+    <h2>Ready to Build Your First Basket?</h2>
+    <p>Create a diversified onchain portfolio in minutes. No code required.</p>
+    <a href="https://bskt.alvara.xyz/" target="_blank" rel="noopener" class="btn-white">Launch App &rarr;</a>
+  </div>
+</section>
+
+<footer class="blog-footer">
+  <div class="container">
+    <div class="blog-footer-inner">
+      <div class="blog-footer-brand">
+        <svg viewBox="0 0 60 69" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0.00585938 52.1767V28.3406L20.3972 7.94922H44.2333V24.0807H16.1373V52.1767H0.00585938Z" fill="url(#fg1)"/>
+          <path d="M16.2224 68.3932V52.2617H44.3184V24.1657H60.4499V48.0018L40.0585 68.3932H16.2224Z" fill="url(#fg2)"/>
+          <defs>
+            <linearGradient id="fg1" x1="78.32" y1="33.29" x2="-9.15" y2="66.7" gradientUnits="userSpaceOnUse"><stop stop-color="#FC75AF"/><stop offset="1" stop-color="#D73D80"/></linearGradient>
+            <linearGradient id="fg2" x1="78.32" y1="33.29" x2="-9.15" y2="66.7" gradientUnits="userSpaceOnUse"><stop stop-color="#FC75AF"/><stop offset="1" stop-color="#D73D80"/></linearGradient>
+          </defs>
+        </svg>
+        &copy; 2025 Alvara Protocol
+      </div>
+      <div class="blog-footer-links">
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+        <a href="https://docs.alvara.xyz/" target="_blank" rel="noopener">Docs</a>
+        <a href="https://bskt.alvara.xyz/" target="_blank" rel="noopener">Launch App</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function() {
+  const saved = localStorage.getItem('alvara-theme');
+  if (saved) document.documentElement.setAttribute('data-theme', saved);
+  else if (window.matchMedia('(prefers-color-scheme: light)').matches) document.documentElement.setAttribute('data-theme', 'light');
+
+  document.getElementById('themeToggle').addEventListener('click', () => {
+    const current = document.documentElement.getAttribute('data-theme');
+    const next = current === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('alvara-theme', next);
+  });
+
+  window.addEventListener('scroll', () => {
+    document.getElementById('blogNav').classList.toggle('scrolled', window.scrollY > 10);
+  }, { passive: true });
+})();
+</script>
+
+</body>
+</html>
