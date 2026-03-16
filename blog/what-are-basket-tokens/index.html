@@ -28,7 +28,7 @@
     "@type": "Article",
     "headline": "What Are Basket Tokens? A Complete Guide to ERC-7621",
     "description": "Basket tokens (BSKTs) are multi-asset tokens built on ERC-7621. Learn how they work, why they matter, and how anyone can create one.",
-    "datePublished": "2025-03-05",
+    "datePublished": "2025-11-12",
     "author": {
       "@type": "Organization",
       "name": "Alvara Protocol"
@@ -86,7 +86,7 @@
     <div class="blog-meta">
       <span>Alvara Protocol</span>
       <span class="blog-meta-dot">&middot;</span>
-      <time datetime="2025-03-05">March 5, 2025</time>
+      <time datetime="2025-11-12">November 12, 2025</time>
       <span class="blog-meta-dot">&middot;</span>
       <span>8 min read</span>
     </div>
@@ -98,11 +98,11 @@
 
     <p>We started building Alvara because we kept watching the same thing happen: someone with a genuinely good investment thesis would share it on Twitter, maybe get a few hundred likes, and then... nothing. No way to package it. No way for other people to follow it transparently. No way to earn from it. The thesis just evaporated into the timeline.</p>
 
-    <p>A basket token (or BSKT) changes that. It's a single ERC-7621 token that holds a portfolio of ERC-20 tokens inside it. Think of it as a tokenized strategy: one asset that represents a rules-based allocation across multiple assets, with transparent composition and built-in management fees. No fund license, no legal entity, no minimum capital.</p>
+    <p>A basket token (or BSKT) changes that. It's an ERC-7621 basket — a smart contract that holds a portfolio of ERC-20 tokens. Investors receive ERC-20 LP shares representing their proportional stake, while the creator holds a management NFT. Think of it as a tokenized strategy: one asset that represents a rules-based allocation across multiple assets, with transparent composition and built-in management fees. No fund license, no legal entity, no minimum capital.</p>
 
     <h2>How Basket Tokens Work</h2>
 
-    <p>At a high level, a basket token wraps multiple ERC-20 tokens into one. When you mint a BSKT, you deposit the underlying assets in the correct proportions. When you burn it, you get those underlying assets back. The basket token itself is fully transferable and tradeable, just like any other token on Ethereum.</p>
+    <p>At a high level, a basket token wraps multiple ERC-20 tokens into one. When you mint a BSKT, you deposit ETH (or any single token) and the protocol automatically routes through 1inch to acquire the underlying assets in the correct proportions. When you withdraw, you can either receive the individual underlying tokens or route them back to a single token. The LP shares you hold are standard ERC-20 tokens, fully transferable and tradeable.</p>
 
     <p>Here's a concrete example. Say someone creates a "DeFi Blue Chips" basket with the following composition:</p>
 
@@ -113,13 +113,13 @@
       <li><strong>10% COMP</strong></li>
     </ul>
 
-    <p>When you mint one unit of this basket token, you deposit those four tokens in exactly those proportions. You receive a single BSKT token in return. That one token gives you diversified exposure to all four assets. No need to manage each position individually.</p>
+    <p>When you contribute to this basket, you deposit ETH and the protocol handles the rest — acquiring each token in the right proportions via 1inch routing. You receive ERC-20 LP tokens in return, representing your share of the basket. One deposit, diversified exposure to all four assets.</p>
 
     <h2>The ERC-7621 Standard</h2>
 
-    <p>Basket tokens are built on <a href="/blog/erc-7621-token-standard-explained/">ERC-7621</a>, a token standard designed specifically for multi-asset tokens. ERC-7621 is built on top of ERC-721 (the NFT standard), giving each basket a unique identity, while adding the interfaces needed to manage a basket of underlying ERC-20 assets.</p>
+    <p>Basket tokens are built on <a href="/blog/erc-7621-token-standard-explained/">ERC-7621</a>, a token standard designed specifically for multi-asset tokens. ERC-7621 extends ERC-721, giving each basket a unique onchain identity as an NFT, while the LP shares that investors hold are standard ERC-20 tokens — meaning they work in any Ethereum wallet and can be traded on any DEX.</p>
 
-    <p>The standard defines how assets are added to a basket, how weights are maintained, how minting and burning works, and how management fees are collected. Because it's a standard, any BSKT created through the protocol follows a consistent interface that DeFi protocols can integrate with. You can hold BSKTs in any Ethereum wallet that supports NFTs, and as protocol integrations grow, new trading and collateral use cases will follow.</p>
+    <p>The standard defines how assets are added to a basket, how weights are maintained, how contributions and withdrawals work, and how management fees are collected. Because it's a standard, any BSKT created through the protocol follows a consistent interface that DeFi protocols can integrate with.</p>
 
     <h2>BSKTs vs. Regular Tokens</h2>
 
@@ -130,7 +130,7 @@
     <ul>
       <li><strong>Diversification built in.</strong> Holding one BSKT gives you exposure to every asset in that basket. You don't need to manage multiple positions.</li>
       <li><strong>Transparent composition.</strong> The underlying assets and their weights are onchain and verifiable at all times. There's no black box.</li>
-      <li><strong>Redeemable for underlying assets.</strong> You can always burn your BSKT and receive the underlying tokens. The basket is fully backed, always.</li>
+      <li><strong>Redeemable for underlying assets.</strong> You can always withdraw from your BSKT — either as individual underlying tokens or routed back to a single token. The basket is fully backed, always.</li>
       <li><strong>Rebalanceable.</strong> The basket creator can adjust weights over time, keeping the portfolio allocation in line with their strategy.</li>
     </ul>
 
@@ -153,7 +153,7 @@
 
     <h3>Composability with DeFi</h3>
 
-    <p>Because BSKTs are built on ERC-7621 (which extends ERC-721), they benefit from the existing NFT infrastructure on Ethereum. As DeFi protocols add ERC-7621 support, BSKTs will be usable across DEXs, lending protocols, and more. This growing composability is what makes basket tokens genuinely useful, not just a theoretical concept.</p>
+    <p>The BSKT itself is an ERC-7621 token (extending ERC-721), giving it a unique onchain identity. But the LP shares investors hold are standard ERC-20 tokens, so they already work with existing DeFi infrastructure — DEXs, wallets, aggregators. As more protocols add native ERC-7621 support, new collateral and composability use cases will follow.</p>
 
     <h3>Management Fees</h3>
 
@@ -161,7 +161,7 @@
 
     <h3>Gas Efficiency</h3>
 
-    <p>Buying five tokens individually means five separate transactions and five sets of gas fees. Minting a basket that contains those same five tokens is one transaction. For anyone managing a diversified portfolio onchain, the gas savings alone make baskets worth considering.</p>
+    <p>Building a diversified portfolio normally means five separate swaps, five approvals, and five sets of gas fees. Contributing to a BSKT is one transaction — you deposit ETH or a single token and the protocol handles all the routing. For anyone managing a diversified portfolio onchain, the simplicity and gas savings make baskets worth considering.</p>
 
     <h2>Real Use Cases</h2>
 
@@ -188,9 +188,9 @@
 
     <h2>How Alvara Makes It Simple</h2>
 
-    <p>Alvara Protocol is the platform built around ERC-7621. It provides the smart contracts, the UI, and the infrastructure for creating and managing basket tokens. You don't need to write any code or deploy your own contracts. Pick your assets, set your weights, name your basket, and deploy. If you're not sure where to start, choose from pre-built templates like Blue Chip, DeFi, or AI that come with curated allocations.</p>
+    <p>Alvara Protocol is the platform built around ERC-7621. It provides the smart contracts, the UI, and the infrastructure for creating and managing basket tokens. The creation flow is three steps: Compose (pick your tokens and weights, or start from a template), Design (add your logo, name, ticker, and description), and Fund & Mint (set your contribution amount and deploy in a single transaction). No code required.</p>
 
-    <p>Once your basket is live, anyone can mint it by depositing the underlying tokens, and you start earning fees from day one. Managers can verify their identity through X and Gitcoin Passport to earn trust badges, and every BSKT gets an independent Xerberus risk rating so contributors know what they're getting into.</p>
+    <p>Once your basket is live, anyone can contribute by depositing ETH or a single token — the protocol routes through 1inch to acquire the underlying assets automatically. You start earning management fees from day one. Every BSKT gets an independent Xerberus risk rating so contributors know what they're getting into.</p>
 
     <div class="callout">
       <p><strong>Want to try it yourself?</strong> The easiest way to understand BSKTs is to create one. Check out our <a href="/blog/how-to-create-onchain-etf/">step-by-step tutorial</a> or browse existing baskets on the <a href="https://bskt.alvara.xyz/" target="_blank" rel="noopener">Alvara app</a>.</p>
@@ -200,7 +200,7 @@
 
     <p>The idea behind basket tokens isn't complicated: let people package investment strategies into composable, transparent, tradeable tokens. What makes ERC-7621 different from ad hoc wrapper contracts is standardization. A consistent interface means wallets can display basket composition, DEXs can list them natively, and lending protocols can eventually accept them as collateral. Without a standard, every basket implementation is a one-off.</p>
 
-    <p>We're still early. But the foundation, a recognized Ethereum standard, multiple chain deployments, live baskets with real TVL, is already in place. The question isn't whether onchain portfolio products will exist. It's whether they'll be built on open standards or proprietary walled gardens. We're betting on the standard.</p>
+    <p>We're still early. But the foundation, a published ERC token standard, live baskets with real TVL on Ethereum mainnet, is already in place. The question isn't whether onchain portfolio products will exist. It's whether they'll be built on open standards or proprietary walled gardens. We're betting on the standard.</p>
 
   </div>
 </article>
@@ -211,7 +211,7 @@
     <div class="blog-related-grid">
       <a href="/blog/how-to-create-onchain-etf/" class="blog-card">
         <div class="blog-card-category">Tutorial</div>
-        <h3>How to Create Your First Onchain ETF</h3>
+        <h3>How to Create Your First Onchain Basket</h3>
         <p>A practical walkthrough of building a thematic basket, with a real sample allocation and the mistakes first-time creators make.</p>
         <span class="blog-card-link">Read more &rarr;</span>
       </a>

@@ -3,21 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>How to Create Your First Onchain ETF | Alvara Protocol</title>
-  <meta name="description" content="A practical walkthrough of building an onchain ETF with Alvara Protocol. Pick assets, set weights, deploy your BSKT, and the decisions that actually matter.">
+  <title>How to Create Your First Onchain Basket | Alvara Protocol</title>
+  <meta name="description" content="A practical walkthrough of building an onchain basket with Alvara Protocol. Pick assets, set weights, deploy your BSKT, and the decisions that actually matter.">
   <link rel="canonical" href="https://alvara.xyz/blog/how-to-create-onchain-etf/">
 
   <!-- Open Graph -->
   <meta property="og:type" content="article">
-  <meta property="og:title" content="How to Create Your First Onchain ETF">
-  <meta property="og:description" content="A practical walkthrough of building an onchain ETF with Alvara Protocol. Pick assets, set weights, deploy your BSKT, and the decisions that actually matter.">
+  <meta property="og:title" content="How to Create Your First Onchain Basket">
+  <meta property="og:description" content="A practical walkthrough of building an onchain basket with Alvara Protocol. Pick assets, set weights, deploy your BSKT, and the decisions that actually matter.">
   <meta property="og:url" content="https://alvara.xyz/blog/how-to-create-onchain-etf/">
   <meta property="og:site_name" content="Alvara Protocol">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="How to Create Your First Onchain ETF">
-  <meta name="twitter:description" content="A practical walkthrough of building an onchain ETF with Alvara Protocol. Pick assets, set weights, deploy your BSKT, and the decisions that actually matter.">
+  <meta name="twitter:title" content="How to Create Your First Onchain Basket">
+  <meta name="twitter:description" content="A practical walkthrough of building an onchain basket with Alvara Protocol. Pick assets, set weights, deploy your BSKT, and the decisions that actually matter.">
 
   <link rel="stylesheet" href="/css/blog.css">
 
@@ -26,9 +26,9 @@
   {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": "How to Create Your First Onchain ETF",
-    "description": "A practical walkthrough of building an onchain ETF with Alvara Protocol. Pick assets, set weights, deploy your BSKT, and the decisions that actually matter.",
-    "datePublished": "2025-03-05",
+    "headline": "How to Create Your First Onchain Basket",
+    "description": "A practical walkthrough of building an onchain basket with Alvara Protocol. Pick assets, set weights, deploy your BSKT, and the decisions that actually matter.",
+    "datePublished": "2026-02-06",
     "author": {
       "@type": "Organization",
       "name": "Alvara Protocol"
@@ -79,14 +79,14 @@
 <header class="blog-post-header">
   <div class="container-narrow">
     <nav class="blog-breadcrumb" aria-label="Breadcrumb">
-      <a href="/">Home</a> / <a href="/blog/">Blog</a> / <span>How to Create Your First Onchain ETF</span>
+      <a href="/">Home</a> / <a href="/blog/">Blog</a> / <span>How to Create Your First Onchain Basket</span>
     </nav>
     <div class="blog-category">Tutorial</div>
-    <h1>How to Create Your First Onchain ETF</h1>
+    <h1>How to Create Your First Onchain Basket</h1>
     <div class="blog-meta">
       <span>Alvara Protocol</span>
       <span class="blog-meta-dot">&middot;</span>
-      <time datetime="2025-03-05">March 5, 2025</time>
+      <time datetime="2026-02-06">February 6, 2026</time>
       <span class="blog-meta-dot">&middot;</span>
       <span>6 min read</span>
     </div>
@@ -100,9 +100,9 @@
 
     <p>This is how we would build a simple thematic basket today, walking through the same interface you will use, and calling out the decisions that actually matter. If you have built a traditional ETF before (or tried to), the contrast will be obvious. If you haven't, that is sort of the point.</p>
 
-    <h2>What Is an Onchain ETF?</h2>
+    <h2>What Is an Onchain Basket?</h2>
 
-    <p>An onchain ETF is a <a href="/blog/what-are-basket-tokens/">basket token (BSKT)</a> built on the ERC-7621 standard that bundles multiple ERC-20 tokens into a single, tradeable unit. ERC-7621 extends ERC-721 (the NFT standard), meaning each BSKT is a unique, non-fungible token that holds a portfolio of ERC-20 assets inside it. It works similarly to a traditional ETF: investors get diversified exposure through one asset, and the underlying holdings are transparent and verifiable.</p>
+    <p>An onchain basket is a <a href="/blog/what-are-basket-tokens/">basket token (BSKT)</a> built on the ERC-7621 standard that bundles multiple ERC-20 tokens into a basket where investors receive ERC-20 LP shares representing their proportional stake. ERC-7621 extends ERC-721 (the NFT standard), meaning each BSKT is a unique, non-fungible token that holds a portfolio of ERC-20 assets inside it. It works similarly to a traditional ETF: investors get diversified exposure through one asset, and the underlying holdings are transparent and verifiable.</p>
 
     <p>The key differences are what make it interesting. BSKTs are fully decentralized, meaning no custodian holds the underlying assets on your behalf. They are permissionless, so anyone can create one or invest in one. And as ERC-7621 tokens, they are composable with the rest of DeFi, so your basket token can be traded on DEXs, used as collateral, or integrated into other protocols.</p>
 
@@ -173,7 +173,7 @@
       <li>Go to <a href="https://bskt.alvara.xyz/" target="_blank" rel="noopener">bskt.alvara.xyz</a> and connect your wallet.</li>
       <li>Navigate to the basket creation interface.</li>
       <li>Enter your assets, weights, name, ticker, description, and fee.</li>
-      <li>Review everything carefully. Once deployed, some parameters can't be changed.</li>
+      <li>Review everything carefully. Once deployed, fees and core parameters are permanent and cannot be changed.</li>
       <li>Submit the transaction and confirm it in your wallet.</li>
       <li>Pay the gas fee and wait for the transaction to be confirmed onchain.</li>
     </ol>
@@ -214,7 +214,7 @@
 
     <ul>
       <li><strong>Too many tokens.</strong> Fifteen assets in a basket is not diversification, it is dilution. Each token should be there for a specific reason. If you cannot explain why it is in the basket in one sentence, cut it.</li>
-      <li><strong>Setting fees too high.</strong> A 5% management fee on a basket with no track record will not attract holders. Start at 1-2% and increase it later once you have proven the strategy works. Holders can see the fee before they mint.</li>
+      <li><strong>Setting fees too high.</strong> A 5% management fee on a basket with no track record will not attract holders. Start at 1-2% — fees are locked permanently at deployment, so choose carefully. Holders can see the fee before they mint.</li>
       <li><strong>Skipping verification.</strong> An unverified, anonymous basket next to a Gold-tier verified manager with a linked X account? Holders pick the verified one. Verification takes a few minutes and it is the single biggest trust signal on the platform.</li>
       <li><strong>No thesis.</strong> "I like these coins" is not a strategy. The description field exists for a reason. Explain what the basket captures and why these specific weights. Holders read this.</li>
       <li><strong>Ignoring liquidity.</strong> Including a token with $50K daily volume in your basket means minting and redeeming will be expensive due to slippage. Check the liquidity of every token before you add it.</li>
