@@ -121,8 +121,8 @@
 
     <ul>
       <li><strong>Asset registry.</strong> The contract maintains an ordered list of underlying ERC-20 token addresses and their corresponding weights. This registry defines what the basket contains and in what proportions.</li>
-      <li><strong>Minting mechanism.</strong> Users deposit the underlying tokens in the correct proportions to mint new BSKT tokens. The contract enforces that deposits match the basket's weight configuration exactly.</li>
-      <li><strong>Burning mechanism.</strong> Holders burn their BSKT tokens to withdraw the underlying assets proportionally. This guarantees that BSKTs are always fully redeemable.</li>
+      <li><strong>Minting mechanism.</strong> Users deposit the underlying tokens in the correct proportions to mint new LP shares representing their stake in the basket. The contract enforces that deposits match the basket's weight configuration exactly.</li>
+      <li><strong>Burning mechanism.</strong> Holders burn their LP tokens to withdraw the underlying assets proportionally. This guarantees that baskets are always fully redeemable.</li>
       <li><strong>Rebalancing.</strong> The basket creator or designated manager can adjust the target weights of underlying assets, changing the basket's composition over time.</li>
       <li><strong>Fee collection.</strong> Management fees are encoded at the contract level at creation time and accrue continuously to the basket creator.</li>
     </ul>
@@ -133,46 +133,48 @@
 
     <p>Every standard is a set of tradeoffs. Here are the ones we chose deliberately:</p>
 
-    <p><strong>NFT-based, not fungible.</strong> We built on ERC-721 instead of ERC-20. This means each basket is a unique, non-fungible token. The upside is that each basket can have its own composition, manager, and fee structure without needing a factory pattern that deploys new ERC-20 contracts per basket. The downside is that BSKTs do not plug directly into AMMs or lending protocols that expect fungible tokens. We think the uniqueness is worth it because basket tokens are inherently unique (different compositions, different managers), but this is a real constraint that affects DeFi integrations today.</p>
+    <p><strong>NFT-based management, fungible LP shares.</strong> We built the basket itself on ERC-721 instead of ERC-20. This means each BSKT is a unique, non-fungible token representing management rights over the basket. The upside is that each basket can have its own composition, manager, and fee structure without needing a factory pattern that deploys new contracts per basket. Investors, meanwhile, hold standard ERC-20 LP tokens representing their share of the basket's assets. This dual structure gives baskets the uniqueness they need (different compositions, different managers) while ensuring investor shares are fungible and compatible with AMMs, DEXs, and other DeFi protocols.</p>
 
     <p><strong>Strict proportional minting.</strong> The contract requires exact proportional deposits. We considered allowing partial mints (deposit Token A now, Token B later) but rejected it because partial state creates under-collateralization windows. Strict minting is a worse UX for the minter but a hard safety guarantee for every holder.</p>
 
-    <p><strong>Immutable fees.</strong> The management fee is locked at deployment. We debated making it adjustable with a timelock, but immutability is simpler and removes an entire class of governance attacks. If a manager wants different fees, they deploy a new basket. This is more expensive but more honest.</p>
+    <p><strong>Fee certainty.</strong> The management fee is set at deployment, and the protocol is designed to give holders certainty about what they are paying. We debated making fees adjustable with a timelock, but a fixed-at-creation model is simpler and removes an entire class of governance attacks. If a manager wants different fees, they deploy a new basket. This is more expensive but more honest.</p>
 
     <h2>The Minting Process</h2>
 
-    <p>Minting is how new BSKT tokens come into existence. When a user wants to mint, they specify how many BSKT tokens they want to receive. The contract then calculates exactly how much of each underlying token needs to be deposited, based on the basket's current weight configuration.</p>
+    <p>Minting is how new LP shares for a BSKT come into existence. At the standard level, the ERC-7621 interface defines minting in terms of the underlying constituent tokens. When a user wants to mint, they specify how many shares they want to receive. The contract then calculates exactly how much of each underlying token needs to be deposited, based on the basket's current weight configuration.</p>
 
-    <p>Here is what happens step by step:</p>
+    <p>Here is what happens at the contract level, step by step:</p>
 
     <ol>
       <li>The user approves the BSKT contract to spend the required amounts of each underlying ERC-20 token.</li>
-      <li>The user calls the mint function, specifying the desired quantity of BSKT tokens.</li>
+      <li>The user calls the mint function, specifying the desired quantity of LP shares.</li>
       <li>The contract calculates the required deposit for each underlying token based on the basket weights and the requested mint amount.</li>
       <li>The contract transfers the underlying tokens from the user into the basket contract using <code>transferFrom</code> calls.</li>
-      <li>The contract mints the corresponding BSKT tokens to the user's address.</li>
+      <li>The contract mints the corresponding LP tokens (ERC-20) to the user's address.</li>
     </ol>
 
     <p>The proportions are strict. If a basket is configured as 50% Token A and 50% Token B, the user must deposit exactly the right amount of both tokens. The contract will revert if the proportions do not match. There is no partial minting or rounding that could leave the basket under-collateralized.</p>
 
-    <p>After minting, the underlying tokens sit inside the basket contract. They are not lent out, staked elsewhere, or used for anything else. They back the BSKT tokens directly and can be reclaimed at any time through burning.</p>
+    <p>After minting, the underlying tokens sit inside the basket contract. They are not lent out, staked elsewhere, or used for anything else. They back the LP shares directly and can be reclaimed at any time through burning.</p>
+
+    <p><strong>How Alvara's platform abstracts this.</strong> While the standard defines the low-level interface in terms of underlying tokens, Alvara's platform wraps this for a much simpler user experience. Users deposit ETH, and the protocol automatically converts it into the basket's constituent tokens according to the allocation weights. The protocol uses a backend signing service for MEV protection during these swaps, ensuring users are not exposed to sandwich attacks or front-running. From the user's perspective, investing in a basket is a single ETH deposit. Under the hood, the platform handles all the token conversions and calls the standard's minting interface on the user's behalf.</p>
 
     <h2>The Burning Process</h2>
 
-    <p>Burning is the reverse of minting. Any BSKT holder can burn their tokens at any time and receive the underlying assets back in proportion to their share of the total supply.</p>
+    <p>Burning is the reverse of minting. Any LP token holder can burn their shares at any time and receive the underlying assets back in proportion to their share of the total supply.</p>
 
     <p>The process works like this:</p>
 
     <ol>
-      <li>The holder calls the burn function, specifying how many BSKT tokens to burn.</li>
-      <li>The contract calculates the holder's proportional claim on each underlying asset. If you hold 1% of the total BSKT supply and burn all of it, you receive 1% of every underlying token held by the contract.</li>
-      <li>The contract burns the BSKT tokens, reducing the total supply.</li>
+      <li>The holder calls the burn function, specifying how many LP tokens to burn.</li>
+      <li>The contract calculates the holder's proportional claim on each underlying asset. If you hold 1% of the total LP supply and burn all of it, you receive 1% of every underlying token held by the contract.</li>
+      <li>The contract burns the LP tokens, reducing the total supply.</li>
       <li>The contract transfers the proportional share of underlying tokens to the burner's address.</li>
     </ol>
 
-    <p>This mechanism ensures that BSKTs are always fully backed. There is no scenario where a BSKT exists without the underlying tokens to support it. The contract cannot mint tokens out of thin air, and it cannot prevent redemptions. This is enforced at the smart contract level, not by policy or governance decisions.</p>
+    <p>This mechanism ensures that every basket is always fully backed. There is no scenario where LP shares exist without the underlying tokens to support them. The contract cannot mint tokens out of thin air, and it cannot prevent redemptions. This is enforced at the smart contract level, not by policy or governance decisions.</p>
 
-    <p>The guaranteed burn-and-redeem function is also what keeps BSKT market prices anchored to their net asset value. If a BSKT trades below the value of its underlying tokens on an NFT marketplace, arbitrageurs can buy the BSKT cheaply and burn it for the more valuable underlying assets, pocketing the difference and pushing the price back up.</p>
+    <p>The guaranteed burn-and-redeem function is also what keeps LP token prices anchored to the basket's net asset value. If LP shares trade below the value of their underlying tokens on a DEX, arbitrageurs can buy the LP tokens cheaply and burn them for the more valuable underlying assets, pocketing the difference and pushing the price back up.</p>
 
     <h2>Rebalancing</h2>
 
@@ -182,17 +184,17 @@
 
     <p>For example, suppose a basket starts with a 60/40 split between Token A and Token B. The manager decides conditions warrant a shift to 50/50. After the rebalance call, any new minting will require equal amounts of both tokens. The actual token holdings in the contract will gradually align with the new weights as new mints and burns occur over time.</p>
 
-    <p>Rebalancing is permissioned. Only the address designated as the basket manager can call the rebalance function. This prevents random addresses from altering a basket's strategy. The manager address is set at basket creation and is visible onchain, so holders always know who controls the composition. This creates accountability: if a manager makes poor rebalancing decisions, holders can simply burn their BSKTs and exit.</p>
+    <p>Rebalancing is permissioned. Only the address designated as the basket manager can call the rebalance function. This prevents random addresses from altering a basket's strategy. The manager address is set at basket creation and is visible onchain, so holders always know who controls the composition. This creates accountability: if a manager makes poor rebalancing decisions, holders can simply burn their LP shares and exit.</p>
 
     <h2>Fee Mechanics</h2>
 
     <p>Management fees are one of the most important features of ERC-7621, because they create an economic incentive for skilled managers to build and maintain quality baskets.</p>
 
-    <p>The fee percentage is set when the basket is created and encoded directly in the smart contract. It cannot be changed after deployment. This gives holders certainty about what they are paying. There are no surprise fee increases, hidden charges, or manual invoicing.</p>
+    <p>The fee percentage is set when the basket is created and encoded directly in the smart contract. The protocol is designed to give holders certainty about what they are paying. There are no surprise fee increases, hidden charges, or manual invoicing.</p>
 
     <p>Fees accrue continuously over time based on the assets held in the basket. The accrual happens automatically through the contract's internal accounting. When fees are collected, the basket creator receives their share without any off-chain payment processing or dispute resolution. Everything runs through the smart contract code.</p>
 
-    <p>In practice, the contract tracks when fees were last collected and the current total supply. When a collection is triggered (which can happen during mints, burns, or explicit collection calls), the contract calculates how much time has passed and mints new BSKT tokens to the manager's address. This means the fee is paid through dilution rather than direct deductions from the underlying assets. Economically, it's equivalent to charging a percentage fee on assets under management.</p>
+    <p>In practice, the contract tracks when fees were last collected and the current total supply. When a collection is triggered (which can happen during mints, burns, or explicit collection calls), the contract calculates how much time has passed and mints new LP tokens to the manager's address. This means the fee is paid through dilution rather than direct deductions from the underlying assets. Economically, it's equivalent to charging a percentage fee on assets under management.</p>
 
     <p>The model is straightforward: the more assets a basket attracts, the more fees the creator earns. This aligns incentives cleanly. Creators are motivated to build baskets that people actually want to hold, which means choosing good assets, setting sensible weights, and rebalancing when market conditions call for it.</p>
 
@@ -202,25 +204,27 @@
 
     <p>Here are concrete examples of what this enables:</p>
 
-    <p><strong>Trading on NFT marketplaces and DEXs.</strong> BSKTs can be listed and traded on any NFT marketplace or platform that supports ERC-721 tokens. This gives baskets liquidity and allows anyone to buy exposure to a basket's strategy without minting directly. Because BSKTs are always fully backed by their underlying ERC-20 tokens, buyers can verify onchain exactly what they are getting.</p>
+    <p><strong>Trading management rights and LP shares.</strong> The BSKT itself is an ERC-721 token representing management rights over the basket. This management NFT can be traded on any NFT marketplace, effectively transferring control of the basket's rebalancing and fee collection to a new owner. Separately, investors hold LP shares as standard ERC-20 tokens, which can be traded on any DEX. This dual structure means management rights and investment exposure are independently transferable. Because baskets are always fully backed by their underlying ERC-20 tokens, buyers can verify onchain exactly what they are getting.</p>
 
-    <p><strong>Collateral in NFT-compatible lending.</strong> A BSKT token can be used as collateral on NFT lending protocols. Because the basket is always fully backed by its underlying ERC-20 tokens, it has intrinsic and verifiable value that makes it suitable as collateral. A lender can verify onchain exactly what backs the BSKT and price the collateral accordingly.</p>
+    <p><strong>Collateral in lending protocols.</strong> LP shares from a basket can be used as collateral on lending protocols, since they are standard ERC-20 tokens backed by verifiable onchain assets. The management NFT could similarly serve as collateral on NFT lending platforms. In both cases, a lender can verify onchain exactly what backs the position and price the collateral accordingly.</p>
 
-    <p><strong>Yield strategies.</strong> BSKTs can hold yield-bearing ERC-20 tokens like stETH, rETH, and sDAI inside them, creating a diversified yield portfolio in a single NFT. The underlying tokens continue to accrue value while held inside the basket, giving the BSKT holder broad yield exposure through one position.</p>
+    <p><strong>Yield strategies.</strong> Baskets can hold yield-bearing ERC-20 tokens like stETH, rETH, and sDAI inside them, creating a diversified yield portfolio in a single position. The underlying tokens continue to accrue value while held inside the basket, giving LP holders broad yield exposure through one set of shares.</p>
 
     <p><strong>Baskets of baskets.</strong> Since BSKTs can contain any ERC-20 tokens, and since wrapper mechanisms can bridge between token standards, layered portfolio structures are possible. A higher-level basket could gain exposure to other basket strategies as components. This allows for sophisticated portfolio architectures, all managed through the same standard interface.</p>
 
-    <p>This composability is not a theoretical benefit. It works today with existing infrastructure because ERC-7621 was designed as a strict extension of ERC-721, not a replacement for it. Any platform that supports NFTs can work with BSKTs, while the underlying ERC-20 tokens inside each basket remain accessible through the standard's minting and burning mechanics.</p>
+    <p>This composability is not a theoretical benefit. It works today with existing infrastructure because ERC-7621 was designed as a strict extension of ERC-721, not a replacement for it. Any NFT platform can work with the management NFT, any DEX can trade the LP shares, and the underlying ERC-20 tokens inside each basket remain accessible through the standard's minting and burning mechanics.</p>
 
     <h2>Security Considerations</h2>
 
     <p>The security model of ERC-7621 is built on a few key invariants that the contract enforces at all times.</p>
 
-    <p><strong>Full backing.</strong> The contract cannot mint BSKT tokens without receiving the corresponding underlying assets. There is no credit, no fractional reserve, no unbacked issuance. Every BSKT in circulation is matched by real tokens sitting in the contract.</p>
+    <p><strong>Full backing.</strong> The contract cannot mint LP shares without receiving the corresponding underlying assets. There is no credit, no fractional reserve, no unbacked issuance. Every LP token in circulation is matched by real tokens sitting in the contract.</p>
 
-    <p><strong>Guaranteed redemption.</strong> Any holder can burn their BSKTs and receive underlying tokens at any time. The contract cannot block redemptions or freeze assets. This is a hard guarantee enforced by the code itself.</p>
+    <p><strong>Guaranteed redemption.</strong> Any LP holder can burn their shares and receive underlying tokens at any time. The contract cannot block redemptions or freeze assets. This is a hard guarantee enforced by the code itself.</p>
 
     <p><strong>Transparent composition.</strong> The asset registry and weights are readable onchain by anyone. There are no hidden assets, off-chain reserves, or opaque accounting. Anyone can verify exactly what backs a BSKT at any block height.</p>
+
+    <p><strong>MEV protection.</strong> When minting involves swapping ETH into constituent tokens (as in Alvara's platform implementation), there is a risk of MEV extraction through sandwich attacks and front-running. Alvara addresses this with a backend signing service that provides MEV protection on swaps, ensuring that users receive fair execution when depositing into baskets. This is an implementation-level protection rather than something enforced by the ERC-7621 standard itself, but it is a critical consideration for any platform building on the standard.</p>
 
     <p>The smart contracts are open source and verifiable. As with any smart contract system, users should review audit reports and understand the specific implementation they are interacting with before committing capital. The contract code is the final source of truth for how a basket behaves.</p>
 
@@ -240,13 +244,15 @@
 
     <p>ERC-7621 establishes the core standard, but there is a clear path for extending what basket tokens can do.</p>
 
-    <p><strong>Cross-chain BSKTs.</strong> Today, baskets operate on a single chain. Future implementations could allow baskets that hold assets across multiple networks, using bridge infrastructure to maintain the backing guarantees. A basket holding tokens on Ethereum, Base, and Solana simultaneously would give users cross-chain diversification through a single token.</p>
+    <p><strong>Base deployment.</strong> In the near term, Alvara is expanding to Base, bringing basket tokens to a high-throughput, low-cost L2 environment. This is a concrete next step that will make baskets more accessible by reducing gas costs for minting, burning, and rebalancing operations.</p>
 
-    <p><strong>Automated rebalancing triggers.</strong> Currently, rebalancing is a manual action taken by the basket manager. Future versions could integrate with onchain automation services (like Chainlink Automation) to trigger rebalances based on predefined conditions. For instance, a rebalance could fire automatically when an asset's actual weight drifts more than 5% from its target.</p>
+    <p><strong>Cross-chain BSKTs.</strong> Looking further ahead, one potential direction is baskets that hold assets across multiple networks, using bridge infrastructure to maintain the backing guarantees. A basket holding tokens on Ethereum, Base, and Solana simultaneously could give users cross-chain diversification through a single token. This remains exploratory and depends on the maturity of cross-chain messaging infrastructure.</p>
 
-    <p><strong>Oracle integration for market-cap weighting.</strong> Many traditional index funds weight their holdings by market capitalization. By integrating price oracles, baskets could automatically adjust their weights to track market-cap-weighted allocations without manual intervention. The basket would stay current with market conditions on its own.</p>
+    <p><strong>Automated rebalancing triggers.</strong> Currently, rebalancing is a manual action taken by the basket manager. A potential future extension could integrate with onchain automation services (like Chainlink Automation) to trigger rebalances based on predefined conditions. For instance, a rebalance could fire automatically when an asset's actual weight drifts more than 5% from its target. This is a natural direction but not yet part of the standard.</p>
 
-    <p>These are natural extensions of the existing architecture and are actively being explored by the Alvara team and the broader community building on ERC-7621.</p>
+    <p><strong>Oracle integration for market-cap weighting.</strong> Many traditional index funds weight their holdings by market capitalization. By integrating price oracles, baskets could potentially adjust their weights to track market-cap-weighted allocations without manual intervention. The basket would stay current with market conditions on its own.</p>
+
+    <p>These represent a mix of concrete plans and longer-term possibilities being explored by the Alvara team and the broader community building on ERC-7621.</p>
 
     <div class="callout">
       <p><strong>Read the contracts yourself.</strong> The ERC-7621 implementation is open source on <a href="https://github.com/AlvaraProtocol" target="_blank" rel="noopener">GitHub</a>. If you are building an integration, start with the interface definitions and the minting flow. Questions or feedback go to the team on <a href="https://x.com/AlvaraProtocol" target="_blank" rel="noopener">X</a>.</p>

@@ -128,7 +128,7 @@
     <p>Here is what that changes in practice:</p>
 
     <h3>Permissionless creation</h3>
-    <p>Anyone can create a BSKT. No application process, no minimum AUM, no licensing requirement. If you have a thesis on which tokens will outperform over the next year, you can express that thesis as a BSKT and make it available to others. The total cost is a gas fee.</p>
+    <p>Anyone can create a BSKT. No application process, no minimum AUM, no licensing requirement. If you have a thesis on which tokens will outperform over the next year, you can express that thesis as a BSKT and make it available to others. Creating a basket on Ethereum requires holding ALVA tokens, which aligns creator incentives with the protocol. When you deploy a BSKT, you receive a management NFT that grants you exclusive rebalancing control over your basket. The total cost is a gas fee.</p>
 
     <h3>Real-time transparency</h3>
     <p>Every BSKT's holdings are visible onchain at all times. No quarterly reporting delay, no window dressing, and no possibility of hidden positions. Every token, every weight, every rebalance is verifiable by anyone.</p>
@@ -143,17 +143,14 @@
 
     <p>Managing a BSKT is not passive. The managers attracting the most holders on our platform share a few habits:</p>
 
-    <h3>Verify your identity first</h3>
-    <p>Connect your X account and complete Human Passport verification through Gitcoin Passport. This gives you a trust tier (Bronze, Silver, or Gold) that shows up on every basket you create. Unverified managers can still deploy baskets, but holders overwhelmingly choose verified ones. It takes a few minutes and it is the single highest-ROI action you can take as a manager.</p>
-
-    <h3>Build a verifiable track record</h3>
-    <p>Every rebalance, every asset swap, and every fee collection is recorded permanently onchain. The manager leaderboard ranks baskets by performance, holder count, and TVL. Your track record is not a pitch deck you can edit. It is your transaction history. This creates a reputation system based on actual performance.</p>
+    <h3>Build credibility through onchain performance</h3>
+    <p>There is no shortcut here. Every rebalance, every asset swap, and every fee collection is recorded permanently onchain. Your track record is not a pitch deck you can edit. It is your transaction history, and anyone can verify it. The manager leaderboard ranks baskets by performance, holder count, and TVL, so the best way to attract holders is to simply manage well and let the data speak. Consistent, thoughtful rebalancing over time builds a reputation that no badge or certification can replicate.</p>
 
     <h3>Set fees that make sense</h3>
     <p>Fees are locked at deployment. You cannot raise them later. Start competitive (1-2%) and let the track record justify the fee. Holders can see every basket's fee before they mint, so overcharging with no history just means no holders.</p>
 
     <h3>Use the analytics</h3>
-    <p>The platform gives managers 13 technical indicators and Xerberus risk ratings (AAA to D) for every token in their basket. Good managers use these to make rebalancing decisions and share the data publicly to build trust. Holders want to see that decisions are data-driven, not vibes.</p>
+    <p>The platform gives managers analytics on the tokens in their basket, including performance metrics and market data that inform rebalancing decisions. Good managers use this data and share their reasoning publicly to build trust. Holders want to see that decisions are data-driven, not vibes.</p>
 
     <h3>Composability as a competitive advantage</h3>
     <p>BSKTs are ERC-7621 tokens, built on ERC-721, so each basket is a unique onchain asset that can hold an unlimited number of ERC-20 tokens inside it. They can be used as collateral in lending protocols, traded on DEXs, or even included in other BSKTs. A manager could create a "BSKT of BSKTs," essentially building a fund-of-funds with zero additional overhead.</p>
@@ -166,6 +163,7 @@
       <li><strong>Self-custody:</strong> Investors hold their BSKT tokens in their own wallets. No counterparty risk from exchange failures, bank runs, or corporate fraud.</li>
       <li><strong>Censorship resistance:</strong> No single entity can freeze your portfolio, block your redemptions, or prevent you from trading.</li>
       <li><strong>Atomic transactions:</strong> Rebalancing a BSKT happens in a single transaction. No settlement risk, no failed trades to reconcile, and no timing gaps between buying and selling.</li>
+      <li><strong>MEV protection:</strong> Deposits into BSKTs are routed through MEV-protected pathways, so holders are not getting front-run or sandwiched when they mint. This is a real problem on Ethereum that most DeFi products ignore.</li>
       <li><strong>Auditability:</strong> The rules governing a BSKT are not buried in a 200-page prospectus. They are visible in the contract, verifiable by anyone.</li>
       <li><strong>Interoperability:</strong> BSKTs work with the broader DeFi ecosystem immediately. No API integrations, no partnership agreements. Standard ERC-20 tokens inside, standard ERC-721 token outside.</li>
     </ul>
@@ -185,7 +183,7 @@
     <ul>
       <li><strong>Liquidity constraints.</strong> BSKTs are only as liquid as their underlying tokens. A basket full of mid-cap tokens with thin order books will be expensive to mint and redeem. This is a real barrier for larger allocations.</li>
       <li><strong>No performance guarantee.</strong> Permissionless creation means anyone can deploy a basket, including people with no strategy and no experience. The leaderboard and verification system help surface quality, but holders still need to do their own research.</li>
-      <li><strong>Gas costs on mainnet.</strong> Minting a basket with five underlying tokens means five ERC-20 approvals plus the mint transaction. On Ethereum mainnet during congestion, this gets expensive. L2 deployment (planned for Base in Q1 2026) will help, but it is not free.</li>
+      <li><strong>Gas costs on mainnet.</strong> Minting a basket with five underlying tokens means five ERC-20 approvals plus the mint transaction. On Ethereum mainnet during congestion, this gets expensive. L2 deployment on Base is planned, which will help, but it is not free.</li>
       <li><strong>Smart contract risk.</strong> BSKTs rely on smart contracts. Contracts can have bugs. The code is audited and open source, but that does not eliminate risk entirely. This applies to every DeFi protocol, not just Alvara, but it is still a real consideration.</li>
     </ul>
 
@@ -221,7 +219,7 @@
 <section class="blog-cta">
   <div class="container">
     <h2>Browse the Leaderboard</h2>
-    <p>See verified managers, risk ratings, and real performance data.</p>
+    <p>See what managers are building and how their baskets perform.</p>
     <a href="https://bskt.alvara.xyz/" class="btn-white" target="_blank" rel="noopener">Mint BSKT &rarr;</a>
   </div>
 </section>
