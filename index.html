@@ -2042,7 +2042,7 @@ img { max-width: 100%; display: block; }
     </div>
     <div class="hero-stats">
       <div class="hero-stat">
-        <strong data-count="7621" data-prefix="ERC-">ERC-7621</strong>
+        <strong data-scramble-text="ERC-7621">ERC-7621</strong>
         <span data-i18n="hero.stat1">Draft Standard</span>
       </div>
       <div class="hero-stat">
@@ -2738,7 +2738,8 @@ img { max-width: 100%; display: block; }
   const animateTextScramble = (el) => {
     const target = el.getAttribute('data-scramble-text');
     if (!target) return;
-    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const digits = '0123456789';
     const scrambleDuration = 1500;
     const startTime = performance.now();
     const step = (now) => {
@@ -2748,7 +2749,9 @@ img { max-width: 100%; display: block; }
       let result = '';
       for (let i = 0; i < target.length; i++) {
         if (i / target.length < progress * 1.2) { result += target[i]; }
-        else { result += chars[Math.floor(Math.random() * chars.length)]; }
+        else if (target[i] === '-' || target[i] === ' ') { result += target[i]; }
+        else if (/\d/.test(target[i])) { result += digits[Math.floor(Math.random() * digits.length)]; }
+        else { result += letters[Math.floor(Math.random() * letters.length)]; }
       }
       el.textContent = result;
       requestAnimationFrame(step);
