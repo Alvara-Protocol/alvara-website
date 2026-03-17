@@ -134,7 +134,7 @@
    RESET & BASE
    ════════════════════════════════════════ */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
 body {
   background: var(--bg-void);
   color: var(--text-primary);
@@ -149,6 +149,7 @@ body {
 body::-webkit-scrollbar { display: none; }
 a { color: var(--alvara-pink); text-decoration: none; transition: color 0.2s; }
 a:hover { color: var(--pink-light); }
+a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px solid var(--alvara-pink); outline-offset: 3px; border-radius: 2px; }
 img { max-width: 100%; display: block; }
 
 /* ════════════════════════════════════════
@@ -599,7 +600,25 @@ img { max-width: 100%; display: block; }
   padding: var(--space-lg);
   transition: border-color 0.3s;
 }
+.chain-card { position: relative; }
 .chain-card:hover { border-color: var(--border-active); }
+.chain-card-upcoming { opacity: 0.4; }
+.chain-card-upcoming:hover { opacity: 0.6; }
+.chain-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  color: var(--text-subtle);
+  margin-top: var(--space-xs);
+}
+.chain-tag-live {
+  color: #fff;
+  background: #00C853;
+  padding: 2px 10px;
+  border-radius: 3px;
+  font-weight: 600;
+}
 .chain-icon {
   width: 48px;
   height: 48px;
@@ -840,22 +859,21 @@ img { max-width: 100%; display: block; }
   color: var(--text-muted);
 }
 .credibility-signals {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-md);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-sm);
   margin-top: var(--space-xl);
 }
 .credibility-signal {
   font-family: var(--font-mono);
   font-size: 12px;
   color: var(--text-muted);
-  padding: 16px 20px;
+  padding: 12px 24px;
   border: 1px solid var(--border);
   background: var(--bg-card);
   text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  white-space: nowrap;
 }
 .credibility-signal a { color: var(--alvara-pink); }
 
@@ -931,6 +949,15 @@ img { max-width: 100%; display: block; }
 .timeline-item.completed::before {
   background: var(--alvara-pink);
   border-color: var(--alvara-pink);
+  content: '\2713';
+  color: #fff;
+  font-size: 11px;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  border-radius: 2px;
 }
 .timeline-item.upcoming::before {
   border-color: var(--text-subtle);
@@ -1231,6 +1258,7 @@ img { max-width: 100%; display: block; }
   display: flex;
   gap: var(--space-md);
   align-items: center;
+  flex-wrap: wrap;
 }
 .footer-bottom-links a {
   font-size: 12px;
@@ -1288,8 +1316,8 @@ img { max-width: 100%; display: block; }
   .hero h1 { font-size: clamp(40px, 10vw, 56px); }
   .hero-stats { grid-template-columns: repeat(2, 1fr); gap: var(--space-md); }
   .hero-stat strong { font-size: 28px; }
-  .hero-ctas { flex-direction: column; }
-  .hero-ctas a { text-align: center; justify-content: center; }
+  .hero-ctas { flex-direction: column; width: 100%; }
+  .hero-ctas a { text-align: center; justify-content: center; width: 100%; max-width: 100%; }
   .section { padding: var(--space-3xl) 0; }
   .features-grid,
   .chains-grid,
@@ -1304,8 +1332,9 @@ img { max-width: 100%; display: block; }
   .token-detail-row { justify-content: center; }
   .team-row { flex-direction: column; gap: var(--space-md); }
   .credibility-signals { grid-template-columns: 1fr; }
+  .credibility-signal { white-space: normal; }
   .footer-grid { grid-template-columns: 1fr; gap: var(--space-lg); }
-  .footer-bottom { flex-direction: column; text-align: center; }
+  .footer-bottom { flex-direction: column; text-align: center; overflow-wrap: break-word; }
   .footer-contracts { justify-content: center; }
   .integrations-row { grid-template-columns: 1fr; }
   .blog-grid { grid-template-columns: 1fr; }
@@ -1750,6 +1779,10 @@ img { max-width: 100%; display: block; }
 [data-theme="light"] .timeline-item::before {
   background: var(--border);
 }
+[data-theme="light"] .timeline-item.completed::before {
+  background: var(--alvara-pink);
+  border-color: var(--alvara-pink);
+}
 [data-theme="light"] .timeline-dot {
   background: var(--alvara-pink);
   border-color: #FFFFFF;
@@ -1910,10 +1943,10 @@ img { max-width: 100%; display: block; }
 <!-- ══════════════════════════════════════════
      NAVIGATION
      ══════════════════════════════════════════ -->
-<nav class="nav" id="nav">
+<nav class="nav" id="nav" aria-label="Primary navigation">
   <div class="nav-inner">
     <a href="#" class="nav-logo" aria-label="Alvara Protocol">
-      <svg class="nav-logo-svg" viewBox="0 0 315 69" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg class="nav-logo-svg" aria-hidden="true" viewBox="0 0 315 69" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M99.8927 23.2031C87.4607 23.2031 77.3828 33.2822 77.3828 45.7142C77.3828 58.1461 87.4607 68.224 99.8927 68.224H119.79V35.5138H107.613V56.413H100.462C94.6862 56.413 90.0033 51.7302 90.0033 45.9544C90.0033 40.1786 94.6862 35.4958 100.462 35.4958H107.605V23.328" fill="#FDF2FF"/>
         <path d="M140.661 0.472656H128.295V68.2232H140.661V0.472656Z" fill="#FDF2FF"/>
         <path d="M175.324 23.4766V45.2082C175.324 50.9839 170.641 55.6668 164.865 55.6668C164.727 55.6668 164.589 55.6632 164.452 55.6584H159.912V67.7913C159.929 67.7949 159.946 67.7973 159.961 67.8009V68.2765H163.964C164.184 68.2825 164.404 68.2873 164.625 68.2873C177.057 68.2873 187.135 58.2094 187.135 45.7774V23.4778H175.324V23.4766Z" fill="#FDF2FF"/>
@@ -1940,17 +1973,17 @@ img { max-width: 100%; display: block; }
     <div class="nav-actions">
       <a href="https://docs.alvara.xyz/" class="nav-cta" target="_blank" rel="noopener" aria-label="Explore Platform on Alvara">
         <span data-i18n="nav.launchApp">Explore Platform</span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
       </a>
       <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode">
-        <svg class="theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-        <svg class="theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="theme-icon-moon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="theme-icon-sun" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
       </button>
       <div class="lang-selector" id="langSelector">
-      <button class="lang-btn" id="langBtn" aria-label="Select language">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      <button class="lang-btn" id="langBtn" aria-label="Select language" aria-expanded="false" aria-haspopup="listbox">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
         <span id="langCurrent">EN</span>
-        <svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        <svg class="lang-chevron" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
       </button>
       <div class="lang-dropdown" id="langDropdown">
         <button class="lang-option active" data-lang="en"><span class="lang-flag">&#127468;&#127463;</span> English</button>
@@ -1968,14 +2001,14 @@ img { max-width: 100%; display: block; }
       </div>
     </div>
     </div>
-    <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu">
+    <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileMenu">
       <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
 
 <!-- Mobile menu -->
-<div class="nav-mobile" id="mobileMenu">
+<nav class="nav-mobile" id="mobileMenu" aria-label="Mobile navigation" aria-hidden="true">
   <a href="#standard" data-i18n="nav.standard">ERC-7621</a>
   <a href="#protocol" data-i18n="nav.protocol">Protocol</a>
   <a href="#ecosystem" data-i18n="nav.ecosystem">Ecosystem</a>
@@ -1983,7 +2016,7 @@ img { max-width: 100%; display: block; }
   <a href="#roadmap" data-i18n="nav.roadmap">Roadmap</a>
   <a href="/blog/">Blog</a>
   <a href="https://docs.alvara.xyz/" target="_blank" rel="noopener" style="color:var(--alvara-pink);" data-i18n="nav.launchApp">Explore Platform</a>
-</div>
+</nav>
 
 <!-- ══════════════════════════════════════════
      HERO
@@ -1991,18 +2024,18 @@ img { max-width: 100%; display: block; }
 <section class="hero">
   <div class="hero-bg">
     <div class="hero-slideshow" id="heroSlideshow" aria-hidden="true">
-      <img src="/images/hero-bg-1.jpg" class="active" loading="eager" alt="" />
-      <img src="/images/hero-bg-2.jpg" loading="eager" alt="" />
-      <img src="/images/hero-bg-3.jpg" loading="eager" alt="" />
-      <img src="/images/hero-bg-4.jpg" loading="lazy" alt="" />
-      <img src="/images/hero-bg-5.jpg" loading="lazy" alt="" />
-      <img src="/images/hero-bg-6.jpg" loading="lazy" alt="" />
-      <img src="/images/hero-bg-7.jpg" loading="lazy" alt="" />
-      <img src="/images/hero-bg-8.jpg" loading="lazy" alt="" />
-      <img src="/images/hero-bg-9.jpg" loading="lazy" alt="" />
-      <img src="/images/hero-bg-10.jpg" loading="lazy" alt="" />
-      <img src="/images/hero-bg-11.jpg" loading="lazy" alt="" />
-      <img src="/images/hero-bg-12.jpg" loading="lazy" alt="" />
+      <img src="../images/hero-bg-1.jpg" class="active" loading="eager" alt="" />
+      <img src="../images/hero-bg-2.jpg" loading="eager" alt="" />
+      <img src="../images/hero-bg-3.jpg" loading="eager" alt="" />
+      <img src="../images/hero-bg-4.jpg" loading="lazy" alt="" />
+      <img src="../images/hero-bg-5.jpg" loading="lazy" alt="" />
+      <img src="../images/hero-bg-6.jpg" loading="lazy" alt="" />
+      <img src="../images/hero-bg-7.jpg" loading="lazy" alt="" />
+      <img src="../images/hero-bg-8.jpg" loading="lazy" alt="" />
+      <img src="../images/hero-bg-9.jpg" loading="lazy" alt="" />
+      <img src="../images/hero-bg-10.jpg" loading="lazy" alt="" />
+      <img src="../images/hero-bg-11.jpg" loading="lazy" alt="" />
+      <img src="../images/hero-bg-12.jpg" loading="lazy" alt="" />
     </div>
     <div class="hero-bg-overlay"></div>
     <div class="hero-glow-1"></div>
@@ -2018,7 +2051,7 @@ img { max-width: 100%; display: block; }
         <span data-i18n="hero.launchApp">Explore Platform</span>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
       </a>
-      <a href="https://bskt.alvara.xyz/#/explore" class="btn-secondary" target="_blank" rel="noopener" data-i18n="hero.exploreBskts">Explore BSKTs</a>
+      <a href="https://docs.alvara.xyz/" class="btn-secondary" target="_blank" rel="noopener" data-i18n="hero.exploreBskts">Explore BSKTs</a>
       <a href="https://docs.alvara.xyz/" class="hero-docs-link" target="_blank" rel="noopener" data-i18n="hero.readDocs">Read the Docs &rarr;</a>
     </div>
     <div class="hero-stats">
@@ -2049,7 +2082,7 @@ img { max-width: 100%; display: block; }
   <div class="container">
     <div class="reveal">
       <div class="section-label" data-i18n="protocol.label">How It Works</div>
-      <h2 class="section-title" data-i18n="protocol.title">How Basket Creation Works</h2>
+      <h2 class="section-title" data-i18n="protocol.title">From Holder to Manager in Minutes</h2>
     </div>
     <div class="steps-flow reveal">
       <div class="step">
@@ -2073,10 +2106,10 @@ img { max-width: 100%; display: block; }
       <p style="font-size: 18px; font-weight: 700; letter-spacing: 0.02em; margin-bottom: var(--space-md); color: var(--text-secondary);" data-i18n="protocol.ctaTagline">Three steps. One transaction. Zero code.</p>
       <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
         <a href="https://docs.alvara.xyz/" class="btn-primary" target="_blank" rel="noopener" style="font-size: 16px; padding: 14px 32px;">
-          <span data-i18n="protocol.ctaButton">Mint Your First BSKT</span>
+          <span data-i18n="protocol.ctaButton">Explore Platform</span>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
         </a>
-        <a href="https://bskt.alvara.xyz/#/explore" class="btn-secondary" target="_blank" rel="noopener" style="font-size: 16px; padding: 14px 32px;" data-i18n="hero.exploreBskts">Explore BSKTs</a>
+        <a href="https://docs.alvara.xyz/" class="btn-secondary" target="_blank" rel="noopener" style="font-size: 16px; padding: 14px 32px;" data-i18n="hero.exploreBskts">Explore BSKTs</a>
       </div>
     </div>
   </div>
@@ -2161,7 +2194,7 @@ img { max-width: 100%; display: block; }
     </blockquote>
 
     <div class="credibility-signals reveal">
-      <div class="credibility-signal" data-i18n-html="backers.audit">Audited by <a href="https://www.certik.com/" target="_blank" rel="noopener">CertiK</a>, <a href="https://www.quillaudits.com/" target="_blank" rel="noopener">QuillAudits</a> &amp; <a href="https://www.adevar.io/" target="_blank" rel="noopener">Adevar Labs</a></div>
+      <div class="credibility-signal" data-i18n-html="backers.audit">Audited by <a href="https://www.certik.com/" target="_blank" rel="noopener">CertiK</a>, <a href="https://www.quillaudits.com/" target="_blank" rel="noopener">QuillAudits</a> &amp; <a href="https://www.adevarlabs.com/" target="_blank" rel="noopener">Adevar Labs</a></div>
       <div class="credibility-signal" data-i18n="backers.efRecognition">ERC-7621 submitted as an Ethereum Improvement Proposal (Draft)</div>
       <div class="credibility-signal" data-i18n="backers.foundation">Developed by the Alvara Foundation</div>
     </div>
@@ -2179,18 +2212,27 @@ img { max-width: 100%; display: block; }
     </div>
     <div class="section-label reveal" style="margin-top: var(--space-xl);">dApp</div>
     <p class="reveal" style="color: var(--text-muted); margin-bottom: var(--space-lg);">Create, manage, and trade BSKTs on these networks.</p>
-    <div class="chains-grid" style="grid-template-columns: repeat(2, 1fr);">
+    <div class="chains-grid">
       <div class="chain-card reveal">
         <div class="chain-icon">
-          <svg viewBox="0 0 256 417" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid"><path d="M127.961 0l-2.795 9.5v275.668l2.795 2.79 127.962-75.638z" fill="#343434"/><path d="M127.962 0L0 212.32l127.962 75.639V154.158z" fill="#8C8C8C"/><path d="M127.961 312.187l-1.575 1.92v98.199l1.575 4.601L256 236.587z" fill="#3C3C3C"/><path d="M127.962 416.905v-104.72L0 236.585z" fill="#8C8C8C"/><path d="M127.961 287.958l127.96-75.637-127.96-58.162z" fill="#141414"/><path d="M0 212.32l127.96 75.638v-133.8z" fill="#393939"/></svg>
+          <svg aria-hidden="true" viewBox="0 0 256 417" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid"><path d="M127.961 0l-2.795 9.5v275.668l2.795 2.79 127.962-75.638z" fill="#343434"/><path d="M127.962 0L0 212.32l127.962 75.639V154.158z" fill="#8C8C8C"/><path d="M127.961 312.187l-1.575 1.92v98.199l1.575 4.601L256 236.587z" fill="#3C3C3C"/><path d="M127.962 416.905v-104.72L0 236.585z" fill="#8C8C8C"/><path d="M127.961 287.958l127.96-75.637-127.96-58.162z" fill="#141414"/><path d="M0 212.32l127.96 75.638v-133.8z" fill="#393939"/></svg>
         </div>
         <h3>Ethereum</h3>
+        <span class="chain-tag chain-tag-live">Live</span>
       </div>
-      <div class="chain-card reveal">
+      <div class="chain-card chain-card-upcoming reveal">
         <div class="chain-icon">
-          <svg viewBox="0 0 111 111" xmlns="http://www.w3.org/2000/svg"><circle cx="55.5" cy="55.5" r="55.5" fill="#0052FF"/><path d="M55.4 93.3c20.9 0 37.8-16.9 37.8-37.8S76.3 17.7 55.4 17.7c-19.5 0-35.6 14.8-37.6 33.8h49.8v9.5H17.8c2 19 18.1 33.8 37.6 32.3z" fill="#fff"/></svg>
+          <svg aria-hidden="true" viewBox="0 0 111 111" xmlns="http://www.w3.org/2000/svg"><circle cx="55.5" cy="55.5" r="55.5" fill="#0052FF"/><path d="M55.4 93.3c20.9 0 37.8-16.9 37.8-37.8S76.3 17.7 55.4 17.7c-19.5 0-35.6 14.8-37.6 33.8h49.8v9.5H17.8c2 19 18.1 33.8 37.6 32.3z" fill="#fff"/></svg>
         </div>
         <h3>Base</h3>
+        <span class="chain-tag">Q1 2026</span>
+      </div>
+      <div class="chain-card chain-card-upcoming reveal">
+        <div class="chain-icon">
+          <svg aria-hidden="true" viewBox="0 0 397 312" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="sol-g" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#9945FF"/><stop offset="50%" stop-color="#14F195"/><stop offset="100%" stop-color="#00D1FF"/></linearGradient></defs><path d="M64.6 237.9c2.4-2.4 5.7-3.8 9.2-3.8h317.4c5.8 0 8.7 7 4.6 11.1l-62.7 62.7c-2.4 2.4-5.7 3.8-9.2 3.8H6.5c-5.8 0-8.7-7-4.6-11.1l62.7-62.7z" fill="url(#sol-g)"/><path d="M64.6 3.8C67.1 1.4 70.4 0 73.8 0h317.4c5.8 0 8.7 7 4.6 11.1l-62.7 62.7c-2.4 2.4-5.7 3.8-9.2 3.8H6.5c-5.8 0-8.7-7-4.6-11.1L64.6 3.8z" fill="url(#sol-g)"/><path d="M333.1 120c-2.4-2.4-5.7-3.8-9.2-3.8H6.5c-5.8 0-8.7 7-4.6 11.1l62.7 62.7c2.4 2.4 5.7 3.8 9.2 3.8h317.4c5.8 0 8.7-7 4.6-11.1L333.1 120z" fill="url(#sol-g)"/></svg>
+        </div>
+        <h3>Solana</h3>
+        <span class="chain-tag">Q2 2026</span>
       </div>
     </div>
 
@@ -2237,13 +2279,13 @@ img { max-width: 100%; display: block; }
       <div class="integrations-row">
         <div class="integration-card">
           <div class="integration-role" data-i18n="ecosystem.1inchRole">Liquidity Routing</div>
-          <h4>1inch</h4>
+          <h3>1inch</h3>
           <p data-i18n="ecosystem.1inchDesc">Aggregates liquidity across 500+ DEXs to find optimal swap routes when minting, rebalancing, or trading BSKTs. Better prices, lower slippage, gas-efficient execution.</p>
         </div>
         <div class="integration-card">
           <div class="integration-role" data-i18n="ecosystem.xerberusRole">Risk Intelligence</div>
-          <h4>Xerberus</h4>
-          <p data-i18n="ecosystem.xerberusDesc">Every BSKT gets a risk rating from AAA (investment grade) to D (junk), calculated per token and aggregated by weight. Built on verifiable transaction data, not social signals. Independent, transparent, open-source.</p>
+          <h3>Xerberus</h3>
+          <p data-i18n="ecosystem.xerberusDesc">Every BSKT gets a risk rating from AAA (investment grade) to D (high risk), calculated per token and aggregated by weight. Built on verifiable transaction data, not social signals. Independent, transparent, open-source.</p>
         </div>
       </div>
     </div>
@@ -2287,7 +2329,7 @@ img { max-width: 100%; display: block; }
           <svg width="32" height="32" viewBox="0 0 129 107" fill="none"><path d="M35.4617 18.0952H53.1802V0.376743H35.4617V18.0952Z" fill="currentColor"/><path d="M53.1809 18.0952H70.8994V0.376743H53.1809V18.0952Z" fill="currentColor"/><path d="M18.094 106.46H35.8317V88.7206H18.094V70.9829H0.354492V88.7206L18.094 106.46Z" fill="currentColor"/><path d="M18.094 0.376778H35.8317V18.1163H18.094V35.854H0.354492V18.1163L18.094 0.376778Z" fill="currentColor"/><path d="M106.789 106.461H89.0513V88.7211H106.789V65.7134L124.528 88.7211L106.789 106.461Z" fill="currentColor"/><path d="M89.0454 35.8537H106.783V18.116L89.0454 0.376465H70.2441V18.116H89.0454V35.8537Z" fill="currentColor"/><path d="M35.8352 106.468H53.5747V88.7287H35.8352V106.468Z" fill="currentColor"/><path d="M53.5668 106.468H89.9286V88.7287H53.5668V106.468Z" fill="currentColor"/><path d="M89.0432 106.468H106.783V88.7287H89.0432V106.468Z" fill="currentColor"/><path d="M0.383299 71.3159H18.1255V30.7789H0.383299V71.3159Z" fill="currentColor"/><path d="M35.8371 62.2725H53.5767V44.5329H35.8371V62.2725Z" fill="currentColor"/><path d="M53.5686 62.2725H71.3081V44.5329H53.5686V62.2725Z" fill="currentColor"/><path d="M106.789 88.722L89.0513 70.9842V34.3447H106.789V88.722Z" fill="currentColor"/><path d="M115.659 97.5955L128.203 85.0518L103.777 60.626L91.2337 73.1698L115.659 97.5955Z" fill="currentColor"/></svg>
         </div>
         <h3 data-i18n="standard.feat4Title">Permissionless Deployment</h3>
-        <p data-i18n="standard.feat4Desc">Anyone can create a basket and become a fund manager. No gatekeepers, no approval process, no minimum capital requirements.</p>
+        <p data-i18n="standard.feat4Desc">Anyone can create a basket and become a fund manager. No applications, approvals, or track record requirements. Minimum seed capital: 0.1 ETH.</p>
       </div>
       <div class="feature-card reveal">
         <div class="feature-icon">
@@ -2447,26 +2489,27 @@ img { max-width: 100%; display: block; }
       <div class="timeline-item completed"><p data-i18n="roadmap.c9">BSKT Gauge-weight voting</p></div>
       <div class="timeline-item completed"><p data-i18n="roadmap.c10">Alvara Staking Platform</p></div>
       <div class="timeline-item completed"><p data-i18n="roadmap.c11">Website rebrand &amp; relaunch</p></div>
-      <div class="timeline-divider"><h4 data-i18n="roadmap.q1">Q1 2026</h4></div>
+      <div class="timeline-divider"><h3 data-i18n="roadmap.q1">Q1 2026</h3></div>
       <div class="timeline-desc" data-i18n="roadmap.q1theme">New chains, new tools, bigger reach</div>
-      <div class="timeline-item upcoming"><p data-i18n="roadmap.q1a">Complete dApp rebrand</p></div>
-      <div class="timeline-item upcoming"><p data-i18n="roadmap.q1b">Base deployment</p></div>
+      <div class="timeline-item upcoming"><p data-i18n="roadmap.q1a">dApp v2</p></div>
+      <div class="timeline-item upcoming"><p data-i18n="roadmap.q1b">ERC-7621 deployment on Base</p></div>
       <div class="timeline-item upcoming"><p data-i18n="roadmap.q1d">ERC-7621 toward Final EIP status</p></div>
-      <div class="timeline-divider"><h4 data-i18n="roadmap.q2">Q2 2026</h4></div>
+      <div class="timeline-divider"><h3 data-i18n="roadmap.q2">Q2 2026</h3></div>
       <div class="timeline-desc" data-i18n="roadmap.q2theme">More ways to trade, deposit, and manage BSKTs</div>
-      <div class="timeline-item upcoming"><p data-i18n="roadmap.q2a">Multi-token deposits</p></div>
+      <div class="timeline-item upcoming"><p data-i18n="roadmap.q2a">Multi-token deposits for BSKT creation</p></div>
       <div class="timeline-item upcoming"><p data-i18n="roadmap.q2b">AlvaraDEX</p></div>
       <div class="timeline-item upcoming"><p data-i18n="roadmap.q2c">BSKT Marketplace</p></div>
-      <div class="timeline-item upcoming"><p data-i18n="roadmap.q2d">Multichain BSKTs</p></div>
-      <div class="timeline-item upcoming"><p data-i18n="roadmap.q2e">Solana migration</p></div>
-      <div class="timeline-divider"><h4 data-i18n="roadmap.q34">Q3–Q4 2026</h4></div>
-      <div class="timeline-desc" data-i18n="roadmap.q34theme">Institutional-grade tools. AI-powered strategies.</div>
+      <div class="timeline-item upcoming"><p data-i18n="roadmap.q2d">Cross-chain basket composition</p></div>
+      <div class="timeline-item upcoming"><p data-i18n="roadmap.q2e">BSKT protocol launch on Solana</p></div>
+      <div class="timeline-item upcoming"><p data-i18n="roadmap.q2f">Alvara DAO v2</p></div>
+      <div class="timeline-divider"><h3 data-i18n="roadmap.q34">Q3–Q4 2026</h3></div>
+      <div class="timeline-desc" data-i18n="roadmap.q34theme">Institutional-grade tools. AI-powered strategies</div>
       <div class="timeline-item upcoming"><p data-i18n="roadmap.q34a">Compliant basket products for wealth platforms and funds</p></div>
       <div class="timeline-item upcoming"><p data-i18n="roadmap.q34b">Institutional-grade governance &amp; compliance</p></div>
-      <div class="timeline-item upcoming"><p data-i18n="roadmap.q34c">Advanced portfolio analytics, reputation, and reporting</p></div>
-      <div class="timeline-item upcoming"><p data-i18n="roadmap.q34d">Automated portfolio strategies powered by AI agents</p></div>
-      <div class="timeline-item upcoming"><p data-i18n="roadmap.q34e">Plug into wallets, aggregators, and fintech platforms</p></div>
-      <div class="timeline-item upcoming"><p data-i18n="roadmap.q34f">Ongoing KOL &amp; manager enablement</p></div>
+      <div class="timeline-item upcoming"><p data-i18n="roadmap.q34c">Portfolio analytics, manager reputation, and reporting</p></div>
+      <div class="timeline-item upcoming"><p data-i18n="roadmap.q34d">AI-powered portfolio automation</p></div>
+      <div class="timeline-item upcoming"><p data-i18n="roadmap.q34e">Third-party integrations: wallets, aggregators, fintech</p></div>
+      <div class="timeline-item upcoming"><p data-i18n="roadmap.q34f">Secondary market integrations (Pendle, lending, collateral)</p></div>
     </div>
   </div>
 </section>
@@ -2513,13 +2556,13 @@ img { max-width: 100%; display: block; }
   <div class="container">
     <div class="reveal">
       <h2 data-i18n="cta.title">Learn More About Alvara</h2>
-      <p data-i18n="cta.desc">Create your first BSKT, browse the manager leaderboard, or contribute to existing baskets. Verify your identity and start earning.</p>
+      <p data-i18n="cta.desc">Create your first BSKT, browse the manager leaderboard, or contribute to existing baskets.</p>
       <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
         <a href="https://docs.alvara.xyz/" class="btn-white" target="_blank" rel="noopener">
           <span data-i18n="cta.launchApp">Explore Platform</span>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
         </a>
-        <a href="https://bskt.alvara.xyz/#/explore" class="btn-white-ghost" target="_blank" rel="noopener" data-i18n="hero.exploreBskts">Explore BSKTs</a>
+        <a href="https://docs.alvara.xyz/" class="btn-white-ghost" target="_blank" rel="noopener" data-i18n="hero.exploreBskts">Explore BSKTs</a>
       </div>
     </div>
   </div>
@@ -2572,10 +2615,9 @@ img { max-width: 100%; display: block; }
       <div class="footer-col">
         <h4 data-i18n="footer.platform">Platform</h4>
         <ul>
-          <li><a href="https://docs.alvara.xyz/" target="_blank" rel="noopener" data-i18n="footer.bsktLab">BSKT Lab</a></li>
+          <li><a href="https://docs.alvara.xyz/bskt-lab/creating-a-bskt" target="_blank" rel="noopener" data-i18n="footer.bsktLab">BSKT Lab</a></li>
           <li><a href="#standard">ERC-7621</a></li>
-          <li><a href="https://bskt.alvara.xyz/#/explore" target="_blank" rel="noopener" data-i18n="footer.explore">Explore</a></li>
-          <li><a href="https://docs.alvara.xyz/" target="_blank" rel="noopener" data-i18n="footer.launchApp">Explore Platform</a></li>
+          <li><a href="https://docs.alvara.xyz/" target="_blank" rel="noopener" data-i18n="footer.explore">Explore</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -2987,25 +3029,25 @@ img { max-width: 100%; display: block; }
     'standard.feat1Title': 'Basket Token Standard',
     'standard.feat1Desc': 'Create customizable crypto baskets containing any combination of ERC-20 assets. Configure weights, management parameters, and fee structures at deployment.',
     'standard.feat2Title': 'Fungible LP Tokens',
-    'standard.feat2Desc': 'ERC-7621 basket tokens are built on the ERC-721 standard, each holding an unlimited number of ERC-20 assets. Trade them on DEXs, use as collateral, or integrate into governance systems.',
+    'standard.feat2Desc': 'Each BSKT is an ERC-7621 token built on ERC-721, holding an unlimited number of ERC-20 assets. Investors receive ERC-20 LP shares \u2014 tradeable on any DEX and compatible with existing DeFi infrastructure.',
     'standard.feat3Title': 'Automated Fee Distribution',
     'standard.feat3Desc': 'Built-in management fee mechanisms execute at the protocol level. Managers receive a configurable percentage of TVL - no off-chain payment infrastructure needed.',
     'standard.feat4Title': 'Permissionless Deployment',
-    'standard.feat4Desc': 'Anyone can create a basket and become a fund manager. No gatekeepers, no approval process, no minimum capital requirements.',
+    'standard.feat4Desc': 'Anyone can create a basket and become a fund manager. No applications, approvals, or track record requirements. Minimum seed capital: 0.1 ETH.',
     'standard.feat5Title': 'Onchain Rebalancing',
     'standard.feat5Desc': 'Adjust tokens and weights within a single transaction. Add or remove underlying assets and modify portfolio composition in real time.',
     'standard.feat6Title': 'Transferable Ownership',
-    'standard.feat6Desc': "BSKT ownership tokens and management rights are fully transferable onchain. List on Alvara\'s Marketplace to sell management rights and revenue streams.",
+    'standard.feat6Desc': "ERC-20 LP shares and management NFTs are fully transferable onchain. Broader marketplace support for management-rights transfers is planned.",
     'protocol.label': 'How It Works',
-    'protocol.title': 'How Basket Creation Works',
+    'protocol.title': 'From Holder to Manager in Minutes',
     'protocol.step1Title': 'Compose',
     'protocol.step1Desc': 'Pick your tokens and set each weight manually, or start from a template like Blue Chip, DeFi, or AI.',
     'protocol.step2Title': 'Design',
-    'protocol.step2Desc': 'Add your logo, name, ticker, and strategy description. These details are stored on-chain and cannot be changed after creation.',
+    'protocol.step2Desc': 'Add your logo, name, ticker, and strategy description. These details are stored onchain and cannot be changed after creation.',
     'protocol.step3Title': 'Fund & Mint',
     'protocol.step3Desc': 'Set your contribution amount, review the cost breakdown, and deploy your BSKT in a single transaction.',
     'protocol.ctaTagline': 'Three steps. One transaction. Zero code.',
-    'protocol.ctaButton': 'Mint Your First BSKT',
+    'protocol.ctaButton': 'Explore Platform',
     'ecosystem.label': 'Ecosystem',
     'ecosystem.title': 'Live on Mainnet',
     'ecosystem.copy': 'Copy',
@@ -3018,7 +3060,7 @@ img { max-width: 100%; display: block; }
     'ecosystem.1inchRole': 'Liquidity Routing',
     'ecosystem.1inchDesc': 'Aggregates liquidity across 500+ DEXs to find optimal swap routes when minting, rebalancing, or trading BSKTs. Better prices, lower slippage, gas-efficient execution.',
     'ecosystem.xerberusRole': 'Risk Intelligence',
-    'ecosystem.xerberusDesc': 'Every BSKT gets a risk rating from AAA (investment grade) to D (junk), calculated per token and aggregated by weight. Built on verifiable transaction data, not social signals. Independent, transparent, open-source.',
+    'ecosystem.xerberusDesc': 'Every BSKT gets a risk rating from AAA (investment grade) to D (high risk), calculated per token and aggregated by weight. Built on verifiable transaction data, not social signals. Independent, transparent, open-source.',
     'tokenomics.label': 'Tokenomics',
     'tokenomics.title': 'The $ALVA Token',
     'tokenomics.maxSupply': 'Max Supply',
@@ -3051,7 +3093,7 @@ img { max-width: 100%; display: block; }
     'backers.cofounder': 'Co-Founder',
     'backers.cofounderCoo': 'Co-Founder & COO',
     'backers.gdaQuote': '\u201cERC-7621 represents a fundamental shift in how tokenized portfolios are created and managed onchain. We\u2019re proud to back the team building this infrastructure.\u201d<cite>- GDA International</cite>',
-    'backers.audit': 'Audited by <a href="https://www.certik.com/" target="_blank" rel="noopener">CertiK</a>, <a href="https://www.quillaudits.com/" target="_blank" rel="noopener">QuillAudits</a> & <a href="https://www.adevar.io/" target="_blank" rel="noopener">Adevar Labs</a>',
+    'backers.audit': 'Audited by <a href="https://www.certik.com/" target="_blank" rel="noopener">CertiK</a>, <a href="https://www.quillaudits.com/" target="_blank" rel="noopener">QuillAudits</a> & <a href="https://www.adevarlabs.com/" target="_blank" rel="noopener">Adevar Labs</a>',
     'backers.efRecognition': 'ERC-7621 submitted as an Ethereum Improvement Proposal (Draft)',
     'backers.foundation': 'Developed by the Alvara Foundation',
     'developers.label': 'Developers',
@@ -3074,33 +3116,35 @@ img { max-width: 100%; display: block; }
     'roadmap.q2': 'Q2 2026',
     'roadmap.q2theme': 'More ways to trade, deposit, and manage BSKTs',
     'roadmap.q34': 'Q3\u2013Q4 2026',
-    'roadmap.q34theme': 'Institutional-grade tools. AI-powered strategies.',
+    'roadmap.q34theme': 'Institutional-grade tools. AI-powered strategies',
     'roadmap.c1': 'ERC-7621 standard authored and submitted',
     'roadmap.c2': 'ERC-7621 accepted as EIP Draft',
-    'roadmap.c3': 'Mainnet deployment - Ethereum',
+    'roadmap.c3': 'ERC-7621 deployment on Ethereum',
     'roadmap.c4': 'BSKT Factory and dApp launch (bskt.alvara.xyz)',
     'roadmap.c5': 'Security audits - CertiK, QuillAudits, Adevar Labs',
     'roadmap.c6': 'Public leaderboard launch',
     'roadmap.c7': '1inch integration',
-    'roadmap.c8': 'Alvara DAO launch',
+    'roadmap.c8': 'Alvara DAO launch - Snapshot',
     'roadmap.c9': 'BSKT Gauge-weight voting',
     'roadmap.c10': 'Alvara Staking Platform',
-    'roadmap.q1a': 'Website rebrand & relaunch',
-    'roadmap.q1b': 'Base deployment',
-    'roadmap.q1c': 'Solana migration',
+    'roadmap.c11': 'Website rebrand & relaunch',
+    'roadmap.q1a': 'dApp v2',
+    'roadmap.q1b': 'ERC-7621 deployment on Base',
     'roadmap.q1d': 'ERC-7621 toward Final EIP status',
-    'roadmap.q2a': 'Multi-token deposits',
+    'roadmap.q2a': 'Multi-token deposits for BSKT creation',
     'roadmap.q2b': 'AlvaraDEX',
     'roadmap.q2c': 'BSKT Marketplace',
-    'roadmap.q2d': 'Multichain BSKTs',
+    'roadmap.q2d': 'Cross-chain basket composition',
+    'roadmap.q2e': 'BSKT protocol launch on Solana',
+    'roadmap.q2f': 'Alvara DAO v2',
     'roadmap.q34a': 'Compliant basket products for wealth platforms and funds',
     'roadmap.q34b': 'Institutional-grade governance & compliance',
-    'roadmap.q34c': 'Advanced portfolio analytics, reputation, and reporting',
-    'roadmap.q34d': 'Automated portfolio strategies powered by AI agents',
-    'roadmap.q34e': 'Plug into wallets, aggregators, and fintech platforms',
-    'roadmap.q34f': 'Ongoing KOL & manager enablement',
+    'roadmap.q34c': 'Portfolio analytics, manager reputation, and reporting',
+    'roadmap.q34d': 'AI-powered portfolio automation',
+    'roadmap.q34e': 'Third-party integrations: wallets, aggregators, fintech',
+    'roadmap.q34f': 'Secondary market integrations (Pendle, lending, collateral)',
     'cta.title': 'Learn More About Alvara',
-    'cta.desc': 'Create your first BSKT, browse the manager leaderboard, or contribute to existing baskets. Verify your identity and start earning.',
+    'cta.desc': 'Create your first BSKT, browse the manager leaderboard, or contribute to existing baskets.',
     'cta.launchApp': 'Explore Platform',
     'footer.tagline': 'Build Baskets. Build Legacy.',
     'footer.foundation': 'Developed by the Alvara Foundation',
@@ -3129,11 +3173,11 @@ img { max-width: 100%; display: block; }
     'nav.ecosystem': 'Ecosistema',
     'nav.tokenomics': 'Tokenomics',
     'nav.roadmap': 'Hoja de Ruta',
-    'nav.launchApp': 'Abrir App',
+    'nav.launchApp': 'Explore Platform',
     'hero.label': 'El Estándar de Token Basket ERC-7621',
     'hero.title': 'Crea Baskets.<br><span class="accent">Crea Legado.</span>',
     'hero.subtitle': 'La capa de infraestructura para productos de baskets descentralizados - portafolios autogestionados e invertibles onchain construidos sobre el estándar ERC-7621.',
-    'hero.launchApp': 'Abrir App',
+    'hero.launchApp': 'Explore Platform',
     'hero.readDocs': 'Leer Documentación',
     'hero.stat1': 'Estándar en Borrador',
     'hero.stat2': 'Live on Mainnet',
@@ -3163,7 +3207,7 @@ img { max-width: 100%; display: block; }
     'protocol.step3Title': 'Fondear y Acuñar',
     'protocol.step3Desc': 'Establece tu cantidad de contribución, revisa el desglose de costes y despliega tu BSKT en una sola transacción.',
     'protocol.ctaTagline': 'Tres pasos. Una transacción. Sin código.',
-    'protocol.ctaButton': 'Crea tu primer BSKT',
+    'protocol.ctaButton': 'Explore Platform',
     'ecosystem.label': 'Ecosistema',
     'ecosystem.title': 'En Vivo en Mainnet',
     'ecosystem.copy': 'Copiar',
@@ -3198,7 +3242,7 @@ img { max-width: 100%; display: block; }
     'tokenomics.supplyKey': 'Suministro Máximo',
     'tokenomics.chainsKey': 'Cadenas',
     'tokenomics.tradeUniswap': 'Operar en Uniswap',
-    'tokenomics.bridgeAlva': 'Bridge ALVA',
+    'tokenomics.bridgeAlva': 'Disclaimer',
     'tokenomics.viewTokenomics': 'Ver Tokenomics',
     'backers.label': 'Respaldado Por',
     'backers.title': 'Construido por Operadores. Respaldado por Creyentes.',
@@ -3252,9 +3296,9 @@ img { max-width: 100%; display: block; }
     'roadmap.q34d': 'Estrategias impulsadas por IA y agentes',
     'roadmap.q34e': 'Distribución e integración',
     'roadmap.q34f': 'Habilitación continua de KOL y gestores',
-    'cta.title': 'Comienza a Construir Tu Legado',
+    'cta.title': 'Learn More About Alvara',
     'cta.desc': 'Crea tu primer BSKT, explora el leaderboard o contribuye a baskets existentes.',
-    'cta.launchApp': 'Abrir App',
+    'cta.launchApp': 'Explore Platform',
     'footer.tagline': 'Crea Baskets. Crea Legado.',
     'footer.foundation': 'Desarrollado por la Alvara Foundation',
     'footer.platform': 'Plataforma',
@@ -3262,7 +3306,7 @@ img { max-width: 100%; display: block; }
     'footer.community': 'Comunidad',
     'footer.bsktLab': 'BSKT Lab',
     'footer.explore': 'Explorar',
-    'footer.launchApp': 'Abrir App',
+    'footer.launchApp': 'Explore Platform',
     'footer.whitepaper': 'Whitepaper',
     'footer.documentation': 'Documentación',
     'footer.tokenomics': 'Tokenomics',
@@ -3271,8 +3315,8 @@ img { max-width: 100%; display: block; }
     'footer.twitter': 'Twitter / X',
     'footer.telegram': 'Telegram',
     'footer.discord': 'Discord',
-    'footer.tradeAlva': 'Operar ALVA',
-    'footer.bridgeAlva': 'Bridge ALVA'
+    'footer.tradeAlva': 'ALVA Token Information',
+    'footer.bridgeAlva': 'Disclaimer'
   },
 
   zh: {
@@ -3281,11 +3325,11 @@ img { max-width: 100%; display: block; }
     'nav.ecosystem': '生态系统',
     'nav.tokenomics': '代币经济学',
     'nav.roadmap': '路线图',
-    'nav.launchApp': '启动应用',
+    'nav.launchApp': 'Explore Platform',
     'hero.label': 'ERC-7621 篮子代币标准',
     'hero.title': '构建篮子。<br><span class="accent">构建传承。</span>',
     'hero.subtitle': '去中心化篮子产品的基础设施层 - 基于 ERC-7621 标准构建的自管理、可投资的链上投资组合。',
-    'hero.launchApp': '启动应用',
+    'hero.launchApp': 'Explore Platform',
     'hero.readDocs': '阅读文档',
     'hero.stat1': '草案标准',
     'hero.stat2': 'Live on Mainnet',
@@ -3315,7 +3359,7 @@ img { max-width: 100%; display: block; }
     'protocol.step3Title': '注资并铸造',
     'protocol.step3Desc': '设置您的贡献金额，查看费用明细，并通过单笔交易部署您的 BSKT。',
     'protocol.ctaTagline': '三个步骤。一笔交易。零代码。',
-    'protocol.ctaButton': '铸造你的第一个 BSKT',
+    'protocol.ctaButton': 'Explore Platform',
     'ecosystem.label': '生态系统',
     'ecosystem.title': '已在主网上线',
     'ecosystem.copy': '复制',
@@ -3350,7 +3394,7 @@ img { max-width: 100%; display: block; }
     'tokenomics.supplyKey': '最大供应量',
     'tokenomics.chainsKey': '链',
     'tokenomics.tradeUniswap': '在 Uniswap 上交易',
-    'tokenomics.bridgeAlva': '跨链 ALVA',
+    'tokenomics.bridgeAlva': 'Disclaimer',
     'tokenomics.viewTokenomics': '查看代币经济学',
     'backers.label': '支持者',
     'backers.title': '由实干家构建，由信仰者支持。',
@@ -3404,9 +3448,9 @@ img { max-width: 100%; display: block; }
     'roadmap.q34d': 'AI 驱动和代理策略',
     'roadmap.q34e': '分发和集成',
     'roadmap.q34f': '持续的 KOL 和管理者赋能',
-    'cta.title': '开始构建您的传承',
+    'cta.title': 'Learn More About Alvara',
     'cta.desc': '创建您的第一个 BSKT，探索排行榜，或贡献到现有篮子。',
-    'cta.launchApp': '启动应用',
+    'cta.launchApp': 'Explore Platform',
     'footer.tagline': '构建篮子。构建传承。',
     'footer.foundation': '由 Alvara Foundation 开发',
     'footer.platform': '平台',
@@ -3414,7 +3458,7 @@ img { max-width: 100%; display: block; }
     'footer.community': '社区',
     'footer.bsktLab': 'BSKT Lab',
     'footer.explore': '探索',
-    'footer.launchApp': '启动应用',
+    'footer.launchApp': 'Explore Platform',
     'footer.whitepaper': '白皮书',
     'footer.documentation': '文档',
     'footer.tokenomics': '代币经济学',
@@ -3423,8 +3467,8 @@ img { max-width: 100%; display: block; }
     'footer.twitter': 'Twitter / X',
     'footer.telegram': 'Telegram',
     'footer.discord': 'Discord',
-    'footer.tradeAlva': '交易 ALVA',
-    'footer.bridgeAlva': '跨链 ALVA'
+    'footer.tradeAlva': 'ALVA Token Information',
+    'footer.bridgeAlva': 'Disclaimer'
   },
 
   ja: {
@@ -3433,11 +3477,11 @@ img { max-width: 100%; display: block; }
     'nav.ecosystem': 'エコシステム',
     'nav.tokenomics': 'トークノミクス',
     'nav.roadmap': 'ロードマップ',
-    'nav.launchApp': 'アプリを起動',
+    'nav.launchApp': 'Explore Platform',
     'hero.label': 'ERC-7621 バスケットトークン標準',
     'hero.title': 'バスケットを構築。<br><span class="accent">レガシーを構築。</span>',
     'hero.subtitle': '分散型バスケット商品のためのインフラ層 - ERC-7621 標準に基づいて構築された、自己管理型で投資可能なオンチェーンポートフォリオ。',
-    'hero.launchApp': 'アプリを起動',
+    'hero.launchApp': 'Explore Platform',
     'hero.readDocs': 'ドキュメントを読む',
     'hero.stat1': 'ドラフト標準',
     'hero.stat2': 'Live on Mainnet',
@@ -3467,7 +3511,7 @@ img { max-width: 100%; display: block; }
     'protocol.step3Title': '資金投入とミント',
     'protocol.step3Desc': '貢献額を設定し、コスト内訳を確認して、単一のトランザクションで BSKT をデプロイします。',
     'protocol.ctaTagline': '3つのステップ。1回のトランザクション。コード不要。',
-    'protocol.ctaButton': '最初の BSKT を作成',
+    'protocol.ctaButton': 'Explore Platform',
     'ecosystem.label': 'エコシステム',
     'ecosystem.title': 'メインネットで稼働中',
     'ecosystem.copy': 'コピー',
@@ -3502,7 +3546,7 @@ img { max-width: 100%; display: block; }
     'tokenomics.supplyKey': '最大供給量',
     'tokenomics.chainsKey': 'チェーン',
     'tokenomics.tradeUniswap': 'Uniswap で取引',
-    'tokenomics.bridgeAlva': 'ALVA ブリッジ',
+    'tokenomics.bridgeAlva': 'Disclaimer',
     'tokenomics.viewTokenomics': 'トークノミクスを見る',
     'backers.label': '支援者',
     'backers.title': 'オペレーターが構築。信念の持ち主が支援。',
@@ -3556,9 +3600,9 @@ img { max-width: 100%; display: block; }
     'roadmap.q34d': 'AI 駆動およびエージェント戦略',
     'roadmap.q34e': '流通と統合',
     'roadmap.q34f': '継続的な KOL とマネージャーの支援',
-    'cta.title': 'レガシーの構築を始めよう',
+    'cta.title': 'Learn More About Alvara',
     'cta.desc': '最初の BSKT を作成し、リーダーボードを探索し、既存のバスケットに参加しましょう。',
-    'cta.launchApp': 'アプリを起動',
+    'cta.launchApp': 'Explore Platform',
     'footer.tagline': 'バスケットを構築。レガシーを構築。',
     'footer.foundation': 'Alvara Foundation により開発',
     'footer.platform': 'プラットフォーム',
@@ -3566,7 +3610,7 @@ img { max-width: 100%; display: block; }
     'footer.community': 'コミュニティ',
     'footer.bsktLab': 'BSKT Lab',
     'footer.explore': '探索',
-    'footer.launchApp': 'アプリを起動',
+    'footer.launchApp': 'Explore Platform',
     'footer.whitepaper': 'ホワイトペーパー',
     'footer.documentation': 'ドキュメント',
     'footer.tokenomics': 'トークノミクス',
@@ -3575,8 +3619,8 @@ img { max-width: 100%; display: block; }
     'footer.twitter': 'Twitter / X',
     'footer.telegram': 'Telegram',
     'footer.discord': 'Discord',
-    'footer.tradeAlva': 'ALVA を取引',
-    'footer.bridgeAlva': 'ALVA ブリッジ'
+    'footer.tradeAlva': 'ALVA Token Information',
+    'footer.bridgeAlva': 'Disclaimer'
   },
 
   de: {
@@ -3585,11 +3629,11 @@ img { max-width: 100%; display: block; }
     'nav.ecosystem': 'Ökosystem',
     'nav.tokenomics': 'Tokenomics',
     'nav.roadmap': 'Roadmap',
-    'nav.launchApp': 'App starten',
+    'nav.launchApp': 'Explore Platform',
     'hero.label': 'Der ERC-7621 Basket Token Standard',
     'hero.title': 'Baskets bauen.<br><span class="accent">Vermächtnis schaffen.</span>',
     'hero.subtitle': 'Die Infrastrukturebene für dezentralisierte Basket-Produkte - selbstverwaltete, investierbare Onchain-Portfolios basierend auf dem ERC-7621 Standard.',
-    'hero.launchApp': 'App starten',
+    'hero.launchApp': 'Explore Platform',
     'hero.readDocs': 'Dokumentation lesen',
     'hero.stat1': 'Entwurfsstandard',
     'hero.stat2': 'Live on Mainnet',
@@ -3619,7 +3663,7 @@ img { max-width: 100%; display: block; }
     'protocol.step3Title': 'Finanzieren & Minten',
     'protocol.step3Desc': 'Legen Sie Ihren Beitragsbetrag fest, prüfen Sie die Kostenaufstellung und deployen Sie Ihren BSKT in einer einzigen Transaktion.',
     'protocol.ctaTagline': 'Drei Schritte. Eine Transaktion. Kein Code.',
-    'protocol.ctaButton': 'Erstelle deinen ersten BSKT',
+    'protocol.ctaButton': 'Explore Platform',
     'ecosystem.label': 'Ökosystem',
     'ecosystem.title': 'Live auf dem Mainnet',
     'ecosystem.copy': 'Kopieren',
@@ -3654,7 +3698,7 @@ img { max-width: 100%; display: block; }
     'tokenomics.supplyKey': 'Maximales Angebot',
     'tokenomics.chainsKey': 'Chains',
     'tokenomics.tradeUniswap': 'Auf Uniswap handeln',
-    'tokenomics.bridgeAlva': 'ALVA bridgen',
+    'tokenomics.bridgeAlva': 'Disclaimer',
     'tokenomics.viewTokenomics': 'Tokenomics ansehen',
     'backers.label': 'Unterstützt von',
     'backers.title': 'Gebaut von Machern. Unterstützt von Überzeugten.',
@@ -3708,9 +3752,9 @@ img { max-width: 100%; display: block; }
     'roadmap.q34d': 'KI-gesteuerte und agentische Strategien',
     'roadmap.q34e': 'Distribution und Integration',
     'roadmap.q34f': 'Fortlaufende KOL- und Manager-Förderung',
-    'cta.title': 'Beginnen Sie, Ihr Vermächtnis aufzubauen',
+    'cta.title': 'Learn More About Alvara',
     'cta.desc': 'Erstellen Sie Ihren ersten BSKT, erkunden Sie das Leaderboard oder tragen Sie zu bestehenden Baskets bei.',
-    'cta.launchApp': 'App starten',
+    'cta.launchApp': 'Explore Platform',
     'footer.tagline': 'Baskets bauen. Vermächtnis schaffen.',
     'footer.foundation': 'Entwickelt von der Alvara Foundation',
     'footer.platform': 'Plattform',
@@ -3718,7 +3762,7 @@ img { max-width: 100%; display: block; }
     'footer.community': 'Community',
     'footer.bsktLab': 'BSKT Lab',
     'footer.explore': 'Entdecken',
-    'footer.launchApp': 'App starten',
+    'footer.launchApp': 'Explore Platform',
     'footer.whitepaper': 'Whitepaper',
     'footer.documentation': 'Dokumentation',
     'footer.tokenomics': 'Tokenomics',
@@ -3727,8 +3771,8 @@ img { max-width: 100%; display: block; }
     'footer.twitter': 'Twitter / X',
     'footer.telegram': 'Telegram',
     'footer.discord': 'Discord',
-    'footer.tradeAlva': 'ALVA handeln',
-    'footer.bridgeAlva': 'ALVA bridgen'
+    'footer.tradeAlva': 'ALVA Token Information',
+    'footer.bridgeAlva': 'Disclaimer'
   },
 
   it: {
@@ -3737,11 +3781,11 @@ img { max-width: 100%; display: block; }
     'nav.ecosystem': 'Ecosistema',
     'nav.tokenomics': 'Tokenomics',
     'nav.roadmap': 'Roadmap',
-    'nav.launchApp': 'Avvia App',
+    'nav.launchApp': 'Explore Platform',
     'hero.label': 'Lo Standard Basket Token ERC-7621',
     'hero.title': 'Costruisci Basket.<br><span class="accent">Costruisci un\'Eredità.</span>',
     'hero.subtitle': 'Il livello infrastrutturale per prodotti basket decentralizzati - portafogli onchain autogestiti e investibili costruiti sullo standard ERC-7621.',
-    'hero.launchApp': 'Avvia App',
+    'hero.launchApp': 'Explore Platform',
     'hero.readDocs': 'Leggi la Documentazione',
     'hero.stat1': 'Standard in Bozza',
     'hero.stat2': 'Live on Mainnet',
@@ -3771,7 +3815,7 @@ img { max-width: 100%; display: block; }
     'protocol.step3Title': 'Finanzia e Minta',
     'protocol.step3Desc': 'Imposta il tuo importo di contribuzione, rivedi la ripartizione dei costi e distribuisci il tuo BSKT in una singola transazione.',
     'protocol.ctaTagline': 'Tre passaggi. Una transazione. Zero codice.',
-    'protocol.ctaButton': 'Crea il tuo primo BSKT',
+    'protocol.ctaButton': 'Explore Platform',
     'ecosystem.label': 'Ecosistema',
     'ecosystem.title': 'Attivo sulla Mainnet',
     'ecosystem.copy': 'Copia',
@@ -3806,7 +3850,7 @@ img { max-width: 100%; display: block; }
     'tokenomics.supplyKey': 'Offerta Massima',
     'tokenomics.chainsKey': 'Chain',
     'tokenomics.tradeUniswap': 'Scambia su Uniswap',
-    'tokenomics.bridgeAlva': 'Bridge ALVA',
+    'tokenomics.bridgeAlva': 'Disclaimer',
     'tokenomics.viewTokenomics': 'Visualizza Tokenomics',
     'backers.label': 'Sostenuto Da',
     'backers.title': 'Costruito da Operatori. Sostenuto da Visionari.',
@@ -3860,9 +3904,9 @@ img { max-width: 100%; display: block; }
     'roadmap.q34d': 'Strategie guidate da IA e agenti',
     'roadmap.q34e': 'Distribuzione e integrazione',
     'roadmap.q34f': 'Abilitazione continua di KOL e gestori',
-    'cta.title': 'Inizia a Costruire la Tua Eredità',
+    'cta.title': 'Learn More About Alvara',
     'cta.desc': 'Crea il tuo primo BSKT, esplora la classifica o contribuisci a basket esistenti.',
-    'cta.launchApp': 'Avvia App',
+    'cta.launchApp': 'Explore Platform',
     'footer.tagline': 'Costruisci Basket. Costruisci un\'Eredità.',
     'footer.foundation': 'Sviluppato dalla Alvara Foundation',
     'footer.platform': 'Piattaforma',
@@ -3870,7 +3914,7 @@ img { max-width: 100%; display: block; }
     'footer.community': 'Comunità',
     'footer.bsktLab': 'BSKT Lab',
     'footer.explore': 'Esplora',
-    'footer.launchApp': 'Avvia App',
+    'footer.launchApp': 'Explore Platform',
     'footer.whitepaper': 'Whitepaper',
     'footer.documentation': 'Documentazione',
     'footer.tokenomics': 'Tokenomics',
@@ -3879,8 +3923,8 @@ img { max-width: 100%; display: block; }
     'footer.twitter': 'Twitter / X',
     'footer.telegram': 'Telegram',
     'footer.discord': 'Discord',
-    'footer.tradeAlva': 'Scambia ALVA',
-    'footer.bridgeAlva': 'Bridge ALVA'
+    'footer.tradeAlva': 'ALVA Token Information',
+    'footer.bridgeAlva': 'Disclaimer'
   },
 
   nl: {
@@ -3889,11 +3933,11 @@ img { max-width: 100%; display: block; }
     'nav.ecosystem': 'Ecosysteem',
     'nav.tokenomics': 'Tokenomics',
     'nav.roadmap': 'Roadmap',
-    'nav.launchApp': 'App starten',
+    'nav.launchApp': 'Explore Platform',
     'hero.label': 'De ERC-7621 Basket Token Standaard',
     'hero.title': 'Bouw Baskets.<br><span class="accent">Bouw een Nalatenschap.</span>',
     'hero.subtitle': 'De infrastructuurlaag voor gedecentraliseerde basket-producten - zelfbeheerde, investeerbare onchain portfolio\'s gebouwd op de ERC-7621 standaard.',
-    'hero.launchApp': 'App starten',
+    'hero.launchApp': 'Explore Platform',
     'hero.readDocs': 'Documentatie lezen',
     'hero.stat1': 'Conceptstandaard',
     'hero.stat2': 'Live on Mainnet',
@@ -3923,7 +3967,7 @@ img { max-width: 100%; display: block; }
     'protocol.step3Title': 'Financieren & Minten',
     'protocol.step3Desc': 'Stel uw bijdragebedrag in, bekijk de kostenspecificatie en deploy uw BSKT in een enkele transactie.',
     'protocol.ctaTagline': 'Drie stappen. Eén transactie. Geen code.',
-    'protocol.ctaButton': 'Maak je eerste BSKT',
+    'protocol.ctaButton': 'Explore Platform',
     'ecosystem.label': 'Ecosysteem',
     'ecosystem.title': 'Live op Mainnet',
     'ecosystem.copy': 'Kopiëren',
@@ -3958,7 +4002,7 @@ img { max-width: 100%; display: block; }
     'tokenomics.supplyKey': 'Maximale Voorraad',
     'tokenomics.chainsKey': 'Chains',
     'tokenomics.tradeUniswap': 'Handelen op Uniswap',
-    'tokenomics.bridgeAlva': 'ALVA bridgen',
+    'tokenomics.bridgeAlva': 'Disclaimer',
     'tokenomics.viewTokenomics': 'Tokenomics bekijken',
     'backers.label': 'Ondersteund Door',
     'backers.title': 'Gebouwd door Doeners. Ondersteund door Gelovigen.',
@@ -4012,9 +4056,9 @@ img { max-width: 100%; display: block; }
     'roadmap.q34d': 'AI-gestuurde en agentische strategieën',
     'roadmap.q34e': 'Distributie en integratie',
     'roadmap.q34f': 'Doorlopende KOL- en managerfacilitering',
-    'cta.title': 'Begin met het Bouwen van Uw Nalatenschap',
+    'cta.title': 'Learn More About Alvara',
     'cta.desc': 'Creëer uw eerste BSKT, verken het leaderboard of draag bij aan bestaande baskets.',
-    'cta.launchApp': 'App starten',
+    'cta.launchApp': 'Explore Platform',
     'footer.tagline': 'Bouw Baskets. Bouw een Nalatenschap.',
     'footer.foundation': 'Ontwikkeld door de Alvara Foundation',
     'footer.platform': 'Platform',
@@ -4022,7 +4066,7 @@ img { max-width: 100%; display: block; }
     'footer.community': 'Community',
     'footer.bsktLab': 'BSKT Lab',
     'footer.explore': 'Verkennen',
-    'footer.launchApp': 'App starten',
+    'footer.launchApp': 'Explore Platform',
     'footer.whitepaper': 'Whitepaper',
     'footer.documentation': 'Documentatie',
     'footer.tokenomics': 'Tokenomics',
@@ -4031,8 +4075,8 @@ img { max-width: 100%; display: block; }
     'footer.twitter': 'Twitter / X',
     'footer.telegram': 'Telegram',
     'footer.discord': 'Discord',
-    'footer.tradeAlva': 'ALVA handelen',
-    'footer.bridgeAlva': 'ALVA bridgen'
+    'footer.tradeAlva': 'ALVA Token Information',
+    'footer.bridgeAlva': 'Disclaimer'
   },
 
   fr: {
@@ -4041,11 +4085,11 @@ img { max-width: 100%; display: block; }
     'nav.ecosystem': 'Écosystème',
     'nav.tokenomics': 'Tokenomics',
     'nav.roadmap': 'Feuille de Route',
-    'nav.launchApp': 'Lancer l\'App',
+    'nav.launchApp': 'Explore Platform',
     'hero.label': 'Le Standard de Token Basket ERC-7621',
     'hero.title': 'Construisez des Baskets.<br><span class="accent">Construisez un Héritage.</span>',
     'hero.subtitle': 'La couche d\'infrastructure pour les produits basket décentralisés - des portefeuilles onchain autogérés et investissables construits sur le standard ERC-7621.',
-    'hero.launchApp': 'Lancer l\'App',
+    'hero.launchApp': 'Explore Platform',
     'hero.readDocs': 'Lire la Documentation',
     'hero.stat1': 'Standard en Brouillon',
     'hero.stat2': 'Live on Mainnet',
@@ -4075,7 +4119,7 @@ img { max-width: 100%; display: block; }
     'protocol.step3Title': 'Financer & Minter',
     'protocol.step3Desc': 'Définissez votre montant de contribution, vérifiez le détail des coûts et déployez votre BSKT en une seule transaction.',
     'protocol.ctaTagline': 'Trois étapes. Une transaction. Zéro code.',
-    'protocol.ctaButton': 'Créez votre premier BSKT',
+    'protocol.ctaButton': 'Explore Platform',
     'ecosystem.label': 'Écosystème',
     'ecosystem.title': 'En Production sur Mainnet',
     'ecosystem.copy': 'Copier',
@@ -4110,7 +4154,7 @@ img { max-width: 100%; display: block; }
     'tokenomics.supplyKey': 'Offre Maximale',
     'tokenomics.chainsKey': 'Chaînes',
     'tokenomics.tradeUniswap': 'Échanger sur Uniswap',
-    'tokenomics.bridgeAlva': 'Bridge ALVA',
+    'tokenomics.bridgeAlva': 'Disclaimer',
     'tokenomics.viewTokenomics': 'Voir les Tokenomics',
     'backers.label': 'Soutenu Par',
     'backers.title': 'Construit par des Opérateurs. Soutenu par des Visionnaires.',
@@ -4164,9 +4208,9 @@ img { max-width: 100%; display: block; }
     'roadmap.q34d': 'Stratégies pilotées par l\'IA et agentiques',
     'roadmap.q34e': 'Distribution et intégration',
     'roadmap.q34f': 'Activation continue des KOL et gestionnaires',
-    'cta.title': 'Commencez à Construire Votre Héritage',
+    'cta.title': 'Learn More About Alvara',
     'cta.desc': 'Créez votre premier BSKT, explorez le classement ou contribuez à des baskets existants.',
-    'cta.launchApp': 'Lancer l\'App',
+    'cta.launchApp': 'Explore Platform',
     'footer.tagline': 'Construisez des Baskets. Construisez un Héritage.',
     'footer.foundation': 'Développé par l\'Alvara Foundation',
     'footer.platform': 'Plateforme',
@@ -4174,7 +4218,7 @@ img { max-width: 100%; display: block; }
     'footer.community': 'Communauté',
     'footer.bsktLab': 'BSKT Lab',
     'footer.explore': 'Explorer',
-    'footer.launchApp': 'Lancer l\'App',
+    'footer.launchApp': 'Explore Platform',
     'footer.whitepaper': 'Livre Blanc',
     'footer.documentation': 'Documentation',
     'footer.tokenomics': 'Tokenomics',
@@ -4183,8 +4227,8 @@ img { max-width: 100%; display: block; }
     'footer.twitter': 'Twitter / X',
     'footer.telegram': 'Telegram',
     'footer.discord': 'Discord',
-    'footer.tradeAlva': 'Échanger ALVA',
-    'footer.bridgeAlva': 'Bridge ALVA'
+    'footer.tradeAlva': 'ALVA Token Information',
+    'footer.bridgeAlva': 'Disclaimer'
   },
 
   ko: {
@@ -4193,11 +4237,11 @@ img { max-width: 100%; display: block; }
     'nav.ecosystem': '생태계',
     'nav.tokenomics': '토크노믹스',
     'nav.roadmap': '로드맵',
-    'nav.launchApp': '앱 실행',
+    'nav.launchApp': 'Explore Platform',
     'hero.label': 'ERC-7621 바스켓 토큰 표준',
     'hero.title': '바스켓을 구축하세요.<br><span class="accent">레거시를 구축하세요.</span>',
     'hero.subtitle': '탈중앙화 바스켓 상품을 위한 인프라 레이어 - ERC-7621 표준 기반의 자체 관리형, 투자 가능한 온체인 포트폴리오.',
-    'hero.launchApp': '앱 실행',
+    'hero.launchApp': 'Explore Platform',
     'hero.readDocs': '문서 읽기',
     'hero.stat1': '드래프트 표준',
     'hero.stat2': 'Live on Mainnet',
@@ -4227,7 +4271,7 @@ img { max-width: 100%; display: block; }
     'protocol.step3Title': '펀딩 & 민트',
     'protocol.step3Desc': '기여 금액을 설정하고, 비용 내역을 검토한 후, 단일 트랜잭션으로 BSKT를 배포하세요.',
     'protocol.ctaTagline': '세 단계. 한 번의 트랜잭션. 코드 제로.',
-    'protocol.ctaButton': '첫 번째 BSKT 만들기',
+    'protocol.ctaButton': 'Explore Platform',
     'ecosystem.label': '생태계',
     'ecosystem.title': '메인넷 운영 중',
     'ecosystem.copy': '복사',
@@ -4262,7 +4306,7 @@ img { max-width: 100%; display: block; }
     'tokenomics.supplyKey': '최대 공급량',
     'tokenomics.chainsKey': '체인',
     'tokenomics.tradeUniswap': 'Uniswap에서 거래',
-    'tokenomics.bridgeAlva': 'ALVA 브릿지',
+    'tokenomics.bridgeAlva': 'Disclaimer',
     'tokenomics.viewTokenomics': '토크노믹스 보기',
     'backers.label': '후원자',
     'backers.title': '운영자가 구축. 신념을 가진 이들이 후원.',
@@ -4316,9 +4360,9 @@ img { max-width: 100%; display: block; }
     'roadmap.q34d': 'AI 기반 및 에이전트 전략',
     'roadmap.q34e': '배포 및 통합',
     'roadmap.q34f': '지속적인 KOL 및 매니저 지원',
-    'cta.title': '당신의 레거시를 구축하세요',
+    'cta.title': 'Learn More About Alvara',
     'cta.desc': '첫 번째 BSKT를 만들고, 리더보드를 탐색하거나, 기존 바스켓에 참여하세요.',
-    'cta.launchApp': '앱 실행',
+    'cta.launchApp': 'Explore Platform',
     'footer.tagline': '바스켓을 구축하세요. 레거시를 구축하세요.',
     'footer.foundation': 'Alvara Foundation이 개발',
     'footer.platform': '플랫폼',
@@ -4326,7 +4370,7 @@ img { max-width: 100%; display: block; }
     'footer.community': '커뮤니티',
     'footer.bsktLab': 'BSKT Lab',
     'footer.explore': '탐색',
-    'footer.launchApp': '앱 실행',
+    'footer.launchApp': 'Explore Platform',
     'footer.whitepaper': '백서',
     'footer.documentation': '문서',
     'footer.tokenomics': '토크노믹스',
@@ -4335,8 +4379,8 @@ img { max-width: 100%; display: block; }
     'footer.twitter': 'Twitter / X',
     'footer.telegram': 'Telegram',
     'footer.discord': 'Discord',
-    'footer.tradeAlva': 'ALVA 거래',
-    'footer.bridgeAlva': 'ALVA 브릿지'
+    'footer.tradeAlva': 'ALVA Token Information',
+    'footer.bridgeAlva': 'Disclaimer'
   },
 
   pt: {
@@ -4345,11 +4389,11 @@ img { max-width: 100%; display: block; }
     'nav.ecosystem': 'Ecossistema',
     'nav.tokenomics': 'Tokenomics',
     'nav.roadmap': 'Roteiro',
-    'nav.launchApp': 'Abrir App',
+    'nav.launchApp': 'Explore Platform',
     'hero.label': 'O Padrão de Token Basket ERC-7621',
     'hero.title': 'Construa Baskets.<br><span class="accent">Construa um Legado.</span>',
     'hero.subtitle': 'A camada de infraestrutura para produtos basket descentralizados - portfólios onchain autogeridos e investíveis construídos sobre o padrão ERC-7621.',
-    'hero.launchApp': 'Abrir App',
+    'hero.launchApp': 'Explore Platform',
     'hero.readDocs': 'Ler Documentação',
     'hero.stat1': 'Padrão em Rascunho',
     'hero.stat2': 'Live on Mainnet',
@@ -4379,7 +4423,7 @@ img { max-width: 100%; display: block; }
     'protocol.step3Title': 'Financiar e Mintar',
     'protocol.step3Desc': 'Defina seu valor de contribuição, revise o detalhamento de custos e implante seu BSKT em uma única transação.',
     'protocol.ctaTagline': 'Três passos. Uma transação. Zero código.',
-    'protocol.ctaButton': 'Crie seu primeiro BSKT',
+    'protocol.ctaButton': 'Explore Platform',
     'ecosystem.label': 'Ecossistema',
     'ecosystem.title': 'Ao Vivo na Mainnet',
     'ecosystem.copy': 'Copiar',
@@ -4414,7 +4458,7 @@ img { max-width: 100%; display: block; }
     'tokenomics.supplyKey': 'Oferta Máxima',
     'tokenomics.chainsKey': 'Redes',
     'tokenomics.tradeUniswap': 'Negociar no Uniswap',
-    'tokenomics.bridgeAlva': 'Bridge ALVA',
+    'tokenomics.bridgeAlva': 'Disclaimer',
     'tokenomics.viewTokenomics': 'Ver Tokenomics',
     'backers.label': 'Apoiado Por',
     'backers.title': 'Construído por Operadores. Apoiado por Visionários.',
@@ -4468,9 +4512,9 @@ img { max-width: 100%; display: block; }
     'roadmap.q34d': 'Estratégias impulsionadas por IA e agentes',
     'roadmap.q34e': 'Distribuição e integração',
     'roadmap.q34f': 'Capacitação contínua de KOL e gestores',
-    'cta.title': 'Comece a Construir Seu Legado',
+    'cta.title': 'Learn More About Alvara',
     'cta.desc': 'Crie seu primeiro BSKT, explore o leaderboard ou contribua para baskets existentes.',
-    'cta.launchApp': 'Abrir App',
+    'cta.launchApp': 'Explore Platform',
     'footer.tagline': 'Construa Baskets. Construa um Legado.',
     'footer.foundation': 'Desenvolvido pela Alvara Foundation',
     'footer.platform': 'Plataforma',
@@ -4478,7 +4522,7 @@ img { max-width: 100%; display: block; }
     'footer.community': 'Comunidade',
     'footer.bsktLab': 'BSKT Lab',
     'footer.explore': 'Explorar',
-    'footer.launchApp': 'Abrir App',
+    'footer.launchApp': 'Explore Platform',
     'footer.whitepaper': 'Whitepaper',
     'footer.documentation': 'Documentação',
     'footer.tokenomics': 'Tokenomics',
@@ -4487,8 +4531,8 @@ img { max-width: 100%; display: block; }
     'footer.twitter': 'Twitter / X',
     'footer.telegram': 'Telegram',
     'footer.discord': 'Discord',
-    'footer.tradeAlva': 'Negociar ALVA',
-    'footer.bridgeAlva': 'Bridge ALVA'
+    'footer.tradeAlva': 'ALVA Token Information',
+    'footer.bridgeAlva': 'Disclaimer'
   },
   ru: {
     'nav.standard': 'ERC-7621',
@@ -4496,11 +4540,11 @@ img { max-width: 100%; display: block; }
     'nav.ecosystem': '\u042d\u043a\u043e\u0441\u0438\u0441\u0442\u0435\u043c\u0430',
     'nav.tokenomics': '\u0422\u043e\u043a\u0435\u043d\u043e\u043c\u0438\u043a\u0430',
     'nav.roadmap': '\u0414\u043e\u0440\u043e\u0436\u043d\u0430\u044f \u043a\u0430\u0440\u0442\u0430',
-    'nav.launchApp': '\u0417\u0430\u043f\u0443\u0441\u0442\u0438\u0442\u044c',
+    'nav.launchApp': 'Explore Platform',
     'hero.label': '\u0421\u0442\u0430\u043d\u0434\u0430\u0440\u0442 \u043a\u043e\u0440\u0437\u0438\u043d\u043d\u043e\u0433\u043e \u0442\u043e\u043a\u0435\u043d\u0430 ERC-7621',
     'hero.title': '\u0421\u043e\u0437\u0434\u0430\u0432\u0430\u0439\u0442\u0435 \u043a\u043e\u0440\u0437\u0438\u043d\u044b.<br><span class="accent">\u0421\u043e\u0437\u0434\u0430\u0432\u0430\u0439\u0442\u0435 \u043d\u0430\u0441\u043b\u0435\u0434\u0438\u0435.</span>',
     'hero.subtitle': '\u0418\u043d\u0444\u0440\u0430\u0441\u0442\u0440\u0443\u043a\u0442\u0443\u0440\u043d\u044b\u0439 \u0443\u0440\u043e\u0432\u0435\u043d\u044c \u0434\u043b\u044f \u0434\u0435\u0446\u0435\u043d\u0442\u0440\u0430\u043b\u0438\u0437\u043e\u0432\u0430\u043d\u043d\u044b\u0445 \u043a\u043e\u0440\u0437\u0438\u043d\u043d\u044b\u0445 \u043f\u0440\u043e\u0434\u0443\u043a\u0442\u043e\u0432 - \u0441\u0430\u043c\u043e\u0443\u043f\u0440\u0430\u0432\u043b\u044f\u0435\u043c\u044b\u0435, \u0438\u043d\u0432\u0435\u0441\u0442\u0438\u0446\u0438\u043e\u043d\u043d\u044b\u0435 \u043e\u043d\u0447\u0435\u0439\u043d-\u043f\u043e\u0440\u0442\u0444\u0435\u043b\u0438 \u043d\u0430 \u0431\u0430\u0437\u0435 \u0441\u0442\u0430\u043d\u0434\u0430\u0440\u0442\u0430 ERC-7621.',
-    'hero.launchApp': '\u0417\u0430\u043f\u0443\u0441\u0442\u0438\u0442\u044c',
+    'hero.launchApp': 'Explore Platform',
     'hero.readDocs': '\u0427\u0438\u0442\u0430\u0442\u044c \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0430\u0446\u0438\u044e',
     'hero.stat1': '\u0427\u0435\u0440\u043d\u043e\u0432\u043e\u0439 \u0441\u0442\u0430\u043d\u0434\u0430\u0440\u0442',
     'hero.stat2': 'Live on Mainnet',
@@ -4530,7 +4574,7 @@ img { max-width: 100%; display: block; }
     'protocol.step3Title': '\u0424\u0438\u043d\u0430\u043d\u0441\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u0438 \u043c\u0438\u043d\u0442',
     'protocol.step3Desc': '\u0423\u0441\u0442\u0430\u043d\u043e\u0432\u0438\u0442\u0435 \u0441\u0443\u043c\u043c\u0443 \u0432\u043a\u043b\u0430\u0434\u0430, \u043f\u0440\u043e\u0432\u0435\u0440\u044c\u0442\u0435 \u0440\u0430\u0441\u043a\u043b\u0430\u0434\u043a\u0443 \u0440\u0430\u0441\u0445\u043e\u0434\u043e\u0432 \u0438 \u0440\u0430\u0437\u0432\u0435\u0440\u043d\u0438\u0442\u0435 BSKT \u0432 \u043e\u0434\u043d\u043e\u0439 \u0442\u0440\u0430\u043d\u0437\u0430\u043a\u0446\u0438\u0438.',
     'protocol.ctaTagline': '\u0422\u0440\u0438 \u0448\u0430\u0433\u0430. \u041e\u0434\u043d\u0430 \u0442\u0440\u0430\u043d\u0437\u0430\u043a\u0446\u0438\u044f. \u041d\u043e\u043b\u044c \u043a\u043e\u0434\u0430.',
-    'protocol.ctaButton': '\u0421\u043e\u0437\u0434\u0430\u0439\u0442\u0435 \u0441\u0432\u043e\u0439 \u043f\u0435\u0440\u0432\u044b\u0439 BSKT',
+    'protocol.ctaButton': 'Explore Platform',
     'ecosystem.label': '\u042d\u043a\u043e\u0441\u0438\u0441\u0442\u0435\u043c\u0430',
     'ecosystem.title': '\u0420\u0430\u0431\u043e\u0442\u0430\u0435\u0442 \u0432 \u043e\u0441\u043d\u043e\u0432\u043d\u043e\u0439 \u0441\u0435\u0442\u0438',
     'ecosystem.copy': '\u041a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u0442\u044c',
@@ -4565,7 +4609,7 @@ img { max-width: 100%; display: block; }
     'tokenomics.supplyKey': '\u041c\u0430\u043a\u0441\u0438\u043c\u0430\u043b\u044c\u043d\u0430\u044f \u044d\u043c\u0438\u0441\u0441\u0438\u044f',
     'tokenomics.chainsKey': '\u0421\u0435\u0442\u0438',
     'tokenomics.tradeUniswap': '\u0422\u043e\u0440\u0433\u043e\u0432\u0430\u0442\u044c \u043d\u0430 Uniswap',
-    'tokenomics.bridgeAlva': '\u041c\u043e\u0441\u0442 ALVA',
+    'tokenomics.bridgeAlva': 'Disclaimer',
     'tokenomics.viewTokenomics': '\u0421\u043c\u043e\u0442\u0440\u0435\u0442\u044c \u0442\u043e\u043a\u0435\u043d\u043e\u043c\u0438\u043a\u0443',
     'backers.label': '\u041f\u0440\u0438 \u043f\u043e\u0434\u0434\u0435\u0440\u0436\u043a\u0435',
     'backers.title': '\u0421\u043e\u0437\u0434\u0430\u043d\u043e \u043f\u0440\u0430\u043a\u0442\u0438\u043a\u0430\u043c\u0438. \u041f\u043e\u0434\u0434\u0435\u0440\u0436\u0430\u043d\u043e \u0435\u0434\u0438\u043d\u043e\u043c\u044b\u0448\u043b\u0435\u043d\u043d\u0438\u043a\u0430\u043c\u0438.',
@@ -4619,9 +4663,9 @@ img { max-width: 100%; display: block; }
     'roadmap.q34d': 'Стратегии на основе ИИ и агентные стратегии',
     'roadmap.q34e': 'Дистрибуция и интеграция',
     'roadmap.q34f': 'Постоянная поддержка KOL и менеджеров',
-    'cta.title': '\u041d\u0430\u0447\u043d\u0438\u0442\u0435 \u0441\u0442\u0440\u043e\u0438\u0442\u044c \u0441\u0432\u043e\u0451 \u043d\u0430\u0441\u043b\u0435\u0434\u0438\u0435',
+    'cta.title': 'Learn More About Alvara',
     'cta.desc': '\u0421\u043e\u0437\u0434\u0430\u0439\u0442\u0435 \u0441\u0432\u043e\u0439 \u043f\u0435\u0440\u0432\u044b\u0439 BSKT, \u0438\u0441\u0441\u043b\u0435\u0434\u0443\u0439\u0442\u0435 \u0442\u0430\u0431\u043b\u0438\u0446\u0443 \u043b\u0438\u0434\u0435\u0440\u043e\u0432 \u0438\u043b\u0438 \u0432\u043d\u043e\u0441\u0438\u0442\u0435 \u0432\u043a\u043b\u0430\u0434 \u0432 \u0441\u0443\u0449\u0435\u0441\u0442\u0432\u0443\u044e\u0449\u0438\u0435 \u043a\u043e\u0440\u0437\u0438\u043d\u044b.',
-    'cta.launchApp': '\u0417\u0430\u043f\u0443\u0441\u0442\u0438\u0442\u044c \u043f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u0435',
+    'cta.launchApp': 'Explore Platform',
     'footer.tagline': '\u0421\u043e\u0437\u0434\u0430\u0432\u0430\u0439\u0442\u0435 \u043a\u043e\u0440\u0437\u0438\u043d\u044b. \u0421\u043e\u0437\u0434\u0430\u0432\u0430\u0439\u0442\u0435 \u043d\u0430\u0441\u043b\u0435\u0434\u0438\u0435.',
     'footer.foundation': '\u0420\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u0430\u043d\u043e Alvara Foundation',
     'footer.platform': '\u041f\u043b\u0430\u0442\u0444\u043e\u0440\u043c\u0430',
@@ -4629,7 +4673,7 @@ img { max-width: 100%; display: block; }
     'footer.community': '\u0421\u043e\u043e\u0431\u0449\u0435\u0441\u0442\u0432\u043e',
     'footer.bsktLab': 'BSKT Lab',
     'footer.explore': '\u041e\u0431\u0437\u043e\u0440',
-    'footer.launchApp': '\u0417\u0430\u043f\u0443\u0441\u0442\u0438\u0442\u044c',
+    'footer.launchApp': 'Explore Platform',
     'footer.whitepaper': '\u0411\u0435\u043b\u0430\u044f \u043a\u043d\u0438\u0433\u0430',
     'footer.documentation': '\u0414\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0430\u0446\u0438\u044f',
     'footer.tokenomics': '\u0422\u043e\u043a\u0435\u043d\u043e\u043c\u0438\u043a\u0430',
@@ -4638,8 +4682,8 @@ img { max-width: 100%; display: block; }
     'footer.twitter': 'Twitter / X',
     'footer.telegram': 'Telegram',
     'footer.discord': 'Discord',
-    'footer.tradeAlva': '\u0422\u043e\u0440\u0433\u043e\u0432\u0430\u0442\u044c ALVA',
-    'footer.bridgeAlva': '\u041c\u043e\u0441\u0442 ALVA'
+    'footer.tradeAlva': 'ALVA Token Information',
+    'footer.bridgeAlva': 'Disclaimer'
   },
 
   tr: {
@@ -4648,11 +4692,11 @@ img { max-width: 100%; display: block; }
     'nav.ecosystem': 'Ekosistem',
     'nav.tokenomics': 'Tokenomics',
     'nav.roadmap': 'Yol Haritas\u0131',
-    'nav.launchApp': 'Uygulamay\u0131 Ba\u015flat',
+    'nav.launchApp': 'Explore Platform',
     'hero.label': 'ERC-7621 Sepet Token Standard\u0131',
     'hero.title': 'Sepetler Olu\u015ftur.<br><span class="accent">Miras Olu\u015ftur.</span>',
     'hero.subtitle': 'Merkeziyetsiz sepet \u00fcr\u00fcnleri i\u00e7in altyap\u0131 katman\u0131 - ERC-7621 standard\u0131 \u00fczerine in\u015fa edilmi\u015f, kendi kendini y\u00f6neten, yat\u0131r\u0131m yap\u0131labilir zincir \u00fcst\u00fc portf\u00f6yler.',
-    'hero.launchApp': 'Uygulamay\u0131 Ba\u015flat',
+    'hero.launchApp': 'Explore Platform',
     'hero.readDocs': 'Dok\u00fcmantasyonu Oku',
     'hero.stat1': 'Taslak Standart',
     'hero.stat2': 'Live on Mainnet',
@@ -4682,7 +4726,7 @@ img { max-width: 100%; display: block; }
     'protocol.step3Title': 'Fonla ve Mint Et',
     'protocol.step3Desc': 'Katk\u0131 miktar\u0131n\u0131z\u0131 belirleyin, maliyet d\u00f6k\u00fcm\u00fcn\u00fc inceleyin ve BSKT\'nizi tek bir i\u015flemde da\u011f\u0131t\u0131n.',
     'protocol.ctaTagline': '\u00dc\u00e7 ad\u0131m. Bir i\u015flem. S\u0131f\u0131r kod.',
-    'protocol.ctaButton': '\u0130lk BSKT\'nizi olu\u015fturun',
+    'protocol.ctaButton': 'Explore Platform',
     'ecosystem.label': 'Ekosistem',
     'ecosystem.title': 'Mainnet\'te Yay\u0131nda',
     'ecosystem.copy': 'Kopyala',
@@ -4717,7 +4761,7 @@ img { max-width: 100%; display: block; }
     'tokenomics.supplyKey': 'Maksimum Arz',
     'tokenomics.chainsKey': 'Zincirler',
     'tokenomics.tradeUniswap': 'Uniswap\'te \u0130\u015flem Yap',
-    'tokenomics.bridgeAlva': 'ALVA K\u00f6pr\u00fcle',
+    'tokenomics.bridgeAlva': 'Disclaimer',
     'tokenomics.viewTokenomics': 'Tokenomics\'i G\u00f6r\u00fcnt\u00fcle',
     'backers.label': 'Destekçiler',
     'backers.title': 'Uygulayıcılar Tarafından İnşa Edildi. İnananlar Tarafından Desteklendi.',
@@ -4771,9 +4815,9 @@ img { max-width: 100%; display: block; }
     'roadmap.q34d': 'Yapay zeka odaklı ve ajantik stratejiler',
     'roadmap.q34e': 'Dağıtım ve entegrasyon',
     'roadmap.q34f': 'Sürekli KOL ve yönetici etkinleştirme',
-    'cta.title': 'Miras\u0131n\u0131z\u0131 \u0130n\u015fa Etmeye Ba\u015flay\u0131n',
+    'cta.title': 'Learn More About Alvara',
     'cta.desc': '\u0130lk BSKT\'nizi olu\u015fturun, liderlik tablosunu ke\u015ffedin veya mevcut sepetlere katk\u0131da bulunun.',
-    'cta.launchApp': 'Uygulamay\u0131 Ba\u015flat',
+    'cta.launchApp': 'Explore Platform',
     'footer.tagline': 'Sepetler Olu\u015ftur. Miras Olu\u015ftur.',
     'footer.foundation': 'Alvara Foundation taraf\u0131ndan geli\u015ftirildi',
     'footer.platform': 'Platform',
@@ -4781,7 +4825,7 @@ img { max-width: 100%; display: block; }
     'footer.community': 'Topluluk',
     'footer.bsktLab': 'BSKT Lab',
     'footer.explore': 'Ke\u015ffet',
-    'footer.launchApp': 'Uygulamay\u0131 Ba\u015flat',
+    'footer.launchApp': 'Explore Platform',
     'footer.whitepaper': 'Teknik Rapor',
     'footer.documentation': 'Dok\u00fcmantasyon',
     'footer.tokenomics': 'Tokenomics',
@@ -4790,8 +4834,8 @@ img { max-width: 100%; display: block; }
     'footer.twitter': 'Twitter / X',
     'footer.telegram': 'Telegram',
     'footer.discord': 'Discord',
-    'footer.tradeAlva': 'ALVA \u0130\u015flem Yap',
-    'footer.bridgeAlva': 'ALVA K\u00f6pr\u00fcle'
+    'footer.tradeAlva': 'ALVA Token Information',
+    'footer.bridgeAlva': 'Disclaimer'
   }
 
 };
