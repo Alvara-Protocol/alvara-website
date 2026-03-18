@@ -95,6 +95,7 @@
 
 <article class="blog-post-content">
   <div class="container-narrow">
+    <img src="/images/blog/hero-bg-1.jpg" alt="What Are Basket Tokens?" style="width:100%;border-radius:12px;margin-bottom:var(--space-lg);">
 
     <p>We started building Alvara because we kept watching the same thing happen: someone with a genuinely good investment thesis would share it on Twitter, maybe get a few hundred likes, and then... nothing. No way to package it. No way for other people to follow it transparently. No way to earn from it. The thesis just evaporated into the timeline.</p>
 
@@ -103,6 +104,8 @@
     <h2>How Basket Tokens Work</h2>
 
     <p>At a high level, a basket token wraps multiple ERC-20 tokens into one. When you mint a BSKT, you deposit ETH (or any single token) and the protocol automatically routes through 1inch to acquire the underlying assets in the correct proportions. When you withdraw, you can either receive the individual underlying tokens or route them back to a single token. The LP shares you hold are standard ERC-20 tokens, fully transferable and tradeable.</p>
+
+    <p>One thing to note: on Ethereum mainnet, every BSKT currently requires an ALVA token allocation as part of its composition. This requirement is being removed with the upcoming Base deployment, which will allow fully custom allocations from day one.</p>
 
     <p>Here's a concrete example. Say someone creates a "DeFi Blue Chips" basket with the following composition:</p>
 
@@ -181,16 +184,16 @@
 
     <ul>
       <li><strong>Liquidity depends on the underlying tokens.</strong> If your basket contains tokens with thin trading volume, minting and redeeming will be more expensive due to slippage. This is a real constraint today, especially for smaller-cap tokens.</li>
-      <li><strong>Manager quality varies.</strong> Permissionless creation means there's no quality filter. Some baskets will have well-considered allocations; others won't. That's why Alvara includes Xerberus risk ratings (AAA to D) and a public manager leaderboard, so you can evaluate before you invest.</li>
+      <li><strong>Manager quality varies.</strong> Anyone can create a BSKT, which means quality is all over the map. Some baskets will reflect deep research; others won't. The public manager leaderboard on Alvara helps you compare track records before contributing, but doing your own due diligence still matters.</li>
       <li><strong>Regulation is still evolving.</strong> Tokenized basket products operate in a legal grey area in many jurisdictions. The protocol is decentralized and permissionless, but users should understand the regulatory landscape where they operate.</li>
-      <li><strong>Smart contract risk exists.</strong> BSKTs depend on ERC-7621 contracts that have been audited (by Certik, Quill, Adevar Labs, and SolidProof), but no audit eliminates all risk. This is DeFi; understand what you're interacting with.</li>
+      <li><strong>Smart contract risk exists.</strong> The ERC-7621 contracts have been audited, but no audit eliminates all risk. This is DeFi; understand what you're interacting with.</li>
     </ul>
 
     <h2>How Alvara Makes It Simple</h2>
 
-    <p>Alvara Protocol is the platform built around ERC-7621. It provides the smart contracts, the UI, and the infrastructure for creating and managing basket tokens. The creation flow is three steps: Compose (pick your tokens and weights, or start from a template), Design (add your logo, name, ticker, and description), and Fund & Mint (set your contribution amount and deploy in a single transaction). No code required.</p>
+    <p>Alvara Protocol is the platform built around ERC-7621. It provides the smart contracts, the UI, and the infrastructure for creating and managing basket tokens. The creation flow is three steps: Compose (select your tokens and set allocation weights), Design (name your BSKT, choose a ticker, and add branding), and Fund (deposit a minimum of 0.1 ETH to deploy onchain). No code required.</p>
 
-    <p>Once your basket is live, anyone can contribute by depositing ETH or a single token — the protocol routes through 1inch to acquire the underlying assets automatically. You start earning management fees from day one. Every BSKT gets an independent Xerberus risk rating so contributors know what they're getting into.</p>
+    <p>Once your basket is live, anyone can contribute by depositing ETH or a single token — the protocol routes through 1inch to acquire the underlying assets automatically. You start earning management fees from day one. As the creator, you also receive a management NFT that grants you rebalancing control over the basket's allocations. All deposits into BSKTs include automatic MEV protection, so contributors aren't exposed to sandwich attacks. Once live, your BSKT appears on the Explore page and public leaderboard for anyone to discover.</p>
 
     <div class="callout">
       <p><strong>Want to try it yourself?</strong> The easiest way to understand BSKTs is to create one. Check out our <a href="/blog/how-to-create-onchain-etf/">step-by-step tutorial</a> or browse existing baskets on the <a href="https://bskt.alvara.xyz/" target="_blank" rel="noopener">Alvara app</a>.</p>

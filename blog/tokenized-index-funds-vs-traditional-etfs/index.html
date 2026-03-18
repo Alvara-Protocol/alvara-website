@@ -95,6 +95,7 @@
 
 <article class="blog-post-content">
   <div class="container-narrow">
+    <img src="/images/blog/hero-bg-5.jpg" alt="Tokenized Index Funds vs Traditional ETFs" style="width:100%;border-radius:12px;margin-bottom:var(--space-lg);">
 
     <p>We get asked this question a lot, usually framed as "why would anyone use a BSKT when ETFs already exist?" The short answer: they solve different problems. A Vanguard ETF gives you cheap, passive exposure to the S&P 500 with decades of regulatory infrastructure behind it. A BSKT gives you permissionless, composable, 24/7 exposure to any ERC-20 tokens you want, managed by anyone with a verifiable track record onchain.</p>
 
@@ -116,7 +117,7 @@
 
     <p>Getting into a traditional ETF requires a brokerage account. That means KYC verification, proof of address, and in many cases, geographic eligibility. Not every ETF is available in every country. And once you have an account, you can only trade during market hours, typically 9:30 AM to 4:00 PM Eastern Time on weekdays.</p>
 
-    <p>Tokenized index funds work differently. All you need is a crypto wallet and an internet connection. No sign-up process, no identity verification at the protocol level (though Alvara offers optional verification for managers through X and Gitcoin Passport), and no geographic restrictions built into the protocol. BSKTs trade 24/7/365.</p>
+    <p>Tokenized index funds work differently. All you need is a crypto wallet and an internet connection. No sign-up process, no identity verification required at the protocol level, and no geographic restrictions built into the protocol. BSKTs trade 24/7/365.</p>
 
     <h2>Comparison: Fees</h2>
 
@@ -128,13 +129,13 @@
 
     <p>Traditional ETFs disclose their holdings, but the frequency and depth vary. Most large ETFs publish their full holdings daily, while some actively managed funds only disclose quarterly. The SEC mandates certain disclosures, which is good, but at the end of the day you are trusting the fund provider to report accurately.</p>
 
-    <p>Tokenized index funds are transparent by default. Every asset in a BSKT, along with its exact quantity, is recorded on the Ethereum blockchain. Anyone can verify the composition at any time by looking at the smart contract. On the Alvara platform, every basket also gets a Xerberus risk rating (AAA to D) calculated from the underlying tokens, so holders can assess risk before committing. The data is onchain, public, and updated in real time.</p>
+    <p>Tokenized index funds are transparent by default. Every asset in a BSKT, along with its exact quantity, is recorded on the Ethereum blockchain. Anyone can verify the composition at any time by looking at the smart contract. The data is onchain, public, and verifiable in real time — no waiting for quarterly disclosures or trusting a fund provider's self-reported numbers.</p>
 
     <h2>Comparison: Settlement</h2>
 
     <p>In traditional markets, when you buy an ETF, the trade settles on a T+1 basis, meaning the actual transfer of ownership happens one business day after the trade. It used to be T+2 until recently. This process involves a chain of intermediaries: custodians, clearinghouses, and transfer agents all play a role. Each adds a layer of counterparty risk and operational complexity.</p>
 
-    <p>Onchain settlement is instant. When you mint, burn, or trade a BSKT, the transaction is final as soon as it is included in a block. Transactions are atomic, meaning either everything goes through or nothing does. No waiting period, no counterparty risk in the settlement process, and no chain of intermediaries that need to reconcile their books.</p>
+    <p>Onchain settlement is instant. When you mint, burn, or trade a BSKT, the transaction is final as soon as it is included in a block. Transactions are atomic, meaning either everything goes through or nothing does. The protocol also routes trades through MEV-protected pathways, reducing the risk of front-running or sandwich attacks that can erode value during execution. No waiting period, no counterparty risk in the settlement process, and no chain of intermediaries that need to reconcile their books.</p>
 
     <h2>Comparison: Composability</h2>
 
@@ -146,7 +147,7 @@
 
     <p>Launching a traditional ETF is a major undertaking. You need a legal entity, regulatory filings, relationships with authorized participants, a custodian, a fund administrator, and usually several months of preparation before you can bring a product to market. The costs run into hundreds of thousands of dollars at minimum, and ongoing compliance adds more.</p>
 
-    <p>Creating a BSKT takes minutes. You go to the <a href="https://bskt.alvara.xyz/" target="_blank" rel="noopener">Alvara app</a>, select your assets, set your weights, choose a management fee, and deploy. No lawyers, no regulators, no authorized participants. If you have a thesis about which tokens belong together, you can turn it into a live, tradeable product the same day you think of it.</p>
+    <p>Creating a BSKT takes minutes. You go to the <a href="https://bskt.alvara.xyz/" target="_blank" rel="noopener">Alvara app</a>, select your assets, set your weights, choose a management fee, and deploy. For Ethereum BSKTs, creators must also allocate ALVA tokens alongside their seed capital, which aligns the creator's incentives with the protocol. No lawyers, no regulators, no authorized participants. If you have a thesis about which tokens belong together, you can turn it into a live, tradeable product the same day you think of it.</p>
 
     <h2>When Traditional ETFs Still Win</h2>
 
@@ -167,7 +168,7 @@
 
     <ul>
       <li><strong>Manager accessibility.</strong> If you have a good thesis on DeFi tokens, you can express it as a live product today. Minimum seed capital is just 0.1 ETH — no lawyers, no six-month regulatory process. Verify your identity on the platform, deploy your basket, and let your track record speak for itself on the leaderboard.</li>
-      <li><strong>Holder transparency.</strong> You do not need to trust a quarterly report. The composition, risk rating, manager verification status, and performance history are all verifiable onchain or visible in the app at any time.</li>
+      <li><strong>Holder transparency.</strong> You do not need to trust a quarterly report. The composition and performance history are all verifiable onchain or visible in the app at any time.</li>
       <li><strong>Composability.</strong> An ETF sits in your brokerage account. A BSKT can be used as collateral, traded on DEXs, included in other baskets, or integrated into yield strategies. Your diversified portfolio does not just sit idle.</li>
       <li><strong>Speed of innovation.</strong> A new category of tokens appears (AI, RWA, restaking), and within hours there can be a BSKT tracking it. A traditional ETF for the same category takes months to years to launch, if it gets approved at all.</li>
     </ul>
@@ -179,7 +180,7 @@
     <p>BSKTs sit at that intersection. They offer the permissionless creation and DeFi composability that traditional products cannot match, while the underlying concept, a diversified, transparent, managed basket of assets, is identical to what ETFs have offered for decades. We think both will coexist, serving different users and different use cases, with increasing overlap.</p>
 
     <div class="callout">
-      <p><strong>Compare for yourself.</strong> Browse the baskets on <a href="https://bskt.alvara.xyz/" target="_blank" rel="noopener">bskt.alvara.xyz</a>, check the risk ratings and manager verification, and see how they stack up against what you are currently holding.</p>
+      <p><strong>Compare for yourself.</strong> Browse the baskets on <a href="https://bskt.alvara.xyz/" target="_blank" rel="noopener">bskt.alvara.xyz</a> and see how they stack up against what you are currently holding.</p>
     </div>
 
   </div>
@@ -208,7 +209,7 @@
 <section class="blog-cta">
   <div class="container">
     <h2>Explore the Platform</h2>
-    <p>Verified managers. Risk ratings. Real-time composition. See the difference.</p>
+    <p>Real-time composition. Transparent performance. See the difference.</p>
     <a href="https://bskt.alvara.xyz/" target="_blank" rel="noopener" class="btn-white">Mint BSKT &rarr;</a>
   </div>
 </section>

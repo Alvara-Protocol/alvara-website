@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gauge Weight Voting Explained: How Alvara Directs Rewards | Alvara Protocol</title>
+  <meta name="description" content="How gauge weight voting works in Alvara Protocol. Lock ALVA for veALVA, vote each epoch to direct rewards to the best BSKTs, and earn DAO rewards for participating.">
+  <link rel="canonical" href="https://alvara.xyz/blog/gauge-weight-voting-explained/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Gauge Weight Voting Explained: How Alvara Directs Rewards">
+  <meta property="og:description" content="How gauge weight voting works in Alvara Protocol. Lock ALVA for veALVA, vote each epoch to direct rewards to the best BSKTs, and earn DAO rewards for participating.">
+  <meta property="og:url" content="https://alvara.xyz/blog/gauge-weight-voting-explained/">
+  <meta property="og:site_name" content="Alvara Protocol">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Gauge Weight Voting Explained: How Alvara Directs Rewards">
+  <meta name="twitter:description" content="How gauge weight voting works in Alvara Protocol. Lock ALVA for veALVA, vote each epoch to direct rewards to the best BSKTs, and earn DAO rewards for participating.">
+
+  <link rel="stylesheet" href="/css/blog.css">
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Gauge Weight Voting Explained: How Alvara Directs Rewards",
+    "description": "How gauge weight voting works in Alvara Protocol. Lock ALVA for veALVA, vote each epoch to direct rewards to the best BSKTs, and earn DAO rewards for participating.",
+    "datePublished": "2026-01-28",
+    "author": {
+      "@type": "Organization",
+      "name": "Alvara Protocol"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Alvara Protocol"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://alvara.xyz/blog/gauge-weight-voting-explained/"
+    }
+  }
+  </script>
+</head>
+<body>
+
+<nav class="blog-nav" id="blogNav">
+  <div class="blog-nav-inner">
+    <a href="/" class="blog-nav-logo" aria-label="Alvara Protocol">
+      <svg viewBox="0 0 315 69" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M99.8927 23.2031C87.4607 23.2031 77.3828 33.2822 77.3828 45.7142C77.3828 58.1461 87.4607 68.224 99.8927 68.224H119.79V35.5138H107.613V56.413H100.462C94.6862 56.413 90.0033 51.7302 90.0033 45.9544C90.0033 40.1786 94.6862 35.4958 100.462 35.4958H107.605V23.328" fill="#FDF2FF"/>
+        <path d="M140.661 0.472656H128.295V68.2232H140.661V0.472656Z" fill="#FDF2FF"/>
+        <path d="M175.324 23.4766V45.2082C175.324 50.9839 170.641 55.6668 164.865 55.6668C164.727 55.6668 164.589 55.6632 164.452 55.6584H159.912V67.7913C159.929 67.7949 159.946 67.7973 159.961 67.8009V68.2765H163.964C164.184 68.2825 164.404 68.2873 164.625 68.2873C177.057 68.2873 187.135 58.2094 187.135 45.7774V23.4778H175.324V23.4766Z" fill="#FDF2FF"/>
+        <path d="M159.911 55.8317V23.2031H148.1V37.7837V53.6434V55.8317H159.911Z" fill="#FDF2FF"/>
+        <path d="M254.059 68.2873V46.5557C254.059 40.7799 258.742 36.0971 264.518 36.0971C264.656 36.0971 264.794 36.1007 264.931 36.1055H269.471V23.9726C269.454 23.969 269.437 23.9666 269.422 23.963V23.4874H265.418C265.199 23.4814 264.979 23.4766 264.758 23.4766C252.326 23.4766 242.248 33.5545 242.248 45.9864V68.2861H254.059V68.2873Z" fill="#FDF2FF"/>
+        <path d="M214.412 23.2031C201.98 23.2031 191.902 33.281 191.902 45.713C191.902 58.1449 201.98 68.2229 214.412 68.2229H234.31V35.5126H222.132V56.4118H214.982C209.206 56.4118 204.523 51.729 204.523 45.9532C204.523 40.1774 209.206 35.4946 214.982 35.4946H222.124V23.3268" fill="#FDF2FF"/>
+        <path d="M295.106 23.3711C282.674 23.3711 272.596 33.449 272.596 45.881C272.596 58.3129 282.674 68.3908 295.106 68.3908H315.003V35.6805H302.826V56.5798H295.675C289.899 56.5798 285.216 51.897 285.216 46.1212C285.216 40.3454 289.899 35.6625 295.675 35.6625H302.817V23.4948" fill="#FDF2FF"/>
+        <path d="M0.00585938 52.1767V28.3406L20.3972 7.94922H44.2333V24.0807H16.1373V52.1767H0.00585938Z" fill="url(#nav-g1)"/>
+        <path d="M16.2224 68.3932V52.2617H44.3184V24.1657H60.4499V48.0018L40.0585 68.3932H16.2224Z" fill="url(#nav-g2)"/>
+        <defs>
+          <linearGradient id="nav-g1" x1="78.32" y1="33.29" x2="-9.15" y2="66.7" gradientUnits="userSpaceOnUse"><stop stop-color="#FC75AF"/><stop offset="1" stop-color="#D73D80"/></linearGradient>
+          <linearGradient id="nav-g2" x1="78.32" y1="33.29" x2="-9.15" y2="66.7" gradientUnits="userSpaceOnUse"><stop stop-color="#FC75AF"/><stop offset="1" stop-color="#D73D80"/></linearGradient>
+        </defs>
+      </svg>
+    </a>
+    <div class="blog-nav-links">
+      <a href="/blog/" class="blog-back">&larr; <span>All Posts</span></a>
+      <a href="/">Home</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+        <svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<header class="blog-post-header">
+  <div class="container-narrow">
+    <nav class="blog-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> / <a href="/blog/">Blog</a> / <span>Gauge Weight Voting Explained</span>
+    </nav>
+    <div class="blog-category">Technical</div>
+    <h1>Gauge Weight Voting Explained: How Alvara Directs Rewards</h1>
+    <div class="blog-meta">
+      <span>Alvara Protocol</span>
+      <span class="blog-meta-dot">&middot;</span>
+      <time datetime="2026-01-28">January 28, 2026</time>
+      <span class="blog-meta-dot">&middot;</span>
+      <span>7 min read</span>
+    </div>
+  </div>
+</header>
+
+<article class="blog-post-content">
+  <div class="container-narrow">
+
+    <p>Most DeFi protocols distribute rewards on autopilot. Liquidity mining programmes spray tokens at every pool equally, or follow some formula that nobody votes on and nobody questions until the emissions run dry. Alvara does it differently. ALVA rewards flow to the BSKTs that the community actively votes for, every epoch. This is gauge weight voting, and it is the mechanism that ties the entire protocol together.</p>
+
+    <p>If you hold ALVA and are not voting, you are leaving rewards on the table and letting other people decide which baskets get incentivised. This post explains exactly how the system works, from locking to voting to claiming.</p>
+
+    <h2>The Big Picture</h2>
+
+    <p>Gauge weight voting answers a simple question: which BSKTs should receive ALVA rewards this epoch?</p>
+
+    <p>Instead of the protocol deciding centrally, the community decides. Anyone who locks ALVA tokens for veALVA gets voting power. Each epoch, veALVA holders allocate their votes across the BSKTs they believe deserve incentives. At the end of the epoch, rewards are distributed proportionally: BSKTs that received more votes get more ALVA. Voters who participated earn DAO rewards for doing so.</p>
+
+    <p>The result is a competitive flywheel. Managers are motivated to build good baskets that attract votes. Voters are motivated to identify the best baskets because their own rewards depend on participation. And LP holders in rewarded BSKTs benefit from the additional ALVA incentives directed their way.</p>
+
+    <h2>Step 1: Lock ALVA for veALVA</h2>
+
+    <p>Voting power comes from veALVA, which you get by locking ALVA tokens on Ethereum mainnet. The amount of veALVA you receive depends on two things: how much ALVA you lock and how long you lock it for.</p>
+
+    <p>Longer locks mean more voting power. The multiplier ranges from 0.01x for a one-week lock all the way up to 10x for a 48-month lock. There is also a "Forever" lock option that gives you a permanent 2x multiplier with no decay.</p>
+
+    <p>A concrete example: if you lock 1,000 ALVA for 12 months, you receive 1,000 veALVA. Lock the same amount for 48 months and you get 10,000 veALVA. Ten times the governance power from the same capital, just committed for longer.</p>
+
+    <h3>veALVA decays over time</h3>
+
+    <p>Unless you choose the Forever lock, your veALVA balance decreases linearly as your lock period approaches expiry. At expiry it reaches zero and your ALVA unlocks. This decay is deliberate: it ensures that voting power stays concentrated with people who have ongoing skin in the game, not just those who locked once and walked away.</p>
+
+    <p>veALVA is non-transferable. It is bound to the wallet that locked the ALVA. You cannot sell it, delegate it, or move it to another address. Your voting power is yours alone.</p>
+
+    <h2>Step 2: Vote Each Epoch</h2>
+
+    <p>Epochs are recurring cycles during which veALVA holders allocate their voting power to specific BSKTs. Each epoch, you choose which baskets you want to support and how much of your veALVA to allocate to each.</p>
+
+    <p>You do not have to concentrate all your votes on one basket. You can spread them across multiple BSKTs, or go all in on one you believe in. The allocation is entirely up to you.</p>
+
+    <p>Voting happens through the DAO page on the Alvara app. Select the BSKTs you want to vote for, set your allocation, and submit. Your votes are recorded and count toward that epoch's reward distribution.</p>
+
+    <h3>Why vote at all?</h3>
+
+    <p>Two reasons. First, your votes shape which BSKTs get rewarded. If you hold LP tokens in a basket, voting for it directs more ALVA rewards to that basket and its holders, including you. Second, voters earn DAO rewards. Only veALVA holders who actually participate in gauge weight voting during an epoch are eligible for that epoch's rewards. If you hold veALVA but do not vote, you get nothing.</p>
+
+    <h2>Step 3: Rewards Flow</h2>
+
+    <p>After each epoch closes, two things happen:</p>
+
+    <ul>
+      <li><strong>BSKT rewards.</strong> ALVA emissions are distributed to BSKTs proportionally based on the votes they received. BSKTs with more gauge weight get a larger share. These rewards flow to the LP holders of those baskets.</li>
+      <li><strong>DAO rewards.</strong> veALVA holders who voted during the epoch receive ALVA rewards proportionally based on their voting participation. Longer locks and more veALVA means a larger share of the DAO rewards pool.</li>
+    </ul>
+
+    <p>Reward distribution uses a merkle proof system for gas efficiency. The merkle tree root is published onchain, and eligible addresses can claim their rewards at any time. There is no expiration on claims, so you can batch them up or claim per epoch.</p>
+
+    <p>All claims are processed on Ethereum mainnet. Claimed ALVA transfers directly to your wallet.</p>
+
+    <h2>The Flywheel Effect</h2>
+
+    <p>This system creates a self-reinforcing cycle that aligns every participant in the protocol:</p>
+
+    <ul>
+      <li><strong>Managers</strong> create and maintain quality BSKTs because baskets that attract votes receive more rewards, which attracts more LP holders, which means more management fees.</li>
+      <li><strong>LP holders</strong> benefit from ALVA rewards directed to the baskets they invest in, on top of the portfolio returns from the underlying assets.</li>
+      <li><strong>Voters</strong> earn DAO rewards for participating, with their voting power proportional to their commitment (lock duration). They are incentivised to identify and support genuinely good baskets.</li>
+      <li><strong>The protocol</strong> benefits because rewards flow to where the community sees the most value, not where an algorithm or core team decided to point them.</li>
+    </ul>
+
+    <h2>The Curve Wars Playbook</h2>
+
+    <p>If any of this sounds familiar, it should. Alvara's gauge system is built on the same model that made the Curve Wars one of the most consequential episodes in DeFi history.</p>
+
+    <p>For those who missed it: Curve Finance uses veCRV gauge voting to direct CRV emissions to specific liquidity pools. Protocols that wanted deep liquidity for their stablecoins realised it was cheaper to acquire veCRV voting power and direct emissions to their own pools than to pay for liquidity through traditional incentive programmes. What followed was an all-out war for veCRV.</p>
+
+    <p>Convex Finance built an entire protocol around accumulating veCRV on behalf of depositors, becoming the single largest holder. Yearn, Frax, and dozens of other protocols competed to lock CRV or bribe Convex voters through platforms like Votium. At its peak, Curve held over $20 billion in TVL, and protocols were spending millions of dollars per month in bribes just to influence where CRV emissions flowed. The Curve Wars proved something important: when gauge voting controls the flow of rewards, the voting power itself becomes one of the most valuable assets in the ecosystem.</p>
+
+    <p>Alvara uses the same proven mechanism. veALVA holders vote to direct ALVA rewards to specific BSKTs, just as veCRV holders vote to direct CRV to specific pools. The flywheel dynamics are identical: acquire voting power, direct rewards, attract capital, earn fees, repeat.</p>
+
+    <h2>From Curve Wars to ALVA Wars</h2>
+
+    <p>Here is where it gets interesting. The Curve Wars played out over liquidity pools. Important infrastructure, but ultimately a backend service: protocols needed deep liquidity to function, and they used gauge voting to get it. The total addressable market was DeFi liquidity.</p>
+
+    <p>The ALVA Wars will play out over something much bigger: investment products.</p>
+
+    <p>Onchain ETFs are not a backend service. They are the end product. Every BSKT is a portfolio that real people hold, track, and invest in. The gauge voting system does not just direct rewards to infrastructure. It directs rewards to the baskets that the community believes are the best investment strategies. That is a fundamentally different value proposition.</p>
+
+    <p>Think about the scale. The global ETF market is worth over $14 trillion. The onchain share of that is effectively zero today. As tokenized investment products grow, the competition to attract capital into specific BSKTs will intensify. Managers will want gauge weight directed at their baskets to attract LP holders. Protocols building on Alvara will want their ecosystem baskets incentivised. DAOs will want their treasury baskets to earn additional ALVA rewards. And the only way to influence any of it is through veALVA.</p>
+
+    <p>The Curve Wars taught DeFi that gauge voting power is worth fighting for when it controls liquidity flows. The ALVA Wars will prove the same thing for something far larger: the flow of investment capital into onchain portfolios.</p>
+
+    <p>Every ALVA token locked into veALVA is a vote on which investment strategies get rewarded. As the number of BSKTs grows, as more capital flows onchain, and as more managers compete for holders, the demand for that voting power only increases. The people locking ALVA today are positioning themselves at the centre of a market that barely exists yet but has a multi-trillion dollar ceiling.</p>
+
+    <h2>Where Does the ALVA Come From?</h2>
+
+    <p>ALVA has a fixed maximum supply with deflationary mechanics. Locked tokens are permanently removed from circulating supply for the duration of the lock. The protocol buys back ALVA using a percentage of platform fees, and these bought-back tokens fund the staking rewards pool.</p>
+
+    <p>The combination of fixed supply, continuous buybacks from fees, and tokens locked in veALVA creates natural supply pressure. As the protocol grows and more fees are generated, more ALVA is bought back. As more people lock for veALVA, less ALVA circulates. The Curve Wars showed what happens to a token when everyone wants to lock it and nobody wants to sell it. The same dynamics apply here, except the underlying market is orders of magnitude larger.</p>
+
+    <h2>Governance Beyond Gauges</h2>
+
+    <p>veALVA is not only for gauge weight voting. It is also the governance token for broader protocol decisions. Snapshot proposals are weighted by veALVA balance, meaning the same people who are most committed to the protocol (longest locks, most skin in the game) have the most influence over its direction.</p>
+
+    <p>You can follow governance discussions on the <a href="https://governance.alvara.xyz/" target="_blank" rel="noopener">governance forum</a> and vote on proposals through <a href="https://snapshot.org/#/s:bskt.eth" target="_blank" rel="noopener">Snapshot</a>.</p>
+
+    <h2>Getting Started</h2>
+
+    <p>If you are holding ALVA and not participating in gauge weight voting, you are missing one of the core reasons the token exists. Here is the quick version:</p>
+
+    <ol>
+      <li>Go to the <a href="https://app.alvara.xyz/" target="_blank" rel="noopener">Alvara app</a> and connect your wallet on Ethereum mainnet.</li>
+      <li>Lock your ALVA tokens for veALVA. Choose your lock duration based on how committed you are. Longer locks mean more voting power and more rewards.</li>
+      <li>Each epoch, head to the DAO page and allocate your votes to the BSKTs you want to support.</li>
+      <li>After the epoch closes, claim your DAO rewards from the Claim Rewards tab.</li>
+    </ol>
+
+    <p>There is no expiration on reward claims, so you can claim at your own pace. But you must vote each epoch to be eligible for that epoch's rewards.</p>
+
+    <div class="callout">
+      <p><strong>Already locked?</strong> Head to the <a href="https://app.alvara.xyz/" target="_blank" rel="noopener">DAO page</a> and make sure you are voting this epoch. If you are not voting, you are not earning.</p>
+    </div>
+
+  </div>
+</article>
+
+<section class="blog-related">
+  <div class="container-narrow">
+    <h2>Related Posts</h2>
+    <div class="blog-related-grid">
+      <a href="/blog/what-are-basket-tokens/" class="blog-card">
+        <div class="blog-card-category">Education</div>
+        <h3>What Are Basket Tokens? A Complete Guide to ERC-7621</h3>
+        <p>Basket tokens (BSKTs) are multi-asset tokens built on ERC-7621. Learn how they work, why they matter, and how anyone can create one.</p>
+        <span class="blog-card-link">Read more &rarr;</span>
+      </a>
+      <a href="/blog/onchain-portfolio-management-guide/" class="blog-card">
+        <div class="blog-card-category">Insight</div>
+        <h3>Onchain Portfolio Management: Why BSKTs Are the Future</h3>
+        <p>What good onchain portfolio management looks like, who it is for, and where it still falls short.</p>
+        <span class="blog-card-link">Read more &rarr;</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="blog-cta">
+  <div class="container">
+    <h2>Start Voting, Start Earning</h2>
+    <p>Lock ALVA for veALVA and direct rewards to the baskets you believe in.</p>
+    <a href="https://app.alvara.xyz/" target="_blank" rel="noopener" class="btn-white">Open App &rarr;</a>
+  </div>
+</section>
+
+<footer class="blog-footer">
+  <div class="container">
+    <div class="blog-footer-inner">
+      <div class="blog-footer-brand">
+        <svg viewBox="0 0 60 69" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0.00585938 52.1767V28.3406L20.3972 7.94922H44.2333V24.0807H16.1373V52.1767H0.00585938Z" fill="url(#fg1)"/>
+          <path d="M16.2224 68.3932V52.2617H44.3184V24.1657H60.4499V48.0018L40.0585 68.3932H16.2224Z" fill="url(#fg2)"/>
+          <defs>
+            <linearGradient id="fg1" x1="78.32" y1="33.29" x2="-9.15" y2="66.7" gradientUnits="userSpaceOnUse"><stop stop-color="#FC75AF"/><stop offset="1" stop-color="#D73D80"/></linearGradient>
+            <linearGradient id="fg2" x1="78.32" y1="33.29" x2="-9.15" y2="66.7" gradientUnits="userSpaceOnUse"><stop stop-color="#FC75AF"/><stop offset="1" stop-color="#D73D80"/></linearGradient>
+          </defs>
+        </svg>
+        &copy; 2025-2026 Alvara Protocol
+      </div>
+      <div class="blog-footer-links">
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+        <a href="https://docs.alvara.xyz/" target="_blank" rel="noopener">Docs</a>
+        <a href="https://app.alvara.xyz/" target="_blank" rel="noopener">Launch App</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function() {
+  const saved = localStorage.getItem('alvara-theme');
+  if (saved) document.documentElement.setAttribute('data-theme', saved);
+  else if (window.matchMedia('(prefers-color-scheme: light)').matches) document.documentElement.setAttribute('data-theme', 'light');
+
+  document.getElementById('themeToggle').addEventListener('click', () => {
+    const current = document.documentElement.getAttribute('data-theme');
+    const next = current === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('alvara-theme', next);
+  });
+
+  window.addEventListener('scroll', () => {
+    document.getElementById('blogNav').classList.toggle('scrolled', window.scrollY > 10);
+  }, { passive: true });
+})();
+</script>
+
+</body>
+</html>

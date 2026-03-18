@@ -1004,12 +1004,24 @@ img { max-width: 100%; display: block; }
 .blog-grid-card {
   background: var(--bg-card);
   border: 1px solid var(--border);
-  padding: var(--space-lg);
   transition: border-color 0.3s;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 .blog-grid-card:hover { border-color: var(--border-active); }
+.blog-grid-card-thumb {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+.blog-grid-card-body {
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
 .blog-grid-card-cat {
   font-family: var(--font-mono);
   font-size: 11px;
@@ -1030,8 +1042,10 @@ img { max-width: 100%; display: block; }
   font-size: 14px;
   color: var(--text-muted);
   line-height: 1.6;
-  flex: 1;
   margin-bottom: var(--space-md);
+}
+.blog-grid-card-body p {
+  flex: 1;
 }
 .blog-grid-card-link {
   font-size: 14px;
@@ -1956,6 +1970,7 @@ img { max-width: 100%; display: block; }
       <li><a href="#ecosystem" data-i18n="nav.ecosystem">Ecosystem</a></li>
       <li><a href="#tokenomics" data-i18n="nav.tokenomics">Tokenomics</a></li>
       <li><a href="#roadmap" data-i18n="nav.roadmap">Roadmap</a></li>
+      <li><a href="/blog/">Blog</a></li>
     </ul>
     <div class="nav-actions">
       <a href="https://bskt.alvara.xyz/#/bskt-factory" class="nav-cta" target="_blank" rel="noopener" aria-label="Mint BSKT on the Alvara platform">
@@ -2001,6 +2016,7 @@ img { max-width: 100%; display: block; }
   <a href="#ecosystem" data-i18n="nav.ecosystem">Ecosystem</a>
   <a href="#tokenomics" data-i18n="nav.tokenomics">Tokenomics</a>
   <a href="#roadmap" data-i18n="nav.roadmap">Roadmap</a>
+  <a href="/blog/">Blog</a>
   <a href="https://bskt.alvara.xyz/#/bskt-factory" target="_blank" rel="noopener" style="color:var(--alvara-pink);" data-i18n="nav.launchApp">Mint BSKT</a>
 </nav>
 
@@ -2224,6 +2240,13 @@ img { max-width: 100%; display: block; }
         </div>
         <h3>Solana</h3>
         <span class="chain-tag">Q2 2026</span>
+      </div>
+      <div class="chain-card chain-card-upcoming reveal">
+        <div class="chain-icon">
+          <svg aria-hidden="true" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><circle cx="32" cy="32" r="32" fill="#EF0027"/><path d="M46.3 17H17.5l6.6 11.4h22.1L32 50.5l-9.2-16H15l17 29.5L52.8 28.4V17z" fill="#fff"/></svg>
+        </div>
+        <h3>Tron</h3>
+        <span class="chain-tag">Q3 2026</span>
       </div>
     </div>
 
@@ -2495,6 +2518,7 @@ img { max-width: 100%; display: block; }
       <div class="timeline-item upcoming"><p data-i18n="roadmap.q2f">Alvara DAO v2</p></div>
       <div class="timeline-divider"><h3 data-i18n="roadmap.q34">Q3–Q4 2026</h3></div>
       <div class="timeline-desc" data-i18n="roadmap.q34theme">Institutional-grade tools. AI-powered strategies</div>
+      <div class="timeline-item upcoming"><p data-i18n="roadmap.q34tron">BSKT protocol launch on Tron</p></div>
       <div class="timeline-item upcoming"><p data-i18n="roadmap.q34a">Compliant basket products for wealth platforms and funds</p></div>
       <div class="timeline-item upcoming"><p data-i18n="roadmap.q34b">Institutional-grade governance &amp; compliance</p></div>
       <div class="timeline-item upcoming"><p data-i18n="roadmap.q34c">Portfolio analytics, manager reputation, and reporting</p></div>
@@ -2505,7 +2529,49 @@ img { max-width: 100%; display: block; }
   </div>
 </section>
 
-<!-- BLOG SECTION TEMPORARILY REMOVED -->
+<!-- ══════════════════════════════════════════
+     BLOG
+     ══════════════════════════════════════════ -->
+<section class="section section-alt blog-section" id="blog">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">Blog</div>
+      <h2 class="section-title">Latest from Alvara</h2>
+    </div>
+    <div class="blog-grid reveal">
+      <a href="/blog/liquidity-expansion-layer/" class="blog-grid-card">
+        <img src="/images/blog/liquidity-expansion-layer.png" alt="Liquidity Expansion Layer" class="blog-grid-card-thumb">
+        <div class="blog-grid-card-body">
+          <div class="blog-grid-card-cat">Announcement</div>
+          <h3>Unlimited Asset Choices: Alvara&rsquo;s Liquidity Expansion Layer is Live</h3>
+          <p>We&rsquo;ve expanded access to all 1inch-aggregated assets for BSKT creation. Thousands of assets, infinite BSKTs.</p>
+          <span class="blog-grid-card-link">Read more &rarr;</span>
+        </div>
+      </a>
+      <a href="/blog/how-to-create-onchain-etf/" class="blog-grid-card">
+        <img src="/images/blog/hero-bg-2.jpg" alt="How to Create Your First Onchain ETF" class="blog-grid-card-thumb">
+        <div class="blog-grid-card-body">
+          <div class="blog-grid-card-cat">Tutorial</div>
+          <h3>How to Create Your First Onchain ETF</h3>
+          <p>A practical walkthrough with a real sample allocation and the mistakes first-time creators make.</p>
+          <span class="blog-grid-card-link">Read more &rarr;</span>
+        </div>
+      </a>
+      <a href="/blog/tokenized-index-funds-vs-traditional-etfs/" class="blog-grid-card">
+        <img src="/images/blog/hero-bg-5.jpg" alt="Tokenized Index Funds vs Traditional ETFs" class="blog-grid-card-thumb">
+        <div class="blog-grid-card-body">
+          <div class="blog-grid-card-cat">Comparison</div>
+          <h3>Tokenized Index Funds vs Traditional ETFs</h3>
+          <p>How do tokenized index funds compare to traditional ETFs? We break down the differences in access, fees, and transparency.</p>
+          <span class="blog-grid-card-link">Read more &rarr;</span>
+        </div>
+      </a>
+    </div>
+    <div class="blog-view-all">
+      <a href="/blog/">View All Posts &rarr;</a>
+    </div>
+  </div>
+</section>
 
 <!-- ══════════════════════════════════════════
      FINAL CTA
