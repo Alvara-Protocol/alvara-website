@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="/public/favicon.svg">
+  <link rel="icon" type="image/png" sizes="48x48" href="/public/favicon-48x48.png">
+  <link rel="icon" href="/public/favicon.ico" sizes="32x32">
+  <link rel="apple-touch-icon" href="/public/apple-touch-icon.png">
+  <title>The USR Stablecoin De-Peg and What It Tells Us About Vaults | Alvara Protocol</title>
+  <meta name="description" content="The USR collapse exposed how vault curators can allocate users' idle funds to broken markets. BSKTs fix this by never giving managers power over users' capital.">
+  <link rel="canonical" href="https://alvara.xyz/blog/usr-depeg-vaults-vs-bskts/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="The USR Stablecoin De-Peg and What It Tells Us About Vaults">
+  <meta property="og:description" content="The USR collapse exposed how vault curators can allocate users' idle funds to broken markets. BSKTs fix this by never giving managers power over users' capital.">
+  <meta property="og:url" content="https://alvara.xyz/blog/usr-depeg-vaults-vs-bskts/">
+  <meta property="og:site_name" content="Alvara Protocol">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The USR Stablecoin De-Peg and What It Tells Us About Vaults">
+  <meta name="twitter:description" content="The USR collapse exposed how vault curators can allocate users' idle funds to broken markets. BSKTs fix this by never giving managers power over users' capital.">
+
+  <link rel="stylesheet" href="/css/blog.css">
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "The USR Stablecoin De-Peg and What It Tells Us About Vaults",
+    "description": "The USR collapse exposed how vault curators can allocate users' idle funds to broken markets. BSKTs fix this by never giving managers power over users' capital.",
+    "datePublished": "2026-03-24",
+    "author": {
+      "@type": "Organization",
+      "name": "Alvara Protocol"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Alvara Protocol"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://alvara.xyz/blog/usr-depeg-vaults-vs-bskts/"
+    }
+  }
+  </script>
+</head>
+<body>
+
+<nav class="blog-nav" id="blogNav">
+  <div class="blog-nav-inner">
+    <a href="/" class="blog-nav-logo" aria-label="Alvara Protocol">
+      <svg viewBox="0 0 315 69" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M99.8927 23.2031C87.4607 23.2031 77.3828 33.2822 77.3828 45.7142C77.3828 58.1461 87.4607 68.224 99.8927 68.224H119.79V35.5138H107.613V56.413H100.462C94.6862 56.413 90.0033 51.7302 90.0033 45.9544C90.0033 40.1786 94.6862 35.4958 100.462 35.4958H107.605V23.328" fill="#FDF2FF"/>
+        <path d="M140.661 0.472656H128.295V68.2232H140.661V0.472656Z" fill="#FDF2FF"/>
+        <path d="M175.324 23.4766V45.2082C175.324 50.9839 170.641 55.6668 164.865 55.6668C164.727 55.6668 164.589 55.6632 164.452 55.6584H159.912V67.7913C159.929 67.7949 159.946 67.7973 159.961 67.8009V68.2765H163.964C164.184 68.2825 164.404 68.2873 164.625 68.2873C177.057 68.2873 187.135 58.2094 187.135 45.7774V23.4778H175.324V23.4766Z" fill="#FDF2FF"/>
+        <path d="M159.911 55.8317V23.2031H148.1V37.7837V53.6434V55.8317H159.911Z" fill="#FDF2FF"/>
+        <path d="M254.059 68.2873V46.5557C254.059 40.7799 258.742 36.0971 264.518 36.0971C264.656 36.0971 264.794 36.1007 264.931 36.1055H269.471V23.9726C269.454 23.969 269.437 23.9666 269.422 23.963V23.4874H265.418C265.199 23.4814 264.979 23.4766 264.758 23.4766C252.326 23.4766 242.248 33.5545 242.248 45.9864V68.2861H254.059V68.2873Z" fill="#FDF2FF"/>
+        <path d="M214.412 23.2031C201.98 23.2031 191.902 33.281 191.902 45.713C191.902 58.1449 201.98 68.2229 214.412 68.2229H234.31V35.5126H222.132V56.4118H214.982C209.206 56.4118 204.523 51.729 204.523 45.9532C204.523 40.1774 209.206 35.4946 214.982 35.4946H222.124V23.3268" fill="#FDF2FF"/>
+        <path d="M295.106 23.3711C282.674 23.3711 272.596 33.449 272.596 45.881C272.596 58.3129 282.674 68.3908 295.106 68.3908H315.003V35.6805H302.826V56.5798H295.675C289.899 56.5798 285.216 51.897 285.216 46.1212C285.216 40.3454 289.899 35.6625 295.675 35.6625H302.817V23.4948" fill="#FDF2FF"/>
+        <path d="M0.00585938 52.1767V28.3406L20.3972 7.94922H44.2333V24.0807H16.1373V52.1767H0.00585938Z" fill="url(#nav-g1)"/>
+        <path d="M16.2224 68.3932V52.2617H44.3184V24.1657H60.4499V48.0018L40.0585 68.3932H16.2224Z" fill="url(#nav-g2)"/>
+        <defs>
+          <linearGradient id="nav-g1" x1="78.32" y1="33.29" x2="-9.15" y2="66.7" gradientUnits="userSpaceOnUse"><stop stop-color="#FC75AF"/><stop offset="1" stop-color="#D73D80"/></linearGradient>
+          <linearGradient id="nav-g2" x1="78.32" y1="33.29" x2="-9.15" y2="66.7" gradientUnits="userSpaceOnUse"><stop stop-color="#FC75AF"/><stop offset="1" stop-color="#D73D80"/></linearGradient>
+        </defs>
+      </svg>
+    </a>
+    <div class="blog-nav-links">
+      <a href="/blog/" class="blog-back">&larr; <span>All Posts</span></a>
+      <a href="/">Home</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+        <svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<header class="blog-post-header">
+  <div class="container-narrow">
+    <nav class="blog-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> / <a href="/blog/">Blog</a> / <span>USR De-Peg: Vaults vs BSKTs</span>
+    </nav>
+    <div class="blog-category">Analysis</div>
+    <h1>The USR Stablecoin De-Peg and What It Tells Us About Vaults</h1>
+    <div class="blog-meta">
+      <span>Alvara Protocol</span>
+      <span class="blog-meta-dot">&middot;</span>
+      <time datetime="2026-03-24">March 24, 2026</time>
+      <span class="blog-meta-dot">&middot;</span>
+      <span>6 min read</span>
+    </div>
+  </div>
+</header>
+
+<article class="blog-post-content">
+  <div class="container-narrow">
+    <img src="/images/blog/vaults-vs-erc7621.png" alt="Vaults vs. ERC-7621" style="width:100%;border-radius:12px;margin-bottom:var(--space-lg);">
+
+    <div class="callout">
+      <p><strong>TL;DR</strong></p>
+      <ul>
+        <li>Vaults, while popular in DeFi, come with risks beyond smart contract vulnerabilities</li>
+        <li>The USR collapse exposed how curators can allocate users&rsquo; idle funds to fund broken markets</li>
+        <li>BSKTs fix this by never giving managers power over users&rsquo; capital. All they can influence is their weighted allocation</li>
+      </ul>
+    </div>
+
+    <p>When the USR stablecoin depegged, most eyes were on whether Reserve Labs would survive the $80 million exploit. As the dust settles, the industry is realizing that this story has a broader impact on DeFi, particularly the category of protocols that&rsquo;ve gained huge popularity in recent years: onchain asset managers powered by vaults.</p>
+
+    <p>Their job: providing an investment contract that would automatically execute a strategy to (ideally) grow the investors&rsquo; assets worth by a target percentage. An attractive proposition and therefore unsurprising that protocols in the business of it have amassed billions of dollars in TVL.</p>
+
+    <p>The surge in them has been enabled by risk curators, professionals specialized in providing risk assessments and management for DeFi services, usually very closely intertwined with the platforms that rely on their assessments.</p>
+
+    <p>Take Morpho, the second-largest lending protocol, which got started as a place to earn yield on USDC on Base, and has since gone multi-chain. Their offering includes multiple vaults curated by Gauntlet, a well-known risk curator.</p>
+
+    <h2>What Vaults Do</h2>
+
+    <p>A vault is essentially a smart contract that accepts deposits from users and then executes a pre-determined strategy to achieve its stated goals (increasing the value of the locked assets). Their selling point is streamlining countless interactions like staking, lending, and swapping into one and performing them on behalf of users.</p>
+
+    <p>There are a great variety of vaults, named after their focus area, such as:</p>
+
+    <ul>
+      <li><strong>Fixed yield vaults:</strong> attempting to earn defined returns often by relying on lending protocols</li>
+      <li><strong>LP Vaults:</strong> optimizing capital within AMM pools</li>
+      <li><strong>Delta Neutral vaults:</strong> implement strategies to offset market exposure by holding positions neutralizing the risk</li>
+    </ul>
+
+    <p>Vaults automate what used to be manual in the early days of crypto. As the space matures, we&rsquo;ve seen new vault configurations that rely more heavily on the assessment of risk curators. Risk curators can take on a more active role in deploying users&rsquo; capital.</p>
+
+    <h2>Vault Risk Curation, Gone Wrong</h2>
+
+    <p>As happened following the USR exploit. When a hacker figured out how to mint $50 million in stablecoin with just $100k in collateral, this wasn&rsquo;t great for Reserve Labs. The stablecoin depegged, and the project decided to freeze its functions until the vulnerability had been fixed.</p>
+
+    <p>Yet the impact wasn&rsquo;t limited to them, as with any stablecoin in DeFi, there is a market for it. In this case, it was a USR/USDC pair where the yield shot up, flagging it as an &ldquo;in-demand&rdquo; market. Consequently, Gauntlet and other curators allocated funds to it, providing exit liquidity to the market.</p>
+
+    <img src="/images/blog/usr-depeg-tweet.png" alt="Omer Goldberg on the USR exit liquidity through Gauntlet vaults on Morpho" style="width:100%;border-radius:12px;margin:var(--space-lg) 0;">
+
+    <p>The risk curators were asleep at the wheel, highlighting to investors in these vaults that the risks aren&rsquo;t limited to potential protocol vulnerabilities. If curators can move idle funds around, what else can they do?</p>
+
+    <p>Vaults have enabled significant innovation and financial participation, yet real risks remain. We believe that there&rsquo;s a different way to leverage others&rsquo; wisdom to grow one&rsquo;s digital asset portfolio: BSKTs.</p>
+
+    <h2>How ERC-7621 Solves the &ldquo;Trust Me Bro&rdquo;</h2>
+
+    <p>At Alvara, we know about the power of onchain asset management, but found that existing options with vaults were not quite what worked for our mission. That&rsquo;s why we developed a new token standard, <a href="/blog/erc-7621-token-standard-explained/">ERC-7621</a>, that allows the creation of a tokenized basket of assets, which:</p>
+
+    <ul>
+      <li>Provides an interface for managers to change assets and weightings</li>
+      <li>Gives investors tokens to represent their stake</li>
+      <li>Guarantees backing at any time</li>
+    </ul>
+
+    <p>This means that when investing in a BSKT on Alvara, investors never lock up their capital for others&rsquo; use. Instead, it&rsquo;s more like they&rsquo;re buying into the potential gains of another while knowing they can exit the second they have a slight doubt. Portfolio managers never have access to users&rsquo; funds.</p>
+
+    <p>BSKT managers on Alvara are focused on discretionary asset management, actively curating a portfolio of crypto assets to try to outperform the market. Our approach is purely meritocratic, where the best managers rise to the top.</p>
+
+    <p>There are no predefined fixed yields, only ambitious, aspiring asset managers competing while giving everyone else the opportunity to take part in their success. The situation, as it happened with risk curators supplying capital to a broken market, can&rsquo;t happen.</p>
+
+    <p>The worst that could happen is that the chosen assets are underperforming, but that&rsquo;s a very different, more transparent risk. BSKTs do not ask users to trust them; they are fully transparent, and managers cannot touch or move users&rsquo; funds.</p>
+
+    <p>Anyone can create their own BSKT or invest in another&rsquo;s. Transparent. Meritocratic. Self-custodial.</p>
+
+    <div class="callout">
+      <p><strong>Want to give it a try?</strong> <a href="https://bskt.alvara.xyz/" target="_blank" rel="noopener">Create your first BSKT here.</a></p>
+    </div>
+
+  </div>
+</article>
+
+<section class="blog-related">
+  <div class="container-narrow">
+    <h2>Related Posts</h2>
+    <div class="blog-related-grid">
+      <a href="/blog/what-are-basket-tokens/" class="blog-card">
+        <img src="/images/blog/hero-bg-1.jpg" alt="What Are Basket Tokens?" class="blog-card-thumb">
+        <div class="blog-card-body">
+          <div class="blog-card-category">Education</div>
+          <h3>What Are Basket Tokens? A Complete Guide to ERC-7621</h3>
+          <p>What BSKTs are, who they are for, what they do not solve, and why we think they matter. The foundational guide.</p>
+          <span class="blog-card-link">Read more &rarr;</span>
+        </div>
+      </a>
+      <a href="/blog/erc-7621-token-standard-explained/" class="blog-card">
+        <img src="/images/blog/hero-bg-3.jpg" alt="ERC-7621 Token Standard Explained" class="blog-card-thumb">
+        <div class="blog-card-body">
+          <div class="blog-card-category">Technical</div>
+          <h3>ERC-7621 Token Standard Explained: The Technical Deep Dive</h3>
+          <p>A technical breakdown of ERC-7621, the Ethereum token standard for basket tokens. Architecture, interfaces, composability, and more.</p>
+          <span class="blog-card-link">Read more &rarr;</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="blog-cta">
+  <div class="container">
+    <h2>Ready to Build Your First Basket?</h2>
+    <p>Create a diversified onchain portfolio in minutes. No code required.</p>
+    <a href="https://bskt.alvara.xyz/" target="_blank" rel="noopener" class="btn-white">Mint BSKT &rarr;</a>
+  </div>
+</section>
+
+<footer class="blog-footer">
+  <div class="container">
+    <div class="blog-footer-inner">
+      <div class="blog-footer-brand">
+        <svg viewBox="0 0 60 69" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0.00585938 52.1767V28.3406L20.3972 7.94922H44.2333V24.0807H16.1373V52.1767H0.00585938Z" fill="url(#fg1)"/>
+          <path d="M16.2224 68.3932V52.2617H44.3184V24.1657H60.4499V48.0018L40.0585 68.3932H16.2224Z" fill="url(#fg2)"/>
+          <defs>
+            <linearGradient id="fg1" x1="78.32" y1="33.29" x2="-9.15" y2="66.7" gradientUnits="userSpaceOnUse"><stop stop-color="#FC75AF"/><stop offset="1" stop-color="#D73D80"/></linearGradient>
+            <linearGradient id="fg2" x1="78.32" y1="33.29" x2="-9.15" y2="66.7" gradientUnits="userSpaceOnUse"><stop stop-color="#FC75AF"/><stop offset="1" stop-color="#D73D80"/></linearGradient>
+          </defs>
+        </svg>
+        &copy; 2025-2026 Alvara Protocol
+      </div>
+      <div class="blog-footer-links">
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+        <a href="https://docs.alvara.xyz/" target="_blank" rel="noopener">Docs</a>
+        <a href="https://bskt.alvara.xyz/" target="_blank" rel="noopener">Mint BSKT</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function() {
+  const saved = localStorage.getItem('alvara-theme');
+  if (saved) document.documentElement.setAttribute('data-theme', saved);
+  else if (window.matchMedia('(prefers-color-scheme: light)').matches) document.documentElement.setAttribute('data-theme', 'light');
+
+  document.getElementById('themeToggle').addEventListener('click', () => {
+    const current = document.documentElement.getAttribute('data-theme');
+    const next = current === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('alvara-theme', next);
+  });
+
+  window.addEventListener('scroll', () => {
+    document.getElementById('blogNav').classList.toggle('scrolled', window.scrollY > 10);
+  }, { passive: true });
+})();
+</script>
+
+</body>
+</html>
