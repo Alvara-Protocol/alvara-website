@@ -297,6 +297,9 @@ img { max-width: 100%; height: auto; display: block; }
   padding-top: var(--space-3xl);
   padding-bottom: var(--space-3xl);
 }
+.blog-related .container-narrow {
+  max-width: 1000px;
+}
 .blog-related h2 {
   font-family: var(--font-display);
   font-size: 28px;
