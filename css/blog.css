@@ -302,7 +302,7 @@ img { max-width: 100%; height: auto; display: block; }
 }
 .blog-related-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--space-lg);
 }
 .blog-related h2 {
