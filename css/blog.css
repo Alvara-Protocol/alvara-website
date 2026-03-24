@@ -298,7 +298,10 @@ img { max-width: 100%; height: auto; display: block; }
   padding-bottom: var(--space-3xl);
 }
 .blog-related .container-narrow {
-  max-width: 1000px;
+  max-width: 1200px;
+}
+.blog-related .blog-card-body {
+  padding: var(--space-xl);
 }
 .blog-related h2 {
   font-family: var(--font-display);
