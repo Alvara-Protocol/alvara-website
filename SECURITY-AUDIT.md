@@ -198,7 +198,7 @@ The following are **not covered** by this website security audit and require sep
 | Item | Reason |
 |------|--------|
 | Smart contract security (ERC-7621, BSKT contracts) | Separate domain — audited by Certik, Quill, Adevar Labs, and SolidProof |
-| bskt.alvara.xyz (dApp) | Separate application with its own security profile |
+| app.alvara.xyz (dApp) | Separate application with its own security profile |
 | docs.alvara.xyz | Separate documentation site |
 | DNS configuration / domain security | Infrastructure-level concern |
 | Social engineering / phishing | Non-technical attack vector |
