@@ -8,13 +8,13 @@
   <link rel="icon" href="/public/favicon.ico" sizes="32x32">
   <link rel="apple-touch-icon" href="/public/apple-touch-icon.png">
   <title>V2 fees are live on Ethereum | Alvara Protocol</title>
-  <meta name="description" content="Basket managers on Alvara can now earn from the baskets they build. Managers can set a management fee and a performance fee, investors see every fee before they deposit, and every fee rise comes with notice.">
+  <meta name="description" content="Managers on Alvara can now set their own management fee and charge a performance fee on the baskets they run. Every fee is shown before you deposit, and any fee increase requires 14 days' notice.">
   <link rel="canonical" href="https://alvara.xyz/blog/v2-fees-live-on-ethereum/">
 
   <!-- Open Graph -->
   <meta property="og:type" content="article">
   <meta property="og:title" content="V2 fees are live on Ethereum">
-  <meta property="og:description" content="Basket managers on Alvara can now earn from the baskets they build. Managers can set a management fee and a performance fee, investors see every fee before they deposit, and every fee rise comes with notice.">
+  <meta property="og:description" content="Managers on Alvara can now set their own management fee and charge a performance fee on the baskets they run. Every fee is shown before you deposit, and any fee increase requires 14 days' notice.">
   <meta property="og:url" content="https://alvara.xyz/blog/v2-fees-live-on-ethereum/">
   <meta property="og:site_name" content="Alvara Protocol">
   <meta property="og:image" content="https://alvara.xyz/images/blog/v2-fees-live-on-ethereum-social.jpg">
@@ -24,7 +24,7 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="V2 fees are live on Ethereum">
-  <meta name="twitter:description" content="Basket managers on Alvara can now earn from the baskets they build. Managers can set a management fee and a performance fee, investors see every fee before they deposit, and every fee rise comes with notice.">
+  <meta name="twitter:description" content="Managers on Alvara can now set their own management fee and charge a performance fee on the baskets they run. Every fee is shown before you deposit, and any fee increase requires 14 days' notice.">
   <meta name="twitter:image" content="https://alvara.xyz/images/blog/v2-fees-live-on-ethereum-social.jpg">
 
   <link rel="stylesheet" href="/css/blog.css">
@@ -35,7 +35,7 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": "V2 fees are live on Ethereum",
-    "description": "Basket managers on Alvara can now earn from the baskets they build. Managers can set a management fee and a performance fee, investors see every fee before they deposit, and every fee rise comes with notice.",
+    "description": "Managers on Alvara can now set their own management fee and charge a performance fee on the baskets they run. Every fee is shown before you deposit, and any fee increase requires 14 days' notice.",
     "datePublished": "2026-11-04",
     "image": "https://alvara.xyz/images/blog/v2-fees-live-on-ethereum-social.jpg",
     "author": {
@@ -97,7 +97,7 @@
       <span class="blog-meta-dot">&middot;</span>
       <time datetime="2026-11-04">November 4, 2026</time>
       <span class="blog-meta-dot">&middot;</span>
-      <span>3 min read</span>
+      <span>4 min read</span>
     </div>
   </div>
 </header>
@@ -106,69 +106,88 @@
   <div class="container-narrow">
     <img src="/images/blog/v2-fees-live-on-ethereum.jpg" alt="V2 fees are live on Ethereum: management up to 3% a year, performance up to 20%, 14 days' notice on any rise" width="1400" height="784" style="width:100%;height:auto;border-radius:12px;margin-bottom:var(--space-lg);">
 
-    <p>Basket managers on Alvara can now earn from the baskets they build. V2 fees are live on Ethereum: managers can set a management fee and a performance fee, investors can see every fee before they deposit, and every fee change comes with notice.</p>
-
-    <p>This is the biggest change to how Alvara baskets work since launch. Here is what it means for managers and for the people who invest in their baskets.</p>
+    <p>Managers on Alvara can now set their own management fee and, for the first time, charge a performance fee on the baskets they run. V2 fees are live on Ethereum today. Every fee is shown to investors before they deposit, and any fee increase requires 14 days' notice. Base follows next.</p>
 
     <div class="callout">
       <ul>
-        <li><strong>1%</strong> default management fee</li>
-        <li><strong>3%</strong> management fee limit, per year</li>
-        <li><strong>20%</strong> performance fee limit, of profits</li>
-        <li><strong>14 days</strong> notice before any fee rise</li>
+        <li><strong>1% p.a</strong> default management fee</li>
+        <li><strong>3% p.a</strong> maximum management fee</li>
+        <li><strong>20%</strong> maximum performance fee</li>
+        <li><strong>14 days</strong> notice before any increase</li>
       </ul>
     </div>
 
-    <h2>Why fees matter</h2>
+    <h2>Why we built it</h2>
 
-    <p>Running a good basket takes work. Managers research tokens, set weights, rebalance when markets move and answer to the people who follow them. Until now there was no built-in way to be paid for that. V2 changes this, so good managers can build a real business on Alvara and investors can back the managers they trust.</p>
+    <p>Until now, every basket on Alvara carried the same fixed 1% annual management fee, which managers received regardless of performance. V2 lets each manager set fees that reflect their strategy and their results, within limits that protect investors.</p>
 
-    <h2>Two kinds of fee</h2>
+    <h2>In line with the industry</h2>
 
-    <p><strong>Management fee.</strong> A yearly fee on the value of the basket, between 0% and 3%. New baskets start at 1%, and the manager can change it. It builds up in monthly periods and the manager claims it from their Manager tools.</p>
+    <p>Traditional funds have long paid managers through a management fee on assets and a performance fee on profits, the model often summarised as "2 and 20". On-chain, managers on comparable platforms set their own fees in the same way, and the leading on-chain fund platforms take around 10% of manager fees. V2 brings Alvara in line with that model: managers choose their fees, investors see them up front, and the protocol's share is 10%.</p>
 
-    <p><strong>Performance fee.</strong> A share of the profits a basket makes for you, up to 20%. It is worked out per holder: you only pay on the profit your own deposit has made, measured from the value when you came in. If your position is not up, you pay nothing. The fee is taken from the shares you withdraw. No new shares are created, so other holders are not affected.</p>
+    <h2>What a manager could earn</h2>
+
+    <p>An illustrative example: a basket with $1,000,000 under management that returns 30% over a year.</p>
+
+    <ul>
+      <li><strong>Before V2:</strong> a fixed 1% management fee, and no performance fee. The manager earns $10,000.</li>
+      <li><strong>V2 at 1% management and 10% performance:</strong> $9,000 from management and $27,000 from performance, after Alvara's 10% share. The manager earns $36,000.</li>
+      <li><strong>V2 at 2% management and 20% performance:</strong> $18,000 from management and $54,000 from performance, after Alvara's 10% share. The manager earns $72,000.</li>
+    </ul>
+
+    <p>Performance fees are only earned on real profits, so a basket that does not grow earns its manager the management fee alone. Figures are simplified: performance fees are collected as investors withdraw, and actual amounts depend on when each investor joined and left. Alvara's 10% share of management fees applies from the next upgrade.</p>
+
+    <h2>Management fee</h2>
+
+    <p>An annual fee of 0% to 3% of the basket's value, set by the manager and accrued every 30 days. New baskets launch with a default 1%, which the manager can reconfigure immediately to anywhere from 0% to 3% in the basket's first 7 days, before anyone else invests.</p>
+
+    <h2>Performance fee</h2>
+
+    <p>A share of investment profits, up to 20%, set by the manager. It is calculated separately for each investor, based on the value of their own deposit. If your position is not in profit, you pay no performance fee. Profits are measured on the market value of a basket's holdings, so tokens whose price grows as they earn yield, such as wstETH, count that yield toward profits. The fee is taken from the shares you withdraw. No new shares are created, so other investors are not diluted.</p>
 
     <div class="callout">
-      <p><strong>Performance fee charging has not started yet.</strong> Managers can set their performance fee from today and investors can see it on every basket, but no performance fee is taken until charging switches on. We will announce the start date in advance. Profits made while a performance fee is set can still be charged on withdrawals after charging starts, and the app says so wherever the fee appears.</p>
+      <p><strong>Performance fee charging has not started yet.</strong> Managers can set a performance fee now, and it is shown on every basket, but no performance fee is charged until charging is switched on. We will announce the start date in advance. Profits made while a performance fee is set may be charged on withdrawals after charging starts.</p>
     </div>
 
-    <h2>Built for investors</h2>
+    <h2>Protections for investors</h2>
 
     <ul>
-      <li>Every basket shows its management and performance fee on the basket page, before you deposit.</li>
-      <li>A manager can lower a fee at any time, and the cut applies straight away.</li>
-      <li>Any fee rise needs 14 days' notice. You see the pending rise on the basket page and in your notices, so you have two weeks to decide whether to stay.</li>
-      <li>Fees have hard limits written into the contracts: 3% a year for management and 20% of profits for performance. No manager can go above them.</li>
-      <li>When you withdraw, the app shows what performance fee, if any, applies to that withdrawal.</li>
+      <li>Every basket's fees are shown on its page before you deposit.</li>
+      <li>Fee increases require 14 days' notice. Pending increases are shown on the basket page and in your notifications, so you have time to withdraw if you disagree.</li>
+      <li>Fee reductions take effect immediately.</li>
+      <li>Maximum fees are enforced by the smart contracts: 3% p.a for management and 20% for performance.</li>
+      <li>Before you withdraw, the app shows any performance fee that applies.</li>
     </ul>
 
-    <h2>Built for managers</h2>
+    <h2>For managers</h2>
 
     <ul>
-      <li>Set and change your fees from Manage fees on your basket page.</li>
-      <li>Launching a new basket? For its first 7 days, while you are the only holder, you can set your fees straight away with no waiting period. Once someone else invests, the 14-day notice applies to any rise.</li>
-      <li>Existing baskets can propose a fee rise today. It takes effect after the 14-day notice period.</li>
-      <li>Claim your management fee in the basket's tokens or in ETH.</li>
+      <li>Set your fees in Manager tools on your basket's page.</li>
+      <li>New baskets: fee changes take effect immediately during the first 7 days, as long as no one else has invested yet. After 7 days, or as soon as another investor joins, any increase requires 14 days' notice.</li>
+      <li>Existing baskets: fee increases take effect after the 14-day notice period.</li>
+      <li>Claim your management fee in the basket's underlying tokens or in ETH.</li>
     </ul>
+
+    <h2>Lower platform fees</h2>
+
+    <p>We have also cut Alvara's platform fee on Ethereum and Base. Creating a basket or contributing to one now costs 0.25%, and withdrawals are free. Baskets no longer pay a higher fee for holding less than 5% ALVA.</p>
 
     <h2>How Alvara is paid</h2>
 
-    <p>Managers keep 90% of the fees they charge. Alvara takes 10% of performance fees, and from the next upgrade 10% of management fees too. We have also cut Alvara's platform fee: creating a basket and contributing now cost 0.25%, and withdrawing is free.</p>
+    <p>Alvara takes 10% of performance fees, and from the next upgrade, 10% of management fees. Managers keep the rest.</p>
 
-    <h2>What moved over</h2>
+    <h2>Existing baskets</h2>
 
-    <p>Every live basket on Ethereum has been moved to V2. Your holdings, weights and history are unchanged. Contributing, withdrawing in kind or as ETH, and rebalancing all work as before. Migrated baskets start on a 1% management fee and a 0% performance fee until their manager decides otherwise.</p>
+    <p>Every live Ethereum basket has moved to V2. Holdings, weights and history are unchanged, and contributing, withdrawing and rebalancing work as before. Migrated baskets keep a 1% p.a management fee and have no performance fee until their manager sets one.</p>
 
-    <h2>What comes next</h2>
+    <h2>What's next</h2>
 
     <ul>
-      <li>Base moves to V2 fees next.</li>
-      <li>We will announce the date performance fee charging starts, with notice before it does.</li>
-      <li>We will keep improving how fees show up in the app based on what managers and investors tell us.</li>
+      <li>V2 fees on Base.</li>
+      <li>An announced start date for performance fee charging.</li>
     </ul>
 
-    <p>If you manage a basket, open it on <a href="https://app.alvara.xyz/" target="_blank" rel="noopener"><strong>app.alvara.xyz</strong></a> and look for Manage fees. If you invest, check the fees on the baskets you hold. Questions are welcome in our Telegram and Discord.</p>
+    <p>Managers can set their fees now at <a href="https://app.alvara.xyz/" target="_blank" rel="noopener"><strong>app.alvara.xyz</strong></a>. Investors can review the fees on every basket before depositing. Questions are welcome in our Telegram and Discord.</p>
 
   </div>
 </article>
@@ -202,7 +221,7 @@
 <section class="blog-cta">
   <div class="container">
     <h2>Set Your Basket Fees</h2>
-    <p>Open your basket on Alvara and look for Manage fees.</p>
+    <p>Open your basket on Alvara and set your fees in Manager tools.</p>
     <a href="https://app.alvara.xyz/" target="_blank" rel="noopener" class="btn-white">Open the App &rarr;</a>
   </div>
 </section>
